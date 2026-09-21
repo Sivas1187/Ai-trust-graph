@@ -8,7 +8,7 @@ AI Trust Graph models an AI system's real exposure as a directed, labelled multi
 
 ## Status
 
-This repository is a **public-release candidate**. Every artifact carries the same honest status in its closing approval record: the methodology author's internal review is complete, and **independent architecture review, AI-security review, employer/IP/confidentiality review, and licence/trademark approval are all still pending.** Nothing here should be treated as finalized, endorsed, or ready for reliance until those gates close. See [ROADMAP.md](ROADMAP.md) for what remains and [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md) for a ruthless, independent-reviewer-style pass identifying inconsistencies and gaps across the eleven artifacts.
+This repository is a **public-release candidate**. Every artifact carries the same honest status in its closing approval record: the methodology author's internal review is complete, and **independent architecture review, AI-security review, employer/IP/confidentiality review, and licence/trademark approval are all still pending.** Nothing here should be treated as finalized, endorsed, or ready for reliance until those gates close. See [ROADMAP.md](ROADMAP.md) for what remains and [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md) for a ruthless, independent-reviewer-style pass identifying inconsistencies and gaps across the twelve artifacts.
 
 Two governance items the methodology's own publication-acceptance criteria call for are **not yet present in this repository** and are flagged rather than silently added:
 
@@ -38,7 +38,7 @@ On top of the six domains, the methodology defines:
 - A doctrine of **distinct, non-numeric result states** (`UNKNOWN`, `Not Assessed`, `Not Applicable`, `Not Tested`, `Inconclusive`, `Provisional`, `Final within scope`) that must never be silently collapsed into a score or a pass/fail.
 - **No overall trust score.** This is a deliberate, repeated design decision across every scoring and reporting artifact, not an oversight.
 
-## The eleven artifacts
+## The twelve artifacts
 
 | # | Artifact | What it defines |
 | --- | --- | --- |
@@ -53,8 +53,9 @@ On top of the six domains, the methodology defines:
 | 9 | [Reporting Standard](docs/09-reporting-standard.md) | The mandatory report package and claim-integrity rules |
 | 10 | [Reference Assessment Repository](docs/10-reference-assessment-repository.md) | 12 synthetic, fully worked reference assessments |
 | 11 | [Governance & Certification Model](docs/11-governance-and-certification-model.md) | Stewardship, change control, certification readiness |
+| 12 | [Ontology Specification](docs/12-ontology-specification.md) | Canonical entity types, relationship predicates, states and enumerations behind every other artifact |
 
-Read them in order if you're new to the methodology — each depends conceptually on the ones before it. Artifact #10's twelve reference cases are entirely synthetic and must never be represented as facts about a real organization, product, or provider.
+Read them in order if you're new to the methodology, **with one exception**: Artifact #12, the Ontology Specification, is filed last but is meant to be read right after Artifact #2. The Core Conceptual Model's own precedence rule (§0.2) places "Ontology" immediately after itself and before every operational artifact — it was added to this repository after Artifacts #1–#11 were already published, and appending it as #12 avoided renumbering (and re-linking) files already live on GitHub. Read #1, #2, #12, then #3 through #11 in order. Artifact #10's twelve reference cases are entirely synthetic and must never be represented as facts about a real organization, product, or provider.
 
 ## Product boundary
 
@@ -81,7 +82,8 @@ ai-trust-graph/
     ├── 08-assessor-handbook.md
     ├── 09-reporting-standard.md
     ├── 10-reference-assessment-repository.md
-    └── 11-governance-and-certification-model.md
+    ├── 11-governance-and-certification-model.md
+    └── 12-ontology-specification.md    — filed last; read right after #2 (see "The twelve artifacts")
 ```
 
 ## Contributing

@@ -6,7 +6,7 @@ This roadmap tracks what stands between the current state of this repository and
 
 ## Where things stand today
 
-All eleven methodology artifacts have been converted from their source drafts into publication-quality Markdown, cross-linked, and organized into this repository's structure. The core governance files requested for this repository — README, CONTRIBUTING, CODE_OF_CONDUCT, CHANGELOG, and this roadmap — exist. An independent consistency review has been performed and its findings are recorded in [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md).
+All twelve methodology artifacts have been converted from their source drafts into publication-quality Markdown, cross-linked, and organized into this repository's structure — including the Ontology Specification (Artifact #12), added after the initial eleven-artifact publish and filed last for repository stability even though it reads right after Artifact #2 (see the README's "Reading order" note and [REVIEW_FINDINGS.md, R-11](REVIEW_FINDINGS.md#r-11--ontology-specification-added-as-artifact-12-new-evidence-bearing-on-r-02-r-05-and-r-06-should-fix--informational)). The core governance files requested for this repository — README, CONTRIBUTING, CODE_OF_CONDUCT, CHANGELOG, and this roadmap — exist. An independent consistency review has been performed and its findings are recorded in [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md).
 
 **None of this constitutes public release readiness.** Every artifact's own closing approval record says so explicitly, and this roadmap should be read alongside that honesty, not instead of it.
 

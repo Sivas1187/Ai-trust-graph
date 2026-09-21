@@ -6,7 +6,7 @@ Thank you for your interest in improving AI Trust Graph. This is a **constitutio
 
 ## Before you propose anything
 
-Read the [Manifesto](docs/01-manifesto.md) and the [Core Conceptual Model](docs/02-core-conceptual-model.md) first. Most well-intentioned proposals that get rejected are rejected because they re-invent a distinction the methodology already makes deliberately — for example, re-introducing a single overall trust score, collapsing `UNKNOWN` into a numeric default, or treating a topological graph connection as proof of exploitability. Section 0 of most artifacts states the relevant invariants explicitly; check there first.
+Read the [Manifesto](docs/01-manifesto.md), the [Core Conceptual Model](docs/02-core-conceptual-model.md), and the [Ontology Specification](docs/12-ontology-specification.md) first — in that order, despite the Ontology Specification being filed as Artifact #12 (see the README's "Reading order" note). Most well-intentioned proposals that get rejected are rejected because they re-invent a distinction the methodology already makes deliberately — for example, re-introducing a single overall trust score, collapsing `UNKNOWN` into a numeric default, treating a topological graph connection as proof of exploitability, or proposing a new canonical entity type or relationship predicate that the Ontology Specification's Appendix A/C registries already define under a different name. Section 0 of most artifacts states the relevant invariants explicitly; check there first.
 
 Also check [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md). Several open findings there already describe known inconsistencies the maintainers are aware of and welcome help resolving — that's a good place to start if you want to contribute but don't have your own idea yet.
 
@@ -17,7 +17,7 @@ Per Artifact #11 §2.2, every artifact falls into one of these classes, and the 
 | Class | Examples in this repo | Approval needed |
 | --- | --- | --- |
 | Constitutional | Governance & Certification Model | Highest threshold: Governance Council plus Technical Architecture Board |
-| Semantic | Core Conceptual Model | Technical Architecture Board plus Council |
+| Semantic | Core Conceptual Model, Ontology Specification | Technical Architecture Board plus Council |
 | Normative | Maturity Model, Scoring Framework, Master Control Library, Evidence Model, Assessment Methodology, Reporting Standard | Technical boards plus Council |
 | Operational | Assessor Handbook | Scheme owner plus QA |
 | Illustrative | Reference Assessment Repository | Maintainer plus independent calibration review |

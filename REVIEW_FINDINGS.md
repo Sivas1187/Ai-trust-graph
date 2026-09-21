@@ -2,7 +2,7 @@
 
 # Independent Review Findings
 
-This document records an independent, ruthless-reviewer pass across all eleven AI Trust Graph artifacts, conducted before public release. It follows the project's own standing rule: **no methodology semantics, terminology, control definition, maturity level, evidence grade, or scoring logic may be silently changed.** Every finding below either (a) documents a change already made and why, or (b) flags an inconsistency, gap, or open question for the methodology author and independent reviewers to resolve — it does not resolve them unilaterally.
+This document records an independent, ruthless-reviewer pass across all twelve AI Trust Graph artifacts, conducted before public release. It follows the project's own standing rule: **no methodology semantics, terminology, control definition, maturity level, evidence grade, or scoring logic may be silently changed.** Every finding below either (a) documents a change already made and why, or (b) flags an inconsistency, gap, or open question for the methodology author and independent reviewers to resolve — it does not resolve them unilaterally.
 
 Findings are numbered `R-NN` in order of discovery and are cross-referenced from the artifacts where relevant (the Manifesto's Appendix B redaction notice, for example, points back to `R-01`).
 
@@ -41,6 +41,8 @@ The seven-state version is the one used consistently downstream — in the Asses
 **Why this matters:** Path state is a load-bearing concept — it gates what conclusions a report may draw (§9 of the Reporting Standard) and what a control result may claim (Master Control Library). A reader who learns the taxonomy from the Core Conceptual Model will expect an eighth state that the rest of the methodology does not implement or ever produce.
 
 **Recommendation:** Determine which is canonical. Two honest options: (a) `Residual` is a genuine state that the Scoring Framework, Master Control Library, and everything downstream should be updated to include (Residual exposure — "a route remains after existing or proposed intervention" — is conceptually distinct from `Controlled` and arguably worth keeping); or (b) `Residual` was dropped intentionally when the seven-state model was finalized and the Core Conceptual Model's §6.3 is the artifact that needs a patch release. Either way, this needs a decision, not a silent pick — it is exactly the kind of semantic question this review is not authorized to resolve on its own.
+
+**Update (R-11):** The newly added [Ontology Specification](docs/12-ontology-specification.md) (Artifact #12) independently states the same eight-state taxonomy, including `Residual` (§11.1, "State namespaces"; also §9.3). That makes it two artifacts (Core Conceptual Model and Ontology Specification) stating eight states against two (Scoring Framework and Master Control Library) stating seven. This is material new evidence toward option (a) above, but it is still a recommendation, not a resolution — see R-11 for the full accounting.
 
 ---
 
@@ -89,6 +91,8 @@ Meanwhile, the **Reference Assessment Repository** and **Governance & Certificat
 
 **Recommendation:** Adopt one canonical dependency statement — ideally as a machine-checkable manifest per Artifact #11's registry model (§0.6, §2.1) — and have every artifact's header field cite it rather than restate it. Decide explicitly whether "Ontology" and "Domain Guides" are real, separately-versioned sub-artifacts or just internal section names within the Core Conceptual Model and Master Control Library, and make the Core Conceptual Model's §0.2 chain match whichever is true.
 
+**Update (R-11):** The "Ontology" stage is now answered: it is a real, separately-versioned artifact, and has been published as Artifact #12, the [Ontology Specification](docs/12-ontology-specification.md). "Domain Guides" remains unanswered — the Ontology Specification is explicitly scoped to semantic/ontology content only and does not claim to be the Domain Guides artifact. The new artifact also adds a *fifth* distinct wording of the dependency relationship (a "Semantic authority" field plus a separate, unversioned "Consumes" list) — see R-11 for detail.
+
 ---
 
 ## R-06 — Version skew: Core Conceptual Model is v1.1, everything else is v1.0 (Blocking)
@@ -100,6 +104,8 @@ Meanwhile, the **Reference Assessment Repository** and **Governance & Certificat
 **Why this matters:** Publishing a bundle called "v1.0" that contains one internally-consistent v1.1 component and ten v1.0 components is not wrong, exactly — the Maturity Model and Scoring Framework demonstrate that they were correctly updated to track the Core Conceptual Model's revision — but it means "AI Trust Graph Methodology v1.0" is not itself a well-defined version number for the bundle as a whole under the semantic-versioning rules the methodology itself lays out in Governance & Certification Model §2.3. There is no top-level release manifest anywhere in the repository that says, authoritatively, "AI Trust Graph Methodology v1.0 = Manifesto v1.0 + Core Conceptual Model v1.1 + Maturity Model v1.0 + ... ".
 
 **Recommendation:** Either (a) bump the Core Conceptual Model back to 1.0 for the initial public release and treat its current content as the actual v1.0 baseline (if no prior public v1.0 of that artifact ever existed, calling it 1.1 may itself be a labeling leftover from internal drafting), or (b) keep 1.1 and publish an explicit release manifest — e.g., in CHANGELOG.md — pinning the exact version of every artifact that constitutes "Methodology v1.0." Option (b) is consistent with, and arguably required by, Governed-object registry rules already defined in Artifact #11 §0.6.
+
+**Update (R-11):** The newly added Ontology Specification (Artifact #12) is itself versioned 1.0 and explicitly cites "Core Conceptual Model v1.1" as an upstream dependency — the same correct pattern already followed by the Maturity Model and Scoring Framework. This is a third artifact confirming that the v1.1 revision was deliberate and isolated, which further supports resolving this via option (b) — an explicit release manifest — rather than rolling the Core Conceptual Model back to 1.0.
 
 ---
 
@@ -153,6 +159,30 @@ These are flagged here, in the README, and in ROADMAP.md rather than silently ad
 
 ---
 
+## R-11 — Ontology Specification added as Artifact #12; new evidence bearing on R-02, R-05 and R-06 (Should-fix / Informational)
+
+**Artifact:** [Ontology Specification](docs/12-ontology-specification.md) (new), cross-referencing [Core Conceptual Model](docs/02-core-conceptual-model.md), [Scoring Framework](docs/04-scoring-framework.md), [Master Control Library](docs/05-master-control-library.md), and [Governance & Certification Model](docs/11-governance-and-certification-model.md).
+
+**Finding:** The author supplied a previously unpublished "AI Trust Graph Ontology Specification v1.0" (self-identified internally as "Companion identifier O1"), which formalizes the corpus's canonical entity types (over 100), relationship predicates (96), states and enumerations into a single human-readable registry, cross-checked against the Master Control Library's actual node vocabulary. It has been converted and added to this repository as **Artifact #12**, `docs/12-ontology-specification.md`, following the same placement decision recorded below. Four things came out of reviewing it against the rest of the corpus:
+
+1. **It is the real artifact behind R-05's dangling "Ontology" reference.** Core Conceptual Model §0.2 names "Ontology" as a stage in its precedence chain with no corresponding published artifact. It is this document. "Domain Guides," the other unmapped stage in that same chain, is still unaccounted for — this document is explicitly scoped to ontology/semantics only and does not claim that role.
+2. **It restates the eight-state path taxonomy, including `Residual`** (§9.3 and §11.1), agreeing with the Core Conceptual Model and disagreeing with the Scoring Framework and Master Control Library's seven-state version — see the R-02 update above. It does not resolve R-02; it makes the count 2-to-2 among artifacts that state the full taxonomy, which is new information for whoever decides it.
+3. **It restates the artifact-dependency relationship a fifth way**: a "Semantic authority" field ("Constrained by AI Trust Graph Manifesto v1.0 and Core Conceptual Model v1.1") plus a separate, unversioned "Consumes" field naming the other nine operational artifacts. This compounds R-05 rather than resolving it.
+4. **Its own version (1.0) and explicit citation of Core Conceptual Model v1.1** is a third data point supporting the R-06 update above.
+
+**Placement decision recorded here for traceability:** the Ontology Specification's own governing document (Core Conceptual Model §0.2) states its conceptual reading position is immediately after Artifact #2, ahead of the Maturity Model. Renumbering the repository to reflect that (shifting Artifacts #3–#11 up to #4–#12) would be the more "correct" filing, but was judged too high-risk to execute via GitHub's web upload flow on an already-published repository (the project's most recent incident, a broken relative link, came from exactly this kind of cross-file surgery). The methodology author chose to append it as **Artifact #12** instead, with a "reading order" note in the README pointing readers to its true conceptual position. This is a repository-organization decision, not a methodology-semantics decision, and is recorded here rather than silently made.
+
+**Minor / cosmetic notes found during conversion (none blocking):**
+- The Ontology Specification's own restatement of the Core Conceptual Model's "reasoning chain" (§1.1) uses "Authority & Influence"; the Core Conceptual Model's original (§1.2) spells it out as "Authority and Influence." Preserved as authored rather than silently harmonized.
+- §12 of the Ontology Specification jumps from its section header directly into a data table, then to "§12.2 Capability identifiers" — there is no "§12.1" in the source. Preserved exactly as authored.
+- Two of the document's own internal numeric claims were independently verified against the actual repository content during this review rather than taken on faith: "the 72 controls" (§16.1, Appendix B) matches the Master Control Library's actual 72 unique `ATG-` control IDs exactly, and "36 capability identifiers" (§12) matches the Maturity Model's actual 36 `D#.#` identifiers exactly. Both check out.
+
+**Recommendation:** No methodology semantics were changed to accommodate this addition. Three follow-on decisions are now ready for the author, all previously opened by earlier findings and only strengthened here: resolve R-02 (this review's own recommendation, given the new 2-to-2 split, leans toward adding `Residual` back to the Scoring Framework and Master Control Library, but this is the author's call); decide whether "Domain Guides" is a real, still-unwritten companion artifact or a chain reference that should be removed from Core Conceptual Model §0.2; and fold this document's dependency wording into whatever single canonical manifest eventually resolves R-05.
+
+**Status:** Artifact added. R-02, R-05 and R-06 remain open, now with additional evidence recorded above.
+
+---
+
 ## Gaps
 
 Summarizing R-08 for quick reference: this repository is intentionally missing a **LICENSE** and a **SECURITY.md**. Both are called for by the Manifesto's own Appendix B and are flagged rather than added, because adding either responsibly requires a decision only the rights holder can make.
@@ -171,3 +201,4 @@ Summarizing R-08 for quick reference: this repository is intentionally missing a
 | R-08 | No LICENSE or SECURITY.md, though the Manifesto's own criteria require them | Blocking | Open — flagged, not silently added |
 | R-09 | Evidence Model cites a generic "AI Security Assessment Toolkit" | Minor | Open — confirm during IP review |
 | R-10 | Governance Model cites real external standards (SAC, ISO/IEC 17021-1/17024/17065) | Should-fix | Open — confirm during legal review |
+| R-11 | Ontology Specification added as Artifact #12; strengthens R-02 and R-06, further compounds R-05 | Should-fix / Informational | Artifact added; R-02/R-05/R-06 still open |
