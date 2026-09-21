@@ -1,0 +1,93 @@
+# AI Trust Graph
+
+**An open methodology for assessing AI systems using graph-based trust, authority, evidence, controls, paths, governance, and security validation.**
+
+AI Trust Graph models an AI system's real exposure as a directed, labelled multigraph of identities, tools, data, and trust relationships — then assesses it through six domains, seventy-two canonical controls, an evidence-graded assurance model, and a non-compensating maturity scale. The methodology produces bounded, evidence-linked findings and a Path Exposure Index for triage. It does not produce a single trust score, and it does not certify anyone.
+
+> **What this is not.** AI Trust Graph is a methodology, not a product. It is not a certification program, not an accreditation body, not a legal opinion, and not a guarantee of safety or compliance. Version 1.0 defines certification *readiness*; it does not launch an operating certification scheme. See [Artifact #11 — Governance & Certification Model](docs/11-governance-and-certification-model.md).
+
+## Status
+
+This repository is a **public-release candidate**. Every artifact carries the same honest status in its closing approval record: the methodology author's internal review is complete, and **independent architecture review, AI-security review, employer/IP/confidentiality review, and licence/trademark approval are all still pending.** Nothing here should be treated as finalized, endorsed, or ready for reliance until those gates close. See [ROADMAP.md](ROADMAP.md) for what remains and [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md) for a ruthless, independent-reviewer-style pass identifying inconsistencies and gaps across the eleven artifacts.
+
+Two governance items the methodology's own publication-acceptance criteria call for are **not yet present in this repository** and are flagged rather than silently added:
+
+- **LICENSE** — no open-source licence has been chosen or approved. Nothing in this repository should be reused, forked, or redistributed until one is added.
+- **SECURITY.md** — no vulnerability-disclosure process exists yet for the methodology repository itself (distinct from the AI-security *subject matter* the methodology assesses).
+
+See [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md#gaps) for why these are gaps rather than omissions.
+
+## The methodology at a glance
+
+AI Trust Graph organizes assessment into **six domains**, each with twelve canonical controls (prefix `ATG-<DOMAIN>-NNN`):
+
+| Domain | Focus | Control prefix |
+| --- | --- | --- |
+| D1 — Discovery and AIBOM | Inventory, ownership, and blind spots across the AI estate | `ATG-DIS` |
+| D2 — Trust and CloudHound | Trust relationships, identity/privilege paths, graph quality | `ATG-TRU` |
+| D3 — Authority Governance | Delegated authority, approval, amplification, revocation | `ATG-AUT` |
+| D4 — AI Security Validation | Threat hypotheses, control testing, independent retest | `ATG-VAL` |
+| D5 — AI Governance and Assurance | Policy, appetite, use-case impact, provider assurance | `ATG-GOV` |
+| D6 — Operational Resilience | Detection, containment, recovery, forensics | `ATG-RES` |
+
+On top of the six domains, the methodology defines:
+
+- A **five-level maturity scale** (M1–M5) that is cumulative, evidence-gated, and explicitly *not* an average of control scores.
+- A **six-point evidence grade** (E0–E5) separating how strongly a claim is supported from whether a control is effective.
+- A **Path Exposure Index (PEI)**, `4×Consequence + 3×Reachability + 3×Authority + 2×Amplification + 3×Control-resistance` (range 4–62, bands Low/Moderate/High/Critical), used strictly for triage — never as a probability, an expected loss, or a certification score.
+- A doctrine of **distinct, non-numeric result states** (`UNKNOWN`, `Not Assessed`, `Not Applicable`, `Not Tested`, `Inconclusive`, `Provisional`, `Final within scope`) that must never be silently collapsed into a score or a pass/fail.
+- **No overall trust score.** This is a deliberate, repeated design decision across every scoring and reporting artifact, not an oversight.
+
+## The eleven artifacts
+
+| # | Artifact | What it defines |
+| --- | --- | --- |
+| 1 | [Manifesto](docs/01-manifesto.md) | Purpose, principles, and boundaries of the methodology |
+| 2 | [Core Conceptual Model](docs/02-core-conceptual-model.md) | The graph model: nodes, edges, trust, authority, boundaries, paths |
+| 3 | [Maturity Model](docs/03-maturity-model.md) | The M1–M5 scale, 36 capabilities, critical gates |
+| 4 | [Scoring Framework](docs/04-scoring-framework.md) | Control scoring, DCA/VCR/WCA, the PEI formula |
+| 5 | [Master Control Library](docs/05-master-control-library.md) | All 72 canonical controls |
+| 6 | [Evidence Model](docs/06-evidence-model.md) | E0–E5 grading, quality dimensions, evidence lifecycle |
+| 7 | [Assessment Methodology](docs/07-assessment-methodology.md) | The 13-phase assessment lifecycle and specialized methods |
+| 8 | [Assessor Handbook](docs/08-assessor-handbook.md) | Assessor competency levels (A1–A5), field guidance per control |
+| 9 | [Reporting Standard](docs/09-reporting-standard.md) | The mandatory report package and claim-integrity rules |
+| 10 | [Reference Assessment Repository](docs/10-reference-assessment-repository.md) | 12 synthetic, fully worked reference assessments |
+| 11 | [Governance & Certification Model](docs/11-governance-and-certification-model.md) | Stewardship, change control, certification readiness |
+
+Read them in order if you're new to the methodology — each depends conceptually on the ones before it. Artifact #10's twelve reference cases are entirely synthetic and must never be represented as facts about a real organization, product, or provider.
+
+## Product boundary
+
+**ExposureGraph** is referenced in several artifacts as a separate, future commercial product. It is explicitly and permanently **excluded from this public methodology**: its implementation, proprietary algorithms, connectors, customer data, and commercial workflows are out of scope here, and no future contribution should attempt to fold it back in. The methodology itself is designed to remain tool-independent and vendor-neutral — any compliant implementation should be able to execute it.
+
+## Repository layout
+
+```
+ai-trust-graph/
+├── README.md                 — you are here
+├── ROADMAP.md                 — what's done, what's pending, what's next
+├── CHANGELOG.md                — version history for this repository
+├── CONTRIBUTING.md            — how to propose changes, and the review bar they must clear
+├── CODE_OF_CONDUCT.md          — community conduct standard
+├── REVIEW_FINDINGS.md          — independent ruthless-reviewer pass: inconsistencies, gaps, recommendations
+└── docs/
+    ├── 01-manifesto.md
+    ├── 02-core-conceptual-model.md
+    ├── 03-maturity-model.md
+    ├── 04-scoring-framework.md
+    ├── 05-master-control-library.md
+    ├── 06-evidence-model.md
+    ├── 07-assessment-methodology.md
+    ├── 08-assessor-handbook.md
+    ├── 09-reporting-standard.md
+    ├── 10-reference-assessment-repository.md
+    └── 11-governance-and-certification-model.md
+```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). The short version: this is a constitutional methodology, not a wiki — proposals that touch canonical terminology, control definitions, maturity levels, evidence grades, or scoring logic go through the change-control process defined in [Artifact #11, §2](docs/11-governance-and-certification-model.md), not a quick pull request.
+
+## License
+
+**Not yet chosen.** See [Status](#status) above. Do not treat the absence of a `LICENSE` file as implicit permission to reuse this content.
