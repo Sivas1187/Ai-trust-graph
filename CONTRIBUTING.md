@@ -4,6 +4,14 @@
 
 Thank you for your interest in improving AI Trust Graph. This is a **constitutional methodology**, not a wiki: some parts of it are easy to improve with a normal pull request, and some parts require the formal change-control process defined in [Artifact #11 — Governance & Certification Model](docs/11-governance-and-certification-model.md) before anything gets merged. This guide tells you which is which.
 
+## Ways to give feedback
+
+You don't need to open a pull request to help. In order of ceremony:
+
+- **A specific inconsistency, gap, or error** — open an issue with the "Methodology finding" template. It mirrors the format already used for findings R-01 through R-11 in [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md), so a good report can be folded straight into that record.
+- **A general reaction, question, or first impression** — open an issue with the "General feedback" template, or start a [Discussion](https://github.com/Sivas1187/Ai-trust-graph/discussions) if one is enabled on this repository. You don't need a precise defect to use this.
+- **An opinion on an open, undecided question** — [R-02](REVIEW_FINDINGS.md#r-02--path-state-taxonomy-8-states-vs-7-states-blocking) (should the path-state taxonomy include `Residual`?) and [R-05](REVIEW_FINDINGS.md#r-05--artifact-precedence-and-dependency-chain-stated-four-different-ways-should-fix) (is "Domain Guides" a real, still-unwritten companion artifact?) are genuinely open — this is exactly the kind of question outside review is meant to inform. Weigh in via a Discussion or an issue.
+
 ## Before you propose anything
 
 Read the [Manifesto](docs/01-manifesto.md), the [Core Conceptual Model](docs/02-core-conceptual-model.md), and the [Ontology Specification](docs/12-ontology-specification.md) first — in that order, despite the Ontology Specification being filed as Artifact #12 (see the README's "Reading order" note). Most well-intentioned proposals that get rejected are rejected because they re-invent a distinction the methodology already makes deliberately — for example, re-introducing a single overall trust score, collapsing `UNKNOWN` into a numeric default, treating a topological graph connection as proof of exploitability, or proposing a new canonical entity type or relationship predicate that the Ontology Specification's Appendix A/C registries already define under a different name. Section 0 of most artifacts states the relevant invariants explicitly; check there first.
