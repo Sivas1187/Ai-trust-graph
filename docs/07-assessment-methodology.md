@@ -271,6 +271,8 @@ Evaluate fact-specific obligations and related controls without representing fra
 | Independence | Increase for high-impact decisions and conflicted first-line ownership. |
 | Output | Issue a versioned regulatory or obligation-focused assessment record with limitations and next trigger. |
 
+# Phase 1 — Initiate
+
 # 2.1  Charter and decision purpose
 
 Charter and decision purpose is the controlled initiate activity that advances the assessment only when its entry condition, evidence record, quality challenge and exit result are satisfied.
@@ -318,6 +320,8 @@ Initiation gate is the controlled initiate activity that advances the assessment
 | Evidence record | Retain source, method, owner, date, scope, decision and limitations for initiation gate. |
 | Quality challenge | Independent or second-person review tests whether initiation gate is complete, safe and traceable. |
 | Exit result | Versioned initiation gate output approved, rejected, conditioned or left Inconclusive. |
+
+# Phase 2 — Scope
 
 # 3.1  Assessment unit selection
 
@@ -367,6 +371,8 @@ Scope baseline gate is the controlled scope activity that advances the assessmen
 | Quality challenge | Independent or second-person review tests whether scope baseline gate is complete, safe and traceable. |
 | Exit result | Versioned scope baseline gate output approved, rejected, conditioned or left Inconclusive. |
 
+# Phase 3 — Discover
+
 # 4.1  Authorized source plan
 
 Authorized source plan is the controlled discover activity that advances the assessment only when its entry condition, evidence record, quality challenge and exit result are satisfied.
@@ -414,6 +420,8 @@ Discovery gate is the controlled discover activity that advances the assessment 
 | Evidence record | Retain source, method, owner, date, scope, decision and limitations for discovery gate. |
 | Quality challenge | Independent or second-person review tests whether discovery gate is complete, safe and traceable. |
 | Exit result | Versioned discovery gate output approved, rejected, conditioned or left Inconclusive. |
+
+# Phase 4 — Model
 
 # 5.1  Canonical object and relationship mapping
 
@@ -463,6 +471,8 @@ Graph approval gate is the controlled model activity that advances the assessmen
 | Quality challenge | Independent or second-person review tests whether graph approval gate is complete, safe and traceable. |
 | Exit result | Versioned graph approval gate output approved, rejected, conditioned or left Inconclusive. |
 
+# Phase 5 — Evidence
+
 # 6.1  Evidence plan and assertion design
 
 Evidence plan and assertion design is the controlled evidence activity that advances the assessment only when its entry condition, evidence record, quality challenge and exit result are satisfied.
@@ -510,6 +520,8 @@ Evidence sufficiency gate is the controlled evidence activity that advances the 
 | Evidence record | Retain source, method, owner, date, scope, decision and limitations for evidence sufficiency gate. |
 | Quality challenge | Independent or second-person review tests whether evidence sufficiency gate is complete, safe and traceable. |
 | Exit result | Versioned evidence sufficiency gate output approved, rejected, conditioned or left Inconclusive. |
+
+# Phase 6 — Controls
 
 # 7.1  Applicability and profile
 
@@ -559,6 +571,8 @@ Control determination gate is the controlled controls activity that advances the
 | Quality challenge | Independent or second-person review tests whether control determination gate is complete, safe and traceable. |
 | Exit result | Versioned control determination gate output approved, rejected, conditioned or left Inconclusive. |
 
+# Phase 7 — Paths
+
 # 8.1  Material-path selection
 
 Material-path selection is the controlled paths activity that advances the assessment only when its entry condition, evidence record, quality challenge and exit result are satisfied.
@@ -606,6 +620,8 @@ Path conclusion gate is the controlled paths activity that advances the assessme
 | Evidence record | Retain source, method, owner, date, scope, decision and limitations for path conclusion gate. |
 | Quality challenge | Independent or second-person review tests whether path conclusion gate is complete, safe and traceable. |
 | Exit result | Versioned path conclusion gate output approved, rejected, conditioned or left Inconclusive. |
+
+# Phase 8 — Maturity
 
 # 9.1  Capability-level assessment
 
@@ -655,6 +671,8 @@ Maturity approval gate is the controlled maturity activity that advances the ass
 | Quality challenge | Independent or second-person review tests whether maturity approval gate is complete, safe and traceable. |
 | Exit result | Versioned maturity approval gate output approved, rejected, conditioned or left Inconclusive. |
 
+# Phase 9 — Scoring
+
 # 10.1  Control score calculation
 
 Control score calculation is the controlled scoring activity that advances the assessment only when its entry condition, evidence record, quality challenge and exit result are satisfied.
@@ -702,6 +720,8 @@ Scoring quality gate is the controlled scoring activity that advances the assess
 | Evidence record | Retain source, method, owner, date, scope, decision and limitations for scoring quality gate. |
 | Quality challenge | Independent or second-person review tests whether scoring quality gate is complete, safe and traceable. |
 | Exit result | Versioned scoring quality gate output approved, rejected, conditioned or left Inconclusive. |
+
+# Phase 10 — Findings
 
 # 11.1  Issue qualification
 
@@ -751,6 +771,8 @@ Finding release gate is the controlled findings activity that advances the asses
 | Quality challenge | Independent or second-person review tests whether finding release gate is complete, safe and traceable. |
 | Exit result | Versioned finding release gate output approved, rejected, conditioned or left Inconclusive. |
 
+# Phase 11 — Decisions
+
 # 12.1  Risk and issue disposition
 
 Risk and issue disposition is the controlled decisions activity that advances the assessment only when its entry condition, evidence record, quality challenge and exit result are satisfied.
@@ -799,6 +821,8 @@ Decision gate is the controlled decisions activity that advances the assessment 
 | Quality challenge | Independent or second-person review tests whether decision gate is complete, safe and traceable. |
 | Exit result | Versioned decision gate output approved, rejected, conditioned or left Inconclusive. |
 
+# Phase 12 — Report
+
 # 13.1  Audience and claim design
 
 Audience and claim design is the controlled report activity that advances the assessment only when its entry condition, evidence record, quality challenge and exit result are satisfied.
@@ -846,6 +870,8 @@ Report release gate is the controlled report activity that advances the assessme
 | Evidence record | Retain source, method, owner, date, scope, decision and limitations for report release gate. |
 | Quality challenge | Independent or second-person review tests whether report release gate is complete, safe and traceable. |
 | Exit result | Versioned report release gate output approved, rejected, conditioned or left Inconclusive. |
+
+# Phase 13 — Reassess
 
 # 14.1  Trigger monitoring
 

@@ -1,0 +1,71 @@
+AI Trust Graph Methodology
+Copyright (c) 2026 Siva Sethumadhavan
+
+This work — the AI Trust Graph methodology text, comprising this repository's
+README and all documents under docs/ — is licensed under the Creative Commons
+Attribution 4.0 International License ("CC BY 4.0").
+
+You are free to:
+
+  Share   — copy and redistribute the material in any medium or format
+  Adapt   — remix, transform, and build upon the material for any purpose,
+            even commercially
+
+Under the following terms:
+
+  Attribution — You must give appropriate credit to Siva Sethumadhavan and
+  the AI Trust Graph project, provide a link to this license, and indicate
+  if changes were made. You may do so in any reasonable manner, but not in
+  any way that suggests the licensor endorses you or your use.
+
+  No additional restrictions — You may not apply legal terms or
+  technological measures that legally restrict others from doing anything
+  this license permits.
+
+No warranties are given. This license does not cover the Marks described
+below, and does not cover publicity, privacy, or moral rights that may
+limit how you use the material.
+
+This is a human-readable summary of (and not a substitute for) the full
+legal code, which is the actual, authoritative license and is available at:
+
+  https://creativecommons.org/licenses/by/4.0/legalcode
+
+The license deed (a shorter overview) is available at:
+
+  https://creativecommons.org/licenses/by/4.0/
+
+---
+
+SCOPE OF THIS LICENSE
+
+This CC BY 4.0 license applies to the methodology TEXT in this repository.
+It does NOT apply to:
+
+  - The "AI Trust Graph" name, wordmark, and any future project logo,
+    which are reserved. See TRADEMARKS.md.
+
+  - Any future software, machine-readable schema, or conformance-test
+    code contributed under a later "Phase 2" implementation effort (see
+    docs/12-ontology-specification.md, Appendix G). Any such code, if and
+    when it is added to this repository, will carry its own, separately
+    chosen license at that time — Creative Commons licenses are not
+    intended for software and this license should not be read as covering
+    it.
+
+  - ExposureGraph, a separate commercial product referenced but explicitly
+    excluded from this repository's scope. Nothing in this license grants
+    any right to ExposureGraph's implementation, algorithms, or trademarks,
+    none of which are published here.
+
+NO WARRANTY, NO ENDORSEMENT, NO CERTIFICATION
+
+This methodology is provided "as is," without warranty of any kind, express
+or implied, to the maximum extent permitted by applicable law. As recorded
+throughout this repository (see each artifact's own closing approval record,
+REVIEW_FINDINGS.md, and ROADMAP.md), independent architecture review,
+AI-security review, employer/IP/confidentiality review, and legal review of
+this repository are still pending as of this license's effective date. Use
+of this methodology, under this license, does not constitute and must not
+be represented as certification, accreditation, endorsement, or a guarantee
+of safety, security, or regulatory compliance.

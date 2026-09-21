@@ -46,7 +46,7 @@ The seven-state version is the one used consistently downstream — in the Asses
 
 ---
 
-## R-03 — PEI formula: three different variable-naming conventions (Should-fix)
+## R-03 — PEI formula: three different variable-naming conventions (Should-fix, resolved)
 
 **Artifacts:** [Scoring Framework](docs/04-scoring-framework.md) §formula callout and Formula Register (F-05); [Reference Assessment Repository](docs/10-reference-assessment-repository.md), Appendix A.1.
 
@@ -60,9 +60,13 @@ The seven-state version is the one used consistently downstream — in the Asses
 
 **Recommendation:** Standardize the Formula Register (F-05) on `Am` / `CR`, matching Artifact #10 and the spelled-out form, or add a one-line legend to F-05 defining `B` and `K`. This is a patch-level (non-semantic) correction under the versioning rules in Artifact #11 §2.3.
 
+**Action taken (2026-09-22):** Formula Register F-05 in the [Scoring Framework](docs/04-scoring-framework.md) changed from `PEI = 4C + 3R + 3A + 2B + 3K` to `PEI = 4C + 3R + 3A + 2Am + 3CR`, with its legend updated from "B amplification, K control resistance" to "Am amplification, CR control resistance" — now identical to the Reference Assessment Repository's Appendix A.1 and the spelled-out formula everywhere else. Confirmed via corpus-wide search that no other `B`/`K` notation for this formula remained anywhere. **Notation only — the arithmetic, coefficients, and every computed PEI value in the corpus are unchanged.**
+
+**Status:** Resolved.
+
 ---
 
-## R-04 — Assessment Methodology: phase numbering is off by one (Should-fix)
+## R-04 — Assessment Methodology: phase numbering is off by one (Should-fix, resolved)
 
 **Artifact:** [Assessment Methodology](docs/07-assessment-methodology.md), §0.11 vs. the phase section headers throughout the document.
 
@@ -71,6 +75,12 @@ The seven-state version is the one used consistently downstream — in the Asses
 **Why this matters:** This is a labeling/numbering mismatch, not a structural or semantic one — the same thirteen named phases (Initiate → Reassess) appear in the same order in both places, and no phase is missing, duplicated, or renamed. But it will confuse anyone cross-referencing §0.11's table against the document's own running headers, and it should not survive into a "publication-ready" release.
 
 **Recommendation:** Renumber either the §0.11 table (to 2–14) or the phase headers (to 1–13) so the two agree. This is a patch-level correction — it does not change any phase's content, order, or requirements.
+
+**What was actually found when fixing this (2026-09-22):** The converted Markdown did not contain literal "PHASE 2: INITIATE"-style headers at all — this repository's docx-to-Markdown conversion drops an umbrella heading whenever it has numbered subsection children (the same rule visible in the Governance Model, where "Appendix A" is dropped in favor of "A.1", "A.2" ...). The source's "PHASE 2: INITIATE" heading had numbered children ("2.1 Charter and decision purpose," etc.), so it was silently dropped during the original conversion, leaving section blocks 2.1–2.4, 3.1–3.4, ... 14.1–14.4 with **no phase label or number visible anywhere in the body at all** — arguably a worse defect than the one originally described, since a reader now has no way to tell which decimal-numbered block is which named phase without manually matching topics against §0.11's table.
+
+**Action taken:** Reinserted a phase-identifying heading immediately before each phase's first subsection, using the numbering already established as canonical in §0.11 (1–13, not the source draft's 2–14): `Phase 1 — Initiate` before §2.1, `Phase 2 — Scope` before §3.1, and so on through `Phase 13 — Reassess` before §14.1. This resolves the mismatch by adopting recommendation (b) above, and additionally restores the phase identification that the earlier conversion had inadvertently dropped. **No phase's content, order, entry conditions, gates, or requirements were changed — this is a heading/navigation addition only,** verified by confirming the phase names and their outcome descriptions match §0.11's table exactly for every phase.
+
+**Status:** Resolved.
 
 ---
 
@@ -135,6 +145,12 @@ Meanwhile, the **Reference Assessment Repository** and **Governance & Certificat
 
 These are flagged here, in the README, and in ROADMAP.md rather than silently added.
 
+**Update — LICENSE and TRADEMARKS.md added (2026-09-22):** The methodology author chose **CC BY 4.0** for the methodology text (README and `docs/*.md`) — permitting sharing and adaptation, including commercially, with attribution — over CC BY-SA 4.0 (same, plus a ShareAlike requirement on modified redistributions) and CC BY-ND 4.0 (rejected as a fit: it would have conflicted with this repository's own `CONTRIBUTING.md` change-proposal process and Artifact #11's extension model, both of which assume the community can propose modified versions). `LICENSE` records this, including explicit carve-outs for the "AI Trust Graph" name/marks, any future Phase 2 code/schemas, and ExposureGraph.
+
+The author also chose to reserve the **"AI Trust Graph" name and any future logo separately** from the content license, recorded in the new `TRADEMARKS.md`. Rationale: Artifact #11 defines a conformance-level (L0–L5) and certification vocabulary that only means something if claims like "AI Trust Graph Certified" stay governed rather than freely reusable by anyone who copies the CC-BY-licensed text — a purely content-permissive license, on its own, would have let any fork or competing tool make such claims without passing through Artifact #11's certification model at all.
+
+**This does not close the gap.** Per this repository's own standing rule, choosing a license and drafting the trademark notice is not the same as clearing the employer/IP/confidentiality review that Manifesto Appendix B and this repository's own `ROADMAP.md` (Phase 2) require before the license choice is legally final. Both files are added and recorded here as candidates the author has approved for publication, not as a substitute for that review. **SECURITY.md remains outstanding** — see the follow-up item below.
+
 ---
 
 ## R-09 — Evidence Model: generic internal-toolkit reference (Minor)
@@ -185,7 +201,7 @@ These are flagged here, in the README, and in ROADMAP.md rather than silently ad
 
 ## Gaps
 
-Summarizing R-08 for quick reference: this repository is intentionally missing a **LICENSE** and a **SECURITY.md**. Both are called for by the Manifesto's own Appendix B and are flagged rather than added, because adding either responsibly requires a decision only the rights holder can make.
+Summarizing R-08 for quick reference: this repository was intentionally missing a **LICENSE** and a **SECURITY.md**, both called for by the Manifesto's own Appendix B. **LICENSE** (CC BY 4.0) and its companion **TRADEMARKS.md** have since been added, on the methodology author's explicit decision — see the R-08 update above. **SECURITY.md** remains missing and is still flagged rather than added, because drafting it responsibly requires the author to decide what a real disclosure process looks like, not just fill in a template.
 
 ## Summary table
 
@@ -193,12 +209,12 @@ Summarizing R-08 for quick reference: this repository is intentionally missing a
 | --- | --- | --- | --- |
 | R-01 | Manifesto internal-source filenames redacted | Blocking | Resolved by redaction; legal review still pending |
 | R-02 | Path-state taxonomy: 8 states (Core Conceptual Model) vs. 7 states (everywhere else) | Blocking | Open — needs an author decision |
-| R-03 | PEI formula: `B`/`K` vs. `Am`/`CR` vs. spelled-out variable names | Should-fix | Open |
-| R-04 | Assessment Methodology phases numbered 1–13 in §0.11 but headed 2–14 in the body | Should-fix | Open |
+| R-03 | PEI formula: `B`/`K` vs. `Am`/`CR` vs. spelled-out variable names | Should-fix | Resolved — F-05 standardized on `Am`/`CR` |
+| R-04 | Assessment Methodology phases numbered 1–13 in §0.11 but unlabeled (headers dropped in conversion) in the body | Should-fix | Resolved — `Phase 1`–`Phase 13` headers restored, numbered to match §0.11 |
 | R-05 | Artifact precedence/dependency chain stated four different ways | Should-fix | Open |
 | R-06 | Core Conceptual Model at v1.1 while the bundle is called "v1.0" | Blocking | Open — needs a release-manifest decision |
 | R-07 | Every artifact shows "Pending" for all independent reviews | Blocking (by design) | Must remain accurate, not be softened |
-| R-08 | No LICENSE or SECURITY.md, though the Manifesto's own criteria require them | Blocking | Open — flagged, not silently added |
+| R-08 | No LICENSE or SECURITY.md, though the Manifesto's own criteria require them | Blocking | LICENSE (CC BY 4.0) + TRADEMARKS.md added; SECURITY.md still open |
 | R-09 | Evidence Model cites a generic "AI Security Assessment Toolkit" | Minor | Open — confirm during IP review |
 | R-10 | Governance Model cites real external standards (SAC, ISO/IEC 17021-1/17024/17065) | Should-fix | Open — confirm during legal review |
 | R-11 | Ontology Specification added as Artifact #12; strengthens R-02 and R-06, further compounds R-05 | Should-fix / Informational | Artifact added; R-02/R-05/R-06 still open |

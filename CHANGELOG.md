@@ -10,6 +10,8 @@ The format loosely follows [Keep a Changelog](https://keepachangelog.com/); date
 
 ### Added
 - Repository scaffolding: `README.md`, `CONTRIBUTING.md`, `ROADMAP.md`, `CODE_OF_CONDUCT.md`, this `CHANGELOG.md`, and `REVIEW_FINDINGS.md`.
+- `LICENSE`: the methodology text is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0), chosen by the methodology author over CC BY-SA 4.0 and CC BY-ND 4.0 — see `REVIEW_FINDINGS.md`, the R-08 update, for the comparison and rationale.
+- `TRADEMARKS.md`: reserves the "AI Trust Graph" name and any future logo separately from the content license, so conformance and certification claims stay governed by Artifact #11 rather than freely reusable.
 - All 12 methodology artifacts converted from source drafts into clean, publication-quality Markdown under `docs/`, each cross-linked back to the README index:
   - `01-manifesto.md`
   - `02-core-conceptual-model.md`
@@ -29,17 +31,17 @@ The format loosely follows [Keep a Changelog](https://keepachangelog.com/); date
 - Manifesto (Artifact #1), Appendix B: redacted a list of internal, pre-existing source filenames per the Manifesto's own publication-boundary rules. **This is a redaction of internal file references only — no methodology semantics, terminology, or doctrine were altered.** See `REVIEW_FINDINGS.md`, finding R-01.
 - Fixed a broken relative link: every `docs/*.md` file's "Back to methodology index" link pointed to `README.md` (which resolves to the non-existent `docs/README.md`) instead of `../README.md`. Corrected across all files. Purely a navigation fix — no content changed.
 - Added Artifact #12, the Ontology Specification, after the initial eleven-artifact publish. It is filed last (`12-ontology-specification.md`) for repository stability, but its own governing document (Core Conceptual Model §0.2) places its correct *reading* position immediately after Artifact #2 — see the README's "Reading order" note and `REVIEW_FINDINGS.md`, finding R-11, for the full rationale, including how this addition bears on findings R-02, R-05 and R-06.
+- Standardized the PEI formula's Formula Register entry (F-05) in the Scoring Framework on `Am`/`CR`, matching the Reference Assessment Repository and the spelled-out formula everywhere else. Notation only; no computed value changes. See `REVIEW_FINDINGS.md`, R-03.
+- Restored phase-identifying headers (`Phase 1 — Initiate` through `Phase 13 — Reassess`) in the Assessment Methodology, numbered to match §0.11's table. These had been silently dropped by the original docx-to-Markdown conversion (an umbrella heading with numbered children is dropped, per this repository's own established convention) and their absence was worse than the numbering mismatch originally flagged — see `REVIEW_FINDINGS.md`, R-04, for the full account. No phase content, order, or requirements changed.
 
 ### Known issues (not yet fixed — see REVIEW_FINDINGS.md)
 - Path-state taxonomy: Core Conceptual Model and now the Ontology Specification (Artifact #12) both define 8 states (including `Residual`); Scoring Framework and Master Control Library define 7 (R-02, updated by R-11). Unresolved pending an author decision.
-- PEI formula notation is inconsistent across the Scoring Framework's Formula Register (`B`, `K`) and the Reference Assessment Repository's cross-case register (`Am`, `CR`) (R-03).
-- Assessment Methodology: §0.11 describes "thirteen controlled phases" numbered 1–13; the document's own phase headers run 2–14 (R-04).
 - Artifact precedence/dependency chain is now worded five different ways across five separate artifacts, including the newly added Ontology Specification (R-05, updated by R-11). "Ontology" in the Core Conceptual Model's chain is now confirmed to be Artifact #12; "Domain Guides" remains an unmapped stage.
 - Core Conceptual Model is versioned 1.1 while every other artifact in the bundle, including the newly added Ontology Specification, is 1.0, with no top-level release manifest reconciling the two (R-06, updated by R-11).
-- `LICENSE` and `SECURITY.md` are not present, though the Manifesto's own Appendix B publication-acceptance criteria call for both (R-08).
+- `SECURITY.md` is not present, though the Manifesto's own Appendix B publication-acceptance criteria call for it (R-08). (`LICENSE` and `TRADEMARKS.md` are now added — see Added, above.)
 
 ### Not yet done
-- Independent chief-product-architecture review, AI-security architecture review, employer/IP/confidentiality review, and licence/trademark approval remain **pending** on every artifact — see each artifact's closing approval table and `README.md`'s Status section.
+- Independent chief-product-architecture review, AI-security architecture review, employer/IP/confidentiality review, and legal approval of the newly chosen licence/trademark decision all remain **pending** on every artifact — see each artifact's closing approval table and `README.md`'s Status section.
 - Certification readiness (Artifact #11) is defined but no certification scheme has been established, reviewed, or launched, and none is scheduled by this changelog.
 
 ---

@@ -15,8 +15,9 @@ All twelve methodology artifacts have been converted from their source drafts in
 - [x] Convert all 11 source artifacts to clean, publication-quality Markdown with no semantic changes.
 - [x] Cross-link artifacts and build a navigable README index.
 - [x] Run an independent, ruthless consistency review across all 11 artifacts ([REVIEW_FINDINGS.md](REVIEW_FINDINGS.md)).
-- [ ] **Resolve the two Blocking-severity open findings that require an author decision:** the path-state taxonomy discrepancy ([R-02](REVIEW_FINDINGS.md#r-02--path-state-taxonomy-8-states-vs-7-states-blocking)) and the version-skew between the Core Conceptual Model (v1.1) and the rest of the bundle (v1.0) ([R-06](REVIEW_FINDINGS.md#r-06--version-skew-core-conceptual-model-is-v11-everything-else-is-v10-blocking)).
-- [ ] Resolve the three Should-fix findings (R-03 formula notation, R-04 phase numbering, R-05 precedence-chain wording) as patch-level corrections.
+- [ ] **Resolve the two Blocking-severity open findings that require an author decision:** the path-state taxonomy discrepancy ([R-02](REVIEW_FINDINGS.md#r-02--path-state-taxonomy-8-states-vs-7-states-blocking), now with 2-to-2 evidence favoring the 8-state model — see R-11) and the version-skew between the Core Conceptual Model (v1.1) and the rest of the bundle (v1.0) ([R-06](REVIEW_FINDINGS.md#r-06--version-skew-core-conceptual-model-is-v11-everything-else-is-v10-blocking)).
+- [x] Resolve R-03 (PEI formula notation, standardized on `Am`/`CR`) and R-04 (Assessment Methodology phase headers, restored and numbered 1–13) as patch-level corrections.
+- [ ] Resolve R-05 (precedence-chain wording, now five different statements across five artifacts) — decide on one canonical dependency statement and settle whether "Domain Guides" is a real, still-unwritten artifact.
 - [ ] Publish a release manifest pinning the exact version of every artifact that constitutes "Methodology v1.0" (see R-06).
 
 ## Phase 2 — Legal and governance gates (not started)
@@ -26,7 +27,7 @@ Per the Manifesto's own Appendix B publication-acceptance criteria and Governanc
 - [ ] **Employer / IP / confidentiality review** — confirm ownership and permission to publish every artifact, per every artifact's own approval table.
 - [ ] **Independent chief-product-architecture review** — currently "internal author-loop completed" only, on every artifact.
 - [ ] **Independent AI-security architecture review** — same status.
-- [ ] **Licence and trademark approval** — choose and approve an open-source licence; add `LICENSE` ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
+- [x] **Licence and trademark decision** — CC BY 4.0 chosen for the methodology text (`LICENSE`); "AI Trust Graph" name/marks reserved separately (`TRADEMARKS.md`). Still needs the employer/IP/confidentiality review below to be legally final ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
 - [ ] **Security disclosure process** — add `SECURITY.md` for the repository itself ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
 - [ ] **Legal review of external standards references** — confirm the ISO/IEC and Singapore Accreditation Council references in the Governance Model's source register (Artifact #11, Appendix A.7) require no further permission or reproduction review ([R-10](REVIEW_FINDINGS.md#r-10--governance-model-cites-real-external-standards-should-fix)).
 

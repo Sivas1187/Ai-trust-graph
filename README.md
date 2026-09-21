@@ -10,12 +10,11 @@ AI Trust Graph models an AI system's real exposure as a directed, labelled multi
 
 This repository is a **public-release candidate**. Every artifact carries the same honest status in its closing approval record: the methodology author's internal review is complete, and **independent architecture review, AI-security review, employer/IP/confidentiality review, and licence/trademark approval are all still pending.** Nothing here should be treated as finalized, endorsed, or ready for reliance until those gates close. See [ROADMAP.md](ROADMAP.md) for what remains and [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md) for a ruthless, independent-reviewer-style pass identifying inconsistencies and gaps across the twelve artifacts.
 
-Two governance items the methodology's own publication-acceptance criteria call for are **not yet present in this repository** and are flagged rather than silently added:
+One governance item the methodology's own publication-acceptance criteria calls for is **not yet present in this repository** and is flagged rather than silently added:
 
-- **LICENSE** — no open-source licence has been chosen or approved. Nothing in this repository should be reused, forked, or redistributed until one is added.
 - **SECURITY.md** — no vulnerability-disclosure process exists yet for the methodology repository itself (distinct from the AI-security *subject matter* the methodology assesses).
 
-See [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md#gaps) for why these are gaps rather than omissions.
+A **LICENSE** (CC BY 4.0, see below) and **TRADEMARKS.md** have since been added — see [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md#gaps) for the full gap history and for why the remaining item is a gap rather than an omission.
 
 ## The methodology at a glance
 
@@ -66,6 +65,8 @@ Read them in order if you're new to the methodology, **with one exception**: Art
 ```
 ai-trust-graph/
 ├── README.md                 — you are here
+├── LICENSE                    — CC BY 4.0 (methodology text)
+├── TRADEMARKS.md               — "AI Trust Graph" name/marks, reserved separately from the content license
 ├── ROADMAP.md                 — what's done, what's pending, what's next
 ├── CHANGELOG.md                — version history for this repository
 ├── CONTRIBUTING.md            — how to propose changes, and the review bar they must clear
@@ -92,4 +93,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). The short version: this is a constitutio
 
 ## License
 
-**Not yet chosen.** See [Status](#status) above. Do not treat the absence of a `LICENSE` file as implicit permission to reuse this content.
+The methodology text (this README and everything under `docs/`) is licensed under **[Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE)** — you may share and adapt it, including commercially, with attribution. The **"AI Trust Graph" name and any future logo are reserved separately**, and conformance/certification claims are governed by [Artifact #11](docs/11-governance-and-certification-model.md), not by this license — see [TRADEMARKS.md](TRADEMARKS.md). This license choice is recorded, with rationale, in [REVIEW_FINDINGS.md, R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking); it still awaits the employer/IP/confidentiality review tracked in [ROADMAP.md](ROADMAP.md) before this repository should be treated as legally final.

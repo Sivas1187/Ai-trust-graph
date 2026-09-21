@@ -985,7 +985,7 @@ All formulas used in v1.0 are listed here; unlisted implementation formulas are 
 | F-02 | VCR = evidence-supported score 4-5 controls / all applicable controls | Verified-control coverage. |
 | F-03 | Coverage = qualified numerator / declared applicable denominator | Scope visibility. |
 | F-04 | WCA = 100 x sum(weight x score) / [5 x sum(weights)] | Optional weighted planning view. |
-| F-05 | PEI = 4C + 3R + 3A + 2B + 3K | Path triage; C consequence, R reachability, A authority, B amplification, K control resistance. |
+| F-05 | PEI = 4C + 3R + 3A + 2Am + 3CR | Path triage; C consequence, R reachability, A authority, Am amplification, CR control resistance. |
 | F-06 | Path Reduction Delta = current PEI - validated residual PEI | Intervention comparison. |
 
 # A.2  Canonical output labels
