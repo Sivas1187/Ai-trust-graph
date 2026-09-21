@@ -1,4 +1,4 @@
-[← Back to methodology index](README.md)
+[← Back to methodology index](../README.md)
 
 # AI Trust Graph — Reporting Standard
 
