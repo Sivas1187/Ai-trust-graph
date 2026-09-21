@@ -1,0 +1,83 @@
+name: Methodology finding (inconsistency, gap, or error)
+description: Report a specific inconsistency, gap, or defect in the methodology text — in the same format used internally in REVIEW_FINDINGS.md.
+title: "[Finding] "
+labels:
+  - finding
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to review this. This template mirrors the format already used for findings R-01 through R-11 in `REVIEW_FINDINGS.md`, so your report can be evaluated and, if accepted, folded into that same record.
+ 
+        Before filing, please skim [`REVIEW_FINDINGS.md`](../../REVIEW_FINDINGS.md) and [`CONTRIBUTING.md`](../../CONTRIBUTING.md) — your finding may already be tracked, or may fall into a category (like changing a canonical term or control) that needs a formal change proposal rather than a quick issue.
+  - type: checkboxes
+    id: prechecks
+    attributes:
+      label: Before you file
+      options:
+        - label: I checked REVIEW_FINDINGS.md and this isn't already tracked there.
+          required: true
+        - label: I checked CONTRIBUTING.md's artifact-class table if this touches canonical terminology, a control, a maturity level, an evidence grade, or scoring logic.
+          required: false
+  - type: dropdown
+    id: artifact
+    attributes:
+      label: Which artifact does this affect?
+      options:
+        - "1 — Manifesto"
+        - "2 — Core Conceptual Model"
+        - "3 — Maturity Model"
+        - "4 — Scoring Framework"
+        - "5 — Master Control Library"
+        - "6 — Evidence Model"
+        - "7 — Assessment Methodology"
+        - "8 — Assessor Handbook"
+        - "9 — Reporting Standard"
+        - "10 — Reference Assessment Repository"
+        - "11 — Governance & Certification Model"
+        - "12 — Ontology Specification"
+        - "Repository-level (README, CONTRIBUTING, ROADMAP, LICENSE, etc.)"
+        - "More than one artifact (describe below)"
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Section or location
+      description: e.g. "§4.2, path-eligibility table" or "Appendix A.1"
+      placeholder: "§0.2"
+    validations:
+      required: false
+  - type: textarea
+    id: finding
+    attributes:
+      label: Finding
+      description: What did you find? Quote the exact text if possible.
+      placeholder: State the inconsistency, gap, or error precisely — one claim at a time.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this matters
+      description: What would go wrong for a reader or assessor relying on this?
+    validations:
+      required: false
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: Suggested resolution (optional)
+      description: If you have a specific fix or decision in mind, state it — but a good finding without a proposed fix is still valuable.
+    validations:
+      required: false
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Suggested severity
+      description: Your best guess — the maintainer will confirm.
+      options:
+        - "Blocking — must be resolved before a genuine v1.0"
+        - "Should-fix — undermines internal consistency"
+        - "Minor — cosmetic or low-impact"
+    validations:
+      required: false
