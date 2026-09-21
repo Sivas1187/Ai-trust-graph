@@ -1,0 +1,31 @@
+name: General feedback
+description: Share a reaction, question, or piece of feedback that isn't a specific finding — first impressions are welcome.
+title: "[Feedback] "
+labels:
+  - feedback
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the low-ceremony option: you don't need a specific defect to use this. First impressions, "this part confused me," "how does this compare to X," or general reactions are all useful. If you have a specific, precise inconsistency to report instead, consider using the "Methodology finding" template so it can be tracked alongside R-01 through R-11.
+  - type: textarea
+    id: whatlooked
+    attributes:
+      label: What did you look at?
+      description: Which artifact(s), or the repository as a whole.
+    validations:
+      required: false
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Your feedback
+      description: Anything from "this was confusing" to "here's how I'd use this" to "this is missing X compared to framework Y."
+    validations:
+      required: true
+  - type: checkboxes
+    id: followup
+    attributes:
+      label: Follow-up
+      options:
+        - label: I'm open to a follow-up question if the maintainer wants to dig into this further.
+          required: false
