@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Open-ended discussion or question
+    url: https://github.com/Sivas1187/Ai-trust-graph/discussions
+    about: For a question, an open-ended discussion, or reacting to one of the open items in REVIEW_FINDINGS.md (R-02, R-05, R-06), start or join a Discussion instead of an issue.
+  - name: Propose a change to canonical terminology, a control, or scoring logic
+    url: https://github.com/Sivas1187/Ai-trust-graph/blob/main/CONTRIBUTING.md
+    about: Changes in this category need a formal change proposal per CONTRIBUTING.md before a pull request — read that first.
