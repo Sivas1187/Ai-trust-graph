@@ -1384,8 +1384,10 @@ Every relationship used by the Core Conceptual Model, Master Control Library or 
 | L1 Method-compatible | Preserves semantics, IDs, result states and versions. |
 | L2 Assessment-compatible | Executes required lifecycle and records. |
 | L3 Reporting-compatible | Produces compliant report package. |
-| L4 Tool-compatible | Passes approved schemas and test vectors. |
-| L5 Full-method conformant | Combines applicable assessment, reporting, records and governance requirements. |
+| L4 Tool-compatible | Reserved for tools; unavailable until approved normative schemas and test vectors are published. |
+| L5 Full-method conformant | Combines applicable assessment, reporting, records and governance requirements for declared non-tool scope; does not imply L4 tool conformance. |
+
+> **CURRENT RELEASE GATE** L4 Tool-compatible MUST NOT be claimed for the current public-release candidate. Artifact #13 is non-normative and does not satisfy the missing normative schema/test-vector requirement.
 
 # D.5 Future certification states - reserved, non-operational
 
