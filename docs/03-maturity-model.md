@@ -36,7 +36,7 @@ The Manifesto establishes why the methodology exists. The Core Conceptual Model 
 
 Maturity describes institutional capability and repeatability. It is not identical to risk, compliance, control effectiveness or evidence confidence.
 
-> **CANONICAL DEPENDENCY** Manifesto -> Core Conceptual Model -> Maturity Model -> Control Library -> Scoring Framework -> Assessor Handbook
+> **CANONICAL ARTIFACT MAP** Repository-wide authority, dependency order, bundle versions and content pins are governed by [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md). This artifact does not define a competing precedence chain.
 
 | **Concept** | **Distinct meaning** |
 | --- | --- |
