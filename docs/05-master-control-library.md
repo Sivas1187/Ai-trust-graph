@@ -34,9 +34,9 @@ Every control conclusion is bounded by applicability, scope, environment, eviden
 
 The Core Conceptual Model defines the meaning of trust, authority, evidence, path and control. The Maturity Model defines progressive organizational capability. The Scoring Framework defines how determinate results are measured. This library supplies the canonical controls that those artifacts assess.
 
-The future Assessor Handbook will provide detailed execution workflows without redefining these controls.
+The Assessor Handbook provides detailed execution workflows without redefining these controls.
 
-> **DEPENDENCY CHAIN** Manifesto -> Core Conceptual Model -> Maturity Model -> Scoring Framework -> Master Control Library -> Assessor Handbook
+> **CANONICAL ARTIFACT MAP** Repository-wide authority, dependency order, bundle versions and content pins are governed by [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md). This artifact does not define a competing precedence chain.
 
 | **Artifact** | **Control-library dependency** |
 | --- | --- |
