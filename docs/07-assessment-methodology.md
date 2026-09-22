@@ -29,7 +29,7 @@ The Manifesto supplies commitments. The Core Conceptual Model supplies canonical
 
 When artifacts conflict, assessors stop the affected conclusion, preserve evidence and escalate through methodology governance.
 
-> **PRECEDENCE** Manifesto -> Core Conceptual Model -> Maturity Model -> Scoring Framework -> Master Control Library -> Evidence Model -> Assessment Methodology -> Assessor Handbook
+> **CANONICAL ARTIFACT MAP** Repository-wide authority, dependency order, bundle versions and content pins are governed by [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md). This artifact does not define a competing precedence chain.
 
 # 0.3  Assessment doctrine
 
