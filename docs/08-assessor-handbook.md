@@ -477,21 +477,21 @@ Challenge patterns that create an inflated conclusion or conceal uncertainty.
 
 DOMAIN PLAYBOOKS
 
-# 3.2.1  Trust and CloudHound: assessment objective
+# 3.2.1  Trust and Privilege Paths: assessment objective
 
 Explain typed directional relationships, boundaries, reliance, effective identity routes, material paths and breakpoints.
 
 | **Assessor focus** | **Required examination** |
 | --- | --- |
-| Scope | Declare the applicable trust and cloudhound population and exclusions. |
-| Graph | Identify canonical objects, relationships, boundaries and paths for trust and cloudhound. |
+| Scope | Declare the applicable trust and privilege paths population and exclusions. |
+| Graph | Identify canonical objects, relationships, boundaries and paths for trust and privilege paths. |
 | Evidence | Prefer current authoritative and technical sources. |
 | Controls | Apply ATG-TRU-001 through ATG-TRU-012. |
 | Output | Record coverage, UNKNOWNs, gates, findings and domain conclusion. |
 
 DOMAIN PLAYBOOKS
 
-# 3.2.2  Trust and CloudHound: interview and evidence prompts
+# 3.2.2  Trust and Privilege Paths: interview and evidence prompts
 
 Use these prompts to test understanding and direct evidence collection without treating answers as proof.
 
@@ -504,7 +504,7 @@ Use these prompts to test understanding and direct evidence collection without t
 
 DOMAIN PLAYBOOKS
 
-# 3.2.3  Trust and CloudHound: anti-patterns and review
+# 3.2.3  Trust and Privilege Paths: anti-patterns and review
 
 Challenge patterns that create an inflated conclusion or conceal uncertainty.
 

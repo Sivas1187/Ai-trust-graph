@@ -865,13 +865,13 @@ This view reports blind spots, shadow AI and assurance for the Discovery and AIB
 
 DOMAIN REPORTING
 
-# 4.4  Trust and CloudHound: Trust relationships and boundaries
+# 4.4  Trust and Privilege Paths: Trust relationships and boundaries
 
-This view reports trust relationships and boundaries for the Trust and CloudHound domain using canonical metrics, evidence, gates and limitations.
+This view reports trust relationships and boundaries for the Trust and Privilege Paths domain using canonical metrics, evidence, gates and limitations.
 
 | **Domain field** | **Required report content** |
 | --- | --- |
-| Scope | Declare the applicable trust and cloudhound population. |
+| Scope | Declare the applicable trust and privilege paths population. |
 | Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-TRU controls and critical states. |
 | Evidence | Show grade mix, technical coverage, conflicts and stale items. |
@@ -881,13 +881,13 @@ This view reports trust relationships and boundaries for the Trust and CloudHoun
 
 DOMAIN REPORTING
 
-# 4.5  Trust and CloudHound: Identity and privilege paths
+# 4.5  Trust and Privilege Paths: Identity and privilege paths
 
-This view reports identity and privilege paths for the Trust and CloudHound domain using canonical metrics, evidence, gates and limitations.
+This view reports identity and privilege paths for the Trust and Privilege Paths domain using canonical metrics, evidence, gates and limitations.
 
 | **Domain field** | **Required report content** |
 | --- | --- |
-| Scope | Declare the applicable trust and cloudhound population. |
+| Scope | Declare the applicable trust and privilege paths population. |
 | Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-TRU controls and critical states. |
 | Evidence | Show grade mix, technical coverage, conflicts and stale items. |
@@ -897,13 +897,13 @@ This view reports identity and privilege paths for the Trust and CloudHound doma
 
 DOMAIN REPORTING
 
-# 4.6  Trust and CloudHound: Breakpoints, drift and graph quality
+# 4.6  Trust and Privilege Paths: Breakpoints, drift and graph quality
 
-This view reports breakpoints, drift and graph quality for the Trust and CloudHound domain using canonical metrics, evidence, gates and limitations.
+This view reports breakpoints, drift and graph quality for the Trust and Privilege Paths domain using canonical metrics, evidence, gates and limitations.
 
 | **Domain field** | **Required report content** |
 | --- | --- |
-| Scope | Declare the applicable trust and cloudhound population. |
+| Scope | Declare the applicable trust and privilege paths population. |
 | Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-TRU controls and critical states. |
 | Evidence | Show grade mix, technical coverage, conflicts and stale items. |

@@ -89,7 +89,7 @@ Control IDs are stable and must not be recycled. Retired IDs remain reserved. Ex
 | **Prefix** | **Domain** | **Control range** |
 | --- | --- | --- |
 | ATG-DIS | Discovery and AIBOM | 001-012 |
-| ATG-TRU | Trust and CloudHound | 001-012 |
+| ATG-TRU | Trust and Privilege Paths | 001-012 |
 | ATG-AUT | Authority Governance | 001-012 |
 | ATG-VAL | AI Security Validation | 001-012 |
 | ATG-GOV | AI Governance and Assurance | 001-012 |
@@ -184,7 +184,7 @@ The 72 controls cover the six public methodology domains. More detailed technolo
 | **Domain** | **Control scope** |
 | --- | --- |
 | Discovery and AIBOM | Scope, sources, sanctioned and shadow AI, inventory, ownership, composition, change and coverage. |
-| Trust and CloudHound | Relationship semantics, trust basis, privilege, boundaries, providers, paths, breakpoints and drift. |
+| Trust and Privilege Paths | Relationship semantics, trust basis, privilege, boundaries, providers, paths, breakpoints and drift. |
 | Authority Governance | Identity, action classes, least authority, delegation, approvals, tools, amplification, limits and revocation. |
 | AI Security Validation | Strategy, threat models, safe testing, model, prompt, RAG, agent, MCP, supply chain, infrastructure and closure. |
 | AI Governance and Assurance | Policy, risk appetite, operating model, intake, impact, applicability, decisions, exceptions, providers and assurance. |
@@ -437,9 +437,9 @@ Metrics retain numerator, denominator, source coverage, stale evidence, UNKNOWN 
 | Remediation outcome | Report scoped coverage and continuously improve sources using misses, incidents and seeded validation. |
 | Crosswalk candidates | NIST AI RMF; ISO/IEC 42001; CSA AICM; mappings are indicative and require versioned validation. |
 
-# 2.0  Trust and CloudHound
+# 2.0  Trust and Privilege Paths
 
-The Trust and CloudHound family contains 12 canonical controls. Together they support Maturity Model domain D2 and must be applied according to scope, profile, applicability and critical gates.
+The Trust and Privilege Paths family contains 12 canonical controls. Together they support Maturity Model domain D2 and must be applied according to scope, profile, applicability and critical gates.
 
 | **Control ID** | **Control name** | **Default criticality** |
 | --- | --- | --- |
@@ -1679,7 +1679,7 @@ The library contains 72 stable canonical controls. Each ID and name is unique. S
 | **Family** | **Count** | **Primary distinction** |
 | --- | --- | --- |
 | ATG-DIS | 12 | Discovery and AIBOM |
-| ATG-TRU | 12 | Trust and CloudHound |
+| ATG-TRU | 12 | Trust and Privilege Paths |
 | ATG-AUT | 12 | Authority Governance |
 | ATG-VAL | 12 | AI Security Validation |
 | ATG-GOV | 12 | AI Governance and Assurance |

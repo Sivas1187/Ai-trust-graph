@@ -907,7 +907,7 @@ The six domains are coordinated assessment lenses over one graph. They are not s
 | **Domain** | **Purpose** | **Representative outputs** |
 | --- | --- | --- |
 | Discovery and AIBOM | Establish measurable estate, ownership, dependencies and shadow AI. | Asset register, AIBOM, evidence coverage, UNKNOWN backlog. |
-| Trust and CloudHound | Model cloud and AI trust, identity inheritance and attacker-relevant paths. | Trust graph, privilege paths, boundary map, breakpoint candidates. |
+| Trust and Privilege Paths | Model cloud and AI trust, identity inheritance and attacker-relevant paths. | Trust graph, privilege paths, boundary map, breakpoint candidates. |
 | Authority Governance | Define and review effective access, inference, approval and action. | Authority matrix, approval boundaries, delegation and revocation. |
 | AI Security Validation | Test architecture and controls against realistic scenarios. | Authorized tests, control state, findings and residual paths. |
 | AI Governance and Assurance | Connect ownership, risk tier, policy, obligations and evidence. | Decision records, applicability, exceptions and assurance trail. |

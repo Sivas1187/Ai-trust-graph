@@ -450,7 +450,7 @@ For planning only, a capability attainment view may show how many criteria are m
 
 # 3.3  Six-domain scorecard
 
-The executive scorecard displays one row for each canonical domain: Discovery and AIBOM; Trust and CloudHound; Authority Governance; AI Security Validation; AI Governance and Assurance; Operational Resilience.
+The executive scorecard displays one row for each canonical domain: Discovery and AIBOM; Trust and Privilege Paths; Authority Governance; AI Security Validation; AI Governance and Assurance; Operational Resilience.
 
 | **Field** | **Required output** |
 | --- | --- |

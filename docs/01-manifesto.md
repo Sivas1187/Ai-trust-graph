@@ -166,7 +166,7 @@ The public methodology is organized into six connected domains. These are not se
 | **Domain** | **Purpose** | **Representative outputs** |
 | --- | --- | --- |
 | 1. Discovery and AIBOM | Establish the measurable AI estate, ownership, dependencies, shadow AI and AI-native bills of materials. | AI asset register, shadow AI register, AIBOM, evidence coverage and unknowns backlog. |
-| 2. Trust and CloudHound | Model cloud-native and AI trust relationships, privilege inheritance, boundaries and attacker-relevant paths. | Trust graph, privilege paths, boundary map, high-value target paths and breakpoint candidates. |
+| 2. Trust and Privilege Paths | Model cloud-native and AI trust relationships, privilege inheritance, boundaries and attacker-relevant paths. | Trust graph, privilege paths, boundary map, high-value target paths and breakpoint candidates. |
 | 3. Authority Governance | Define what humans, agents, models, tools and integrations are allowed to access, retrieve, invoke, change or approve. | Authority matrix, action boundary map, approval checkpoints, delegation and revocation design. |
 | 4. AI Security Validation | Test whether architecture and controls actually prevent, detect or contain realistic misuse and attack scenarios. | Validation results, control effectiveness, attack-path tests, evidence pack and residual paths. |
 | 5. AI Governance and Assurance | Connect ownership, risk tiering, policy, lifecycle decisions, obligations and evidence to the technical system. | Governance model, decision records, applicability matrix, exceptions and assurance trail. |

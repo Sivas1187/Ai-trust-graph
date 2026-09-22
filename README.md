@@ -23,7 +23,7 @@ AI Trust Graph organizes assessment into **six domains**, each with twelve canon
 | Domain | Focus | Control prefix |
 | --- | --- | --- |
 | D1 — Discovery and AIBOM | Inventory, ownership, and blind spots across the AI estate | `ATG-DIS` |
-| D2 — Trust and CloudHound | Trust relationships, identity/privilege paths, graph quality | `ATG-TRU` |
+| D2 — Trust and Privilege Paths | Trust relationships, identity/privilege paths, graph quality | `ATG-TRU` |
 | D3 — Authority Governance | Delegated authority, approval, amplification, revocation | `ATG-AUT` |
 | D4 — AI Security Validation | Threat hypotheses, control testing, independent retest | `ATG-VAL` |
 | D5 — AI Governance and Assurance | Policy, appetite, use-case impact, provider assurance | `ATG-GOV` |

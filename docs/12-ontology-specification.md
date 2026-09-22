@@ -824,7 +824,7 @@ State labels are deliberately namespaced by object type. The same field name MUS
 | **ID** | **Domain** | **Ontology contribution** |
 | --- | --- | --- |
 | D1 | Discovery and AIBOM | Establish measurable estate, ownership, dependencies, shadow AI and AI-native bills of materials. |
-| D2 | Trust and CloudHound | Represent trust, dependency, identity inheritance, boundaries and material paths. The label is a methodology domain label and does not create a product requirement. |
+| D2 | Trust and Privilege Paths | Represent trust, dependency, identity inheritance, boundaries and material paths. The label is a methodology domain label and does not create a product requirement. |
 | D3 | Authority Governance | Define and review effective access, inference, approval, action, delegation, limits and revocation. |
 | D4 | AI Security Validation | Validate architecture, paths and controls against authorized realistic scenarios. |
 | D5 | AI Governance and Assurance | Connect ownership, risk appetite, obligations, lifecycle decisions, exceptions and evidence. |

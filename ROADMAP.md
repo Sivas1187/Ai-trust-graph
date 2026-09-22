@@ -36,7 +36,8 @@ Per the Manifesto's own Appendix B publication-acceptance criteria and Governanc
 Artifact #11 defines a full governance operating model — a Methodology Steward, Governance Council, Technical Architecture Board, AI Security Review Board, Certification Scheme Committee, Impartiality Committee, Appeals Panel, and Secretariat — none of which currently exist as constituted bodies. Until they do, the methodology author is acting as a stand-in for all of them, which Artifact #11 itself flags as a temporary and non-ideal state.
 
 - [ ] Appoint or recruit initial members for the Technical Architecture Board and AI Security Review Board.
-- [ ] Stand up the change-control process described in Artifact #11 §2 for real (issue templates, review checklists, a public artifact registry).
+- [x] Stand up structured issue intake for real: a "Methodology finding" template (mirroring the R-01–R-11 format) and a lower-ceremony "General feedback" template, both under `.github/ISSUE_TEMPLATE/`, with a config pointing formal change proposals to `CONTRIBUTING.md` and open questions to Discussions.
+- [ ] Review checklists and a public artifact registry (the remainder of Artifact #11 §2's change-control process) are still not stood up.
 - [ ] Decide whether and when to pursue any of the certification pathways Artifact #11 describes as *readiness*, not authorization — persons, processes, services, or tools. **This roadmap does not commit to launching any certification scheme.** Artifact #11 is explicit that certification readiness is not certification, and that decision belongs to a properly constituted, impartial Governance Council and Certification Scheme Committee, not to a roadmap item.
 
 ## Phase 4 — Ecosystem (not started, exploratory)

@@ -199,6 +199,25 @@ The author also chose to reserve the **"AI Trust Graph" name and any future logo
 
 ---
 
+## R-12 — Domain 2 renamed "Trust and CloudHound" → "Trust and Privilege Paths" (Blocking, vendor-neutrality)
+
+**Artifact:** All artifacts that name the six assessment domains — [Manifesto](docs/01-manifesto.md), [Core Conceptual Model](docs/02-core-conceptual-model.md), [Maturity Model](docs/03-maturity-model.md), [Scoring Framework](docs/04-scoring-framework.md), [Master Control Library](docs/05-master-control-library.md), [Assessor Handbook](docs/08-assessor-handbook.md), [Reporting Standard](docs/09-reporting-standard.md), [Ontology Specification](docs/12-ontology-specification.md), and `README.md`.
+
+**Finding:** Domain 2 was originally named "Trust and CloudHound." "CloudHound" is structurally and phonetically derivative of BloodHound, a specific, well-known, real third-party Active Directory/Entra ID attack-path enumeration tool. Retaining it directly conflicts with this methodology's own stated mandate to remain vendor-neutral, tool-independent and product-independent (Manifesto, Appendix B publication-boundary criteria) — a reader could reasonably infer the methodology assumes or endorses a specific commercial or open-source tool where none is intended.
+
+**Resolution:** The domain has been renamed **"Trust and Privilege Paths"** everywhere it appears as a domain label, section heading, or inline domain reference, across all eight affected artifacts and the README's domain-to-control-family table. This is a terminology change only:
+
+- **Unchanged:** the `ATG-TRU` control-family prefix and all twelve control IDs (`ATG-TRU-001`–`ATG-TRU-012`); the `D2` maturity-domain code and all six capability identifiers (`D2.1`–`D2.6`); every control's canonical requirement, evidence expectation, validation procedure, graph nodes/relationships, failure pattern, remediation outcome, and crosswalk candidates; every maturity capability's criteria, scoring logic, and critical gates; and all cross-artifact numbering.
+- **Changed:** only the human-readable domain name and its lowercase inline variants (e.g., "the applicable trust and cloudhound population" → "the applicable trust and privilege paths population").
+
+**Known residual mention:** the Manifesto's Appendix C ("Source and derivation note") retains one sentence citing "CloudHound methodology" as one of several internal source materials the author consolidated when originally drafting this methodology (the literal source *filename*, `CloudHound_Methodology_v1.docx`, was already redacted under R-01, before this finding). This single mention is a historical-provenance citation, not a public methodology term, and has been left as-authored pending the author's explicit call on whether it should also be scrubbed or generalized before final public release.
+
+**Recommendation:** Confirm during the still-pending legal/employer/IP review (Manifesto, Appendix B) whether the Appendix C provenance sentence needs further genericization, consistent with how R-01 already treated the adjacent internal-filename list.
+
+**Status:** Resolved across all public-facing terminology. One historical citation intentionally left open for the author's decision (see above).
+
+---
+
 ## Gaps
 
 Summarizing R-08 for quick reference: this repository was intentionally missing a **LICENSE** and a **SECURITY.md**, both called for by the Manifesto's own Appendix B. **LICENSE** (CC BY 4.0) and its companion **TRADEMARKS.md** have since been added, on the methodology author's explicit decision — see the R-08 update above. **SECURITY.md** remains missing and is still flagged rather than added, because drafting it responsibly requires the author to decide what a real disclosure process looks like, not just fill in a template.
@@ -218,3 +237,4 @@ Summarizing R-08 for quick reference: this repository was intentionally missing 
 | R-09 | Evidence Model cites a generic "AI Security Assessment Toolkit" | Minor | Open — confirm during IP review |
 | R-10 | Governance Model cites real external standards (SAC, ISO/IEC 17021-1/17024/17065) | Should-fix | Open — confirm during legal review |
 | R-11 | Ontology Specification added as Artifact #12; strengthens R-02 and R-06, further compounds R-05 | Should-fix / Informational | Artifact added; R-02/R-05/R-06 still open |
+| R-12 | Domain 2 "Trust and CloudHound" echoed a real third-party tool name (BloodHound) | Blocking | Resolved — renamed "Trust and Privilege Paths" everywhere; one historical citation in Manifesto Appendix C left for author decision |

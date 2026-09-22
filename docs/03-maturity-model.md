@@ -309,11 +309,11 @@ These gates protect the integrity of the Discovery and AIBOM maturity claim. App
 | Material production systems lack owner or environment | Affected scope cap at M1. |
 | Claims of continuous discovery without freshness and coverage evidence | M5 prohibited. |
 
-# 3.0  Trust and CloudHound
+# 3.0  Trust and Privilege Paths
 
 Represent and analyze trust, dependency, identity inheritance, boundaries and material paths.
 
-For Trust and CloudHound, the domain result is the highest common level sustained by its applicable capabilities after evidence and critical-gate review; capability variation remains explicit.
+For Trust and Privilege Paths, the domain result is the highest common level sustained by its applicable capabilities after evidence and critical-gate review; capability variation remains explicit.
 
 | **Capability** | **What it measures** |
 | --- | --- |
@@ -326,7 +326,7 @@ For Trust and CloudHound, the domain result is the highest common level sustaine
 
 # 3.1  D2.1 Trust relationship representation
 
-D2.1 evaluates trust relationship representation within the declared Trust and CloudHound scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
+D2.1 evaluates trust relationship representation within the declared Trust and Privilege Paths scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
 
 | **Level** | **Capability descriptor** |
 | --- | --- |
@@ -338,7 +338,7 @@ D2.1 evaluates trust relationship representation within the declared Trust and C
 
 # 3.2  D2.2 Identity and privilege path analysis
 
-D2.2 evaluates identity and privilege path analysis within the declared Trust and CloudHound scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
+D2.2 evaluates identity and privilege path analysis within the declared Trust and Privilege Paths scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
 
 | **Level** | **Capability descriptor** |
 | --- | --- |
@@ -350,7 +350,7 @@ D2.2 evaluates identity and privilege path analysis within the declared Trust an
 
 # 3.3  D2.3 Boundary and provider trust
 
-D2.3 evaluates boundary and provider trust within the declared Trust and CloudHound scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
+D2.3 evaluates boundary and provider trust within the declared Trust and Privilege Paths scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
 
 | **Level** | **Capability descriptor** |
 | --- | --- |
@@ -362,7 +362,7 @@ D2.3 evaluates boundary and provider trust within the declared Trust and CloudHo
 
 # 3.4  D2.4 Path identification and prioritization
 
-D2.4 evaluates path identification and prioritization within the declared Trust and CloudHound scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
+D2.4 evaluates path identification and prioritization within the declared Trust and Privilege Paths scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
 
 | **Level** | **Capability descriptor** |
 | --- | --- |
@@ -374,7 +374,7 @@ D2.4 evaluates path identification and prioritization within the declared Trust 
 
 # 3.5  D2.5 Control breakpoint analysis
 
-D2.5 evaluates control breakpoint analysis within the declared Trust and CloudHound scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
+D2.5 evaluates control breakpoint analysis within the declared Trust and Privilege Paths scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
 
 | **Level** | **Capability descriptor** |
 | --- | --- |
@@ -386,7 +386,7 @@ D2.5 evaluates control breakpoint analysis within the declared Trust and CloudHo
 
 # 3.6  D2.6 Trust graph quality and governance
 
-D2.6 evaluates trust graph quality and governance within the declared Trust and CloudHound scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
+D2.6 evaluates trust graph quality and governance within the declared Trust and Privilege Paths scope. Its result is cumulative, evidence-gated and constrained by applicable critical gates.
 
 | **Level** | **Capability descriptor** |
 | --- | --- |
@@ -398,7 +398,7 @@ D2.6 evaluates trust graph quality and governance within the declared Trust and 
 
 # 3.7  D2 Critical gates and evidence
 
-These gates protect the integrity of the Trust and CloudHound maturity claim. Applicability and materiality must be documented.
+These gates protect the integrity of the Trust and Privilege Paths maturity claim. Applicability and materiality must be documented.
 
 | **Critical condition** | **Effect** |
 | --- | --- |
