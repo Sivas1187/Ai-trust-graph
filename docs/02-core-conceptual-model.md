@@ -721,11 +721,11 @@ A path is an ordered sequence from a defined start condition to a defined target
 | evidence and confidence | Support and uncertainty for every material step. |
 | residual path | Route remaining after an intervention. |
 
-# 6.3  Path state taxonomy
+# 6.3  Path validation state and path role
 
-Path labels describe the strength of support and validation. They must not be used interchangeably because they support different decisions.
+Path validation state describes the strength of support and validation for a path. Path role describes how the path relates to the current analysis or an intervention. These are orthogonal dimensions and MUST NOT be collapsed into one state machine.
 
-| **State** | **Permitted conclusion** |
+| **Path validation state** | **Permitted conclusion** |
 | --- | --- |
 | Candidate | A hypothesized sequence requires review. |
 | Topological | A traversal exists in the represented graph. |
@@ -733,8 +733,15 @@ Path labels describe the strength of support and validation. They must not be us
 | Validated | Authorized testing or direct evidence confirms the scoped progression. |
 | Exploitable | Evidence demonstrates a security exploit path within stated conditions. |
 | Controlled | Validated controls prevent, constrain, detect or contain the path as claimed. |
-| Residual | A route remains after existing or proposed intervention. |
 | Invalidated | Evidence disproves a required step or condition. |
+
+| **Path role** | **Meaning** |
+| --- | --- |
+| Primary | The principal path selected for the current analysis or decision. |
+| Alternate | A different route that reaches the same or equivalent target. |
+| Residual | A route remaining after an existing or proposed intervention. |
+
+A residual path still carries its own validation state. For example, a residual path may be Plausible, Validated, Exploitable, Controlled or Invalidated depending on the evidence and test result.
 
 # 6.4  Exposure model
 
