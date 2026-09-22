@@ -89,7 +89,7 @@ A small number of entity types have explicit, canonically specified fields beyon
 
 | **Node label** | **Additional canonical fields** | **Source** |
 | --- | --- | --- |
-| Path | startCondition, traversal (ordered), conditions, boundaryCrossings, target, controls, residualPath | Ontology Specification §9.2 |
+| Path | startCondition, traversal (ordered), conditions, boundaryCrossings, target, controls, pathRole, residualPath | Ontology Specification §9.2-§9.3 |
 | AuthorityGrant | actingIdentity, capability, target, scope, conditions, duration, approval, reversibility, telemetry, revocation | Ontology Specification §5.1 |
 | EvidenceItem | evidenceId, sourceSystem, acquisitionMethod, acquisitionDate, integrityHash, grade, corroboration, currentness, classification | Ontology Specification §10.2 |
 | Assertion | proposition, supportedBy, disputedBy, qualifiedBy, reviewOutcome | Ontology Specification §10.3 |
@@ -339,7 +339,8 @@ Reproduced from Ontology Specification §9.3, §10.5, §10.6, §11.1-§11.3 and 
 | EntityLifecycleState | Candidate; Approved; Rejected; Modified; Retired; Superseded |
 | AssertionReviewState | Candidate; Approved; Rejected; Modified; Superseded |
 | AssessmentResultState | UNKNOWN; Not Assessed; Not Tested; Not Applicable; Inconclusive; Provisional; Final within scope |
-| PathState | Candidate; Topological; Plausible; Validated; Exploitable; Controlled; Residual; Invalidated |
+| PathState | Candidate; Topological; Plausible; Validated; Exploitable; Controlled; Invalidated |
+| PathRole | Primary; Alternate; Residual |
 | ReportReleaseState | Draft; Fact validation; Quality review; Decision review; Final within scope; Superseded; Withdrawn |
 | ArtifactLifecycleState | Draft; Consultation; Candidate; Approved; Deprecated; Withdrawn; Superseded |
 | ConformanceStatus | Candidate; Conformant; Suspended; Expired; Withdrawn |
