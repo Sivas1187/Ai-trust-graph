@@ -29,7 +29,7 @@ The Manifesto supplies commitments. The Core Conceptual Model supplies canonical
 
 When artifacts conflict, assessors stop the affected conclusion, preserve evidence and escalate through methodology governance.
 
-> **PRECEDENCE** Manifesto -> Core Conceptual Model -> Maturity Model -> Scoring Framework -> Master Control Library -> Evidence Model -> Assessment Methodology -> Assessor Handbook
+> **CANONICAL ARTIFACT MAP** Repository-wide authority, dependency order, bundle versions and content pins are governed by [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md). This artifact does not define a competing precedence chain.
 
 # 0.3  Assessment doctrine
 
@@ -136,6 +136,21 @@ The lifecycle contains thirteen controlled phases. Phases may iterate, but requi
 | 11 Decisions | Approved gates, exceptions and dispositions. |
 | 12 Report | Quality-reviewed decision package. |
 | 13 Reassess | Trigger-based new or updated run. |
+
+# 0.11.1  Conceptual-to-execution lifecycle crosswalk
+
+The Core Conceptual Model expresses the method as six conceptual stages. This Assessment Methodology expands those stages into thirteen execution phases with operational gates. The two views are complementary, not competing lifecycle definitions; the mapping is intentionally many-to-many where evidence or validation spans more than one conceptual stage.
+
+| **Core Conceptual Model stage** | **Primary execution phases** | **Crosswalk note** |
+| --- | --- | --- |
+| 1 Frame and scope | 1 Initiate; 2 Scope | Establish decision purpose, authorization, boundaries, owners, population and constraints. |
+| 2 Discover and register | 3 Discover; 5 Evidence | Identify the estate and begin evidence lineage; evidence collection continues throughout later phases. |
+| 3 Construct and approve graph | 4 Model; 5 Evidence | Normalize graph objects, relationships, boundaries and reviewed evidence-linked assertions. |
+| 4 Analyze trust, authority and paths | 6 Controls; 7 Paths; 8 Maturity; 9 Scoring | Evaluate control state, material paths, capability maturity and transparent decision measures. |
+| 5 Validate and decide | 6 Controls; 7 Paths; 10 Findings; 11 Decisions; 12 Report | Validate controls and paths, issue bounded findings, record accountable decisions and release reviewed conclusions. |
+| 6 Monitor and reassess | 13 Reassess | Change, drift, incidents, remediation and expiry trigger a new or updated versioned assessment run; monitoring operates between runs as defined by the applicable controls. |
+
+> **CROSSWALK RULE** The six-stage conceptual view defines reasoning intent. The thirteen-phase execution view defines fieldwork and gates. Neither may be used to skip a requirement in the other.
 
 # 0.12  Exit criteria overview
 

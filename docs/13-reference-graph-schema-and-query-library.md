@@ -2,9 +2,9 @@
 
 # AI Trust Graph — Reference Graph Schema and Illustrative Query Library
 
-*Phase 2 companion | Non-normative | Version 0.1 | Initiated 2026-09-23*
+*Phase 2 companion | Non-normative | Version 0.2 | Initiated 2026-09-23*
 
-| **STATUS — READ BEFORE USING** This document is a **Phase 2, non-normative companion**. It does not redefine any concept, control, evidence grade, path state, scoring formula, maturity level or governance principle established in Artifacts #1-#12. It carries no conformance weight: none of the five conformance levels (Appendix D.4 of the Ontology Specification) require it, and none of the seven conformance classes in the Governance & Certification Model depend on it. Its sole purpose is to make the ontology and control library easier to implement on **any** property-graph or RDF-reducible engine, without binding the methodology to one. If anything here appears to conflict with Artifacts #1-#12, those artifacts govern and this document is wrong. |
+| **STATUS — READ BEFORE USING** This document is a **Phase 2, non-normative companion**. It does not redefine any concept, control, evidence grade, path state, scoring formula, maturity level or governance principle established in Artifacts #1-#12. It carries no conformance weight: none of the six conformance levels (L0-L5, Ontology Specification Appendix D.4) require it, and no conformance or certification claim depends on it. L4 Tool-compatible is currently unavailable until approved normative schemas and test vectors are published. This companion does not satisfy that gate. Its sole purpose is to make the ontology and control library easier to implement on **any** property-graph or RDF-reducible engine, without binding the methodology to one. If anything here appears to conflict with Artifacts #1-#12, those artifacts govern and this document is wrong. |
 | --- |
 
 ## 0.1 Why this document exists, and why it didn't exist until now
@@ -17,13 +17,13 @@ This document is the formal start of Phase 2. It is scoped narrowly and delibera
 - It adds an **illustrative query library** showing how an assessor or implementer might actually traverse the graph to answer the questions each of the 36 maturity capabilities asks — patterns, not requirements.
 - It changes no methodology semantics. Every entity, relationship, state and control reference below is reproduced from, or directly derived from, Artifacts #5 and #12 — see §4 for the full source-derivation record.
 
-## 0.2 Vendor-neutrality: why GQL, and what that does and doesn't mean
+## 0.2 Vendor-neutrality: GQL-style illustrative notation
 
-Every query in this document is written in **GQL** — ISO/IEC 39075:2024, *Information technology — Database languages — GQL*, the property-graph query language standardized by ISO's SQL/GQL working group. GQL's syntax is deliberately close to openCypher (the language pioneered by Neo4j and later opened, along with Apache TinkerPop's Gremlin and PGQL, as primary inputs to the ISO effort), so a reader familiar with any of those will recognize it immediately. It is used here specifically **because** it is now a multi-vendor ISO standard rather than one company's product — the same justification this methodology already uses when it prefers "AIBOM" over a specific vendor's bill-of-materials format, or "evidence grade" over a specific scanner's severity scale.
+The query library uses **illustrative GQL-style read patterns informed by ISO/IEC 39075:2024** and intentionally familiar to readers of openCypher-style property-graph languages. These examples have **not yet been parser- or conformance-tested against an approved normative GQL implementation**, so this document does not claim syntactic ISO/IEC 39075 conformance. The notation is used for readability and standards-oriented portability, not to bind the methodology to one vendor or engine.
 
 Two things follow from that choice, and both matter for keeping this document honest about its own limits:
 
-1. **This is not the only way to implement the ontology.** Every pattern below could equally be expressed in SPARQL over an RDF/OWL rendering of the same ontology, in Gremlin, in recursive SQL over an adjacency-list schema, or in a document store with application-level traversal. GQL was chosen for readability and standards alignment, not because the methodology requires a graph database, still less a specific one.
+1. **This is not the only way to implement the ontology.** Every pattern below could equally be expressed in SPARQL over an RDF/OWL rendering of the same ontology, in Gremlin, in recursive SQL over an adjacency-list schema, or in a document store with application-level traversal. The GQL-style notation was chosen for readability and standards-oriented alignment, not because the methodology requires a graph database, still less a specific one.
 2. **A query that runs is not a conclusion the methodology recognizes.** Every invariant in Artifact #12 §15 still applies to whatever engine executes these patterns: a `MATCH` that finds a path does not make that path `Exploitable` (ONT-INV-01, ONT-INV-12); a query returning zero rows for missing evidence must surface as `UNKNOWN`, never as a false negative (ONT-INV-06); machine execution cannot promote an AI-generated inference to an approved fact (ONT-INV-08). Anywhere a query below returns something that would feed an assessment conclusion, that result is a **candidate assertion for review**, not an approved finding, exactly as §10 of Artifact #12 requires.
 
 ## 0.3 What this document is not
@@ -89,7 +89,7 @@ A small number of entity types have explicit, canonically specified fields beyon
 
 | **Node label** | **Additional canonical fields** | **Source** |
 | --- | --- | --- |
-| Path | startCondition, traversal (ordered), conditions, boundaryCrossings, target, controls, residualPath | Ontology Specification §9.2 |
+| Path | startCondition, traversal (ordered), conditions, boundaryCrossings, target, controls, pathRole, residualPath | Ontology Specification §9.2-§9.3 |
 | AuthorityGrant | actingIdentity, capability, target, scope, conditions, duration, approval, reversibility, telemetry, revocation | Ontology Specification §5.1 |
 | EvidenceItem | evidenceId, sourceSystem, acquisitionMethod, acquisitionDate, integrityHash, grade, corroboration, currentness, classification | Ontology Specification §10.2 |
 | Assertion | proposition, supportedBy, disputedBy, qualifiedBy, reviewOutcome | Ontology Specification §10.3 |
@@ -339,7 +339,8 @@ Reproduced from Ontology Specification §9.3, §10.5, §10.6, §11.1-§11.3 and 
 | EntityLifecycleState | Candidate; Approved; Rejected; Modified; Retired; Superseded |
 | AssertionReviewState | Candidate; Approved; Rejected; Modified; Superseded |
 | AssessmentResultState | UNKNOWN; Not Assessed; Not Tested; Not Applicable; Inconclusive; Provisional; Final within scope |
-| PathState | Candidate; Topological; Plausible; Validated; Exploitable; Controlled; Residual; Invalidated |
+| PathState | Candidate; Topological; Plausible; Validated; Exploitable; Controlled; Invalidated |
+| PathRole | Primary; Alternate; Residual |
 | ReportReleaseState | Draft; Fact validation; Quality review; Decision review; Final within scope; Superseded; Withdrawn |
 | ArtifactLifecycleState | Draft; Consultation; Candidate; Approved; Deprecated; Withdrawn; Superseded |
 | ConformanceStatus | Candidate; Conformant; Suspended; Expired; Withdrawn |
@@ -386,7 +387,7 @@ Reproduced from Ontology Specification §9.3, §10.5, §10.6, §11.1-§11.3 and 
 | L1 Method-compatible | Preserves semantics, IDs, result states and versions. |
 | L2 Assessment-compatible | Executes required lifecycle and records. |
 | L3 Reporting-compatible | Produces compliant report package. |
-| L4 Tool-compatible | Passes approved schemas and test vectors. |
+| L4 Tool-compatible | Reserved for tools; unavailable until approved normative schemas and test vectors are published. |
 | L5 Full-method conformant | Combines applicable assessment, reporting, records and governance requirements. |
 
 > **RESERVED, NON-OPERATIONAL (Ontology Specification, Appendix D.5)** Applicant, Under Evaluation, Certified, Conditioned, Suspended, Expired, Withdrawn and Revoked are reserved future certification states. They MUST NOT be interpreted as an operational AI Trust Graph certification program in v1.0, and no query in §3 below writes or evaluates them.

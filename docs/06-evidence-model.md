@@ -27,9 +27,9 @@ Evidence handling must follow applicable law, contract, organizational policy, a
 
 The Core Conceptual Model defines evidence as a versioned source object that supports, disputes or bounds an assertion. The Maturity Model sets evidence floors. The Scoring Framework caps conclusions by evidence support. The Master Control Library defines evidence expectations for controls.
 
-This artifact consolidates those dependencies into one canonical evidence discipline for the future Assessment Methodology and Assessor Handbook.
+This artifact consolidates those dependencies into one canonical evidence discipline for the Assessment Methodology and Assessor Handbook.
 
-> **DEPENDENCY CHAIN** Manifesto -> Core Conceptual Model -> Maturity -> Scoring -> Controls -> Evidence Model -> Assessment Methodology -> Assessor Handbook
+> **CANONICAL ARTIFACT MAP** Repository-wide authority, dependency order, bundle versions and content pins are governed by [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md). This artifact does not define a competing precedence chain.
 
 # 0.3  Evidence model thesis
 

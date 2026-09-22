@@ -29,6 +29,8 @@ FOUNDATION
 
 Reporting consumes approved results from the assessment run. It may explain but cannot redefine evidence grades, controls, path states, scoring formulas, maturity levels or critical gates.
 
+> **CANONICAL ARTIFACT MAP** Repository-wide authority, dependency order, bundle versions and content pins are governed by [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md).
+
 FOUNDATION
 
 # 0.3  Reporting doctrine

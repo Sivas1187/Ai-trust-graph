@@ -15,10 +15,15 @@ All twelve methodology artifacts have been converted from their source drafts in
 - [x] Convert all 11 source artifacts to clean, publication-quality Markdown with no semantic changes.
 - [x] Cross-link artifacts and build a navigable README index.
 - [x] Run an independent, ruthless consistency review across all 11 artifacts ([REVIEW_FINDINGS.md](REVIEW_FINDINGS.md)).
-- [ ] **Resolve the two Blocking-severity open findings that require an author decision:** the path-state taxonomy discrepancy ([R-02](REVIEW_FINDINGS.md#r-02--path-state-taxonomy-8-states-vs-7-states-blocking), now with 2-to-2 evidence favoring the 8-state model — see R-11) and the version-skew between the Core Conceptual Model (v1.1) and the rest of the bundle (v1.0) ([R-06](REVIEW_FINDINGS.md#r-06--version-skew-core-conceptual-model-is-v11-everything-else-is-v10-blocking)).
+- [x] Resolve R-02 by separating seven path validation states from the orthogonal path roles Primary, Alternate and Residual.
+- [x] Resolve R-06 with [METHODOLOGY_MANIFEST.md](METHODOLOGY_MANIFEST.md), bundle identifier `1.0-rc.1`, and exact artifact version/Git-blob pins.
 - [x] Resolve R-03 (PEI formula notation, standardized on `Am`/`CR`) and R-04 (Assessment Methodology phase headers, restored and numbered 1–13) as patch-level corrections.
-- [ ] Resolve R-05 (precedence-chain wording, now five different statements across five artifacts) — decide on one canonical dependency statement and settle whether "Domain Guides" is a real, still-unwritten artifact.
-- [ ] Publish a release manifest pinning the exact version of every artifact that constitutes "Methodology v1.0" (see R-06).
+- [x] Resolve R-05 by centralizing authority/dependencies in [METHODOLOGY_MANIFEST.md](METHODOLOGY_MANIFEST.md) and classifying future Domain Guides as Extension artifacts, not core v1.0 dependencies.
+- [x] Publish the release-candidate manifest with exact artifact versions and Git blob identifiers.
+- [x] Resolve R-14: UNKNOWN is non-numeric for PEI; disproved reachability invalidates the path; determinate active PEI range is 7-62.
+- [x] Add PEI threshold/adversarial vectors, residual/alternate-path cases and an M5 calibration pair (R-15/R-22).
+- [x] Add the six-stage-to-thirteen-phase lifecycle crosswalk (R-18).
+- [x] Gate L4 Tool-compatible until approved normative schemas and test vectors exist (R-19).
 
 ## Phase 2 — Legal and governance gates (not started)
 
@@ -27,6 +32,7 @@ Per the Manifesto's own Appendix B publication-acceptance criteria and Governanc
 - [ ] **Employer / IP / confidentiality review** — confirm ownership and permission to publish every artifact, per every artifact's own approval table.
 - [ ] **Independent chief-product-architecture review** — currently "internal author-loop completed" only, on every artifact.
 - [ ] **Independent AI-security architecture review** — same status.
+- [ ] **Independent inter-assessor reproducibility study** — execute Artifact #10 Appendix B.4 with independent assessors and publish agreement/disagreement results. Until complete, no empirical reproducibility claim is permitted (R-16).
 - [x] **Licence and trademark decision** — CC BY 4.0 chosen for the methodology text (`LICENSE`); "AI Trust Graph" name/marks reserved separately (`TRADEMARKS.md`). Still needs the employer/IP/confidentiality review below to be legally final ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
 - [ ] **Security disclosure process** — add `SECURITY.md` for the repository itself ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
 - [ ] **Legal review of external standards references** — confirm the ISO/IEC and Singapore Accreditation Council references in the Governance Model's source register (Artifact #11, Appendix A.7) require no further permission or reproduction review ([R-10](REVIEW_FINDINGS.md#r-10--governance-model-cites-real-external-standards-should-fix)).
@@ -42,7 +48,8 @@ Artifact #11 defines a full governance operating model — a Methodology Steward
 
 ## Phase 4 — Ecosystem (not started, exploratory)
 
-- [ ] Conformance test vectors and a reference schema for tools that want to claim method-, assessment-, reporting-, or tool-compatibility (Artifact #11 §4 and §7).
+- [x] Publish a **non-normative** Phase 2 reference graph schema/query companion for implementation guidance (Artifact #13).
+- [ ] Publish **approved normative** machine-readable schemas and conformance test vectors before L4 Tool-compatible becomes claimable (Artifact #11 §4 and §7; R-19).
 - [ ] A public directory of authorized assessors, once the competence and authorization model in Artifact #11 §3 is operational.
 - [ ] Sector or technology extensions (Artifact #11 §8.9–8.10), each requiring its own expert review and staying outside the canonical core.
 

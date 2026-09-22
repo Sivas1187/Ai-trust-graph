@@ -32,11 +32,13 @@ Content derived from employer systems, client work, internal methods or third-pa
 
 # 0.2  Document authority, precedence and change
 
-The Core Conceptual Model is the authoritative semantic layer of the AI Trust Graph methodology. It constrains the ontology, domain guides, controls, tests, scoring model, assessor handbook, reports and compatible tools.
+The Core Conceptual Model is the authoritative semantic layer of the AI Trust Graph methodology. It constrains the ontology, normative assessment artifacts, operational guidance, reports and compatible tools.
 
-When artifacts disagree, maintainers first preserve the Manifesto commitments, then apply this model, and finally update lower-level artifacts through versioned change. A product implementation must not become the hidden source of truth.
+When artifacts disagree, maintainers preserve the Manifesto commitments and this model's semantics, then resolve the conflict through the governed authority map and versioned change process. A product implementation must not become the hidden source of truth.
 
-> **PRECEDENCE** Manifesto -> Core Conceptual Model -> Ontology -> Domain Guides -> Controls and Tests -> Maturity and Scoring -> Assessor Handbook -> Reports and Tooling
+> **CANONICAL ARTIFACT MAP** Repository-wide authority, dependency order, bundle versions and content pins are governed by [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md). This artifact does not define a competing precedence chain.
+
+**Domain Guides are not a core v1.0 artifact.** Any future sector-, jurisdiction- or technology-specific guide is an Extension artifact under the Governance and Certification Model and MUST NOT silently redefine canonical concepts, controls, maturity, evidence or scoring.
 
 | **Artifact** | **Authority** |
 | --- | --- |
@@ -721,11 +723,11 @@ A path is an ordered sequence from a defined start condition to a defined target
 | evidence and confidence | Support and uncertainty for every material step. |
 | residual path | Route remaining after an intervention. |
 
-# 6.3  Path state taxonomy
+# 6.3  Path validation state and path role
 
-Path labels describe the strength of support and validation. They must not be used interchangeably because they support different decisions.
+Path validation state describes the strength of support and validation for a path. Path role describes how the path relates to the current analysis or an intervention. These are orthogonal dimensions and MUST NOT be collapsed into one state machine.
 
-| **State** | **Permitted conclusion** |
+| **Path validation state** | **Permitted conclusion** |
 | --- | --- |
 | Candidate | A hypothesized sequence requires review. |
 | Topological | A traversal exists in the represented graph. |
@@ -733,8 +735,15 @@ Path labels describe the strength of support and validation. They must not be us
 | Validated | Authorized testing or direct evidence confirms the scoped progression. |
 | Exploitable | Evidence demonstrates a security exploit path within stated conditions. |
 | Controlled | Validated controls prevent, constrain, detect or contain the path as claimed. |
-| Residual | A route remains after existing or proposed intervention. |
 | Invalidated | Evidence disproves a required step or condition. |
+
+| **Path role** | **Meaning** |
+| --- | --- |
+| Primary | The principal path selected for the current analysis or decision. |
+| Alternate | A different route that reaches the same or equivalent target. |
+| Residual | A route remaining after an existing or proposed intervention. |
+
+A residual path still carries its own validation state. For example, a residual path may be Plausible, Validated, Exploitable, Controlled or Invalidated depending on the evidence and test result.
 
 # 6.4  Exposure model
 
