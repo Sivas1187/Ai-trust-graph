@@ -218,6 +218,26 @@ The author also chose to reserve the **"AI Trust Graph" name and any future logo
 
 ---
 
+## R-13 — Phase 2 formally opened: Reference Graph Schema and Illustrative Query Library added (Informational / Governance)
+
+**Artifact:** New, non-normative — `docs/13-reference-graph-schema-and-query-library.md` — cross-referenced from [Ontology Specification](docs/12-ontology-specification.md) Appendix G and [Governance & Certification Model](docs/11-governance-and-certification-model.md) §7.1.
+
+**Finding:** The Ontology Specification (Artifact #12) had explicitly deferred machine-readable/property-graph bindings and a tool-conformance suite to an unscheduled "Phase 2" (§14.2, Appendix G), stating that their absence did not make Phase 1 semantically incomplete. The methodology author requested an exhaustive graph schema and query library be produced. Producing it without first addressing that deferral would have silently contradicted a decision Artifact #12 had already published — exactly the kind of unannounced change this review process exists to catch.
+
+**Resolution:** Rather than silently proceed or silently ignore the request, this was raised with the author, who chose to formally open Phase 2. The result:
+
+- **What was added:** a single new document consolidating Ontology Specification Appendix A (129 canonical entity types), Appendix C (96 canonical relationship predicates) and the state/evidence/maturity/confidence enumerations (§9.3, §10.5, §10.6, §11.1-§11.3, Appendix D) into a property-graph schema; an exact, machine-extracted cross-reference of all 72 Master Control Library controls' `Graph nodes`/`Graph relationships` fields (not hand-transcribed, so it cannot silently drift from the canonical control text); and an illustrative query library with one pattern per maturity capability (35 of 36 — see below) plus nine cross-cutting patterns, expressed in GQL (ISO/IEC 39075), the multi-vendor ISO standard descended from openCypher, chosen specifically to avoid binding the methodology to one company's graph database.
+- **What stayed unchanged:** no entity, relationship, state, control, capability, evidence grade, path state or scoring/maturity rule was added, removed or redefined. The new document's own §4 records exactly which sections are verbatim reproductions versus derived content, and every query is traceable to the specific control(s) whose graph vocabulary it draws from.
+- **Explicit non-normative framing:** the new document states, in its own opening status box, that it carries no conformance weight (none of the five L0-L5 conformance levels or seven conformance classes require it), is not the ExposureGraph product and creates no dependency on it, and that GQL was chosen for standards alignment rather than to require any specific graph database — the same query patterns could be expressed in SPARQL, Gremlin or recursive SQL.
+- **D4.6 called out rather than papered over:** Ontology Specification §12.3 already notes that D4.6 (Validation assurance and independence) has no direct Master Control Library control mapping. The new document's D4.6 pattern is explicitly labeled as generically grounded rather than falsely cited to a specific `ATG-VAL` control.
+- **Governance updated to match:** Ontology Specification Appendix G now records that Phase 2 has begun and which of its previously-deferred rows are partially addressed versus still deferred; Governance & Certification Model §7.1 now states plainly that the new document has no bearing on L4 Tool-compatible status.
+
+**Recommendation:** Treat this document as a living companion, not a frozen artifact: it must be regenerated (not hand-patched) if the Ontology Specification's Appendix A/B/C or the Master Control Library's 72 controls are ever revised, per the change-control note in the new document's own §5. Independent review of this document has not yet been performed and should happen before implementers treat it as stable.
+
+**Status:** Phase 2 formally opened. First Phase 2 artifact published, non-normative, and cross-referenced from governance. Remaining Phase 2 items (assessment data model, JSON schema objects, tool conformance suite, synthetic dataset pack) remain deferred per Ontology Specification Appendix G.
+
+---
+
 ## Gaps
 
 Summarizing R-08 for quick reference: this repository was intentionally missing a **LICENSE** and a **SECURITY.md**, both called for by the Manifesto's own Appendix B. **LICENSE** (CC BY 4.0) and its companion **TRADEMARKS.md** have since been added, on the methodology author's explicit decision — see the R-08 update above. **SECURITY.md** remains missing and is still flagged rather than added, because drafting it responsibly requires the author to decide what a real disclosure process looks like, not just fill in a template.
@@ -238,3 +258,4 @@ Summarizing R-08 for quick reference: this repository was intentionally missing 
 | R-10 | Governance Model cites real external standards (SAC, ISO/IEC 17021-1/17024/17065) | Should-fix | Open — confirm during legal review |
 | R-11 | Ontology Specification added as Artifact #12; strengthens R-02 and R-06, further compounds R-05 | Should-fix / Informational | Artifact added; R-02/R-05/R-06 still open |
 | R-12 | Domain 2 "Trust and CloudHound" echoed a real third-party tool name (BloodHound) | Blocking | Resolved — renamed "Trust and Privilege Paths" everywhere; one historical citation in Manifesto Appendix C left for author decision |
+| R-13 | Phase 2 (deferred by Artifact #12) formally opened; non-normative reference graph schema and query library added | Informational / Governance | Resolved — Artifact #12 Appendix G and Artifact #11 §7.1 updated to match; independent review of the new document still pending |
