@@ -1596,6 +1596,8 @@ Closure includes notice, records custody, certificate status, mark cessation, ap
 
 Tool conformance verifies preservation of canonical semantics and outputs; it does not certify the security of the tool or assessed AI system.
 
+> **NON-NORMATIVE REFERENCE MATERIAL** The repository's Phase 2 companion (`docs/13-reference-graph-schema-and-query-library.md`, cross-referenced from Ontology Specification Appendix G) illustrates one possible property-graph implementation of the ontology and control library. It carries no conformance weight of its own: implementing, ignoring, or replacing it with a different engine or query language has no bearing on L4 Tool-compatible status. A tool seeking L4 conformance is tested against the requirements in this section and Appendix D.4 of the Ontology Specification, not against that companion document.
+
 | **Test family** | **Acceptance requirement** |
 | --- | --- |
 | Scope | Apply the role and activity scope stated above. |

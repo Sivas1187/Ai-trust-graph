@@ -1447,20 +1447,22 @@ Separates telemetry, detection, finding, incident, containment and recovery.
 
 This public derivation register deliberately avoids internal source filenames, client information and proprietary precursor implementation details. Publication provenance should remain sufficient to explain methodology lineage without exposing material that is not intended for public release.
 
-# Appendix G. Phase 2 Implementation Bindings (Deferred)
+# Appendix G. Phase 2 Implementation Bindings
 
-The following artifacts are intentionally deferred. Their absence does not make the Phase 1 methodology ontology semantically incomplete, provided this human-readable specification is published and the methodology release gates are satisfied.
+> **PHASE 2 STATUS UPDATE (2026-09-23)** Phase 2 has formally begun. The first Phase 2 artifact — a non-normative "Reference Graph Schema and Illustrative Query Library" (repository `docs/13-reference-graph-schema-and-query-library.md`) — consolidates this ontology's Appendix A (entity registry), Appendix C (relationship registry) and state/enumeration domains into a property-graph schema, cross-references it against the exact `Graph nodes`/`Graph relationships` fields of all 72 Master Control Library controls, and adds an illustrative query library expressed in GQL (ISO/IEC 39075), one pattern per maturity capability. It changes no canonical meaning; see REVIEW_FINDINGS.md, finding R-13, for the full record of what was opened, why, and what it does and does not carry. The remaining rows below are still deferred.
 
-| **Future artifact** | **Purpose** | **Dependency on this ontology** |
-| --- | --- | --- |
-| Machine-readable ontology | RDF/OWL, property-graph or equivalent semantic representation. | MUST preserve canonical classes, predicates, direction, conditions and state semantics. |
-| Assessment data model | Normalized assessment-run, scope, evidence, path, finding and decision records. | MUST use state namespaces and version/supersession rules. |
-| JSON / schema objects | Portable validation of records and exports. | MUST NOT invent new semantic truth or collapse UNKNOWN states. |
-| Machine-readable control catalog | Structured form of the 72 controls. | MUST preserve control IDs, objectives, mappings, evidence expectations and graph semantics. |
-| Tool conformance suite | Synthetic positive, negative, boundary, conflict, stale, UNKNOWN and supersession vectors. | MUST test semantic preservation and prohibited inference. |
-| Synthetic dataset pack | Reusable graph/evidence examples for testing and education. | MUST be fictional, safe and traceable to canonical ontology concepts. |
+The following artifacts remain intentionally deferred. Their absence does not make the Phase 1 methodology ontology semantically incomplete, provided this human-readable specification is published and the methodology release gates are satisfied.
 
-> **IMPLEMENTATION BOUNDARY** Phase 2 tooling may make the ontology executable. It may not make the tooling authoritative. Canonical meaning remains in the governed public methodology.
+| **Future artifact** | **Purpose** | **Dependency on this ontology** | **Status** |
+| --- | --- | --- | --- |
+| Machine-readable ontology | RDF/OWL, property-graph or equivalent semantic representation. | MUST preserve canonical classes, predicates, direction, conditions and state semantics. | Partially addressed (non-normative) by the Phase 2 reference schema above; a formal RDF/OWL or property-graph engine binding remains deferred. |
+| Assessment data model | Normalized assessment-run, scope, evidence, path, finding and decision records. | MUST use state namespaces and version/supersession rules. | Deferred. |
+| JSON / schema objects | Portable validation of records and exports. | MUST NOT invent new semantic truth or collapse UNKNOWN states. | Deferred. |
+| Machine-readable control catalog | Structured form of the 72 controls. | MUST preserve control IDs, objectives, mappings, evidence expectations and graph semantics. | Partially addressed (non-normative) by the Phase 2 reference schema's §2 control-to-graph cross-reference; a full structured catalog (all control fields, not only graph vocabulary) remains deferred. |
+| Tool conformance suite | Synthetic positive, negative, boundary, conflict, stale, UNKNOWN and supersession vectors. | MUST test semantic preservation and prohibited inference. | Deferred. |
+| Synthetic dataset pack | Reusable graph/evidence examples for testing and education. | MUST be fictional, safe and traceable to canonical ontology concepts. | Deferred. |
+
+> **IMPLEMENTATION BOUNDARY** Phase 2 tooling may make the ontology executable. It may not make the tooling authoritative. Canonical meaning remains in the governed public methodology. This boundary applies to every Phase 2 artifact, opened or still deferred, without exception.
 
 # Final Ontology Doctrine
 
