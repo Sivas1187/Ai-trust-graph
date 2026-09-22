@@ -15,7 +15,8 @@ All twelve methodology artifacts have been converted from their source drafts in
 - [x] Convert all 11 source artifacts to clean, publication-quality Markdown with no semantic changes.
 - [x] Cross-link artifacts and build a navigable README index.
 - [x] Run an independent, ruthless consistency review across all 11 artifacts ([REVIEW_FINDINGS.md](REVIEW_FINDINGS.md)).
-- [ ] **Resolve the two Blocking-severity open findings that require an author decision:** the path-state taxonomy discrepancy ([R-02](REVIEW_FINDINGS.md#r-02--path-state-taxonomy-8-states-vs-7-states-blocking), now with 2-to-2 evidence favoring the 8-state model — see R-11) and the version-skew between the Core Conceptual Model (v1.1) and the rest of the bundle (v1.0) ([R-06](REVIEW_FINDINGS.md#r-06--version-skew-core-conceptual-model-is-v11-everything-else-is-v10-blocking)).
+- [x] Resolve R-02 by separating seven path validation states from the orthogonal path roles Primary, Alternate and Residual.
+- [ ] **Resolve the remaining Blocking-severity author decision:** version-skew between the Core Conceptual Model (v1.1) and the rest of the bundle (v1.0) ([R-06](REVIEW_FINDINGS.md#r-06--version-skew-core-conceptual-model-is-v11-everything-else-is-v10-blocking)).
 - [x] Resolve R-03 (PEI formula notation, standardized on `Am`/`CR`) and R-04 (Assessment Methodology phase headers, restored and numbered 1–13) as patch-level corrections.
 - [ ] Resolve R-05 (precedence-chain wording, now five different statements across five artifacts) — decide on one canonical dependency statement and settle whether "Domain Guides" is a real, still-unwritten artifact.
 - [ ] Publish a release manifest pinning the exact version of every artifact that constitutes "Methodology v1.0" (see R-06).
