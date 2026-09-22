@@ -24,25 +24,24 @@ Severity is rated as **Blocking** (must be resolved before v1.0 public release),
 
 ---
 
-## R-02 — Path-state taxonomy: 8 states vs. 7 states (Blocking)
+## R-02 — Path-state taxonomy mixed validation state with residual role (Blocking, resolved)
 
-**Artifacts:** [Core Conceptual Model](docs/02-core-conceptual-model.md) §6.3 vs. [Scoring Framework](docs/04-scoring-framework.md) §4.2 and [Master Control Library](docs/05-master-control-library.md) (validation section).
+**Artifacts:** [Core Conceptual Model](docs/02-core-conceptual-model.md) §6.3, [Ontology Specification](docs/12-ontology-specification.md) §9.3/§11.1, [Scoring Framework](docs/04-scoring-framework.md) §4.2, [Master Control Library](docs/05-master-control-library.md), and [Reporting Standard](docs/09-reporting-standard.md) §3.11/§3.14.
 
-**Finding:** The Core Conceptual Model's path-state taxonomy (§6.3, "Path state taxonomy") defines **eight** states:
+**Finding:** The Core Conceptual Model and Ontology originally placed `Residual` inside `PathState`, while the Scoring Framework, Master Control Library, Reporting Standard and reference cases used a seven-state validation model and treated residual paths separately.
 
-> Candidate, Topological, Plausible, Validated, Exploitable, Controlled, **Residual**, Invalidated
+**Why this matters:** `Residual` answers a different question from `Validated`, `Exploitable` or `Controlled`. It describes how a path relates to an intervention, not how strongly the path has been evidenced or tested. A residual route may itself be Plausible, Validated, Exploitable, Controlled or Invalidated. Making `Residual` mutually exclusive with those states loses information and makes post-control analysis harder to express precisely.
 
-The Scoring Framework's path-eligibility table (§4.2) and the Master Control Library's validation guidance instead use a **seven**-state taxonomy that omits `Residual`:
+**Resolution:** The methodology now separates the two dimensions:
 
-> Candidate, Topological, Plausible, Validated, Exploitable, Controlled, Invalidated
+- **PathState:** Candidate; Topological; Plausible; Validated; Exploitable; Controlled; Invalidated.
+- **PathRole:** Primary; Alternate; Residual.
 
-The seven-state version is the one used consistently downstream — in the Assessor Handbook, the Reporting Standard, and all twelve cases in the Reference Assessment Repository. `Residual` never reappears anywhere in Artifacts #4 through #10.
+A path whose role is `Residual` retains its own independent `PathState`. The Core Conceptual Model §6.3 and Ontology Specification §9.3/§11.1 were updated accordingly. The Scoring Framework, Master Control Library and Reporting Standard already used the seven-state validation taxonomy and therefore required no semantic change. The Phase 2 reference schema now carries both `PathState` and `PathRole`.
 
-**Why this matters:** Path state is a load-bearing concept — it gates what conclusions a report may draw (§9 of the Reporting Standard) and what a control result may claim (Master Control Library). A reader who learns the taxonomy from the Core Conceptual Model will expect an eighth state that the rest of the methodology does not implement or ever produce.
+**Change discipline:** No PEI formula, evidence grade, control objective, maturity criterion, critical gate or finding taxonomy changed. This is a governed semantic clarification resolving an internal inconsistency.
 
-**Recommendation:** Determine which is canonical. Two honest options: (a) `Residual` is a genuine state that the Scoring Framework, Master Control Library, and everything downstream should be updated to include (Residual exposure — "a route remains after existing or proposed intervention" — is conceptually distinct from `Controlled` and arguably worth keeping); or (b) `Residual` was dropped intentionally when the seven-state model was finalized and the Core Conceptual Model's §6.3 is the artifact that needs a patch release. Either way, this needs a decision, not a silent pick — it is exactly the kind of semantic question this review is not authorized to resolve on its own.
-
-**Update (R-11):** The newly added [Ontology Specification](docs/12-ontology-specification.md) (Artifact #12) independently states the same eight-state taxonomy, including `Residual` (§11.1, "State namespaces"; also §9.3). That makes it two artifacts (Core Conceptual Model and Ontology Specification) stating eight states against two (Scoring Framework and Master Control Library) stating seven. This is material new evidence toward option (a) above, but it is still a recommendation, not a resolution — see R-11 for the full accounting.
+**Status:** Resolved on author instruction during repository review.
 
 ---
 
@@ -182,7 +181,7 @@ The author also chose to reserve the **"AI Trust Graph" name and any future logo
 **Finding:** The author supplied a previously unpublished "AI Trust Graph Ontology Specification v1.0" (self-identified internally as "Companion identifier O1"), which formalizes the corpus's canonical entity types (over 100), relationship predicates (96), states and enumerations into a single human-readable registry, cross-checked against the Master Control Library's actual node vocabulary. It has been converted and added to this repository as **Artifact #12**, `docs/12-ontology-specification.md`, following the same placement decision recorded below. Four things came out of reviewing it against the rest of the corpus:
 
 1. **It is the real artifact behind R-05's dangling "Ontology" reference.** Core Conceptual Model §0.2 names "Ontology" as a stage in its precedence chain with no corresponding published artifact. It is this document. "Domain Guides," the other unmapped stage in that same chain, is still unaccounted for — this document is explicitly scoped to ontology/semantics only and does not claim that role.
-2. **It restates the eight-state path taxonomy, including `Residual`** (§9.3 and §11.1), agreeing with the Core Conceptual Model and disagreeing with the Scoring Framework and Master Control Library's seven-state version — see the R-02 update above. It does not resolve R-02; it makes the count 2-to-2 among artifacts that state the full taxonomy, which is new information for whoever decides it.
+2. **It originally restated the eight-value path-state taxonomy, including `Residual`** (§9.3 and §11.1), which helped expose R-02. R-02 is now resolved by separating seven validation states from the orthogonal `PathRole` values Primary, Alternate and Residual.
 3. **It restates the artifact-dependency relationship a fifth way**: a "Semantic authority" field ("Constrained by AI Trust Graph Manifesto v1.0 and Core Conceptual Model v1.1") plus a separate, unversioned "Consumes" field naming the other nine operational artifacts. This compounds R-05 rather than resolving it.
 4. **Its own version (1.0) and explicit citation of Core Conceptual Model v1.1** is a third data point supporting the R-06 update above.
 
@@ -193,9 +192,9 @@ The author also chose to reserve the **"AI Trust Graph" name and any future logo
 - §12 of the Ontology Specification jumps from its section header directly into a data table, then to "§12.2 Capability identifiers" — there is no "§12.1" in the source. Preserved exactly as authored.
 - Two of the document's own internal numeric claims were independently verified against the actual repository content during this review rather than taken on faith: "the 72 controls" (§16.1, Appendix B) matches the Master Control Library's actual 72 unique `ATG-` control IDs exactly, and "36 capability identifiers" (§12) matches the Maturity Model's actual 36 `D#.#` identifiers exactly. Both check out.
 
-**Recommendation:** No methodology semantics were changed to accommodate this addition. Three follow-on decisions are now ready for the author, all previously opened by earlier findings and only strengthened here: resolve R-02 (this review's own recommendation, given the new 2-to-2 split, leans toward adding `Residual` back to the Scoring Framework and Master Control Library, but this is the author's call); decide whether "Domain Guides" is a real, still-unwritten companion artifact or a chain reference that should be removed from Core Conceptual Model §0.2; and fold this document's dependency wording into whatever single canonical manifest eventually resolves R-05.
+**Recommendation:** No methodology semantics were changed merely to accommodate Artifact #12. R-02 has since been resolved through a separate governed clarification of path validation state versus path role. The remaining follow-on decisions are to settle whether "Domain Guides" is a real, still-unwritten companion artifact and to fold the artifact-dependency wording into one canonical manifest resolving R-05.
 
-**Status:** Artifact added. R-02, R-05 and R-06 remain open, now with additional evidence recorded above.
+**Status:** Artifact added. R-02 is resolved; R-05 and R-06 remain open.
 
 ---
 
@@ -247,7 +246,7 @@ Summarizing R-08 for quick reference: this repository was intentionally missing 
 | ID | Finding | Severity | Status |
 | --- | --- | --- | --- |
 | R-01 | Manifesto internal-source filenames redacted | Blocking | Resolved by redaction; legal review still pending |
-| R-02 | Path-state taxonomy: 8 states (Core Conceptual Model) vs. 7 states (everywhere else) | Blocking | Open — needs an author decision |
+| R-02 | Path-state taxonomy mixed validation state with residual role | Blocking | Resolved — seven PathState values plus orthogonal PathRole = Primary/Alternate/Residual |
 | R-03 | PEI formula: `B`/`K` vs. `Am`/`CR` vs. spelled-out variable names | Should-fix | Resolved — F-05 standardized on `Am`/`CR` |
 | R-04 | Assessment Methodology phases numbered 1–13 in §0.11 but unlabeled (headers dropped in conversion) in the body | Should-fix | Resolved — `Phase 1`–`Phase 13` headers restored, numbered to match §0.11 |
 | R-05 | Artifact precedence/dependency chain stated four different ways | Should-fix | Open |
@@ -256,6 +255,6 @@ Summarizing R-08 for quick reference: this repository was intentionally missing 
 | R-08 | No LICENSE or SECURITY.md, though the Manifesto's own criteria require them | Blocking | LICENSE (CC BY 4.0) + TRADEMARKS.md added; SECURITY.md still open |
 | R-09 | Evidence Model cites a generic "AI Security Assessment Toolkit" | Minor | Open — confirm during IP review |
 | R-10 | Governance Model cites real external standards (SAC, ISO/IEC 17021-1/17024/17065) | Should-fix | Open — confirm during legal review |
-| R-11 | Ontology Specification added as Artifact #12; strengthens R-02 and R-06, further compounds R-05 | Should-fix / Informational | Artifact added; R-02/R-05/R-06 still open |
+| R-11 | Ontology Specification added as Artifact #12; exposed R-02 and strengthens R-06, further compounds R-05 | Should-fix / Informational | Artifact added; R-02 resolved; R-05/R-06 still open |
 | R-12 | Domain 2 "Trust and CloudHound" echoed a real third-party tool name (BloodHound) | Blocking | Resolved — renamed "Trust and Privilege Paths" everywhere; one historical citation in Manifesto Appendix C left for author decision |
 | R-13 | Phase 2 (deferred by Artifact #12) formally opened; non-normative reference graph schema and query library added | Informational / Governance | Resolved — Artifact #12 Appendix G and Artifact #11 §7.1 updated to match; independent review of the new document still pending |
