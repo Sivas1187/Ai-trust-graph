@@ -11,8 +11,7 @@
 | Status | Public-release candidate |
 | Author | Siva Sethumadhavan |
 | Companion identifier | O1 - Ontology Specification |
-| Semantic authority | Constrained by AI Trust Graph Manifesto v1.0 and Core Conceptual Model v1.1 |
-| Consumes | Validated terminology from Maturity Model, Scoring Framework, Master Control Library, Evidence Model, Assessment Methodology, Assessor Handbook, Reporting Standard, Reference Assessment Repository and Governance Model |
+| Authority and dependencies | Governed by [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md); this ontology formalizes semantics constrained by the Manifesto and Core Conceptual Model and does not publish an independent precedence chain |
 | Product boundary | ExposureGraph product requirements, algorithms, connectors, implementation design, commercial logic and customer information are excluded |
 | Phase boundary | No RDF/OWL, SHACL, JSON Schema, property-graph schema, database model or executable conformance suite is required by this document |
 
