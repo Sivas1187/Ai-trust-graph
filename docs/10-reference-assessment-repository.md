@@ -1954,9 +1954,9 @@ Reference cases support supervised calibration, not self-certification.
 | 6 | Record learning and residual disagreement |
 | 7 | Approve through governed calibration |
 
-# A.6  Tool-conformance use
+# A.6  Illustrative future tool-conformance use
 
-A compatible tool must preserve canonical states and accountable review.
+These vectors are preparatory examples only. They do not establish L4 Tool-compatible conformance, which is unavailable until approved normative schemas and test vectors are published. Any future compatible tool must preserve canonical states and accountable review.
 
 | **Test** | **Expected behavior** |
 | --- | --- |
