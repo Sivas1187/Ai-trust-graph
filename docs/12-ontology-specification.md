@@ -685,9 +685,11 @@ EVIDENCED_BY is a traceability predicate from an assessed object/result to evide
 | evidence and confidence | Support and uncertainty for every material step. |
 | residual path | Route remaining after an intervention. |
 
-# 9.3 Path state taxonomy
+# 9.3 Path validation state and path role
 
-| **State** | **Permitted conclusion** |
+Path validation state and path role are separate semantic dimensions.
+
+| **Path validation state** | **Permitted conclusion** |
 | --- | --- |
 | Candidate | A hypothesized sequence requires review. |
 | Topological | A traversal exists in the represented graph. |
@@ -695,8 +697,15 @@ EVIDENCED_BY is a traceability predicate from an assessed object/result to evide
 | Validated | Authorized testing or direct evidence confirms the scoped progression. |
 | Exploitable | Evidence demonstrates a security exploit path within stated conditions. |
 | Controlled | Validated controls prevent, constrain, detect or contain the path as claimed. |
-| Residual | A route remains after existing or proposed intervention. |
 | Invalidated | Evidence disproves a required step or condition. |
+
+| **Path role** | **Meaning** |
+| --- | --- |
+| Primary | Principal path selected for the current analysis or decision. |
+| Alternate | Different route reaching the same or equivalent target. |
+| Residual | Route remaining after an existing or proposed intervention. |
+
+A path with role Residual MUST retain an independent PathState. Residual therefore does not imply Plausible, Validated, Exploitable, Controlled or any other validation conclusion.
 
 > **PATH RULE** Topological connectivity is never sufficient to label a path exploitable. Identity, permission, protocol, state, data, workflow and other material preconditions must be evidenced or explicitly UNKNOWN.
 
@@ -794,7 +803,8 @@ State labels are deliberately namespaced by object type. The same field name MUS
 | EntityLifecycleState | Candidate; Approved; Rejected; Modified; Retired; Superseded |
 | AssertionReviewState | Candidate; Approved; Rejected; Modified; Superseded |
 | AssessmentResultState | UNKNOWN; Not Assessed; Not Tested; Not Applicable; Inconclusive; Provisional; Final within scope |
-| PathState | Candidate; Topological; Plausible; Validated; Exploitable; Controlled; Residual; Invalidated |
+| PathState | Candidate; Topological; Plausible; Validated; Exploitable; Controlled; Invalidated |
+| PathRole | Primary; Alternate; Residual |
 | ReportReleaseState | Draft; Fact validation; Quality review; Decision review; Final within scope; Superseded; Withdrawn |
 | ArtifactLifecycleState | Draft; Consultation; Candidate; Approved; Deprecated; Withdrawn; Superseded |
 | ConformanceStatus | Candidate; Conformant; Suspended; Expired; Withdrawn |
