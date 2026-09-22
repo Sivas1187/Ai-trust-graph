@@ -866,8 +866,10 @@ Levels indicate claim depth and cannot be presented as maturity, security, compl
 | L1 Method-compatible | Preserves semantics, IDs, result states and versions |
 | L2 Assessment-compatible | Executes required lifecycle and records |
 | L3 Reporting-compatible | Produces compliant report package |
-| L4 Tool-compatible | Passes approved schemas and test vectors |
-| L5 Full-method conformant | Combines applicable assessment, reporting, records and governance requirements |
+| L4 Tool-compatible | Reserved for tools; claim is unavailable until approved normative schemas and test vectors are published. |
+| L5 Full-method conformant | Combines applicable assessment, reporting, records and governance requirements for the declared non-tool scope; it does not imply L4 tool conformance. |
+
+> **CURRENT RELEASE GATE** L4 Tool-compatible MUST NOT be claimed for the current public-release candidate. It becomes available only when a governed machine-readable schema and approved conformance test-vector suite are published. The non-normative Phase 2 reference schema/query companion does not satisfy this gate.
 
 # 4.4  Method-compatible
 
@@ -913,7 +915,9 @@ A report follows Artifact #9 and preserves scope, coverage, UNKNOWN, gates, evid
 
 # 4.7  Tool-compatible
 
-A tool passes schemas, calculations, state preservation, traceability, export and negative test vectors.
+A tool passes approved normative schemas, calculations, state preservation, traceability, export and negative test vectors.
+
+For the current public-release candidate, **L4 is unavailable and MUST NOT be claimed** because the normative schema and conformance test-vector suite have not yet been approved and published. This section defines the future acceptance requirements; it does not make a tool eligible today.
 
 | **Conformance field** | **Requirement** |
 | --- | --- |
@@ -1596,7 +1600,7 @@ Closure includes notice, records custody, certificate status, mark cessation, ap
 
 Tool conformance verifies preservation of canonical semantics and outputs; it does not certify the security of the tool or assessed AI system.
 
-> **NON-NORMATIVE REFERENCE MATERIAL** The repository's Phase 2 companion (`docs/13-reference-graph-schema-and-query-library.md`, cross-referenced from Ontology Specification Appendix G) illustrates one possible property-graph implementation of the ontology and control library. It carries no conformance weight of its own: implementing, ignoring, or replacing it with a different engine or query language has no bearing on L4 Tool-compatible status. A tool seeking L4 conformance is tested against the requirements in this section and Appendix D.4 of the Ontology Specification, not against that companion document.
+> **NON-NORMATIVE REFERENCE MATERIAL** The repository's Phase 2 companion (`docs/13-reference-graph-schema-and-query-library.md`, cross-referenced from Ontology Specification Appendix G) illustrates one possible property-graph implementation of the ontology and control library. It carries no conformance weight of its own. L4 is currently unavailable; when a future release publishes approved normative schemas and test vectors, a tool seeking L4 conformance will be tested against those governed artifacts and the requirements in this section, not against the illustrative companion document.
 
 | **Test family** | **Acceptance requirement** |
 | --- | --- |
