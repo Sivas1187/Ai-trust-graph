@@ -8,7 +8,7 @@ AI Trust Graph models an AI system's real exposure as a directed, labelled multi
 
 ## Status
 
-This repository is a **public-release candidate**. Every artifact carries the same honest status in its closing approval record: the methodology author's internal review is complete, and **independent architecture review, AI-security review, employer/IP/confidentiality review, and licence/trademark approval are all still pending.** Nothing here should be treated as finalized, endorsed, or ready for reliance until those gates close. See [ROADMAP.md](ROADMAP.md) for what remains and [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md) for a ruthless, independent-reviewer-style pass identifying inconsistencies and gaps across the twelve artifacts.
+This repository is a **public-release candidate**. Every artifact carries the same honest status in its closing approval record: the methodology author's internal review is complete, and **independent architecture review, AI-security review, inter-assessor reproducibility validation, employer/IP/confidentiality review, and licence/trademark approval are still pending.** Nothing here should be treated as independently validated, finalized, endorsed, or ready for reliance until those gates close. The exact release-candidate artifact set, authority model, versions and Git blob pins are defined in [METHODOLOGY_MANIFEST.md](METHODOLOGY_MANIFEST.md). See [ROADMAP.md](ROADMAP.md) for what remains and [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md) for the pre-publication review record.
 
 One governance item the methodology's own publication-acceptance criteria calls for is **not yet present in this repository** and is flagged rather than silently added:
 
@@ -33,7 +33,7 @@ On top of the six domains, the methodology defines:
 
 - A **five-level maturity scale** (M1–M5) that is cumulative, evidence-gated, and explicitly *not* an average of control scores.
 - A **six-point evidence grade** (E0–E5) separating how strongly a claim is supported from whether a control is effective.
-- A **Path Exposure Index (PEI)**, `4×Consequence + 3×Reachability + 3×Authority + 2×Amplification + 3×Control-resistance` (range 4–62, bands Low/Moderate/High/Critical), used strictly for triage — never as a probability, an expected loss, or a certification score.
+- A **Path Exposure Index (PEI)**, `4×Consequence + 3×Reachability + 3×Authority + 2×Amplification + 3×Control-resistance` (range **7–62 for determinate eligible active paths**, bands Low/Moderate/High/Critical), used strictly for triage — never as a probability, an expected loss, or a certification score. `UNKNOWN` is never encoded as zero; unresolved material reachability prevents a final point PEI.
 - A doctrine of **distinct, non-numeric result states** (`UNKNOWN`, `Not Assessed`, `Not Applicable`, `Not Tested`, `Inconclusive`, `Provisional`, `Final within scope`) that must never be silently collapsed into a score or a pass/fail.
 - **No overall trust score.** This is a deliberate, repeated design decision across every scoring and reporting artifact, not an oversight.
 
@@ -50,11 +50,11 @@ On top of the six domains, the methodology defines:
 | 7 | [Assessment Methodology](docs/07-assessment-methodology.md) | The 13-phase assessment lifecycle and specialized methods |
 | 8 | [Assessor Handbook](docs/08-assessor-handbook.md) | Assessor competency levels (A1–A5), field guidance per control |
 | 9 | [Reporting Standard](docs/09-reporting-standard.md) | The mandatory report package and claim-integrity rules |
-| 10 | [Reference Assessment Repository](docs/10-reference-assessment-repository.md) | 12 synthetic, fully worked reference assessments |
+| 10 | [Reference Assessment Repository](docs/10-reference-assessment-repository.md) | 12 synthetic worked calibration cases with calibrated control subsets, plus adversarial PEI/M5/reproducibility vectors |
 | 11 | [Governance & Certification Model](docs/11-governance-and-certification-model.md) | Stewardship, change control, certification readiness |
 | 12 | [Ontology Specification](docs/12-ontology-specification.md) | Canonical entity types, relationship predicates, states and enumerations behind every other artifact |
 
-Read them in order if you're new to the methodology, **with one exception**: Artifact #12, the Ontology Specification, is filed last but is meant to be read right after Artifact #2. The Core Conceptual Model's own precedence rule (§0.2) places "Ontology" immediately after itself and before every operational artifact — it was added to this repository after Artifacts #1–#11 were already published, and appending it as #12 avoided renumbering (and re-linking) files already live on GitHub. Read #1, #2, #12, then #3 through #11 in order. Artifact #10's twelve reference cases are entirely synthetic and must never be represented as facts about a real organization, product, or provider.
+The canonical authority/dependency model and exact reading order are defined once in [METHODOLOGY_MANIFEST.md](METHODOLOGY_MANIFEST.md). For a new reader: read #1, #2, #12, then #3 through #11; use #13 only when implementation examples are needed. Artifact #10's twelve worked cases and calibration vectors are entirely synthetic and must never be represented as facts about a real organization, product or provider.
 
 ## Phase 2: non-normative companions
 
@@ -62,7 +62,7 @@ The Ontology Specification (Artifact #12) deliberately deferred machine-readable
 
 | Companion | What it is | Conformance weight |
 | --- | --- | --- |
-| [Reference Graph Schema and Illustrative Query Library](docs/13-reference-graph-schema-and-query-library.md) | Consolidates the ontology's entity/relationship/state registries into a property-graph schema, cross-references all 72 controls' graph vocabulary exactly, and illustrates one query pattern per maturity capability in GQL (ISO/IEC 39075) — the multi-vendor ISO standard, not one vendor's product. | **None.** Not one of the twelve core artifacts; implementing it, ignoring it, or using a different engine entirely has no bearing on any conformance level. See its own §0 and Ontology Specification Appendix G. |
+| [Reference Graph Schema and Illustrative Query Library](docs/13-reference-graph-schema-and-query-library.md) | Consolidates the ontology's entity/relationship/state registries into a property-graph reference schema, cross-references all 72 controls' graph vocabulary, and provides illustrative **GQL-style** query patterns informed by ISO/IEC 39075. The examples are not claimed as parser-validated ISO GQL conformance. | **None.** Not one of the twelve core artifacts. L4 Tool-compatible is currently unavailable until approved normative schemas and test vectors are published; this companion does not satisfy that gate. |
 
 See `REVIEW_FINDINGS.md`, finding R-13, for the full record of why this was opened now and what was and wasn't changed to accommodate it.
 
@@ -75,6 +75,7 @@ See `REVIEW_FINDINGS.md`, finding R-13, for the full record of why this was open
 ```
 ai-trust-graph/
 ├── README.md                 — you are here
+├── METHODOLOGY_MANIFEST.md    — canonical authority/dependency map, versions and exact artifact pins
 ├── LICENSE                    — CC BY 4.0 (methodology text)
 ├── TRADEMARKS.md               — "AI Trust Graph" name/marks, reserved separately from the content license
 ├── ROADMAP.md                 — what's done, what's pending, what's next
@@ -102,7 +103,7 @@ ai-trust-graph/
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). The short version: this is a constitutional methodology, not a wiki — proposals that touch canonical terminology, control definitions, maturity levels, evidence grades, or scoring logic go through the change-control process defined in [Artifact #11, §2](docs/11-governance-and-certification-model.md), not a quick pull request.
 
-You don't need a pull request to help, though. First impressions, questions, and specific findings are all welcome via this repository's Issues (two templates: a structured "Methodology finding" report matching the [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md) format, and a lower-ceremony "General feedback" option) or [Discussions](https://github.com/Sivas1187/Ai-trust-graph/discussions), if enabled. One open structural question this methodology genuinely wants outside input on is whether "Domain Guides" is a real, still-unwritten companion artifact ([R-05](REVIEW_FINDINGS.md#r-05--artifact-precedence-and-dependency-chain-stated-four-different-ways-should-fix)).
+You don't need a pull request to help, though. First impressions, questions, and specific findings are welcome via this repository's Issues (a structured "Methodology finding" template and a lower-ceremony "General feedback" option) or Discussions, if enabled. A particularly valuable external contribution is an **independent blinded assessor-calibration run** using Artifact #10 Appendix B.4; until that protocol is actually executed, the repository does not claim empirically demonstrated inter-assessor reliability.
 
 ## License
 
