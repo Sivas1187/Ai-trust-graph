@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Reference Assessment Repository
 
-*Version 1.0 | Twelve evidence-bounded reference assessments for demonstration, calibration and conformance testing*
+*Version 1.0 | Twelve synthetic worked calibration cases plus adversarial boundary vectors for demonstration and assessor calibration*
 
 > **REPOSITORY RULE** Every case is synthetic. Names, architectures, evidence, scores, findings and decisions are fictional and must not be represented as facts about a real organization, product or provider.
 
@@ -10,15 +10,15 @@
 | --- | --- |
 | Status | Public-release candidate |
 | Author | Siva Sethumadhavan |
-| Semantic baseline | Artifacts #1-#9 |
-| Cases | 12 synthetic reference assessments |
+| Semantic baseline | Exact artifact versions and content pins in [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md) |
+| Cases | 12 synthetic worked calibration cases plus Appendix B adversarial calibration vectors |
 | Case structure | 10 mandatory release sections per case |
 | Product boundary | ExposureGraph implementation, proprietary algorithms, connectors, customer data and commercial workflows excluded |
 | Release boundary | External methodology, employer, IP, confidentiality, licence and trademark approval required |
 
 # 0.1  Repository authority and boundary
 
-The repository demonstrates application of the AI Trust Graph methodology. It does not certify a system, product, assessor, provider or organization.
+The repository demonstrates application of the AI Trust Graph methodology. The twelve worked cases intentionally use calibrated control subsets rather than full 72-control applicability assessments; they must not be described as complete end-to-end assessments. This repository does not certify a system, product, assessor, provider or organization.
 
 | **Field** | **Requirement** |
 | --- | --- |
@@ -1997,6 +1997,8 @@ The corpus uses predecessor methodology semantics and no restricted standards te
 | Artifact #7 | Assessment lifecycle |
 | Artifact #8 | Assessor calibration |
 | Artifact #9 | Reporting package |
+| Artifact #11 | Governance, conformance boundaries and change control |
+| Artifact #12 | Canonical ontology and state namespaces |
 
 # A.9  Release acceptance checklist
 
@@ -2033,3 +2035,61 @@ Demonstrate, calibrate, trace and challenge. Never convert a synthetic expected 
 | Public release | Not approved until mandatory gates close |
 
 Synthetic reference corpus | Public-release candidate | Not certification
+
+# B.1  PEI boundary calibration vectors
+
+These vectors exist to test the arithmetic boundaries and state-handling rules of the Scoring Framework. They are synthetic calibration inputs, not empirical risk observations. Component order is Consequence (C), Reachability (R), Authority (A), Amplification (Am) and Control Resistance (CR).
+
+| **Vector** | **C** | **R** | **A** | **Am** | **CR** | **Expected PEI** | **Expected treatment** |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| P-CAL-01 | 1 | 1 | 0 | 0 | 0 | 7 | Low; minimum determinate active-path score. |
+| P-CAL-02 | 1 | 1 | 1 | 0 | 3 | 19 | Low; upper Low boundary. |
+| P-CAL-03 | 1 | 1 | 1 | 2 | 2 | 20 | Moderate; lower Moderate boundary. |
+| P-CAL-04 | 1 | 2 | 3 | 3 | 3 | 34 | Moderate; upper Moderate boundary. |
+| P-CAL-05 | 1 | 2 | 3 | 2 | 4 | 35 | High; lower High boundary. |
+| P-CAL-06 | 3 | 3 | 4 | 2 | 4 | 49 | High; upper High boundary. |
+| P-CAL-07 | 2 | 4 | 4 | 3 | 4 | 50 | Critical; lower Critical boundary. |
+| P-CAL-08 | 5 | 4 | 4 | 3 | 4 | 62 | Critical; maximum defined score. |
+| P-CAL-09 | 4 | UNKNOWN | 3 | 2 | 2 | No final point PEI | UNKNOWN MUST NOT become zero. If decision-useful, the explicit provisional range for R=1..4 is 38-47; no final point estimate is permitted. |
+| P-CAL-10 | 4 | Disproved | 3 | 2 | 2 | No active PEI | Required reachability condition is disproved; PathState becomes Invalidated. |
+
+> **BOUNDARY RULE** A calibration implementation fails if it assigns a numeric zero to P-CAL-09, publishes a final point PEI for P-CAL-09, or retains an active PEI for P-CAL-10.
+
+# B.2  Residual and alternate-path calibration
+
+These cases test whether PathRole remains independent of PathState and whether one controlled route can hide another material route.
+
+| **Vector** | **Scenario** | **Expected result** |
+| --- | --- | --- |
+| P-CAL-11 | Current path C3/R3/A3/Am3/CR3 = PEI 45 High. A validated intervention leaves C3/R3/A1/Am1/CR0 = PEI 26 Moderate. | Preserve the original run. Record the post-intervention route as PathRole=Residual with its own independent validation state. Path Reduction Delta = 19. Do not call the reduction "risk reduction" unless the changed control and residual route were validated. |
+| P-CAL-12 | Primary route is Controlled at C3/R2/A0/Am0/CR0 = PEI 18 Low, but an alternate route exists at C3/R2/A3/Am1/CR3 = PEI 38 High. | Score the alternate path separately. Do not conclude the target is controlled merely because the primary route is controlled. |
+
+# B.3  M5 maturity calibration pair
+
+The pair below exists because a maturity model that advertises M5 must demonstrate both a valid M5 determination and a seductive false-positive that must be rejected.
+
+| **Vector** | **Synthetic evidence pattern** | **Expected result** |
+| --- | --- | --- |
+| M-CAL-01 | D3.1-D3.6 each satisfy all cumulative M1-M5 criteria; critical gates are passed; repeated E5 evidence demonstrates change-triggered authority review, validated adaptive constraints, outcome review, revocation exercises and governed human review of automation. | D3 = M5 Adaptive, with scope, evidence period and limitations stated. |
+| M-CAL-02 | D3.1=M5, D3.2=M5, D3.3=M2, D3.4=M5, D3.5=M4, D3.6=M2. Advanced telemetry and automation exist, but approval/oversight and decision-governance foundations are only repeatable. | D3 = M2. Higher-level automation MUST NOT compensate for the M2 common floor; any applicable open critical gate may cap or invalidate the conclusion further. |
+
+# B.4  Inter-assessor reproducibility release gate
+
+Synthetic examples are not evidence of reproducibility until independent assessors apply the same frozen case pack without access to the answer key.
+
+A methodology release MUST NOT claim that assessor reproducibility has been independently demonstrated until this protocol has been executed and the results published.
+
+| **Protocol element** | **Requirement** |
+| --- | --- |
+| Artifact freeze | Use one exact [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md) snapshot and immutable case versions. |
+| Assessors | Minimum three qualified assessors independent of case authorship; five or more is preferred for a release study. |
+| Blinding | Assessors complete workpapers independently before seeing reference answers or other assessors' results. |
+| Outputs compared | Applicability, evidence grade, control score, PathState, PathRole, PEI components/band, capability/domain maturity, critical gates and finding taxonomy. |
+| Provisional categorical gate | At least 80% exact agreement for PathState, PEI band and domain maturity across determinate items; zero unresolved disagreement on whether a material critical gate is open. |
+| Provisional ordinal/numeric gate | At least 90% of determinate control-score and PEI-component ratings differ by no more than one scale point; all arithmetic values must recalculate exactly from selected components. |
+| Disagreement handling | Preserve original workpapers, classify semantic/evidence/procedural/judgment variance, adjudicate after measurement and record root cause. |
+| Publication | Publish sample size, case/version identifiers, raw agreement counts, adjudicated changes, limitations and any methodology changes caused by the exercise. |
+| Anti-overclaim | These thresholds are governance release gates, not claims of psychometric validity, predictive validity or universal assessor reliability. |
+
+**Current status:** protocol defined; independent multi-assessor execution has **not yet been performed**. Until it is performed, the repository may claim that it provides a reproducibility protocol, but MUST NOT claim empirically demonstrated inter-assessor reliability or external validation.
+
