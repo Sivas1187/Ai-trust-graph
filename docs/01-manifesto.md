@@ -296,7 +296,7 @@ The methodology replaces penetration testing, model evaluation, legal advice, ce
 | --- | --- |
 | Manifesto, whitepaper and glossary. | ExposureGraph product requirements, roadmap and architecture. |
 | Canonical ontology and public schema. | Proprietary ingestion, inference, ranking and analytics implementations. |
-| Domain guides, controls, evidence model and test descriptions. | Client data, production connectors and operational configuration. |
+| Controls, evidence model, test descriptions and any future governed extension guides. | Client data, production connectors and operational configuration. |
 | Maturity and scoring rules selected for transparent public use. | Commercial packaging, pricing, sales strategy and unreleased differentiators. |
 | Synthetic examples and sanitized sample assessments. | Employer or client materials, confidential branding and protected third-party content. |
 | Contribution, versioning, security and release governance. | Secrets, keys, environments, accounts and non-public vulnerability information. |
@@ -363,7 +363,7 @@ Practitioners adopting AI Trust Graph commit to use the methodology responsibly,
 
 | **Gate** | **Acceptance criterion** |
 | --- | --- |
-| Content integrity | Manifesto aligns with the whitepaper, ontology, domain guides, control library, evidence model, maturity model and assessor handbook. |
+| Content integrity | Manifesto aligns with the canonical ontology, control library, evidence model, maturity model and assessor handbook; any future sector or technology guide is governed as an Extension artifact rather than a core methodology dependency. |
 | Public boundary | No ExposureGraph product architecture, confidential client information or unapproved employer content is included. |
 | Legal and IP review | Ownership, employer obligations, third-party references, trademarks and license are approved. |
 | Terminology | Canonical terms and identifiers are consistent across all repository artifacts. |
