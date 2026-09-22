@@ -56,6 +56,16 @@ On top of the six domains, the methodology defines:
 
 Read them in order if you're new to the methodology, **with one exception**: Artifact #12, the Ontology Specification, is filed last but is meant to be read right after Artifact #2. The Core Conceptual Model's own precedence rule (§0.2) places "Ontology" immediately after itself and before every operational artifact — it was added to this repository after Artifacts #1–#11 were already published, and appending it as #12 avoided renumbering (and re-linking) files already live on GitHub. Read #1, #2, #12, then #3 through #11 in order. Artifact #10's twelve reference cases are entirely synthetic and must never be represented as facts about a real organization, product, or provider.
 
+## Phase 2: non-normative companions
+
+The Ontology Specification (Artifact #12) deliberately deferred machine-readable/property-graph bindings to an unscheduled "Phase 2," on the grounds that the methodology should not be bound to an implementation before its concepts were settled. That phase has now formally begun:
+
+| Companion | What it is | Conformance weight |
+| --- | --- | --- |
+| [Reference Graph Schema and Illustrative Query Library](docs/13-reference-graph-schema-and-query-library.md) | Consolidates the ontology's entity/relationship/state registries into a property-graph schema, cross-references all 72 controls' graph vocabulary exactly, and illustrates one query pattern per maturity capability in GQL (ISO/IEC 39075) — the multi-vendor ISO standard, not one vendor's product. | **None.** Not one of the twelve core artifacts; implementing it, ignoring it, or using a different engine entirely has no bearing on any conformance level. See its own §0 and Ontology Specification Appendix G. |
+
+See `REVIEW_FINDINGS.md`, finding R-13, for the full record of why this was opened now and what was and wasn't changed to accommodate it.
+
 ## Product boundary
 
 **ExposureGraph** is referenced in several artifacts as a separate, future commercial product. It is explicitly and permanently **excluded from this public methodology**: its implementation, proprietary algorithms, connectors, customer data, and commercial workflows are out of scope here, and no future contribution should attempt to fold it back in. The methodology itself is designed to remain tool-independent and vendor-neutral — any compliant implementation should be able to execute it.
@@ -84,7 +94,8 @@ ai-trust-graph/
     ├── 09-reporting-standard.md
     ├── 10-reference-assessment-repository.md
     ├── 11-governance-and-certification-model.md
-    └── 12-ontology-specification.md    — filed last; read right after #2 (see "The twelve artifacts")
+    ├── 12-ontology-specification.md    — filed last; read right after #2 (see "The twelve artifacts")
+    └── 13-reference-graph-schema-and-query-library.md  — Phase 2, non-normative (see "Phase 2: non-normative companions")
 ```
 
 ## Contributing and feedback
