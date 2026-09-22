@@ -1786,7 +1786,7 @@ The library consolidates concepts in the AI Trust Graph artifacts and the existi
 | AI Trust Graph Maturity Model v1.0 | Capabilities, maturity progression and critical gates. |
 | AI Trust Graph Scoring Framework v1.0 | Control scoring, evidence caps, coverage, UNKNOWN and path triage. |
 | AI Security Assessment Toolkit, 15 Domains | Detailed control themes, evidence, test methods, graph mappings and gaps. |
-| Ontology and future domain guides | Final semantic reconciliation required before public release. |
+| Ontology and any future Extension guides | Final semantic reconciliation required before public release; extension guides are not core v1.0 artifacts. |
 
 # A.9  v1.0 release acceptance checklist
 
