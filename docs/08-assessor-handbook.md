@@ -31,7 +31,7 @@ FOUNDATION
 
 # 0.2  Artifact precedence
 
-When guidance appears inconsistent, assessors preserve Manifesto commitments and Core Conceptual Model semantics, then apply the latest approved Maturity, Scoring, Control, Evidence and Assessment artifacts.
+When guidance appears inconsistent, assessors stop the affected conclusion and use the canonical authority/dependency map in [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md). The handbook cannot override a canonical semantic or normative artifact.
 
 | **Handbook rule** | **Operational direction** |
 | --- | --- |
