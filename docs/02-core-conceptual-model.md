@@ -32,11 +32,13 @@ Content derived from employer systems, client work, internal methods or third-pa
 
 # 0.2  Document authority, precedence and change
 
-The Core Conceptual Model is the authoritative semantic layer of the AI Trust Graph methodology. It constrains the ontology, domain guides, controls, tests, scoring model, assessor handbook, reports and compatible tools.
+The Core Conceptual Model is the authoritative semantic layer of the AI Trust Graph methodology. It constrains the ontology, normative assessment artifacts, operational guidance, reports and compatible tools.
 
-When artifacts disagree, maintainers first preserve the Manifesto commitments, then apply this model, and finally update lower-level artifacts through versioned change. A product implementation must not become the hidden source of truth.
+When artifacts disagree, maintainers preserve the Manifesto commitments and this model's semantics, then resolve the conflict through the governed authority map and versioned change process. A product implementation must not become the hidden source of truth.
 
-> **PRECEDENCE** Manifesto -> Core Conceptual Model -> Ontology -> Domain Guides -> Controls and Tests -> Maturity and Scoring -> Assessor Handbook -> Reports and Tooling
+> **CANONICAL ARTIFACT MAP** Repository-wide authority, dependency order, bundle versions and content pins are governed by [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md). This artifact does not define a competing precedence chain.
+
+**Domain Guides are not a core v1.0 artifact.** Any future sector-, jurisdiction- or technology-specific guide is an Extension artifact under the Governance and Certification Model and MUST NOT silently redefine canonical concepts, controls, maturity, evidence or scoring.
 
 | **Artifact** | **Authority** |
 | --- | --- |
