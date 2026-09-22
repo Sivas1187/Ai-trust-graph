@@ -4,7 +4,7 @@
 
 *Version 1.0 | Canonical semantic companion for graph-based AI trust, authority, evidence, controls, paths and assurance*
 
-> **DOCUMENT ROLE** Human-readable canonical ontology for Phase 1 methodology publication. It formalizes the classes, predicates, properties, states and semantic constraints already expressed across the AI Trust Graph methodology. Machine-readable schemas and implementation bindings are intentionally deferred to a later engineering phase.
+> **DOCUMENT ROLE** Human-readable canonical ontology for methodology publication. It formalizes the classes, predicates, properties, states and semantic constraints already expressed across the AI Trust Graph methodology. A non-normative Phase 2 reference schema/query companion now exists, while approved normative machine-readable schemas and the executable conformance suite remain deferred.
 
 | **Field** | **Value** |
 | --- | --- |
@@ -13,7 +13,7 @@
 | Companion identifier | O1 - Ontology Specification |
 | Authority and dependencies | Governed by [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md); this ontology formalizes semantics constrained by the Manifesto and Core Conceptual Model and does not publish an independent precedence chain |
 | Product boundary | ExposureGraph product requirements, algorithms, connectors, implementation design, commercial logic and customer information are excluded |
-| Phase boundary | No RDF/OWL, SHACL, JSON Schema, property-graph schema, database model or executable conformance suite is required by this document |
+| Phase boundary | Artifact #13 is non-normative reference material; approved normative RDF/OWL, SHACL, JSON Schema/property-graph bindings and executable conformance test vectors remain deferred |
 
 Methodology doctrine: make the AI estate visible; make relationships explicit; bound authority; validate paths and controls; preserve evidence and uncertainty; enable accountable, defensible decisions.
 
