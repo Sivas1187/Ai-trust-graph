@@ -36,7 +36,7 @@ The Manifesto defines commitments. The Core Conceptual Model defines semantics. 
 
 The Master Control Library will supply canonical controls. The Assessor Handbook will define execution and calibration procedures.
 
-> **DEPENDENCY CHAIN** Manifesto -> Core Conceptual Model -> Maturity Model -> Scoring Framework -> Master Control Library -> Assessor Handbook
+> **CANONICAL ARTIFACT MAP** Repository-wide authority, dependency order, bundle versions and content pins are governed by [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md). This artifact does not define a competing precedence chain.
 
 | **Artifact** | **Scoring dependency** |
 | --- | --- |
