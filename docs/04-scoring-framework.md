@@ -605,7 +605,7 @@ Only paths with a defined start condition, target, traversals, material conditio
 | --- | --- |
 | Candidate | No final band; profile missing conditions. |
 | Topological | No exploitability conclusion; optional provisional profile. |
-| Plausible | Exposure band permitted with confidence and UNKNOWN conditions. |
+| Plausible | Exposure band permitted only when all numeric PEI components are determinate; otherwise retain a provisional component profile or bounded range and surface UNKNOWN explicitly. |
 | Validated | Exposure band supported within tested conditions. |
 | Exploitable | Only when evidence demonstrates exploit progression. |
 | Controlled | Band reflects validated breakpoint and residual path. |
@@ -629,11 +629,17 @@ Reachability scale is one component of the path profile. Assessors select the de
 
 | **Value** | **Label** | **Descriptor** |
 | --- | --- | --- |
-| 0 | Not established | Required route is UNKNOWN or disproved. |
 | 1 | Remote | Multiple restrictive conditions or unlikely access prerequisites. |
 | 2 | Conditional | Plausible with identifiable permissions, state or user action. |
 | 3 | Direct | Short validated route with available access or invocation. |
 | 4 | Persistent / broad | Standing, repeated, inherited or broadly available route. |
+
+Reachability has no numeric zero state for an eligible active path.
+
+| **Non-numeric reachability outcome** | **Required treatment** |
+| --- | --- |
+| UNKNOWN | Do not substitute zero. Final PEI is prohibited until the material reachability condition is resolved. A bounded provisional PEI range MAY be shown if every other component is determinate and the range assumptions are explicit. |
+| Disproved | Set the affected path to Invalidated. Do not retain an active PEI for that path. |
 
 # 4.5  Authority-actionability scale
 
@@ -679,7 +685,7 @@ Uncertainty is displayed separately and can trigger escalation. It is not added 
 | High confidence | Band may be final within scope. |
 | Medium confidence | Band is final with bounded limitations or provisional as policy requires. |
 | Low confidence | Band remains provisional; prioritize validation if potential consequence is material. |
-| UNKNOWN material condition | Do not claim validated or exploitable; show condition and owner. |
+| UNKNOWN material condition | Do not claim validated or exploitable. If the UNKNOWN affects a numeric PEI component, do not publish a final point PEI; retain the component as UNKNOWN and show an explicit bounded range only when decision-useful. |
 | Conflicting evidence | Retain conflict; no final exploitability claim. |
 
 # 4.9  Path Exposure Index for triage
@@ -688,7 +694,7 @@ For triage only, a Path Exposure Index (PEI) may be calculated from consequence,
 
 The arithmetic improves consistency but does not create probability. The component profile remains the authoritative explanation.
 
-> **FORMULA** PEI = 4 x Consequence + 3 x Reachability + 3 x Authority + 2 x Amplification + 3 x Control Resistance. Range: 4 to 62 for eligible scored paths.
+> **FORMULA** PEI = 4 x Consequence + 3 x Reachability + 3 x Authority + 2 x Amplification + 3 x Control Resistance. Range: 7 to 62 for determinate eligible active paths. UNKNOWN is never encoded as zero; an invalidated path has no active PEI.
 
 | **Component** | **Weight** | **Rationale** |
 | --- | --- | --- |
@@ -700,11 +706,11 @@ The arithmetic improves consistency but does not create probability. The compone
 
 # 4.10  PEI bands and overrides
 
-Bands are triage categories and require calibration using synthetic and field cases. Critical overrides take precedence over the arithmetic.
+Bands are triage categories and require calibration using synthetic and field cases. The synthetic calibration suite in the Reference Assessment Repository exercises every band boundary, UNKNOWN, Invalidated, residual and alternate-path treatment. Field and inter-assessor calibration remain mandatory before any claim of validated predictive performance. Critical overrides take precedence over the arithmetic.
 
 | **PEI** | **Band** | **Decision use** |
 | --- | --- | --- |
-| 4-19 | Low | Track in normal analysis cycle. |
+| 7-19 | Low | Track in normal analysis cycle. |
 | 20-34 | Moderate | Prioritize validation and bounded remediation. |
 | 35-49 | High | Management oversight, near-term treatment and test plan. |
 | 50-62 | Critical | Immediate authorized escalation, containment or decision review as applicable. |
