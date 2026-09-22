@@ -137,6 +137,21 @@ The lifecycle contains thirteen controlled phases. Phases may iterate, but requi
 | 12 Report | Quality-reviewed decision package. |
 | 13 Reassess | Trigger-based new or updated run. |
 
+# 0.11.1  Conceptual-to-execution lifecycle crosswalk
+
+The Core Conceptual Model expresses the method as six conceptual stages. This Assessment Methodology expands those stages into thirteen execution phases with operational gates. The two views are complementary, not competing lifecycle definitions; the mapping is intentionally many-to-many where evidence or validation spans more than one conceptual stage.
+
+| **Core Conceptual Model stage** | **Primary execution phases** | **Crosswalk note** |
+| --- | --- | --- |
+| 1 Frame and scope | 1 Initiate; 2 Scope | Establish decision purpose, authorization, boundaries, owners, population and constraints. |
+| 2 Discover and register | 3 Discover; 5 Evidence | Identify the estate and begin evidence lineage; evidence collection continues throughout later phases. |
+| 3 Construct and approve graph | 4 Model; 5 Evidence | Normalize graph objects, relationships, boundaries and reviewed evidence-linked assertions. |
+| 4 Analyze trust, authority and paths | 6 Controls; 7 Paths; 8 Maturity; 9 Scoring | Evaluate control state, material paths, capability maturity and transparent decision measures. |
+| 5 Validate and decide | 6 Controls; 7 Paths; 10 Findings; 11 Decisions; 12 Report | Validate controls and paths, issue bounded findings, record accountable decisions and release reviewed conclusions. |
+| 6 Monitor and reassess | 13 Reassess | Change, drift, incidents, remediation and expiry trigger a new or updated versioned assessment run; monitoring operates between runs as defined by the applicable controls. |
+
+> **CROSSWALK RULE** The six-stage conceptual view defines reasoning intent. The thirteen-phase execution view defines fieldwork and gates. Neither may be used to skip a requirement in the other.
+
 # 0.12  Exit criteria overview
 
 Each phase has entry conditions, mandatory activities, outputs, decision gates and quality checks. An incomplete phase may proceed only under an approved limitation that does not invalidate downstream work.
