@@ -83,7 +83,7 @@ A path whose role is `Residual` retains its own independent `PathState`. The Cor
 
 ---
 
-## R-05 — Artifact precedence and dependency chain stated four different ways (Should-fix)
+## R-05 — Artifact precedence and dependency chain stated multiple ways (Should-fix, resolved)
 
 **Artifacts:** [Core Conceptual Model](docs/02-core-conceptual-model.md) §0.2; [Maturity Model](docs/03-maturity-model.md) header field; [Scoring Framework](docs/04-scoring-framework.md) header field; [Assessment Methodology](docs/07-assessment-methodology.md) §0.2.
 
@@ -100,11 +100,15 @@ Meanwhile, the **Reference Assessment Repository** and **Governance & Certificat
 
 **Recommendation:** Adopt one canonical dependency statement — ideally as a machine-checkable manifest per Artifact #11's registry model (§0.6, §2.1) — and have every artifact's header field cite it rather than restate it. Decide explicitly whether "Ontology" and "Domain Guides" are real, separately-versioned sub-artifacts or just internal section names within the Core Conceptual Model and Master Control Library, and make the Core Conceptual Model's §0.2 chain match whichever is true.
 
-**Update (R-11):** The "Ontology" stage is now answered: it is a real, separately-versioned artifact, and has been published as Artifact #12, the [Ontology Specification](docs/12-ontology-specification.md). "Domain Guides" remains unanswered — the Ontology Specification is explicitly scoped to semantic/ontology content only and does not claim to be the Domain Guides artifact. The new artifact also adds a *fifth* distinct wording of the dependency relationship (a "Semantic authority" field plus a separate, unversioned "Consumes" list) — see R-11 for detail.
+**Update (R-11):** The "Ontology" stage is now answered: it is a real, separately-versioned artifact, published as Artifact #12.
+
+**Resolution (2026-09-23):** [METHODOLOGY_MANIFEST.md](METHODOLOGY_MANIFEST.md) is now the single repository-wide authority/dependency map and exact artifact registry. The competing precedence/dependency chains in the Core Conceptual Model, Maturity Model, Scoring Framework, Control Library, Evidence Model, Assessment Methodology, Assessor Handbook, Reporting Standard, Governance Model and Ontology Specification were replaced with references to the manifest. "Domain Guides" are explicitly **not** a core v1.0 artifact; any future sector-, jurisdiction- or technology-specific guide is governed as an Extension artifact under Artifact #11.
+
+**Status:** Resolved.
 
 ---
 
-## R-06 — Version skew: Core Conceptual Model is v1.1, everything else is v1.0 (Blocking)
+## R-06 — Version skew: Core Conceptual Model is v1.1 while the bundle is a v1.0 candidate (Blocking, resolved)
 
 **Artifacts:** [Core Conceptual Model](docs/02-core-conceptual-model.md) (v1.1) vs. all other ten artifacts (v1.0).
 
@@ -114,7 +118,11 @@ Meanwhile, the **Reference Assessment Repository** and **Governance & Certificat
 
 **Recommendation:** Either (a) bump the Core Conceptual Model back to 1.0 for the initial public release and treat its current content as the actual v1.0 baseline (if no prior public v1.0 of that artifact ever existed, calling it 1.1 may itself be a labeling leftover from internal drafting), or (b) keep 1.1 and publish an explicit release manifest — e.g., in CHANGELOG.md — pinning the exact version of every artifact that constitutes "Methodology v1.0." Option (b) is consistent with, and arguably required by, Governed-object registry rules already defined in Artifact #11 §0.6.
 
-**Update (R-11):** The newly added Ontology Specification (Artifact #12) is itself versioned 1.0 and explicitly cites "Core Conceptual Model v1.1" as an upstream dependency — the same correct pattern already followed by the Maturity Model and Scoring Framework. This is a third artifact confirming that the v1.1 revision was deliberate and isolated, which further supports resolving this via option (b) — an explicit release manifest — rather than rolling the Core Conceptual Model back to 1.0.
+**Update (R-11):** The newly added Ontology Specification (Artifact #12) is versioned 1.0 while the Core Conceptual Model remains v1.1, confirming the need for a bundle-level manifest.
+
+**Resolution (2026-09-23):** [METHODOLOGY_MANIFEST.md](METHODOLOGY_MANIFEST.md) defines bundle identifier **1.0-rc.1** and pins the exact version, path and Git blob SHA of every core artifact plus the Phase 2 companion. The Core Conceptual Model remains v1.1 intentionally; the bundle no longer relies on an ambiguous shorthand "v1.0" to identify content.
+
+**Status:** Resolved for bundle identity and reproducibility. No stable release is implied; external release gates remain pending.
 
 ---
 
@@ -237,6 +245,103 @@ The author also chose to reserve the **"AI Trust Graph" name and any future logo
 
 ---
 
+
+## R-14 — PEI encoded UNKNOWN and disproved reachability as numeric zero (Blocking, resolved)
+
+**Artifact:** [Scoring Framework](docs/04-scoring-framework.md) §§4.2, 4.4, 4.8-4.10.
+
+**Finding:** Reachability value 0 previously combined two different conditions: a materially UNKNOWN route and a disproved route. That allowed missing knowledge to contribute zero to PEI, numerically lowering exposure despite the methodology-wide invariant that UNKNOWN is non-numeric.
+
+**Resolution:** Numeric reachability for an eligible active path is now 1-4. UNKNOWN cannot be substituted with zero and prohibits a final point PEI when it affects a numeric component; an explicit bounded provisional range may be shown when decision-useful. A disproved required reachability condition sets the path to Invalidated and removes its active PEI. The determinate active-path range is therefore 7-62 and the Low band is 7-19.
+
+**Status:** Resolved. Existing RA-01-RA-12 PEI values are unchanged.
+
+---
+
+## R-15 — PEI bands lacked Low/Moderate boundary calibration (Blocking for validation claims, resolved synthetically)
+
+**Artifacts:** [Scoring Framework](docs/04-scoring-framework.md) §4.10; [Reference Assessment Repository](docs/10-reference-assessment-repository.md) Appendix B.
+
+**Finding:** The original twelve worked cases produced only High or Critical PEI values, leaving Low/Moderate bands and threshold transitions unexercised.
+
+**Resolution:** Appendix B.1 now provides deterministic synthetic vectors at PEI 7, 19, 20, 34, 35, 49, 50 and 62, plus explicit UNKNOWN and Invalidated vectors. Appendix B.2 adds residual and alternate-path cases.
+
+**Status:** Synthetic calibration gap resolved. Field/predictive validation is not claimed.
+
+---
+
+## R-16 — No demonstrated inter-assessor reproducibility (Blocking for validation claims; external gate remains open)
+
+**Artifact:** [Reference Assessment Repository](docs/10-reference-assessment-repository.md) Appendix B.4.
+
+**Finding:** Author-generated reference cases cannot demonstrate independent assessor reproducibility.
+
+**Resolution:** A blinded multi-assessor protocol and provisional release gates are now defined, including artifact freeze, assessor independence, outputs compared, agreement thresholds, disagreement handling and publication requirements. Repository wording now explicitly prohibits claims of empirically demonstrated inter-assessor reliability until the protocol is actually executed.
+
+**Status:** **Open external validation gate.** This cannot be honestly closed by repository editing alone; independent assessors must perform the study.
+
+---
+
+## R-17 — README described calibrated subsets as "fully worked reference assessments" (Major, resolved)
+
+**Finding:** Each reference case explicitly states that its control results are a calibrated subset and do not replace full applicability analysis, while the README called them fully worked assessments.
+
+**Resolution:** Public wording now describes them as twelve synthetic worked calibration cases with calibrated control subsets plus adversarial calibration vectors. Artifact #10 also states that the cases must not be described as complete 72-control end-to-end assessments.
+
+**Status:** Resolved.
+
+---
+
+## R-18 — Six-stage conceptual lifecycle and thirteen-phase execution lifecycle lacked a crosswalk (Major, resolved)
+
+**Artifacts:** [Core Conceptual Model](docs/02-core-conceptual-model.md) §7.5; [Assessment Methodology](docs/07-assessment-methodology.md) §0.11.
+
+**Resolution:** Assessment Methodology §0.11.1 now maps the six conceptual stages to the thirteen execution phases and explicitly states that the views are complementary and many-to-many rather than competing lifecycle definitions.
+
+**Status:** Resolved.
+
+---
+
+## R-19 — L4 Tool-compatible was defined before normative schemas/test vectors existed (Major, resolved)
+
+**Artifacts:** [Governance & Certification Model](docs/11-governance-and-certification-model.md) §§4.3, 4.7, 7.1; [Ontology Specification](docs/12-ontology-specification.md) Appendix D.4; Artifact #13.
+
+**Resolution:** L4 is now explicitly **unavailable for the current release candidate** and MUST NOT be claimed until approved normative machine-readable schemas and conformance test vectors are published. Artifact #13 is explicitly non-normative and cannot satisfy this gate. L5 for a declared non-tool scope does not imply L4 tool conformance.
+
+**Status:** Resolved.
+
+---
+
+## R-20 — Artifact #13 misstated conformance counts/classes (Major, resolved)
+
+**Finding:** Artifact #13 said "five conformance levels" even though L0-L5 defines six, and referred to "seven conformance classes" where Artifact #11 defines seven artifact classes rather than seven conformance classes.
+
+**Resolution:** The status box now correctly states six conformance levels and removes the nonexistent "seven conformance classes" claim.
+
+**Status:** Resolved.
+
+---
+
+## R-21 — Artifact #13 claimed unvalidated query examples were GQL (Major, resolved)
+
+**Finding:** The companion stated that every query was written in ISO/IEC 39075 GQL without evidence of parser/conformance testing.
+
+**Resolution:** The document now calls them **illustrative GQL-style patterns informed by ISO/IEC 39075** and explicitly states that syntactic ISO GQL conformance is not claimed until parser/conformance validation occurs. README language is aligned.
+
+**Status:** Resolved.
+
+---
+
+## R-22 — Reference corpus lacked M5 and adversarial calibration breadth (Major, resolved synthetically)
+
+**Artifact:** [Reference Assessment Repository](docs/10-reference-assessment-repository.md) Appendix B.
+
+**Resolution:** Appendix B adds (a) full PEI boundary vectors, (b) UNKNOWN and Invalidated handling, (c) residual and alternate-path cases, and (d) an M5 positive/false-positive pair demonstrating the non-compensating maturity rule.
+
+**Status:** Synthetic calibration breadth resolved. Independent assessor validation remains governed by R-16.
+
+---
+
 ## Gaps
 
 Summarizing R-08 for quick reference: this repository was intentionally missing a **LICENSE** and a **SECURITY.md**, both called for by the Manifesto's own Appendix B. **LICENSE** (CC BY 4.0) and its companion **TRADEMARKS.md** have since been added, on the methodology author's explicit decision — see the R-08 update above. **SECURITY.md** remains missing and is still flagged rather than added, because drafting it responsibly requires the author to decide what a real disclosure process looks like, not just fill in a template.
@@ -249,12 +354,21 @@ Summarizing R-08 for quick reference: this repository was intentionally missing 
 | R-02 | Path-state taxonomy mixed validation state with residual role | Blocking | Resolved — seven PathState values plus orthogonal PathRole = Primary/Alternate/Residual |
 | R-03 | PEI formula: `B`/`K` vs. `Am`/`CR` vs. spelled-out variable names | Should-fix | Resolved — F-05 standardized on `Am`/`CR` |
 | R-04 | Assessment Methodology phases numbered 1–13 in §0.11 but unlabeled (headers dropped in conversion) in the body | Should-fix | Resolved — `Phase 1`–`Phase 13` headers restored, numbered to match §0.11 |
-| R-05 | Artifact precedence/dependency chain stated four different ways | Should-fix | Open |
-| R-06 | Core Conceptual Model at v1.1 while the bundle is called "v1.0" | Blocking | Open — needs a release-manifest decision |
+| R-05 | Artifact precedence/dependency chain stated multiple ways | Should-fix | Resolved — canonical METHODOLOGY_MANIFEST.md; Domain Guides classified as future Extensions |
+| R-06 | Core Conceptual Model at v1.1 inside v1.0 candidate bundle | Blocking | Resolved — bundle 1.0-rc.1 manifest pins exact versions and Git blob SHAs |
 | R-07 | Every artifact shows "Pending" for all independent reviews | Blocking (by design) | Must remain accurate, not be softened |
 | R-08 | No LICENSE or SECURITY.md, though the Manifesto's own criteria require them | Blocking | LICENSE (CC BY 4.0) + TRADEMARKS.md added; SECURITY.md still open |
 | R-09 | Evidence Model cites a generic "AI Security Assessment Toolkit" | Minor | Open — confirm during IP review |
 | R-10 | Governance Model cites real external standards (SAC, ISO/IEC 17021-1/17024/17065) | Should-fix | Open — confirm during legal review |
-| R-11 | Ontology Specification added as Artifact #12; exposed R-02 and strengthens R-06, further compounds R-05 | Should-fix / Informational | Artifact added; R-02 resolved; R-05/R-06 still open |
+| R-11 | Ontology Specification added as Artifact #12; exposed R-02/R-05/R-06 | Should-fix / Informational | Artifact added; R-02/R-05/R-06 resolved |
 | R-12 | Domain 2 "Trust and CloudHound" echoed a real third-party tool name (BloodHound) | Blocking | Resolved — renamed "Trust and Privilege Paths" everywhere; one historical citation in Manifesto Appendix C left for author decision |
-| R-13 | Phase 2 (deferred by Artifact #12) formally opened; non-normative reference graph schema and query library added | Informational / Governance | Resolved — Artifact #12 Appendix G and Artifact #11 §7.1 updated to match; independent review of the new document still pending |
+| R-13 | Phase 2 formally opened; non-normative reference graph schema/query library added | Informational / Governance | Resolved — governance boundary explicit; companion v0.2 remains non-normative |
+| R-14 | PEI encoded UNKNOWN/disproved reachability as numeric zero | Blocking | Resolved — UNKNOWN non-numeric; disproved = Invalidated; active PEI range 7-62 |
+| R-15 | PEI bands lacked Low/Moderate boundary calibration | Blocking for validation claims | Resolved synthetically — boundary/adversarial vectors added |
+| R-16 | No demonstrated inter-assessor reproducibility | Blocking for validation claims | Open external gate — protocol defined; empirical study still required |
+| R-17 | README overstated calibrated subsets as fully worked assessments | Major | Resolved |
+| R-18 | Six-stage vs thirteen-phase lifecycle lacked crosswalk | Major | Resolved |
+| R-19 | L4 Tool-compatible claimable before normative schemas/test vectors | Major | Resolved — L4 unavailable in current candidate |
+| R-20 | Artifact #13 misstated conformance levels/classes | Major | Resolved |
+| R-21 | Artifact #13 overclaimed GQL conformance | Major | Resolved — GQL-style only pending validation |
+| R-22 | Reference corpus lacked M5/adversarial calibration breadth | Major | Resolved synthetically |
