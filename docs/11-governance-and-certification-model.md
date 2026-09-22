@@ -87,9 +87,9 @@ Every governed object has owner, version, status, effective date, dependencies, 
 | Evidence | Versioned registry, decision log and review record |
 | Failure response | Pause affected claim, preserve state and escalate |
 
-# 0.7  Artifact precedence
+# 0.7  Artifact authority and dependency
 
-When artifacts conflict, affected use stops, evidence is preserved and the conflict is resolved under semantic-governance procedure.
+When artifacts conflict, affected use stops, evidence is preserved and the conflict is resolved under semantic-governance procedure. The canonical repository-wide authority/dependency map and exact release pins are maintained in [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md); other artifacts MUST reference that manifest rather than publish competing precedence chains.
 
 | **Field** | **Requirement** |
 | --- | --- |
