@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Core Conceptual Model
 
-*Version 1.1 | Refactored theory of graph-based AI trust, authority, exposure, evidence and control*
+*Version 1.1.1 | Refactored theory of graph-based AI trust, authority, exposure, evidence and control*
 
 > **DOCUMENT ROLE** The authoritative semantic layer between the AI Trust Graph Manifesto and the canonical ontology. It defines what the concepts mean, why a graph is required, and how the concepts constrain assessment artifacts and compatible tooling.
 
@@ -853,7 +853,7 @@ A control is assessed through separate design, implementation, operation and val
 | Not Implemented | Required control is absent in the assessed scope. |
 | Not Applicable | Documented rationale shows the control does not apply. |
 | Not Tested | Testing was not performed or authorized. |
-| Unknown | Evidence is insufficient or conflicting. |
+| UNKNOWN | Evidence is insufficient or conflicting. |
 | Inconclusive | Testing or evidence cannot support a determinate conclusion. |
 
 EVIDENCE, CONTROL AND ASSESSMENT SEMANTICS

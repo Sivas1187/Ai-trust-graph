@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Ontology Specification
 
-*Version 1.0 | Canonical semantic companion for graph-based AI trust, authority, evidence, controls, paths and assurance*
+*Version 1.0.1 | Canonical semantic companion for graph-based AI trust, authority, evidence, controls, paths and assurance*
 
 > **DOCUMENT ROLE** Human-readable canonical ontology for methodology publication. It formalizes the classes, predicates, properties, states and semantic constraints already expressed across the AI Trust Graph methodology. A non-normative Phase 2 reference schema/query companion now exists, while approved normative machine-readable schemas and the executable conformance suite remain deferred.
 
@@ -781,7 +781,7 @@ A control breakpoint is a node, relationship or boundary where an effective cont
 | Not Implemented | Required control is absent in the assessed scope. |
 | Not Applicable | Documented rationale shows the control does not apply. |
 | Not Tested | Testing was not performed or authorized. |
-| Unknown | Evidence is insufficient or conflicting. |
+| UNKNOWN | Evidence is insufficient or conflicting. |
 | Inconclusive | Testing or evidence cannot support a determinate conclusion. |
 
 # 10.7 Finding and decision separation
