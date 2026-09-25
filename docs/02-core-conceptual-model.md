@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Core Conceptual Model
 
-*Version 1.1 | Refactored theory of graph-based AI trust, authority, exposure, evidence and control*
+*Version 1.1.1 | Refactored theory of graph-based AI trust, authority, exposure, evidence and control*
 
 > **DOCUMENT ROLE** The authoritative semantic layer between the AI Trust Graph Manifesto and the canonical ontology. It defines what the concepts mean, why a graph is required, and how the concepts constrain assessment artifacts and compatible tooling.
 

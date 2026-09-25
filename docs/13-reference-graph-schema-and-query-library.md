@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Reference Graph Schema and Illustrative Query Library
 
-*Phase 2 companion | Non-normative | Version 0.2 | Initiated 2026-09-23*
+*Phase 2 companion | Non-normative | Version 0.2.1 | Initiated 2026-09-23*
 
 | **STATUS — READ BEFORE USING** This document is a **Phase 2, non-normative companion**. It does not redefine any concept, control, evidence grade, path state, scoring formula, maturity level or governance principle established in Artifacts #1-#12. It carries no conformance weight: none of the six conformance levels (L0-L5, Ontology Specification Appendix D.4) require it, and no conformance or certification claim depends on it. L4 Tool-compatible is currently unavailable until approved normative schemas and test vectors are published. This companion does not satisfy that gate. Its sole purpose is to make the ontology and control library easier to implement on **any** property-graph or RDF-reducible engine, without binding the methodology to one. If anything here appears to conflict with Artifacts #1-#12, those artifacts govern and this document is wrong. |
 | --- |

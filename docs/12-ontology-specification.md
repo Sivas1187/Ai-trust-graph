@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Ontology Specification
 
-*Version 1.0 | Canonical semantic companion for graph-based AI trust, authority, evidence, controls, paths and assurance*
+*Version 1.0.1 | Canonical semantic companion for graph-based AI trust, authority, evidence, controls, paths and assurance*
 
 > **DOCUMENT ROLE** Human-readable canonical ontology for methodology publication. It formalizes the classes, predicates, properties, states and semantic constraints already expressed across the AI Trust Graph methodology. A non-normative Phase 2 reference schema/query companion now exists, while approved normative machine-readable schemas and the executable conformance suite remain deferred.
 
