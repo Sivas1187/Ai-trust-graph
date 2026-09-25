@@ -342,6 +342,20 @@ The author also chose to reserve the **"AI Trust Graph" name and any future logo
 
 ---
 
+## R-23 — ControlConclusionState lacked score compatibility and a tested-but-limited conclusion (Blocking, resolved)
+
+**Artifacts:** [Core Conceptual Model](docs/02-core-conceptual-model.md) §7.3; [Scoring Framework](docs/04-scoring-framework.md) §§0.5, 1.5, 1.9; [Master Control Library](docs/05-master-control-library.md) §0.8; [Ontology Specification](docs/12-ontology-specification.md) §§10.6, 11.1; [Reference Graph Schema](docs/13-reference-graph-schema-and-query-library.md) §§3.7.2, 3.7.5.
+
+**Finding:** No canonical rule tied a control conclusion to its component or overall scores, so a tool could not reject a contradictory record without inventing a rule. No conclusion represented implementation established with operating effectiveness assessed below the Verified Effective level (for example the Scoring Framework §1.9 4/4/0/E5 example). Two Artifact #13 queries presented an absent test result as `Not Tested` and compared a `Test.result` to a control conclusion.
+
+**Resolution:** Ninth conclusion `Implemented - Effectiveness Limited`; nine-row compatibility rule in Scoring Framework §1.5, checked against the final supported overall score after evidence caps and critical-gate treatment; `ControlConclusionState` namespace registered; Artifact #13 queries rewritten as linked test-result inventories with absent results left NULL. Governance: [issue #4](https://github.com/Sivas1187/Ai-trust-graph/issues/4) (MQ-002), Owner Decisions 1 and 2.
+
+**Release/change class:** Major semantic change under Artifact #11 §2.3 (result states); bundle `1.0-rc.3`.
+
+**Status:** Resolved in the methodology. Evidence sufficiency for supported numeric results remains open under [issue #5](https://github.com/Sivas1187/Ai-trust-graph/issues/5) (MQ-003). Stale cross-artifact version references in artifacts not changed by MQ-002 are a separate patch-level follow-up.
+
+---
+
 ## Gaps
 
 Summarizing R-08 for quick reference: this repository was intentionally missing a **LICENSE** and a **SECURITY.md**, both called for by the Manifesto's own Appendix B. **LICENSE** (CC BY 4.0) and its companion **TRADEMARKS.md** have since been added, on the methodology author's explicit decision — see the R-08 update above. **SECURITY.md** remains missing and is still flagged rather than added, because drafting it responsibly requires the author to decide what a real disclosure process looks like, not just fill in a template.
@@ -372,3 +386,4 @@ Summarizing R-08 for quick reference: this repository was intentionally missing 
 | R-20 | Artifact #13 misstated conformance levels/classes | Major | Resolved |
 | R-21 | Artifact #13 overclaimed GQL conformance | Major | Resolved — GQL-style only pending validation |
 | R-22 | Reference corpus lacked M5/adversarial calibration breadth | Major | Resolved synthetically |
+| R-23 | ControlConclusionState lacked score compatibility and a tested-but-limited conclusion | Blocking | Resolved — ninth conclusion; Scoring Framework §1.5 compatibility rule; Major semantic change, bundle 1.0-rc.3 |

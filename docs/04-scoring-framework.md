@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Scoring Framework
 
-*Version 1.0 | Separate measures for control state, evidence, confidence, coverage, maturity and path exposure*
+*Version 2.0.0 | Separate measures for control state, evidence, confidence, coverage, maturity and path exposure*
 
 > **PURPOSE** Convert evidence-backed assessment results into transparent, reproducible decision measures without hiding critical failures, UNKNOWNs, weak coverage or domain variation.
 
@@ -10,7 +10,7 @@
 | --- | --- |
 | Status | Public-release candidate |
 | Author | Siva Sethumadhavan |
-| Depends on | Manifesto v1.0; Core Conceptual Model v1.1; Maturity Model v1.0 |
+| Depends on | Manifesto v1.0; Core Conceptual Model v2.0.0; Maturity Model v1.0 |
 | Primary outputs | Control score, evidence grade, confidence, coverage, domain scorecard, maturity profile and path-exposure band |
 | Prohibited shortcut | One opaque enterprise trust score presented without its component measures |
 | Product boundary | ExposureGraph algorithms, ranking and implementation logic excluded |
@@ -91,6 +91,8 @@ Numeric control scores are used only when the control state is determinate. Non-
 | Not Tested | No numeric value for effectiveness. | May retain a design score if separately supported. |
 | Not Applicable | Excluded from denominator only with approved rationale. | Reported with rationale and reviewer. |
 | Determinate 0-5 | Included in applicable scored denominator. | Reported with evidence, confidence and limitations. |
+
+This table governs control-assurance result treatment. Its named nonnumeric states are AssessmentResultState values; Determinate 0-5 is the numeric case. This scoring-result vocabulary is distinct from ControlConclusionState, even where labels coincide. A shared label does not imply equivalence. The numeric treatment permitted for each control conclusion is defined only by the compatibility table in §1.5.
 
 # 0.6  Measurement architecture
 
@@ -238,6 +240,32 @@ If operating effectiveness was not tested, the overall score cannot exceed 3. If
 | Not Applicable | Exclude only with approved rationale. |
 | Material critical-gate failure | Apply the gate cap or invalidate score. |
 
+**Conclusion-to-score compatibility.** The reviewer selects the control conclusion (Core Conceptual Model §7.3; Ontology Specification §10.6). The control-assurance score is calculated independently under this section. Neither is derived from the other.
+
+A control record MAY be finalized only when the recorded conclusion is compatible with the component observations and with the **final supported overall score**: the score after the evidence-supported cap (§1.8) and critical-gate treatment, not the pre-cap minimum. An incompatible record MUST be rejected. It MUST NOT be normalized, overridden, or automatically converted to Inconclusive or to any other conclusion.
+
+A required component MUST be determinate (0-5). Absence of a value is not itself a canonical state and never satisfies a requirement. The operating-effectiveness Not Tested condition in the table above is distinct from the conclusion Not Tested.
+
+A critical-gate cap that places the final supported overall outside a conclusion's permitted range prevents that conclusion from finalizing. A gate that invalidates the score leaves no numeric overall. Neither changes the conclusion automatically.
+
+Enumeration order of the conclusions does not imply an ordinal score. Evidence sufficiency for a numeric final supported overall is governed by §1.8 and the Evidence Model.
+
+| **Conclusion** | **Design** | **Implementation** | **Operating effectiveness** | **Final supported overall** | **Denominator** | **Rejected when** |
+| --- | --- | --- | --- | --- | --- | --- |
+| Verified Effective | Required, determinate, >=3. | Required, determinate, >=3. | Required, determinate, >=4, with representative validation evidenced. | 3-5 | Applicable, scored. | Any component missing or not determinate; design <3; implementation <3; operating effectiveness Not Tested or <4; representative validation not evidenced; overall outside 3-5. |
+| Implemented - Effectiveness Not Verified | Required, determinate, >=3. | Required, determinate, >=3. | No numeric operating-effectiveness score; the §1.5 operating-effectiveness Not Tested condition applies. | Exactly 3 | Applicable, scored. | Design or implementation missing, not determinate or <3; numeric operating-effectiveness score; operating effectiveness UNKNOWN; overall not exactly 3, including when evidence support or a gate places it below 3. |
+| Implemented - Effectiveness Limited | Required, determinate, >=3. | Required, determinate, >=3. | Required, determinate, 0-3. | 0-3 | Applicable, scored. | Design <3; implementation <3; operating effectiveness missing, Not Tested or >=4; overall outside 0-3. |
+| Partially Implemented | Required, determinate; at least one of design or implementation is <=2. | Required, determinate, >0. | Determinate within the explicitly assessed partial scope, or Not Tested. | 0-2 | Applicable, scored. | Design or implementation missing or not determinate; implementation 0 (see Not Implemented); design and implementation both >=3 (see Implemented - Effectiveness Limited where operating effectiveness is 0-3); overall outside 0-2. |
+| Not Implemented | May be retained. | Required, exactly 0 (confirmed absent in the assessed scope). | 0 or no numeric score; a positive score is incompatible. | Exactly 0, once supported absence is established. | Applicable, scored. | Implementation missing or >0; operating effectiveness >0; overall other than 0; supported absence not established. |
+| Not Applicable | No current component score. | No current component score. | No current component score. | None | Excluded only with approved rationale and reviewer. | Any current component score; rationale or reviewer missing. |
+| Not Tested | May be retained if separately supported (§0.5). | No numeric score. | No numeric score. | None | Applicable, unscored. | Numeric implementation or operating-effectiveness score; numeric overall. |
+| UNKNOWN | Observations may be retained and remain visible. | Observations may be retained and remain visible. | Observations may be retained and remain visible. | None | Applicable, unscored; counted in uncertainty and evidence-gap counts. | Numeric overall. |
+| Inconclusive | Observations may be retained and remain visible. | Observations may be retained and remain visible. | Observations may be retained and remain visible. | None | Applicable, unscored; counted in the inconclusive count with reason. | Numeric overall; reason missing. |
+
+Operating effectiveness that is UNKNOWN because evidence is insufficient or conflicting does not satisfy Implemented - Effectiveness Not Verified; the conclusion is UNKNOWN. Where testing or evidence cannot support a determinate conclusion, the conclusion is Inconclusive.
+
+Planned remediation, target dates and management acceptance do not change a conclusion or its compatibility (§1.10).
+
 # 1.6  Control criticality
 
 Control criticality describes the consequence of control failure in the assessed context. It is independent of how well the control is implemented.
@@ -290,6 +318,8 @@ The examples are synthetic and demonstrate calculation logic only.
 | Representative test passes; current evidence | 4 | 4 | 4 | E5 | 4. |
 | Adaptive policy engine observed once | 5 | 4 | 4 | E5 | 4; adaptive claim not yet sustained. |
 | Critical control fails one representative test | 4 | 4 | 0 | E5 | 0 plus critical-gate review. |
+
+The critical-control example (4, 4, 0, E5, result 0) is a determinate result compatible with the conclusion Implemented - Effectiveness Limited (§1.5). Compatibility does not derive the conclusion from the score; the conclusion remains a reviewed determination.
 
 # 1.10  Control closure and score change
 
@@ -843,7 +873,7 @@ Each scorecard displays maturity, control attainment, coverage, confidence, crit
 
 # 5.8  No overall trust score in v1.0
 
-Version 1.0 intentionally does not publish a single overall AI Trust Graph score. The current evidence base does not justify reducing trust, authority, security, governance, resilience, uncertainty and maturity into one universal number.
+This framework intentionally does not publish a single overall AI Trust Graph score. The current evidence base does not justify reducing trust, authority, security, governance, resilience, uncertainty and maturity into one universal number.
 
 A future composite may be proposed only after field calibration, sensitivity analysis, independent review, misuse analysis and public formula governance.
 
@@ -1065,7 +1095,7 @@ The framework consolidates and formalizes scoring concepts from the methodology 
 | **Source artifact** | **Use** |
 | --- | --- |
 | AI Trust Graph Manifesto v1.0 | Claims discipline, transparency and public boundary. |
-| AI Trust Graph Core Conceptual Model v1.1 | Evidence, control, path, authority and invariant semantics. |
+| AI Trust Graph Core Conceptual Model v2.0.0 | Evidence, control, path, authority and invariant semantics. |
 | AI Trust Graph Maturity Model v1.0 | Cumulative maturity, gates and six-domain profile. |
 | AI Security Assessment Toolkit, 15 Domains | 0-5 assessor scale, E0-E5 evidence grades, control states and risk bands. |
 | Canonical ontology and future control library | Identifiers, applicability and traceability; reconciliation required before release. |
@@ -1105,4 +1135,4 @@ The framework is ready for controlled review. Public release remains subject to 
 | Licence and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Scoring Framework | Version 1.0 | Public-release candidate
+AI Trust Graph Scoring Framework | Version 2.0.0 | Public-release candidate

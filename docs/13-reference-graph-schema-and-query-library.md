@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Reference Graph Schema and Illustrative Query Library
 
-*Phase 2 companion | Non-normative | Version 0.2.1 | Initiated 2026-09-23*
+*Phase 2 companion | Non-normative | Version 0.3.0 | Initiated 2026-09-23*
 
 | **STATUS — READ BEFORE USING** This document is a **Phase 2, non-normative companion**. It does not redefine any concept, control, evidence grade, path state, scoring formula, maturity level or governance principle established in Artifacts #1-#12. It carries no conformance weight: none of the six conformance levels (L0-L5, Ontology Specification Appendix D.4) require it, and no conformance or certification claim depends on it. L4 Tool-compatible is currently unavailable until approved normative schemas and test vectors are published. This companion does not satisfy that gate. Its sole purpose is to make the ontology and control library easier to implement on **any** property-graph or RDF-reducible engine, without binding the methodology to one. If anything here appears to conflict with Artifacts #1-#12, those artifacts govern and this document is wrong. |
 | --- |
@@ -339,6 +339,7 @@ Reproduced from Ontology Specification §9.3, §10.5, §10.6, §11.1-§11.3 and 
 | EntityLifecycleState | Candidate; Approved; Rejected; Modified; Retired; Superseded |
 | AssertionReviewState | Candidate; Approved; Rejected; Modified; Superseded |
 | AssessmentResultState | UNKNOWN; Not Assessed; Not Tested; Not Applicable; Inconclusive; Provisional; Final within scope |
+| ControlConclusionState | Verified Effective; Implemented - Effectiveness Not Verified; Implemented - Effectiveness Limited; Partially Implemented; Not Implemented; Not Applicable; Not Tested; UNKNOWN; Inconclusive |
 | PathState | Candidate; Topological; Plausible; Validated; Exploitable; Controlled; Invalidated |
 | PathRole | Primary; Alternate; Residual |
 | ReportReleaseState | Draft; Fact validation; Quality review; Decision review; Final within scope; Superseded; Withdrawn |
@@ -359,6 +360,7 @@ Reproduced from Ontology Specification §9.3, §10.5, §10.6, §11.1-§11.3 and 
 | --- | --- |
 | Verified Effective | Current evidence and representative validation support operation within scope. |
 | Implemented - Effectiveness Not Verified | Implementation evidence exists; operating effect was not validated. |
+| Implemented - Effectiveness Limited | Implementation is established within the assessed scope; operating effectiveness has been assessed and is below the level required for Verified Effective. |
 | Partially Implemented | Required elements or scope are incomplete. |
 | Not Implemented | Required control is absent in the assessed scope. |
 | Not Applicable | Documented rationale shows the control does not apply. |
@@ -986,16 +988,18 @@ WHERE evidenceCount = 0
 RETURN c.id, c.criticality, 'UNKNOWN' AS resultState
 ```
 
-#### 3.7.2 Critical-gate status check
-Critical and Systemic controls not yet `Verified Effective` — the population RPT-03 requires a report to disclose before, or alongside, any aggregate score.
+#### 3.7.2 Critical and Systemic control linked-test-result inventory
+Every Critical and Systemic control with each linked test and its recorded result — an inventory input for the critical-control disclosure that RPT-03 requires before, or alongside, any aggregate score. It lists linked test results only; it does not determine any control conclusion.
 
 ```
 MATCH (c:Control)
 WHERE c.criticality IN ['Critical', 'Systemic']
 OPTIONAL MATCH (c)-[:TESTED_BY]->(t:Test)
-WHERE t IS NULL OR t.result <> 'Verified Effective'
-RETURN c.id, c.criticality, coalesce(t.result, 'Not Tested') AS conclusionState
+RETURN c.id, c.criticality, t.id AS test, t.result AS testResult
+ORDER BY c.criticality, c.id
 ```
+
+A `Test.result` is not a ControlConclusionState. This query does not decide whether a control is `Verified Effective` or holds any other conclusion: the reviewed control conclusion comes from the control-assessment process governed by Scoring Framework §1.5 and cannot be derived from one Test result. `testResult` is NULL where the control has no linked test result. Absence of a value is not itself a canonical state, so NULL is never replaced with `Not Tested`, `UNKNOWN` or any other canonical state.
 
 #### 3.7.3 Material path construction, end to end
 A generic path traversal joined to its boundary crossings and candidate breakpoints — the pattern behind every domain-specific path query above.
@@ -1021,15 +1025,17 @@ RETURN p.id, dependentSystems, collect(DISTINCT c.id) AS governingControls
 ORDER BY dependentSystems DESC
 ```
 
-#### 3.7.5 Control criticality × result-state matrix
-The scorecard view behind Reporting Standard §3.8's critical-control view: every control's criticality against its current test conclusion, counted.
+#### 3.7.5 Control criticality × linked test-result inventory
+Counts of controls by criticality against each linked test result — an inventory input for Reporting Standard §3.8's critical-control view. It is not a control result-state matrix.
 
 ```
 MATCH (c:Control)
 OPTIONAL MATCH (c)-[:TESTED_BY]->(t:Test)
-RETURN c.criticality, coalesce(t.result, 'Not Tested') AS resultState, count(*) AS controlCount
-ORDER BY c.criticality, resultState
+RETURN c.criticality, t.result AS testResult, count(DISTINCT c) AS controlCount
+ORDER BY c.criticality, testResult
 ```
+
+A control with several linked tests is counted once under each distinct test result. The NULL `testResult` group counts controls with no linked test result; it is reported as absent, never as `Not Tested`, `UNKNOWN` or any other canonical state. The critical-control view's verified, failed, UNKNOWN and Not Tested populations are assessment/reporting populations governed by the Scoring Framework and Reporting Standard; they are not `Test.result` values and are not all ControlConclusionState values. This query provides linked test-result inventory only. Control conclusions are reviewed under Scoring Framework §1.5, while scorecard populations are derived under the applicable scoring/reporting rules.
 
 #### 3.7.6 Supersession and version lineage
 Any object's full prior-version chain — the traceability SUPERSEDES exists to guarantee never gets silently overwritten (RPT-10, ONT-INV-15).
@@ -1093,9 +1099,9 @@ As a Phase 2 companion rather than one of the 12 core methodology artifacts, thi
 | **Field** | **Value** |
 | --- | --- |
 | Status | Phase 2, non-normative, initial publication |
-| Depends on | Ontology Specification v1.0 (Artifact #12), Master Control Library v1.0 (Artifact #5) |
+| Depends on | Ontology Specification v2.0.0 (Artifact #12), Master Control Library v2.0.0 (Artifact #5) |
 | Conformance weight | None — see §0 |
 | Independent review | Not yet performed; recommended before this document is treated as a stable reference by implementers |
 | Employer / IP / confidentiality review | Pending, same methodology-wide gate as Artifacts #1-#12 |
 
-AI Trust Graph Reference Graph Schema and Illustrative Query Library | Phase 2 companion, v0.1 | Non-normative
+AI Trust Graph Reference Graph Schema and Illustrative Query Library | Phase 2 companion, v0.3.0 | Non-normative
