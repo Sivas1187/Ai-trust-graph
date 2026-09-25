@@ -1035,7 +1035,7 @@ RETURN c.criticality, t.result AS testResult, count(DISTINCT c) AS controlCount
 ORDER BY c.criticality, testResult
 ```
 
-A control with several linked tests is counted once under each distinct test result. The NULL `testResult` group counts controls with no linked test result; it is reported as absent, never as `Not Tested`, `UNKNOWN` or any other canonical state. Control conclusions, including the critical-control view's verified, failed, UNKNOWN and Not Tested populations, come from the control-assessment process governed by Scoring Framework §1.5, not from test results.
+A control with several linked tests is counted once under each distinct test result. The NULL `testResult` group counts controls with no linked test result; it is reported as absent, never as `Not Tested`, `UNKNOWN` or any other canonical state. The critical-control view's verified, failed, UNKNOWN and Not Tested populations are assessment/reporting populations governed by the Scoring Framework and Reporting Standard; they are not `Test.result` values and are not all ControlConclusionState values. This query provides linked test-result inventory only. Control conclusions are reviewed under Scoring Framework §1.5, while scorecard populations are derived under the applicable scoring/reporting rules.
 
 #### 3.7.6 Supersession and version lineage
 Any object's full prior-version chain — the traceability SUPERSEDES exists to guarantee never gets silently overwritten (RPT-10, ONT-INV-15).
@@ -1104,4 +1104,4 @@ As a Phase 2 companion rather than one of the 12 core methodology artifacts, thi
 | Independent review | Not yet performed; recommended before this document is treated as a stable reference by implementers |
 | Employer / IP / confidentiality review | Pending, same methodology-wide gate as Artifacts #1-#12 |
 
-AI Trust Graph Reference Graph Schema and Illustrative Query Library | Phase 2 companion, v0.1 | Non-normative
+AI Trust Graph Reference Graph Schema and Illustrative Query Library | Phase 2 companion, v0.3.0 | Non-normative

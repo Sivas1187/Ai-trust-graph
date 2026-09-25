@@ -78,7 +78,7 @@ The Git blob SHA pins the exact UTF-8 file content for this release-candidate sn
 
 | Artifact | Version | Status | Path | Git blob SHA |
 | --- | --- | --- | --- | --- |
-| Reference Graph Schema and Illustrative Query Library | 0.3.0 | Non-normative | `docs/13-reference-graph-schema-and-query-library.md` | `2077b0c9b4ecf75dc3d94d16a2c276ba62fc73e9` |
+| Reference Graph Schema and Illustrative Query Library | 0.3.0 | Non-normative | `docs/13-reference-graph-schema-and-query-library.md` | `7cb30f49b54f10872aae59c30bb54168b0a05425` |
 
 ## 5. Conformance availability
 
