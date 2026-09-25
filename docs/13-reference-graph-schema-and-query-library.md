@@ -363,7 +363,7 @@ Reproduced from Ontology Specification §9.3, §10.5, §10.6, §11.1-§11.3 and 
 | Not Implemented | Required control is absent in the assessed scope. |
 | Not Applicable | Documented rationale shows the control does not apply. |
 | Not Tested | Testing was not performed or authorized. |
-| Unknown | Evidence is insufficient or conflicting. |
+| UNKNOWN | Evidence is insufficient or conflicting. |
 | Inconclusive | Testing or evidence cannot support a determinate conclusion. |
 
 | **Maturity level** | **Name** | **Meaning** |

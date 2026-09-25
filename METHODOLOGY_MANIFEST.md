@@ -1,8 +1,8 @@
 # AI Trust Graph — Methodology Manifest
 
-**Bundle identifier:** 1.0-rc.1  
+**Bundle identifier:** 1.0-rc.2  
 **Status:** Public-release candidate  
-**Snapshot date:** 2026-09-23  
+**Snapshot date:** 2026-09-25  
 **Purpose:** Single canonical authority/dependency map and exact artifact-content registry for this repository snapshot.
 
 > **MANIFEST RULE** This file is the repository-wide source of truth for artifact authority, dependency, reading order, version pins and exact Git blob identifiers. Individual artifacts may describe their own scope, but they MUST NOT publish a competing repository-wide precedence chain.
@@ -62,7 +62,7 @@ The Git blob SHA pins the exact UTF-8 file content for this release-candidate sn
 | # | Artifact | Version | Status | Path | Git blob SHA |
 | ---: | --- | --- | --- | --- | --- |
 | 1 | Manifesto | 1.0 | Public-release candidate | `docs/01-manifesto.md` | `38081d537cbd7fdfd7300cca58244639cd415da6` |
-| 2 | Core Conceptual Model | 1.1 | Public-release candidate | `docs/02-core-conceptual-model.md` | `c79250aef151a4384e3a8b47cde3e5987013bfa7` |
+| 2 | Core Conceptual Model | 1.1 | Public-release candidate | `docs/02-core-conceptual-model.md` | `e391024adf6005213cd10d59b171cb08486dcf64` |
 | 3 | Maturity Model | 1.0 | Public-release candidate | `docs/03-maturity-model.md` | `f2a9359cc98522ca622eef232eac75f0a5b87e87` |
 | 4 | Scoring Framework | 1.0 | Public-release candidate | `docs/04-scoring-framework.md` | `ed7bcd0b41073dd4b03323a92d2e5f8609106536` |
 | 5 | Master Control Library | 1.0 | Public-release candidate | `docs/05-master-control-library.md` | `ee8424cca029e6fca7a5712efb8b6f59037dac40` |
@@ -72,13 +72,13 @@ The Git blob SHA pins the exact UTF-8 file content for this release-candidate sn
 | 9 | Reporting Standard | 1.0 | Public-release candidate | `docs/09-reporting-standard.md` | `0d85dafb5295b575acbdeede4e09bbea93ce8d72` |
 | 10 | Reference Assessment Repository | 1.0 | Public-release candidate | `docs/10-reference-assessment-repository.md` | `4128c68344b7cbed6fb0e303958f453b01256a9c` |
 | 11 | Governance & Certification Model | 1.0 | Public-release candidate | `docs/11-governance-and-certification-model.md` | `35d9184a56098c3036a5edc1857a6fba29dc1fa5` |
-| 12 | Ontology Specification | 1.0 | Public-release candidate | `docs/12-ontology-specification.md` | `8ed9b1f5c6180ac54178276fa949a753dc8a8971` |
+| 12 | Ontology Specification | 1.0 | Public-release candidate | `docs/12-ontology-specification.md` | `a899f8d47c2cd8d5865c64de5a17a7a0e594bbef` |
 
 ### Phase 2 non-normative companion
 
 | Artifact | Version | Status | Path | Git blob SHA |
 | --- | --- | --- | --- | --- |
-| Reference Graph Schema and Illustrative Query Library | 0.2 | Non-normative | `docs/13-reference-graph-schema-and-query-library.md` | `3e80c5f3cddbad0a37b680aabb3798d204d53818` |
+| Reference Graph Schema and Illustrative Query Library | 0.2 | Non-normative | `docs/13-reference-graph-schema-and-query-library.md` | `997e2569b3a7e7c01a70c925cbbc8dc173a6cf60` |
 
 ## 5. Conformance availability
 
