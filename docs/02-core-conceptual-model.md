@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Core Conceptual Model
 
-*Version 1.1.1 | Refactored theory of graph-based AI trust, authority, exposure, evidence and control*
+*Version 2.0.0 | Refactored theory of graph-based AI trust, authority, exposure, evidence and control*
 
 > **DOCUMENT ROLE** The authoritative semantic layer between the AI Trust Graph Manifesto and the canonical ontology. It defines what the concepts mean, why a graph is required, and how the concepts constrain assessment artifacts and compatible tooling.
 
@@ -10,7 +10,7 @@
 | --- | --- |
 | Status | Public-release candidate |
 | Author | Siva Sethumadhavan |
-| Supersedes | Core Conceptual Model v1.0 |
+| Supersedes | Core Conceptual Model v1.1.1 |
 | Refactor objective | Remove structural repetition; elevate graph theory, emergent risk and authority amplification. |
 | Product boundary | ExposureGraph product design and implementation remain excluded. |
 | Release condition | Employer, IP, confidentiality, trademark, copyright, license and independent methodology review. |
@@ -409,7 +409,7 @@ This separation prevents observations, interpretations and management choices fr
 
 A relationship is a typed, directional assertion between compatible objects under stated conditions. Common properties are defined once here and inherited by every canonical or approved extension edge.
 
-Version 1.1 removes the repeated edge-property table that appeared on each relationship page in v1.0.
+This model does not repeat the edge-property table that appeared on each relationship page in v1.0.
 
 | **Property** | **Meaning** |
 | --- | --- |
@@ -495,7 +495,7 @@ Control and evidence relationships inherit the common relationship metamodel and
 
 Trust is conditional reliance by one entity on another entity, assertion, output, dependency or control for a defined purpose. It is not a positive label, a permanent property or a substitute for evidence.
 
-The trust metamodel is defined once in v1.1. Trust inheritance, amplification, drift and revocation use this shared structure without repeating the same dimensional table.
+The trust metamodel is defined once in this model. Trust inheritance, amplification, drift and revocation use this shared structure without repeating the same dimensional table.
 
 | **Dimension** | **Required question** |
 | --- | --- |
@@ -527,7 +527,7 @@ Inheritance follows compatible relationships. Amplification increases effective 
 
 Authority is the effective or permitted capacity of an actor, identity, application, agent, tool or workflow to access, influence or change a target. It is distinct from network connectivity, abstract capability and observed invocation.
 
-Version 1.1 defines authority fields once and uses a compact taxonomy for action classes.
+This model defines authority fields once and uses a compact taxonomy for action classes.
 
 | **Field** | **Required meaning** |
 | --- | --- |
@@ -749,7 +749,7 @@ A residual path still carries its own validation state. For example, a residual 
 
 Exposure is the assessed opportunity for a threat, misuse, failure or unauthorized influence to reach a material target through current relationships. It is not synonymous with vulnerability, likelihood or residual risk.
 
-Version 1.1 deliberately avoids one mandatory arithmetic formula. The future scoring model must define weights, gates, uncertainty treatment and decision thresholds transparently.
+This model deliberately avoids one mandatory arithmetic formula. The future scoring model must define weights, gates, uncertainty treatment and decision thresholds transparently.
 
 | **Dimension** | **Interpretation** |
 | --- | --- |
@@ -849,12 +849,15 @@ A control is assessed through separate design, implementation, operation and val
 | --- | --- |
 | Verified Effective | Current evidence and representative validation support operation within scope. |
 | Implemented - Effectiveness Not Verified | Implementation evidence exists; operating effect was not validated. |
+| Implemented - Effectiveness Limited | Implementation is established within the assessed scope; operating effectiveness has been assessed and is below the level required for Verified Effective. |
 | Partially Implemented | Required elements or scope are incomplete. |
 | Not Implemented | Required control is absent in the assessed scope. |
 | Not Applicable | Documented rationale shows the control does not apply. |
 | Not Tested | Testing was not performed or authorized. |
 | UNKNOWN | Evidence is insufficient or conflicting. |
 | Inconclusive | Testing or evidence cannot support a determinate conclusion. |
+
+The order of this table does not imply an ordinal score or ranking. A control conclusion is a reviewed semantic determination. It is not derived from the numeric control-assurance score, and the score does not substitute for it. Design, implementation and operating effectiveness remain separate observations. A finalized control record MUST satisfy the conclusion-to-score compatibility rule in Scoring Framework (Artifact #4) §1.5. An incompatible combination is rejected; it is never normalized, overridden or automatically converted to another conclusion. The conclusion Not Tested is distinct from an operating-effectiveness component that was not tested (Artifact #4 §1.5) and from the AssessmentResultState value Not Tested (Ontology Specification §11.1).
 
 EVIDENCE, CONTROL AND ASSESSMENT SEMANTICS
 
@@ -967,9 +970,9 @@ Graph quality is bounded by scope, evidence, ontology fitness, review quality an
 | Change | Results may become stale after material system change. |
 | Generality | Sector and use-case requirements may require extensions. |
 
-# 8.5  v1.1 release acceptance checklist
+# 8.5  Release acceptance checklist
 
-Version 1.1 is a release candidate, not an approved public release. The following gates must close before GitHub publication.
+This version is a release candidate, not an approved public release. The following gates must close before GitHub publication.
 
 | **Gate** | **Acceptance criterion** |
 | --- | --- |
@@ -1001,4 +1004,4 @@ The public methodology must remain usable without ExposureGraph. A platform may 
 | License and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Core Conceptual Model  |  Version 1.1  |  Refactored public-release candidate
+AI Trust Graph Core Conceptual Model  |  Version 2.0.0  |  Refactored public-release candidate

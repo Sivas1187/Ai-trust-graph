@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Master Control Library
 
-*Version 1.0 | 72 graph-aware, evidence-gated controls across six methodology domains*
+*Version 2.0.0 | 72 graph-aware, evidence-gated controls across six methodology domains*
 
 > **PURPOSE** Provide the canonical control objectives, assessment criteria, evidence expectations, validation procedures, maturity mappings and graph semantics used by AI Trust Graph assessments.
 
@@ -11,7 +11,7 @@
 | Status | Public-release candidate |
 | Author | Siva Sethumadhavan |
 | Canonical controls | 72 unique controls; 12 per domain |
-| Depends on | Manifesto v1.0; Core Conceptual Model v1.1; Maturity Model v1.0; Scoring Framework v1.0 |
+| Depends on | Manifesto v1.0; Core Conceptual Model v2.0.0; Maturity Model v1.0; Scoring Framework v2.0.0 |
 | Control families | ATG-DIS; ATG-TRU; ATG-AUT; ATG-VAL; ATG-GOV; ATG-RES |
 | Product boundary | ExposureGraph design, algorithms and implementation excluded |
 
@@ -125,7 +125,7 @@ Critical and Systemic controls require stronger evidence and may activate Maturi
 
 # 0.8  Evidence and conclusion doctrine
 
-The library uses E0 to E5 evidence grades and the conclusion states Verified Effective; Implemented - Effectiveness Not Verified; Partially Implemented; Not Implemented; Not Applicable; Not Tested; UNKNOWN; and Inconclusive.
+The library uses E0 to E5 evidence grades and the conclusion states Verified Effective; Implemented - Effectiveness Not Verified; Implemented - Effectiveness Limited; Partially Implemented; Not Implemented; Not Applicable; Not Tested; UNKNOWN; and Inconclusive. Enumeration order does not imply an ordinal score. A conclusion is finalized only when it is compatible with its component scores and final supported overall score under Scoring Framework §1.5.
 
 Every conclusion links to evidence, a reproducible procedure, affected graph objects or paths, confidence and limitations. UNKNOWN remains UNKNOWN until resolved.
 
@@ -1782,9 +1782,9 @@ The library consolidates concepts in the AI Trust Graph artifacts and the existi
 | **Source** | **Use** |
 | --- | --- |
 | AI Trust Graph Manifesto v1.0 | Principles, evidence discipline, six domains and public boundary. |
-| AI Trust Graph Core Conceptual Model v1.1 | Canonical concepts, relationships, authority, paths and invariants. |
+| AI Trust Graph Core Conceptual Model v2.0.0 | Canonical concepts, relationships, authority, paths and invariants. |
 | AI Trust Graph Maturity Model v1.0 | Capabilities, maturity progression and critical gates. |
-| AI Trust Graph Scoring Framework v1.0 | Control scoring, evidence caps, coverage, UNKNOWN and path triage. |
+| AI Trust Graph Scoring Framework v2.0.0 | Control scoring, evidence caps, coverage, UNKNOWN and path triage. |
 | AI Security Assessment Toolkit, 15 Domains | Detailed control themes, evidence, test methods, graph mappings and gaps. |
 | Ontology and any future Extension guides | Final semantic reconciliation required before public release; extension guides are not core v1.0 artifacts. |
 
@@ -1823,4 +1823,4 @@ The document is ready for controlled review. Public release remains subject to i
 | Licence and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Master Control Library | Version 1.0 | Public-release candidate
+AI Trust Graph Master Control Library | Version 2.0.0 | Public-release candidate
