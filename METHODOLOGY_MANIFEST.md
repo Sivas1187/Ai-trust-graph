@@ -1,8 +1,8 @@
 # AI Trust Graph — Methodology Manifest
 
-**Bundle identifier:** 1.0-rc.3  
+**Bundle identifier:** 1.0-rc.4  
 **Status:** Public-release candidate  
-**Snapshot date:** 2026-09-25  
+**Snapshot date:** 2026-09-26  
 **Purpose:** Single canonical authority/dependency map and exact artifact-content registry for this repository snapshot.
 
 > **MANIFEST RULE** This file is the repository-wide source of truth for artifact authority, dependency, reading order, version pins and exact Git blob identifiers. Individual artifacts may describe their own scope, but they MUST NOT publish a competing repository-wide precedence chain.
@@ -62,23 +62,23 @@ The Git blob SHA pins the exact UTF-8 file content for this release-candidate sn
 | # | Artifact | Version | Status | Path | Git blob SHA |
 | ---: | --- | --- | --- | --- | --- |
 | 1 | Manifesto | 1.0 | Public-release candidate | `docs/01-manifesto.md` | `38081d537cbd7fdfd7300cca58244639cd415da6` |
-| 2 | Core Conceptual Model | 2.0.0 | Public-release candidate | `docs/02-core-conceptual-model.md` | `608a675ee05fd4015d87abc491359e9a531abcf9` |
+| 2 | Core Conceptual Model | 3.0.0 | Public-release candidate | `docs/02-core-conceptual-model.md` | `8dc9953c69f359f3b76f5d00a1cbd82992aaa31d` |
 | 3 | Maturity Model | 1.0 | Public-release candidate | `docs/03-maturity-model.md` | `f2a9359cc98522ca622eef232eac75f0a5b87e87` |
-| 4 | Scoring Framework | 2.0.0 | Public-release candidate | `docs/04-scoring-framework.md` | `2ff176de73c1d4432a6c67546093a0474330caae` |
+| 4 | Scoring Framework | 3.0.0 | Public-release candidate | `docs/04-scoring-framework.md` | `8c92ebb824b8de2c956c7522c24e1b8e76dd10d2` |
 | 5 | Master Control Library | 2.0.0 | Public-release candidate | `docs/05-master-control-library.md` | `d1584f82a0c8a50338346818ac02653e884ec0fb` |
-| 6 | Evidence Model | 1.0 | Public-release candidate | `docs/06-evidence-model.md` | `86de991c8d9d6c65c55b745ae039f855430dfc0b` |
-| 7 | Assessment Methodology | 1.0 | Public-release candidate | `docs/07-assessment-methodology.md` | `1b3d67f37938d675da1313336f64d8703fbf6ae5` |
+| 6 | Evidence Model | 2.0.0 | Public-release candidate | `docs/06-evidence-model.md` | `e5cfe1d3b6b5963cf511b91aaec55494e3fa90e7` |
+| 7 | Assessment Methodology | 1.1.0 | Public-release candidate | `docs/07-assessment-methodology.md` | `a91ea3c9dbbf9a4b07984fbd8d2855a02b8cf0d0` |
 | 8 | Assessor Handbook | 1.0 | Public-release candidate | `docs/08-assessor-handbook.md` | `3fbede164f6ac3f89c4a02619b0a0f40866938e6` |
-| 9 | Reporting Standard | 1.0 | Public-release candidate | `docs/09-reporting-standard.md` | `0d85dafb5295b575acbdeede4e09bbea93ce8d72` |
-| 10 | Reference Assessment Repository | 1.0 | Public-release candidate | `docs/10-reference-assessment-repository.md` | `4128c68344b7cbed6fb0e303958f453b01256a9c` |
+| 9 | Reporting Standard | 1.1.0 | Public-release candidate | `docs/09-reporting-standard.md` | `321b851309d7970c819cacd66fcbb3fd7744acf1` |
+| 10 | Reference Assessment Repository | 2.0.0 | Public-release candidate | `docs/10-reference-assessment-repository.md` | `54a71fa9af694b291ece152d61b1217d61f41483` |
 | 11 | Governance & Certification Model | 1.0 | Public-release candidate | `docs/11-governance-and-certification-model.md` | `35d9184a56098c3036a5edc1857a6fba29dc1fa5` |
-| 12 | Ontology Specification | 2.0.0 | Public-release candidate | `docs/12-ontology-specification.md` | `192482b89b7c5ed0910ab3f278d3aa095224534d` |
+| 12 | Ontology Specification | 3.0.0 | Public-release candidate | `docs/12-ontology-specification.md` | `713742afab9255eef1f08dc8e07f3dbdbc8c05cb` |
 
 ### Phase 2 non-normative companion
 
 | Artifact | Version | Status | Path | Git blob SHA |
 | --- | --- | --- | --- | --- |
-| Reference Graph Schema and Illustrative Query Library | 0.3.0 | Non-normative | `docs/13-reference-graph-schema-and-query-library.md` | `7cb30f49b54f10872aae59c30bb54168b0a05425` |
+| Reference Graph Schema and Illustrative Query Library | 0.4.0 | Non-normative | `docs/13-reference-graph-schema-and-query-library.md` | `d6c08539762b789e664ab6f66a0ffec6316c8c04` |
 
 ## 5. Conformance availability
 

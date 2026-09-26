@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Reporting Standard
 
-*Version 1.0 | Comparable, evidence-linked and decision-ready reporting without unsupported precision*
+*Version 1.1.0 | Comparable, evidence-linked and decision-ready reporting without unsupported precision*
 
 > **PURPOSE** Define the mandatory report package, claim rules, presentation conventions, traceability, visual standards and release controls for every AI Trust Graph assessment.
 
@@ -10,7 +10,7 @@
 | --- | --- |
 | Status | Public-release candidate |
 | Author | Siva Sethumadhavan |
-| Depends on | Artifacts #1-#8, especially Assessment Methodology v1.0 and Assessor Handbook v1.0 |
+| Depends on | Artifacts #1-#8, especially Assessment Methodology v1.1.0 and Assessor Handbook v1.0 |
 | Report package | Executive report; integrated assessment report; technical annex; evidence annex; machine-readable export |
 | Canonical views | Scope; coverage; six-domain maturity; control scorecards; paths; findings; decisions; roadmap; limitations |
 | Product boundary | ExposureGraph implementation, proprietary dashboards, algorithms, connectors and commercial templates excluded |
@@ -582,7 +582,7 @@ CANONICAL RESULT PRESENTATION
 
 # 3.4  Domain Control Attainment
 
-Show the published formula, determinate control denominator and coverage beside the percentage.
+Show the published formula, the finalized numeric control population used as the denominator (Scoring Framework §3.4) and determinate coverage beside the percentage.
 
 | **Presentation field** | **Required content** |
 | --- | --- |
@@ -598,7 +598,7 @@ CANONICAL RESULT PRESENTATION
 
 # 3.5  Verified-Control Rate
 
-Show applicable denominator and E4-E5 support for controls scoring 4 or 5.
+Show applicable denominator and controls with finalized final supported overall 4 or 5, whose operating effectiveness is supported by E5-quality evidence (Scoring Framework §3.5).
 
 | **Presentation field** | **Required content** |
 | --- | --- |
@@ -630,7 +630,7 @@ CANONICAL RESULT PRESENTATION
 
 # 3.7  Technical-evidence coverage
 
-Show applicable controls or assertions supported by E4-E5 and clearly state the population.
+Show applicable controls qualifying under Scoring Framework §2.5 and clearly state the population; merely linked E4-E5 evidence and design-only evidence do not qualify.
 
 | **Presentation field** | **Required content** |
 | --- | --- |
@@ -2044,4 +2044,4 @@ This appendix defines the canonical final doctrine and approval record for consi
 | Licence and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Reporting Standard | Version 1.0 | Public-release candidate
+AI Trust Graph Reporting Standard | Version 1.1.0 | Public-release candidate

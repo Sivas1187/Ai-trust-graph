@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Reference Graph Schema and Illustrative Query Library
 
-*Phase 2 companion | Non-normative | Version 0.3.0 | Initiated 2026-09-23*
+*Phase 2 companion | Non-normative | Version 0.4.0 | Initiated 2026-09-23*
 
 | **STATUS — READ BEFORE USING** This document is a **Phase 2, non-normative companion**. It does not redefine any concept, control, evidence grade, path state, scoring formula, maturity level or governance principle established in Artifacts #1-#12. It carries no conformance weight: none of the six conformance levels (L0-L5, Ontology Specification Appendix D.4) require it, and no conformance or certification claim depends on it. L4 Tool-compatible is currently unavailable until approved normative schemas and test vectors are published. This companion does not satisfy that gate. Its sole purpose is to make the ontology and control library easier to implement on **any** property-graph or RDF-reducible engine, without binding the methodology to one. If anything here appears to conflict with Artifacts #1-#12, those artifacts govern and this document is wrong. |
 | --- |
@@ -24,7 +24,7 @@ The query library uses **illustrative GQL-style read patterns informed by ISO/IE
 Two things follow from that choice, and both matter for keeping this document honest about its own limits:
 
 1. **This is not the only way to implement the ontology.** Every pattern below could equally be expressed in SPARQL over an RDF/OWL rendering of the same ontology, in Gremlin, in recursive SQL over an adjacency-list schema, or in a document store with application-level traversal. The GQL-style notation was chosen for readability and standards-oriented alignment, not because the methodology requires a graph database, still less a specific one.
-2. **A query that runs is not a conclusion the methodology recognizes.** Every invariant in Artifact #12 §15 still applies to whatever engine executes these patterns: a `MATCH` that finds a path does not make that path `Exploitable` (ONT-INV-01, ONT-INV-12); a query returning zero rows for missing evidence must surface as `UNKNOWN`, never as a false negative (ONT-INV-06); machine execution cannot promote an AI-generated inference to an approved fact (ONT-INV-08). Anywhere a query below returns something that would feed an assessment conclusion, that result is a **candidate assertion for review**, not an approved finding, exactly as §10 of Artifact #12 requires.
+2. **A query that runs is not a conclusion the methodology recognizes.** Every invariant in Artifact #12 §15 still applies to whatever engine executes these patterns: a `MATCH` that finds a path does not make that path `Exploitable` (ONT-INV-01, ONT-INV-12); a missing linked value or absent query result is preserved as absence/NULL for review; it is not by itself E0, `UNKNOWN`, pass, fail or zero, and if the reviewed assessment determines `UNKNOWN`, ONT-INV-06 requires that state to remain explicit and non-numeric; machine execution cannot promote an AI-generated inference to an approved fact (ONT-INV-08). Anywhere a query below returns something that would feed an assessment conclusion, that result is a **candidate assertion for review**, not an approved finding, exactly as §10 of Artifact #12 requires.
 
 ## 0.3 What this document is not
 
@@ -38,7 +38,7 @@ It is not the ExposureGraph product, does not describe ExposureGraph's implement
 -[:REL_TYPE]->                     a canonical relationship, directional per §8.2 of the Ontology Specification
 -[r:REL_TYPE {property: value}]->  a relationship bound to a variable so its own properties (evidence, confidence, review status...) can be filtered or returned
 MATCH ... WHERE ... RETURN         standard GQL/openCypher-style read pattern
-OPTIONAL MATCH                     a traversal step that should not eliminate the row if absent — used throughout to surface UNKNOWN rather than silently drop it
+OPTIONAL MATCH                     a traversal step that should not eliminate the row if absent — used where absence must remain visible as NULL / an absent linked value for review rather than eliminating the parent row; absence is not itself a canonical result state
 ```
 
 Every node and relationship label used below appears in §1's schema tables, which are themselves reproduced from Ontology Specification Appendices A and C. No label is introduced here that is not already canonical.
@@ -360,7 +360,7 @@ Reproduced from Ontology Specification §9.3, §10.5, §10.6, §11.1-§11.3 and 
 | --- | --- |
 | Verified Effective | Current evidence and representative validation support operation within scope. |
 | Implemented - Effectiveness Not Verified | Implementation evidence exists; operating effect was not validated. |
-| Implemented - Effectiveness Limited | Implementation is established within the assessed scope; operating effectiveness has been assessed and is below the level required for Verified Effective. |
+| Implemented - Effectiveness Limited | Implementation is established within the assessed scope; operating effectiveness has been assessed, but the evidence-supported operating-effectiveness result is below the level required for Verified Effective. |
 | Partially Implemented | Required elements or scope are incomplete. |
 | Not Implemented | Required control is absent in the assessed scope. |
 | Not Applicable | Documented rationale shows the control does not apply. |
@@ -557,8 +557,10 @@ Unsanctioned AI use sending data to a provider with no approval on record.
 MATCH (h:HumanIdentity)-[:USES]->(s:ShadowAI)-[:SENDS_TO]->(p:Provider)
 WHERE NOT (s)-[:APPROVED_BY]->(:Approval)
 OPTIONAL MATCH (s)-[:OBSERVED_BY]->(ev:EvidenceItem)
-RETURN h.id, s.label, p.label, coalesce(ev.grade, 'E0') AS evidenceGrade
+RETURN h.id, s.label, p.label, ev.id AS evidenceItem, ev.grade AS evidenceGrade
 ```
+
+A NULL grade means no linked evidence; it is not an E0 EvidenceItem and not a result state. Sufficiency is a reviewed component decision (Evidence Model §4.13), never a per-item grade threshold.
 
 #### D1.4 AIBOM and dependency lineage
 *Grounded in: ATG-DIS-008, ATG-DIS-009, ATG-DIS-010*
@@ -570,8 +572,10 @@ MATCH (bom:AIBOM)-[:CONTAINS]->(component)
 WHERE component:Model OR component:PromptAsset OR component:Agent OR component:Tool
 OPTIONAL MATCH (component)-[:DERIVED_FROM]->(source:Artifact)
 OPTIONAL MATCH (component)-[:EVIDENCED_BY]->(ev:EvidenceItem)
-RETURN bom.id, component.label, source.label AS provenance, coalesce(ev.grade, 'E0') AS evidenceGrade
+RETURN bom.id, component.label, source.label AS provenance, ev.id AS evidenceItem, ev.grade AS evidenceGrade
 ```
+
+A NULL grade means no linked evidence; it is not an E0 EvidenceItem and not a result state. Sufficiency is a reviewed component decision (Evidence Model §4.13), never a per-item grade threshold.
 
 #### D1.5 Unknown, orphan and lifecycle management
 *Grounded in: ATG-DIS-011*
@@ -633,8 +637,10 @@ MATCH (r)-[:CROSSES]->(b:Boundary {boundaryClass: 'Provider'})
 MATCH (r)-[:SENDS_TO|CONNECTS_TO]->(p:Provider)
 OPTIONAL MATCH (p)-[:SUBJECT_TO]->(c:Control)
 OPTIONAL MATCH (c)-[:EVIDENCED_BY]->(ev:EvidenceItem)
-RETURN p.id, b.label, c.id AS governingControl, coalesce(ev.grade, 'E0') AS evidenceGrade
+RETURN p.id, b.label, c.id AS governingControl, ev.id AS evidenceItem, ev.grade AS evidenceGrade
 ```
+
+A NULL grade means no linked evidence; it is not an E0 EvidenceItem and not a result state. Sufficiency is a reviewed component decision (Evidence Model §4.13), never a per-item grade threshold.
 
 #### D2.4 Path identification and prioritization
 *Grounded in: ATG-TRU-008, ATG-TRU-009*
@@ -647,9 +653,10 @@ WHERE p.state IN ['Candidate', 'Topological', 'Plausible']
 OPTIONAL MATCH (p)-[:REQUIRES]->(cond:Condition)
 OPTIONAL MATCH (cond)-[:EVIDENCED_BY]->(ev:EvidenceItem)
 RETURN p.id, p.state,
-       collect(DISTINCT cond.label) AS conditions,
-       collect(DISTINCT coalesce(ev.grade, 'E0')) AS conditionEvidenceGrades
+       collect(DISTINCT {condition: cond.label, evidenceItem: ev.id, evidenceGrade: ev.grade}) AS conditionEvidence
 ```
+
+A NULL grade means no linked evidence; it is not an E0 EvidenceItem and not a result state. Sufficiency is a reviewed component decision (Evidence Model §4.13), never a per-item grade threshold.
 
 #### D2.5 Control breakpoint analysis
 *Grounded in: ATG-TRU-010*
@@ -790,14 +797,16 @@ RETURN t.id, t.procedure, t.conditions
 #### D4.4 Control effectiveness testing
 *Grounded in: ATG-VAL-011*
 
-Claimed breakpoints whose supporting test evidence, if any, sits below the E4 floor this capability requires for an operating-effectiveness claim.
+Claimed breakpoints with each linked test and its evidence items and grades — an inventory input for the reviewed operating-effectiveness sufficiency decision, which requires E5-quality evidence and, for Critical controls, representative E5 with path context (Evidence Model §4.4, A.3). It does not decide sufficiency.
 
 ```
 MATCH (c:Control)-[:BREAKS_PATH]->(p:Path)
-OPTIONAL MATCH (c)-[:TESTED_BY]->(t:Test)-[:EVIDENCED_BY]->(ev:EvidenceItem)
-WHERE ev IS NULL OR ev.grade IN ['E0', 'E1', 'E2', 'E3']
-RETURN c.id, p.id, coalesce(ev.grade, 'E0') AS evidenceGrade
+OPTIONAL MATCH (c)-[:TESTED_BY]->(t:Test)
+OPTIONAL MATCH (t)-[:EVIDENCED_BY]->(ev:EvidenceItem)
+RETURN c.id, c.criticality, p.id, t.id AS test, ev.id AS evidenceItem, ev.grade AS evidenceGrade
 ```
+
+A NULL grade means no linked evidence; it is not an E0 EvidenceItem and not a result state. Sufficiency is a reviewed component decision (Evidence Model §4.13), never a per-item grade threshold.
 
 #### D4.5 Finding quality and closure
 *Grounded in: ATG-VAL-012*
@@ -869,8 +878,10 @@ Use-case-to-obligation mapping by jurisdiction, with the evidence grade behind e
 ```
 MATCH (uc:AIUseCase)-[:SUBJECT_TO]->(ob:Obligation)-[:MAPS_TO]->(j:Jurisdiction)
 OPTIONAL MATCH (ob)-[:EVIDENCED_BY]->(ev:EvidenceItem)
-RETURN uc.id, j.label AS jurisdiction, ob.id AS obligation, coalesce(ev.grade, 'E0') AS applicabilityEvidenceGrade
+RETURN uc.id, j.label AS jurisdiction, ob.id AS obligation, ev.id AS evidenceItem, ev.grade AS applicabilityEvidenceGrade
 ```
+
+A NULL grade means no linked evidence; it is not an E0 EvidenceItem and not a result state. Sufficiency is a reviewed component decision (Evidence Model §4.13), never a per-item grade threshold.
 
 #### D5.5 Exceptions and risk acceptance
 *Grounded in: ATG-GOV-009*
@@ -976,8 +987,8 @@ RETURN ex.id, scenario.id, f.id AS openFinding
 
 These don't belong to one capability — they're the questions that recur across all six domains and appear repeatedly in the Reporting Standard and Assessor Handbook.
 
-#### 3.7.1 Evidence coverage and UNKNOWN detection
-Applicable controls with zero linked evidence — surfaced as `UNKNOWN`, per ONT-INV-06, never silently as a pass or a zero.
+#### 3.7.1 Linked-evidence inventory for applicable controls
+Applicable controls with no linked evidence — an inventory for review, never a pass or a zero. Absence of linked evidence is not itself UNKNOWN: the result state comes from the reviewed control assessment (Scoring Framework §1.5; Evidence Model §0.5, §4.13).
 
 ```
 MATCH (c:Control)
@@ -985,7 +996,7 @@ WHERE c.applicability = 'Applicable'
 OPTIONAL MATCH (c)-[:EVIDENCED_BY]->(ev:EvidenceItem)
 WITH c, count(ev) AS evidenceCount
 WHERE evidenceCount = 0
-RETURN c.id, c.criticality, 'UNKNOWN' AS resultState
+RETURN c.id, c.criticality, evidenceCount
 ```
 
 #### 3.7.2 Critical and Systemic control linked-test-result inventory
@@ -1047,17 +1058,17 @@ RETURN current.id, current.version, priorVersions
 ORDER BY size(priorVersions) DESC
 ```
 
-#### 3.7.7 Maturity-capability evidence floor
-Controls mapped to one maturity capability whose evidence sits below the E3 floor that capability's evidence expectation calls for — parameterize `$capability` per capability ID.
+#### 3.7.7 Maturity-capability linked-evidence inventory
+Controls mapped to one maturity capability with each linked evidence item and its grade — an input to the reviewed, level-specific evidence expectations in the Maturity Model. Per-item grades are not compared with a floor here — parameterize `$capability` per capability ID.
 
 ```
 MATCH (c:Control)
 WHERE c.maturityCapability = $capability
 OPTIONAL MATCH (c)-[:EVIDENCED_BY]->(ev:EvidenceItem)
-WITH c, coalesce(ev.grade, 'E0') AS grade
-WHERE grade IN ['E0', 'E1', 'E2']
-RETURN c.id, c.maturityCapability, grade AS evidenceBelowFloor
+RETURN c.id, c.maturityCapability, ev.id AS evidenceItem, ev.grade AS evidenceGrade
 ```
+
+A NULL grade means no linked evidence; it is not an E0 EvidenceItem and not a result state. Sufficiency is a reviewed component decision (Evidence Model §4.13), never a per-item grade threshold.
 
 #### 3.7.8 Boundary-crossing inventory
 Every boundary class actually crossed by a material path, and how many paths cross each — the population behind Reporting Standard §6.9's graph-redaction and boundary disclosure requirements.
@@ -1099,9 +1110,9 @@ As a Phase 2 companion rather than one of the 12 core methodology artifacts, thi
 | **Field** | **Value** |
 | --- | --- |
 | Status | Phase 2, non-normative, initial publication |
-| Depends on | Ontology Specification v2.0.0 (Artifact #12), Master Control Library v2.0.0 (Artifact #5) |
+| Depends on | Ontology Specification v3.0.0 (Artifact #12), Master Control Library v2.0.0 (Artifact #5) |
 | Conformance weight | None — see §0 |
 | Independent review | Not yet performed; recommended before this document is treated as a stable reference by implementers |
 | Employer / IP / confidentiality review | Pending, same methodology-wide gate as Artifacts #1-#12 |
 
-AI Trust Graph Reference Graph Schema and Illustrative Query Library | Phase 2 companion, v0.3.0 | Non-normative
+AI Trust Graph Reference Graph Schema and Illustrative Query Library | Phase 2 companion, v0.4.0 | Non-normative

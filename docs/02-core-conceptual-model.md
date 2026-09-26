@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Core Conceptual Model
 
-*Version 2.0.0 | Refactored theory of graph-based AI trust, authority, exposure, evidence and control*
+*Version 3.0.0 | Refactored theory of graph-based AI trust, authority, exposure, evidence and control*
 
 > **DOCUMENT ROLE** The authoritative semantic layer between the AI Trust Graph Manifesto and the canonical ontology. It defines what the concepts mean, why a graph is required, and how the concepts constrain assessment artifacts and compatible tooling.
 
@@ -10,7 +10,7 @@
 | --- | --- |
 | Status | Public-release candidate |
 | Author | Siva Sethumadhavan |
-| Supersedes | Core Conceptual Model v1.1.1 |
+| Supersedes | Core Conceptual Model v2.0.0 |
 | Refactor objective | Remove structural repetition; elevate graph theory, emergent risk and authority amplification. |
 | Product boundary | ExposureGraph product design and implementation remain excluded. |
 | Release condition | Employer, IP, confidentiality, trademark, copyright, license and independent methodology review. |
@@ -849,7 +849,7 @@ A control is assessed through separate design, implementation, operation and val
 | --- | --- |
 | Verified Effective | Current evidence and representative validation support operation within scope. |
 | Implemented - Effectiveness Not Verified | Implementation evidence exists; operating effect was not validated. |
-| Implemented - Effectiveness Limited | Implementation is established within the assessed scope; operating effectiveness has been assessed and is below the level required for Verified Effective. |
+| Implemented - Effectiveness Limited | Implementation is established within the assessed scope; operating effectiveness has been assessed, but the evidence-supported operating-effectiveness result is below the level required for Verified Effective. |
 | Partially Implemented | Required elements or scope are incomplete. |
 | Not Implemented | Required control is absent in the assessed scope. |
 | Not Applicable | Documented rationale shows the control does not apply. |
@@ -1004,4 +1004,4 @@ The public methodology must remain usable without ExposureGraph. A platform may 
 | License and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Core Conceptual Model  |  Version 2.0.0  |  Refactored public-release candidate
+AI Trust Graph Core Conceptual Model  |  Version 3.0.0  |  Refactored public-release candidate

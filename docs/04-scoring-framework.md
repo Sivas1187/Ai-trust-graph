@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Scoring Framework
 
-*Version 2.0.0 | Separate measures for control state, evidence, confidence, coverage, maturity and path exposure*
+*Version 3.0.0 | Separate measures for control state, evidence, confidence, coverage, maturity and path exposure*
 
 > **PURPOSE** Convert evidence-backed assessment results into transparent, reproducible decision measures without hiding critical failures, UNKNOWNs, weak coverage or domain variation.
 
@@ -10,7 +10,7 @@
 | --- | --- |
 | Status | Public-release candidate |
 | Author | Siva Sethumadhavan |
-| Depends on | Manifesto v1.0; Core Conceptual Model v2.0.0; Maturity Model v1.0 |
+| Depends on | Manifesto v1.0; Core Conceptual Model v3.0.0; Maturity Model v1.0 |
 | Primary outputs | Control score, evidence grade, confidence, coverage, domain scorecard, maturity profile and path-exposure band |
 | Prohibited shortcut | One opaque enterprise trust score presented without its component measures |
 | Product boundary | ExposureGraph algorithms, ranking and implementation logic excluded |
@@ -225,20 +225,22 @@ Operating-effectiveness score is one component of the control record. It must be
 
 # 1.5  Overall control-assurance score
 
-The overall 0-5 control-assurance score is the minimum of available determinate design, implementation and operating-effectiveness components after evidence-cap and critical-gate review. This conservative rule prevents strong design from masking weak operation.
+The overall 0-5 control-assurance score is derived from **supported component scores**. For design, implementation and operating effectiveness the assessor records an observed score. A component score is finalized only when an approved evidence sufficiency decision (Evidence Model §4.13) establishes that the evidence supports a numeric determination of the observed component condition within the declared scope; the supported component score is then the lower of the observed score and the approved evidence support ceiling (§1.8). This applies equally to favourable and adverse observations. The observed score remains visible. This conservative rule prevents strong design from masking weak operation.
 
-If operating effectiveness was not tested, the overall score cannot exceed 3. If implementation is UNKNOWN, no overall numeric score is issued.
+If operating effectiveness was not tested, the overall score cannot exceed 3. If a required component has no supported numeric score — because it is UNKNOWN, Inconclusive, or has no approved sufficiency decision — no overall numeric score is issued and the reason is shown.
 
-> **FORMULA** Control Assurance Score = minimum of applicable determinate component scores, then apply evidence cap and critical gate.
+> **FORMULA** Supported component = min(observed component, approved evidence support ceiling), only where the approved sufficiency decision supports a numeric determination. Final supported overall = applicable gate treatment of the minimum of the required supported components, with the Not Tested cap of 3 where applicable.
+
+**Execution order.** These steps MUST be applied in order: (1) observed component score; (2) approved claim-specific sufficiency decision; (3) supported component score; (4) required-component and Not Tested handling — if operating effectiveness is Not Tested, design and implementation are required and the cap of 3 applies, and a required component without a supported numeric score prevents a numeric overall; (5) component minimum; (6) applicable gate treatment — every applicable gate is resolved (pass, cap or invalidate) and an unresolved applicable gate blocks finalization; (7) final supported overall; (8) conclusion compatibility (below). Pure numeric caps commute, but UNKNOWN, Inconclusive, Not Tested, missing sufficiency review, required-component selection and gate invalidation do not; the order is normative.
 
 | **Condition** | **Treatment** |
 | --- | --- |
-| All three components determinate | Use the minimum, with rationale. |
+| All required components have supported numeric scores | Use the minimum, with rationale. |
 | Operating effectiveness Not Tested | Cap overall at 3 and show Not Tested. |
-| Design determinate, implementation UNKNOWN | No overall numeric score. |
-| Confirmed absent applicable control | Overall score 0. |
+| A required component UNKNOWN, Inconclusive or without an approved sufficiency decision | No overall numeric score; show the reason. |
+| Confirmed absent applicable control | Overall score 0 once an approved sufficiency decision supports the absence across the assessed scope. |
 | Not Applicable | Exclude only with approved rationale. |
-| Material critical-gate failure | Apply the gate cap or invalidate score. |
+| Applicable gate failure | Apply the gate cap or invalidate score; every applicable gate is resolved before finalization. |
 
 **Conclusion-to-score compatibility.** The reviewer selects the control conclusion (Core Conceptual Model §7.3; Ontology Specification §10.6). The control-assurance score is calculated independently under this section. Neither is derived from the other.
 
@@ -248,19 +250,21 @@ A required component MUST be determinate (0-5). Absence of a value is not itself
 
 A critical-gate cap that places the final supported overall outside a conclusion's permitted range prevents that conclusion from finalizing. A gate that invalidates the score leaves no numeric overall. Neither changes the conclusion automatically.
 
-Enumeration order of the conclusions does not imply an ordinal score. Evidence sufficiency for a numeric final supported overall is governed by §1.8 and the Evidence Model.
+Enumeration order of the conclusions does not imply an ordinal score. Evidence sufficiency for a numeric final supported overall is governed by §1.8 and Evidence Model §§4.1-4.5, 4.13 and A.3. The Design, Implementation and Operating effectiveness columns below refer to **supported** component scores (execution order above), not raw observed scores.
 
 | **Conclusion** | **Design** | **Implementation** | **Operating effectiveness** | **Final supported overall** | **Denominator** | **Rejected when** |
 | --- | --- | --- | --- | --- | --- | --- |
-| Verified Effective | Required, determinate, >=3. | Required, determinate, >=3. | Required, determinate, >=4, with representative validation evidenced. | 3-5 | Applicable, scored. | Any component missing or not determinate; design <3; implementation <3; operating effectiveness Not Tested or <4; representative validation not evidenced; overall outside 3-5. |
+| Verified Effective | Required, determinate, >=3. | Required, determinate, >=3. | Required, supported, >=4, with representative validation evidenced. | 3-5 | Applicable, scored. | Any component missing or not determinate; design <3; implementation <3; operating effectiveness Not Tested or <4; representative validation not evidenced; overall outside 3-5. |
 | Implemented - Effectiveness Not Verified | Required, determinate, >=3. | Required, determinate, >=3. | No numeric operating-effectiveness score; the §1.5 operating-effectiveness Not Tested condition applies. | Exactly 3 | Applicable, scored. | Design or implementation missing, not determinate or <3; numeric operating-effectiveness score; operating effectiveness UNKNOWN; overall not exactly 3, including when evidence support or a gate places it below 3. |
-| Implemented - Effectiveness Limited | Required, determinate, >=3. | Required, determinate, >=3. | Required, determinate, 0-3. | 0-3 | Applicable, scored. | Design <3; implementation <3; operating effectiveness missing, Not Tested or >=4; overall outside 0-3. |
+| Implemented - Effectiveness Limited | Required, determinate, >=3. | Required, determinate, >=3. | Required, supported numeric, 0-3. | 0-3 | Applicable, scored. | Design <3; implementation <3; operating effectiveness missing, Not Tested or >=4; overall outside 0-3. |
 | Partially Implemented | Required, determinate; at least one of design or implementation is <=2. | Required, determinate, >0. | Determinate within the explicitly assessed partial scope, or Not Tested. | 0-2 | Applicable, scored. | Design or implementation missing or not determinate; implementation 0 (see Not Implemented); design and implementation both >=3 (see Implemented - Effectiveness Limited where operating effectiveness is 0-3); overall outside 0-2. |
 | Not Implemented | May be retained. | Required, exactly 0 (confirmed absent in the assessed scope). | 0 or no numeric score; a positive score is incompatible. | Exactly 0, once supported absence is established. | Applicable, scored. | Implementation missing or >0; operating effectiveness >0; overall other than 0; supported absence not established. |
 | Not Applicable | No current component score. | No current component score. | No current component score. | None | Excluded only with approved rationale and reviewer. | Any current component score; rationale or reviewer missing. |
 | Not Tested | May be retained if separately supported (§0.5). | No numeric score. | No numeric score. | None | Applicable, unscored. | Numeric implementation or operating-effectiveness score; numeric overall. |
 | UNKNOWN | Observations may be retained and remain visible. | Observations may be retained and remain visible. | Observations may be retained and remain visible. | None | Applicable, unscored; counted in uncertainty and evidence-gap counts. | Numeric overall. |
 | Inconclusive | Observations may be retained and remain visible. | Observations may be retained and remain visible. | Observations may be retained and remain visible. | None | Applicable, unscored; counted in the inconclusive count with reason. | Numeric overall; reason missing. |
+
+If no numeric operating-effectiveness score can be supported, the conclusion is UNKNOWN or Inconclusive as applicable, not Implemented - Effectiveness Limited.
 
 Operating effectiveness that is UNKNOWN because evidence is insufficient or conflicting does not satisfy Implemented - Effectiveness Not Verified; the conclusion is UNKNOWN. Where testing or evidence cannot support a determinate conclusion, the conclusion is Inconclusive.
 
@@ -274,8 +278,8 @@ Control criticality describes the consequence of control failure in the assessed
 | --- | --- | --- |
 | Standard | Failure affects a bounded local condition. | Normal quality review. |
 | Important | Failure can expose a material relationship or control dependency. | Enhanced evidence or testing. |
-| Critical | Failure can enable a high-impact path, irreversible action or mandatory requirement. | E5 evidence expected for score 4-5; gate may apply. |
-| Systemic | Failure can affect multiple material paths, tenants, systems or decisions. | Independent validation and resilience analysis required. |
+| Critical | Failure can enable a high-impact path, irreversible action or mandatory requirement. | A finalized operating-effectiveness score requires representative E5 with path context (Evidence Model A.3); gate applicability is evaluated and recorded. |
+| Systemic | Failure can affect multiple material paths, tenants, systems or decisions. | A finalized operating-effectiveness score requires E5-quality evidence; independent validation and resilience analysis required; gate applicability is evaluated and recorded. |
 
 # 1.7  Applicability and profiles
 
@@ -294,18 +298,20 @@ Profile definitions are versioned and list mandatory, conditional and supplement
 
 # 1.8  Evidence-supported score cap
 
-The evidence cap limits the strongest control conclusion the available evidence can support. It does not convert evidence quality into effectiveness.
+The **evidence cap** is the approved evidence support ceiling for one component claim (Evidence Model §4.13). It limits the highest component score the evidence can support; it does not convert evidence quality into effectiveness and does not by itself establish any observed score. The table is a global grade-based upper bound: an approved ceiling MUST NOT exceed the bound of the strongest accepted SUPPORTS or CORROBORATES item materially relied upon for that exact claim by the approved sufficiency decision. Linked items not relied upon, DISPUTES items, QUALIFIES-only items, unrelated items and `highest_member_grade` never set the bound. The bound is not an entitlement: an item's grade never grants a score, a group of items has no grade of its own, and mere multiplicity or aggregation of items never raises the bound. Component-specific minimums (Evidence Model §§4.2-4.5, A.3) are stricter and prevail.
 
-The underlying assessor observation remains visible even when the supported score is capped.
+The underlying assessor observation remains visible even when the supported score is lower.
 
-| **Evidence** | **Maximum supported control score** | **Reason** |
+| **Strongest materially relied-upon item** | **Upper support bound** | **Reason** |
 | --- | --- | --- |
-| E0 | No numeric score | No evidence; result is UNKNOWN or Not Tested. |
-| E1 | 1 provisional | Inference supports a hypothesis, not implementation. |
-| E2 | 2 provisional | Attestation supports claimed practice, not technical operation. |
-| E3 | 3 | Approved documentation can support design and implementation intent. |
-| E4 | 4 | Corroborated technical evidence can support verified operation in observed scope. |
-| E5 | 5 | Direct current technical and representative test or operating evidence can support adaptive or continuously assured claims. |
+| E0 | No numeric score | No evidence supports a component claim. |
+| E1 | 1, provisional only | Inference supports a hypothesis; cannot alone finalize a score. |
+| E2 | 2, provisional only | Attestation supports claimed practice; cannot alone finalize a score. |
+| E3 | 3 | Approved documentation can support design or intent; cannot finalize any implementation or operating-effectiveness score. |
+| E4 | 4 | Corroborated technical evidence can support design, or implementation or operation within observed scope; does not by itself finalize operating effectiveness. |
+| E5 | 5 | Direct current technical and representative test or operating evidence can support operating effectiveness within stated limits; any component score of 5 also requires repeated E5-quality evidence across relevant material changes. |
+
+Absence of a linked EvidenceItem is not itself an E0 EvidenceItem. E0 is used only where an E0 evidence basis is explicitly recorded and reviewed under the Evidence Model.
 
 # 1.9  Control score examples
 
@@ -318,6 +324,8 @@ The examples are synthetic and demonstrate calculation logic only.
 | Representative test passes; current evidence | 4 | 4 | 4 | E5 | 4. |
 | Adaptive policy engine observed once | 5 | 4 | 4 | E5 | 4; adaptive claim not yet sustained. |
 | Critical control fails one representative test | 4 | 4 | 0 | E5 | 0 plus critical-gate review. |
+
+The Evidence column names the grade of the evidence relied on for the decisive claim; it is not a bundle grade. Each numeric component assumes an approved sufficiency decision; the operating-effectiveness 0 in the critical-control example is an adverse result supported by representative E5.
 
 The critical-control example (4, 4, 0, E5, result 0) is a determinate result compatible with the conclusion Implemented - Effectiveness Limited (§1.5). Compatibility does not derive the conclusion from the score; the conclusion remains a reviewed determination.
 
@@ -389,9 +397,9 @@ Coverage reports how much of the declared population was represented. Coverage n
 | **Measure** | **Formula** |
 | --- | --- |
 | Assessment coverage | Applicable items with determinate or non-determinate assessment activity / all applicable items. |
-| Determinate coverage | Applicable items with numeric determinate result / all applicable items. |
-| Technical-evidence coverage | Applicable items supported by E4-E5 / all applicable items. |
-| Critical-control validation coverage | Critical applicable controls with representative tests / all critical applicable controls. |
+| Determinate coverage | Applicable items with a finalized numeric determinate result / all applicable items. For control scoring, the numerator is applicable controls with a finalized numeric final supported overall; provisional numeric observations and candidate ceilings do not count. |
+| Technical-evidence coverage | Qualifying applicable controls / all applicable controls. A control qualifies only when an implementation or operating-effectiveness claim covering the declared assessed scope has a current approved evidence sufficiency decision (Evidence Model §4.13) materially supported by qualifying technical evidence (E4-or-stronger from the deployed or configured environment for implementation; E5-quality for operating effectiveness) linked by SUPPORTS or CORROBORATES, with no unresolved material DISPUTES. Merely linked E4-E5 evidence and design-only evidence do not qualify; formally narrowed partial-scope support is disclosed separately and earns no credit; no fractional credit. |
+| Critical-control validation coverage | Critical applicable controls with a current approved operating-effectiveness sufficiency decision relying on representative E5 with path context / all Critical applicable controls. |
 | Asset attribution coverage | In-scope assets with validated owner / in-scope discovered assets. |
 | Path validation coverage | Material paths validated or invalidated / material paths selected for validation. |
 
@@ -402,7 +410,7 @@ Coverage is displayed beside attainment. A high control average with low determi
 | **Display** | **Required companion** |
 | --- | --- |
 | Average control score | Determinate coverage, UNKNOWN count and critical gates. |
-| Verified-effective percentage | Applicable denominator and E4-E5 coverage. |
+| Verified-effective percentage | Applicable denominator and technical-evidence coverage (§2.5). |
 | Maturity profile | Evidence confidence and not-assessed capabilities. |
 | Residual-risk count | Path-selection method and unassessed material targets. |
 | Continuous-assurance claim | Source freshness, monitoring coverage and reassessment triggers. |
@@ -485,9 +493,9 @@ The executive scorecard displays one row for each canonical domain: Discovery an
 | **Field** | **Required output** |
 | --- | --- |
 | Maturity | M1-M5 or non-level state. |
-| Control attainment | Average only across determinate applicable scores. |
+| Control attainment | Domain Control Attainment (§3.4): average of finalized final supported overall scores only. |
 | Determinate coverage | Percentage and denominator. |
-| E4-E5 coverage | Technical-evidence proportion and denominator. |
+| Technical-evidence coverage | Proportion and denominator as defined in §2.5. |
 | Confidence | High, Medium, Low or Not rated. |
 | Critical gates | Open, passed, not applicable or unresolved. |
 | High/Critical paths | Count only from defined assessed path population. |
@@ -495,29 +503,27 @@ The executive scorecard displays one row for each canonical domain: Discovery an
 
 # 3.4  Domain control attainment
 
-Domain Control Attainment (DCA) is the mean of determinate applicable control-assurance scores divided by 5 and expressed as a percentage. It describes scored control performance only.
+Domain Control Attainment (DCA) is the mean of finalized final supported overall scores of applicable controls divided by 5 and expressed as a percentage. It describes scored control performance only. Provisional supported scores are excluded from the arithmetic and shown separately.
 
 DCA is always accompanied by determinate coverage and gate status. Items with UNKNOWN or Not Assessed state are excluded from the arithmetic but remain visible in coverage.
 
-> **FORMULA** DCA = 100 x sum of determinate control scores / (5 x number of determinate applicable controls).
+> **FORMULA** DCA = 100 x sum of finalized final supported overall scores / (5 x number of applicable controls with a finalized numeric overall).
 
 | **Example** | **Result** |
 | --- | --- |
-| Eight applicable controls; six determinate scores total 21 | DCA = 70%; determinate coverage = 75% (6/8). |
-| Four determinate controls all score 5; six UNKNOWN | DCA = 100%; determinate coverage = 40%; assurance claim remains weak. |
+| Eight applicable controls; six controls have finalized numeric final supported overalls totaling 21 | DCA = 70%; determinate coverage = 75% (6/8). |
+| Four controls each have a finalized final supported overall of 5; six UNKNOWN | DCA = 100%; determinate coverage = 40%; assurance claim remains weak. |
 | Critical gate open | DCA may be shown, but domain conclusion is capped or invalidated. |
 
 # 3.5  Verified-control rate
 
-Verified-Control Rate (VCR) shows the proportion of applicable controls scoring 4 or 5 with sufficient E4-E5 evidence.
+Verified-Control Rate (VCR) shows the proportion of applicable controls with a finalized final supported overall of 4 or 5, after sufficiency decisions, Not Tested treatment, applicable gates and conclusion compatibility (§1.5). Provisional scores are excluded from the numerator. Operating effectiveness of every counted control is supported by E5-quality evidence (Critical: representative E5 with path context); E4 alone is never sufficient for operating effectiveness. Every counted control is Verified Effective; a Verified Effective control at final supported overall 3 is not counted.
 
-Controls scoring 4 or 5 without the required evidence are capped before this rate is calculated.
-
-> **FORMULA** VCR = applicable controls with evidence-supported score 4 or 5 / all applicable controls.
+> **FORMULA** VCR = applicable controls with finalized final supported overall 4 or 5 / all applicable controls.
 
 | **Companion measure** | **Why required** |
 | --- | --- |
-| E4-E5 evidence coverage | Shows technical support across the population. |
+| Technical-evidence coverage | Shows qualifying technical support across the population (§2.5). |
 | Critical-control VCR | Highlights validation of high-leverage controls. |
 | UNKNOWN count | Prevents uncertainty from disappearing. |
 | Not Tested count | Shows limits on effectiveness claims. |
@@ -541,8 +547,8 @@ Critical and systemic controls receive a dedicated view. Their performance must 
 | **Metric** | **Treatment** |
 | --- | --- |
 | Critical controls applicable | Exact denominator. |
-| Verified effective | Score 4-5 with required E5 or approved equivalent evidence. |
-| Failed | Score 0-2 or critical test failure. |
+| Verified effective | Finalized final supported overall 4-5; operating effectiveness supported by E5-quality evidence, and for Critical controls representative E5 with path context; applicable gates resolved. |
+| Failed | Finalized final supported overall 0-2 or critical test failure. |
 | Not Tested / UNKNOWN | Separate counts and affected paths. |
 | Critical gates | Cap or invalidation applied before executive conclusion. |
 | Residual paths | Paths remaining after control operation or remediation. |
@@ -782,7 +788,7 @@ Averages are descriptive statistics, not maturity levels, compliance conclusions
 | **Aggregate** | **Permitted** |
 | --- | --- |
 | Control attainment | Yes, across determinate compatible controls with coverage. |
-| Verified-control rate | Yes, across applicable controls with evidence cap. |
+| Verified-control rate | Yes, across applicable controls, using finalized final supported overall. |
 | Maturity average | No for level determination. |
 | Domain vector | Yes; preferred executive maturity view. |
 | Overall trustworthiness score | No in v1.0. |
@@ -806,11 +812,11 @@ Weights must be predeclared in an assessment profile and cannot be changed after
 
 Weighted Control Attainment (WCA) is optional and supplements the unweighted DCA. It emphasizes critical controls but can still hide a gate, so gates and critical-control scorecards remain mandatory.
 
-> **FORMULA** WCA = 100 x sum(weight x determinate score) / [5 x sum(weights for determinate applicable controls)].
+> **FORMULA** WCA = 100 x sum(weight x finalized final supported overall) / [5 x sum(weights for applicable controls with a finalized numeric overall)].
 
 | **Required companion** | **Reason** |
 | --- | --- |
-| Determinate weighted coverage | Shows how much weighted population was scored. |
+| Determinate weighted coverage | Shows how much of the weighted applicable population has a finalized numeric final supported overall; provisional observations, candidate ceilings and unfinalized supported values do not count. |
 | Critical gates | Prevents weighted compensation. |
 | Unweighted DCA | Shows sensitivity to control weights. |
 | Weight profile version | Supports reproducibility. |
@@ -894,31 +900,33 @@ Thresholds translate scores into authorized action. They are profile-specific an
 
 # 6.1  Synthetic worked example: control
 
-A synthetic high-impact agent approval control is designed adequately (4), implemented across production scope (4), and passes representative bypass and transaction-binding tests (4). Evidence is E5 and confidence is High.
+A synthetic high-impact agent approval control of Critical criticality is observed as designed strongly (4), implemented across production scope (4) and operating as intended under representative bypass and transaction-binding tests (4). Each component has its own approved evidence sufficiency decision (Evidence Model §4.13); no single grade governs the whole control.
 
-The control-assurance score is 4. It is not 5 because sustained adaptive operation and change-triggered assurance were not demonstrated.
+The final supported overall is 4. It is not 5 because repeated E5-quality evidence across relevant material changes — sustained adaptive operation and change-triggered assurance — is absent (Evidence Model §4.5).
 
 | **Element** | **Value** |
 | --- | --- |
-| Design | 4 |
-| Implementation | 4 |
-| Operating effectiveness | 4 |
-| Evidence cap | E5 permits up to 5 |
-| Critical gate | Passed |
-| Final score | 4 |
+| Observed design / implementation / operating effectiveness | 4 / 4 / 4 |
+| Design evidence | Claim-specific E4 technical design verification of dependencies, bypass and failure handling (SUPPORTS, relied upon); numeric determination supported; ceiling 4. |
+| Implementation evidence | Representative E4 deployed-state configuration export across production scope (SUPPORTS, relied upon); numeric determination supported; ceiling 4. |
+| Operating-effectiveness evidence | Representative current E5 bypass and transaction-binding tests executed along the recorded material path (path context; SUPPORTS, relied upon); numeric determination supported; ceiling 4 (single E5 period, not repeated across material changes). |
+| Supported design / implementation / operating effectiveness | 4 / 4 / 4 |
+| Gate applicability | Evaluated and recorded; approval-integrity gate applicable and passed. |
+| Final supported overall | 4 |
+| Conclusion | Verified Effective (counted in VCR). |
 | Confidence | High |
-| Limitation | Adaptive operation not established. |
+| Limitation | Score 5 unavailable: repeated E5-quality evidence across relevant material changes absent. |
 
 # 6.2  Synthetic worked example: coverage
 
-A domain has ten applicable controls. Six have determinate scores totaling 24, two are UNKNOWN, one is Not Tested and one is Inconclusive.
+A domain has ten applicable controls. Six have finalized numeric final supported overalls totaling 24, two are UNKNOWN, one is Not Tested and one is Inconclusive.
 
 DCA is 80% because 24 / (5 x 6) = 0.80. Determinate coverage is 60%. The result must be displayed as 80% attainment at 60% determinate coverage, not simply 80%.
 
 | **Metric** | **Value** |
 | --- | --- |
 | Applicable controls | 10 |
-| Determinate controls | 6 |
+| Controls with finalized numeric overall | 6 |
 | DCA | 80% |
 | Determinate coverage | 60% |
 | UNKNOWN | 2 |
@@ -987,7 +995,7 @@ Every final scoring run passes the following review.
 | --- | --- |
 | Scope | Unit, denominator, period and exclusions defined. |
 | States | UNKNOWN and non-numeric states preserved. |
-| Control score | Component minimum, evidence cap and gates applied. |
+| Control score | Sufficiency decisions approved; supported components, component minimum and applicable gates applied in §1.5 order. |
 | Maturity | Rule-based result not inferred from average. |
 | Coverage | Displayed beside attainment. |
 | Path | Conditions, evidence, confidence and override reviewed. |
@@ -1003,11 +1011,11 @@ The scoring record is designed for tables, JSON or graph-backed implementation w
 | --- | --- |
 | Identity | run_id, scope_id, object/control/path_id, formula_version. |
 | State | applicability, assessment_state, review_state. |
-| Scores | design, implementation, effectiveness, final_supported_score. |
-| Evidence | evidence_ids, highest_grade, quality limits, currentness. |
+| Scores | observed_design, observed_implementation, observed_effectiveness, supported_design, supported_implementation, supported_effectiveness, final_supported_score. |
+| Evidence | evidence_ids, highest_member_grade (informational only; MUST NOT be used as, or to derive, a supported-score ceiling), sufficiency_decision_ids per component, quality limits, currentness. |
 | Confidence | level, rationale, conflicts. |
 | Coverage | numerator, denominator, population, sample. |
-| Gates | gate_id, status, cap, rationale. |
+| Gates | gate_id, applicability, status, cap, rationale. |
 | Path | component values, PEI, band, override, residual. |
 | Review | assessor, reviewer, decision date, supersession. |
 
@@ -1017,10 +1025,10 @@ All formulas used in v1.0 are listed here; unlisted implementation formulas are 
 
 | **ID** | **Formula** | **Purpose** |
 | --- | --- | --- |
-| F-01 | DCA = 100 x sum(scores) / [5 x determinate applicable controls] | Determinate control attainment. |
-| F-02 | VCR = evidence-supported score 4-5 controls / all applicable controls | Verified-control coverage. |
-| F-03 | Coverage = qualified numerator / declared applicable denominator | Scope visibility. |
-| F-04 | WCA = 100 x sum(weight x score) / [5 x sum(weights)] | Optional weighted planning view. |
+| F-01 | DCA = 100 x sum(finalized final supported overall) / [5 x applicable controls with a finalized numeric overall] | Determinate control attainment. |
+| F-02 | VCR = applicable controls with finalized final supported overall 4-5 / all applicable controls | Verified-control coverage. |
+| F-03 | Coverage = qualified numerator / declared applicable denominator | Scope visibility; for technical-evidence coverage the qualified numerator is defined in §2.5. |
+| F-04 | WCA = 100 x sum(weight x finalized final supported overall) / [5 x sum(weights for applicable controls with a finalized numeric overall)] | Optional weighted planning view. |
 | F-05 | PEI = 4C + 3R + 3A + 2Am + 3CR | Path triage; C consequence, R reachability, A authority, Am amplification, CR control resistance. |
 | F-06 | Path Reduction Delta = current PEI - validated residual PEI | Intervention comparison. |
 
@@ -1030,10 +1038,10 @@ Labels are controlled to prevent similar numbers from being misrepresented.
 
 | **Label** | **Permitted meaning** |
 | --- | --- |
-| Control Assurance Score | Evidence-supported 0-5 control result. |
-| Domain Control Attainment | Average determinate control score converted to percent. |
-| Verified-Control Rate | Applicable controls scoring 4-5 with sufficient evidence. |
-| Determinate Coverage | Applicable controls with numeric result. |
+| Control Assurance Score | Finalized evidence-supported 0-5 final overall result (§1.5). |
+| Domain Control Attainment | Average of finalized final supported overall scores for the determinate applicable population, converted to percent. |
+| Verified-Control Rate | Applicable controls with finalized final supported overall 4-5 divided by all applicable controls. |
+| Determinate Coverage | Applicable controls with a finalized numeric overall divided by all applicable controls. |
 | Maturity Level | Rule-based M1-M5 capability or domain result. |
 | Path Exposure Index | Triage index, not probability. |
 | Path Exposure Band | Low, Moderate, High or Critical triage category. |
@@ -1095,7 +1103,7 @@ The framework consolidates and formalizes scoring concepts from the methodology 
 | **Source artifact** | **Use** |
 | --- | --- |
 | AI Trust Graph Manifesto v1.0 | Claims discipline, transparency and public boundary. |
-| AI Trust Graph Core Conceptual Model v2.0.0 | Evidence, control, path, authority and invariant semantics. |
+| AI Trust Graph Core Conceptual Model v3.0.0 | Evidence, control, path, authority and invariant semantics. |
 | AI Trust Graph Maturity Model v1.0 | Cumulative maturity, gates and six-domain profile. |
 | AI Security Assessment Toolkit, 15 Domains | 0-5 assessor scale, E0-E5 evidence grades, control states and risk bands. |
 | Canonical ontology and future control library | Identifiers, applicability and traceability; reconciliation required before release. |
@@ -1135,4 +1143,4 @@ The framework is ready for controlled review. Public release remains subject to 
 | Licence and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Scoring Framework | Version 2.0.0 | Public-release candidate
+AI Trust Graph Scoring Framework | Version 3.0.0 | Public-release candidate

@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Reference Assessment Repository
 
-*Version 1.0 | Twelve synthetic worked calibration cases plus adversarial boundary vectors for demonstration and assessor calibration*
+*Version 2.0.0 | Twelve synthetic worked calibration cases preserved as historical snapshots plus adversarial and evidence-sufficiency calibration vectors*
 
 > **REPOSITORY RULE** Every case is synthetic. Names, architectures, evidence, scores, findings and decisions are fictional and must not be represented as facts about a real organization, product or provider.
 
@@ -11,7 +11,7 @@
 | Status | Public-release candidate |
 | Author | Siva Sethumadhavan |
 | Semantic baseline | Exact artifact versions and content pins in [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md) |
-| Cases | 12 synthetic worked calibration cases plus Appendix B adversarial calibration vectors |
+| Cases | 12 synthetic worked calibration cases, preserved as historical snapshots (§0.16), plus Appendix B adversarial calibration vectors, including B.5 evidence-sufficiency vectors |
 | Case structure | 10 mandatory release sections per case |
 | Product boundary | ExposureGraph implementation, proprietary algorithms, connectors, customer data and commercial workflows excluded |
 | Release boundary | External methodology, employer, IP, confidentiality, licence and trademark approval required |
@@ -117,7 +117,7 @@ Maturity stays cumulative, evidence-gated and non-compensating. No average contr
 
 # 0.10  Scoring integrity
 
-Control scores are evidence-capped. PEI supports triage rather than probability, expected loss or certification.
+Current control scores use approved claim-specific evidence sufficiency decisions within the Scoring Framework §1.8 upper bound; historical case results follow §0.16. PEI supports triage rather than probability, expected loss or certification.
 
 | **Field** | **Requirement** |
 | --- | --- |
@@ -182,6 +182,19 @@ The consolidated release is exported only after calculation, semantic, exact-dup
 | Reviewer challenge | Reject conclusions exceeding scope, evidence or authorization. |
 | Required record | Case ID, run ID, versions, reviewer, variance and disposition. |
 | Anti-error | Do not generalize a synthetic answer to a real environment. |
+
+# 0.16  Historical reference results
+
+Cases RA-01 to RA-12 (§§1-12) and the cross-case registers are historical calibration snapshots tied to the methodology baseline under which they were authored (bundle 1.0-rc.3 or earlier). Their control scores, evidence grades, confidence, findings, decisions and case result states are preserved unchanged as historical facts. Each legacy control Score is one historical control result; it does not contain separate design, implementation or operating-effectiveness component scores.
+
+Legacy reference results MUST NOT be reverse-engineered into design, implementation or operating-effectiveness component observations or into Evidence Sufficiency Decisions, and MUST NOT be presented as results under bundle 1.0-rc.4 or later. Re-executing a case under the current methodology requires new explicit component observations and approved component-specific sufficiency decisions (Scoring Framework §1.5; Evidence Model §4.13). Current evidence-sufficiency calibration uses Appendix B.5.
+
+| **Field** | **Requirement** |
+| --- | --- |
+| Assessor action | Treat §§1-12 control results as historical; use B.5 for current calibration. |
+| Reviewer challenge | Reject any mapping of a legacy score to component scores or sufficiency decisions. |
+| Required record | Case ID, original baseline, re-execution run ID where performed. |
+| Anti-error | Do not carry historical confidence into a new determination. |
 
 # 1.1  RA-01 | Enterprise Knowledge Copilot | Case charter
 
@@ -2093,3 +2106,26 @@ A methodology release MUST NOT claim that assessor reproducibility has been inde
 
 **Current status:** protocol defined; independent multi-assessor execution has **not yet been performed**. Until it is performed, the repository may claim that it provides a reproducibility protocol, but MUST NOT claim empirically demonstrated inter-assessor reliability or external validation.
 
+# B.5  Evidence-sufficiency calibration vectors
+
+These vectors calibrate component-specific evidence sufficiency (Scoring Framework §§1.5, 1.8, 2.5, 3.4-3.5; Evidence Model §§4.1-4.5, 4.13, A.3). They are synthetic and evaluated under bundle 1.0-rc.4; they are not derived from the historical cases (§0.16). Each vector is one control with the stated default criticality. Evidence letters are local to each vector; "relied" means materially relied upon for the named component claim; nds is numeric_determination_supported and ceil is support_ceiling. Findings follow three rules: a finalized adverse supported result is a Control Deficiency; an insufficient or unsupported determination is an Evidence Gap or assurance limitation; an authorized assessment that cannot reach a determinate result is Inconclusive. Confidence follows Scoring Framework §2.4, and a current UNKNOWN determination is Not rated. DCA "included" means a finalized numeric overall; VCR "counted" means finalized 4-5; TEC "qualifies" is technical-evidence coverage under Scoring Framework §2.5.
+
+| **Vector** | **Criticality** | **Observed D / I / OE** | **Evidence (grade; relation; relied)** | **Sufficiency decisions** | **Supported D / I / OE; Not Tested** | **Gates** | **Final supported overall** | **ControlConclusionState** | **DCA / VCR / TEC** | **Finding; confidence** |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| S-CAL-01 E3 design + E4 implementation, OE Not Tested | Important | 3 / 3 / not tested | a: approved design, E3, SUPPORTS D, relied. b: corroborated production configuration export across scope, E4, SUPPORTS I, relied. No test. | D: approve, nds true, ceil 3 (a). I: approve, nds true, ceil 4 (b). OE: none. | 3 / 3 / Not Tested; required D and I; cap 3 | None applicable; no record required | 3 | Implemented - Effectiveness Not Verified (only compatible) | included / not counted / qualifies | Assurance limitation (OE not tested); Medium |
+| S-CAL-02 E3, E4, E5 resulting in 3 | Important | 4 / 4 / 4 | a: design, E3, D, relied. b: configuration, E4, I, relied. c: representative current test, E5, OE, relied. | D: approve, nds true, ceil 3 (a). I: approve, nds true, ceil 4 (b). OE: approve, nds true, ceil 4 (c). | 3 / 4 / 4 | None applicable | 3 | Verified Effective (only compatible; range 3-5) | included / not counted / qualifies | None; Medium |
+| S-CAL-03 E4 design + E4 implementation + E5 OE resulting in 4 | Important | 4 / 4 / 4 | a: corroborated technical design verification of dependencies, bypass and failure conditions, E4, D, relied. b: configuration export, E4, I, relied. c: representative current test, E5, OE, relied. | D: approve, nds true, ceil 4. I: approve, nds true, ceil 4. OE: approve, nds true, ceil 4. | 4 / 4 / 4 | None applicable | 4 | Verified Effective | included / counted / qualifies | None; High |
+| S-CAL-04 Observed 5 capped by single E5 | Important | 4 / 4 / 5 | As S-CAL-03; c is one representative E5 period with no material change exercised. | D and I as S-CAL-03. OE: approve, nds true, ceil 4 (no repeated E5; Evidence Model §4.5). | 4 / 4 / 4; observed OE 5 remains visible | None applicable | 4 | Verified Effective | included / counted / qualifies | Assurance limitation (level 5 not evidenced); High |
+| S-CAL-05 E3-only implementation | Important | 3 / 3 / not tested | a: approved policy, E3, D, relied. b: approved procedure document, E3, offered for I (static documentation). | D: approve, nds true, ceil 3. I: reject, nds false (no E4-or-stronger evidence from the deployed or configured environment). | 3 / none / Not Tested; required I unsupported | None applicable | None | UNKNOWN | excluded / not counted / not qualifying | Evidence Gap; Not rated |
+| S-CAL-06 E1/E2 provisional only | Important | 2 / 2 / not tested | a, b, c: three attestations from one owner team (common source), E2. d: tool-inferred signal, E1. | D and I: defer; provisional_basis true; candidate ceiling 2 recorded. The candidate ceiling is not an approved evidence support ceiling and MUST NOT derive a finalized supported component score. | Provisional 2 / 2 only; not finalized | None applicable | None finalized; run Provisional | None finalized | excluded from DCA and VCR numerators and from determinate coverage; shown as provisional / not qualifying | Evidence Gap (pending corroboration); Low |
+| S-CAL-07a Conflicting E4 and E5, unresolved | Important | 3 / 3 / 3 | a: design, E3. b: configuration, E4, SUPPORTS enforcement. c: representative bypass test, E5, DISPUTES the I and OE claims. | I and OE: reject, nds false (material conflict unresolved). | 3 / none / none | None applicable | None | UNKNOWN | excluded / not counted / not qualifying | Evidence Gap; Not rated |
+| S-CAL-07b Same, authorized resolution activity cannot decide | Important | 3 / 3 / 3 | As 07a plus an authorized retest whose results cannot be reconciled. | I and OE: reject, nds false. | 3 / none / none | None applicable | None | Inconclusive | excluded / not counted / not qualifying | Inconclusive; Not rated |
+| S-CAL-07c Same, resolved: enforcement bypassable at runtime | Important | 3 / 3 / 1 | b re-assessed as accurate for configuration; c relied for the adverse OE claim. | I: approve, nds true, ceil 4 (b). OE: approve, nds true, ceil 4 (c). | 3 / 3 / 1 | None applicable | 1 | Implemented - Effectiveness Limited (only compatible) | included / not counted / qualifies | Control Deficiency; Medium |
+| S-CAL-08 Scope-mismatched E5 | Important | 3 / 3 / 4 | a: design, E3. b: production configuration export across scope, E4, I, relied. c: E5 test executed in a development tenant; declared scope is production. | D: approve, ceil 3. I: approve, ceil 4. OE: reject, nds false (not representative of the declared scope); testing occurred. | 3 / 3 / none; OE required because tested | None applicable | None | Inconclusive | excluded / not counted / qualifies (implementation claim) | Inconclusive; Not rated. A formally narrowed development-scope claim may be disclosed separately and earns no production credit. |
+| S-CAL-09 Supported implementation 0 | Important | 1 / 0 / not tested | a: informal intent note, E3, D, relied. b: corroborated configuration and identity exports across all in-scope tenants showing no enforcement configured, E4, relied for confirmed absence. | D: approve, nds true, ceil 3. I: approve, nds true, ceil 4; absence supported across scope. | 1 / 0 / Not Tested | None applicable | 0 | Not Implemented (only compatible) | included / not counted / qualifies (coverage is not attainment) | Control Deficiency; High |
+| S-CAL-10 Unsupported attested absence | Important | not recorded / 0 / not tested | a: owner attestation that the control is not deployed, E2. No technical evidence obtainable in scope. | I: reject, nds false (attestation cannot finalize implementation). | none | None applicable | None | UNKNOWN (Not Implemented cannot finalize) | excluded / not counted / not qualifying | Evidence Gap; Not rated |
+| S-CAL-11 Critical E5 without path context | Critical | 4 / 4 / 4 | a: technical design verification, E4, D. b: configuration export, E4, I. c: representative E5 test not tied to the material path. | D: approve, ceil 4. I: approve, ceil 4. OE: reject, nds false (Critical requires representative E5 with path context). | 4 / 4 / none; OE required because tested | Applicability evaluated and recorded: no applicable gate | None | UNKNOWN (path-context evidence absent) | excluded / not counted / qualifies (implementation claim) | Evidence Gap; Not rated. If authorized path-context validation is performed and still cannot establish context: Inconclusive. |
+| S-CAL-12 E4 runtime evidence, OE Not Tested | Important | 3 / 3 / 3 observed from logs | a: design, E3. b: configuration, E4. c: runtime logs, E4, SUPPORTS operation observed; no representative test performed. | D: approve, ceil 3. I: approve, ceil 4. OE: none; E4 cannot finalize OE. | 3 / 3 / Not Tested; observed OE 3 visible, not supported | None applicable | 3 | Implemented - Effectiveness Not Verified | included / not counted / qualifies | Assurance limitation (OE not tested); Medium |
+| S-CAL-13 Critical with path context resulting in 4 | Critical | 4 / 4 / 4 | As S-CAL-11, but c is representative E5 executed along the recorded material path. | D: approve, ceil 4. I: approve, ceil 4. OE: approve, nds true, ceil 4. | 4 / 4 / 4 | Applicability evaluated and recorded: approval-integrity gate applicable, passed | 4 | Verified Effective | included / counted / qualifies; also counts toward critical-control validation coverage | None; High |
+
+> **BOUNDARY RULE** A calibration implementation fails if it derives a ceiling from `highest_member_grade`, from linked but not relied-upon items, or from DISPUTES or QUALIFIES-only items; finalizes implementation on E3 (S-CAL-05) or operating effectiveness on E4 (S-CAL-12); counts S-CAL-02 in VCR; treats S-CAL-06 as finalized or its candidate ceiling as approved; treats S-CAL-10 as Not Implemented; issues a numeric overall for S-CAL-05, 07a, 07b, 08, 10 or 11; reports S-CAL-04 as 5; converts any UNKNOWN or Inconclusive vector to zero; or carries a Medium or High confidence into S-CAL-05, 07a, 07b, 08, 10 or 11.

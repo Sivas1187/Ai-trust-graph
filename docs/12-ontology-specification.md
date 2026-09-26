@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Ontology Specification
 
-*Version 2.0.0 | Canonical semantic companion for graph-based AI trust, authority, evidence, controls, paths and assurance*
+*Version 3.0.0 | Canonical semantic companion for graph-based AI trust, authority, evidence, controls, paths and assurance*
 
 > **DOCUMENT ROLE** Human-readable canonical ontology for methodology publication. It formalizes the classes, predicates, properties, states and semantic constraints already expressed across the AI Trust Graph methodology. A non-normative Phase 2 reference schema/query companion now exists, while approved normative machine-readable schemas and the executable conformance suite remain deferred.
 
@@ -777,7 +777,7 @@ A control breakpoint is a node, relationship or boundary where an effective cont
 | --- | --- |
 | Verified Effective | Current evidence and representative validation support operation within scope. |
 | Implemented - Effectiveness Not Verified | Implementation evidence exists; operating effect was not validated. |
-| Implemented - Effectiveness Limited | Implementation is established within the assessed scope; operating effectiveness has been assessed and is below the level required for Verified Effective. |
+| Implemented - Effectiveness Limited | Implementation is established within the assessed scope; operating effectiveness has been assessed, but the evidence-supported operating-effectiveness result is below the level required for Verified Effective. |
 | Partially Implemented | Required elements or scope are incomplete. |
 | Not Implemented | Required control is absent in the assessed scope. |
 | Not Applicable | Documented rationale shows the control does not apply. |
@@ -982,7 +982,7 @@ Organizations and sectors may add types, predicates, properties and enumerations
 | **Gate** | **Acceptance criterion** |
 | --- | --- |
 | Manifesto alignment | No contradiction with system-level reasoning, evidence discipline, authority boundaries, path analysis, human accountability or product separation. |
-| CCM alignment | Every core entity/relationship concept preserves Core Conceptual Model v2.0.0 meaning and invariants. |
+| CCM alignment | Every core entity/relationship concept preserves Core Conceptual Model v3.0.0 meaning and invariants. |
 | Control vocabulary coverage | Every graph node and relationship label used by the 72 controls is either canonical, explicitly mapped or identified as a non-class scope macro. |
 | Evidence integrity | E0-E5, assertion semantics, evidence relations and confidence remain distinct and consistent. |
 | State integrity | Incompatible state machines are namespaced and UNKNOWN remains non-numeric. |
@@ -1449,15 +1449,15 @@ Separates telemetry, detection, finding, incident, containment and recovery.
 | **Source artifact** | **Ontology use** |
 | --- | --- |
 | AI Trust Graph Manifesto v1.0 | Purpose, graph proposition, trust/authority doctrine, evidence-first commitments, product boundary. |
-| Core Conceptual Model v2.0.0 | Authoritative semantic theory, object families, core predicates, trust/authority/path/evidence metamodels and invariants. |
+| Core Conceptual Model v3.0.0 | Authoritative semantic theory, object families, core predicates, trust/authority/path/evidence metamodels and invariants. |
 | Maturity Model v1.0 | M1-M5 scale, six domains, 36 capability identifiers, evidence-gated maturity semantics. |
-| Scoring Framework v2.0.0 | Assessment states, scoring-record identity fields, confidence/coverage/path state treatment and separation rules. |
+| Scoring Framework v3.0.0 | Assessment states, scoring-record identity fields, confidence/coverage/path state treatment and separation rules. |
 | Master Control Library v2.0.0 | 72-control graph vocabulary, operational node labels, operational predicates, evidence and validation contexts. |
-| Evidence Model v1.0 | EvidenceItem/Assertion object model, E0-E5, evidence relationships, conflict, provenance and review states. |
-| Assessment Methodology v1.0 | Assessment lifecycle, graph construction, path/controls/finding/decision records and quality gates. |
+| Evidence Model v2.0.0 | EvidenceItem/Assertion object model, E0-E5, evidence relationships, conflict, provenance and review states. |
+| Assessment Methodology v1.1.0 | Assessment lifecycle, graph construction, path/controls/finding/decision records and quality gates. |
 | Assessor Handbook v1.0 | Execution roles, field interpretation, calibration and anti-error constraints. |
-| Reporting Standard v1.0 | Report state machine, canonical report records and machine-readable export minimum semantics. |
-| Reference Assessment Repository v1.0 | Synthetic use of graph objects, paths, evidence and result patterns. |
+| Reporting Standard v1.1.0 | Report state machine, canonical report records and machine-readable export minimum semantics. |
+| Reference Assessment Repository v2.0.0 | Synthetic use of graph objects, paths, evidence and result patterns. |
 | Governance and Certification Model v1.0 | Artifact governance, extensions, conformance vocabulary and future certification-readiness boundaries. |
 
 This public derivation register deliberately avoids internal source filenames, client information and proprietary precursor implementation details. Publication provenance should remain sufficient to explain methodology lineage without exposing material that is not intended for public release.
@@ -1494,4 +1494,4 @@ The following artifacts remain intentionally deferred. Their absence does not ma
 | Licence and trademark decision | Pending methodology-wide release gate |
 | Operational certification | Not established by this document |
 
-AI Trust Graph Ontology Specification  |  Version 2.0.0  |  Public-release candidate
+AI Trust Graph Ontology Specification  |  Version 3.0.0  |  Public-release candidate

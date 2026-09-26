@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Evidence Model
 
-*Version 1.0 | Provenance, quality, sufficiency, confidence, lineage, conflict and graph traceability*
+*Version 2.0.0 | Provenance, quality, sufficiency, confidence, lineage, conflict and graph traceability*
 
 > **PURPOSE** Define what counts as evidence, what each evidence grade can support, how evidence is governed through its lifecycle, and how every material AI Trust Graph assertion remains defensible and reviewable.
 
@@ -10,7 +10,7 @@
 | --- | --- |
 | Status | Public-release candidate |
 | Author | Siva Sethumadhavan |
-| Depends on | Manifesto v1.0; Core Conceptual Model v1.1; Maturity Model v1.0; Scoring Framework v1.0; Master Control Library v1.0 |
+| Depends on | Manifesto v1.0; Core Conceptual Model v3.0.0; Maturity Model v1.0; Scoring Framework v3.0.0; Master Control Library v2.0.0 |
 | Canonical scale | E0 No evidence through E5 direct current technical evidence with representative test or operating record |
 | Primary objects | Evidence Item; Assertion; Source; Collection; Transformation; Review; Conflict; Decision; Retention Event |
 | Product boundary | ExposureGraph implementation, connectors, scoring algorithms and commercial logic excluded |
@@ -71,6 +71,8 @@ UNKNOWN remains visible until sufficient evidence and accountable review resolve
 | Inconclusive | Activity occurred but cannot support a determinate conclusion. |
 | Provisional | Conclusion awaits required review or evidence closure. |
 | Final within scope | Review and evidence gates are complete for declared scope. |
+
+UNKNOWN applies when the material state remains unresolved because evidence is absent, insufficient or materially conflicting. Inconclusive applies when authorized testing, review or resolution activity occurred but the evidence still cannot support a determinate conclusion. Where no sufficiency review has yet been performed, the supported score is unset and finalization is blocked; the run may remain Provisional, but this is not automatically UNKNOWN. A current UNKNOWN determination where evidence cannot support a determinate conclusion has confidence Not rated.
 
 # 0.6  Roles and separation of duties
 
@@ -255,6 +257,8 @@ A high grade can confirm an adverse state, and a low grade can weakly suggest a 
 # 1.9  Evidence bundles
 
 An evidence bundle groups complementary items supporting one material assertion while retaining each item's identity, grade and limitations. The bundle does not automatically inherit the highest member grade.
+
+A bundle has no grade of its own. It MUST NOT be assigned the maximum, minimum, average or any other aggregate of member grades. Mere multiplicity or aggregation of evidence items never raises an EvidenceItem grade or an evidence support ceiling. A specific EvidenceItem's grade may change only through the governed upgrade and downgrade process in §1.10, with the required reviewed version and provenance; such an item-level grade change is not bundle grading. Sufficiency is decided per claim by an Evidence Sufficiency Decision (§4.13).
 
 Bundle review evaluates independence, consistency, scope overlap, common-source dependence and whether the combined items close material gaps.
 
@@ -528,6 +532,17 @@ Evidence is sufficient only for a specific conclusion. Sufficiency considers gra
 | Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for sufficiency principle. |
 
+Sufficiency is decided separately for design, implementation, operating effectiveness and, where a level-5 or adaptive claim is made, level-5 and adaptive operation; evidence sufficient for one component does not support another. A finalized numeric component score requires an approved Evidence Sufficiency Decision (§4.13). Minimum evidence for a finalized numeric component:
+
+| **Component** | **Minimum** |
+| --- | --- |
+| Design | Claim-specific E3 or stronger. |
+| Implementation (any score 0-5) | Claim-specific E4-or-stronger technical evidence from the deployed or configured environment (§4.3). |
+| Operating effectiveness | Claim-specific E5-quality evidence (§4.4). |
+| Any component score of 5; any adaptive or continuous-assurance claim | Repeated E5-quality evidence across relevant material changes (§4.5). |
+
+Meeting the grade minimum is necessary but not sufficient; relevance, scope, currentness, representativeness, conflict status and an approved reviewer decision still govern. E1-E2 evidence may support provisional observations and candidate ceilings but cannot alone finalize a numeric component or overall score. Partial-scope support either formally narrows and discloses the claim, or the broader declared-scope claim remains UNKNOWN. Absence of a linked EvidenceItem is not itself an E0 EvidenceItem.
+
 # 4.2  Design sufficiency
 
 Design adequacy normally requires approved intent, scope, owner, mechanism, dependencies, exception handling and review. E3 may support design when current and relevant.
@@ -540,33 +555,35 @@ Design adequacy normally requires approved intent, scope, owner, mechanism, depe
 
 # 4.3  Implementation sufficiency
 
-Implementation requires evidence from the configured or deployed environment. E4 is normally needed for a material implementation claim.
+Implementation requires evidence from the configured or deployed environment. Any finalized numeric implementation score (0-5) requires claim-relevant E4-or-stronger technical evidence from that environment; implementation 0 requires evidence supporting confirmed absence across the assessed scope. E3-only evidence may support design or intent but cannot finalize any numeric implementation score. E5 satisfies this minimum only where it is itself representative of the deployed or configured environment and supports the precise implementation claim.
+
+The deployed or configured environment includes the technical or authoritative operational system in which the control is instantiated or executed. For governance and process controls, qualifying E4 evidence may include current, corroborated records or configuration from authoritative GRC, workflow, ticketing, approval, exception, decision or case-management systems where they directly evidence implementation across scope. Static policy or documentation alone remains E3 and cannot finalize implementation. This clarifies how E4 technical evidence applies to governance and process controls; it does not redefine E4.
 
 | **Decision element** | **Rule** |
 | --- | --- |
-| Minimum support | Representative E4 from deployed configuration. |
+| Minimum support | Representative E4-or-stronger technical evidence from the deployed or configured environment. |
 | Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for implementation sufficiency. |
 
 # 4.4  Operating-effectiveness sufficiency
 
-Effectiveness requires current evidence that the control operated as intended under representative conditions. E5 is expected for critical claims.
+Effectiveness requires current evidence that the control operated as intended under representative conditions. A finalized numeric operating-effectiveness score, favourable or adverse, requires claim-specific E5-quality evidence within the declared scope. E4 may show implementation or operation within observed scope but does not by itself finalize operating effectiveness. Critical controls require representative E5 with path context. Systemic controls require E5-quality evidence plus independent validation and resilience analysis.
 
 | **Decision element** | **Rule** |
 | --- | --- |
-| Minimum support | E5 test or operating record. |
+| Minimum support | E5-quality test or operating record for the claim and declared scope. |
 | Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for operating-effectiveness sufficiency. |
 
-# 4.5  Adaptive-operation sufficiency
+# 4.5  Level-5 and adaptive sufficiency
 
-Adaptive claims require repeated current evidence of change detection, governed adjustment, outcome review and reviewable automation.
+Any finalized component score of 5 (design, implementation or operating effectiveness) and any explicit adaptive or continuous-assurance claim requires repeated E5-quality evidence across relevant material changes, including change detection, governed adjustment, outcome review and reviewable automation. This does not imply maturity level M5.
 
 | **Decision element** | **Rule** |
 | --- | --- |
-| Minimum support | Repeated E5 across material changes. |
+| Minimum support | Repeated E5-quality evidence across relevant material changes. |
 | Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
-| Reviewer record | Document why the evidence is sufficient or insufficient for adaptive-operation sufficiency. |
+| Reviewer record | Document why the evidence is sufficient or insufficient for level-5 and adaptive sufficiency. |
 
 # 4.6  Graph-node sufficiency
 
@@ -632,11 +649,38 @@ Confidence is High, Medium, Low or Not rated based on support for the specific c
 
 Missing evidence for acting identity, irreversible action, critical containment, material path or compliance applicability can cap or invalidate downstream claims.
 
+All applicable gates are resolved before a control result is finalized. No gate record is required where no gate applies. Critical and Systemic controls explicitly evaluate and record gate applicability.
+
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Required evidence must be present before strong claim. |
 | Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for critical evidence gates. |
+
+# 4.13  Evidence sufficiency decision
+
+An Evidence Sufficiency Decision is a profile of the canonical Decision about one component-claim Assertion. It creates no ontology class, predicate or state namespace. The Assertion states the control, component, declared scope, period and conditions and is linked to evidence through SUPPORTS, DISPUTES, QUALIFIES and CORROBORATES; the Decision references it through `subject_assertion_id` and is linked to its accountable reviewer through existing review semantics. Automation may propose a decision; only an accountable reviewer approves it. Confidence is recorded on the conclusion, not in this profile.
+
+| **Field** | **Requirement** |
+| --- | --- |
+| decision_id, version, supersedes | Stable identity; any change creates a new version (SUPERSEDES). |
+| subject_assertion_id | The component-claim Assertion; its review uses AssertionReviewState. |
+| component | Design, implementation, operating effectiveness, or level-5/adaptive. |
+| scope, period, conditions | Declared scope and any formal narrowing. |
+| evidence basis | Each evidence_id and version, its relation (SUPPORTS, DISPUTES, QUALIFIES, CORROBORATES) and whether it is materially relied upon. |
+| per-item grade | Each item's own grade at decision time; no aggregate. |
+| relevance, currentness | Per item; currentness uses EvidenceCurrentness. |
+| scope coverage, representativeness | Coverage of the declared scope; population, selection, sample, period and limits. |
+| independence | Common-source dependence and duplicates. |
+| unresolved conflicts, limitations | Open disputes; what the evidence cannot support. |
+| numeric_determination_supported | true or false: whether the evidence supports a numeric determination of the observed component condition, including absence or failure, within the declared scope. |
+| support_ceiling | 0-5; required when numeric_determination_supported is true; MUST NOT exceed the Scoring Framework §1.8 upper bound for the materially relied-upon supporting evidence. A ceiling may be granted only when the applicable component-specific minimum evidence requirements in §§4.1-4.5 and A.3 are satisfied. |
+| provisional_basis | true when support rests only on E1-E2; blocks finalization. |
+| disposition | approve, condition, reject or defer (profile restriction of the canonical Decision; never an assessment, control or result state). |
+| proposed_by, reviewer, decision date | Proposer; accountable reviewer and approval date. |
+| rationale; review triggers and expiry | Why the evidence is or is not sufficient for this claim; material-change triggers. |
+
+Consistency: approve or condition requires numeric_determination_supported = true and a support_ceiling; condition applies only to the formally narrowed, disclosed scope or conditions; reject means numeric_determination_supported = false; defer blocks finalization. A defer decision resting on E1-E2 may record a candidate or provisional ceiling, but it is not an approved evidence support ceiling and MUST NOT derive a finalized supported component score. A decision supports finalization only while it is approved or conditioned, not superseded, every materially relied-upon item is Current, and no review trigger has fired. After reject, the control record takes UNKNOWN or Inconclusive (§0.5); those states are never Decision dispositions.
 
 # 5.1  Conflict taxonomy
 
@@ -985,7 +1029,7 @@ Maintain a controlled register of evidence identity, source, grade, owner, scope
 
 # 8.2  Evidence coverage metrics
 
-Report assessment coverage, determinate coverage, E4-E5 coverage, critical-control validation coverage, stale evidence and unresolved conflict with visible denominators.
+Report assessment coverage, determinate coverage, technical-evidence coverage (Scoring Framework §2.5), critical-control validation coverage, stale evidence and unresolved conflict with visible denominators.
 
 | **Operational question** | **Required output** |
 | --- | --- |
@@ -1096,18 +1140,20 @@ Each link records why one evidence item supports, disputes or qualifies one asse
 | reviewer and date | Accountable approval. |
 | limitations | Known uncertainty or non-coverage. |
 
+Evidence Sufficiency Decisions (§4.13) reference these links; a link alone never establishes sufficiency.
+
 # A.3  Evidence sufficiency matrix
 
-Canonical minimum expectations align evidence to assessment claims.
+Canonical minimum expectations align evidence to assessment claims. Minimums apply to favourable and adverse determinations and are necessary, not sufficient (§4.13).
 
 | **Claim** | **Normal minimum** |
 | --- | --- |
 | Claimed practice | E2 with scope and accountable source. |
-| Approved design | Current relevant E3. |
-| Implemented configuration | Representative E4. |
-| Operating effectiveness | E5 or approved equivalent direct operating evidence. |
+| Approved design | Claim-specific current E3 or stronger. |
+| Implemented configuration | Representative E4-or-stronger technical evidence from the deployed or configured environment, for any finalized implementation score (§4.3). |
+| Operating effectiveness | E5 or approved equivalent direct operating evidence. An approved equivalent meets the E5 characteristics (§1.6) for the claim, is graded and recorded as E5, and is not a route for lower-grade evidence. |
 | Critical control effectiveness | Representative E5 with path context. |
-| Adaptive operation | Repeated E5 across material changes. |
+| Level-5 and adaptive claims | Repeated E5-quality evidence across relevant material changes. |
 | Compliance conclusion | Separate legal applicability and evidence; framework mapping alone is insufficient. |
 
 # A.4  Confidence rubric
@@ -1156,10 +1202,10 @@ This model consolidates evidence semantics already embedded across the AI Trust 
 
 | **Source artifact** | **Use** |
 | --- | --- |
-| Core Conceptual Model v1.1 | Evidence object, quality, confidence, graph linkage and invariants. |
+| Core Conceptual Model v3.0.0 | Evidence object, quality, confidence, graph linkage and invariants. |
 | Maturity Model v1.0 | Evidence floors, gates, coverage and adaptive claims. |
-| Scoring Framework v1.0 | Evidence caps, confidence, UNKNOWN and coverage rules. |
-| Master Control Library v1.0 | Control-specific evidence and validation expectations. |
+| Scoring Framework v3.0.0 | Evidence caps, confidence, UNKNOWN and coverage rules. |
+| Master Control Library v2.0.0 | Control-specific evidence and validation expectations. |
 | AI Security Assessment Toolkit | E0-E5 grades, evidence register fields and no-hallucination discipline. |
 
 # A.8  v1.0 release acceptance checklist
@@ -1195,4 +1241,4 @@ The AI Trust Graph Evidence Model makes every material conclusion traceable to s
 | Licence and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Evidence Model | Version 1.0 | Public-release candidate
+AI Trust Graph Evidence Model | Version 2.0.0 | Public-release candidate

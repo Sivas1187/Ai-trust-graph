@@ -2,7 +2,7 @@
 
 # AI Trust Graph — Assessment Methodology
 
-*Version 1.0 | Repeatable, evidence-gated and graph-aware assessment from initiation through reassessment*
+*Version 1.1.0 | Repeatable, evidence-gated and graph-aware assessment from initiation through reassessment*
 
 > **PURPOSE** Define the controlled lifecycle, methods, decision gates, records and quality assurance required to conduct a defensible AI Trust Graph assessment.
 
@@ -10,7 +10,7 @@
 | --- | --- |
 | Status | Public-release candidate |
 | Author | Siva Sethumadhavan |
-| Depends on | Manifesto v1.0; Core Conceptual Model v1.1; Maturity Model v1.0; Scoring Framework v1.0; Master Control Library v1.0; Evidence Model v1.0 |
+| Depends on | Manifesto v1.0; Core Conceptual Model v3.0.0; Maturity Model v1.0; Scoring Framework v3.0.0; Master Control Library v2.0.0; Evidence Model v2.0.0 |
 | Canonical lifecycle | Initiate; Scope; Discover; Model; Evidence; Controls; Paths; Maturity; Scoring; Findings; Decisions; Report; Reassess |
 | Primary outputs | Assessment charter, scope baseline, graph snapshot, evidence register, control results, path records, maturity profile, findings, decisions and report |
 | Product boundary | ExposureGraph implementation, connectors, algorithms and commercial workflows excluded |
@@ -531,7 +531,7 @@ Evidence sufficiency gate is the controlled evidence activity that advances the 
 | **Method field** | **Canonical requirement** |
 | --- | --- |
 | Entry condition | Prior phase outputs relevant to evidence sufficiency gate are approved or limitations are recorded. |
-| Mandatory action | Approve evidence register, material conflicts, coverage, stale items, missing E4-E5 support and limitations before strong conclusions. |
+| Mandatory action | Approve component-specific evidence sufficiency decisions (Evidence Model §4.13), evidence register, material conflicts, coverage, stale items, missing technical support and limitations before strong conclusions. |
 | Evidence record | Retain source, method, owner, date, scope, decision and limitations for evidence sufficiency gate. |
 | Quality challenge | Independent or second-person review tests whether evidence sufficiency gate is complete, safe and traceable. |
 | Exit result | Versioned evidence sufficiency gate output approved, rejected, conditioned or left Inconclusive. |
@@ -581,7 +581,7 @@ Control determination gate is the controlled controls activity that advances the
 | **Method field** | **Canonical requirement** |
 | --- | --- |
 | Entry condition | Prior phase outputs relevant to control determination gate are approved or limitations are recorded. |
-| Mandatory action | Apply component minimum, evidence cap and critical gates; record confidence, coverage, findings and affected graph references. |
+| Mandatory action | Apply supported components, component minimum and applicable gates in Scoring Framework §1.5 order; record gate applicability for Critical and Systemic controls; record confidence, coverage, findings and affected graph references. |
 | Evidence record | Retain source, method, owner, date, scope, decision and limitations for control determination gate. |
 | Quality challenge | Independent or second-person review tests whether control determination gate is complete, safe and traceable. |
 | Exit result | Versioned control determination gate output approved, rejected, conditioned or left Inconclusive. |
@@ -695,7 +695,7 @@ Control score calculation is the controlled scoring activity that advances the a
 | **Method field** | **Canonical requirement** |
 | --- | --- |
 | Entry condition | Prior phase outputs relevant to control score calculation are approved or limitations are recorded. |
-| Mandatory action | Use design, implementation and operating-effectiveness components, evidence caps and gates only for determinate controls. |
+| Mandatory action | Use supported design, implementation and operating-effectiveness components with approved sufficiency decisions, evidence caps and gates only for determinate controls. |
 | Evidence record | Retain source, method, owner, date, scope, decision and limitations for control score calculation. |
 | Quality challenge | Independent or second-person review tests whether control score calculation is complete, safe and traceable. |
 | Exit result | Versioned control score calculation output approved, rejected, conditioned or left Inconclusive. |
@@ -1335,4 +1335,4 @@ The Assessment Methodology converts the preceding artifacts into a controlled, r
 | Licence and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Assessment Methodology | Version 1.0 | Public-release candidate
+AI Trust Graph Assessment Methodology | Version 1.1.0 | Public-release candidate

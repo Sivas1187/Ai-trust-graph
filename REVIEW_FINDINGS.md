@@ -356,6 +356,20 @@ The author also chose to reserve the **"AI Trust Graph" name and any future logo
 
 ---
 
+## R-24 — Evidence-bundle sufficiency and control evidence-cap calculation undefined (Blocking, resolved)
+
+**Artifacts:** [Scoring Framework](docs/04-scoring-framework.md) §§1.5, 1.6, 1.8, 1.9, 2.5, 2.6, 3.3-3.5, 3.7, 5.1, 5.3, 6.1, 6.2, 6.7, 6.8, A.1, A.2; [Evidence Model](docs/06-evidence-model.md) §§0.5, 1.9, 4.1, 4.3-4.5, 4.12, 4.13, A.2, A.3; [Core Conceptual Model](docs/02-core-conceptual-model.md) §7.3; [Ontology Specification](docs/12-ontology-specification.md) §10.6; [Assessment Methodology](docs/07-assessment-methodology.md) §§6.4, 7.4, 10.1; [Reporting Standard](docs/09-reporting-standard.md) §§3.4, 3.5, 3.7; [Reference Assessment Repository](docs/10-reference-assessment-repository.md) §§0.10, 0.16, B.5; [Reference Graph Schema](docs/13-reference-graph-schema-and-query-library.md) evidence queries.
+
+**Finding:** No canonical rule defined how several linked evidence items, claim-specific sufficiency and the grade-based evidence cap combine into supported control-component scores and downstream metrics. The Scoring Framework grade-cap table conflicted with the Evidence Model's claim-specific sufficiency (E4 versus E5 for operating effectiveness; E3 versus E4 for implementation); a highest-member-grade reading was possible despite Evidence Model §1.9; there was no canonical sufficiency-decision record; technical-evidence coverage and VCR could be satisfied by merely linked evidence; historical reference scores were not distinguished from component records; and several Artifact #13 queries synthesized E0 or UNKNOWN from missing links.
+
+**Resolution:** Owner Decision 1 on [issue #5](https://github.com/Sivas1187/Ai-trust-graph/issues/5): no bundle grade; component-specific sufficiency with an evidence ladder; the Evidence Sufficiency Decision profile (Assertion plus Decision, `subject_assertion_id`, `numeric_determination_supported`, `support_ceiling`); supported component = min(observed, approved ceiling) with a normative execution order; the grade table as an upper bound only; supported components in MQ-002 compatibility; finalized-result DCA, WCA, VCR and technical-evidence coverage; `highest_member_grade` informational only; Artifact #10 legacy cases preserved as historical snapshots with new B.5 calibration vectors; Artifact #13 inventory queries.
+
+**Release/change class:** Major semantic change under Artifact #11 §2.3; bundle `1.0-rc.4`.
+
+**Status:** Resolved in the methodology. Stale cross-artifact version references in artifacts not changed by MQ-002 or MQ-003 remain a separate patch-level follow-up.
+
+---
+
 ## Gaps
 
 Summarizing R-08 for quick reference: this repository was intentionally missing a **LICENSE** and a **SECURITY.md**, both called for by the Manifesto's own Appendix B. **LICENSE** (CC BY 4.0) and its companion **TRADEMARKS.md** have since been added, on the methodology author's explicit decision — see the R-08 update above. **SECURITY.md** remains missing and is still flagged rather than added, because drafting it responsibly requires the author to decide what a real disclosure process looks like, not just fill in a template.
@@ -387,3 +401,4 @@ Summarizing R-08 for quick reference: this repository was intentionally missing 
 | R-21 | Artifact #13 overclaimed GQL conformance | Major | Resolved — GQL-style only pending validation |
 | R-22 | Reference corpus lacked M5/adversarial calibration breadth | Major | Resolved synthetically |
 | R-23 | ControlConclusionState lacked score compatibility and a tested-but-limited conclusion | Blocking | Resolved — ninth conclusion; Scoring Framework §1.5 compatibility rule; Major semantic change, bundle 1.0-rc.3 |
+| R-24 | Evidence-bundle sufficiency and control evidence-cap calculation undefined | Blocking | Resolved — component-specific sufficiency decisions, evidence ladder and support ceiling; Major semantic change, bundle 1.0-rc.4 |
