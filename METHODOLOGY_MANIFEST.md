@@ -64,7 +64,7 @@ The Git blob SHA pins the exact UTF-8 file content for this release-candidate sn
 | 1 | Manifesto | 1.0 | Public-release candidate | `docs/01-manifesto.md` | `38081d537cbd7fdfd7300cca58244639cd415da6` |
 | 2 | Core Conceptual Model | 3.0.0 | Public-release candidate | `docs/02-core-conceptual-model.md` | `8dc9953c69f359f3b76f5d00a1cbd82992aaa31d` |
 | 3 | Maturity Model | 1.0 | Public-release candidate | `docs/03-maturity-model.md` | `f2a9359cc98522ca622eef232eac75f0a5b87e87` |
-| 4 | Scoring Framework | 3.0.0 | Public-release candidate | `docs/04-scoring-framework.md` | `b622045f8a5ca402d721227b3db562dc4fcf4533` |
+| 4 | Scoring Framework | 3.0.0 | Public-release candidate | `docs/04-scoring-framework.md` | `8c92ebb824b8de2c956c7522c24e1b8e76dd10d2` |
 | 5 | Master Control Library | 2.0.0 | Public-release candidate | `docs/05-master-control-library.md` | `d1584f82a0c8a50338346818ac02653e884ec0fb` |
 | 6 | Evidence Model | 2.0.0 | Public-release candidate | `docs/06-evidence-model.md` | `e5cfe1d3b6b5963cf511b91aaec55494e3fa90e7` |
 | 7 | Assessment Methodology | 1.1.0 | Public-release candidate | `docs/07-assessment-methodology.md` | `a91ea3c9dbbf9a4b07984fbd8d2855a02b8cf0d0` |
@@ -78,7 +78,7 @@ The Git blob SHA pins the exact UTF-8 file content for this release-candidate sn
 
 | Artifact | Version | Status | Path | Git blob SHA |
 | --- | --- | --- | --- | --- |
-| Reference Graph Schema and Illustrative Query Library | 0.4.0 | Non-normative | `docs/13-reference-graph-schema-and-query-library.md` | `6461c7a3e73902b955545452bd7c9cd4a1258f81` |
+| Reference Graph Schema and Illustrative Query Library | 0.4.0 | Non-normative | `docs/13-reference-graph-schema-and-query-library.md` | `d6c08539762b789e664ab6f66a0ffec6316c8c04` |
 
 ## 5. Conformance availability
 

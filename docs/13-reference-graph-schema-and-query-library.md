@@ -24,7 +24,7 @@ The query library uses **illustrative GQL-style read patterns informed by ISO/IE
 Two things follow from that choice, and both matter for keeping this document honest about its own limits:
 
 1. **This is not the only way to implement the ontology.** Every pattern below could equally be expressed in SPARQL over an RDF/OWL rendering of the same ontology, in Gremlin, in recursive SQL over an adjacency-list schema, or in a document store with application-level traversal. The GQL-style notation was chosen for readability and standards-oriented alignment, not because the methodology requires a graph database, still less a specific one.
-2. **A query that runs is not a conclusion the methodology recognizes.** Every invariant in Artifact #12 §15 still applies to whatever engine executes these patterns: a `MATCH` that finds a path does not make that path `Exploitable` (ONT-INV-01, ONT-INV-12); a query returning zero rows for missing evidence must surface as `UNKNOWN`, never as a false negative (ONT-INV-06); machine execution cannot promote an AI-generated inference to an approved fact (ONT-INV-08). Anywhere a query below returns something that would feed an assessment conclusion, that result is a **candidate assertion for review**, not an approved finding, exactly as §10 of Artifact #12 requires.
+2. **A query that runs is not a conclusion the methodology recognizes.** Every invariant in Artifact #12 §15 still applies to whatever engine executes these patterns: a `MATCH` that finds a path does not make that path `Exploitable` (ONT-INV-01, ONT-INV-12); a missing linked value or absent query result is preserved as absence/NULL for review; it is not by itself E0, `UNKNOWN`, pass, fail or zero, and if the reviewed assessment determines `UNKNOWN`, ONT-INV-06 requires that state to remain explicit and non-numeric; machine execution cannot promote an AI-generated inference to an approved fact (ONT-INV-08). Anywhere a query below returns something that would feed an assessment conclusion, that result is a **candidate assertion for review**, not an approved finding, exactly as §10 of Artifact #12 requires.
 
 ## 0.3 What this document is not
 
@@ -38,7 +38,7 @@ It is not the ExposureGraph product, does not describe ExposureGraph's implement
 -[:REL_TYPE]->                     a canonical relationship, directional per §8.2 of the Ontology Specification
 -[r:REL_TYPE {property: value}]->  a relationship bound to a variable so its own properties (evidence, confidence, review status...) can be filtered or returned
 MATCH ... WHERE ... RETURN         standard GQL/openCypher-style read pattern
-OPTIONAL MATCH                     a traversal step that should not eliminate the row if absent — used throughout to surface UNKNOWN rather than silently drop it
+OPTIONAL MATCH                     a traversal step that should not eliminate the row if absent — used where absence must remain visible as NULL / an absent linked value for review rather than eliminating the parent row; absence is not itself a canonical result state
 ```
 
 Every node and relationship label used below appears in §1's schema tables, which are themselves reproduced from Ontology Specification Appendices A and C. No label is introduced here that is not already canonical.

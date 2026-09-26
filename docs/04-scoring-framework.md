@@ -511,8 +511,8 @@ DCA is always accompanied by determinate coverage and gate status. Items with UN
 
 | **Example** | **Result** |
 | --- | --- |
-| Eight applicable controls; six determinate scores total 21 | DCA = 70%; determinate coverage = 75% (6/8). |
-| Four determinate controls all score 5; six UNKNOWN | DCA = 100%; determinate coverage = 40%; assurance claim remains weak. |
+| Eight applicable controls; six controls have finalized numeric final supported overalls totaling 21 | DCA = 70%; determinate coverage = 75% (6/8). |
+| Four controls each have a finalized final supported overall of 5; six UNKNOWN | DCA = 100%; determinate coverage = 40%; assurance claim remains weak. |
 | Critical gate open | DCA may be shown, but domain conclusion is capped or invalidated. |
 
 # 3.5  Verified-control rate
@@ -548,7 +548,7 @@ Critical and systemic controls receive a dedicated view. Their performance must 
 | --- | --- |
 | Critical controls applicable | Exact denominator. |
 | Verified effective | Finalized final supported overall 4-5; operating effectiveness supported by E5-quality evidence, and for Critical controls representative E5 with path context; applicable gates resolved. |
-| Failed | Score 0-2 or critical test failure. |
+| Failed | Finalized final supported overall 0-2 or critical test failure. |
 | Not Tested / UNKNOWN | Separate counts and affected paths. |
 | Critical gates | Cap or invalidation applied before executive conclusion. |
 | Residual paths | Paths remaining after control operation or remediation. |
@@ -812,11 +812,11 @@ Weights must be predeclared in an assessment profile and cannot be changed after
 
 Weighted Control Attainment (WCA) is optional and supplements the unweighted DCA. It emphasizes critical controls but can still hide a gate, so gates and critical-control scorecards remain mandatory.
 
-> **FORMULA** WCA = 100 x sum(weight x determinate score) / [5 x sum(weights for determinate applicable controls)].
+> **FORMULA** WCA = 100 x sum(weight x finalized final supported overall) / [5 x sum(weights for applicable controls with a finalized numeric overall)].
 
 | **Required companion** | **Reason** |
 | --- | --- |
-| Determinate weighted coverage | Shows how much weighted population was scored. |
+| Determinate weighted coverage | Shows how much of the weighted applicable population has a finalized numeric final supported overall; provisional observations, candidate ceilings and unfinalized supported values do not count. |
 | Critical gates | Prevents weighted compensation. |
 | Unweighted DCA | Shows sensitivity to control weights. |
 | Weight profile version | Supports reproducibility. |
@@ -1028,7 +1028,7 @@ All formulas used in v1.0 are listed here; unlisted implementation formulas are 
 | F-01 | DCA = 100 x sum(finalized final supported overall) / [5 x applicable controls with a finalized numeric overall] | Determinate control attainment. |
 | F-02 | VCR = applicable controls with finalized final supported overall 4-5 / all applicable controls | Verified-control coverage. |
 | F-03 | Coverage = qualified numerator / declared applicable denominator | Scope visibility; for technical-evidence coverage the qualified numerator is defined in §2.5. |
-| F-04 | WCA = 100 x sum(weight x score) / [5 x sum(weights)] | Optional weighted planning view. |
+| F-04 | WCA = 100 x sum(weight x finalized final supported overall) / [5 x sum(weights for applicable controls with a finalized numeric overall)] | Optional weighted planning view. |
 | F-05 | PEI = 4C + 3R + 3A + 2Am + 3CR | Path triage; C consequence, R reachability, A authority, Am amplification, CR control resistance. |
 | F-06 | Path Reduction Delta = current PEI - validated residual PEI | Intervention comparison. |
 
