@@ -51,6 +51,13 @@ export function BreakpointExplorer() {
               ].join(" ")}
             >
               <span className="bpLabel">{step}</span>
+              {i === BREAK_AFTER && (
+                // The visual marker below is aria-hidden; this states its position once.
+                <span className="visuallyHidden">
+                  {" "}
+                  (control breakpoint between {path[BREAK_AFTER]} and {path[BREAK_AFTER + 1]})
+                </span>
+              )}
               {i < path.length - 1 && (
                 <span className={i === BREAK_AFTER ? "bpEdge bpEdgeBreak" : "bpEdge"} aria-hidden="true">
                   {i === BREAK_AFTER && (

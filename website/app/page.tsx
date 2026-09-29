@@ -109,8 +109,10 @@ export default function Home() {
                 <span className="statusText">
                   <strong>{release.status}</strong>
                   <span className="statusSep" aria-hidden="true">·</span>
+                  <span className="visuallyHidden">, </span>
                   <span className="nowrap">Bundle {release.bundle}</span>
                   <span className="statusSep" aria-hidden="true">·</span>
+                  <span className="visuallyHidden">, </span>
                   <span className="nowrap">Independent review pending</span>
                 </span>
               </p>
@@ -259,7 +261,13 @@ export default function Home() {
                   <p className="domainPurpose">{d.purpose}</p>
                   <details className="domainDetails">
                     <summary>
-                      <span>Maturity capabilities</span>
+                      <span>
+                        Maturity capabilities
+                        <span className="visuallyHidden">
+                          {" "}
+                          for {d.id} {d.name}
+                        </span>
+                      </span>
                       <span className="summaryIcon" aria-hidden="true" />
                     </summary>
                     <ol>
