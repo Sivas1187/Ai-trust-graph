@@ -1,5 +1,6 @@
 import { BreakpointExplorer } from "./components/BreakpointExplorer";
 import { HeroGraph } from "./components/HeroGraph";
+import { PrimaryNav, type NavItem } from "./components/PrimaryNav";
 import {
   artifacts,
   assessmentPhases,
@@ -16,14 +17,15 @@ import {
   unknownVsNotTested,
 } from "./content";
 
-const nav = [
-  ["#flow", "Reasoning"],
-  ["#domains", "Domains"],
-  ["#authority", "Authority"],
-  ["#evidence", "Evidence"],
-  ["#methodology", "Methodology"],
-  ["#review", "Review"],
-] as const;
+const navItems: NavItem[] = [
+  { href: "#flow", label: "Reasoning" },
+  { href: "#domains", label: "Domains" },
+  { href: "#authority", label: "Authority" },
+  { href: "#evidence", label: "Evidence" },
+  { href: "#methodology", label: "Methodology" },
+  { href: "#review", label: "Review" },
+  { href: links.repo, label: "GitHub", srSuffix: "(canonical source)", external: true },
+];
 
 const problemChain = [
   ["Models", "connect to agents."],
@@ -93,20 +95,7 @@ export default function Home() {
             </svg>
             <span>AI Trust Graph</span>
           </a>
-          <nav aria-label="Primary" className="primaryNav">
-            <ul>
-              {nav.map(([href, label]) => (
-                <li key={href}>
-                  <a href={href}>{label}</a>
-                </li>
-              ))}
-              <li>
-                <Ext href={links.repo} className="navGithub">
-                  GitHub<span className="visuallyHidden"> (canonical source)</span>
-                </Ext>
-              </li>
-            </ul>
-          </nav>
+          <PrimaryNav items={navItems} />
         </div>
       </header>
 
