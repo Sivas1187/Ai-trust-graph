@@ -639,13 +639,21 @@ h1 {
   }
 }
 
-/* ───────────── Reasoning flow ───────────── */
+/* ───────────── Reasoning chain ───────────── */
+.flowSpine {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--muted);
+}
+.flowSpine q {
+  color: var(--ink-2);
+}
+/* Desktop: one horizontal rail. Eight theory-map groups; the last group
+   (Evidence + Decision, one shared question) is two stages wide. */
 .flowRail {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 0;
-  counter-reset: flow;
+  grid-template-columns: repeat(7, minmax(0, 1fr)) minmax(0, 2fr);
 }
 .flowRail::before {
   content: "";
@@ -656,9 +664,36 @@ h1 {
   height: 1px;
   background: var(--line-strong);
 }
-.flowStep {
+.flowGroup {
   position: relative;
-  padding: 0 14px 0 0;
+  padding-right: 14px;
+}
+.flowStages {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+}
+.flowStep {
+  padding-right: 14px;
+}
+.flowStep:last-child {
+  padding-right: 0;
+}
+.flowGroupShared .flowQuestion,
+.flowGroupShared .flowConcept {
+  position: relative;
+}
+.flowGroupShared .flowQuestion::before {
+  /* bracket joining the two stages that share this question */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 14px;
+  top: -12px;
+  height: 7px;
+  border: 1px solid var(--line-strong);
+  border-bottom: 0;
+  border-radius: 4px 4px 0 0;
 }
 .flowIndex {
   display: block;
@@ -677,35 +712,36 @@ h1 {
   background: var(--paper);
   border: 1.5px solid var(--ink);
 }
-.flowStep:last-child .flowDot {
+.flowGroup:last-child .flowStep:last-child .flowDot {
   background: var(--ink);
 }
 .flowStage {
-  font-size: clamp(18px, 1.7vw, 22px);
-  letter-spacing: -0.02em;
+  font-size: clamp(16px, 1.35vw, 19px);
+  letter-spacing: -0.015em;
+  min-height: 2.5em;
 }
 .flowQuestion {
-  margin-top: 10px;
+  margin-top: 18px;
   font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 13.5px;
+  font-size: 13px;
   line-height: 1.45;
   color: var(--cyan);
 }
 .flowConcept {
   margin-top: 8px;
-  font-size: 14.5px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--muted);
 }
 
 /* Scroll-linked progression: progressive enhancement only. Content is fully
-   visible without support, and whenever reduced motion is requested. */
+   visible without support, on narrow screens, and under reduced motion. */
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) and (min-width: 901px) {
-    .flowStep {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 1101px) {
+    .flowGroup {
       animation: flowIn linear both;
       animation-timeline: view();
-      animation-range: entry calc(20% + var(--i) * 6%) cover calc(38% + var(--i) * 4%);
+      animation-range: entry calc(20% + var(--i) * 5%) cover calc(36% + var(--i) * 3%);
     }
     .flowRail::after {
       content: "";
@@ -741,42 +777,30 @@ h1 {
   }
 }
 
-.flowCanon {
+.flowLifecycle {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 20px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 28px;
+  align-items: start;
   margin-top: 64px;
-}
-.flowCanon > div {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 28px;
 }
-.flowCanon h3 {
+.flowLifecycle h3 {
   font-size: 18px;
   margin-bottom: 8px;
 }
-.flowCanon p {
+.flowLifecycle p {
   color: var(--muted);
   font-size: 15px;
 }
-.flowCanon .source {
-  margin-top: 16px;
+.flowLifecycle .source {
+  margin-top: 14px;
   font-size: 12.5px;
 }
-.chainInline {
-  margin-top: 14px;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 13.5px !important;
-  line-height: 1.9;
-  color: var(--ink) !important;
-}
-.chainInline > span > span {
-  color: var(--muted);
-}
 .phaseList {
-  margin-top: 14px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -798,7 +822,8 @@ h1 {
   margin-right: 6px;
 }
 
-@media (max-width: 900px) {
+/* Narrow: vertical timeline. */
+@media (max-width: 1100px) {
   .flowRail {
     grid-template-columns: 1fr;
     padding-left: 34px;
@@ -811,11 +836,19 @@ h1 {
     width: 1px;
     height: auto;
   }
-  .flowStep {
+  .flowGroup {
     padding: 0 0 30px;
   }
-  .flowStep:last-child {
+  .flowGroup:last-child {
     padding-bottom: 0;
+  }
+  .flowStages {
+    grid-auto-flow: row;
+    gap: 14px;
+  }
+  .flowStep {
+    position: relative;
+    padding-right: 0;
   }
   .flowIndex {
     height: auto;
@@ -827,7 +860,34 @@ h1 {
     top: 4px;
     margin: 0;
   }
-  .flowCanon {
+  .flowStage {
+    min-height: 0;
+    font-size: 19px;
+  }
+  .flowQuestion {
+    margin-top: 8px;
+  }
+  /* Shared question for Evidence + Decision: a left rule instead of the
+     desktop bracket, so it never collides with the stage dots. */
+  .flowGroupShared .flowQuestion::before {
+    display: none;
+  }
+  .flowGroupShared .flowQuestion,
+  .flowGroupShared .flowConcept {
+    margin-left: 0;
+    padding-left: 14px;
+    border-left: 2px solid var(--line-strong);
+  }
+  .flowGroupShared .flowQuestion {
+    margin-top: 12px;
+    padding-top: 2px;
+  }
+  .flowGroupShared .flowConcept {
+    margin-top: 0;
+    padding-top: 8px;
+    padding-bottom: 2px;
+  }
+  .flowLifecycle {
     grid-template-columns: 1fr;
   }
 }
@@ -1171,6 +1231,94 @@ blockquote footer {
   text-decoration: line-through;
   text-decoration-thickness: 2px;
   text-decoration-color: var(--amber-on-dark);
+}
+.stateCompare {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line-dark);
+}
+.stateCompareTitle {
+  font-size: clamp(26px, 3vw, 38px);
+  letter-spacing: -0.025em;
+}
+.stateCompareLede {
+  margin-top: 10px;
+  color: var(--on-dark-muted);
+  font-size: 17px;
+}
+.stateCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+.stateCard {
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.stateCard dt {
+  display: inline-block;
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--amber-on-dark);
+  padding: 3px 10px;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+}
+.stateCard:nth-child(2) dt {
+  color: var(--indigo-on-dark);
+  border-style: dashed;
+}
+.stateMeaning {
+  margin-top: 16px;
+  font-family: var(--font-display, system-ui), system-ui, sans-serif;
+  font-size: clamp(18px, 1.8vw, 21px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--on-dark);
+}
+.stateTreatment {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line-dark);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--on-dark-muted);
+}
+.stateTreatment {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.stateLabel {
+  display: block;
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.stateRule {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--on-dark-muted);
+  max-width: 900px;
+}
+.stateRule strong {
+  color: var(--on-dark);
+}
+.stateRule q {
+  color: var(--on-dark);
+}
+@media (max-width: 720px) {
+  .stateCards {
+    grid-template-columns: 1fr;
+  }
 }
 .unknownCanon {
   display: grid;

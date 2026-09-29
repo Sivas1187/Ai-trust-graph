@@ -10,6 +10,18 @@
 export const SITE_URL = "https://aitrustgraph.org";
 export const REPO_URL = "https://github.com/Sivas1187/Ai-trust-graph";
 
+/**
+ * Owner ruling 5: normative artifact links must be immutable for the bundle
+ * the site names. No Git tag or release exists for 1.0-rc.4 (checked
+ * 2026-09-29), so artifact links pin the bundle source commit, whose docs/
+ * blobs match every Git blob SHA in METHODOLOGY_MANIFEST.md §4. Replace with
+ * the release tag once the owner creates one.
+ */
+export const BUNDLE_REF = "ec9b4571d96afdf1c423713349871459e1cf9b9b";
+
+/** Immutable link into the 1.0-rc.4 bundle (normative artifacts, manifest). */
+const pinned = (path: string) => `${REPO_URL}/blob/${BUNDLE_REF}/${path}`;
+/** Mutable repository navigation (contribution, review and project files). */
 const blob = (path: string) => `${REPO_URL}/blob/main/${path}`;
 
 export const links = {
@@ -18,12 +30,12 @@ export const links = {
   newIssue: `${REPO_URL}/issues/new/choose`,
   contributing: blob("CONTRIBUTING.md"),
   reviewFindings: blob("REVIEW_FINDINGS.md"),
-  manifest: blob("METHODOLOGY_MANIFEST.md"),
+  manifest: pinned("METHODOLOGY_MANIFEST.md"),
   roadmap: blob("ROADMAP.md"),
-  license: blob("LICENSE"),
+  license: pinned("LICENSE"),
   trademarks: blob("TRADEMARKS.md"),
   readme: blob("README.md"),
-  doc: (file: string) => blob(`docs/${file}`),
+  doc: (file: string) => pinned(`docs/${file}`),
 };
 
 /** Source: METHODOLOGY_MANIFEST.md header. */
@@ -152,23 +164,18 @@ export const domains = [
 ] as const;
 
 /**
- * Explanatory AI Assurance Reasoning Flow (website device, NOT canonical).
- * Stage labels are the website's simplified sequence (WEBSITE_CONTENT_MAP.md).
- * Questions and concepts for stages 1–6 are quoted from the Artifact #2 §0.10
- * theory-map question table. The Decisions line paraphrases README.md
- * ("bounded, evidence-linked findings"; "does not produce a single trust score").
+ * Source: Artifact #2 Core Conceptual Model §0.10.
+ *
+ * `canonicalReasoningChain` is the "REASONING CHAIN" callout, verbatim and in
+ * canonical order. Owner ruling 1: this is the only reasoning chain the public
+ * site presents.
+ *
+ * `reasoningChain` groups the same stages with the §0.10 theory-map question
+ * table (question and concept verbatim). The table has eight rows for nine
+ * stages: its last row, "What can we defend? / Evidence, confidence and
+ * accountable decision.", covers both Evidence and Decision, so those two
+ * stages share one group rather than the site inventing a ninth question.
  */
-export const reasoningFlow = [
-  { stage: "Assets", question: "What exists?", concept: "Objects and system boundary." },
-  { stage: "Relationships", question: "How is it connected?", concept: "Typed directional relationships." },
-  { stage: "Authority", question: "Who or what can cause it?", concept: "Authority, influence and actionability." },
-  { stage: "Paths", question: "What can happen next?", concept: "Reachability and path analysis." },
-  { stage: "Controls", question: "What interrupts it?", concept: "Control breakpoint and resilience." },
-  { stage: "Evidence", question: "What can we defend?", concept: "Evidence, confidence and accountable decision." },
-  { stage: "Decisions", question: null, concept: "Bounded, evidence-linked findings — never a single overall trust score." },
-] as const;
-
-/** Source: Artifact #2 Core Conceptual Model §0.10 "REASONING CHAIN", verbatim. */
 export const canonicalReasoningChain = [
   "Objects",
   "Relationships",
@@ -179,7 +186,23 @@ export const canonicalReasoningChain = [
   "Controls",
   "Evidence",
   "Decision",
-];
+] as const;
+
+export const reasoningChain = [
+  { stages: ["Objects"], question: "What exists?", concept: "Objects and system boundary." },
+  { stages: ["Relationships"], question: "How is it connected?", concept: "Typed directional relationships." },
+  { stages: ["Conditions"], question: "What must be true?", concept: "Preconditions and state." },
+  { stages: ["Paths"], question: "What can happen next?", concept: "Reachability and path analysis." },
+  { stages: ["Authority and Influence"], question: "Who or what can cause it?", concept: "Authority, influence and actionability." },
+  { stages: ["Consequence"], question: "Why does it matter?", concept: "Target criticality and consequence." },
+  { stages: ["Controls"], question: "What interrupts it?", concept: "Control breakpoint and resilience." },
+  { stages: ["Evidence", "Decision"], question: "What can we defend?", concept: "Evidence, confidence and accountable decision." },
+] as const;
+
+// Build-time guard: the grouped chain must equal the canonical chain, in order.
+if (reasoningChain.flatMap((g) => g.stages).join(" > ") !== canonicalReasoningChain.join(" > ")) {
+  throw new Error("reasoningChain diverges from the canonical Artifact #2 §0.10 chain");
+}
 
 /** Source: Artifact #7 Assessment Methodology, phase headings (Phase 1–13). */
 export const assessmentPhases = [
@@ -207,7 +230,8 @@ export const evidenceGrades = [
     grade: "E0",
     name: "No evidence",
     meaning: "No source is available or the supplied item cannot be linked to the assertion.",
-    supports: "E0 is not evidence that the control is absent.",
+    supports:
+      "The only defensible conclusion is UNKNOWN or Not Tested. E0 is not evidence that the control is absent.",
   },
   {
     grade: "E1",
@@ -246,6 +270,28 @@ export const evidenceGrades = [
       "Current direct technical evidence is combined with a representative test or operating record that demonstrates the claimed behavior under stated conditions.",
     supports:
       "May support verified effectiveness or adaptive operation, but only for the tested scope, period and conditions.",
+  },
+] as const;
+
+/**
+ * Source: Artifact #6 Evidence Model §0.5 (state meanings, verbatim) and
+ * Artifact #4 Scoring Framework §0.5 (numeric treatment, verbatim).
+ * Owner ruling 2: UNKNOWN and Not Tested are distinct; E0 may support either
+ * according to context (Artifact #6 §1.1).
+ */
+export const unknownVsNotTested = [
+  {
+    state: "UNKNOWN",
+    meaning:
+      "The material state remains unresolved because evidence is absent, insufficient or materially conflicting.",
+    numeric: "No numeric value.",
+    reporting: "Included in uncertainty and evidence-gap counts.",
+  },
+  {
+    state: "Not Tested",
+    meaning: "Testing required for a stronger conclusion was not performed.",
+    numeric: "No numeric value for effectiveness.",
+    reporting: "May retain a design score if separately supported.",
   },
 ] as const;
 

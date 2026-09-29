@@ -3,7 +3,6 @@ import { HeroGraph } from "./components/HeroGraph";
 import {
   artifacts,
   assessmentPhases,
-  canonicalReasoningChain,
   companion,
   domains,
   evidenceGrades,
@@ -12,8 +11,9 @@ import {
   pathRoles,
   pathValidationStates,
   pendingGates,
-  reasoningFlow,
+  reasoningChain,
   release,
+  unknownVsNotTested,
 } from "./content";
 
 const nav = [
@@ -32,6 +32,12 @@ const problemChain = [
   ["Identities", "cross boundaries."],
   ["Actions", "may reach consequential systems."],
 ] as const;
+
+/** Reasoning-chain groups with the canonical 1-based number of their first stage. */
+const chainGroups = reasoningChain.map((g, gi) => ({
+  ...g,
+  start: 1 + reasoningChain.slice(0, gi).reduce((sum, x) => sum + x.stages.length, 0),
+}));
 
 const assertions = ["Can connect", "Can authenticate", "Can access", "Can invoke", "Can modify", "Can transact"];
 
@@ -72,6 +78,7 @@ export default function Home() {
       <header className="siteHeader">
         <div className="shell headerInner">
           <a className="brand" href="#top" aria-label="AI Trust Graph — back to top">
+            {/* PROVISIONAL brand mark: placeholder pending a separate visual-brand review. */}
             <svg className="brandMark" viewBox="0 0 64 64" aria-hidden="true">
               <g stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none">
                 <path d="M16 22 L32 14 L48 24 M16 22 L26 44 L48 24 M26 44 L46 48" />
@@ -169,65 +176,72 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ──────────────────────── Reasoning flow ──────────────────────── */}
+        {/* ─────────────────── Canonical reasoning chain ─────────────────── */}
         <section id="flow" className="section flow" aria-labelledby="flow-title">
           <div className="shell">
             <div className="sectionHead">
-              <p className="eyebrow">AI Assurance Reasoning Flow</p>
+              <p className="eyebrow">The reasoning chain</p>
               <h2 id="flow-title">From what exists to what can be defended.</h2>
               <p className="sectionLede">
-                A way to read the methodology: each stage raises a question that later stages build on.
-                This is an <strong>explanatory reasoning flow</strong> — it does not replace the
-                canonical 13-phase Assessment Methodology.
+                Objects create a system description. Relationships establish how the objects
+                interact. Paths combine relationships under conditions. Authority and influence
+                explain how consequences can be caused. Evidence and controls determine what can be
+                concluded.
+              </p>
+              <p className="flowSpine">
+                The Core Conceptual Model calls this chain{" "}
+                <q>the intellectual spine of the methodology</q>.
               </p>
             </div>
 
-            <ol className="flowRail">
-              {reasoningFlow.map((s, i) => (
-                <li key={s.stage} className="flowStep" style={{ ["--i" as string]: i }}>
-                  <span className="flowIndex" aria-hidden="true">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="flowDot" aria-hidden="true" />
-                  <h3 className="flowStage">{s.stage}</h3>
-                  {s.question && <p className="flowQuestion">{s.question}</p>}
-                  <p className="flowConcept">{s.concept}</p>
+            <ol className="flowRail" aria-label="Canonical reasoning chain, Artifact #2 §0.10">
+              {chainGroups.map((g, gi) => (
+                <li
+                  key={g.stages.join("+")}
+                  className={g.stages.length > 1 ? "flowGroup flowGroupShared" : "flowGroup"}
+                  style={{ ["--i" as string]: gi }}
+                >
+                  <ol className="flowStages" start={g.start}>
+                    {g.stages.map((stage, si) => (
+                      <li key={stage} className="flowStep">
+                        <span className="flowIndex" aria-hidden="true">
+                          {String(g.start + si).padStart(2, "0")}
+                        </span>
+                        <span className="flowDot" aria-hidden="true" />
+                        <h3 className="flowStage">{stage}</h3>
+                      </li>
+                    ))}
+                  </ol>
+                  <p className="flowQuestion">{g.question}</p>
+                  <p className="flowConcept">{g.concept}</p>
                 </li>
               ))}
             </ol>
             <Source>
-              stage questions quoted from the theory map in{" "}
-              <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 — Core Conceptual Model §0.10</Ext>.
+              stage names and order from the reasoning chain in{" "}
+              <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 — Core Conceptual Model §0.10</Ext>;
+              questions and concepts from the same section’s theory map, whose final row covers both
+              Evidence and Decision.
             </Source>
 
-            <div className="flowCanon">
+            <div className="flowLifecycle">
               <div>
-                <h3>Canonical reasoning chain</h3>
-                <p>The Core Conceptual Model states the full chain, including conditions and consequence:</p>
-                <p className="chainInline">
-                  {canonicalReasoningChain.map((c, i) => (
-                    <span key={c}>
-                      {c}
-                      {i < canonicalReasoningChain.length - 1 && <span aria-hidden="true"> → </span>}
-                    </span>
-                  ))}
+                <h3>A separate lifecycle: the 13-phase Assessment Methodology</h3>
+                <p>
+                  The reasoning chain belongs to the Core Conceptual Model. Assessment fieldwork is
+                  governed separately by Artifact #7, which defines the controlled fieldwork lifecycle
+                  and gates without redefining upstream semantics.
                 </p>
                 <Source>
-                  <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 §0.10</Ext>
+                  <Ext href={links.doc("07-assessment-methodology.md")}>Artifact #7 — Assessment Methodology</Ext>;{" "}
+                  <Ext href={links.manifest}>METHODOLOGY_MANIFEST §1</Ext>
                 </Source>
               </div>
-              <div>
-                <h3>Formal assessment lifecycle</h3>
-                <p>Fieldwork follows the 13 phases of the Assessment Methodology:</p>
-                <ol className="phaseList">
-                  {assessmentPhases.map((p) => (
-                    <li key={p}>{p}</li>
-                  ))}
-                </ol>
-                <Source>
-                  <Ext href={links.doc("07-assessment-methodology.md")}>Artifact #7 — Assessment Methodology</Ext>
-                </Source>
-              </div>
+              <ol className="phaseList" aria-label="Assessment Methodology phases">
+                {assessmentPhases.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ol>
             </div>
           </div>
         </section>
@@ -347,7 +361,11 @@ export default function Home() {
             <h2 id="unknown-title" className="unknownTitle">
               <span>UNKNOWN</span> <span className="unknownStays">stays</span> <span>UNKNOWN.</span>
             </h2>
-            <p className="unknownLead">Insufficient evidence does not silently become a favourable — or an adverse — conclusion.</p>
+            <p className="unknownLead">
+              Insufficient evidence does not silently become a favourable — or an adverse — conclusion.
+              UNKNOWN remains visible until sufficient evidence and accountable review resolve the
+              material assertion.
+            </p>
             <ul className="unknownGrid" aria-label="UNKNOWN is never silently converted into">
               {["Safe", "Failed", "Zero risk", "N/A"].map((x) => (
                 <li key={x}>
@@ -357,6 +375,40 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+
+            <div className="stateCompare">
+              <h3 className="stateCompareTitle">UNKNOWN is not Not Tested.</h3>
+              <p className="stateCompareLede">
+                They are distinct non-numeric result states with different meanings.
+              </p>
+              <dl className="stateCards">
+                {unknownVsNotTested.map((st) => (
+                  <div key={st.state} className="stateCard">
+                    <dt>{st.state}</dt>
+                    <dd>
+                      <p className="stateMeaning">{st.meaning}</p>
+                      <div className="stateTreatment">
+                        <p>
+                          <span className="stateLabel">Numeric treatment</span> {st.numeric}
+                        </p>
+                        <p>
+                          <span className="stateLabel">Reporting treatment</span> {st.reporting}
+                        </p>
+                      </div>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="stateRule">
+                <strong>Neither may be silently converted into a fabricated effectiveness result.</strong>{" "}
+                Evidence grade E0 (no evidence) can support either, according to context:{" "}
+                <q>The only defensible conclusion is UNKNOWN or Not Tested.</q>
+              </p>
+              <Source>
+                meanings from <Ext href={links.doc("06-evidence-model.md")}>Artifact #6 — Evidence Model §0.5, §1.1</Ext>;
+                numeric and reporting treatment from <Ext href={links.doc("04-scoring-framework.md")}>Artifact #4 — Scoring Framework §0.5</Ext>.
+              </Source>
+            </div>
 
             <div className="unknownCanon">
               <blockquote>

@@ -24,6 +24,27 @@ const forbidden = [
   /trust score/i,
   /ExposureGraph/i,
   /\bsign[ -]?in\b|\blog[ -]?in\b/i,
+  // Owner ruling 1: no competing, non-canonical reasoning chain.
+  /Assets\s*(→|->)\s*Relationships/i,
+  /Assurance Reasoning Flow/i,
+];
+
+// Owner rulings 1 and 2: canonical wording that must remain on the homepage.
+const required = [
+  "Objects",
+  "Relationships",
+  "Conditions",
+  "Paths",
+  "Authority and Influence",
+  "Consequence",
+  "Controls",
+  "Evidence",
+  "Decision",
+  "UNKNOWN stays UNKNOWN.",
+  "Evidence is absent, insufficient or materially conflicting".toLowerCase(),
+  "Testing required for a stronger conclusion was not performed.",
+  "May retain a design score if separately supported.",
+  "The only defensible conclusion is UNKNOWN or Not Tested.",
 ];
 
 // Deliberate negations that are required disclosures.
@@ -48,6 +69,17 @@ for (const [file, raw] of html) {
     .replace(/\s+/g, " ");
   // also scan metadata attribute values (description, og, twitter)
   text += " " + [...raw.matchAll(/content="([^"]*)"/g)].map((m) => m[1]).join(" ");
+  if (file === "index.html") {
+    for (const phrase of required) {
+      if (!text.toLowerCase().includes(phrase.toLowerCase())) errors.push(`${file}: required canonical wording missing: "${phrase}"`);
+    }
+    // Canonical chain order (Artifact #2 §0.10), read from the rendered stage headings.
+    const stages = [...raw.matchAll(/<h3 class="flowStage">([^<]+)<\/h3>/g)].map((m) => m[1].replace(/&amp;/g, "&"));
+    const expected = required.slice(0, 9);
+    if (stages.join(" > ") !== expected.join(" > ")) {
+      errors.push(`${file}: reasoning chain on page is "${stages.join(" > ")}", expected "${expected.join(" > ")}"`);
+    }
+  }
   for (const ctx of allowedContexts) text = text.replace(new RegExp(ctx.source, "gi"), " ");
   for (const re of forbidden) {
     const m = text.match(re);

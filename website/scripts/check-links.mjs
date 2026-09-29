@@ -2,12 +2,15 @@
 //
 // - Every in-page fragment (href="#id") must resolve to an element id on that page.
 // - Every root-relative link (href="/...") must resolve to a file in out/.
-// - Every link into the canonical GitHub repository (blob/tree on main) must
-//   resolve to a file or directory that exists in this repository checkout,
-//   so the site never points readers at a methodology artifact that is missing.
+// - Every link into the canonical GitHub repository must resolve: links on
+//   `main` to a path in this checkout; commit-pinned links to a path that
+//   exists at that commit (`git cat-file -e <sha>:<path>`).
+// - Normative artifacts (docs/*, METHODOLOGY_MANIFEST.md) must be linked at an
+//   immutable ref, never at mutable `main` (owner ruling 5).
 //
 // No network access is used.
 import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -50,10 +53,26 @@ for (const file of htmlFiles(outDir)) {
         existsSync(target) &&
         (statSync(target).isFile() || existsSync(join(target, "index.html")));
       if (!ok) errors.push(`${rel}: broken internal link ${href}`);
-    } else if (href.startsWith(REPO + "/blob/main/") || href.startsWith(REPO + "/tree/main/")) {
-      const path = href.replace(/^.*\/(blob|tree)\/main\//, "").split("#")[0];
-      if (!existsSync(join(repoRoot, decodeURIComponent(path)))) {
-        errors.push(`${rel}: GitHub link to missing repository path ${path}`);
+    } else if (href.startsWith(REPO + "/blob/") || href.startsWith(REPO + "/tree/")) {
+      const m = href.slice(REPO.length).match(/^\/(blob|tree)\/([^/]+)\/([^#?]+)/);
+      if (!m) {
+        errors.push(`${rel}: unparseable GitHub link ${href}`);
+        continue;
+      }
+      const [, , ref, rawPath] = m;
+      const path = decodeURIComponent(rawPath);
+      const normative = path.startsWith("docs/") || path === "METHODOLOGY_MANIFEST.md";
+      if (ref === "main") {
+        if (normative) errors.push(`${rel}: normative artifact linked at mutable main: ${path}`);
+        if (!existsSync(join(repoRoot, path))) errors.push(`${rel}: GitHub link to missing repository path ${path}`);
+      } else if (/^[0-9a-f]{40}$/.test(ref)) {
+        try {
+          execFileSync("git", ["-C", repoRoot, "cat-file", "-e", `${ref}:${path}`], { stdio: "ignore" });
+        } catch {
+          errors.push(`${rel}: ${path} does not exist at pinned commit ${ref}`);
+        }
+      } else {
+        errors.push(`${rel}: GitHub link uses unexpected ref "${ref}": ${href}`);
       }
     }
   }
