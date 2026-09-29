@@ -98,7 +98,11 @@ a:focus-visible,
 summary:focus-visible,
 button:focus-visible,
 input:focus-visible + span {
-  outline: none;
+  /* Transparent outline: invisible normally (the box-shadow ring is the visual
+     focus), but forced-colours mode drops box-shadow and paints outlines, so
+     focus stays visible in Windows High Contrast. */
+  outline: 2px solid transparent;
+  outline-offset: 2px;
   box-shadow: var(--focus);
   border-radius: 6px;
 }
@@ -368,7 +372,8 @@ h3 {
     cursor: pointer;
   }
   .navToggle:focus-visible {
-    outline: none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
     box-shadow: var(--focus);
   }
   .navToggleIcon {
@@ -1603,9 +1608,11 @@ blockquote footer {
     display: block;
   }
 
-  /* Stop: downstream steps are not reached (dimmed + dashed). */
+  /* Stop: downstream steps are not reached (muted + dashed). Colour, not
+     opacity, so the labels keep AA text contrast (muted on paper ≈ 5.9:1). */
   .bp:has(.bpRadio-stop:checked) .bpDownstream .bpLabel {
-    opacity: 0.6;
+    color: var(--muted);
+    background: var(--paper);
     border-style: dashed;
   }
   .bp:has(.bpRadio-stop:checked) .bpEdgeBreak,
@@ -2093,6 +2100,29 @@ blockquote footer {
   }
   .sectionLede {
     font-size: 17px;
+  }
+}
+
+/* ───────────── Forced colours (Windows High Contrast) ───────────── */
+@media (forced-colors: active) {
+  /* Focus: an explicit system-colour outline (box-shadow is dropped here). */
+  a:focus-visible,
+  summary:focus-visible,
+  button:focus-visible,
+  input:focus-visible + span {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+  /* Breakpoint radios: background dots and inset shadows are dropped, so mark
+     the selected option with a system-colour dot and a heavier border (the
+     desktop "Selected" text remains as well). */
+  .bpOption input:checked + span {
+    border: 3px solid Highlight;
+  }
+  .bpOption input:checked + span::before {
+    forced-color-adjust: none;
+    background: Highlight;
+    border-color: Highlight;
   }
 }
 
