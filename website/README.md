@@ -17,13 +17,14 @@ npm run dev     # http://localhost:3000
 | Command | What it does |
 | --- | --- |
 | `npm run dev` | Local development server. |
-| `npm run build` | Production static export to `out/`. |
+| `npm run build` | Production static export to `out/`, then `scripts/finalize-headers.mjs` writes the build's inline-script CSP hashes into `out/_headers`. Cloudflare Pages runs this same command. |
 | `npm run typecheck` | `tsc --noEmit`. |
-| `npm run check` | Typecheck, build, then `scripts/check-links.mjs` (in-page anchors, internal links, and every GitHub link resolves to a file in this repository) and `scripts/check-claims.mjs` (prohibited-claims scan of rendered text and metadata). |
+| `npm run check` | Typecheck, build, then `scripts/check-links.mjs` (in-page anchors, internal links, and every GitHub link resolves to a file in this repository), `scripts/check-claims.mjs` (prohibited-claims scan of rendered text and metadata) and `scripts/check-headers.mjs` (production `out/_headers` policy, no HSTS, every inline script allowed by a CSP hash, required export assets present). |
+| `node scripts/serve-out.mjs [port]` | Local preview of `out/` **with** the `out/_headers` response headers applied, to test the CSP in a browser before deploying. Development aid only. |
 
 Next.js is configured with `output: "export"`, producing a static `out/` directory
-suitable for Cloudflare Pages. Preview it with any static server, e.g.
-`python3 -m http.server -d out 4173`.
+suitable for Cloudflare Pages. Preview it with `node scripts/serve-out.mjs` (applies the
+production headers) or any static server, e.g. `python3 -m http.server -d out 4173`.
 
 ## Continuous integration
 
@@ -39,24 +40,25 @@ It never deploys and uses no secrets.
 | --- | --- |
 | `app/content.ts` | All methodology-derived copy, each entry annotated with its canonical source artifact and section. Edit here first; never edit canonical artifacts to match the site. |
 | `app/page.tsx` | Homepage narrative. |
-| `app/components/` | Synthetic hero graph and control-breakpoint illustration (server components; no client JS). |
+| `app/components/` | Synthetic hero graph and control-breakpoint illustration (server components) and the primary navigation (`PrimaryNav.tsx`, the only client component: mobile menu). |
 | `app/globals.css` | Visual system (tokens, layout, reduced-motion handling). |
 | `app/layout.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/icon.svg`, `app/apple-icon.png`, `public/og.png` | Metadata, canonical URL (`https://aitrustgraph.org`), Open Graph/Twitter, robots and sitemap. |
-| `DEPLOYMENT.md`, `deploy/_headers.example` | Cloudflare Pages and security-header guidance. **Not active.** |
+| `public/_headers` | **Active** Cloudflare Pages response headers (CSP, nosniff, Referrer-Policy, Permissions-Policy, framing). No HSTS. |
+| `DEPLOYMENT.md` | Production configuration, header policy, www → apex redirect runbook, verification and rollback. |
 
 ## Deployment
 
-See [DEPLOYMENT.md](DEPLOYMENT.md). Summary of the proposed Cloudflare Pages configuration:
+See [DEPLOYMENT.md](DEPLOYMENT.md). The site is live at **https://aitrustgraph.org** on
+Cloudflare Pages:
 
-- Production branch: `main` after website PR approval
+- Production branch: `main` (automatic deployments)
 - Root directory: `website`
 - Build command: `npm ci && npm run build`
 - Build output directory: `out`
-- Node.js: 22 LTS (minimum 20.9)
-- Custom domain: `aitrustgraph.org` (owner-selected; binding not yet configured)
-- HTTPS: enforce at the Cloudflare edge; redirect HTTP to HTTPS
-- Security headers (`deploy/_headers.example`) stay inactive until the production deployment gate
-- HSTS only after `https://aitrustgraph.org` is confirmed to serve correctly over HTTPS; never HSTS preload
+- Node.js: 22
+- Security headers: `public/_headers` (active once the production-hardening PR is merged and deployed)
+- `www` → apex redirect: Cloudflare-side setup still required (runbook in DEPLOYMENT.md)
+- HSTS: deliberately **off**; never HSTS preload
 
 ## Methodology links are version-pinned
 
@@ -68,7 +70,8 @@ The graph mark used for `app/icon.svg`, `app/apple-icon.png`, the header and `pu
 
 ## Publication gate
 
-Do not deploy the website as the official methodology site until:
+The initial launch met this gate (PR #8). Substantive future changes should meet it again
+before they reach `main`:
 1. content and semantic review passes;
 2. branding/domain decision is approved;
 3. production build passes;
