@@ -72,19 +72,30 @@ in this iteration. `check-headers.mjs` fails the build if HSTS appears.
 
 - **Only same-origin sources.** Every script, stylesheet, font and image is served from
   the site's own origin. There are no third-party origins, wildcards, `data:` or `blob:`
-  sources, and no `'unsafe-eval'`: the export contains no `eval`/`new Function`, inline
-  event handlers or `javascript:` URLs.
-- **Scripts: hashes, not `'unsafe-inline'`.** The static export contains a few inline
-  `<script>` elements (the React Server Components hydration payload: 2 on the homepage,
-  3 distinct across all exported pages). Their content changes on every build, so
-  `finalize-headers.mjs` hashes them after the build and writes the SHA-256 values into
-  `script-src`. The build fails if the placeholder is missing or duplicated, no inline
-  scripts are found, or a header line would exceed Cloudflare's 2,000-character limit.
+  sources, and no `'unsafe-eval'`. The application and its module code do not rely on
+  `eval` or `new Function`, and the export has no inline event handlers or `javascript:`
+  URLs.
+  - One exception sits outside that code. Next.js also emits a legacy polyfill bundle,
+    loaded only through `<script noModule>`. It contains core-js's global-object lookup,
+    whose last-resort fallback is `Function("return this")`.
+  - Modern browsers support ES modules, so they never download `noModule` scripts. The
+    fallback is also reached only after the earlier `globalThis`/`window`/`self` checks
+    fail.
+  - The CSP therefore needs no `'unsafe-eval'`, and none is added.
+- **Scripts: hashes, not `'unsafe-inline'`.** Each exported HTML page contains a small
+  number of inline `<script>` elements, the React Server Components hydration payload.
+  Their content, and possibly how many there are, can change on every build.
+  `finalize-headers.mjs` therefore runs after each build: it finds every inline script
+  in every exported HTML file, and writes the SHA-256 hash of each distinct one into
+  `script-src`. `check-headers.mjs` then confirms that every inline script is covered.
+  The build fails if the placeholder is missing or duplicated, no inline scripts are
+  found, or a header line would exceed Cloudflare's 2,000-character limit.
 - **Styles keep `'unsafe-inline'`: a deliberate, documented compromise.** The page uses
   React `style` attributes for animation staggering (`--i`, `--level`), and the mobile
   menu's `<noscript>` fallback uses a `<style>` element. Removing `'unsafe-inline'` would
-  need `'unsafe-hashes'` plus about 15 per-value hashes. That would make the header large
-  and fragile, and CSP2-only browsers would silently drop the styles. With scripts
+  need `'unsafe-hashes'` plus a hash for every distinct `style` attribute value. That
+  would make the header large and fragile, and CSP2-only browsers would silently drop
+  the styles. With scripts
   locked down, and with no user-generated content, the residual risk from inline styles
   is low.
 - **Framing** is refused by both `frame-ancestors 'none'` and `X-Frame-Options: DENY`.

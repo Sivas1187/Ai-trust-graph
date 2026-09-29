@@ -56,8 +56,8 @@ Cloudflare Pages:
 - Build command: `npm ci && npm run build`
 - Build output directory: `out`
 - Node.js: 22
-- Security headers: `public/_headers` (active once the production-hardening PR is merged and deployed)
-- `www` → apex redirect: Cloudflare-side setup still required (runbook in DEPLOYMENT.md)
+- Security headers: **active in production** via `public/_headers` (PR #9)
+- `www` → apex redirect: **configured and verified** (Cloudflare Redirect Rule, 301, path and query preserved; see DEPLOYMENT.md)
 - HSTS: deliberately **off**; never HSTS preload
 
 ## Methodology links are version-pinned
