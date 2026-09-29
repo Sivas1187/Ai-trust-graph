@@ -26,8 +26,8 @@ As reported by the owner after the PR #8 launch (merge commit
 | DNS | Active |
 | DNSSEC | Enabled |
 | SSL/TLS | Enabled |
-| Security headers | **Activated by `public/_headers` once the production-hardening PR is merged** and Pages redeploys. Before that, production serves no custom security headers. |
-| `www.aitrustgraph.org` → apex redirect | **Not yet configured.** Requires the Cloudflare-side steps below. |
+| Security headers | **Active in production** via `public/_headers` (PR #9); CSP and companion headers verified on the live apex domain. |
+| `www.aitrustgraph.org` → apex redirect | **Configured and verified.** Proxied `CNAME www → aitrustgraph.org` plus a Cloudflare 301 Redirect Rule preserves path and query string. |
 | HSTS | **Deliberately disabled** pending production stability verification. |
 | HSTS preload | **Must not be enabled.** |
 
@@ -106,6 +106,20 @@ rewrite scripts at the edge and would conflict with it:
 | Cloudflare **Web Analytics** (Pages project → Metrics) / **Zaraz** | Off | Would inject a third-party beacon. The CSP blocks it and logs a console error. The site deliberately has no analytics. |
 | Email Address Obfuscation (Scrape Shield) | Either state | The pages contain no email addresses, so it is a no-op. |
 
+
+### Known Cloudflare beacon injection
+
+During production verification, Cloudflare injected a request for
+`https://static.cloudflareinsights.com/beacon.min.js`. The active CSP blocks that script
+because the site deliberately permits only same-origin scripts. The site continues to
+function correctly with the beacon blocked.
+
+The following visible Cloudflare settings were checked and were not enabled: Pages Web
+Analytics, account-level Web Analytics setup, Real User Monitoring (RUM), Rocket Loader,
+and Smart Shield. The exact source of the injection remains under investigation. Until
+it is identified, **do not weaken the CSP** to allow `static.cloudflareinsights.com`.
+This is tracked as a non-blocking operational issue, not as an application dependency.
+
 ### Verify headers after deploying
 
 Before merging, if Pages preview deployments are enabled, open the PR's preview URL
@@ -140,9 +154,9 @@ If a deployed policy breaks the site, use either of these:
 
 No Cloudflare setting needs to change for either.
 
-## `www.aitrustgraph.org` → apex redirect (Cloudflare-side, not yet done)
+## `www.aitrustgraph.org` → apex redirect (Cloudflare-side, configured)
 
-Intended behaviour:
+Verified behaviour:
 
 ```
 https://www.aitrustgraph.org/<path>?<query>  →  301  →  https://aitrustgraph.org/<path>?<query>
@@ -150,8 +164,9 @@ http://www.aitrustgraph.org/<path>?<query>   →  (HTTPS)  →  301  →  https:
 ```
 
 The redirect is done at Cloudflare's edge with a **Redirect Rule**, so a `www` request
-never reaches Pages. These steps assume the `aitrustgraph.org` zone is on Cloudflare,
-which it is.
+never reaches Pages. Production uses a proxied `CNAME www → aitrustgraph.org` and the
+rule below. The root redirect and a path/query preservation test were verified after
+deployment.
 
 1. **Pages custom domain for `www`: not required.**
    - With a Redirect Rule the edge answers every `www` request itself, so `www` does not
@@ -160,12 +175,9 @@ which it is.
      `www.aitrustgraph.org`. Pages then creates its own proxied `CNAME www → <project>.pages.dev`,
      and you skip step 2. Keep the Redirect Rule from step 3 either way, so `www` never
      serves a duplicate copy of the site.
-2. **Create the minimal DNS record.** In DNS → Records, add:
-   - Type `AAAA`, Name `www`, IPv6 address `100::`, Proxy status **Proxied** (orange cloud).
-   - `100::` is the IPv6 discard prefix. The record exists only so Cloudflare's proxy
-     answers for `www`. It must stay proxied: a DNS-only record would bypass the
-     redirect and fail.
-   - A proxied `CNAME www → aitrustgraph.org` is an equally valid alternative.
+2. **DNS record in production.** DNS → Records contains:
+   - Type `CNAME`, Name `www`, Target `aitrustgraph.org`, Proxy status **Proxied** (orange cloud), TTL Auto.
+   - The proxied record exists so Cloudflare's edge can answer `www` and apply the redirect rule.
 3. **Create the permanent redirect.** In Rules → Redirect Rules → Create rule:
    - Rule name: `www to apex`
    - When incoming requests match → Custom filter expression:
@@ -208,7 +220,8 @@ curl -sI https://aitrustgraph.org/ | grep -iE '^HTTP'
 # HTTP/2 200 (apex unaffected)
 ```
 
-Update the "Current production state" table only after these checks pass.
+The production state table above records this redirect as configured because the root
+redirect and the path/query preservation test have passed.
 
 ## `*.pages.dev` hostname
 
