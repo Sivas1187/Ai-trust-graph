@@ -64,3 +64,21 @@
 - D4 - AI Security Validation
 - D5 - AI Governance and Assurance
 - D6 - Operational Resilience
+
+## Homepage section traceability (`/`)
+
+All methodology-derived homepage copy lives in `app/content.ts` with an inline source note. Sections:
+
+| Homepage section | Canonical source | Notes |
+| --- | --- | --- |
+| Hero, status pill | README; METHODOLOGY_MANIFEST header (bundle 1.0-rc.4, public-release candidate) | Hero graph is synthetic; edge labels are illustrative, not ontology predicates. |
+| The problem | #1 Manifesto (invariant: "A topological connection is not automatically an exploitable path.") | |
+| AI Assurance Reasoning Flow | #2 §0.10 theory-map question table | Website device, labelled explanatory. Shown next to the canonical #2 §0.10 reasoning chain and the 13 phases of #7. |
+| Six domains | README (names, prefixes); #2 §8.1 (purposes, verbatim); #3 §2.1–§7.6 (capability names, verbatim) | |
+| Access is not authority | #2 §3.6 separation rule; #2 §5.2 authority classes | The six "Can …" tiles illustrate distinct assertions; explicitly not a canonical sequence or state machine. |
+| UNKNOWN stays UNKNOWN | #4 SC-INV-01; #4 §0.5 result states; README (no overall trust score) | |
+| Control breakpoints | #2 §1.8, §6.3, §6.6 | Synthetic path; one-line glosses of stop/constrain/detect/contain are plain-language illustrations. |
+| Evidence model | #6 §1.1–§1.8 and §4 sufficiency note | Grade names and support statements quoted; full sufficiency rules linked, not summarized. |
+| Methodology scale | README; this file's permitted-claims list | |
+| Canonical source explorer | METHODOLOGY_MANIFEST §2 (reading order), §4 (versions) | #13 labelled non-normative. |
+| Public review, pending gates | CONTRIBUTING; REVIEW_FINDINGS; METHODOLOGY_MANIFEST §6 | |
