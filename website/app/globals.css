@@ -389,6 +389,7 @@ h3 {
 }
 .statusPill {
   display: inline-flex;
+  max-width: 100%;
   align-items: center;
   gap: 10px;
   padding: 7px 14px 7px 12px;
@@ -398,6 +399,12 @@ h3 {
   font-size: 13px;
   color: var(--ink-2);
   margin-bottom: 28px;
+}
+.statusText {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  min-width: 0;
 }
 .statusPill strong {
   font-weight: 600;
@@ -550,7 +557,7 @@ h1 {
 
 @media (max-width: 900px) {
   .heroGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   h1 {
     max-width: 16ch;
