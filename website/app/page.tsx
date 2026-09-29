@@ -1,208 +1,633 @@
-const domains = [
-  ["D1", "Discovery and AIBOM", "Inventory, ownership and blind spots across the AI estate."],
-  ["D2", "Trust and Privilege Paths", "Trust relationships, identity and privilege paths, graph quality."],
-  ["D3", "Authority Governance", "Delegated authority, approval, amplification and revocation."],
-  ["D4", "AI Security Validation", "Threat hypotheses, control testing and independent retest."],
-  ["D5", "AI Governance and Assurance", "Policy, appetite, use-case impact and provider assurance."],
-  ["D6", "Operational Resilience", "Detection, containment, recovery and forensics."],
+import { BreakpointExplorer } from "./components/BreakpointExplorer";
+import { HeroGraph } from "./components/HeroGraph";
+import {
+  artifacts,
+  assessmentPhases,
+  canonicalReasoningChain,
+  companion,
+  domains,
+  evidenceGrades,
+  links,
+  nonNumericResultStates,
+  pathRoles,
+  pathValidationStates,
+  pendingGates,
+  reasoningFlow,
+  release,
+} from "./content";
+
+const nav = [
+  ["#flow", "Reasoning"],
+  ["#domains", "Domains"],
+  ["#authority", "Authority"],
+  ["#evidence", "Evidence"],
+  ["#methodology", "Methodology"],
+  ["#review", "Review"],
+] as const;
+
+const problemChain = [
+  ["Models", "connect to agents."],
+  ["Agents", "invoke tools."],
+  ["Tools", "operate through identities."],
+  ["Identities", "cross boundaries."],
+  ["Actions", "may reach consequential systems."],
+] as const;
+
+const assertions = ["Can connect", "Can authenticate", "Can access", "Can invoke", "Can modify", "Can transact"];
+
+/** Artifact #2 §5.2 authority classes, verbatim names. */
+const authorityClasses = [
+  "Observe",
+  "Read",
+  "Retrieve",
+  "Infer",
+  "Recommend",
+  "Approve",
+  "Execute",
+  "Modify",
+  "Delete",
+  "Disclose",
+  "Transact",
 ];
 
-const reasoning = [
-  "Assets",
-  "Relationships",
-  "Authority",
-  "Paths",
-  "Controls",
-  "Evidence",
-  "Decisions",
-];
+function Source({ children }: { children: React.ReactNode }) {
+  return <p className="source">Source: {children}</p>;
+}
+
+function Ext({ href, children, className }: { href: string; children: React.ReactNode; className?: string }) {
+  return (
+    <a href={href} className={className} rel="noopener noreferrer">
+      {children}
+    </a>
+  );
+}
 
 export default function Home() {
   return (
-    <main>
-      <header className="nav shell">
-        <a className="brand" href="#top" aria-label="AI Trust Graph home">
-          <span className="brandMark" aria-hidden="true">ATG</span>
-          <span>AI Trust Graph</span>
-        </a>
-        <nav aria-label="Primary navigation">
-          <a href="#how">How it works</a>
-          <a href="#domains">Domains</a>
-          <a href="#evidence">Evidence</a>
-          <a href="#review">Review</a>
-        </nav>
+    <>
+      <a className="skipLink" href="#main">
+        Skip to content
+      </a>
+
+      <header className="siteHeader">
+        <div className="shell headerInner">
+          <a className="brand" href="#top" aria-label="AI Trust Graph — back to top">
+            <svg className="brandMark" viewBox="0 0 64 64" aria-hidden="true">
+              <g stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none">
+                <path d="M16 22 L32 14 L48 24 M16 22 L26 44 L48 24 M26 44 L46 48" />
+              </g>
+              <g fill="currentColor">
+                <circle cx="16" cy="22" r="5.5" />
+                <circle cx="32" cy="14" r="4.5" />
+                <circle cx="48" cy="24" r="5.5" />
+                <circle cx="26" cy="44" r="5.5" />
+              </g>
+              <circle cx="46" cy="48" r="5" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="3 2.5" />
+            </svg>
+            <span>AI Trust Graph</span>
+          </a>
+          <nav aria-label="Primary" className="primaryNav">
+            <ul>
+              {nav.map(([href, label]) => (
+                <li key={href}>
+                  <a href={href}>{label}</a>
+                </li>
+              ))}
+              <li>
+                <Ext href={links.repo} className="navGithub">
+                  GitHub<span className="visuallyHidden"> (canonical source)</span>
+                </Ext>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </header>
 
-      <section id="top" className="hero shell">
-        <div className="status">PUBLIC-RELEASE CANDIDATE · BUNDLE 1.0-rc.4</div>
-        <div className="heroGrid">
-          <div>
-            <p className="eyebrow">Graph-based · Evidence-driven · Vendor-neutral</p>
-            <h1>Assurance for AI systems that are no longer isolated.</h1>
-            <p className="lede">
-              AI Trust Graph models connected AI environments as evidence-linked graphs of identities,
-              agents, models, tools, data and providers — then reasons across relationships, authority,
-              paths, controls and evidence to support defensible decisions.
-            </p>
-            <div className="actions">
-              <a className="button primary" href="#how">Explore the methodology</a>
-              <a className="button secondary" href="https://github.com/Sivas1187/Ai-trust-graph">View canonical source on GitHub</a>
-            </div>
-          </div>
-
-          <div className="graphCard" aria-label="Illustrative AI Trust Graph">
-            <div className="boundary boundaryOuter">
-              <span>Connected AI ecosystem</span>
-              <div className="graph">
-                <span className="node n1">Human</span>
-                <span className="node n2">Agent</span>
-                <span className="node n3">Identity</span>
-                <span className="node n4">Tool</span>
-                <span className="node n5">API</span>
-                <span className="node n6">Data</span>
-                <span className="edge e1" />
-                <span className="edge e2" />
-                <span className="edge e3" />
-                <span className="edge e4" />
-                <span className="edge e5" />
+      <main id="main" tabIndex={-1}>
+        {/* ───────────────────────────── Hero ───────────────────────────── */}
+        <section id="top" className="hero" aria-labelledby="hero-title">
+          <div className="shell heroGrid">
+            <div className="heroCopy">
+              <p className="statusPill">
+                <span className="statusDot" aria-hidden="true" />
+                <span className="statusText">
+                  <strong>{release.status}</strong>
+                  <span className="statusSep" aria-hidden="true">·</span>
+                  <span className="nowrap">Bundle {release.bundle}</span>
+                  <span className="statusSep" aria-hidden="true">·</span>
+                  <span className="nowrap">Independent review pending</span>
+                </span>
+              </p>
+              <p className="kicker">AI Trust Graph</p>
+              <h1 id="hero-title">Graph-based, evidence-driven assurance for connected AI systems.</h1>
+              <p className="lede">
+                AI Trust Graph is an open methodology that models connected AI environments as
+                evidence-linked graphs of identities, agents, models, tools, data, infrastructure and
+                providers — and the relationships between them — so that assurance conclusions stay
+                bounded by what the evidence can actually support.
+              </p>
+              <div className="actions">
+                <a className="button buttonPrimary" href="#flow">
+                  Explore the methodology
+                </a>
+                <Ext className="button buttonSecondary" href={links.repo}>
+                  View canonical source on GitHub
+                </Ext>
               </div>
             </div>
-            <p className="graphCaption">Illustrative only — topology does not prove authority or exploitability.</p>
+            <HeroGraph />
           </div>
-        </div>
+        </section>
 
-        <div className="metrics" aria-label="Methodology scale">
-          <div><strong>6</strong><span>domains</span></div>
-          <div><strong>72</strong><span>canonical controls</span></div>
-          <div><strong>36</strong><span>maturity capabilities</span></div>
-          <div><strong>E0–E5</strong><span>evidence grades</span></div>
-          <div><strong>M1–M5</strong><span>maturity</span></div>
-        </div>
-      </section>
-
-      <section className="darkSection">
-        <div className="shell statement">
-          <p className="eyebrow light">The problem</p>
-          <h2>AI systems are connected ecosystems.</h2>
-          <p>
-            Models connect to agents. Agents invoke tools. Tools operate under identities. Identities
-            cross boundaries. Actions can reach consequential business systems.
-          </p>
-          <p className="accentStatement">Risk can emerge through the relationships between them.</p>
-        </div>
-      </section>
-
-      <section id="how" className="shell section">
-        <p className="eyebrow">AI assurance reasoning flow</p>
-        <h2>From what exists to what can be defended.</h2>
-        <div className="reasoning" role="list">
-          {reasoning.map((item, i) => (
-            <div className="reasonStep" role="listitem" key={item}>
-              <span>{String(i + 1).padStart(2, "0")}</span>
-              <strong>{item}</strong>
+        {/* ──────────────────────────── Problem ─────────────────────────── */}
+        <section className="dark problem" aria-labelledby="problem-title">
+          <div className="shell problemGrid">
+            <div>
+              <p className="eyebrow">The problem</p>
+              <h2 id="problem-title">AI systems are no longer isolated models.</h2>
             </div>
-          ))}
-        </div>
-        <p className="note">
-          This is an explanatory reasoning flow, not a replacement for the canonical 13-phase
-          Assessment Methodology.
-        </p>
-      </section>
+            <div>
+              <ol className="chain">
+                {problemChain.map(([subject, rest]) => (
+                  <li key={subject}>
+                    <span className="chainNode" aria-hidden="true" />
+                    <span>
+                      <strong>{subject}</strong> {rest}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+              <p className="problemPunch">Risk can emerge through the relationships between them.</p>
+              <p className="problemCaveat">
+                Relationships describe what may be possible; on their own they do not establish exploitation.{" "}
+                <q>A topological connection is not automatically an exploitable path.</q>
+              </p>
+              <Source>
+                <Ext href={links.doc("01-manifesto.md")}>Artifact #1 — Manifesto</Ext>
+              </Source>
+            </div>
+          </div>
+        </section>
 
-      <section id="domains" className="shell section">
-        <p className="eyebrow">Six domains</p>
-        <h2>One assurance model, six complementary views.</h2>
-        <div className="domainGrid">
-          {domains.map(([id, title, copy]) => (
-            <article className="domainCard" key={id}>
-              <span>{id}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+        {/* ──────────────────────── Reasoning flow ──────────────────────── */}
+        <section id="flow" className="section flow" aria-labelledby="flow-title">
+          <div className="shell">
+            <div className="sectionHead">
+              <p className="eyebrow">AI Assurance Reasoning Flow</p>
+              <h2 id="flow-title">From what exists to what can be defended.</h2>
+              <p className="sectionLede">
+                A way to read the methodology: each stage raises a question that later stages build on.
+                This is an <strong>explanatory reasoning flow</strong> — it does not replace the
+                canonical 13-phase Assessment Methodology.
+              </p>
+            </div>
 
-      <section className="authoritySection">
-        <div className="shell authorityGrid">
-          <div>
-            <p className="eyebrow light">Authority</p>
-            <h2>Access is not authority.</h2>
-            <p>
-              Connection, authentication, access, delegated authority, invocation and consequence
-              are distinct assertions. AI Trust Graph does not silently infer one from another.
+            <ol className="flowRail">
+              {reasoningFlow.map((s, i) => (
+                <li key={s.stage} className="flowStep" style={{ ["--i" as string]: i }}>
+                  <span className="flowIndex" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flowDot" aria-hidden="true" />
+                  <h3 className="flowStage">{s.stage}</h3>
+                  {s.question && <p className="flowQuestion">{s.question}</p>}
+                  <p className="flowConcept">{s.concept}</p>
+                </li>
+              ))}
+            </ol>
+            <Source>
+              stage questions quoted from the theory map in{" "}
+              <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 — Core Conceptual Model §0.10</Ext>.
+            </Source>
+
+            <div className="flowCanon">
+              <div>
+                <h3>Canonical reasoning chain</h3>
+                <p>The Core Conceptual Model states the full chain, including conditions and consequence:</p>
+                <p className="chainInline">
+                  {canonicalReasoningChain.map((c, i) => (
+                    <span key={c}>
+                      {c}
+                      {i < canonicalReasoningChain.length - 1 && <span aria-hidden="true"> → </span>}
+                    </span>
+                  ))}
+                </p>
+                <Source>
+                  <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 §0.10</Ext>
+                </Source>
+              </div>
+              <div>
+                <h3>Formal assessment lifecycle</h3>
+                <p>Fieldwork follows the 13 phases of the Assessment Methodology:</p>
+                <ol className="phaseList">
+                  {assessmentPhases.map((p) => (
+                    <li key={p}>{p}</li>
+                  ))}
+                </ol>
+                <Source>
+                  <Ext href={links.doc("07-assessment-methodology.md")}>Artifact #7 — Assessment Methodology</Ext>
+                </Source>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─────────────────────────── Domains ──────────────────────────── */}
+        <section id="domains" className="section domains" aria-labelledby="domains-title">
+          <div className="shell">
+            <div className="sectionHead">
+              <p className="eyebrow">Six domains</p>
+              <h2 id="domains-title">Six coordinated lenses over one graph.</h2>
+              <p className="sectionLede">
+                The domains are coordinated assessment lenses over one graph. They are not separate
+                products and should not maintain incompatible definitions, evidence grades or scoring
+                assumptions. Each has twelve canonical controls and six
+                maturity capabilities.
+              </p>
+            </div>
+            <ul className="domainGrid">
+              {domains.map((d) => (
+                <li key={d.id} className="domainCard">
+                  <div className="domainTop">
+                    <span className="domainId">{d.id}</span>
+                    <span className="domainPrefix">{d.prefix}-001…012</span>
+                  </div>
+                  <h3>{d.name}</h3>
+                  <p className="domainPurpose">{d.purpose}</p>
+                  <details className="domainDetails">
+                    <summary>
+                      <span>Maturity capabilities</span>
+                      <span className="summaryIcon" aria-hidden="true" />
+                    </summary>
+                    <ol>
+                      {d.capabilities.map((c, i) => (
+                        <li key={c}>
+                          <span className="capId">
+                            {d.id}.{i + 1}
+                          </span>{" "}
+                          {c}
+                        </li>
+                      ))}
+                    </ol>
+                  </details>
+                </li>
+              ))}
+            </ul>
+            <Source>
+              purposes from <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 §8.1</Ext>;
+              capabilities from <Ext href={links.doc("03-maturity-model.md")}>Artifact #3 — Maturity Model</Ext>;
+              control IDs from <Ext href={links.doc("05-master-control-library.md")}>Artifact #5 — Master Control Library</Ext>.
+            </Source>
+          </div>
+        </section>
+
+        {/* ────────────────────────── Authority ─────────────────────────── */}
+        <section id="authority" className="dark authority" aria-labelledby="authority-title">
+          <div className="shell">
+            <div className="sectionHead">
+              <p className="eyebrow">Authority</p>
+              <h2 id="authority-title">Access is not authority.</h2>
+              <p className="sectionLede">
+                Each of these is a separate claim. Each needs its own evidence, and none is silently
+                inferred from another.
+              </p>
+            </div>
+            <ul className="assertions" aria-label="Distinct assertions">
+              {assertions.map((a, i) => (
+                <li key={a}>
+                  {i > 0 && (
+                    <span className="neq" aria-hidden="true">
+                      ≠
+                    </span>
+                  )}
+                  <span className="assertion">{a}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="assertionNote">
+              Illustration of distinct assertions only — not a canonical sequence, ladder or state
+              machine.
+            </p>
+
+            <div className="authorityCanon">
+              <blockquote>
+                <p>
+                  The capability definition, its network reachability, granted authority and actual
+                  invocation are different concepts and require different relationships.
+                </p>
+                <footer>
+                  Separation rule —{" "}
+                  <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 §3.6</Ext>
+                </footer>
+              </blockquote>
+              <div>
+                <h3>Canonical authority classes</h3>
+                <ul className="chips chipsDark">
+                  {authorityClasses.map((c) => (
+                    <li key={c}>{c}</li>
+                  ))}
+                </ul>
+                <p className="small">
+                  Authority classes describe the kind of consequence an entity can cause. They are not
+                  maturity levels and should not be ranked without considering target, scope, conditions and
+                  criticality.
+                </p>
+                <Source>
+                  <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 §5.2</Ext>
+                </Source>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─────────────────────────── UNKNOWN ──────────────────────────── */}
+        <section id="unknown" className="unknown" aria-labelledby="unknown-title">
+          <div className="shell">
+            <p className="eyebrow">Evidence-bounded conclusions</p>
+            <h2 id="unknown-title" className="unknownTitle">
+              <span>UNKNOWN</span> <span className="unknownStays">stays</span> <span>UNKNOWN.</span>
+            </h2>
+            <p className="unknownLead">Insufficient evidence does not silently become a favourable — or an adverse — conclusion.</p>
+            <ul className="unknownGrid" aria-label="UNKNOWN is never silently converted into">
+              {["Safe", "Failed", "Zero risk", "N/A"].map((x) => (
+                <li key={x}>
+                  <span className="unknownFrom">UNKNOWN</span>
+                  <span className="unknownNeq">is not</span>
+                  <span className="unknownTo">{x}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="unknownCanon">
+              <blockquote>
+                <p>UNKNOWN is not zero, weak, safe or effective.</p>
+                <footer>
+                  Invariant SC-INV-01 —{" "}
+                  <Ext href={links.doc("04-scoring-framework.md")}>Artifact #4 — Scoring Framework</Ext>
+                </footer>
+              </blockquote>
+              <div>
+                <h3>Distinct non-numeric result states</h3>
+                <ul className="chips">
+                  {nonNumericResultStates.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+                <p className="small">
+                  Each state has its own numeric and reporting treatment. They must never be silently
+                  collapsed into one another, into a score, or into a pass/fail. AI Trust
+                  Graph deliberately produces <strong>no single overall trust score</strong>.
+                </p>
+                <Source>
+                  <Ext href={links.doc("04-scoring-framework.md")}>Artifact #4 §0.5</Ext>
+                </Source>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ──────────────────────── Breakpoints ─────────────────────────── */}
+        <section id="breakpoints" className="section breakpoints" aria-labelledby="bp-title">
+          <div className="shell">
+            <div className="sectionHead">
+              <p className="eyebrow">Control breakpoints</p>
+              <h2 id="bp-title">Where can a material path be interrupted?</h2>
+              <p className="sectionLede">
+                A control breakpoint is a node, relationship or boundary where an effective control can
+                materially stop, constrain, detect or contain a path. Alternate and residual paths must
+                still be checked.
+              </p>
+            </div>
+            <BreakpointExplorer />
+            <div className="pathDims">
+              <div>
+                <h3>Path validation state</h3>
+                <ul className="chips">
+                  {pathValidationStates.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3>Path role</h3>
+                <ul className="chips">
+                  {pathRoles.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </div>
+              <p className="small pathDimsNote">
+                Validation state and role are orthogonal dimensions and are not collapsed into one
+                state machine.
+              </p>
+            </div>
+            <Source>
+              <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 §1.8, §6.3, §6.6</Ext>
+            </Source>
+          </div>
+        </section>
+
+        {/* ─────────────────────────── Evidence ─────────────────────────── */}
+        <section id="evidence" className="section evidence" aria-labelledby="evidence-title">
+          <div className="shell">
+            <div className="sectionHead">
+              <p className="eyebrow">Evidence model</p>
+              <h2 id="evidence-title">Six grades of evidentiary support.</h2>
+              <p className="sectionLede">
+                A grade measures how strongly a source supports a precisely stated assertion — not
+                desirability, safety or compliance. A high grade can confirm an adverse state.
+              </p>
+            </div>
+            <ol className="grades">
+              {evidenceGrades.map((g, i) => (
+                <li key={g.grade} className="grade" style={{ ["--level" as string]: i }}>
+                  <div className="gradeHead">
+                    <span className="gradeId">{g.grade}</span>
+                    <span className="gradeBar" aria-hidden="true">
+                      {Array.from({ length: 5 }, (_, k) => (
+                        <span key={k} className={k < i ? "on" : ""} />
+                      ))}
+                    </span>
+                  </div>
+                  <h3>{g.name}</h3>
+                  <p className="gradeMeaning">{g.meaning}</p>
+                  <p className="gradeSupports">{g.supports}</p>
+                </li>
+              ))}
+            </ol>
+            <div className="evidenceRules">
+              <p>
+                <strong>Grade is not sufficiency.</strong> Meeting the grade minimum is necessary but
+                not sufficient; relevance, scope, currentness, representativeness, conflict status and
+                an approved reviewer decision still govern.
+              </p>
+              <p>
+                <strong>Grade is its own quantity.</strong> Evidence grade is never added to
+                control effectiveness, severity, maturity or risk as if they were the same quantity.
+              </p>
+            </div>
+            <Source>
+              <Ext href={links.doc("06-evidence-model.md")}>Artifact #6 — Evidence Model §1.1–§1.8</Ext>. The full
+              sufficiency rules are deliberately not summarized here — read them at source.
+            </Source>
+          </div>
+        </section>
+
+        {/* ──────────────────────────── Scale ───────────────────────────── */}
+        <section className="scale" aria-labelledby="scale-title">
+          <div className="shell">
+            <h2 id="scale-title" className="scaleTitle">
+              The structure that carries the model
+            </h2>
+            <dl className="scaleGrid">
+              <div>
+                <dt>Domains</dt>
+                <dd>6</dd>
+              </div>
+              <div>
+                <dt>Canonical controls</dt>
+                <dd>72</dd>
+              </div>
+              <div>
+                <dt>Maturity capabilities</dt>
+                <dd>36</dd>
+              </div>
+              <div>
+                <dt>Maturity levels</dt>
+                <dd>M1–M5</dd>
+              </div>
+              <div>
+                <dt>Evidence grades</dt>
+                <dd>E0–E5</dd>
+              </div>
+            </dl>
+            <p className="small scaleNote">
+              Maturity is cumulative, evidence-gated and not an average of control scores.
             </p>
           </div>
-          <div className="authorityChain" aria-label="Illustrative authority progression">
-            {["Can connect", "Can authenticate", "Can access", "Can invoke", "Can modify", "Can transact"].map((x) => (
-              <div key={x}>{x}</div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="evidence" className="unknownSection">
-        <div className="shell">
-          <p className="eyebrow">Evidence-bounded assurance</p>
-          <h2>UNKNOWN stays UNKNOWN.</h2>
-          <p className="unknownLead">
-            Insufficient reliable evidence is not silently converted into safe, failed, zero risk,
-            not applicable, or a numeric score.
-          </p>
-          <div className="unknownGrid">
-            <span>≠ Safe</span>
-            <span>≠ Failed</span>
-            <span>≠ Zero risk</span>
-            <span>≠ N/A</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="shell section">
-        <p className="eyebrow">Control breakpoints</p>
-        <h2>Where does a material path actually break?</h2>
-        <div className="pathViz" aria-label="Synthetic path illustration">
-          {["Human", "Agent", "Identity", "Tool", "API", "Sensitive action"].map((item, i) => (
-            <div className="pathNode" key={item}>
-              <span>{item}</span>
-              {i < 5 && <i aria-hidden="true">→</i>}
-              {i === 3 && <b>CONTROL</b>}
+        {/* ───────────────────────── Methodology ────────────────────────── */}
+        <section id="methodology" className="section methodology" aria-labelledby="methodology-title">
+          <div className="shell">
+            <div className="sectionHead">
+              <p className="eyebrow">Canonical source</p>
+              <h2 id="methodology-title">Read the methodology itself.</h2>
+              <p className="sectionLede">
+                This website explains; the artifacts on GitHub decide. Listed in the recommended
+                reading order from the{" "}
+                <Ext href={links.manifest}>Methodology Manifest</Ext>.
+              </p>
             </div>
-          ))}
-        </div>
-        <p className="note">
-          Synthetic illustration. Canonical path semantics, validation states, roles and PEI rules
-          remain governed by the methodology artifacts.
-        </p>
-      </section>
+            <ol className="artifactGrid">
+              {artifacts.map((a) => (
+                <li key={a.n}>
+                  <Ext href={links.doc(a.file)} className="artifactCard">
+                    <span className="artifactMeta">
+                      <span>Artifact #{a.n}</span>
+                      <span>v{a.version}</span>
+                    </span>
+                    <span className="artifactTitle">{a.title}</span>
+                    <span className="artifactRole">{a.role}</span>
+                  </Ext>
+                </li>
+              ))}
+            </ol>
+            <Ext href={links.doc(companion.file)} className="artifactCard companion">
+              <span className="artifactMeta">
+                <span>Artifact #{companion.n} · Phase 2 companion</span>
+                <span className="tag">Non-normative</span>
+              </span>
+              <span className="artifactTitle">{companion.title}</span>
+              <span className="artifactRole">
+                {companion.role}. Informative only; carries no conformance weight.
+              </span>
+            </Ext>
+          </div>
+        </section>
 
-      <section id="review" className="reviewSection">
-        <div className="shell reviewGrid">
+        {/* ─────────────────────────── Review ───────────────────────────── */}
+        <section id="review" className="dark review" aria-labelledby="review-title">
+          <div className="shell reviewGrid">
+            <div>
+              <p className="eyebrow">Public review</p>
+              <h2 id="review-title">This methodology is meant to be challenged.</h2>
+              <ul className="reviewAsks">
+                <li>Challenge the assumptions.</li>
+                <li>Examine the graph semantics.</li>
+                <li>Inspect the evidence rules.</li>
+                <li>Report inconsistencies.</li>
+                <li>Contribute through GitHub.</li>
+              </ul>
+              <div className="actions">
+                <Ext className="button buttonInverse" href={links.newIssue}>
+                  Submit a finding
+                </Ext>
+                <Ext className="button buttonGhost" href={links.repo}>
+                  Repository
+                </Ext>
+              </div>
+              <ul className="reviewLinks">
+                <li>
+                  <Ext href={links.issues}>Issues</Ext>
+                </li>
+                <li>
+                  <Ext href={links.contributing}>CONTRIBUTING</Ext>
+                </li>
+                <li>
+                  <Ext href={links.reviewFindings}>REVIEW_FINDINGS</Ext>
+                </li>
+                <li>
+                  <Ext href={links.manifest}>METHODOLOGY_MANIFEST</Ext>
+                </li>
+              </ul>
+            </div>
+            <aside className="gates" aria-labelledby="gates-title">
+              <h3 id="gates-title">Release gates still pending</h3>
+              <ul>
+                {pendingGates.map((g) => (
+                  <li key={g}>
+                    <span className="gateState">Pending</span>
+                    <span>{g}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="small">
+                AI Trust Graph is not independently validated. These gates stay open until evidence of
+                completion is published or recorded through governance.
+              </p>
+              <Source>
+                <Ext href={links.manifest}>METHODOLOGY_MANIFEST §6</Ext>
+              </Source>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer className="siteFooter">
+        <div className="shell footerGrid">
           <div>
-            <p className="eyebrow light">Public review</p>
-            <h2>This methodology is meant to be challenged.</h2>
+            <p className="footerBrand">AI Trust Graph</p>
             <p>
-              Test the assumptions. Challenge the graph semantics. Question the evidence rules.
-              Find inconsistencies. The repository remains the canonical source of truth.
+              {release.status} · Bundle {release.bundle} · Snapshot {release.snapshot}
             </p>
           </div>
-          <div className="actions vertical">
-            <a className="button inverse" href="https://github.com/Sivas1187/Ai-trust-graph">Review on GitHub</a>
-            <a className="button ghost" href="https://github.com/Sivas1187/Ai-trust-graph/issues">Submit a finding</a>
+          <div>
+            <p>
+              AI Trust Graph is a methodology, not a product. It is not a certification program, an
+              accreditation body, a legal opinion, or a guarantee of AI security, safety or
+              compliance.
+            </p>
+            <p>
+              This website is explanatory. The{" "}
+              <Ext href={links.repo}>GitHub methodology artifacts</Ext> are canonical and win on any
+              conflict. Methodology text is licensed{" "}
+              <Ext href={links.license}>CC BY 4.0</Ext>; the name is reserved separately — see{" "}
+              <Ext href={links.trademarks}>TRADEMARKS</Ext>.
+            </p>
           </div>
         </div>
-      </section>
-
-      <footer className="footer shell">
-        <div>
-          <strong>AI Trust Graph</strong>
-          <p>Public methodology · Public-release candidate</p>
-        </div>
-        <p>
-          AI Trust Graph is a methodology, not a product, certification program, accreditation body,
-          legal opinion, or guarantee of safety or compliance.
-        </p>
       </footer>
-    </main>
+    </>
   );
 }
