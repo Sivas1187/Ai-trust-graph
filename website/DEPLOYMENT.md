@@ -1,74 +1,241 @@
-# Deployment and static-host security guidance
+# Deployment, production configuration and security headers
 
-**Status: guidance only.** Nothing in this file has been configured. Production DNS,
-the Cloudflare Pages project binding and the custom domain remain owner decisions
-and must wait for the review gate in [README.md](README.md#publication-gate).
+The website is **live at https://aitrustgraph.org** on Cloudflare Pages. It remains an
+explanatory site: the GitHub methodology artifacts are canonical.
 
-Canonical production origin (for metadata only, until deployment is approved):
-`https://aitrustgraph.org`.
+Deployment happens only through the normal flow: **merge to `main` on GitHub → Cloudflare
+Pages builds and deploys automatically.** Nothing is deployed manually, and this
+repository holds no Cloudflare credentials, DNS configuration or infrastructure-as-code.
+Everything under "Cloudflare-side" below is done by the owner in the Cloudflare dashboard.
+
+## Current production state
+
+As reported by the owner after the PR #8 launch (merge commit
+`7554bf16bb1a07c6010d228e20b5bbcbf4e0c244`):
+
+| Item | State |
+| --- | --- |
+| Cloudflare Pages project | Configured |
+| Production domain | https://aitrustgraph.org (live) |
+| Production branch | `main` |
+| Automatic deployments | Enabled |
+| Root directory | `website` |
+| Build command | `npm ci && npm run build` |
+| Build output directory | `out` |
+| Node.js | 22 |
+| DNS | Active |
+| DNSSEC | Enabled |
+| SSL/TLS | Enabled |
+| Security headers | **Activated by `public/_headers` once the production-hardening PR is merged** and Pages redeploys. Before that, production serves no custom security headers. |
+| `www.aitrustgraph.org` → apex redirect | **Not yet configured.** Requires the Cloudflare-side steps below. |
+| HSTS | **Deliberately disabled** pending production stability verification. |
+| HSTS preload | **Must not be enabled.** |
+
+Environment variables: none required. `NEXT_TELEMETRY_DISABLED=1` is optional.
+Build-time network access is needed for `npm ci` (npm registry) and `next/font` (Google
+Fonts API, build time only; fonts are then served from this site's own origin).
 
 ## What the site is
 
 - A fully static export (`out/`) produced by `next build` with `output: "export"`.
-- No backend, no API routes, no server actions, no middleware, no database.
-- No forms, no authentication, no cookies, no analytics, no third-party requests at
-  runtime. Fonts are downloaded at **build** time by `next/font` and served from the
-  site's own origin.
-- No secrets or environment variables are required to build or run it.
+- No backend, API routes, server actions, middleware or database.
+- No forms, authentication, cookies, web storage, analytics or third-party runtime
+  requests.
+- No secrets are required to build or serve it.
 
-## Proposed Cloudflare Pages settings
+## Security headers (`public/_headers`)
 
-| Setting | Value |
+Cloudflare Pages applies response headers from a `_headers` file at the root of the build
+output. `next build` copies `public/_headers` to `out/_headers`, and then
+`scripts/finalize-headers.mjs` (part of `npm run build`) fills in the CSP script hashes.
+`scripts/check-headers.mjs` (part of `npm run check` and CI) verifies the result.
+
+Active policy, applied to `/*`:
+
+| Header | Value |
 | --- | --- |
-| Production branch | `main` (only after PR approval and merge) |
-| Root directory | `website` |
-| Build command | `npm ci && npm run build` |
-| Build output directory | `out` |
-| Node.js version | 22 LTS (`NODE_VERSION=22`); minimum 20.9 per `package.json` engines |
-| Environment variables | none required (`NEXT_TELEMETRY_DISABLED=1` optional) |
-| Preview deployments | may stay enabled; previews are not canonical |
+| `Content-Security-Policy` | `default-src 'self'; script-src 'self' <sha256 hashes of this build's inline scripts>; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests` |
+| `X-Content-Type-Options` | `nosniff` |
+| `Referrer-Policy` | `strict-origin-when-cross-origin` |
+| `Permissions-Policy` | `accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()` |
+| `Cross-Origin-Opener-Policy` | `same-origin` |
+| `Cross-Origin-Resource-Policy` | `same-origin` |
+| `X-Frame-Options` | `DENY` |
 
-Build-time network access is needed for `npm ci` (registry) and for `next/font`
-(Google Fonts API, build time only).
+`/_next/static/*` also gets `Cache-Control: public, max-age=31536000, immutable`. Those
+file names are content-hashed.
 
-## Proposed edge settings (at domain-binding time)
+There is deliberately **no `Strict-Transport-Security`** and **no CSP reporting endpoint**
+in this iteration. `check-headers.mjs` fails the build if HSTS appears.
 
-- Always Use HTTPS: on; HTTP → HTTPS redirect.
-- Minimum TLS version: 1.2.
-- Redirect `www.aitrustgraph.org` → `https://aitrustgraph.org` (apex is canonical).
-- Redirect the `*.pages.dev` production hostname to the apex, or mark it
-  `noindex`, so only one canonical origin is indexed.
-- HSTS (owner ruling 4): **not enabled.** Enable only after `https://aitrustgraph.org`
-  is confirmed to serve correctly over HTTPS; start with a short `max-age`, then
-  raise it. **HSTS preload must not be enabled.**
-- DNSSEC: owner has enabled it; propagation is pending and does not block the
-  build or review.
+### Why the policy looks like this
 
-## Security headers
+- **Only same-origin sources.** Every script, stylesheet, font and image is served from
+  the site's own origin. There are no third-party origins, wildcards, `data:` or `blob:`
+  sources, and no `'unsafe-eval'`: the export contains no `eval`/`new Function`, inline
+  event handlers or `javascript:` URLs.
+- **Scripts: hashes, not `'unsafe-inline'`.** The static export contains a few inline
+  `<script>` elements (the React Server Components hydration payload: 2 on the homepage,
+  3 distinct across all exported pages). Their content changes on every build, so
+  `finalize-headers.mjs` hashes them after the build and writes the SHA-256 values into
+  `script-src`. The build fails if the placeholder is missing or duplicated, no inline
+  scripts are found, or a header line would exceed Cloudflare's 2,000-character limit.
+- **Styles keep `'unsafe-inline'`: a deliberate, documented compromise.** The page uses
+  React `style` attributes for animation staggering (`--i`, `--level`), and the mobile
+  menu's `<noscript>` fallback uses a `<style>` element. Removing `'unsafe-inline'` would
+  need `'unsafe-hashes'` plus about 15 per-value hashes. That would make the header large
+  and fragile, and CSP2-only browsers would silently drop the styles. With scripts
+  locked down, and with no user-generated content, the residual risk from inline styles
+  is low.
+- **Framing** is refused by both `frame-ancestors 'none'` and `X-Frame-Options: DENY`.
+- **Changed from the reviewed proposal** (`deploy/_headers.example`, now moved to
+  `public/_headers`):
+  1. `script-src 'unsafe-inline'` was replaced by per-build hashes.
+  2. `img-src` no longer allows `data:`, which nothing uses.
+  3. `interest-cohort=()` was dropped from `Permissions-Policy`. That feature (FLoC) no
+     longer exists, and Chrome logs an "Unrecognized feature" console error for it.
 
-A proposed header set is in [`deploy/_headers.example`](deploy/_headers.example). It is
-deliberately **not** in `public/`, so it is not active. Owner ruling 4: the headers stay
-inactive until the production deployment gate, where they will be activated. Notes:
+### Cloudflare zone settings the policy assumes
 
-- **CSP `script-src 'unsafe-inline'`** is currently required: Next.js static export
-  inlines small bootstrap scripts (`self.__next_f.push(...)`) whose content changes
-  per build. Hardening option for later: generate per-build SHA-256 hashes of the
-  inline scripts in `out/index.html` and replace `'unsafe-inline'` with them.
-- **CSP `style-src 'unsafe-inline'`** is required for React `style` attributes used
-  for animation staggering (`--i`, `--level`).
-- `form-action 'none'` and `connect-src 'self'` reflect that the site collects no data.
-- `frame-ancestors 'none'` + `X-Frame-Options: DENY` prevent framing.
+The CSP is written for the site as built. The following Cloudflare features inject or
+rewrite scripts at the edge and would conflict with it:
 
-Validate after enabling: load the site with DevTools open and confirm zero CSP
-violations in the console, then re-run the checks below against the deployed URL.
+| Feature | Required state | Why |
+| --- | --- | --- |
+| **Rocket Loader** (Speed → Optimization) | **Off** | Rewrites inline scripts, so their hashes stop matching. The site would then fail to hydrate, and the **mobile menu would stop working**. |
+| Cloudflare **Web Analytics** (Pages project → Metrics) / **Zaraz** | Off | Would inject a third-party beacon. The CSP blocks it and logs a console error. The site deliberately has no analytics. |
+| Email Address Obfuscation (Scrape Shield) | Either state | The pages contain no email addresses, so it is a no-op. |
 
-## Pre-deployment checks
+### Verify headers after deploying
+
+Before merging, if Pages preview deployments are enabled, open the PR's preview URL
+(`*.pages.dev`), which also serves `_headers`. After merging, use the production URL.
+
+```bash
+curl -sI https://aitrustgraph.org/ | grep -iE 'content-security|x-content-type|referrer|permissions|cross-origin|x-frame|strict-transport'
+# expect every header above, and NO strict-transport-security line
+```
+
+Then load the site in a browser with DevTools open and confirm:
+
+- The Console shows no CSP violations and no errors.
+- At a narrow width (≤ 900px), the **Menu** button opens and closes. This proves the
+  hashed hydration scripts ran.
+- Fonts, the hero graph and the favicon render.
+
+To preview the exact policy locally before pushing:
 
 ```bash
 cd website
-npm ci
-npm run check        # typecheck + build + link check + claims scan
+npm run build
+node scripts/serve-out.mjs 4174   # serves out/ with out/_headers applied
 ```
 
-Then review `out/` locally with any static server, e.g. `npx serve out` or
-`python3 -m http.server -d out 4173`.
+### Rollback
+
+If a deployed policy breaks the site, use either of these:
+
+- Revert the offending commit on `main`. Pages redeploys automatically.
+- In the Cloudflare Pages dashboard, roll back to the previous deployment.
+
+No Cloudflare setting needs to change for either.
+
+## `www.aitrustgraph.org` → apex redirect (Cloudflare-side, not yet done)
+
+Intended behaviour:
+
+```
+https://www.aitrustgraph.org/<path>?<query>  →  301  →  https://aitrustgraph.org/<path>?<query>
+http://www.aitrustgraph.org/<path>?<query>   →  (HTTPS)  →  301  →  https://aitrustgraph.org/<path>?<query>
+```
+
+The redirect is done at Cloudflare's edge with a **Redirect Rule**, so a `www` request
+never reaches Pages. These steps assume the `aitrustgraph.org` zone is on Cloudflare,
+which it is.
+
+1. **Pages custom domain for `www`: not required.**
+   - With a Redirect Rule the edge answers every `www` request itself, so `www` does not
+     need to be attached to the Pages project.
+   - Optional fallback: in Workers & Pages → the project → Custom domains, add
+     `www.aitrustgraph.org`. Pages then creates its own proxied `CNAME www → <project>.pages.dev`,
+     and you skip step 2. Keep the Redirect Rule from step 3 either way, so `www` never
+     serves a duplicate copy of the site.
+2. **Create the minimal DNS record.** In DNS → Records, add:
+   - Type `AAAA`, Name `www`, IPv6 address `100::`, Proxy status **Proxied** (orange cloud).
+   - `100::` is the IPv6 discard prefix. The record exists only so Cloudflare's proxy
+     answers for `www`. It must stay proxied: a DNS-only record would bypass the
+     redirect and fail.
+   - A proxied `CNAME www → aitrustgraph.org` is an equally valid alternative.
+3. **Create the permanent redirect.** In Rules → Redirect Rules → Create rule:
+   - Rule name: `www to apex`
+   - When incoming requests match → Custom filter expression:
+     `(http.host eq "www.aitrustgraph.org")`
+   - Then → URL redirect:
+     - Type **Dynamic**
+     - Expression `concat("https://aitrustgraph.org", http.request.uri.path)`
+     - Status code **301**
+     - **Preserve query string: checked**
+   - Deploy.
+4. **Path and query string.** The dynamic expression carries the path, and "Preserve query
+   string" carries the query.
+5. **HTTPS on both hostnames.**
+   - Universal SSL covers `aitrustgraph.org` and `*.aitrustgraph.org`, which includes
+     `www`. No extra certificate is needed.
+   - Keep SSL/TLS → Edge Certificates → **Always Use HTTPS** on, so `http://www` is first
+     upgraded to `https://www` and then redirected.
+   - Do **not** enable HSTS there.
+6. **Avoid redirect loops.**
+   - The rule matches only the host `www.aitrustgraph.org`, and its target is the apex,
+     which the rule does not match. It therefore cannot loop.
+   - Make sure no other Redirect Rule, Page Rule or Bulk Redirect sends the apex back
+     to `www`.
+   - Do not add a Pages-level redirect for the apex.
+
+Verify the redirect:
+
+```bash
+curl -sI "https://www.aitrustgraph.org/some/path/?a=1&b=2" | grep -iE '^HTTP|^location'
+# HTTP/2 301
+# location: https://aitrustgraph.org/some/path/?a=1&b=2
+
+curl -sI "http://www.aitrustgraph.org/" | grep -iE '^HTTP|^location'
+# 301 to https://www.aitrustgraph.org/ (Always Use HTTPS), then 301 to the apex
+
+curl -sIL --max-redirs 5 "http://www.aitrustgraph.org/?x=1" | grep -iE '^HTTP|^location'
+# ends in HTTP/2 200 at https://aitrustgraph.org/?x=1 after at most two redirects (no loop)
+
+curl -sI https://aitrustgraph.org/ | grep -iE '^HTTP'
+# HTTP/2 200 (apex unaffected)
+```
+
+Update the "Current production state" table only after these checks pass.
+
+## `*.pages.dev` hostname
+
+The production `<project>.pages.dev` hostname also serves the site. Canonical metadata,
+robots and the sitemap all point to https://aitrustgraph.org. Optionally, redirect
+`<project>.pages.dev` to the apex with a Cloudflare Bulk Redirect, following Cloudflare's
+"Redirecting *.pages.dev to a custom domain" guide.
+
+## HSTS (deliberately off)
+
+Owner ruling:
+- Do not send `Strict-Transport-Security` from `_headers`.
+- Do not enable HSTS in SSL/TLS → Edge Certificates.
+- Enable it only after https://aitrustgraph.org, and `www` once redirected, have been
+  verified to serve correctly over HTTPS for a sustained period. Start with a short
+  `max-age` and raise it gradually.
+- **Never enable HSTS preload.**
+
+## Pre-merge checks
+
+```bash
+cd website
+rm -rf node_modules .next out
+npm ci
+npm run check                # typecheck, build (+ header finalization), links, claims, headers
+npm audit --audit-level=high
+```
+
+CI (`.github/workflows/website-ci.yml`) runs the same checks on every pull request that
+touches `website/**`.
