@@ -25,6 +25,14 @@ Next.js is configured with `output: "export"`, producing a static `out/` directo
 suitable for Cloudflare Pages. Preview it with any static server, e.g.
 `python3 -m http.server -d out 4173`.
 
+## Continuous integration
+
+`.github/workflows/website-ci.yml` runs on pull requests to `main` and on pushes to `main`
+that touch `website/**` or the workflow. With Node.js 22 it runs `npm ci`, `npm run check`
+and `npm audit --audit-level=high`; any failure fails the workflow. It checks out full
+history because the link check verifies version-pinned links against the bundle commit.
+It never deploys and uses no secrets.
+
 ## Structure
 
 | Path | Role |
