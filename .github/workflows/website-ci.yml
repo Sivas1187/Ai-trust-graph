@@ -34,7 +34,7 @@ jobs:
       NEXT_TELEMETRY_DISABLED: "1"
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # Full history: scripts/check-links.mjs verifies version-pinned
           # methodology links with `git cat-file` against the bundle commit.
@@ -42,7 +42,7 @@ jobs:
           persist-credentials: false
 
       - name: Set up Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: npm
