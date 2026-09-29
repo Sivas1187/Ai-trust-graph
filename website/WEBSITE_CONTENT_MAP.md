@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | `/` | Explain AI Trust Graph and its core proposition | README; #1 Manifesto; #2 Core Conceptual Model |
 | `/why-atg` | Explain why connected AI systems need relationship- and authority-aware assurance | #1 Manifesto; #2 Core Conceptual Model |
-| `/how-it-works` | Explain the reasoning sequence Assets -> Relationships -> Authority -> Paths -> Controls -> Evidence -> Decisions | #2 Core Conceptual Model; #7 Assessment Methodology |
+| `/how-it-works` | Explain the canonical reasoning chain Objects -> Relationships -> Conditions -> Paths -> Authority and Influence -> Consequence -> Controls -> Evidence -> Decision (Artifact #2 §0.10), distinct from the 13-phase assessment lifecycle | #2 Core Conceptual Model; #7 Assessment Methodology |
 | `/domains` | Introduce all six domains and their scope | #3 Maturity Model; #5 Master Control Library |
 | `/domains/discovery-aibom` | D1 overview | #3; #5; #8 |
 | `/domains/trust-privilege-paths` | D2 overview | #2; #3; #5; #8 |
@@ -36,6 +36,8 @@
 - UNKNOWN is not silently converted into a numeric score.
 - The current repository status is public-release candidate.
 
+- UNKNOWN and Not Tested are distinct non-numeric result states; E0 can support either according to context.
+
 ## Homepage claims that MUST NOT be made
 
 - "industry standard"
@@ -52,7 +54,7 @@
 1. AI systems are connected ecosystems, not isolated models.
 2. Relationships and delegated authority can shape material consequence.
 3. AI Trust Graph represents these systems as evidence-linked graphs.
-4. Assurance reasons across assets, relationships, authority, paths, controls, evidence and decisions.
+4. Assurance follows the canonical reasoning chain of Artifact #2 §0.10: objects, relationships, conditions, paths, authority and influence, consequence, controls, evidence and decision.
 5. Uncertainty is preserved rather than hidden.
 6. Canonical methodology details remain in GitHub.
 
@@ -73,10 +75,10 @@ All methodology-derived homepage copy lives in `app/content.ts` with an inline s
 | --- | --- | --- |
 | Hero, status pill | README; METHODOLOGY_MANIFEST header (bundle 1.0-rc.4, public-release candidate) | Hero graph is synthetic; edge labels are illustrative, not ontology predicates. |
 | The problem | #1 Manifesto (invariant: "A topological connection is not automatically an exploitable path.") | |
-| AI Assurance Reasoning Flow | #2 §0.10 theory-map question table | Website device, labelled explanatory. Shown next to the canonical #2 §0.10 reasoning chain and the 13 phases of #7. |
+| Reasoning chain | #2 §0.10 (chain, verbatim and in order; theory-map questions/concepts verbatim) | Owner ruling 1: the only reasoning chain on the public site. The theory-map table's final row covers both Evidence and Decision, so they share one question. The 13 phases of #7 are shown as a separate lifecycle. Order is enforced by `app/content.ts` (build-time guard) and `scripts/check-claims.mjs`. |
 | Six domains | README (names, prefixes); #2 §8.1 (purposes, verbatim); #3 §2.1–§7.6 (capability names, verbatim) | |
 | Access is not authority | #2 §3.6 separation rule; #2 §5.2 authority classes | The six "Can …" tiles illustrate distinct assertions; explicitly not a canonical sequence or state machine. |
-| UNKNOWN stays UNKNOWN | #4 SC-INV-01; #4 §0.5 result states; README (no overall trust score) | |
+| UNKNOWN stays UNKNOWN | #4 SC-INV-01; #4 §0.5 result states and numeric treatment; #6 §0.5 state meanings; #6 §1.1 (E0 supports UNKNOWN or Not Tested); README (no overall trust score) | Owner ruling 2: UNKNOWN and Not Tested are shown as distinct states with their canonical meanings; Not Tested keeps the design-score nuance. |
 | Control breakpoints | #2 §1.8, §6.3, §6.6 | Synthetic path; one-line glosses of stop/constrain/detect/contain are plain-language illustrations. |
 | Evidence model | #6 §1.1–§1.8 and §4 sufficiency note | Grade names and support statements quoted; full sufficiency rules linked, not summarized. |
 | Methodology scale | README; this file's permitted-claims list | |

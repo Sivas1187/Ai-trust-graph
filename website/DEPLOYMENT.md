@@ -38,15 +38,17 @@ Build-time network access is needed for `npm ci` (registry) and for `next/font`
 - Redirect `www.aitrustgraph.org` → `https://aitrustgraph.org` (apex is canonical).
 - Redirect the `*.pages.dev` production hostname to the apex, or mark it
   `noindex`, so only one canonical origin is indexed.
-- HSTS: enable only after HTTPS on the custom domain is confirmed stable; start
-  with a short `max-age`, then raise it. Do not preload without owner approval.
+- HSTS (owner ruling 4): **not enabled.** Enable only after `https://aitrustgraph.org`
+  is confirmed to serve correctly over HTTPS; start with a short `max-age`, then
+  raise it. **HSTS preload must not be enabled.**
 - DNSSEC: owner has enabled it; propagation is pending and does not block the
   build or review.
 
 ## Security headers
 
 A proposed header set is in [`deploy/_headers.example`](deploy/_headers.example). It is
-deliberately **not** in `public/`, so it is not active. Notes:
+deliberately **not** in `public/`, so it is not active. Owner ruling 4: the headers stay
+inactive until the production deployment gate, where they will be activated. Notes:
 
 - **CSP `script-src 'unsafe-inline'`** is currently required: Next.js static export
   inlines small bootstrap scripts (`self.__next_f.push(...)`) whose content changes

@@ -17,7 +17,9 @@ The visual identity is the graph.
 
 The homepage should progressively reveal:
 
-**Assets -> Relationships -> Authority -> Paths -> Controls -> Evidence -> Decisions**
+**Objects -> Relationships -> Conditions -> Paths -> Authority and Influence -> Consequence -> Controls -> Evidence -> Decision**
+
+(Owner ruling 1: the canonical Artifact #2 §0.10 chain, with canonical stage names and order. No simplified or competing chain is presented on the public site.)
 
 The graph is not decorative. Every animation should reinforce methodology meaning.
 
@@ -34,7 +36,7 @@ The graph is not decorative. Every animation should reinforce methodology meanin
 
 1. Hero - name, proposition, graph, Explore Methodology / GitHub CTAs
 2. Problem - "AI systems are no longer isolated models"
-3. Reasoning flow - seven-stage explanatory interaction
+3. Reasoning chain - the nine-stage canonical Artifact #2 §0.10 chain, with the 13-phase assessment lifecycle shown separately
 4. Six domains - responsive domain cards
 5. Authority - "Access is not authority"
 6. UNKNOWN - dark, high-impact assurance section
