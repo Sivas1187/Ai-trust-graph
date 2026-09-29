@@ -1,0 +1,25 @@
+{
+  "name": "ai-trust-graph-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run build && node scripts/check-links.mjs && node scripts/check-claims.mjs"
+  },
+  "dependencies": {
+    "next": "16.3.7",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5.7"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}

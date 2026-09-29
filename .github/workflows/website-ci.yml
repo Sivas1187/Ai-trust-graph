@@ -1,0 +1,59 @@
+name: Website CI
+
+# Build and verify the public methodology website (website/).
+# Verification only: this workflow never deploys and uses no secrets.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "website/**"
+      - ".github/workflows/website-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "website/**"
+      - ".github/workflows/website-ci.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Build and verify website
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: website
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          # Full history: scripts/check-links.mjs verifies version-pinned
+          # methodology links with `git cat-file` against the bundle commit.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # typecheck + production static export + link check + claims scan
+      - name: Check (typecheck, build, links, claims)
+        run: npm run check
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=high

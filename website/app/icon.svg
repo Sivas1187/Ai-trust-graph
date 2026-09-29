@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- PROVISIONAL brand mark: placeholder pending a separate visual-brand review. Not final branding. -->
+  <rect width="64" height="64" rx="14" fill="#0f1514"/>
+  <g stroke="#67d8e6" stroke-width="2.5" stroke-linecap="round">
+    <path d="M18 22 L32 16 L46 24 M18 22 L26 42 L46 24 M26 42 L44 46"/>
+  </g>
+  <g fill="#f6f6f1">
+    <circle cx="18" cy="22" r="5"/>
+    <circle cx="32" cy="16" r="4"/>
+    <circle cx="46" cy="24" r="5"/>
+    <circle cx="26" cy="42" r="5"/>
+  </g>
+  <circle cx="44" cy="46" r="5" fill="none" stroke="#f6f6f1" stroke-width="2.5" stroke-dasharray="3 2.5"/>
+</svg>
