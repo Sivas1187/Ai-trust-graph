@@ -39,6 +39,17 @@
 | 13–16 | `13-desktop-full-01.jpg` … `16-desktop-full-04.jpg` | Full desktop page (12,838 px tall), top to bottom, in 4,200 px slices |
 | 20–25 | `20-mobile-full-01.jpg` … `25-mobile-full-06.jpg` | Full mobile page (21,216 px tall), top to bottom, in 3,800 px slices |
 
+### Mobile navigation fix (added after the independent visual review)
+
+| # | File | Content |
+| --- | --- | --- |
+| 26 | `26-mobile-nav-closed.jpg` | 390 × 844: compact header, "Menu" button (`aria-expanded="false"`) |
+| 27 | `27-mobile-nav-open.jpg` | 390 × 844: menu opened by keyboard (Tab to the button, Enter); `aria-expanded="true"`; visible focus ring; all seven destinations listed |
+
+`26`–`27` show the **mobile-navigation fix**, built from commit `23f498989d80b16e8ef49277313330d5b8da1964`
+(identical website code to `396b43c`, which only adds CI), not `259061a`. They were captured with Chromium 141.0.7390.37,
+Playwright 1.56.1, reduced motion not enabled, device scale factor 1, JPEG quality 70.
+
 Numbers 17–19 are intentionally unused: mobile full-page slices start at 20, as requested
 for the review.
 
