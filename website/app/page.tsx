@@ -483,41 +483,58 @@ export default function Home() {
               <p className="eyebrow">Evidence model</p>
               <h2 id="evidence-title">Six grades of evidentiary support.</h2>
               <p className="sectionLede">
-                A grade measures how strongly a source supports a precisely stated assertion — not
-                desirability, safety or compliance. A high grade can confirm an adverse state.
+                Grade measures evidentiary support, not desirability, safety or compliance.
               </p>
             </div>
-            <ol className="grades">
-              {evidenceGrades.map((g, i) => (
-                <li key={g.grade} className="grade" style={{ ["--level" as string]: i }}>
-                  <div className="gradeHead">
-                    <span className="gradeId">{g.grade}</span>
-                    <span className="gradeBar" aria-hidden="true">
-                      {Array.from({ length: 5 }, (_, k) => (
-                        <span key={k} className={k < i ? "on" : ""} />
-                      ))}
-                    </span>
-                  </div>
-                  <h3>{g.name}</h3>
-                  <p className="gradeMeaning">{g.meaning}</p>
-                  <p className="gradeSupports">{g.supports}</p>
-                </li>
-              ))}
-            </ol>
-            <div className="evidenceRules">
-              <p>
+
+            {/* Evidence scale: the ordered list is the source of truth; the line, nodes and
+                arrow are drawn with CSS borders so they survive forced-colours mode. */}
+            <div className="evScale">
+              <p className="evAxis" aria-hidden="true">
+                Evidentiary support
+              </p>
+              <ol className="evSteps" aria-label="Evidence grades E0 to E5, in order of increasing evidentiary support">
+                {evidenceGrades.map((g) => (
+                  <li key={g.grade} className="evStep">
+                    <span className="evNode" aria-hidden="true" />
+                    <details className="dgDisclosure evDetails">
+                      <summary>
+                        <span className="evId">{g.grade}</span>
+                        <span className="visuallyHidden"> — </span>
+                        <span className="evName">{g.name}</span>
+                        <span className="summaryIcon" aria-hidden="true" />
+                      </summary>
+                      <dl className="evMeta">
+                        <dt>Meaning</dt>
+                        <dd>{g.meaning}</dd>
+                        <dt>What it can support</dt>
+                        <dd>{g.supports}</dd>
+                      </dl>
+                    </details>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <ul className="evidenceRules" aria-label="How to read evidence grades">
+              <li>
                 <strong>Grade is not sufficiency.</strong> Meeting the grade minimum is necessary but
                 not sufficient; relevance, scope, currentness, representativeness, conflict status and
                 an approved reviewer decision still govern.
-              </p>
-              <p>
-                <strong>Grade is its own quantity.</strong> Evidence grade is never added to
-                control effectiveness, severity, maturity or risk as if they were the same quantity.
-              </p>
-            </div>
+              </li>
+              <li>
+                <strong>A high grade can confirm an adverse state.</strong> A low grade can weakly
+                suggest a favorable state.
+              </li>
+              <li>
+                <strong>Grade is its own quantity.</strong> Never add evidence grade to control
+                effectiveness, severity, maturity or risk as if they were the same quantity.
+              </li>
+            </ul>
             <Source>
-              <Ext href={links.doc("06-evidence-model.md")}>Artifact #6 — Evidence Model §1.1–§1.8</Ext>. The full
-              sufficiency rules are deliberately not summarized here — read them at source.
+              grade names, meanings and supported claims quoted from{" "}
+              <Ext href={links.doc("06-evidence-model.md")}>Artifact #6 — Evidence Model §1.1–§1.8</Ext>;
+              the full sufficiency rules are deliberately not summarized here.
             </Source>
           </div>
         </section>

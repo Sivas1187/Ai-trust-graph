@@ -45,6 +45,19 @@ const required = [
   "Testing required for a stronger conclusion was not performed.",
   "May retain a design score if separately supported.",
   "The only defensible conclusion is UNKNOWN or Not Tested.",
+  // Evidence model (Artifact #6 §1.8).
+  "Grade is not sufficiency.",
+  "A high grade can confirm an adverse state.",
+];
+
+// Evidence grades in canonical order with canonical names (Artifact #6 §1.1–§1.7).
+const evidenceGrades = [
+  "E0 — No evidence",
+  "E1 — Inference or uncorroborated signal",
+  "E2 — Attestation",
+  "E3 — Approved documentary evidence",
+  "E4 — Corroborated technical evidence",
+  "E5 — Direct technical and representative evidence",
 ];
 
 // Deliberate negations that are required disclosures.
@@ -78,6 +91,13 @@ for (const [file, raw] of html) {
     const expected = required.slice(0, 9);
     if (stages.join(" > ") !== expected.join(" > ")) {
       errors.push(`${file}: reasoning chain on page is "${stages.join(" > ")}", expected "${expected.join(" > ")}"`);
+    }
+    // Evidence grade order and names, read from the rendered disclosure summaries.
+    const grades = [...raw.matchAll(/<span class="evId">([^<]+)<\/span>[\s\S]*?<span class="evName">([^<]+)<\/span>/g)].map(
+      (m) => `${m[1]} — ${m[2].replace(/&amp;/g, "&")}`,
+    );
+    if (grades.join(" > ") !== evidenceGrades.join(" > ")) {
+      errors.push(`${file}: evidence grades on page are "${grades.join(" > ")}", expected "${evidenceGrades.join(" > ")}"`);
     }
   }
   for (const ctx of allowedContexts) text = text.replace(new RegExp(ctx.source, "gi"), " ");

@@ -235,6 +235,24 @@ h3 {
   color: var(--on-dark);
 }
 
+/* ───────────── Diagram primitives ─────────────
+   Conventions for diagrams (semantic HTML is the source of truth; CSS draws it):
+   - Connector lines are CSS borders (never background fills), so they survive
+     forced-colours mode. Arrowheads are border triangles; the forced-colours
+     block at the end of this file keeps them as triangles in system colours.
+   - State is never carried by colour or box-shadow alone.
+   .dgDisclosure is the shared native-<details> treatment used inside diagrams. */
+.dgDisclosure > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.dgDisclosure > summary::-webkit-details-marker {
+  display: none;
+}
+.dgDisclosure[open] .summaryIcon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
 /* ───────────── Buttons ───────────── */
 .actions {
   display: flex;
@@ -1067,7 +1085,7 @@ h1 {
   top: 50%;
   width: 9px;
   height: 1.5px;
-  background: var(--ink);
+  background: var(--ink); /* forced colours: see the system-colour override below */
   transform: translate(-50%, -50%);
 }
 .summaryIcon::after {
@@ -1536,13 +1554,14 @@ blockquote footer {
   min-width: 18px;
   height: 1.5px;
   margin: 0 4px;
-  background: var(--ink-2);
+  /* Border, not background: connector stays visible in forced colours. */
+  border-top: 1.5px solid var(--ink-2);
 }
 .bpEdge::after {
   content: "";
   position: absolute;
   right: -1px;
-  top: 50%;
+  top: -0.75px; /* centre on the 1.5px border line */
   border: 4px solid transparent;
   border-left: 6px solid var(--ink-2);
   transform: translateY(-50%);
@@ -1554,7 +1573,8 @@ blockquote footer {
   width: 4px;
   height: 46px;
   border-radius: 3px;
-  background: var(--green);
+  /* Border, not background: the marker stays visible in forced colours. */
+  border: 2px solid var(--green);
   transform: translate(-50%, -50%);
 }
 .bpMarkerLabel {
@@ -1617,7 +1637,8 @@ blockquote footer {
   }
   .bp:has(.bpRadio-stop:checked) .bpEdgeBreak,
   .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge {
-    background: repeating-linear-gradient(90deg, var(--line-strong) 0 4px, transparent 4px 8px);
+    border-top-style: dashed;
+    border-top-color: var(--line-strong);
   }
   .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
   .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
@@ -1627,7 +1648,7 @@ blockquote footer {
   /* Constrain: progression continues through a narrower channel. */
   .bp:has(.bpRadio-constrain:checked) .bpDownstream .bpEdge {
     height: 1px;
-    background: var(--ink-2);
+    border-top-width: 1px;
   }
   .bp:has(.bpRadio-constrain:checked) .bpMarker {
     height: 30px;
@@ -1706,12 +1727,14 @@ blockquote footer {
     min-width: 0;
     flex: none;
     margin: 4px 0 4px 26px;
+    border-top: 0;
+    border-left: 1.5px solid var(--ink-2);
   }
   .bpEdge::after {
     right: auto;
     top: auto;
     bottom: -1px;
-    left: 50%;
+    left: -0.75px; /* centre on the 1.5px border line */
     border: 4px solid transparent;
     border-top: 6px solid var(--ink-2);
     transform: translateX(-50%);
@@ -1732,7 +1755,8 @@ blockquote footer {
   @supports selector(:has(*)) {
     .bp:has(.bpRadio-stop:checked) .bpEdgeBreak,
     .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge {
-      background: repeating-linear-gradient(180deg, var(--line-strong) 0 4px, transparent 4px 8px);
+      border-left-style: dashed;
+      border-left-color: var(--line-strong);
     }
     .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
     .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
@@ -1742,6 +1766,7 @@ blockquote footer {
     .bp:has(.bpRadio-constrain:checked) .bpDownstream .bpEdge {
       width: 1px;
       height: 34px;
+      border-left-width: 1px;
     }
     .bp:has(.bpRadio-constrain:checked) .bpMarker {
       width: 30px;
@@ -1753,74 +1778,126 @@ blockquote footer {
 }
 
 /* ───────────── Evidence ───────────── */
+/* A neutral E0 → E5 scale: identical nodes on one line with a direction arrow.
+   Deliberately no rising bars, colour progression or size change, so the scale
+   reads as evidentiary support only (not safety, maturity or compliance). */
 .evidence {
   border-top: 1px solid var(--line);
 }
-.grades {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+.evScale {
+  position: relative;
+  padding-top: 30px;
 }
-.grade {
-  display: flex;
-  flex-direction: column;
-  padding: 24px 24px 26px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-.gradeHead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 26px;
-}
-.gradeId {
+.evAxis {
+  position: absolute;
+  top: 0;
+  right: 0;
   font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 26px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.evSteps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0 20px;
+  align-items: start;
+}
+/* Connector through the nodes (border, forced-colours safe) … */
+.evSteps::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 10px;
+  top: 8px;
+  border-top: 1.5px solid var(--ink-2);
+}
+/* … ending in a direction arrowhead (border triangle). */
+.evSteps::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 8.75px;
+  border: 5px solid transparent;
+  border-left: 8px solid var(--ink-2);
+  border-right: 0;
+  transform: translateY(-50%);
+}
+.evStep {
+  position: relative;
+  padding-top: 34px;
+  min-width: 0;
+}
+.evNode {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+}
+.evDetails > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "id icon" "name name";
+  align-items: center;
+  gap: 6px 10px;
+  padding: 2px 0 12px;
+  border-bottom: 1px solid var(--line);
+}
+.evId {
+  grid-area: id;
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
-.gradeBar {
-  display: inline-flex;
-  gap: 4px;
+.evName {
+  grid-area: name;
+  font-family: var(--font-display, system-ui), system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
-.gradeBar span {
-  width: 18px;
-  height: 6px;
-  border-radius: 3px;
-  border: 1px solid var(--line-strong);
+.evDetails > summary .summaryIcon {
+  grid-area: icon;
 }
-.gradeBar span.on {
-  background: var(--cyan);
-  border-color: var(--cyan);
+.evMeta {
+  padding-top: 12px;
 }
-.grade h3 {
-  font-size: 19px;
+.evMeta dt {
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
-.gradeMeaning {
-  margin-top: 10px;
-  font-size: 15px;
+.evMeta dt + dd {
+  margin-top: 4px;
+}
+.evMeta dd {
+  font-size: 14.5px;
   line-height: 1.55;
   color: var(--ink-2);
 }
-.gradeSupports {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px dashed var(--line);
-  font-size: 14.5px;
-  line-height: 1.55;
-  color: var(--muted);
+.evMeta dd + dt {
+  margin-top: 12px;
 }
 .evidenceRules {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
-  margin-top: 28px;
+  margin-top: 44px;
 }
-.evidenceRules p {
-  padding: 22px 24px;
+.evidenceRules li {
+  padding: 20px 22px;
   border-left: 3px solid var(--indigo);
   background: color-mix(in srgb, var(--indigo) 5%, var(--surface));
   border-radius: 0 12px 12px 0;
@@ -1833,15 +1910,49 @@ blockquote footer {
   color: var(--ink);
   margin-bottom: 4px;
 }
-@media (max-width: 980px) {
-  .grades {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Narrow: vertical scale (top → bottom), no horizontal scrolling. */
+@media (max-width: 900px) {
+  .evScale {
+    padding-top: 0;
   }
-}
-@media (max-width: 640px) {
-  .grades,
+  .evAxis {
+    position: static;
+    margin-bottom: 14px;
+  }
+  .evSteps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding-left: 36px;
+    padding-bottom: 18px;
+  }
+  .evSteps::before {
+    left: 8px;
+    right: auto;
+    top: 8px;
+    bottom: 10px;
+    border-top: 0;
+    border-left: 1.5px solid var(--ink-2);
+  }
+  .evSteps::after {
+    right: auto;
+    top: auto;
+    left: 8.75px;
+    bottom: 0;
+    border: 5px solid transparent;
+    border-top: 8px solid var(--ink-2);
+    border-bottom: 0;
+    transform: translateX(-50%);
+  }
+  .evStep {
+    padding-top: 0;
+    padding-bottom: 18px;
+  }
+  .evNode {
+    left: -36px;
+    top: 0;
+  }
   .evidenceRules {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -2123,6 +2234,43 @@ blockquote footer {
     forced-color-adjust: none;
     background: Highlight;
     border-color: Highlight;
+  }
+  /* Disclosure +/− strokes are backgrounds, which forced colours drops. */
+  .summaryIcon::before,
+  .summaryIcon::after {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+  /* Arrowheads are border triangles; without this, forced colours paints the
+     transparent sides and they render as squares. */
+  .bpEdge::after,
+  .evSteps::after {
+    forced-color-adjust: none;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-left-color: CanvasText;
+  }
+  .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
+  .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
+    border-left-color: GrayText;
+  }
+}
+@media (forced-colors: active) and (max-width: 760px) {
+  .bpEdge::after {
+    border-left-color: transparent;
+    border-top-color: CanvasText;
+  }
+  .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
+  .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
+    border-left-color: transparent;
+    border-top-color: GrayText;
+  }
+}
+@media (forced-colors: active) and (max-width: 900px) {
+  .evSteps::after {
+    border-left-color: transparent;
+    border-top-color: CanvasText;
   }
 }
 
