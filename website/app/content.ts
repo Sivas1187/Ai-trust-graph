@@ -222,8 +222,9 @@ export const assessmentPhases = [
 ];
 
 /**
- * Source: Artifact #6 Evidence Model §1.1–§1.6. Names are the canonical grade
- * headings; "supports" sentences are quoted from the same sections.
+ * Source: Artifact #6 Evidence Model §1.1–§1.6, verbatim. `name` is the canonical
+ * grade heading; `meaning` is each section's first paragraph and `supports` its
+ * second (full sentences, including the grade subject).
  */
 export const evidenceGrades = [
   {
@@ -238,14 +239,14 @@ export const evidenceGrades = [
     name: "Inference or uncorroborated signal",
     meaning: "A hypothesis is derived from incomplete, indirect, automated or unverified information.",
     supports:
-      "Can prioritize investigation and create candidate graph assertions, but cannot establish implementation or operating effectiveness.",
+      "E1 can prioritize investigation and create candidate graph assertions, but cannot establish implementation or operating effectiveness.",
   },
   {
     grade: "E2",
     name: "Attestation",
     meaning: "An accountable person states that a condition or practice exists.",
     supports:
-      "Supports claimed practice and context; needs corroboration for material technical claims.",
+      "E2 supports claimed practice and context. It is vulnerable to memory, interpretation, incentives and incomplete visibility and therefore needs corroboration for material technical claims.",
   },
   {
     grade: "E3",
@@ -253,7 +254,7 @@ export const evidenceGrades = [
     meaning:
       "A governed document records approved design, policy, architecture, procedure, contract or decision.",
     supports:
-      "Can support design intent and governance state. It does not alone prove actual configuration, runtime behavior or sustained operation.",
+      "E3 can support design intent and governance state. It does not alone prove actual configuration, runtime behavior or sustained operation.",
   },
   {
     grade: "E4",
@@ -261,7 +262,7 @@ export const evidenceGrades = [
     meaning:
       "Technical evidence from authoritative sources is supported by an independent source, consistent observation or reproducible inspection.",
     supports:
-      "Can support implementation or operation within observed scope when current, relevant and representative.",
+      "E4 can support implementation or operation within observed scope when current, relevant and representative.",
   },
   {
     grade: "E5",
@@ -269,7 +270,7 @@ export const evidenceGrades = [
     meaning:
       "Current direct technical evidence is combined with a representative test or operating record that demonstrates the claimed behavior under stated conditions.",
     supports:
-      "May support verified effectiveness or adaptive operation, but only for the tested scope, period and conditions.",
+      "E5 may support verified effectiveness or adaptive operation, but only for the tested scope, period and conditions.",
   },
 ] as const;
 
