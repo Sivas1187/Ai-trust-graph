@@ -32,21 +32,24 @@ The graph is not decorative. Where motion is used, it must reinforce methodology
 - Lines/nodes: thin, crisp, geometric; minimal glow.
 - Motion: slow, purposeful, accessible; reduced-motion support required.
 - Layout: generous whitespace and strong hierarchy.
+- Authorship: restrained provenance only ("Methodology author" line and the footer copyright/licence line); no portrait, biography, title, employer, social links or personal-brand treatment.
 
 ## Homepage sequence
 
 1. Hero - methodology name, README description, status pill, canonical-source and "See how it reasons" CTAs, synthetic graph
 2. Problem - "AI systems are no longer isolated models", illustrative constellation, topology invariant
 3. Reasoning chain - the nine-stage canonical Artifact #2 §0.10 chain as equal nodes with directional connectors; theory-map table in one disclosure
-4. Six domains - responsive domain cards
+4. Six domains - graph-centred lens model: the shared graph with six equal domain cards (D1-D3 | graph | D4-D6 on wide screens; graph first on narrow), capabilities in disclosures, labelled Explanatory
 5. Authority - "Access is not authority"
 6. UNKNOWN - dark, high-impact assurance section
 7. Control breakpoints - synthetic path visualization
 8. Evidence model - E0-E5 explainer
 9. Assessment lifecycle - the 13 Artifact #7 phases as a two-row timeline, separate from the reasoning chain, with the iteration rule and assessment types
-10. Methodology scale - 6 domains / 72 controls / 36 capabilities / M1-M5 / E0-E5
-11. Methodology explorer - artifact cards
-12. Public review - invitation to challenge assumptions and submit findings
+10. Release, review and limitations - status, bundle, snapshot, review state, validation statement, one-line provenance, the five manifest gates (Pending), limitations; calm and neutral
+11. Canonical source - the manifest as authority map, where the model's figures are defined (6 domains, 72 controls, 36 capabilities, M1-M5, E0-E5), then artifact cards in reading order
+12. Public review - four equal entry points: report a finding, share feedback, propose a change, inspect the source
+
+The former standalone scale band is removed; its figures live in the Domains and Canonical source sections.
 
 ## Accessibility
 

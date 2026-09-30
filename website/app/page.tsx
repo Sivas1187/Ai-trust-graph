@@ -7,20 +7,29 @@ import {
   assessmentPhases,
   assessmentTypes,
   canonicalReasoningChain,
+  changeReviewNote,
   companion,
   domains,
+  domainsLede,
   evidenceGrades,
   exitCriteria,
   lifecycleIntro,
+  limitation,
   links,
+  manifestGatePrinciple,
+  methodologyAuthor,
   methodologySummary,
   nonNumericResultStates,
+  notValidated,
   pathRoles,
   pathValidationStates,
   pendingGates,
   phaseIterationRule,
   problemThesis,
   release,
+  reviewStatus,
+  roadmapNote,
+  scale,
   theoryMap,
   topologyInvariant,
   unknownVsNotTested,
@@ -211,51 +220,138 @@ export default function Home() {
             <div className="sectionHead">
               <p className="eyebrow">Six domains</p>
               <h2 id="domains-title">Six coordinated lenses over one graph.</h2>
-              <p className="sectionLede">
-                The domains are coordinated assessment lenses over one graph. They are not separate
-                products and should not maintain incompatible definitions, evidence grades or scoring
-                assumptions. Each has twelve canonical controls and six
-                maturity capabilities.
-              </p>
+              <p className="sectionLede">{domainsLede.join(" ")}</p>
             </div>
-            <ul className="domainGrid">
-              {domains.map((d) => (
-                <li key={d.id} className="domainCard">
-                  <div className="domainTop">
-                    <span className="domainId">{d.id}</span>
-                    <span className="domainPrefix">{d.prefix}-001…012</span>
-                  </div>
-                  <h3>{d.name}</h3>
-                  <p className="domainPurpose">{d.purpose}</p>
-                  <details className="domainDetails">
-                    <summary>
-                      <span>
-                        Maturity capabilities
-                        <span className="visuallyHidden">
-                          {" "}
-                          for {d.id} {d.name}
-                        </span>
-                      </span>
-                      <span className="summaryIcon" aria-hidden="true" />
-                    </summary>
-                    <ol>
-                      {d.capabilities.map((c, i) => (
-                        <li key={c}>
-                          <span className="capId">
-                            {d.id}.{i + 1}
-                          </span>{" "}
-                          {c}
-                        </li>
-                      ))}
-                    </ol>
-                  </details>
-                </li>
-              ))}
-            </ul>
+
+            {/* Graph-centred lens model. The shared graph comes first in the DOM (and first on
+                small screens); the list of six equal domains is the source of truth. On wide
+                screens D1–D3 sit left and D4–D6 right of the shared graph, joined by identical
+                border connectors. No domain is larger, coloured differently or placed first. */}
+            <div className="lens">
+              <p className="lensLabel">
+                <span className="tag">Explanatory</span> Six equal lenses; position and colour imply
+                no ranking, hierarchy or maturity.
+              </p>
+              <div className="lensBody">
+                <div className="lensHub">
+                  {/* Wide screens only: a decorative, unlabelled network suggesting one shared
+                      graph. Eleven irregular nodes (no centre, not six), so no node stands for a
+                      domain; accent colours are for texture only. */}
+                  <svg
+                    className="lensNetwork"
+                    viewBox="16 10 172 286"
+                    preserveAspectRatio="xMidYMid meet"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <g className="lnEdges">
+                      <line x1="38" y1="40" x2="112" y2="22" />
+                      <line x1="112" y1="22" x2="168" y2="62" />
+                      <line x1="38" y1="40" x2="70" y2="96" />
+                      <line x1="112" y1="22" x2="70" y2="96" />
+                      <line x1="168" y1="62" x2="140" y2="120" />
+                      <line x1="70" y1="96" x2="140" y2="120" />
+                      <line x1="70" y1="96" x2="28" y2="150" />
+                      <line x1="70" y1="96" x2="100" y2="170" />
+                      <line x1="140" y1="120" x2="100" y2="170" />
+                      <line x1="140" y1="120" x2="176" y2="176" />
+                      <line x1="28" y1="150" x2="100" y2="170" />
+                      <line x1="28" y1="150" x2="56" y2="236" />
+                      <line x1="100" y1="170" x2="56" y2="236" />
+                      <line x1="100" y1="170" x2="132" y2="236" />
+                      <line x1="176" y1="176" x2="132" y2="236" />
+                      <line x1="56" y1="236" x2="92" y2="284" />
+                      <line x1="132" y1="236" x2="92" y2="284" />
+                      <line x1="168" y1="62" x2="176" y2="176" />
+                    </g>
+                    <g className="lnNodes">
+                      <circle className="lnC" cx="38" cy="40" r="6" />
+                      <circle className="lnI" cx="112" cy="22" r="5" />
+                      <circle className="lnG" cx="168" cy="62" r="7" />
+                      <circle className="lnI" cx="70" cy="96" r="7" />
+                      <circle className="lnA" cx="140" cy="120" r="5" />
+                      <circle className="lnC" cx="28" cy="150" r="5" />
+                      <circle className="lnI" cx="100" cy="170" r="8" />
+                      <circle className="lnC" cx="176" cy="176" r="6" />
+                      <circle className="lnG" cx="56" cy="236" r="6" />
+                      <circle className="lnI" cx="132" cy="236" r="5" />
+                      <circle className="lnC" cx="92" cy="284" r="6" />
+                    </g>
+                  </svg>
+                  <svg className="lensEmblem" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                      <path d="M16 22 L32 14 L48 24 M16 22 L26 44 L48 24 M26 44 L46 48" />
+                    </g>
+                    <g fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <circle cx="16" cy="22" r="5" />
+                      <circle cx="32" cy="14" r="4" />
+                      <circle cx="48" cy="24" r="5" />
+                      <circle cx="26" cy="44" r="5" />
+                      <circle cx="46" cy="48" r="4.5" />
+                    </g>
+                  </svg>
+                  <p className="lensHubTitle">One graph</p>
+                  <dl className="lensFacts">
+                    <div>
+                      <dt>Domains</dt>
+                      <dd>{scale.domains}</dd>
+                    </div>
+                    <div>
+                      <dt>Canonical controls</dt>
+                      <dd>{scale.controls}</dd>
+                    </div>
+                    <div>
+                      <dt>Maturity capabilities</dt>
+                      <dd>{scale.capabilities}</dd>
+                    </div>
+                  </dl>
+                </div>
+                <ul className="lensDomains" aria-label="The six assessment domains">
+                  {domains.map((d) => (
+                    <li key={d.id} className="lensDomain">
+                      <div className="domainTop">
+                        <span className="domainId">{d.id}</span>
+                        <span className="domainPrefix">{d.prefix}-001…012</span>
+                      </div>
+                      <h3 className="domainName">{d.name}</h3>
+                      <p className="domainPurpose">{d.purpose}</p>
+                      <p className="domainCounts">
+                        <span>{scale.controlsPerDomain} controls</span>
+                        <span aria-hidden="true"> · </span>
+                        <span className="visuallyHidden">, </span>
+                        <span>{scale.capabilitiesPerDomain} maturity capabilities</span>
+                      </p>
+                      <details className="dgDisclosure domainDetails">
+                        <summary>
+                          <span>
+                            Maturity capabilities
+                            <span className="visuallyHidden">
+                              {" "}
+                              for {d.id} {d.name}
+                            </span>
+                          </span>
+                          <span className="summaryIcon" aria-hidden="true" />
+                        </summary>
+                        <ol>
+                          {d.capabilities.map((c, i) => (
+                            <li key={c}>
+                              <span className="capId">
+                                {d.id}.{i + 1}
+                              </span>{" "}
+                              {c}
+                            </li>
+                          ))}
+                        </ol>
+                      </details>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
             <Source>
-              purposes from <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 §8.1</Ext>;
+              lede and purposes from <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 §8.1</Ext>;
               capabilities from <Ext href={links.doc("03-maturity-model.md")}>Artifact #3 — Maturity Model</Ext>;
-              control IDs from <Ext href={links.doc("05-master-control-library.md")}>Artifact #5 — Master Control Library</Ext>.
+              control IDs and counts from <Ext href={links.doc("05-master-control-library.md")}>Artifact #5 — Master Control Library</Ext>.
             </Source>
           </div>
         </section>
@@ -615,37 +711,71 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ──────────────────────────── Scale ───────────────────────────── */}
-        <section className="scale" aria-labelledby="scale-title">
+        {/* ───────────────────── Release, review, limitations ───────────────────── */}
+        <section id="status" className="section status" aria-labelledby="status-title">
           <div className="shell">
-            <h2 id="scale-title" className="scaleTitle">
-              The structure that carries the model
-            </h2>
-            <dl className="scaleGrid">
-              <div>
-                <dt>Domains</dt>
-                <dd>6</dd>
+            <div className="sectionHead">
+              <p className="eyebrow">Release status</p>
+              <h2 id="status-title">Release, review and limitations.</h2>
+            </div>
+            <div className="statusGrid">
+              <dl className="statusFacts">
+                <div>
+                  <dt>Status</dt>
+                  <dd>{release.status}</dd>
+                </div>
+                <div>
+                  <dt>Bundle</dt>
+                  <dd>{release.bundle}</dd>
+                </div>
+                <div>
+                  <dt>Snapshot</dt>
+                  <dd>{release.snapshot}</dd>
+                </div>
+                <div>
+                  <dt>Review</dt>
+                  {reviewStatus.map((r) => (
+                    <dd key={r}>{r}</dd>
+                  ))}
+                </div>
+                <div>
+                  <dt>Validation</dt>
+                  <dd>{notValidated}</dd>
+                </div>
+                <div>
+                  <dt>Provenance</dt>
+                  <dd>Methodology author: {methodologyAuthor}</dd>
+                  <dd className="statusNote">{changeReviewNote}</dd>
+                </div>
+              </dl>
+              <div className="statusGates">
+                <h3 id="gates-title">External release gates</h3>
+                <ul aria-labelledby="gates-title">
+                  {pendingGates.map((g) => (
+                    <li key={g}>
+                      <span className="gateName">{g}</span>
+                      <span className="gateState">Pending</span>
+                    </li>
+                  ))}
+                </ul>
+                <blockquote className="statusPrinciple">
+                  <p>{manifestGatePrinciple}</p>
+                  <footer>
+                    <Ext href={links.manifest}>METHODOLOGY_MANIFEST §6</Ext>
+                  </footer>
+                </blockquote>
+                <p className="small">{roadmapNote}</p>
               </div>
-              <div>
-                <dt>Canonical controls</dt>
-                <dd>72</dd>
-              </div>
-              <div>
-                <dt>Maturity capabilities</dt>
-                <dd>36</dd>
-              </div>
-              <div>
-                <dt>Maturity levels</dt>
-                <dd>M1–M5</dd>
-              </div>
-              <div>
-                <dt>Evidence grades</dt>
-                <dd>E0–E5</dd>
-              </div>
-            </dl>
-            <p className="small scaleNote">
-              Maturity is cumulative, evidence-gated and not an average of control scores.
+            </div>
+            <p className="statusLimits">
+              <strong>Limitations.</strong> {limitation}
             </p>
+            <Source>
+              status, bundle, snapshot and gates from the <Ext href={links.manifest}>METHODOLOGY_MANIFEST</Ext>{" "}
+              header and §6; review status from the <Ext href={links.readme}>README</Ext>; authorship from the
+              artifact approval records and <Ext href={links.license}>LICENSE</Ext>; change review from{" "}
+              <Ext href={links.contributing}>CONTRIBUTING</Ext>.
+            </Source>
           </div>
         </section>
 
@@ -661,6 +791,31 @@ export default function Home() {
                 <Ext href={links.manifest}>Methodology Manifest</Ext>.
               </p>
             </div>
+            <Ext href={links.manifest} className="artifactCard manifestCard">
+              <span className="artifactMeta">
+                <span>Bundle {release.bundle}</span>
+                <span className="tag">Authority map</span>
+              </span>
+              <span className="artifactTitle">METHODOLOGY_MANIFEST</span>
+              <span className="artifactRole">
+                Single canonical authority/dependency map and exact artifact-content registry for this
+                repository snapshot.
+              </span>
+            </Ext>
+            <dl className="sourceFacts" aria-label="Where the model's structure is defined">
+              <div>
+                <dt>{scale.domains} domains · {scale.controls} canonical controls</dt>
+                <dd>Artifact #5</dd>
+              </div>
+              <div>
+                <dt>{scale.capabilities} maturity capabilities · {scale.maturityLevels}</dt>
+                <dd>Artifact #3 · cumulative, evidence-gated, not an average of control scores</dd>
+              </div>
+              <div>
+                <dt>Evidence grades {scale.evidenceGrades}</dt>
+                <dd>Artifact #6</dd>
+              </div>
+            </dl>
             <ol className="artifactGrid">
               {artifacts.map((a) => (
                 <li key={a.n}>
@@ -690,58 +845,54 @@ export default function Home() {
 
         {/* ─────────────────────────── Review ───────────────────────────── */}
         <section id="review" className="dark review" aria-labelledby="review-title">
-          <div className="shell reviewGrid">
-            <div>
+          <div className="shell">
+            <div className="sectionHead">
               <p className="eyebrow">Public review</p>
               <h2 id="review-title">This methodology is meant to be challenged.</h2>
-              <ul className="reviewAsks">
-                <li>Challenge the assumptions.</li>
-                <li>Examine the graph semantics.</li>
-                <li>Inspect the evidence rules.</li>
-                <li>Report inconsistencies.</li>
-                <li>Contribute through GitHub.</li>
-              </ul>
-              <div className="actions">
-                <Ext className="button buttonInverse" href={links.newIssue}>
-                  Submit a finding
-                </Ext>
-                <Ext className="button buttonGhost" href={links.repo}>
-                  Repository
-                </Ext>
-              </div>
-              <ul className="reviewLinks">
-                <li>
-                  <Ext href={links.issues}>Issues</Ext>
-                </li>
-                <li>
-                  <Ext href={links.contributing}>CONTRIBUTING</Ext>
-                </li>
-                <li>
-                  <Ext href={links.reviewFindings}>REVIEW_FINDINGS</Ext>
-                </li>
-                <li>
-                  <Ext href={links.manifest}>METHODOLOGY_MANIFEST</Ext>
-                </li>
-              </ul>
             </div>
-            <aside id="status" className="gates" aria-labelledby="gates-title">
-              <h3 id="gates-title">Release gates still pending</h3>
-              <ul>
-                {pendingGates.map((g) => (
-                  <li key={g}>
-                    <span className="gateState">Pending</span>
-                    <span>{g}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="small">
-                AI Trust Graph is not independently validated. These gates stay open until evidence of
-                completion is published or recorded through governance.
-              </p>
-              <Source>
-                <Ext href={links.manifest}>METHODOLOGY_MANIFEST §6</Ext>
-              </Source>
-            </aside>
+            <ul className="entryGrid" aria-label="Ways to review and contribute">
+              <li className="entry">
+                <h3>Report a finding</h3>
+                <p>A specific inconsistency, gap or error in the methodology text, in the format used in REVIEW_FINDINGS.</p>
+                <Ext href={links.findingIssue} className="entryLink">
+                  Open a methodology finding
+                </Ext>
+              </li>
+              <li className="entry">
+                <h3>Share feedback</h3>
+                <p>A reaction, question or first impression. You do not need a precise defect.</p>
+                <Ext href={links.feedbackIssue} className="entryLink">
+                  Open general feedback
+                </Ext>
+                <p className="entrySecondary">
+                  Or start a <Ext href={links.discussions}>GitHub Discussion</Ext>.
+                </p>
+              </li>
+              <li className="entry">
+                <h3>Propose a change</h3>
+                <p>
+                  Changes to canonical terms, controls, evidence grades, result states or scoring need a
+                  formal change proposal (Artifact #11 §2.4) before any pull request.
+                </p>
+                <Ext href={links.contributing} className="entryLink">
+                  Read CONTRIBUTING
+                </Ext>
+              </li>
+              <li className="entry">
+                <h3>Inspect the source</h3>
+                <p>The pinned artifact set, and the open review findings that are a good place to start.</p>
+                <Ext href={links.manifest} className="entryLink">
+                  METHODOLOGY_MANIFEST
+                </Ext>
+                <Ext href={links.reviewFindings} className="entryLink">
+                  REVIEW_FINDINGS
+                </Ext>
+              </li>
+            </ul>
+            <Source>
+              routes from <Ext href={links.contributing}>CONTRIBUTING</Ext> (“Ways to give feedback”, “What kind of
+              change are you proposing?”) and the repository’s issue templates.
+            </Source>
           </div>
         </section>
       </main>
@@ -756,14 +907,12 @@ export default function Home() {
           </div>
           <div>
             <p>
-              AI Trust Graph is a methodology, not a product. It is not a certification program, an
-              accreditation body, a legal opinion, or a guarantee of AI security, safety or
-              compliance.
+              AI Trust Graph is a methodology, not a product. This website is explanatory. The{" "}
+              <Ext href={links.repo}>GitHub methodology artifacts</Ext> are canonical and win on any
+              conflict.
             </p>
             <p>
-              This website is explanatory. The{" "}
-              <Ext href={links.repo}>GitHub methodology artifacts</Ext> are canonical and win on any
-              conflict. Methodology text is licensed{" "}
+              Copyright © 2026 {methodologyAuthor}. Methodology text licensed{" "}
               <Ext href={links.license}>CC BY 4.0</Ext>; the name is reserved separately — see{" "}
               <Ext href={links.trademarks}>TRADEMARKS</Ext>.
             </p>

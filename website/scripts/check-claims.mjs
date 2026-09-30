@@ -50,10 +50,30 @@ const required = [
   "Required permissions, protocols, state and preconditions must be evidenced or explicitly marked Unknown.",
   // Assessment lifecycle (Artifact #7 §0.11 iteration rule).
   "Phases may iterate, but required gates cannot be skipped merely because information was available earlier.",
+  // Release status, provenance and gates (METHODOLOGY_MANIFEST header and §6; README).
+  "AI Trust Graph is not independently validated.",
+  "Public-release candidate",
+  "1.0-rc.4",
+  "Methodology author: Siva Sethumadhavan",
+  "This manifest pins content; it does not convert pending external gates into completed review.",
+  "Independent methodology / architecture review",
+  "Independent AI-security review",
+  "Inter-assessor reproducibility study using the protocol in Artifact #10 Appendix B.4",
+  "Employer / IP / confidentiality review",
+  "Legal approval of licence / trademark position",
   // Evidence model (Artifact #6 §1.8).
   "Grade is not sufficiency.",
   "A high grade can confirm an adverse state.",
 ];
+
+// Six domains in canonical order (README; WEBSITE_CONTENT_MAP "Canonical homepage domain names").
+const domainNames = [
+  "Discovery and AIBOM", "Trust and Privilege Paths", "Authority Governance",
+  "AI Security Validation", "AI Governance and Assurance", "Operational Resilience",
+];
+
+// The four contribution entry points, in order (CONTRIBUTING routes).
+const contributionEntries = ["Report a finding", "Share feedback", "Propose a change", "Inspect the source"];
 
 // Assessment Methodology phases in canonical order (Artifact #7 §0.11).
 const assessmentPhases = [
@@ -125,6 +145,23 @@ for (const [file, raw] of html) {
     const typeList = raw.match(/<ul class="chips lcTypeList"[^>]*>([\s\S]*?)<\/ul>/)?.[1] ?? "";
     inOrder("assessment types", typeList, /<li>([^<]+)<\/li>/g, assessmentTypes);
     inOrder("problem terms", raw, /<li class="cstNode"[^>]*>([^<]+)<\/li>/g, problemTerms);
+    // Domain lens: six canonical names in order, each card with 12 controls and 6 maturity capabilities.
+    inOrder("domains", raw, /<h3 class="domainName">([^<]+)<\/h3>/g, domainNames);
+    const domainCards = (raw.match(/<li class="lensDomain">[\s\S]*?<\/details><\/li>/g) ?? []).map((c) => c.replace(/<!-- -->/g, ""));
+    const countOk = domainCards.filter((c) => /12 controls/.test(c) && /6 maturity capabilities/.test(c)).length;
+    if (domainCards.length !== 6 || countOk !== 6) {
+      errors.push(`${file}: expected 6 domain cards each stating "12 controls" and "6 maturity capabilities", found ${countOk}/${domainCards.length}`);
+    }
+    if (!/<span class="tag">Explanatory<\/span>/.test(raw)) {
+      errors.push(`${file}: domain lens is missing its visible "Explanatory" label`);
+    }
+    // Contribution entry points, in order.
+    const entryList = raw.match(/<ul class="entryGrid"[^>]*>([\s\S]*?)<\/ul>/)?.[1] ?? "";
+    inOrder("contribution entry points", entryList, /<h3>([^<]+)<\/h3>/g, contributionEntries);
+    // The standalone scale band was removed; its figures live in Domains and Canonical source.
+    if (/class="scale"|The structure that carries the model/.test(raw)) {
+      errors.push(`${file}: the removed standalone scale band is present again`);
+    }
     if (!/<p class="cstTag"><span class="tag">Illustrative<\/span><\/p>/.test(raw)) {
       errors.push(`${file}: problem constellation is missing its visible "Illustrative" label`);
     }
