@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight, IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { SITE_URL, release } from "./content";
 import "./globals.css";
 
@@ -17,6 +18,30 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
   weight: ["400", "500", "600"],
   display: "swap",
+});
+
+// Source Serif 4 (SIL OFL 1.1; see app/fonts/source-serif-4/) — the editorial
+// display face of the visual reset. Committed to the repository and bundled by
+// next/font/local: no network at build time and no third-party request at run
+// time. Variable latin subset with optical-size (8–60) and weight (200–900)
+// axes. The italic is a separate family that is not preloaded; the browser
+// fetches it (same origin) only when a page renders italic serif text.
+const sourceSerif = localFont({
+  src: "./fonts/source-serif-4/SourceSerif4-Roman-latin-opsz-wght.woff2",
+  variable: "--font-serif",
+  weight: "200 900",
+  style: "normal",
+  display: "swap",
+  adjustFontFallback: "Times New Roman",
+});
+const sourceSerifItalic = localFont({
+  src: "./fonts/source-serif-4/SourceSerif4-Italic-latin-opsz-wght.woff2",
+  variable: "--font-serif-italic",
+  weight: "200 900",
+  style: "italic",
+  display: "swap",
+  preload: false,
+  adjustFontFallback: "Times New Roman",
 });
 
 const title = "AI Trust Graph — Graph-based, evidence-driven AI assurance";
@@ -62,7 +87,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${body.variable} ${display.variable} ${mono.variable}`}>
+    <html lang="en" className={`${body.variable} ${display.variable} ${mono.variable} ${sourceSerif.variable} ${sourceSerifItalic.variable}`}>
       <body>{children}</body>
     </html>
   );

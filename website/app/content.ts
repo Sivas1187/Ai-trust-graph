@@ -48,6 +48,8 @@ export const release = {
   bundle: "1.0-rc.4",
   status: "Public-release candidate",
   snapshot: "2026-09-26",
+  /** `snapshot` written out for the Cover colophon; check-claims verifies both against the manifest. */
+  snapshotLabel: "26 September 2026",
 };
 
 /**
@@ -63,6 +65,8 @@ export const release = {
 export const methodologyAuthor = "Siva Sethumadhavan";
 export const reviewStatus = ["Author’s internal review complete", "Independent review pending"] as const;
 export const notValidated = "AI Trust Graph is not independently validated.";
+/** Short form of `notValidated` for the Cover colophon. */
+export const notValidatedShort = "Not independently validated";
 export const changeReviewNote =
   "Until the governance bodies defined in Artifact #11 are standing, the methodology author reviews proposed changes directly.";
 export const limitation =
@@ -72,9 +76,13 @@ export const limitation =
 export const manifestGatePrinciple =
   "This manifest pins content; it does not convert pending external gates into completed review.";
 
-/** Source: README.md, first line (the repository's one-sentence description), verbatim. */
-export const methodologySummary =
-  "An open methodology for assessing AI systems using graph-based trust, authority, evidence, controls, paths, governance, and security validation.";
+/**
+ * Cover proposition. Owner-approved wording for the visual-reset Cover
+ * (explanatory website copy, not canonical methodology text). It replaces the
+ * README first line that the previous hero used as its lede.
+ */
+export const coverProposition =
+  "An open methodology for reasoning about connected AI systems through graph structure, controls and evidence.";
 
 /**
  * Source: Artifact #1 Manifesto.
