@@ -28,6 +28,11 @@ export const links = {
   repo: REPO_URL,
   issues: `${REPO_URL}/issues`,
   newIssue: `${REPO_URL}/issues/new/choose`,
+  // Issue templates in .github/ISSUE_TEMPLATE (see CONTRIBUTING "Ways to give feedback").
+  findingIssue: `${REPO_URL}/issues/new?template=finding-report.yml`,
+  feedbackIssue: `${REPO_URL}/issues/new?template=general-feedback.yml`,
+  // Discussions is enabled on the repository (GitHub API has_discussions: true, checked 2026-09-30).
+  discussions: `${REPO_URL}/discussions`,
   contributing: blob("CONTRIBUTING.md"),
   reviewFindings: blob("REVIEW_FINDINGS.md"),
   manifest: pinned("METHODOLOGY_MANIFEST.md"),
@@ -44,6 +49,28 @@ export const release = {
   status: "Public-release candidate",
   snapshot: "2026-09-26",
 };
+
+/**
+ * Release, review and provenance facts for the Status section.
+ * - Review: README.md status paragraph ("the methodology author's internal review
+ *   is complete, and independent ... review ... still pending").
+ * - Author: artifact approval tables ("Author | Siva Sethumadhavan") and LICENSE.
+ * - Change review: CONTRIBUTING.md ("until they are, the methodology author reviews
+ *   all proposed changes directly").
+ * - Limitation: the site's standing disclaimer (WEBSITE_GOVERNANCE.md; Artifact #11
+ *   constitutional boundary).
+ */
+export const methodologyAuthor = "Siva Sethumadhavan";
+export const reviewStatus = ["Author’s internal review complete", "Independent review pending"] as const;
+export const notValidated = "AI Trust Graph is not independently validated.";
+export const changeReviewNote =
+  "Until the governance bodies defined in Artifact #11 are standing, the methodology author reviews proposed changes directly.";
+export const limitation =
+  "AI Trust Graph is a methodology, not a product. It is not a certification program, an accreditation body, a legal opinion, or a guarantee of AI security, safety or compliance.";
+
+/** Source: METHODOLOGY_MANIFEST.md §6, verbatim sentence. */
+export const manifestGatePrinciple =
+  "This manifest pins content; it does not convert pending external gates into completed review.";
 
 /** Source: README.md, first line (the repository's one-sentence description), verbatim. */
 export const methodologySummary =
@@ -89,6 +116,27 @@ export const companion = {
   file: "13-reference-graph-schema-and-query-library.md",
   role: "Illustrative property-graph schema and GQL-style query patterns",
 };
+
+/**
+ * Source: README "The methodology at a glance" (six domains, "each with twelve
+ * canonical controls"; M1–M5; E0–E5; all 72 canonical controls) and Artifact #3
+ * Maturity Model (36 capabilities, six per domain).
+ */
+export const scale = {
+  domains: 6,
+  controlsPerDomain: 12,
+  capabilitiesPerDomain: 6,
+  controls: 72,
+  capabilities: 36,
+  maturityLevels: "M1–M5",
+  evidenceGrades: "E0–E5",
+};
+
+/** Source: Artifact #2 Core Conceptual Model §8.1, first two sentences, verbatim. */
+export const domainsLede = [
+  "The six domains are coordinated assessment lenses over one graph.",
+  "They are not separate products and should not maintain incompatible definitions, evidence grades or scoring assumptions.",
+] as const;
 
 /**
  * Domain names: README "The methodology at a glance" (canonical names).
@@ -375,11 +423,24 @@ export const pathRoles = ["Primary", "Alternate", "Residual"];
 /** Source: Artifact #2 Core Conceptual Model §1.8 / §6.6 ("stop, constrain, detect or contain"). */
 export const breakpointEffects = ["Stop", "Constrain", "Detect", "Contain"];
 
-/** Source: METHODOLOGY_MANIFEST.md §6 (validation status). */
+/**
+ * Source: METHODOLOGY_MANIFEST.md §6 (validation status): the five external
+ * release gates, verbatim except for the initial capital and list punctuation.
+ * The manifest controls gate status; see `roadmapNote` for the ROADMAP difference.
+ */
 export const pendingGates = [
   "Independent methodology / architecture review",
   "Independent AI-security review",
-  "Inter-assessor reproducibility study (Artifact #10 Appendix B.4 protocol)",
+  "Inter-assessor reproducibility study using the protocol in Artifact #10 Appendix B.4",
   "Employer / IP / confidentiality review",
   "Legal approval of licence / trademark position",
 ];
+
+/**
+ * ROADMAP.md Phase 2 ticks the "Licence and trademark decision" (CC BY 4.0 chosen)
+ * while noting it is not yet legally final; METHODOLOGY_MANIFEST §6 still lists
+ * legal approval of the licence / trademark position as a pending gate. The site
+ * follows the manifest and states the difference rather than reconciling it.
+ */
+export const roadmapNote =
+  "Gate status follows METHODOLOGY_MANIFEST §6. ROADMAP.md records the licence choice (CC BY 4.0) as made; the manifest still lists legal approval of the licence / trademark position as pending.";
