@@ -27,6 +27,7 @@ The graph is not decorative. Where motion is used, it must reinforce methodology
 
 - Base: warm off-white / near-white surfaces with dark graphite sections.
 - Accent: restrained cyan/indigo spectrum.
+- Diagrams may use a restrained cyan / indigo / green / amber accent palette to improve visual distinction, but colour must never encode assurance state, maturity, safety, severity or ranking by itself.
 - Typography: large editorial headings paired with highly legible technical body text.
 - Lines/nodes: thin, crisp, geometric; minimal glow.
 - Motion: slow, purposeful, accessible; reduced-motion support required.
