@@ -115,7 +115,7 @@ rewrite scripts at the edge and would conflict with it:
 | --- | --- | --- |
 | **Rocket Loader** (Speed → Optimization) | **Off** | Rewrites inline scripts, so their hashes stop matching. The site would then fail to hydrate, and the **mobile menu would stop working**. |
 | Cloudflare **Web Analytics** (Pages project → Metrics) / **Zaraz** | Off | Would inject a third-party beacon. The CSP blocks it and logs a console error. The site deliberately has no analytics. |
-| **Web Analytics → Manage site → Real User Measurements (RUM)** for the `aitrustgraph.org` hostname (account level, separate from the Pages project setting) | **Disable** | Any "Enable" option injects `static.cloudflareinsights.com/beacon.min.js` at the edge for proxied requests. This was the cause of the beacon issue below. |
+| **Web Analytics → Manage site → Real User Measurements (RUM)** for the `aitrustgraph.org` hostname (account level, separate from the Pages project setting) | **Disable** | When enabled, Cloudflare RUM/Web Analytics can inject `static.cloudflareinsights.com/beacon.min.js` at the edge for proxied HTML. This setting was the source of the incident below. |
 | Email Address Obfuscation (Scrape Shield) | Either state | The pages contain no email addresses, so it is a no-op. |
 
 
