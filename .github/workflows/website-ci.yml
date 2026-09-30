@@ -5,7 +5,9 @@ name: Website CI
 
 on:
   pull_request:
-    branches: [main]
+    branches:
+      - main
+      - website-visual-reset
     paths:
       - "website/**"
       - ".github/workflows/website-ci.yml"
