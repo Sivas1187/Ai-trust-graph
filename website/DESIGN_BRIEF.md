@@ -15,13 +15,13 @@ Avoid generic cybersecurity tropes: hacker imagery, matrix code, glowing padlock
 
 The visual identity is the graph.
 
-The homepage should progressively reveal:
+The homepage should clearly present the canonical reasoning chain:
 
 **Objects -> Relationships -> Conditions -> Paths -> Authority and Influence -> Consequence -> Controls -> Evidence -> Decision**
 
 (Owner ruling 1: the canonical Artifact #2 §0.10 chain, with canonical stage names and order. No simplified or competing chain is presented on the public site.)
 
-The graph is not decorative. Every animation should reinforce methodology meaning.
+The graph is not decorative. Where motion is used, it must reinforce methodology meaning and must never imply progress, completion or assurance state.
 
 ## Visual language
 
