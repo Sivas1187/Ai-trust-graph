@@ -15,18 +15,19 @@ Avoid generic cybersecurity tropes: hacker imagery, matrix code, glowing padlock
 
 The visual identity is the graph.
 
-The homepage should progressively reveal:
+The homepage should clearly present the canonical reasoning chain:
 
 **Objects -> Relationships -> Conditions -> Paths -> Authority and Influence -> Consequence -> Controls -> Evidence -> Decision**
 
 (Owner ruling 1: the canonical Artifact #2 §0.10 chain, with canonical stage names and order. No simplified or competing chain is presented on the public site.)
 
-The graph is not decorative. Every animation should reinforce methodology meaning.
+The graph is not decorative. Where motion is used, it must reinforce methodology meaning and must never imply progress, completion or assurance state.
 
 ## Visual language
 
 - Base: warm off-white / near-white surfaces with dark graphite sections.
 - Accent: restrained cyan/indigo spectrum.
+- Diagrams may use a restrained cyan / indigo / green / amber accent palette to improve visual distinction, but colour must never encode assurance state, maturity, safety, severity or ranking by itself.
 - Typography: large editorial headings paired with highly legible technical body text.
 - Lines/nodes: thin, crisp, geometric; minimal glow.
 - Motion: slow, purposeful, accessible; reduced-motion support required.
@@ -34,17 +35,18 @@ The graph is not decorative. Every animation should reinforce methodology meanin
 
 ## Homepage sequence
 
-1. Hero - name, proposition, graph, Explore Methodology / GitHub CTAs
-2. Problem - "AI systems are no longer isolated models"
-3. Reasoning chain - the nine-stage canonical Artifact #2 §0.10 chain, with the 13-phase assessment lifecycle shown separately
+1. Hero - methodology name, README description, status pill, canonical-source and "See how it reasons" CTAs, synthetic graph
+2. Problem - "AI systems are no longer isolated models", illustrative constellation, topology invariant
+3. Reasoning chain - the nine-stage canonical Artifact #2 §0.10 chain as equal nodes with directional connectors; theory-map table in one disclosure
 4. Six domains - responsive domain cards
 5. Authority - "Access is not authority"
 6. UNKNOWN - dark, high-impact assurance section
 7. Control breakpoints - synthetic path visualization
 8. Evidence model - E0-E5 explainer
-9. Methodology scale - 6 domains / 72 controls / 36 capabilities / M1-M5 / E0-E5
-10. Methodology explorer - artifact cards
-11. Public review - invitation to challenge assumptions and submit findings
+9. Assessment lifecycle - the 13 Artifact #7 phases as a two-row timeline, separate from the reasoning chain, with the iteration rule and assessment types
+10. Methodology scale - 6 domains / 72 controls / 36 capabilities / M1-M5 / E0-E5
+11. Methodology explorer - artifact cards
+12. Public review - invitation to challenge assumptions and submit findings
 
 ## Accessibility
 

@@ -45,6 +45,26 @@ export const release = {
   snapshot: "2026-09-26",
 };
 
+/** Source: README.md, first line (the repository's one-sentence description), verbatim. */
+export const methodologySummary =
+  "An open methodology for assessing AI systems using graph-based trust, authority, evidence, controls, paths, governance, and security validation.";
+
+/**
+ * Source: Artifact #1 Manifesto.
+ * `problemThesis`: §2.2 "The core risk thesis", first sentence, verbatim.
+ * `problemTerms`: terms from the Manifesto CORE PROPOSITION list ("identities,
+ * agents, tools, data, prompts, models, infrastructure, providers, controls and
+ * business actions"), a subset in the same order; illustrative, not ontology types.
+ * `topologyInvariant`: §4 INVARIANT, both sentences, verbatim.
+ */
+export const problemThesis =
+  "The methodology treats enterprise AI risk as a property of interconnected authority, influence and dependency.";
+export const problemTerms = ["Identities", "Agents", "Tools", "Data", "Models", "Providers", "Business actions"] as const;
+export const topologyInvariant = [
+  "A topological connection is not automatically an exploitable path.",
+  "Required permissions, protocols, state and preconditions must be evidenced or explicitly marked Unknown.",
+] as const;
+
 /** Source: METHODOLOGY_MANIFEST.md §4 (exact artifact registry). */
 export const artifacts = [
   { n: 1, title: "Manifesto", version: "1.0", file: "01-manifesto.md", role: "Purpose, principles and boundaries of the methodology" },
@@ -170,11 +190,9 @@ export const domains = [
  * canonical order. Owner ruling 1: this is the only reasoning chain the public
  * site presents.
  *
- * `reasoningChain` groups the same stages with the §0.10 theory-map question
- * table (question and concept verbatim). The table has eight rows for nine
- * stages: its last row, "What can we defend? / Evidence, confidence and
- * accountable decision.", covers both Evidence and Decision, so those two
- * stages share one group rather than the site inventing a ninth question.
+ * `theoryMap` is the §0.10 theory-map table (Question / Concept), verbatim and
+ * in canonical order. It is shown as the canonical table; the site does not
+ * assign its eight rows to the nine stages.
  */
 export const canonicalReasoningChain = [
   "Objects",
@@ -188,38 +206,75 @@ export const canonicalReasoningChain = [
   "Decision",
 ] as const;
 
-export const reasoningChain = [
-  { stages: ["Objects"], question: "What exists?", concept: "Objects and system boundary." },
-  { stages: ["Relationships"], question: "How is it connected?", concept: "Typed directional relationships." },
-  { stages: ["Conditions"], question: "What must be true?", concept: "Preconditions and state." },
-  { stages: ["Paths"], question: "What can happen next?", concept: "Reachability and path analysis." },
-  { stages: ["Authority and Influence"], question: "Who or what can cause it?", concept: "Authority, influence and actionability." },
-  { stages: ["Consequence"], question: "Why does it matter?", concept: "Target criticality and consequence." },
-  { stages: ["Controls"], question: "What interrupts it?", concept: "Control breakpoint and resilience." },
-  { stages: ["Evidence", "Decision"], question: "What can we defend?", concept: "Evidence, confidence and accountable decision." },
+export const theoryMap = [
+  { question: "What exists?", concept: "Objects and system boundary." },
+  { question: "How is it connected?", concept: "Typed directional relationships." },
+  { question: "What must be true?", concept: "Preconditions and state." },
+  { question: "What can happen next?", concept: "Reachability and path analysis." },
+  { question: "Who or what can cause it?", concept: "Authority, influence and actionability." },
+  { question: "Why does it matter?", concept: "Target criticality and consequence." },
+  { question: "What interrupts it?", concept: "Control breakpoint and resilience." },
+  { question: "What can we defend?", concept: "Evidence, confidence and accountable decision." },
 ] as const;
 
-// Build-time guard: the grouped chain must equal the canonical chain, in order.
-if (reasoningChain.flatMap((g) => g.stages).join(" > ") !== canonicalReasoningChain.join(" > ")) {
-  throw new Error("reasoningChain diverges from the canonical Artifact #2 §0.10 chain");
-}
-
-/** Source: Artifact #7 Assessment Methodology, phase headings (Phase 1–13). */
+/**
+ * Source: Artifact #7 Assessment Methodology §0.11 (phase numbers, names and
+ * primary outcomes, verbatim) and the iteration rule that introduces the table.
+ */
 export const assessmentPhases = [
-  "Initiate",
-  "Scope",
-  "Discover",
-  "Model",
-  "Evidence",
-  "Controls",
-  "Paths",
-  "Maturity",
-  "Scoring",
-  "Findings",
-  "Decisions",
-  "Report",
-  "Reassess",
-];
+  { n: 1, name: "Initiate", outcome: "Approved charter and decision purpose." },
+  { n: 2, name: "Scope", outcome: "Versioned boundary and population." },
+  { n: 3, name: "Discover", outcome: "Measured estate and blind spots." },
+  { n: 4, name: "Model", outcome: "Reviewed graph snapshot." },
+  { n: 5, name: "Evidence", outcome: "Graded and traceable evidence set." },
+  { n: 6, name: "Controls", outcome: "Applicability and control results." },
+  { n: 7, name: "Paths", outcome: "Validated material path portfolio." },
+  { n: 8, name: "Maturity", outcome: "Six-domain capability profile." },
+  { n: 9, name: "Scoring", outcome: "Transparent scorecards and coverage." },
+  { n: 10, name: "Findings", outcome: "Evidence-linked gaps and remediation objectives." },
+  { n: 11, name: "Decisions", outcome: "Approved gates, exceptions and dispositions." },
+  { n: 12, name: "Report", outcome: "Quality-reviewed decision package." },
+  { n: 13, name: "Reassess", outcome: "Trigger-based new or updated run." },
+] as const;
+
+export const lifecycleIntro = "The lifecycle contains thirteen controlled phases.";
+export const phaseIterationRule =
+  "Phases may iterate, but required gates cannot be skipped merely because information was available earlier.";
+
+/** Source: Artifact #7 Assessment Methodology §0.12 (intro sentences and gate tests, verbatim). */
+export const exitCriteria = {
+  intro: [
+    "Each phase has entry conditions, mandatory activities, outputs, decision gates and quality checks.",
+    "An incomplete phase may proceed only under an approved limitation that does not invalidate downstream work.",
+  ],
+  gates: [
+    { test: "Completeness", rule: "Mandatory outputs exist or limitations are explicitly approved." },
+    { test: "Evidence", rule: "Assertions meet artifact-specific sufficiency." },
+    { test: "Safety", rule: "Collection and testing remained within authorization." },
+    { test: "Traceability", rule: "Inputs and decisions can be reconstructed." },
+    { test: "Critical gates", rule: "Open conditions are applied before progression." },
+    { test: "Quality", rule: "Required reviewer has challenged the work." },
+    { test: "Decision", rule: "Named authority accepts the next phase or bounded limitation." },
+  ],
+} as const;
+
+/**
+ * Source: Artifact #7 Assessment Methodology §1.1–§1.10 (section headings and
+ * each section's first sentence, verbatim), in canonical order. The order is
+ * the artifact's; it implies no priority.
+ */
+export const assessmentTypes = [
+  { name: "Baseline assessment", definition: "Establish the first defensible view of scope, graph, controls, evidence, maturity and material paths." },
+  { name: "Periodic reassessment", definition: "Re-evaluate a stable scope at an approved cadence while preserving comparable prior results." },
+  { name: "Material-change assessment", definition: "Assess the consequences of model, prompt, data, tool, identity, provider, autonomy, geography, purpose or architecture change." },
+  { name: "High-impact deep dive", definition: "Increase evidence, testing, independence and path analysis for systems with significant consequence or authority." },
+  { name: "Incident-driven assessment", definition: "Reconstruct changed facts, affected paths, control failures and recovery evidence after an event." },
+  { name: "Third-party and provider assessment", definition: "Examine service-specific responsibility, configuration, evidence access, data handling, resilience and concentration." },
+  { name: "Portfolio assessment", definition: "Profile multiple use cases or systems while preserving materially different populations and avoiding misleading averages." },
+  { name: "Pre-deployment readiness assessment", definition: "Determine whether evidence, controls, testing, approvals and containment are sufficient for the requested release." },
+  { name: "Continuous or event-driven assessment", definition: "Use approved automated signals and triggers to refresh evidence and initiate human review of material change." },
+  { name: "Regulatory or obligation-focused assessment", definition: "Evaluate fact-specific obligations and related controls without representing framework mapping as compliance proof." },
+] as const;
 
 /**
  * Source: Artifact #6 Evidence Model §1.1–§1.6, verbatim. `name` is the canonical

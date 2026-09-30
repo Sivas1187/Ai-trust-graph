@@ -73,14 +73,17 @@ All methodology-derived homepage copy lives in `app/content.ts` with an inline s
 
 | Homepage section | Canonical source | Notes |
 | --- | --- | --- |
-| Hero, status pill | README; METHODOLOGY_MANIFEST header (bundle 1.0-rc.4, public-release candidate) | Hero graph is synthetic; edge labels are illustrative, not ontology predicates. |
-| The problem | #1 Manifesto (invariant: "A topological connection is not automatically an exploitable path.") | |
-| Reasoning chain | #2 §0.10 (chain, verbatim and in order; theory-map questions/concepts verbatim) | Owner ruling 1: the only reasoning chain on the public site. The theory-map table's final row covers both Evidence and Decision, so they share one question. The 13 phases of #7 are shown as a separate lifecycle. Order is enforced by `app/content.ts` (build-time guard) and `scripts/check-claims.mjs`. |
+| Hero, status pill | README (first-line methodology description, verbatim); METHODOLOGY_MANIFEST header (bundle 1.0-rc.4, public-release candidate) | H1 is the methodology name. Primary CTA goes to the canonical GitHub source. Hero graph is synthetic; edge labels are illustrative, not ontology predicates. |
+| The problem | #1 Manifesto §2.2 (thesis sentence, verbatim); §4 INVARIANT (both sentences, verbatim); core proposition (constellation terms) | The constellation is labelled Illustrative: an unordered list of terms with undirected, unlabelled links; not a sequence, ontology, architecture or path. Invariant, terms and label are enforced by `scripts/check-claims.mjs`. |
+| Reasoning chain | #2 §0.10 (chain, verbatim and in order; theory-map table verbatim) | Owner ruling 1: the only reasoning chain on the public site. Nine equal nodes with directional connectors; no numbering, progress fill or grouping. The theory-map table (Question / Concept) sits in one disclosure, as the canonical table, without assigning rows to stages. Order is enforced by `scripts/check-claims.mjs`. |
 | Six domains | README (names, prefixes); #2 §8.1 (purposes, verbatim); #3 §2.1–§7.6 (capability names, verbatim) | |
 | Access is not authority | #2 §3.6 separation rule; #2 §5.2 authority classes | The six "Can …" tiles illustrate distinct assertions; explicitly not a canonical sequence or state machine. |
 | UNKNOWN stays UNKNOWN | #4 SC-INV-01; #4 §0.5 result states and numeric treatment; #6 §0.5 state meanings; #6 §1.1 (E0 supports UNKNOWN or Not Tested); README (no overall trust score) | Owner ruling 2: UNKNOWN and Not Tested are shown as distinct states with their canonical meanings; Not Tested keeps the design-score nuance. |
 | Control breakpoints | #2 §1.8, §6.3, §6.6 | Synthetic path; one-line glosses of stop/constrain/detect/contain are plain-language illustrations. |
 | Evidence model | #6 §1.1–§1.8 and §4 sufficiency note | Grade names and support statements quoted; full sufficiency rules linked, not summarized. |
+| Assessment lifecycle | #7 §0.11 (phase numbers, names, primary outcomes and iteration rule, verbatim); #7 §0.12 (gate tests, verbatim); #7 §1.1–§1.10 (assessment types and first-sentence definitions, verbatim); METHODOLOGY_MANIFEST §1 (role of #7) | A standalone section after Evidence, separate from the reasoning chain. Two-row timeline (1–7, 8–13) with square markers; no groupings or completion state. Outcomes, gate tests and type definitions sit in disclosures. Phase order, type order and the iteration rule are enforced by `scripts/check-claims.mjs`. |
 | Methodology scale | README; this file's permitted-claims list | |
 | Canonical source explorer | METHODOLOGY_MANIFEST §2 (reading order), §4 (versions) | #13 labelled non-normative. |
-| Public review, pending gates | CONTRIBUTING; REVIEW_FINDINGS; METHODOLOGY_MANIFEST §6 | |
+| Public review, pending gates | CONTRIBUTING; REVIEW_FINDINGS; METHODOLOGY_MANIFEST §6 | Navigation: "Status" links to the pending-gates panel (`#status`), "Contribute" to this section (`#review`). |
+
+Homepage navigation: Reasoning, Domains, Evidence, Lifecycle, Status, Contribute, GitHub (canonical source). Authority remains on the page without a navigation item.

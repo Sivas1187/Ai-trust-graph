@@ -1,45 +1,40 @@
 import { BreakpointExplorer } from "./components/BreakpointExplorer";
 import { HeroGraph } from "./components/HeroGraph";
 import { PrimaryNav, type NavItem } from "./components/PrimaryNav";
+import { ProblemConstellation } from "./components/ProblemConstellation";
 import {
   artifacts,
   assessmentPhases,
+  assessmentTypes,
+  canonicalReasoningChain,
   companion,
   domains,
   evidenceGrades,
+  exitCriteria,
+  lifecycleIntro,
   links,
+  methodologySummary,
   nonNumericResultStates,
   pathRoles,
   pathValidationStates,
   pendingGates,
-  reasoningChain,
+  phaseIterationRule,
+  problemThesis,
   release,
+  theoryMap,
+  topologyInvariant,
   unknownVsNotTested,
 } from "./content";
 
 const navItems: NavItem[] = [
   { href: "#flow", label: "Reasoning" },
   { href: "#domains", label: "Domains" },
-  { href: "#authority", label: "Authority" },
   { href: "#evidence", label: "Evidence" },
-  { href: "#methodology", label: "Methodology" },
-  { href: "#review", label: "Review" },
+  { href: "#lifecycle", label: "Lifecycle" },
+  { href: "#status", label: "Status" },
+  { href: "#review", label: "Contribute" },
   { href: links.repo, label: "GitHub", srSuffix: "(canonical source)", external: true },
 ];
-
-const problemChain = [
-  ["Models", "connect to agents."],
-  ["Agents", "invoke tools."],
-  ["Tools", "operate through identities."],
-  ["Identities", "cross boundaries."],
-  ["Actions", "may reach consequential systems."],
-] as const;
-
-/** Reasoning-chain groups with the canonical 1-based number of their first stage. */
-const chainGroups = reasoningChain.map((g, gi) => ({
-  ...g,
-  start: 1 + reasoningChain.slice(0, gi).reduce((sum, x) => sum + x.stages.length, 0),
-}));
 
 const assertions = ["Can connect", "Can authenticate", "Can access", "Can invoke", "Can modify", "Can transact"];
 
@@ -116,21 +111,16 @@ export default function Home() {
                   <span className="nowrap">Independent review pending</span>
                 </span>
               </p>
-              <p className="kicker">AI Trust Graph</p>
-              <h1 id="hero-title">Graph-based, evidence-driven assurance for connected AI systems.</h1>
-              <p className="lede">
-                AI Trust Graph is an open methodology that models connected AI environments as
-                evidence-linked graphs of identities, agents, models, tools, data, infrastructure and
-                providers — and the relationships between them — so that assurance conclusions stay
-                bounded by what the evidence can actually support.
-              </p>
+              <h1 id="hero-title">AI Trust Graph</h1>
+              <p className="lede">{methodologySummary}</p>
               <div className="actions">
-                <a className="button buttonPrimary" href="#flow">
-                  Explore the methodology
-                </a>
-                <Ext className="button buttonSecondary" href={links.repo}>
-                  View canonical source on GitHub
+                <Ext className="button buttonPrimary" href={links.repo}>
+                  Read the canonical methodology
+                  <span className="visuallyHidden"> on GitHub</span>
                 </Ext>
+                <a className="button buttonSecondary" href="#flow">
+                  See how it reasons
+                </a>
               </div>
             </div>
             <HeroGraph />
@@ -143,27 +133,20 @@ export default function Home() {
             <div>
               <p className="eyebrow">The problem</p>
               <h2 id="problem-title">AI systems are no longer isolated models.</h2>
+              <p className="problemThesis">{problemThesis}</p>
             </div>
-            <div>
-              <ol className="chain">
-                {problemChain.map(([subject, rest]) => (
-                  <li key={subject}>
-                    <span className="chainNode" aria-hidden="true" />
-                    <span>
-                      <strong>{subject}</strong> {rest}
-                    </span>
-                  </li>
-                ))}
-              </ol>
-              <p className="problemPunch">Risk can emerge through the relationships between them.</p>
-              <p className="problemCaveat">
-                Relationships describe what may be possible; on their own they do not establish exploitation.{" "}
-                <q>A topological connection is not automatically an exploitable path.</q>
-              </p>
-              <Source>
-                <Ext href={links.doc("01-manifesto.md")}>Artifact #1 — Manifesto</Ext>
-              </Source>
-            </div>
+            <figure className="problemFigure">
+              <ProblemConstellation />
+              <figcaption className="problemInvariant">
+                <strong>{topologyInvariant[0]}</strong> {topologyInvariant[1]}
+              </figcaption>
+            </figure>
+          </div>
+          <div className="shell">
+            <Source>
+              <Ext href={links.doc("01-manifesto.md")}>Artifact #1 — Manifesto</Ext> §2.2 (thesis), §4
+              (invariant); terms from its core proposition.
+            </Source>
           </div>
         </section>
 
@@ -174,66 +157,51 @@ export default function Home() {
               <p className="eyebrow">The reasoning chain</p>
               <h2 id="flow-title">From what exists to what can be defended.</h2>
               <p className="sectionLede">
-                Objects create a system description. Relationships establish how the objects
-                interact. Paths combine relationships under conditions. Authority and influence
-                explain how consequences can be caused. Evidence and controls determine what can be
-                concluded.
-              </p>
-              <p className="flowSpine">
                 The Core Conceptual Model calls this chain{" "}
                 <q>the intellectual spine of the methodology</q>.
               </p>
             </div>
 
-            <ol className="flowRail" aria-label="Canonical reasoning chain, Artifact #2 §0.10">
-              {chainGroups.map((g, gi) => (
-                <li
-                  key={g.stages.join("+")}
-                  className={g.stages.length > 1 ? "flowGroup flowGroupShared" : "flowGroup"}
-                  style={{ ["--i" as string]: gi }}
-                >
-                  <ol className="flowStages" start={g.start}>
-                    {g.stages.map((stage, si) => (
-                      <li key={stage} className="flowStep">
-                        <span className="flowIndex" aria-hidden="true">
-                          {String(g.start + si).padStart(2, "0")}
-                        </span>
-                        <span className="flowDot" aria-hidden="true" />
-                        <h3 className="flowStage">{stage}</h3>
-                      </li>
-                    ))}
-                  </ol>
-                  <p className="flowQuestion">{g.question}</p>
-                  <p className="flowConcept">{g.concept}</p>
+            {/* Node-link reasoning chain: the ordered list is the source of truth; connectors
+                and arrowheads are CSS borders. All nodes are equal: no numbering, no fill, no
+                progress. */}
+            <ol className="rcChain" aria-label="Canonical reasoning chain, Artifact #2 §0.10">
+              {canonicalReasoningChain.map((stage) => (
+                <li key={stage} className="rcStep">
+                  <span className="rcNode" aria-hidden="true" />
+                  <span className="rcStage">{stage}</span>
                 </li>
               ))}
             </ol>
+
+            <details className="dgDisclosure dgPanel">
+              <summary>
+                <span>Canonical reasoning questions</span>
+                <span className="summaryIcon" aria-hidden="true" />
+              </summary>
+              <table className="dgTable">
+                <caption className="visuallyHidden">Theory map, Artifact #2 §0.10</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Question</th>
+                    <th scope="col">Concept</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {theoryMap.map((row) => (
+                    <tr key={row.question}>
+                      <td className="rcQuestion">{row.question}</td>
+                      <td>{row.concept}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </details>
             <Source>
               stage names and order from the reasoning chain in{" "}
               <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 — Core Conceptual Model §0.10</Ext>;
-              questions and concepts from the same section’s theory map, whose final row covers both
-              Evidence and Decision.
+              questions and concepts are the same section’s theory-map table, verbatim.
             </Source>
-
-            <div className="flowLifecycle">
-              <div>
-                <h3>A separate lifecycle: the 13-phase Assessment Methodology</h3>
-                <p>
-                  The reasoning chain belongs to the Core Conceptual Model. Assessment fieldwork is
-                  governed separately by Artifact #7, which defines the controlled fieldwork lifecycle
-                  and gates without redefining upstream semantics.
-                </p>
-                <Source>
-                  <Ext href={links.doc("07-assessment-methodology.md")}>Artifact #7 — Assessment Methodology</Ext>;{" "}
-                  <Ext href={links.manifest}>METHODOLOGY_MANIFEST §1</Ext>
-                </Source>
-              </div>
-              <ol className="phaseList" aria-label="Assessment Methodology phases">
-                {assessmentPhases.map((p) => (
-                  <li key={p}>{p}</li>
-                ))}
-              </ol>
-            </div>
           </div>
         </section>
 
@@ -539,6 +507,114 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ───────────────────── Assessment lifecycle ───────────────────── */}
+        <section id="lifecycle" className="section lifecycle" aria-labelledby="lifecycle-title">
+          <div className="shell">
+            <div className="sectionHead">
+              <p className="eyebrow">Assessment lifecycle</p>
+              <h2 id="lifecycle-title">Thirteen controlled phases.</h2>
+              <p className="sectionLede">
+                Separate from the reasoning chain: Artifact #7 governs the controlled fieldwork
+                lifecycle and gates without redefining upstream semantics.
+              </p>
+            </div>
+
+            <p className="lcRule">
+              {lifecycleIntro} <strong>{phaseIterationRule}</strong>
+            </p>
+
+            {/* Two-row timeline (1–7, 8–13) joined by one return connector; vertical on small
+                screens. Square markers, all identical: no completion or progress state. */}
+            <ol className="lcPhases" aria-label="Assessment Methodology phases, Artifact #7 §0.11">
+              {assessmentPhases.map((p) => (
+                <li key={p.n} className="lcPhase">
+                  <span className="lcMarker" aria-hidden="true" />
+                  <span className="lcNum">
+                    <span className="visuallyHidden">Phase </span>
+                    {p.n}
+                  </span>{" "}
+                  <span className="lcName">{p.name}</span>
+                </li>
+              ))}
+            </ol>
+
+            <details className="dgDisclosure dgPanel">
+              <summary>
+                <span>Phase outcomes and gates</span>
+                <span className="summaryIcon" aria-hidden="true" />
+              </summary>
+              <table className="dgTable">
+                <caption className="dgCaption">Primary outcome of each phase (§0.11)</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Phase</th>
+                    <th scope="col">Primary outcome</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {assessmentPhases.map((p) => (
+                    <tr key={p.n}>
+                      <td>
+                        {p.n} {p.name}
+                      </td>
+                      <td>{p.outcome}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="dgNote">{exitCriteria.intro.join(" ")}</p>
+              <table className="dgTable">
+                <caption className="dgCaption">Gate tests (§0.12)</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Gate test</th>
+                    <th scope="col">Rule</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {exitCriteria.gates.map((g) => (
+                    <tr key={g.test}>
+                      <td>{g.test}</td>
+                      <td>{g.rule}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </details>
+
+            <div className="lcTypes">
+              <h3 id="assessment-types-title">Assessment types</h3>
+              <p className="small">Listed in Artifact #7 order; the order implies no priority.</p>
+              <ul className="chips lcTypeList" aria-labelledby="assessment-types-title">
+                {assessmentTypes.map((t) => (
+                  <li key={t.name}>{t.name}</li>
+                ))}
+              </ul>
+              <details className="dgDisclosure dgPanel">
+                <summary>
+                  <span>Assessment type definitions</span>
+                  <span className="summaryIcon" aria-hidden="true" />
+                </summary>
+                <dl className="lcTypeDefs">
+                  {assessmentTypes.map((t) => (
+                    <div key={t.name}>
+                      <dt>{t.name}</dt>
+                      <dd>{t.definition}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </details>
+            </div>
+
+            <Source>
+              phases, outcomes and iteration rule from{" "}
+              <Ext href={links.doc("07-assessment-methodology.md")}>Artifact #7 — Assessment Methodology §0.11</Ext>;
+              gate tests from §0.12; assessment types from §1.1–§1.10; the role of Artifact #7 from{" "}
+              <Ext href={links.manifest}>METHODOLOGY_MANIFEST §1</Ext>.
+            </Source>
+          </div>
+        </section>
+
         {/* ──────────────────────────── Scale ───────────────────────────── */}
         <section className="scale" aria-labelledby="scale-title">
           <div className="shell">
@@ -648,7 +724,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <aside className="gates" aria-labelledby="gates-title">
+            <aside id="status" className="gates" aria-labelledby="gates-title">
               <h3 id="gates-title">Release gates still pending</h3>
               <ul>
                 {pendingGates.map((g) => (
