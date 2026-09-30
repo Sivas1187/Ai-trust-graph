@@ -234,6 +234,50 @@ export default function Home() {
               </p>
               <div className="lensBody">
                 <div className="lensHub">
+                  {/* Wide screens only: a decorative, unlabelled network suggesting one shared
+                      graph. Eleven irregular nodes (no centre, not six), so no node stands for a
+                      domain; accent colours are for texture only. */}
+                  <svg
+                    className="lensNetwork"
+                    viewBox="16 10 172 286"
+                    preserveAspectRatio="xMidYMid meet"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <g className="lnEdges">
+                      <line x1="38" y1="40" x2="112" y2="22" />
+                      <line x1="112" y1="22" x2="168" y2="62" />
+                      <line x1="38" y1="40" x2="70" y2="96" />
+                      <line x1="112" y1="22" x2="70" y2="96" />
+                      <line x1="168" y1="62" x2="140" y2="120" />
+                      <line x1="70" y1="96" x2="140" y2="120" />
+                      <line x1="70" y1="96" x2="28" y2="150" />
+                      <line x1="70" y1="96" x2="100" y2="170" />
+                      <line x1="140" y1="120" x2="100" y2="170" />
+                      <line x1="140" y1="120" x2="176" y2="176" />
+                      <line x1="28" y1="150" x2="100" y2="170" />
+                      <line x1="28" y1="150" x2="56" y2="236" />
+                      <line x1="100" y1="170" x2="56" y2="236" />
+                      <line x1="100" y1="170" x2="132" y2="236" />
+                      <line x1="176" y1="176" x2="132" y2="236" />
+                      <line x1="56" y1="236" x2="92" y2="284" />
+                      <line x1="132" y1="236" x2="92" y2="284" />
+                      <line x1="168" y1="62" x2="176" y2="176" />
+                    </g>
+                    <g className="lnNodes">
+                      <circle className="lnC" cx="38" cy="40" r="6" />
+                      <circle className="lnI" cx="112" cy="22" r="5" />
+                      <circle className="lnG" cx="168" cy="62" r="7" />
+                      <circle className="lnI" cx="70" cy="96" r="7" />
+                      <circle className="lnA" cx="140" cy="120" r="5" />
+                      <circle className="lnC" cx="28" cy="150" r="5" />
+                      <circle className="lnI" cx="100" cy="170" r="8" />
+                      <circle className="lnC" cx="176" cy="176" r="6" />
+                      <circle className="lnG" cx="56" cy="236" r="6" />
+                      <circle className="lnI" cx="132" cy="236" r="5" />
+                      <circle className="lnC" cx="92" cy="284" r="6" />
+                    </g>
+                  </svg>
                   <svg className="lensEmblem" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
                     <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                       <path d="M16 22 L32 14 L48 24 M16 22 L26 44 L48 24 M26 44 L46 48" />

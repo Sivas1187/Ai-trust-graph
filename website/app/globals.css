@@ -1150,6 +1150,37 @@ h1 {
   height: 72px;
   color: var(--indigo);
 }
+/* Wide hub: a larger decorative network fills the tall centre column; the
+   small emblem is kept for the compact narrow hub. Colour is texture only. */
+.lensNetwork {
+  display: block;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 240px;
+}
+.lensHub:has(.lensNetwork) .lensEmblem {
+  display: none;
+}
+.lnEdges line {
+  stroke: color-mix(in srgb, var(--indigo) 45%, transparent);
+  stroke-width: 1.4;
+}
+.lnNodes circle {
+  fill: var(--surface);
+  stroke-width: 2;
+}
+.lnNodes .lnC {
+  stroke: var(--cyan);
+}
+.lnNodes .lnI {
+  stroke: var(--indigo);
+}
+.lnNodes .lnG {
+  stroke: var(--green);
+}
+.lnNodes .lnA {
+  stroke: #9a6b12; /* restrained amber for light surfaces */
+}
 .lensHubTitle {
   font-family: var(--font-display, system-ui), system-ui, sans-serif;
   font-size: 21px;
@@ -1354,6 +1385,12 @@ h1 {
     width: 48px;
     height: 48px;
   }
+  .lensNetwork {
+    display: none;
+  }
+  .lensHub:has(.lensNetwork) .lensEmblem {
+    display: block;
+  }
   .lensFacts {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     padding-top: 12px;
@@ -1373,6 +1410,12 @@ h1 {
 }
 @supports not (grid-template-columns: subgrid) {
   .lensBody {
+    display: block;
+  }
+  .lensNetwork {
+    display: none;
+  }
+  .lensHub:has(.lensNetwork) .lensEmblem {
     display: block;
   }
   .lensHub {
@@ -2620,6 +2663,14 @@ blockquote footer {
   .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
   .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
     border-left-color: GrayText;
+  }
+  /* Decorative hub network: system colours, so it stays visible and carries no colour meaning. */
+  .lnEdges line,
+  .lnNodes circle {
+    stroke: CanvasText;
+  }
+  .lnNodes circle {
+    fill: Canvas;
   }
   .rcStep:not(:last-child)::before {
     forced-color-adjust: none;
