@@ -1,5 +1,7 @@
 # PR #14 pixel-diff results (temporary review artifact)
 
+Re-run after the diagram colour pass: every unchanged section is still 0 px; the overlays in this folder show the colour-pass build.
+
 Main `3db314e` vs branch, element screenshots, reduced motion. A pixel counts as different when the summed RGB difference exceeds 24.
 Unchanged sections were compared **height-pinned**: on the branch, the hero, problem and reasoning sections were given main's exact rendered heights, and the new lifecycle section was hidden, so every later section starts at the same subpixel offset as on main.
 
