@@ -14,7 +14,7 @@ export type NavItem = {
  * Primary navigation.
  *
  * Desktop (> 900px): a quiet row of text links; the toggle is hidden by CSS.
- * Mobile (<= 900px): a disclosure pattern — a plain-text "Menu" button with aria-expanded
+ * Mobile (<= 900px): a disclosure pattern — a text-only "Menu" button (no icon) with aria-expanded
  * and aria-controls shows/hides the link list. Escape closes the menu and
  * returns focus to the button; choosing a link or clicking outside closes it.
  * No animation. Without JavaScript the <noscript> style shows the list inline
@@ -55,8 +55,7 @@ export function PrimaryNav({ items }: { items: NavItem[] }) {
         aria-controls={listId}
         onClick={() => setOpen((v) => !v)}
       >
-        <span className="navToggleIcon" aria-hidden="true" />
-        <span>Menu</span>
+        Menu
       </button>
       <ul id={listId}>
         {items.map((item) => (

@@ -28,7 +28,7 @@ Production baseline: `main` @ `7f6f631b3112b185c90810b51498b9ea9c53f5c3`.
 | 16 | 16-mobile-menu-open-390.png | Mobile menu open, 390 @2x |
 | 17 | 17-pr-a-cover-834.png | PR A first viewport, 834 × 1112 (tablet) |
 | 18 | 18-diff-prototype-vs-pr-a-1440.png | Pixel diff vs prototype, 1440 (magenta = RGB Δ > 24) — 0.33 % of pixels |
-| 19 | 19-diff-prototype-vs-pr-a-390.png | Pixel diff vs prototype, 390 @2x — 0.82 % of pixels |
+| 19 | 19-diff-prototype-vs-pr-a-390.png | Pixel diff vs prototype, 390 @2x — 0.75 % of pixels |
 | 20 | 20-side-by-side-prototype-vs-pr-a-1440.png | Prototype (left) vs PR A (right), 1440 |
 | 21 | 21-side-by-side-prototype-vs-pr-a-390.png | Prototype (left) vs PR A (right), 390 @2x |
 
@@ -76,5 +76,9 @@ the colophon hairline).
 
 Remaining pixel differences: sub-pixel ring positions (curated coordinates are
 rounded to whole pixels), glyph anti-aliasing, the colophon colour (PR A uses
-the existing, slightly darker `--muted` token), the mobile "Menu" button's
-two-hairline icon (kept as an affordance), and the nav "GitHub ↗" arrow glyph.
+the existing, slightly darker `--muted` token) and the nav "GitHub ↗" arrow
+glyph. The mobile "Menu" control is text-only, as in the prototype.
+
+Menu update (text-only control): 08, 09, 10, 12, 16, 17, 19 and 21 were
+re-captured; every other PR A capture was pixel-identical after the change
+and is unchanged.

@@ -409,10 +409,11 @@ h3 {
   .brand {
     font-size: 14px;
   }
+  /* Text only, as in the approved composition. Open/closed state is carried
+     by aria-expanded and the visible panel. */
   .navToggle {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
     min-height: 44px;
     padding: 8px 8px 8px 12px;
     border: 0;
@@ -430,32 +431,6 @@ h3 {
     outline-offset: 2px;
     box-shadow: var(--focus);
     border-radius: 6px;
-  }
-  /* Two hairlines; they become a close (×) mark when open. State is carried
-     by aria-expanded and the visible panel, never by the icon alone. */
-  .navToggleIcon {
-    position: relative;
-    order: 2;
-    width: 14px;
-    height: 7px;
-    border-block: 1px solid currentColor;
-  }
-  .primaryNav[data-open="true"] .navToggleIcon {
-    border-block-color: transparent;
-  }
-  .primaryNav[data-open="true"] .navToggleIcon::before,
-  .primaryNav[data-open="true"] .navToggleIcon::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 1px;
-    background: currentColor;
-    transform: translateY(-50%) rotate(45deg);
-  }
-  .primaryNav[data-open="true"] .navToggleIcon::after {
-    transform: translateY(-50%) rotate(-45deg);
   }
   .primaryNav ul {
     display: none;
