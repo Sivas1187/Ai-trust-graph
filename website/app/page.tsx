@@ -1,5 +1,5 @@
 import { BreakpointExplorer } from "./components/BreakpointExplorer";
-import { HeroGraph } from "./components/HeroGraph";
+import { Cover } from "./components/Cover";
 import { PrimaryNav, type NavItem } from "./components/PrimaryNav";
 import { ProblemConstellation } from "./components/ProblemConstellation";
 import {
@@ -18,7 +18,6 @@ import {
   links,
   manifestGatePrinciple,
   methodologyAuthor,
-  methodologySummary,
   nonNumericResultStates,
   notValidated,
   pathRoles,
@@ -35,13 +34,21 @@ import {
   unknownVsNotTested,
 } from "./content";
 
+/**
+ * Visual-reset navigation: Method · Domains · Assurance · Source · GitHub.
+ * Each item targets a section that exists today; check-links fails the build
+ * on any unresolved fragment.
+ * TODO(visual-reset): retarget when the redesigned acts land —
+ *   Method    → the reasoning act (currently #flow, the reasoning chain);
+ *   Assurance → the assurance act (currently #evidence, where evidence,
+ *               UNKNOWN, breakpoints and lifecycle begin);
+ *   Source    → the canonical-source act (currently #methodology).
+ */
 const navItems: NavItem[] = [
-  { href: "#flow", label: "Reasoning" },
+  { href: "#flow", label: "Method" },
   { href: "#domains", label: "Domains" },
-  { href: "#evidence", label: "Evidence" },
-  { href: "#lifecycle", label: "Lifecycle" },
-  { href: "#status", label: "Status" },
-  { href: "#review", label: "Contribute" },
+  { href: "#evidence", label: "Assurance" },
+  { href: "#methodology", label: "Source" },
   { href: links.repo, label: "GitHub", srSuffix: "(canonical source)", external: true },
 ];
 
@@ -82,18 +89,19 @@ export default function Home() {
       </a>
 
       <header className="siteHeader">
-        <div className="shell headerInner">
+        <div className="headerInner">
           <a className="brand" href="#top" aria-label="AI Trust Graph — back to top">
-            {/* PROVISIONAL brand mark: placeholder pending a separate visual-brand review. */}
-            <svg className="brandMark" viewBox="0 0 64 64" aria-hidden="true">
-              <g stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none">
+            {/* PROVISIONAL brand mark: placeholder pending a separate visual-brand review.
+                Hollow nodes, matching the graph grammar. */}
+            <svg className="brandMark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <g stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" fill="none">
                 <path d="M16 22 L32 14 L48 24 M16 22 L26 44 L48 24 M26 44 L46 48" />
               </g>
-              <g fill="currentColor">
-                <circle cx="16" cy="22" r="5.5" />
+              <g className="brandMarkNodes" stroke="currentColor" strokeWidth="3.5">
+                <circle cx="16" cy="22" r="5" />
                 <circle cx="32" cy="14" r="4.5" />
-                <circle cx="48" cy="24" r="5.5" />
-                <circle cx="26" cy="44" r="5.5" />
+                <circle cx="48" cy="24" r="5" />
+                <circle cx="26" cy="44" r="5" />
               </g>
               <circle cx="46" cy="48" r="5" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="3 2.5" />
             </svg>
@@ -104,37 +112,8 @@ export default function Home() {
       </header>
 
       <main id="main" tabIndex={-1}>
-        {/* ───────────────────────────── Hero ───────────────────────────── */}
-        <section id="top" className="hero" aria-labelledby="hero-title">
-          <div className="shell heroGrid">
-            <div className="heroCopy">
-              <p className="statusPill">
-                <span className="statusDot" aria-hidden="true" />
-                <span className="statusText">
-                  <strong>{release.status}</strong>
-                  <span className="statusSep" aria-hidden="true">·</span>
-                  <span className="visuallyHidden">, </span>
-                  <span className="nowrap">Bundle {release.bundle}</span>
-                  <span className="statusSep" aria-hidden="true">·</span>
-                  <span className="visuallyHidden">, </span>
-                  <span className="nowrap">Independent review pending</span>
-                </span>
-              </p>
-              <h1 id="hero-title">AI Trust Graph</h1>
-              <p className="lede">{methodologySummary}</p>
-              <div className="actions">
-                <Ext className="button buttonPrimary" href={links.repo}>
-                  Read the canonical methodology
-                  <span className="visuallyHidden"> on GitHub</span>
-                </Ext>
-                <a className="button buttonSecondary" href="#flow">
-                  See how it reasons
-                </a>
-              </div>
-            </div>
-            <HeroGraph />
-          </div>
-        </section>
+        {/* ─────────────────────────── Act I · Cover ──────────────────────── */}
+        <Cover />
 
         {/* ──────────────────────────── Problem ─────────────────────────── */}
         <section className="dark problem" aria-labelledby="problem-title">

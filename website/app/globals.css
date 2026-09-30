@@ -1,6 +1,10 @@
 /* AI Trust Graph — public methodology site
    Visual system: warm paper + graphite, thin graph lines, restrained cyan/green/indigo.
-   No information is carried by colour alone; every state also has a text label. */
+   No information is carried by colour alone; every state also has a text label.
+   Visual reset (in progress): research-monograph direction — serif display
+   (Source Serif 4), Inter body, IBM Plex Mono metadata; see DESIGN_BRIEF.md.
+   Redesigned acts use the "vr" layout tokens and the graph-field grammar;
+   sections not yet redesigned keep their original rules unchanged. */
 
 :root {
   --paper: #f6f6f1;
@@ -19,14 +23,32 @@
   --on-dark-muted: #a8b5b0;
   --line-dark: #2e3b38;
 
+  /* Colour roles. cyan: reading-path emphasis and selected links.
+     indigo: structural detail. green / amber: very sparse decorative texture.
+     None of them ever means maturity, safety, severity, quality, rank or pass/fail. */
   --cyan: #0a6c7c;
-  --cyan-soft: #d9eff1;
   --cyan-on-dark: #6fd6e3;
   --green: #17704c;
   --green-on-dark: #7fdcb1;
   --indigo: #4146b8;
   --indigo-on-dark: #aeb1ff;
+  --amber: #9a6b12;
   --amber-on-dark: #f0c674;
+  --hairline: #c9ccc3; /* editorial rules: cover foot, link underlines */
+
+  /* Graph field (light ground). */
+  --gf-edge: rgba(16, 22, 21, 0.15);
+  --gf-node: rgba(16, 22, 21, 0.34);
+  --gf-path-quiet: rgba(16, 22, 21, 0.2);
+
+  /* Visual-reset grid: margin column, text column start, right margin. */
+  --header-h: 72px;
+  --vr-edge: clamp(20px, 3.9vw, 56px);
+  --vr-margin: clamp(24px, 13.9vw, 200px);
+  --vr-right: clamp(24px, 8.3vw, 120px);
+
+  /* Visual-reset type scale (applied only where a section is redesigned). */
+  --type-cover: clamp(68px, 9.17vw, 132px);
 
   --radius: 18px;
   --gutter: 16px;
@@ -45,7 +67,7 @@
 }
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-padding-top: 84px;
+  scroll-padding-top: 16px; /* the header is no longer sticky */
 }
 @media (prefers-reduced-motion: no-preference) {
   html {
@@ -314,180 +336,101 @@ h3 {
   white-space: nowrap;
 }
 
-/* ───────────── Buttons ───────────── */
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 36px;
-}
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 12px 20px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 15.5px;
-  text-decoration: none;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-}
-.buttonPrimary {
-  background: var(--ink);
-  color: var(--paper);
-}
-.buttonPrimary:hover {
-  background: #26302e;
-}
-.buttonSecondary {
-  border: 1px solid var(--line-strong);
-  color: var(--ink);
-  background: transparent;
-}
-.buttonSecondary:hover {
-  border-color: var(--ink);
-}
-.buttonInverse {
-  background: var(--on-dark);
-  color: var(--graphite);
-}
-.buttonInverse:hover {
-  background: #ffffff;
-}
-.buttonGhost {
-  border: 1px solid var(--line-dark);
-  color: var(--on-dark);
-}
-.buttonGhost:hover {
-  border-color: var(--on-dark-muted);
-}
-
-/* ───────────── Header ───────────── */
+/* ───────────── Header (visual reset) ─────────────
+   Quiet editorial running head: brand left, text links right, no chrome.
+   Not sticky: the cover is a title page, and the header scrolls with it. */
 .siteHeader {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 50;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter: saturate(1.4) blur(10px);
-  -webkit-backdrop-filter: saturate(1.4) blur(10px);
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  background: var(--paper);
 }
 .headerInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  min-height: 68px;
+  min-height: var(--header-h);
+  padding: 0 var(--vr-right) 0 var(--vr-edge);
 }
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-display, system-ui), system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  letter-spacing: -0.02em;
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
   text-decoration: none;
   white-space: nowrap;
 }
 .brandMark {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   color: var(--ink);
+}
+.brandMarkNodes {
+  fill: var(--paper);
 }
 .primaryNav ul {
   display: flex;
-  gap: 4px;
+  gap: 34px;
 }
 .primaryNav a {
   position: relative; /* contains the visually-hidden span */
   display: inline-block;
-  padding: 8px 12px;
+  padding: 10px 0;
   font-size: 14.5px;
   color: var(--ink-2);
   text-decoration: none;
-  border-radius: 8px;
 }
 .primaryNav a:hover {
   color: var(--ink);
-  background: var(--paper-2);
-}
-.primaryNav .navGithub {
-  border: 1px solid var(--line-strong);
-  margin-left: 8px;
+  text-decoration: underline;
+  text-decoration-color: var(--cyan);
+  text-underline-offset: 6px;
 }
 
 .nowrap {
   white-space: nowrap;
 }
-/* Menu toggle: hidden on desktop, where the full link row is unchanged. */
+/* Menu toggle: hidden on desktop. */
 .navToggle {
   display: none;
 }
 
-/* Mobile / narrow: compact disclosure menu (see components/PrimaryNav.tsx). */
+/* Mobile / narrow: plain-text "Menu" disclosure (see components/PrimaryNav.tsx). */
 @media (max-width: 900px) {
-  .siteHeader {
-    position: relative;
+  :root {
+    --header-h: 60px;
   }
   .headerInner {
-    min-height: 60px;
     gap: 12px;
+    padding: 0 12px 0 20px;
   }
+  .brand {
+    font-size: 14px;
+  }
+  /* Text only, as in the approved composition. Open/closed state is carried
+     by aria-expanded and the visible panel. */
   .navToggle {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
     min-height: 44px;
-    padding: 8px 14px;
-    border: 1px solid var(--line-strong);
-    border-radius: 10px;
-    background: var(--surface);
-    color: var(--ink);
+    padding: 8px 8px 8px 12px;
+    border: 0;
+    background: transparent;
+    color: var(--ink-2);
     font: inherit;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 14.5px;
     cursor: pointer;
+  }
+  .navToggle:hover {
+    color: var(--ink);
   }
   .navToggle:focus-visible {
     outline: 2px solid transparent;
     outline-offset: 2px;
     box-shadow: var(--focus);
-  }
-  .navToggleIcon {
-    position: relative;
-    width: 16px;
-    height: 10px;
-    border-block: 1.5px solid currentColor;
-  }
-  .navToggleIcon::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 1.5px;
-    background: currentColor;
-    transform: translateY(-50%);
-  }
-  /* Open state: the icon becomes a close (×) mark. State is also carried by
-     aria-expanded and the visible panel, never by the icon alone. */
-  .primaryNav[data-open="true"] .navToggleIcon {
-    border-block-color: transparent;
-  }
-  .primaryNav[data-open="true"] .navToggleIcon::after {
-    transform: translateY(-50%) rotate(45deg);
-  }
-  .primaryNav[data-open="true"] .navToggleIcon::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 1.5px;
-    background: currentColor;
-    transform: translateY(-50%) rotate(-45deg);
+    border-radius: 6px;
   }
   .primaryNav ul {
     display: none;
@@ -499,10 +442,10 @@ h3 {
     right: 0;
     top: 100%;
     z-index: 60;
-    padding: 8px var(--gutter) 16px;
+    padding: 4px 20px 16px;
     background: var(--paper);
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 18px 30px -24px rgba(15, 21, 20, 0.45);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
   }
   .primaryNav li + li {
     border-top: 1px solid var(--line);
@@ -511,213 +454,239 @@ h3 {
     display: flex;
     align-items: center;
     min-height: 48px;
-    padding: 12px 4px;
+    padding: 12px 0;
     font-size: 16px;
-    border-radius: 6px;
-  }
-  .primaryNav a:hover {
-    background: transparent;
     color: var(--ink);
   }
-  .primaryNav .navGithub {
-    border: 0;
-    margin-left: 0;
-  }
-  .primaryNav .navGithub::after {
-    content: "↗";
-    margin-left: 6px;
-    color: var(--muted);
-  }
-  html {
-    scroll-padding-top: 16px;
-  }
 }
 
-/* ───────────── Hero ───────────── */
-.hero {
-  padding: clamp(36px, 5vw, 64px) 0 clamp(72px, 9vw, 112px);
-  background:
-    radial-gradient(900px 480px at 85% 30%, color-mix(in srgb, var(--cyan-soft) 60%, transparent), transparent 70%),
-    var(--paper);
+/* ───────────── Graph field (shared grammar) ─────────────
+   components/GraphField.tsx. Hollow nodes, hairline edges, one restrained
+   cyan reading path, sparse indigo / green / amber texture. Decorative only:
+   colour never encodes maturity, safety, severity, quality, rank or pass/fail. */
+.graphField {
+  display: block;
+  pointer-events: none;
 }
-.heroGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: clamp(40px, 5vw, 72px);
-  align-items: center;
+.graphField line,
+.graphField polyline,
+.graphField circle {
+  vector-effect: non-scaling-stroke;
 }
-.statusPill {
-  display: inline-flex;
-  max-width: 100%;
-  align-items: center;
-  gap: 10px;
-  padding: 7px 14px 7px 12px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--surface);
-  font-size: 13px;
+.gfEdges line {
+  stroke: var(--gf-edge);
+  stroke-width: 1;
+}
+.gfNodes circle {
+  fill: var(--paper);
+  stroke: var(--gf-node);
+  stroke-width: 1.25;
+}
+.gfNodes .gfNode-indigo {
+  stroke: var(--indigo);
+  stroke-opacity: 0.8;
+}
+.gfNodes .gfNode-green {
+  stroke: var(--green);
+  stroke-opacity: 0.75;
+}
+.gfNodes .gfNode-amber {
+  stroke: var(--amber);
+  stroke-opacity: 0.8;
+}
+.gfPath polyline {
+  fill: none;
+  stroke-linejoin: round;
+}
+.gfPathLine {
+  stroke: var(--cyan);
+  stroke-width: 1.25;
+  stroke-opacity: 0.55;
+}
+.gfPathQuiet {
+  stroke: var(--gf-path-quiet);
+  stroke-width: 1;
+}
+.gfNodes .gfPathNode {
+  stroke: var(--cyan);
+  stroke-opacity: 0.7;
+}
+
+/* ───────────── Act I · Cover ─────────────
+   components/Cover.tsx. The frame is at most 1440px wide and centred, so the
+   curated field and the copy keep their relationship on wide screens; the
+   field is drawn at 1:1 and cropped (never stretched) on narrower ones. The
+   copy is bottom-anchored in normal flow below a reserved, node-free band
+   (--cover-field-h / --cover-copy-top), so wrapping or zoom grows the cover
+   downward instead of pushing type into the graph. */
+.cover {
+  --cover-h: 828px; /* 900px first viewport at 1440 × 900, less the 72px header */
+  --cover-copy-top: 308px; /* the field keeps this band and below free of nodes */
+  --cover-foot-h: 88px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--cover-h);
+  overflow: hidden;
+  background: var(--paper);
+}
+.coverFrame {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: var(--cover-copy-top) var(--vr-right) 44px var(--vr-margin);
+}
+.coverField {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(var(--cover-h) - var(--cover-foot-h));
+}
+.coverFieldMobile {
+  display: none;
+}
+.coverCopy {
+  position: relative;
+}
+.coverTitle {
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: var(--type-cover);
+  line-height: 0.96;
+  letter-spacing: -0.024em;
+  margin-left: -0.045em; /* optical alignment of the A with the text column */
+  text-wrap: wrap;
+}
+.coverProp {
+  margin-top: 30px;
+  max-width: 31ch;
+  text-wrap: wrap; /* the approved composition's line breaks, not the site-wide "pretty" */
+  font-size: 22px;
+  line-height: 1.5;
   color: var(--ink-2);
-  margin-bottom: 28px;
 }
-.statusText {
+.coverLinks {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  min-width: 0;
+  gap: 12px 40px;
+  margin-top: 30px;
+  font-size: 16.5px;
 }
-.statusPill strong {
-  font-weight: 600;
-  color: var(--ink);
+.coverLinks a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--hairline);
 }
-.statusDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 2px solid var(--green);
-  flex: none;
+.coverLinks a:hover {
+  text-decoration-color: currentColor;
 }
-.statusSep {
-  margin: 0 7px;
+.coverLinks .coverLinkPrimary {
+  text-decoration-color: var(--cyan);
+}
+.coverFoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: var(--cover-foot-h);
+  border-top: 1px solid var(--hairline);
+  background: var(--paper);
+  padding: 16px var(--vr-right) 16px calc(max(0px, (100% - 1440px) / 2) + var(--vr-margin));
+}
+.colophon {
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+.colophonGroup > span:not(.colophonSep) {
+  white-space: nowrap;
+}
+.colophonSep {
   color: var(--line-strong);
 }
-h1 {
-  font-size: clamp(40px, 5vw, 66px);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-  font-weight: 600;
-  max-width: 16ch;
+
+@media (max-width: 600px) {
+  .cover {
+    --cover-h: 784px; /* 844px first viewport at 390 × 844, less the 60px header */
+    --cover-copy-top: 300px;
+    --cover-foot-h: 0px;
+  }
+  .coverFrame {
+    padding: var(--cover-copy-top) 32px 56px 24px;
+  }
+  .coverFieldDesktop {
+    display: none;
+  }
+  .coverFieldMobile {
+    display: block;
+    height: var(--cover-copy-top);
+  }
+  .coverTitle {
+    line-height: 0.98;
+    margin-left: -0.04em;
+  }
+  .coverProp {
+    margin-top: 20px;
+    max-width: none;
+    font-size: 18px;
+  }
+  .coverLinks {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  .coverFoot {
+    display: block;
+    padding: 18px 24px 28px;
+  }
+  .colophon {
+    font-size: 12px;
+    line-height: 1.95;
+    letter-spacing: 0.015em;
+  }
+  /* Two lines: status · bundle / date · limitation — no line starts with a separator. */
+  .colophonGroup {
+    display: block;
+  }
+  .colophonSepMid {
+    display: none;
+  }
 }
-.lede {
-  margin-top: 28px;
-  font-size: clamp(17px, 1.6vw, 20px);
-  line-height: 1.6;
-  color: var(--ink-2);
-  max-width: 600px;
+@media (max-width: 359px) {
+  /* Too narrow for two items per line: one item per line, no separators. */
+  .colophonGroup > span:not(.colophonSep) {
+    display: block;
+  }
+  .colophonSep {
+    display: none;
+  }
 }
 
-.heroGraph {
-  background: var(--graphite);
-  color: var(--on-dark);
-  border-radius: 24px;
-  padding: 18px 18px 16px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 40px 80px -30px rgba(15, 21, 20, 0.35);
-}
-.heroGraphSvg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.gridLine {
-  fill: none;
-  stroke: #ffffff;
-  stroke-opacity: 0.045;
-  stroke-width: 1;
-}
-.boundary rect {
-  fill: rgba(174, 177, 255, 0.05);
-  stroke: var(--indigo-on-dark);
-  stroke-opacity: 0.55;
-  stroke-dasharray: 5 5;
-}
-.boundary text {
-  fill: var(--indigo-on-dark);
+/* ───────────── Marginalia (citation primitives) ─────────────
+   components/Marginalia.tsx. Used by acts as they are redesigned. */
+.marginRef {
   font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.12em;
-}
-.edge line {
-  stroke: #7f9892;
-  stroke-width: 1.3;
-}
-.arrowHead {
-  fill: #7f9892;
-}
-.edgeUnknown line {
-  stroke: var(--amber-on-dark);
-  stroke-dasharray: 4 5;
-}
-.arrowHeadUnknown {
-  fill: var(--amber-on-dark);
-}
-.edgeLabel {
-  fill: var(--on-dark-muted);
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 10.5px;
-  paint-order: stroke;
-  stroke: var(--graphite);
-  stroke-width: 5px;
-}
-.edgeUnknown .edgeLabel {
-  fill: var(--amber-on-dark);
-}
-.node rect {
-  fill: var(--graphite-2);
-  stroke: #4c605b;
-  stroke-width: 1;
-}
-.node text {
-  fill: var(--on-dark);
-  font-family: var(--font-body, system-ui), system-ui, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-}
-.nodeTarget rect {
-  fill: #1c2230;
-  stroke: var(--indigo-on-dark);
-}
-.heroGraph figcaption {
-  margin-top: 10px;
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.5;
-  color: var(--on-dark-muted);
+  color: var(--muted);
 }
-.heroGraph figcaption .tag {
-  color: var(--amber-on-dark);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .edge line {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: draw 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: calc(0.35s + var(--i) * 0.14s);
-  }
-  .edgeUnknown line {
-    stroke-dasharray: 4 5;
-    stroke-dashoffset: 0;
-    animation: fadeIn 0.8s ease forwards;
-    animation-delay: 1.4s;
-    opacity: 0;
-  }
-  .node {
-    opacity: 0;
-    animation: fadeIn 0.6s ease forwards;
-    animation-delay: calc(var(--i) * 0.08s);
-  }
-  .edgeLabel {
-    opacity: 0;
-    animation: fadeIn 0.6s ease forwards;
-    animation-delay: 1.2s;
-  }
-}
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-@media (max-width: 900px) {
-  .heroGrid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  h1 {
-    max-width: 16ch;
-  }
+.figureNote {
+  font-family: var(--font-serif-italic), var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.4;
+  color: var(--muted);
 }
 
 /* ───────────── Problem ───────────── */
@@ -2604,17 +2573,6 @@ blockquote footer {
   body {
     font-size: 16px;
   }
-  .actions .button {
-    width: 100%;
-  }
-  .statusPill {
-    font-size: 12px;
-    border-radius: 14px;
-    align-items: flex-start;
-  }
-  .statusDot {
-    margin-top: 5px;
-  }
   .sectionHead {
     margin-bottom: 40px;
   }
@@ -2663,6 +2621,25 @@ blockquote footer {
   .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
   .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
     border-left-color: GrayText;
+  }
+  /* Graph field: decorative, so it recedes to GrayText; the reading path and
+     accent nodes lose their colour (they never carried meaning). */
+  .gfEdges line,
+  .gfPathQuiet {
+    stroke: GrayText;
+  }
+  .gfNodes circle,
+  .gfNodes circle[class] {
+    fill: Canvas;
+    stroke: GrayText;
+    stroke-opacity: 1;
+  }
+  .gfPathLine {
+    stroke: GrayText;
+    stroke-opacity: 1;
+  }
+  .brandMarkNodes {
+    fill: Canvas;
   }
   /* Decorative hub network: system colours, so it stays visible and carries no colour meaning. */
   .lnEdges line,

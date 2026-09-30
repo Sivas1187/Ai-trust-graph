@@ -10,6 +10,7 @@ import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const outDir = resolve(dirname(fileURLToPath(import.meta.url)), "..", "out");
+const manifestPath = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..", "METHODOLOGY_MANIFEST.md");
 
 const forbidden = [
   /industry[- ]standard/i,
@@ -102,10 +103,32 @@ const evidenceGrades = [
   "E5 — Direct technical and representative evidence",
 ];
 
+// Cover (visual reset): the approved proposition and the primary navigation, in order.
+const coverProposition =
+  "An open methodology for reasoning about connected AI systems through graph structure, controls and evidence.";
+const primaryNav = ["Method", "Domains", "Assurance", "Source", "GitHub"];
+
+// Release facts the Cover colophon must repeat, read from the canonical manifest header.
+const manifest = readFileSync(manifestPath, "utf8");
+const manifestField = (label) => manifest.match(new RegExp(`^\\*\\*${label}:\\*\\*\\s*(.+?)\\s*$`, "m"))?.[1];
+const manifestRelease = {
+  bundle: manifestField("Bundle identifier"),
+  status: manifestField("Status"),
+  snapshot: manifestField("Snapshot date"),
+};
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const longDate = (iso) => {
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${d} ${months[m - 1]} ${y}`;
+};
+
 // Deliberate negations that are required disclosures.
 const allowedContexts = [
   /not a certification program, an accreditation body, a legal opinion, or a guarantee of AI security, safety or compliance/i,
-  /AI Trust Graph is not independently validated/i,
+  // "AI Trust Graph is not independently validated." (Status) and the Cover
+  // colophon's "Not independently validated". Only the negated form is allowed;
+  // any other "independently validated" still fails.
+  /\bnot independently validated\b/i,
   /no single overall trust score/i,
   /never a single overall trust score/i,
 ];
@@ -115,6 +138,17 @@ const html = readdirSync(outDir)
   .map((f) => [f, readFileSync(join(outDir, f), "utf8")]);
 
 const errors = [];
+for (const [k, v] of Object.entries(manifestRelease)) {
+  if (!v) errors.push(`METHODOLOGY_MANIFEST.md: could not read the ${k} header field`);
+}
+const visibleText = (fragment) =>
+  fragment
+    .replace(/<span class="visuallyHidden">[\s\S]*?<\/span>/g, "")
+    .replace(/<!-- -->/g, "")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&amp;/g, "&")
+    .replace(/\s+/g, " ")
+    .trim();
 for (const [file, raw] of html) {
   let text = raw
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -128,6 +162,45 @@ for (const [file, raw] of html) {
     for (const phrase of required) {
       if (!text.toLowerCase().includes(phrase.toLowerCase())) errors.push(`${file}: required canonical wording missing: "${phrase}"`);
     }
+    // Cover (Act I): title, approved proposition, links, and a colophon whose
+    // release facts match the METHODOLOGY_MANIFEST header.
+    const cover = raw.match(/<section id="top" class="cover"[\s\S]*?<\/section>/)?.[0] ?? "";
+    if (!cover) errors.push(`${file}: Cover section (#top.cover) not found`);
+    else {
+      const title = visibleText(cover.match(/<h1 id="hero-title" class="coverTitle">([\s\S]*?)<\/h1>/)?.[1] ?? "");
+      if (title !== "AI Trust Graph") errors.push(`${file}: Cover title is "${title}", expected "AI Trust Graph"`);
+      const prop = visibleText(cover.match(/<p class="coverProp">([\s\S]*?)<\/p>/)?.[1] ?? "");
+      if (prop !== coverProposition) errors.push(`${file}: Cover proposition is "${prop}", expected "${coverProposition}"`);
+      const coverLinks = [...cover.matchAll(/<a href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)].map((m) => [m[1], visibleText(m[2])]);
+      const wantLinks = [
+        ["https://github.com/Sivas1187/Ai-trust-graph", "Read the methodology ↗"],
+        ["#flow", "How it reasons ↓"],
+      ];
+      if (JSON.stringify(coverLinks) !== JSON.stringify(wantLinks)) {
+        errors.push(`${file}: Cover links are ${JSON.stringify(coverLinks)}, expected ${JSON.stringify(wantLinks)}`);
+      }
+      const colophon = visibleText(cover.match(/<p class="colophon">([\s\S]*?)<\/p>/)?.[1] ?? "");
+      const wantColophon = `${manifestRelease.status} · Bundle ${manifestRelease.bundle} · ${longDate(manifestRelease.snapshot ?? "0-1-1")} · Not independently validated`;
+      if (colophon !== wantColophon) errors.push(`${file}: Cover colophon is "${colophon}", expected "${wantColophon}" (from METHODOLOGY_MANIFEST.md)`);
+      if (!cover.includes(`<time dateTime="${manifestRelease.snapshot}">`)) {
+        errors.push(`${file}: Cover colophon date is not machine-readable as the manifest snapshot ${manifestRelease.snapshot}`);
+      }
+      if (/statusPill|class="button/.test(cover)) errors.push(`${file}: Cover contains a status pill or button styling`);
+    }
+    // Graph fields are decorative: hidden from assistive technology, never labelled.
+    const fields = [...raw.matchAll(/<svg class="graphField[^"]*"[^>]*>[\s\S]*?<\/svg>/g)].map((m) => m[0]);
+    if (fields.length < 2) errors.push(`${file}: expected the desktop and mobile Cover graph fields, found ${fields.length}`);
+    for (const f of fields) {
+      if (!/aria-hidden="true"/.test(f.slice(0, f.indexOf(">")))) errors.push(`${file}: a graph field is not aria-hidden`);
+      if (/<text|<title|<desc/.test(f)) errors.push(`${file}: a decorative graph field contains text`);
+    }
+    // Primary navigation labels, in order.
+    const nav = raw.match(/<nav aria-label="Primary"[\s\S]*?<\/nav>/)?.[0] ?? "";
+    const navLabels = [...nav.matchAll(/<a [^>]*>([\s\S]*?)<\/a>/g)].map((m) => visibleText(m[1]).replace(/\s*↗$/, ""));
+    if (navLabels.join(" > ") !== primaryNav.join(" > ")) {
+      errors.push(`${file}: primary navigation is "${navLabels.join(" > ")}", expected "${primaryNav.join(" > ")}"`);
+    }
+
     // Canonical chain order (Artifact #2 §0.10), read from the rendered diagram nodes.
     const stages = [...raw.matchAll(/<span class="rcStage">([^<]+)<\/span>/g)].map((m) => m[1].replace(/&amp;/g, "&"));
     const expected = required.slice(0, 9);

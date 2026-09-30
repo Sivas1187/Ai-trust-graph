@@ -11,6 +11,62 @@ The site should feel like a modern AI-security research initiative:
 
 Avoid generic cybersecurity tropes: hacker imagery, matrix code, glowing padlocks, stock AI brains and excessive neon.
 
+## Visual reset: research-monograph direction (in progress)
+
+Owner-approved direction for the visual reset, delivered in slices on the
+`website-visual-reset` integration branch. The approved reference is the refined
+prototype (`website/review-artifacts/visual-reset-prototype/*-refined.png` on the
+`visual-reset-prototype-review` branch). Implemented so far: the system
+foundation, header/navigation and the Cover (Act I). Every other section keeps
+its previous design until its own reset PR; during construction the
+integration branch is intentionally mixed.
+
+- **Positioning.** The site reads as a research monograph about a methodology:
+  a title page, then acts, each with one idea, typographic rather than
+  card-driven.
+- **Typography roles.**
+  - Display: Source Serif 4 (SIL OFL 1.1), self-hosted from
+    `app/fonts/source-serif-4/` via `next/font/local`; optical sizing on.
+    Cover title `--type-cover` (68px at 390 → 132px at 1440).
+  - Body: Inter; 18–22px where a section is redesigned (Cover proposition 22px
+    desktop, 18px mobile). Sections not yet redesigned keep their sizes.
+  - Metadata and identifiers only: IBM Plex Mono, 12–14px (Cover colophon
+    12.5px desktop, 12px mobile).
+  - Inter Tight stays until the remaining sections are redesigned (they still
+    use it for headings).
+- **Grid.** A left margin column (`--vr-edge`, up to 56px) for running head
+  and marginal references; a text column starting at `--vr-margin` (up to
+  200px); a right margin `--vr-right` (up to 120px). Composition frames are at
+  most 1440px wide and centred.
+- **Colour roles.** Paper `--paper`, graphite `--graphite`, near-black
+  `--ink`; cyan = the reading path and the primary link; indigo = structural
+  detail; green / amber = very sparse decorative texture. No gradients. Colour
+  never encodes maturity, safety, severity, quality, ranking or pass/fail.
+  Forced-colours mode uses system colours (decorative graph → GrayText).
+- **Graph system** (`components/GraphField.tsx`). Hollow nodes, hairline edges,
+  one restrained cyan reading path whose segments nearest the type stay neutral,
+  sparse accent nodes. No labels, glow, shadows, gradients, enclosures or
+  animation. Coordinates are curated data (`app/graph/`), separately composed
+  for desktop and mobile, never generated. Decorative fields are `aria-hidden`
+  and must never cross or obscure type; layouts reserve node-free bands for
+  copy.
+- **Cover composition** (`components/Cover.tsx`). Off-white title page: the
+  graph field in the upper region, the large serif "AI Trust Graph", the
+  approved proposition, two plain text links (Read the methodology ↗ ·
+  How it reasons ↓), and a running colophon under a full-width hairline. The
+  copy is bottom-anchored to the hairline, left-aligned on the text column; not
+  centred. Mobile is its own composition: cropped topology above, a two-line
+  title, stacked links, and a separate two-line metadata foot; the cyan path
+  leaves the cover through the right edge rather than running as a rail.
+- **Card and chrome reduction.** No pills, badges, buttons, framed graph cards,
+  drop shadows or decorative enclosures in redesigned sections; text links and
+  hairline rules carry the structure.
+- **Citation primitives** (`components/Marginalia.tsx`). `MarginReference`
+  (canonical-source citation in the margin column on wide screens, at the end
+  of the act on narrow ones; replaces "Source:" lines as acts are redesigned)
+  and `FigureNote` (a quiet italic caption such as "Illustrative topology").
+  Introduced for the upcoming acts; the Cover carries no citation.
+
 ## Signature interaction
 
 The visual identity is the graph.
@@ -36,7 +92,9 @@ The graph is not decorative. Where motion is used, it must reinforce methodology
 
 ## Homepage sequence
 
-1. Hero - methodology name, README description, status pill, canonical-source and "See how it reasons" CTAs, synthetic graph
+(Current sequence. Item 1 is redesigned; items 2–12 are unchanged until their visual-reset PRs.)
+
+1. Cover (visual reset, Act I) - methodology name, approved proposition, "Read the methodology ↗" and "How it reasons ↓" text links, decorative graph field, running colophon (status, bundle, snapshot date, not independently validated)
 2. Problem - "AI systems are no longer isolated models", illustrative constellation, topology invariant
 3. Reasoning chain - the nine-stage canonical Artifact #2 §0.10 chain as equal nodes with directional connectors; theory-map table in one disclosure
 4. Six domains - graph-centred lens model: the shared graph with six equal domain cards (D1-D3 | graph | D4-D6 on wide screens; graph first on narrow), capabilities in disclosures, labelled Explanatory
