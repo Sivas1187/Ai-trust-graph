@@ -19,7 +19,9 @@ import { MarginReference } from "./Marginalia";
  *   a  Authority and Influence — "Access is not authority." (§3.6, §5.2)
  *   b  Controls — control breakpoints (§1.8, §6.3, §6.6)
  *   c  Evidence — continues in the Evidence section (not redesigned yet)
- *   d  Decision — continues in the UNKNOWN section (not redesigned yet)
+ *   d  Decision — "Accountable decision" (from the §0.10 theory map: "Evidence,
+ *      confidence and accountable decision."); plain text, no destination yet.
+ *      Deliberately not linked to UNKNOWN: Decision is not an assurance state.
  * The keys are editorial pointers, not a mapping of questions onto stages.
  */
 
@@ -206,7 +208,8 @@ export function ActThree() {
             </details>
           </article>
 
-          {/* c, d — continue in sections that later visual-reset PRs redesign */}
+          {/* c points to the Evidence section; d stays a plain-text note until a later
+              visual-reset PR gives Decision its own destination. */}
           <ul className="noteShort" aria-label="Where the chain continues">
             <li id="note-evidence">
               <a href="#evidence">
@@ -218,13 +221,11 @@ export function ActThree() {
               </a>
             </li>
             <li id="note-decision">
-              <a href="#unknown">
-                <span className="noteKey" aria-hidden="true">
-                  d
-                </span>
-                <span className="visuallyHidden">Annotation d: </span>
-                <i>Decision</i> — UNKNOWN stays UNKNOWN.
-              </a>
+              <span className="noteKey" aria-hidden="true">
+                d
+              </span>
+              <span className="visuallyHidden">Annotation d: </span>
+              <i>Decision</i> — Accountable decision.
             </li>
           </ul>
         </div>

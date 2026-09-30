@@ -103,9 +103,11 @@ integration branch is intentionally mixed.
   drawn in the graph grammar inside top and bottom hairlines. Each effect
   changes the drawing's shape (dashed downstream, a dotted gate, a signal ring,
   a dashed enclosure) and shows a one-line gloss, so nothing depends on colour.
-  Path validation state and role sit in a quiet disclosure. Annotations c
-  (Evidence) and d (Decision) are one-line pointers to the Evidence and UNKNOWN
-  sections until those are redesigned.
+  Path validation state and role sit in a quiet disclosure. Annotation c
+  (Evidence) is a one-line pointer to the Evidence section until it is
+  redesigned; annotation d (Decision) is a plain-text note, "Accountable
+  decision." (§0.10 theory map), with no destination yet — it is deliberately
+  not linked to UNKNOWN, which is an assurance state, not the Decision stage.
 
 ## Signature interaction
 
@@ -136,7 +138,7 @@ The graph is not decorative. Where motion is used, it must reinforce methodology
 
 1. Cover (visual reset, Act I) - methodology name, approved proposition, "Read the methodology ↗" and "How it reasons ↓" text links, decorative graph field, running colophon (status, bundle, snapshot date, not independently validated)
 2. Act II, why graph reasoning (visual reset) - "AI systems are no longer isolated models", the Manifesto thesis, the topology invariant as pull quote, continued graph field ending unresolved, "Illustrative topology"
-3. Act III, how the method thinks (visual reset) - the nine-stage canonical Artifact #2 §0.10 chain as a typographic argument; theory map in one disclosure; annotations a (Authority and Influence: "Access is not authority"), b (Controls: control breakpoints), c (Evidence) and d (Decision) pointing onward
+3. Act III, how the method thinks (visual reset) - the nine-stage canonical Artifact #2 §0.10 chain as a typographic argument; theory map in one disclosure; annotations a (Authority and Influence: "Access is not authority"), b (Controls: control breakpoints), c (Evidence, pointing to the Evidence section) and d (Decision: "Accountable decision.", plain text)
 4. Six domains - graph-centred lens model: the shared graph with six equal domain cards (D1-D3 | graph | D4-D6 on wide screens; graph first on narrow), capabilities in disclosures, labelled Explanatory
 5. UNKNOWN - dark, high-impact assurance section
 6. Evidence model - E0-E5 explainer

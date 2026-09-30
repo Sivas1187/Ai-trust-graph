@@ -74,7 +74,7 @@ text boxes; type styles = distinct family / size / weight / style combinations.
 
 | Metric (redesigned region) | 1440 baseline | 1440 PR B | 390 baseline | 390 PR B |
 |---|---|---|---|---|
-| Visible words | 392 | 335 | 392 | 331 |
+| Visible words | 392 | 334 | 392 | 330 |
 | Prose words | 273 | 228 | 273 | 224 |
 | Paragraphs | 18 | 20 | 18 | 18 |
 | Bordered cards | 16 | 0 | 16 | 0 |
@@ -95,3 +95,14 @@ text boxes; type styles = distinct family / size / weight / style combinations.
 | Breakpoints (standalone) | 8.06 | — (annotation b) | 12.16 | — |
 | Evidence | 9.35 | 8.60 | 14.37 | 12.47 |
 | Page height | 16.2 vp (14,551px) | 15.4 vp (13,881px) | 26.6 vp (22,437px) | 24.7 vp (20,837px) |
+
+## Amendment — annotation d (Decision)
+
+Annotation d previously read "Decision — UNKNOWN stays UNKNOWN." and linked to
+`#unknown`, which risked equating the Decision stage with the UNKNOWN assurance
+state. It now reads "Decision — Accountable decision." (Artifact #2 §0.10
+theory map: "Evidence, confidence and accountable decision.") as plain text with
+no destination. Re-captured because the note row changed: 04, 10, 14, 18, 20,
+21, 23, 24, 27, 28, 31, 32. All other files were pixel-identical after the
+change and are unchanged (17, first five viewports at 390, does not reach the
+note).

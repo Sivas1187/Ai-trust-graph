@@ -277,6 +277,21 @@ for (const [file, raw] of html) {
       errors.push(`${file}: chain annotation keys are ${JSON.stringify(keys)}, expected ${JSON.stringify(chainNotes)}`);
     }
     for (const [, , target] of chainNotes) if (!new RegExp(`id="${target.slice(1)}"`).test(actIII)) errors.push(`${file}: annotation target ${target} is missing from Act III`);
+    // Annotation d must not equate the Decision stage with the UNKNOWN assurance state:
+    // it reads "Accountable decision." (§0.10 theory map) and links nowhere, least of all #unknown.
+    const noteD = actIII.match(/<li id="note-decision">([\s\S]*?)<\/li>/)?.[1] ?? "";
+    const noteDText = visibleText(noteD.replace(/<span class="noteKey"[^>]*>[\s\S]*?<\/span>/, ""));
+    if (noteDText !== "Decision — Accountable decision.") errors.push(`${file}: annotation d reads "${noteDText}", expected "Decision — Accountable decision."`);
+    if (/<a\b|href=/.test(noteD)) errors.push(`${file}: annotation d must not link anywhere (in particular not to #unknown)`);
+    if (/href="#unknown"/.test(actIII)) errors.push(`${file}: Act III links to #unknown — the Decision stage must not point to the UNKNOWN state`);
+    if (/Decision\s*—\s*UNKNOWN stays UNKNOWN/i.test(visibleText(raw.replace(/<script[\s\S]*?<\/script>/gi, "")))) {
+      errors.push(`${file}: "Decision — UNKNOWN stays UNKNOWN" must not reappear`);
+    }
+    // The UNKNOWN section itself stays as it is.
+    const unknownTitle = visibleText(raw.match(/<h2 id="unknown-title" class="unknownTitle">([\s\S]*?)<\/h2>/)?.[1] ?? "");
+    if (!/<section id="unknown" class="unknown"/.test(raw) || unknownTitle !== "UNKNOWN stays UNKNOWN.") {
+      errors.push(`${file}: the UNKNOWN section or its title changed ("${unknownTitle}")`);
+    }
     // The theory map stays in one native disclosure: Question / Concept only, not mapped onto stages.
     const questions = actIII.match(/<details class="act3Questions"><summary>Canonical reasoning questions<\/summary>([\s\S]*?)<\/details>/)?.[1] ?? "";
     const heads = [...questions.matchAll(/<th scope="col">([^<]+)<\/th>/g)].map((m) => m[1]);
