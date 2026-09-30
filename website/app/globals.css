@@ -235,6 +235,24 @@ h3 {
   color: var(--on-dark);
 }
 
+/* ───────────── Diagram primitives ─────────────
+   Conventions for diagrams (semantic HTML is the source of truth; CSS draws it):
+   - Connector lines are CSS borders (never background fills), so they survive
+     forced-colours mode. Arrowheads are border triangles; the forced-colours
+     block at the end of this file keeps them as triangles in system colours.
+   - State is never carried by colour or box-shadow alone.
+   .dgDisclosure is the shared native-<details> treatment used inside diagrams. */
+.dgDisclosure > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.dgDisclosure > summary::-webkit-details-marker {
+  display: none;
+}
+.dgDisclosure[open] .summaryIcon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
 /* ───────────── Buttons ───────────── */
 .actions {
   display: flex;
@@ -1067,7 +1085,7 @@ h1 {
   top: 50%;
   width: 9px;
   height: 1.5px;
-  background: var(--ink);
+  background: var(--ink); /* forced colours: see the system-colour override below */
   transform: translate(-50%, -50%);
 }
 .summaryIcon::after {
@@ -1536,13 +1554,14 @@ blockquote footer {
   min-width: 18px;
   height: 1.5px;
   margin: 0 4px;
-  background: var(--ink-2);
+  /* Border, not background: connector stays visible in forced colours. */
+  border-top: 1.5px solid var(--ink-2);
 }
 .bpEdge::after {
   content: "";
   position: absolute;
   right: -1px;
-  top: 50%;
+  top: -0.75px; /* centre on the 1.5px border line */
   border: 4px solid transparent;
   border-left: 6px solid var(--ink-2);
   transform: translateY(-50%);
@@ -1554,7 +1573,8 @@ blockquote footer {
   width: 4px;
   height: 46px;
   border-radius: 3px;
-  background: var(--green);
+  /* Border, not background: the marker stays visible in forced colours. */
+  border: 2px solid var(--green);
   transform: translate(-50%, -50%);
 }
 .bpMarkerLabel {
@@ -1617,7 +1637,8 @@ blockquote footer {
   }
   .bp:has(.bpRadio-stop:checked) .bpEdgeBreak,
   .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge {
-    background: repeating-linear-gradient(90deg, var(--line-strong) 0 4px, transparent 4px 8px);
+    border-top-style: dashed;
+    border-top-color: var(--line-strong);
   }
   .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
   .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
@@ -1627,7 +1648,7 @@ blockquote footer {
   /* Constrain: progression continues through a narrower channel. */
   .bp:has(.bpRadio-constrain:checked) .bpDownstream .bpEdge {
     height: 1px;
-    background: var(--ink-2);
+    border-top-width: 1px;
   }
   .bp:has(.bpRadio-constrain:checked) .bpMarker {
     height: 30px;
@@ -1706,12 +1727,14 @@ blockquote footer {
     min-width: 0;
     flex: none;
     margin: 4px 0 4px 26px;
+    border-top: 0;
+    border-left: 1.5px solid var(--ink-2);
   }
   .bpEdge::after {
     right: auto;
     top: auto;
     bottom: -1px;
-    left: 50%;
+    left: -0.75px; /* centre on the 1.5px border line */
     border: 4px solid transparent;
     border-top: 6px solid var(--ink-2);
     transform: translateX(-50%);
@@ -1732,7 +1755,8 @@ blockquote footer {
   @supports selector(:has(*)) {
     .bp:has(.bpRadio-stop:checked) .bpEdgeBreak,
     .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge {
-      background: repeating-linear-gradient(180deg, var(--line-strong) 0 4px, transparent 4px 8px);
+      border-left-style: dashed;
+      border-left-color: var(--line-strong);
     }
     .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
     .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
@@ -1742,6 +1766,7 @@ blockquote footer {
     .bp:has(.bpRadio-constrain:checked) .bpDownstream .bpEdge {
       width: 1px;
       height: 34px;
+      border-left-width: 1px;
     }
     .bp:has(.bpRadio-constrain:checked) .bpMarker {
       width: 30px;
@@ -2123,6 +2148,36 @@ blockquote footer {
     forced-color-adjust: none;
     background: Highlight;
     border-color: Highlight;
+  }
+  /* Disclosure +/− strokes are backgrounds, which forced colours drops. */
+  .summaryIcon::before,
+  .summaryIcon::after {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+  /* Arrowheads are border triangles; without this, forced colours paints the
+     transparent sides and they render as squares. */
+  .bpEdge::after {
+    forced-color-adjust: none;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-left-color: CanvasText;
+  }
+  .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
+  .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
+    border-left-color: GrayText;
+  }
+}
+@media (forced-colors: active) and (max-width: 760px) {
+  .bpEdge::after {
+    border-left-color: transparent;
+    border-top-color: CanvasText;
+  }
+  .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
+  .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
+    border-left-color: transparent;
+    border-top-color: GrayText;
   }
 }
 
