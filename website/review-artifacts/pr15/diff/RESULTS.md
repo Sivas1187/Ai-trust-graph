@@ -1,5 +1,7 @@
 # PR #15 pixel-diff results (temporary review artifact)
 
+Re-run after the desktop hub refinement: every unchanged section is still 0 px, and the Domains overlays show the refined hub. The 390px Domains section is pixel-identical to the previously reviewed build (normal and forced colours, and at 320 and 834).
+
 Main `60c00e6` vs branch, element screenshots, reduced motion. A pixel counts as different when the summed RGB difference exceeds 24.
 Unchanged sections were compared **height-pinned**: on the branch, the redesigned Domains section was given main's exact rendered height, so every later section starts at the same subpixel offset as on main. Sections above Domains are unaffected by the change in height.
 
