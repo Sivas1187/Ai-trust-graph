@@ -34,17 +34,18 @@ The graph is not decorative. Every animation should reinforce methodology meanin
 
 ## Homepage sequence
 
-1. Hero - name, proposition, graph, Explore Methodology / GitHub CTAs
-2. Problem - "AI systems are no longer isolated models"
-3. Reasoning chain - the nine-stage canonical Artifact #2 §0.10 chain, with the 13-phase assessment lifecycle shown separately
+1. Hero - methodology name, README description, status pill, canonical-source and "See how it reasons" CTAs, synthetic graph
+2. Problem - "AI systems are no longer isolated models", illustrative constellation, topology invariant
+3. Reasoning chain - the nine-stage canonical Artifact #2 §0.10 chain as equal nodes with directional connectors; theory-map table in one disclosure
 4. Six domains - responsive domain cards
 5. Authority - "Access is not authority"
 6. UNKNOWN - dark, high-impact assurance section
 7. Control breakpoints - synthetic path visualization
 8. Evidence model - E0-E5 explainer
-9. Methodology scale - 6 domains / 72 controls / 36 capabilities / M1-M5 / E0-E5
-10. Methodology explorer - artifact cards
-11. Public review - invitation to challenge assumptions and submit findings
+9. Assessment lifecycle - the 13 Artifact #7 phases as a two-row timeline, separate from the reasoning chain, with the iteration rule and assessment types
+10. Methodology scale - 6 domains / 72 controls / 36 capabilities / M1-M5 / E0-E5
+11. Methodology explorer - artifact cards
+12. Public review - invitation to challenge assumptions and submit findings
 
 ## Accessibility
 
