@@ -28,6 +28,12 @@ const forbidden = [
   // Owner ruling 1: no competing, non-canonical reasoning chain.
   /Assets\s*(→|->)\s*Relationships/i,
   /Assurance Reasoning Flow/i,
+  // PR C: no unsupported endorsement, adoption, maturity or standard-status claims.
+  /\b(approved|endorsed|certified|recogni[sz]ed|adopted) by\b/i,
+  /\b(ISO|NIST|regulator)[- ](approved|endorsed|certified|compliant)\b/i,
+  /\bpeer[- ]reviewed\b/i,
+  /\bproduction[- ]ready\b|\bbattle[- ]tested\b|\benterprise[- ]grade\b/i,
+  /\b(an?|the) (official|formal|international|recogni[sz]ed) standard\b/i,
 ];
 
 // Owner rulings 1 and 2: canonical wording that must remain on the homepage.
@@ -75,6 +81,9 @@ const domainNames = [
 
 // The four contribution entry points, in order (CONTRIBUTING routes).
 const contributionEntries = ["Report a finding", "Share feedback", "Propose a change", "Inspect the source"];
+
+// Normative artifacts in METHODOLOGY_MANIFEST §2 recommended reading order.
+const readingOrder = ["1", "2", "12", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 
 // Assessment Methodology phases in canonical order (Artifact #7 §0.11).
 const assessmentPhases = [
@@ -133,6 +142,8 @@ const evidenceGrades = [
 const coverProposition =
   "An open methodology for reasoning about connected AI systems through graph structure, controls and evidence.";
 const primaryNav = ["Method", "Domains", "Assurance", "Source", "GitHub"];
+// Fragment targets of the in-page navigation items, in order (PR C keeps #domains and #methodology).
+const primaryNavTargets = ["#flow", "#domains", "#evidence", "#methodology"];
 
 // Release facts the Cover colophon must repeat, read from the canonical manifest header.
 const manifest = readFileSync(manifestPath, "utf8");
@@ -223,6 +234,11 @@ for (const [file, raw] of html) {
     // Primary navigation labels, in order.
     const nav = raw.match(/<nav aria-label="Primary"[\s\S]*?<\/nav>/)?.[0] ?? "";
     const navLabels = [...nav.matchAll(/<a [^>]*>([\s\S]*?)<\/a>/g)].map((m) => visibleText(m[1]).replace(/\s*↗$/, ""));
+    const navTargets = [...nav.matchAll(/<a href="(#[^"]*)"/g)].map((m) => m[1]);
+    if (navTargets.join(" ") !== primaryNavTargets.join(" ")) {
+      errors.push(`${file}: navigation targets are "${navTargets.join(" ")}", expected "${primaryNavTargets.join(" ")}"`);
+    }
+    for (const t of primaryNavTargets) if (!new RegExp(`<section id="${t.slice(1)}"`).test(raw)) errors.push(`${file}: navigation target ${t} is not a section`);
     if (navLabels.join(" > ") !== primaryNav.join(" > ")) {
       errors.push(`${file}: primary navigation is "${navLabels.join(" > ")}", expected "${primaryNav.join(" > ")}"`);
     }
@@ -342,19 +358,96 @@ for (const [file, raw] of html) {
     inOrder("assessment phases", raw, /<span class="lcName">([^<]+)<\/span>/g, assessmentPhases);
     const typeList = raw.match(/<ul class="chips lcTypeList"[^>]*>([\s\S]*?)<\/ul>/)?.[1] ?? "";
     inOrder("assessment types", typeList, /<li>([^<]+)<\/li>/g, assessmentTypes);
-    // Domain lens: six canonical names in order, each card with 12 controls and 6 maturity capabilities.
-    inOrder("domains", raw, /<h3 class="domainName">([^<]+)<\/h3>/g, domainNames);
-    const domainCards = (raw.match(/<li class="lensDomain">[\s\S]*?<\/details><\/li>/g) ?? []).map((c) => c.replace(/<!-- -->/g, ""));
-    const countOk = domainCards.filter((c) => /12 controls/.test(c) && /6 maturity capabilities/.test(c)).length;
-    if (domainCards.length !== 6 || countOk !== 6) {
-      errors.push(`${file}: expected 6 domain cards each stating "12 controls" and "6 maturity capabilities", found ${countOk}/${domainCards.length}`);
+    // ── Domains (PR C): six coordinated lenses over one graph ──
+    const dom = (raw.match(/<section id="domains" class="domainsAct"[\s\S]*?<\/section>/)?.[0] ?? "").replace(/<!-- -->/g, "");
+    if (!dom) errors.push(`${file}: Domains section (#domains.domainsAct) not found`);
+    const lensList = dom.match(/<ul class="lensList" aria-label="The six assessment domains">([\s\S]*)<\/ul>\s*<p class="figureNote lensNote">/)?.[1] ?? "";
+    if (!lensList) errors.push(`${file}: the domain list (the text equivalent of the lens figure) is missing or no longer an unordered list`);
+    inOrder("domains", lensList, /<h3 class="lensName">([^<]+)<\/h3>/g, domainNames);
+    const lensItems = lensList.split(/<li class="lens(?:Item|Domain)"[^>]*>/).slice(1);
+    const itemOk = lensItems.filter(
+      (c) => /12 controls/.test(c) && /6 maturity capabilities/.test(c) && /ATG-[A-Z]{3}-001 … ATG-[A-Z]{3}-012/.test(c) &&
+        (c.match(/<ul class="lensCaps">([\s\S]*?)<\/ul>/)?.[1].match(/<li>/g) ?? []).length === 6 && /<details class="lensDetails">/.test(c),
+    ).length;
+    if (lensItems.length !== 6 || itemOk !== 6) {
+      errors.push(`${file}: expected exactly 6 domain lenses, each with "12 controls", "6 maturity capabilities", its control ID range and 6 capabilities in a disclosure; found ${itemOk}/${lensItems.length}`);
     }
-    if (!/<span class="tag">Explanatory<\/span>/.test(raw)) {
-      errors.push(`${file}: domain lens is missing its visible "Explanatory" label`);
+    // No numbering, ranking or colour carried by the domains themselves.
+    const lensNames = [...lensList.matchAll(/<h3 class="lensName">([^<]+)<\/h3>/g)].map((m) => m[1]);
+    if (lensNames.some((n) => /\d/.test(n)) || /class="[^"]*\b(domainId|rank|stage|level|tier)\w*"/.test(lensList)) {
+      errors.push(`${file}: domain lenses carry numbering or ranking markers`);
     }
-    // Contribution entry points, in order.
-    const entryList = raw.match(/<ul class="entryGrid"[^>]*>([\s\S]*?)<\/ul>/)?.[1] ?? "";
+    if (/style=|class="[^"]*(cyan|indigo|green|amber|gfNode-)/.test(lensList)) errors.push(`${file}: a domain lens carries its own colour`);
+    const anchors = [...dom.matchAll(/<circle [^>]*class="lensAnchor"[^>]*>/g)].map((m) => m[0].replace(/c[xy]="[^"]*"/g, ""));
+    if (anchors.length !== 6 || new Set(anchors).size !== 1) errors.push(`${file}: the six lens anchors must be present and drawn identically (found ${anchors.length})`);
+    if (!/<svg class="graphField lensBand" aria-hidden="true"/.test(dom)) errors.push(`${file}: the domain graph must be decorative (aria-hidden)`);
+    const lensNote = visibleText(dom.match(/<p class="figureNote lensNote">([\s\S]*?)<\/p>/)?.[1] ?? "");
+    if (lensNote !== "Explanatory figure: six equal lenses reading one connected graph. Position, line and order imply no ranking, hierarchy, sequence or maturity.") {
+      errors.push(`${file}: the domain figure's explanatory note (its text equivalent and no-ranking statement) is missing or changed: "${lensNote}"`);
+    }
+    if (!dom.includes("The six domains are coordinated assessment lenses over one graph.")) errors.push(`${file}: Domains lost the Artifact #2 §8.1 lede`);
+    for (const f of ["02-core-conceptual-model.md", "03-maturity-model.md", "05-master-control-library.md"]) {
+      if (!dom.includes(`docs/${f}`)) errors.push(`${file}: Domains lost its canonical source link to ${f}`);
+    }
+    // The retired card layout (hub panel, network, per-card IDs) must not return.
+    if (/class="[^"]*\b(lensDomain|lensHub|lensFacts|lensNetwork|lensBody|domainTop|domainPrefix|domainCounts)\b/.test(raw) || /<p class="lensHubTitle">/.test(raw)) {
+      errors.push(`${file}: the retired six-card domain layout is present again`);
+    }
+
+    // ── Release, review and limitations (PR C): factual colophon ──
+    const st = (raw.match(/<section id="status" class="colophonAct"[\s\S]*?<\/section>/)?.[0] ?? "").replace(/<!-- -->/g, "");
+    if (!st) errors.push(`${file}: Status section (#status.colophonAct) not found`);
+    if (!/<h2 id="status-title" class="actTitle">Release, review and limitations\.<\/h2>/.test(st)) errors.push(`${file}: Status heading missing or changed`);
+    const facts = [...st.matchAll(/<div><dt>([^<]+)<\/dt>([\s\S]*?)<\/div>/g)].map((m) => [m[1], [...m[2].matchAll(/<dd>([\s\S]*?)<\/dd>/g)].map((d) => visibleText(d[1]))]);
+    const want = [
+      ["Status", [manifestRelease.status]],
+      ["Bundle", [manifestRelease.bundle]],
+      ["Snapshot", [manifestRelease.snapshot]],
+      ["Review", ["Author’s internal review complete", "Independent review pending"]],
+      ["Validation", ["AI Trust Graph is not independently validated."]],
+      ["Authorship", ["Methodology author: Siva Sethumadhavan"]],
+      ["Change review", ["Until the governance bodies defined in Artifact #11 are standing, the methodology author reviews proposed changes directly."]],
+    ];
+    if (JSON.stringify(facts) !== JSON.stringify(want)) errors.push(`${file}: status / provenance facts changed: ${JSON.stringify(facts)}`);
+    const gates = [...st.matchAll(/<li><span class="gateName">([^<]+)<\/span> <span class="gateState">([^<]+)<\/span><\/li>/g)];
+    if (gates.length !== 5 || gates.some((g) => g[2] !== "Pending")) errors.push(`${file}: the five external release gates must each read "Pending" (found ${gates.length})`);
+    if (!visibleText(st).includes("AI Trust Graph is a methodology, not a product. It is not a certification program, an accreditation body, a legal opinion, or a guarantee of AI security, safety or compliance.")) {
+      errors.push(`${file}: Status lost its limitations statement`);
+    }
+    // Authorship stays one factual line: no portrait, titles, affiliations or promotion.
+    if (/<img\b/.test(st) || /\b(founder|CEO|CTO|CISO|renowned|award|expert|hire|consult|speaking)\b/i.test(visibleText(st))) {
+      errors.push(`${file}: Status carries personal-brand material beyond the factual authorship line`);
+    }
+
+    // ── Canonical source (PR C): the governed artifacts ──
+    const src = (raw.match(/<section id="methodology" class="sourceAct"[\s\S]*?<\/section>/)?.[0] ?? "").replace(/<!-- -->/g, "");
+    if (!src) errors.push(`${file}: Canonical source section (#methodology.sourceAct) not found`);
+    if (!visibleText(src).includes("This website explains; the artifacts on GitHub decide.")) errors.push(`${file}: Canonical source lost "This website explains; the artifacts on GitHub decide."`);
+    const pinnedRe = /https:\/\/github\.com\/Sivas1187\/Ai-trust-graph\/blob\/[0-9a-f]{40}\//;
+    if (!new RegExp(`<p class="sourceManifestTitle"><a href="${pinnedRe.source}METHODOLOGY_MANIFEST\\.md"`).test(src)) errors.push(`${file}: the pinned METHODOLOGY_MANIFEST link is missing from Canonical source`);
+    const srcTitles = [...src.matchAll(/<a class="sourceTitle" href="([^"]+)"[^>]*>([^<]+)<\/a>/g)];
+    if (srcTitles.length !== 13 || srcTitles.some((m) => !pinnedRe.test(m[1]))) errors.push(`${file}: expected 12 artifacts + the companion, each linked at the pinned bundle commit (found ${srcTitles.length})`);
+    inOrder("canonical artifacts (manifest reading order)", src, /<span class="sourceNum">Artifact #(\d+)<\/span>/g, readingOrder);
+    if (!/<i>Non-normative\.<\/i>/.test(src)) errors.push(`${file}: the companion artifact is no longer marked non-normative`);
+
+    // ── Public review (PR C): four entry points, governance framing ──
+    const rv = (raw.match(/<section id="review" class="reviewAct"[\s\S]*?<\/section>/)?.[0] ?? "").replace(/<!-- -->/g, "");
+    if (!rv) errors.push(`${file}: Public review section (#review.reviewAct) not found`);
+    const entryList = rv.match(/<ul class="reviewList"[^>]*>([\s\S]*?)<\/ul>/)?.[1] ?? "";
     inOrder("contribution entry points", entryList, /<h3>([^<]+)<\/h3>/g, contributionEntries);
+    if (!visibleText(rv).includes("Changes to canonical terms, controls, evidence grades, result states or scoring need a formal change proposal (Artifact #11 §2.4) before any pull request.")) {
+      errors.push(`${file}: Public review lost the formal change-proposal rule`);
+    }
+    for (const [label, re] of [
+      ["CONTRIBUTING", /blob\/main\/CONTRIBUTING\.md/],
+      ["finding template", /template=finding-report\.yml/],
+      ["feedback template", /template=general-feedback\.yml/],
+      ["pinned manifest", /blob\/[0-9a-f]{40}\/METHODOLOGY_MANIFEST\.md/],
+      ["REVIEW_FINDINGS", /REVIEW_FINDINGS\.md/],
+    ]) if (!re.test(rv)) errors.push(`${file}: Public review lost its ${label} link`);
+    if (/class="[^"]*\b(button|entryGrid|entry)\b/.test(rv) || /newsletter|subscribe|sign up|get started|join (us|the)/i.test(visibleText(rv))) {
+      errors.push(`${file}: Public review carries CTA / growth styling or language`);
+    }
     // The standalone scale band was removed; its figures live in Domains and Canonical source.
     if (/class="scale"|The structure that carries the model/.test(raw)) {
       errors.push(`${file}: the removed standalone scale band is present again`);
