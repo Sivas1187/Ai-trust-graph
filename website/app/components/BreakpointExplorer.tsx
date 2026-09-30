@@ -1,13 +1,19 @@
 import { breakpointEffects } from "../content";
 
 /**
- * Synthetic control-breakpoint illustration. CSS-only interaction: a native
- * radio group selects which canonical breakpoint effect (Artifact #2 §1.8,
- * §6.6: "stop, constrain, detect or contain") is illustrated. Works with
- * keyboard (arrow keys within the group) and without JavaScript.
+ * Synthetic control-breakpoint illustration (Act III, annotation b).
  *
- * The one-line glosses are plain-language illustrations, not canonical
- * definitions.
+ * CSS-only interaction: a native radio group, set as a quiet text toggle
+ * (Stop · Constrain · Detect · Contain), selects which canonical breakpoint
+ * effect (Artifact #2 §1.8, §6.6: "stop, constrain, detect or contain") is
+ * illustrated. Keyboard: Tab into the group, arrow keys to change. Works
+ * without JavaScript. The selected option is exposed by the checked radio;
+ * each effect also changes the drawing's shape (dashed, dotted, ring,
+ * enclosure) and shows a text gloss, so nothing depends on colour.
+ *
+ * The path is drawn in the shared graph grammar (hollow nodes, hairline
+ * edges); its labels are real text in an ordered list. The one-line glosses
+ * are plain-language illustrations, not canonical definitions.
  */
 
 const path = ["Human", "Agent", "Identity", "Tool", "API", "Sensitive action"];
@@ -22,47 +28,54 @@ const gloss: Record<string, string> = {
 
 export function BreakpointExplorer() {
   return (
-    <div className="bp">
-      <fieldset className="bpControls">
-        <legend>Illustrate an effective control that can…</legend>
-        {breakpointEffects.map((effect, i) => (
-          <label key={effect} className="bpOption">
-            <input
-              type="radio"
-              name="breakpoint-effect"
-              value={effect.toLowerCase()}
-              defaultChecked={i === 0}
-              className={`bpRadio bpRadio-${effect.toLowerCase()}`}
-            />
-            <span>{effect}</span>
-          </label>
-        ))}
+    <div className="bpx">
+      <fieldset className="bpxControls">
+        <legend>Illustrate an effective control that can</legend>
+        <span className="bpxOptions">
+          {breakpointEffects.map((effect, i) => (
+            <span key={effect} className="bpxOptionWrap">
+              {i > 0 && (
+                <span className="bpxSep" aria-hidden="true">
+                  ·
+                </span>
+              )}
+              <label className="bpxOption">
+                <input
+                  type="radio"
+                  name="breakpoint-effect"
+                  value={effect.toLowerCase()}
+                  defaultChecked={i === 0}
+                  className={`bpxRadio bpxRadio-${effect.toLowerCase()}`}
+                />
+                <span>{effect}</span>
+              </label>
+            </span>
+          ))}
+        </span>
       </fieldset>
 
-      <figure className="bpFigure">
-        <ol className="bpPath" aria-label="Synthetic path from a human to a sensitive action">
+      <figure className="bpxFigure">
+        <ol className="bpxPath" aria-label="Synthetic path from a human to a sensitive action">
           {path.map((step, i) => (
             <li
               key={step}
-              className={[
-                "bpNode",
-                i > BREAK_AFTER ? "bpDownstream" : "",
-                i === path.length - 1 ? "bpTarget" : "",
-              ].join(" ")}
+              className={["bpxNode", i > BREAK_AFTER ? "bpxDownstream" : "", i === path.length - 1 ? "bpxTarget" : ""]
+                .filter(Boolean)
+                .join(" ")}
             >
-              <span className="bpLabel">{step}</span>
+              <span className="bpxLabel">{step}</span>
               {i === BREAK_AFTER && (
-                // The visual marker below is aria-hidden; this states its position once.
+                // The drawn marker is aria-hidden; this states its position once.
                 <span className="visuallyHidden">
                   {" "}
                   (control breakpoint between {path[BREAK_AFTER]} and {path[BREAK_AFTER + 1]})
                 </span>
               )}
               {i < path.length - 1 && (
-                <span className={i === BREAK_AFTER ? "bpEdge bpEdgeBreak" : "bpEdge"} aria-hidden="true">
+                <span className={i === BREAK_AFTER ? "bpxEdge bpxEdgeBreak" : "bpxEdge"} aria-hidden="true">
                   {i === BREAK_AFTER && (
-                    <span className="bpMarker">
-                      <span className="bpMarkerLabel">Control breakpoint</span>
+                    <span className="bpxMark">
+                      <span className="bpxMarkLabel">breakpoint</span>
                     </span>
                   )}
                 </span>
@@ -71,18 +84,17 @@ export function BreakpointExplorer() {
           ))}
         </ol>
 
-        <div className="bpGlosses">
+        <div className="bpxGlosses">
           {breakpointEffects.map((effect) => (
-            <p key={effect} className={`bpGloss bpGloss-${effect.toLowerCase()}`}>
+            <p key={effect} className={`bpxGloss bpxGloss-${effect.toLowerCase()}`}>
               <strong>{effect}.</strong> {gloss[effect]}
             </p>
           ))}
         </div>
 
-        <figcaption>
-          <span className="tag">Synthetic</span> Plain-language illustration of where an effective
-          control can stop, constrain, detect or contain progression. It is not a real system, and it
-          does not show that any step is authorized, invoked, reachable or exploitable.
+        <figcaption className="figureNote">
+          Synthetic path. A plain-language illustration of where an effective control can stop, constrain, detect
+          or contain progression; it does not show that any step is authorized, invoked, reachable or exploitable.
         </figcaption>
       </figure>
     </div>

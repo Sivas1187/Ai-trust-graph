@@ -87,14 +87,10 @@ export const coverProposition =
 /**
  * Source: Artifact #1 Manifesto.
  * `problemThesis`: §2.2 "The core risk thesis", first sentence, verbatim.
- * `problemTerms`: terms from the Manifesto CORE PROPOSITION list ("identities,
- * agents, tools, data, prompts, models, infrastructure, providers, controls and
- * business actions"), a subset in the same order; illustrative, not ontology types.
  * `topologyInvariant`: §4 INVARIANT, both sentences, verbatim.
  */
 export const problemThesis =
   "The methodology treats enterprise AI risk as a property of interconnected authority, influence and dependency.";
-export const problemTerms = ["Identities", "Agents", "Tools", "Data", "Models", "Providers", "Business actions"] as const;
 export const topologyInvariant = [
   "A topological connection is not automatically an exploitable path.",
   "Required permissions, protocols, state and preconditions must be evidenced or explicitly marked Unknown.",
@@ -427,6 +423,28 @@ export const pathValidationStates = [
   "Invalidated",
 ];
 export const pathRoles = ["Primary", "Alternate", "Residual"];
+
+/**
+ * Authority annotation (Act III, a).
+ * `distinctAssertions`: the site's illustration of distinct claims, each needing
+ * its own evidence (Artifact #2 §3.6 separation rule); explicitly not
+ * a canonical sequence, ladder or state machine.
+ * `authorityClasses`: Artifact #2 §5.2 authority classes, verbatim names, in order.
+ */
+export const distinctAssertions = ["Can connect", "Can authenticate", "Can access", "Can invoke", "Can modify", "Can transact"];
+export const authorityClasses = [
+  "Observe",
+  "Read",
+  "Retrieve",
+  "Infer",
+  "Recommend",
+  "Approve",
+  "Execute",
+  "Modify",
+  "Delete",
+  "Disclose",
+  "Transact",
+];
 
 /** Source: Artifact #2 Core Conceptual Model §1.8 / §6.6 ("stop, constrain, detect or contain"). */
 export const breakpointEffects = ["Stop", "Constrain", "Detect", "Contain"];

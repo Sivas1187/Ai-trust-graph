@@ -49,6 +49,11 @@
 
   /* Visual-reset type scale (applied only where a section is redesigned). */
   --type-cover: clamp(68px, 9.17vw, 132px);
+  --type-act: clamp(38px, 4.72vw, 68px); /* act titles */
+  --type-quote: clamp(31px, 2.92vw, 42px); /* act pull quotes */
+  --type-chain: 54px; /* the reasoning chain; 33px on small screens */
+  --type-note: clamp(30px, 2.78vw, 40px); /* annotation titles */
+  --type-assert: clamp(22px, 1.95vw, 28px); /* assertion lines */
 
   --radius: 18px;
   --gutter: 16px;
@@ -328,12 +333,6 @@ h3 {
   max-width: 760px;
   font-size: 15px;
   color: var(--ink-2);
-}
-.rcQuestion {
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 13.5px;
-  color: var(--cyan) !important;
-  white-space: nowrap;
 }
 
 /* ───────────── Header (visual reset) ─────────────
@@ -689,218 +688,865 @@ h3 {
   color: var(--muted);
 }
 
-/* ───────────── Problem ───────────── */
-.problem {
-  padding: clamp(88px, 12vw, 150px) 0 clamp(64px, 8vw, 96px);
+/* Graph field on graphite (tone="dark"): same grammar, lighter strokes. */
+.graphFieldDark .gfEdges line {
+  stroke: rgba(233, 238, 235, 0.12);
 }
-.problemGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(40px, 6vw, 88px);
-  align-items: start;
+.graphFieldDark .gfNodes circle {
+  fill: var(--graphite);
+  stroke: rgba(233, 238, 235, 0.32);
 }
-.problem h2 {
-  font-size: clamp(40px, 5.6vw, 72px);
-  max-width: 12ch;
+.graphFieldDark .gfNodes .gfNode-indigo {
+  stroke: var(--indigo-on-dark);
 }
-.problemThesis {
-  margin-top: 28px;
-  max-width: 34ch;
-  font-size: clamp(19px, 1.9vw, 23px);
-  line-height: 1.45;
-  color: var(--on-dark-muted);
+.graphFieldDark .gfNodes .gfNode-green {
+  stroke: var(--green-on-dark);
+  stroke-opacity: 0.7;
 }
-.problemInvariant {
-  margin-top: 26px;
-  padding-left: 18px;
-  border-left: 2px solid var(--cyan-on-dark);
-  font-size: 16px;
+.graphFieldDark .gfNodes .gfNode-amber {
+  stroke: var(--amber-on-dark);
+  stroke-opacity: 0.75;
+}
+.graphFieldDark .gfPathLine {
+  stroke: var(--cyan-on-dark);
+  stroke-width: 2.25;
+  stroke-opacity: 1;
+}
+.graphFieldDark .gfNodes .gfPathNode {
+  stroke: var(--cyan-on-dark);
+  stroke-width: 2;
+  stroke-opacity: 1;
+}
+/* The unresolved ending: dashed hand-off, open dashed ring, fainter tail. */
+.gfUnresolved line,
+.gfUnresolved circle {
+  fill: none;
+  stroke: var(--cyan);
+}
+.graphFieldDark .gfUnresolved line,
+.graphFieldDark .gfUnresolved circle {
+  stroke: var(--cyan-on-dark);
+}
+.gfUnresolved line {
+  stroke-width: 1.25;
+  stroke-dasharray: 4 6;
+}
+.gfUnresolved .gfUnresolvedTail {
+  stroke-opacity: 0.45;
+}
+.gfUnresolved circle {
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+/* ───────────── Act titles and marginal references (redesigned acts) ───────────── */
+.actTitle {
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: var(--type-act);
+  line-height: 1.02;
+  letter-spacing: -0.018em;
+  text-wrap: wrap; /* the approved compositions' line breaks */
+}
+.marginRef a {
+  color: inherit;
+  text-decoration-color: var(--hairline);
+  text-underline-offset: 3px;
+}
+.marginRef a:hover {
+  text-decoration-color: currentColor;
+}
+/* Wide layouts: references sit in the margin column beside what they cite.
+   Narrow layouts: one act-end reference line instead. */
+.marginRefSide {
+  position: absolute;
+  top: 16px;
+  left: calc(var(--vr-edge) - var(--vr-margin));
+  width: calc(var(--vr-margin) - var(--vr-edge) - 16px);
+}
+.marginRefEnd {
+  display: none;
+}
+@media (max-width: 1023px) {
+  .marginRefSide {
+    display: none;
+  }
+  .marginRefEnd {
+    display: block;
+  }
+}
+
+/* ───────────── Act II · Why graph reasoning ─────────────
+   components/ActTwo.tsx. The Cover field continues on graphite. Wide layouts
+   (≥ 1024px): the approved 1440 × 880 composition, scaled as a whole — the
+   frame keeps that proportion (at most 1440px wide) and the copy is placed in
+   proportional units, so type and drawing keep the same relationship at every
+   desktop width (the field reserves the headline and quote areas). Narrower
+   layouts stack the copy in flow and keep the field to a right-hand strip
+   (text never meets it). */
+.act2 {
+  position: relative;
+  overflow: hidden;
+  background: var(--graphite);
+  color: var(--on-dark);
+}
+.act2 a:focus-visible {
+  box-shadow: var(--focus-dark);
+}
+.act2Frame {
+  position: relative;
+  max-width: 1440px;
+  aspect-ratio: 1440 / 880;
+  margin-inline: auto;
+}
+.act2Field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.act2FieldMobile {
+  display: none;
+}
+.act2 .marginRef {
+  color: #7f8c87;
+}
+/* Proportional placements: x / 1440, y / 880 of the approved composition. */
+.act2RefSide {
+  left: 3.889%; /* 56 */
+  top: 14.09%; /* 124 */
+  width: 8.333%; /* 120 */
+}
+.act2Head {
+  position: absolute;
+  top: 12.273%; /* 108 */
+  left: 13.889%; /* 200 */
+  width: 48.611%; /* 700 */
+}
+.act2Thesis {
+  margin-top: min(2.083vw, 30px);
+  max-width: 36ch;
+  font-size: clamp(17px, 1.389vw, 20px);
   line-height: 1.55;
   color: var(--on-dark-muted);
 }
-.problemInvariant strong {
-  display: block;
-  margin-bottom: 6px;
-  font-family: var(--font-display, system-ui), system-ui, sans-serif;
-  font-size: clamp(21px, 2.2vw, 27px);
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  font-weight: 600;
-  color: var(--on-dark);
+.act2Quote {
+  position: absolute;
+  top: 55.909%; /* 492 */
+  left: 41.667%; /* 600 */
+  width: 50%; /* 720 */
+  margin: 0;
 }
-.problem .source {
-  margin-top: 36px;
+.act2Invariant {
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: var(--type-quote);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-wrap: wrap;
+}
+.act2Invariant::before {
+  content: "\201C";
+  margin-left: -0.42em;
+  color: var(--cyan-on-dark);
+}
+.act2Invariant::after {
+  content: "\201D";
+  color: var(--cyan-on-dark);
+}
+.act2Condition {
+  margin-top: min(1.528vw, 22px);
+  max-width: 44ch;
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.55;
+  color: var(--on-dark-muted);
+}
+.act2Foot {
+  position: absolute;
+  left: 3.889%; /* 56 */
+  bottom: 5.227%; /* 46 */
+}
+.act2 .figureNote {
+  color: #7f8c87;
 }
 
-/* Constellation: terms positioned by percentage (--x/--y wide, --nx/--ny narrow);
-   the SVG links use the same percentages, so they meet at any width. */
-.cstTag {
-  margin-bottom: 10px;
-  color: var(--amber-on-dark);
-}
-.cstField {
-  position: relative;
-  height: clamp(300px, 30vw, 380px);
-  color: #4f625d; /* link stroke (currentColor) */
-}
-.cstLinks {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-.cstLinks line {
-  stroke: currentColor;
-  stroke-width: 1.25;
-}
-.cstLinksNarrow {
-  display: none;
-}
-.cstNodes {
-  position: absolute;
-  inset: 0;
-}
-.cstNode {
-  position: absolute;
-  left: var(--x);
-  top: var(--y);
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-  padding: 7px 14px 7px 11px;
-  /* Colour pass: the same cyan border and faint indigo fill on every node, so
-     colour never suggests node categories. */
-  border: 1px solid color-mix(in srgb, var(--cyan-on-dark) 55%, #4c605b);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--indigo-on-dark) 9%, var(--graphite-2));
-  color: var(--on-dark);
-  font-size: 15px;
-  font-weight: 500;
-}
-.cstNode::before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 8px;
-  vertical-align: 1px;
-  border: 2px solid var(--indigo-on-dark);
-  border-radius: 50%;
-}
-@media (max-width: 820px) {
-  .problemGrid {
-    grid-template-columns: 1fr;
+@media (max-width: 1023px) {
+  .act2Frame {
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: auto;
+    min-height: 1120px;
+    padding: 72px 96px 40px var(--vr-margin);
   }
-  .cstField {
-    height: 420px;
-  }
-  .cstLinksWide {
+  .act2FieldDesktop {
     display: none;
   }
-  .cstLinksNarrow {
+  /* The mobile composition at 1:1, anchored right: its nodes and path live in
+     the right-hand 96px strip that the copy leaves free. */
+  .act2FieldMobile {
     display: block;
+    left: auto;
+    right: 0;
+    width: 390px;
+    height: 1120px;
   }
-  .cstNode {
-    left: var(--nx);
-    top: var(--ny);
-    font-size: 14px;
-    padding: 6px 12px;
+  .act2Head,
+  .act2Quote,
+  .act2Foot {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: auto;
+  }
+  .act2Head {
+    min-height: 448px; /* quote begins at y 520, as approved */
+  }
+  .act2 .actTitle {
+    font-size: clamp(38px, 10.77vw, 52px); /* 42px at 390 */
+    line-height: 1.05;
+  }
+  .act2Thesis {
+    margin-top: 22px;
+    font-size: 17px;
+  }
+  .act2Invariant {
+    line-height: 1.2;
+  }
+  .act2Invariant::before {
+    margin-left: -0.36em;
+  }
+  .act2Condition {
+    margin-top: 22px;
+    font-size: 16px;
+  }
+  .act2Foot {
+    margin-top: auto;
+    padding-top: 64px;
+  }
+  .act2Foot .marginRefEnd {
+    margin-top: 12px;
   }
 }
 
-/* ───────────── Reasoning chain ───────────── */
-/* Nine equal nodes joined by directional connectors (canonical order only).
-   Wide: one row. Narrow: one column. Connectors and arrowheads are borders. */
-.rcChain {
-  display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
+/* ───────────── Act III · How the method thinks ─────────────
+   components/ActThree.tsx. The canonical chain as one typographic argument,
+   the theory map in one native disclosure, and footnote-style annotations. */
+.act3 {
+  background: var(--paper);
 }
-.rcStep {
+/* The approved compositions' line breaks (not the site-wide "pretty"). */
+.act2Thesis,
+.act2Condition,
+.act3Spine {
+  text-wrap: wrap;
+}
+.act3Frame {
   position: relative;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 150px var(--vr-right) 160px var(--vr-margin);
+}
+.act3Intro,
+.note {
+  position: relative;
+}
+.act3 .actTitle {
+  max-width: 19ch;
+}
+.act3Spine {
+  margin-top: 28px;
+  max-width: 48ch;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.chain {
+  max-width: 1120px;
+  margin-top: 84px;
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: var(--type-chain);
+  line-height: 1.28;
+  letter-spacing: -0.012em;
+}
+.chain li {
+  display: inline;
+}
+.chainArrow {
+  position: relative;
+  top: -0.12em;
+  padding: 0 0.08em;
+  font-family: var(--font-body, system-ui), system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 0.62em;
+  color: #8c9591;
+}
+.chainAnchor {
+  text-decoration: none;
+}
+.chainAnchor:hover,
+.chainAnchor:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--cyan);
+  text-underline-offset: 10px;
+}
+.noteKey {
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  font-style: normal;
+  line-height: 0;
+  letter-spacing: 0;
+  color: var(--cyan);
+}
+.chain .noteKey {
+  position: relative;
+  top: calc(var(--type-chain) * -0.48); /* near cap height at every chain size */
+  margin-left: 4px;
+  font-size: 15px;
+  vertical-align: baseline;
+}
+.act3Questions {
+  margin-top: 40px;
+  font-size: 15.5px;
+}
+.act3Questions > summary,
+.noteDisclosure > summary {
+  display: inline-block;
+  cursor: pointer;
+  list-style: none;
+  color: var(--muted);
+}
+.act3Questions > summary::-webkit-details-marker,
+.noteDisclosure > summary::-webkit-details-marker {
+  display: none;
+}
+.act3Questions > summary::after,
+.noteDisclosure > summary::after {
+  content: "+";
+  margin-left: 10px;
+  color: var(--ink-2);
+}
+.act3Questions[open] > summary::after,
+.noteDisclosure[open] > summary::after {
+  content: "−";
+}
+.act3Questions > summary {
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--hairline);
+}
+.act3Questions > summary:hover,
+.noteDisclosure > summary:hover {
+  color: var(--ink);
+}
+.act3Table {
+  width: 100%;
+  max-width: 1120px;
+  margin-top: 20px;
+  border-collapse: collapse;
+  font-size: 15.5px;
+  text-align: left;
+}
+.act3Table th {
+  padding: 10px 16px 8px 0;
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--muted);
+  border-bottom: 1px solid var(--hairline);
+}
+.act3Table td {
+  padding: 10px 16px 10px 0;
+  vertical-align: top;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--line);
+}
+.act3Question {
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  color: var(--cyan) !important;
+}
+
+/* Annotations (a–d): a short rule, then footnote-style entries. */
+.act3Notes {
+  position: relative;
+  margin-top: 120px;
+  padding-top: 22px;
+}
+.act3Notes::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56px;
+  border-top: 1px solid var(--hairline);
+}
+.noteFull {
+  max-width: 880px;
+  scroll-margin-top: 24px;
+}
+.noteFull + .noteFull {
+  margin-top: 104px;
+}
+.noteFull .marginRefSide {
+  top: 4px;
+}
+.noteHead {
+  font-size: 17.5px;
+  color: var(--ink-2);
+}
+.noteHead i {
+  font-family: var(--font-serif-italic), var(--font-serif), Georgia, serif;
+}
+.noteHead .noteKey {
+  margin-right: 8px;
+  vertical-align: 0.35em;
+}
+.noteTitle {
+  margin-top: 10px;
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: var(--type-note);
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+}
+.noteText {
+  margin-top: 18px;
+  max-width: 60ch;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.noteSmall {
+  margin-top: 12px;
+  max-width: 62ch;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.noteLabel {
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.assertLine {
+  margin-top: 26px;
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: var(--type-assert);
+  line-height: 1.4;
+}
+.assertLine li {
+  display: inline;
+}
+.assertLine .assertion {
+  white-space: nowrap;
+}
+.neq {
+  color: #8c9591;
+}
+.noteRule {
+  margin: 30px 0 0;
+  padding-left: 20px;
+  border-left: 1px solid var(--hairline);
+}
+.noteRule p {
+  max-width: 58ch;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.noteRuleLabel {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.noteClasses {
+  margin-top: 30px;
+}
+.inlineList {
+  margin-top: 6px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+.inlineList li {
+  display: inline;
+}
+.inlineList li + li::before {
+  content: " · ";
+  color: var(--line-strong);
+}
+.noteDisclosure {
+  margin-top: 26px;
+  font-size: 15.5px;
+}
+.noteDisclosure > summary {
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--hairline);
+}
+.noteDisclosure > p {
+  margin-top: 12px;
+  max-width: 70ch;
+  color: var(--ink-2);
+}
+.noteDisclosure > p:first-of-type {
+  margin-top: 16px;
+}
+.noteDisclosure .noteLabel {
+  margin-right: 8px;
+}
+.noteShort {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 380px));
+  gap: 14px 64px;
+  margin-top: 104px;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.noteShort a {
+  display: block;
+  text-decoration: none;
+}
+.noteShort i {
+  font-family: var(--font-serif-italic), var(--font-serif), Georgia, serif;
+  font-size: 17.5px;
+  color: var(--ink-2);
+}
+.noteShort a:hover i,
+.noteShort a:focus-visible i {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.noteShort .noteKey {
+  margin-right: 8px;
+  vertical-align: 0.35em;
+}
+.act3RefEnd {
+  margin-top: 64px;
+}
+
+/* Control breakpoints (annotation b): a text toggle over a hollow-node path.
+   components/BreakpointExplorer.tsx. State changes shape as well as tone. */
+.bpx {
+  margin-top: 32px;
+}
+.bpxControls {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 17px;
+}
+.bpxControls legend {
+  float: left;
+  margin-right: 14px;
+  padding: 4px 0;
+  font-size: 15.5px;
+  color: var(--muted);
+}
+.bpxOptions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.bpxOptionWrap {
+  display: inline-flex;
+  align-items: baseline;
+}
+.bpxSep {
+  margin: 0 10px;
+  color: var(--line-strong);
+}
+.bpxOption {
+  position: relative;
+  cursor: pointer;
+}
+.bpxOption input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.bpxOption span {
+  display: inline-block;
+  padding: 4px 0 2px;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+}
+.bpxOption:hover span {
+  color: var(--ink);
+}
+.bpxOption input:checked + span {
+  color: var(--ink);
+  border-bottom-color: var(--cyan);
+}
+.bpxFigure {
+  margin: 22px 0 0;
+  padding: 44px 0 26px;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.bpxPath {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.bpxNode {
+  --node: rgba(16, 22, 21, 0.55);
+  --node-style: solid;
+  --edge: var(--cyan);
+  --edge-style: solid;
+  --edge-w: 1.25px;
+  position: relative;
+  padding-top: 26px;
   text-align: center;
-  padding: 0 6px;
 }
-.rcNode {
-  display: block;
-  width: 18px;
-  height: 18px;
-  margin: 0 auto 16px;
+.bpxNode::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border: 1.25px var(--node-style) var(--node);
   border-radius: 50%;
-  border: 2px solid var(--cyan);
-  background: color-mix(in srgb, var(--cyan) 12%, var(--paper));
+  background: var(--paper);
 }
-/* Colour pass: accents alternate cyan / indigo purely for visual rhythm. Odd
-   count, so Objects and Decision share the same treatment: no start or end
-   emphasis, no progression. Meaning is carried by labels and order only. */
-.rcStep:nth-child(even) .rcNode {
-  border-color: var(--indigo);
-  background: color-mix(in srgb, var(--indigo) 12%, var(--paper));
-}
-.rcStep:not(:last-child)::after {
-  /* connector: from this node to the next */
-  content: "";
-  position: absolute;
-  top: 8.25px;
-  left: calc(50% + 14px);
-  right: calc(-50% + 16px);
-  border-top: 1.5px solid var(--ink-2);
-}
-.rcStep:not(:last-child)::before {
-  /* arrowhead at the next node */
-  content: "";
-  position: absolute;
-  top: 4.5px;
-  right: calc(-50% + 12px);
-  border-left: 7px solid var(--ink-2);
-  border-top: 4.5px solid transparent;
-  border-bottom: 4.5px solid transparent;
-}
-.rcStage {
+.bpxLabel {
   display: block;
-  font-family: var(--font-display, system-ui), system-ui, sans-serif;
-  font-size: clamp(14px, 1.2vw, 17px);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  font-size: 15.5px;
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+.bpxTarget .bpxLabel {
+  color: var(--ink);
+}
+.bpxEdge {
+  position: absolute;
+  top: 5.5px;
+  left: calc(50% + 10px);
+  width: calc(100% - 20px);
+  border-top: var(--edge-w) var(--edge-style) var(--edge);
+}
+.bpxMark {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 0;
+  height: 22px;
+  border-left: 1.5px solid var(--ink);
+}
+.bpxMarkLabel {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--muted);
+}
+.bpxGlosses {
+  margin-top: 30px;
+  font-size: 17px;
+  color: var(--ink-2);
+}
+.bpxGloss + .bpxGloss {
+  margin-top: 4px;
+}
+.bpxGloss strong {
   font-weight: 600;
 }
-@media (max-width: 1100px) {
-  .rcChain {
-    grid-template-columns: 1fr;
-    max-width: 520px;
+.bpxFigure .figureNote {
+  margin-top: 14px;
+  max-width: 70ch;
+}
+/* Effect-specific drawing, where :has() is supported (otherwise every gloss
+   stays visible and the path is drawn plainly). */
+@supports selector(:has(*)) {
+  .bpxGloss {
+    display: none;
   }
-  .rcStep {
-    text-align: left;
-    padding: 0 0 26px 40px;
+  .bpx:has(.bpxRadio-stop:checked) .bpxGloss-stop,
+  .bpx:has(.bpxRadio-constrain:checked) .bpxGloss-constrain,
+  .bpx:has(.bpxRadio-detect:checked) .bpxGloss-detect,
+  .bpx:has(.bpxRadio-contain:checked) .bpxGloss-contain {
+    display: block;
   }
-  .rcStep:last-child {
-    padding-bottom: 0;
+  /* Stop: nothing proceeds past the breakpoint — downstream turns dashed and quiet. */
+  .bpx:has(.bpxRadio-stop:checked) .bpxEdgeBreak,
+  .bpx:has(.bpxRadio-stop:checked) .bpxDownstream {
+    --edge: var(--line-strong);
+    --edge-style: dashed;
   }
-  .rcNode {
+  .bpx:has(.bpxRadio-stop:checked) .bpxDownstream {
+    --node: var(--line-strong);
+    --node-style: dashed;
+  }
+  .bpx:has(.bpxRadio-stop:checked) .bpxDownstream .bpxLabel {
+    color: var(--muted);
+  }
+  .bpx:has(.bpxRadio-stop:checked) .bpxMark {
+    border-left-width: 3px;
+    margin-left: -0.75px;
+  }
+  /* Constrain: progression continues through a narrower gate — dotted downstream. */
+  .bpx:has(.bpxRadio-constrain:checked) .bpxEdgeBreak,
+  .bpx:has(.bpxRadio-constrain:checked) .bpxDownstream {
+    --edge-style: dotted;
+    --edge-w: 2px;
+  }
+  .bpx:has(.bpxRadio-constrain:checked) .bpxMark {
+    width: 8px;
+    margin-left: -4px;
+    border-right: 1.5px solid var(--ink);
+  }
+  /* Detect: the path continues; the breakpoint carries a signal ring. */
+  .bpx:has(.bpxRadio-detect:checked) .bpxMark::after {
+    content: "";
     position: absolute;
-    left: 0;
-    top: 3px;
-    margin: 0;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9.75px;
+    border: 1.25px solid var(--ink);
+    border-radius: 50%;
+    background: var(--paper);
   }
-  .rcStep:not(:last-child)::after {
-    top: 25px;
-    bottom: 6px;
-    left: 8.25px;
-    right: auto;
+  /* Contain: downstream effect is enclosed at the target. */
+  .bpx:has(.bpxRadio-contain:checked) .bpxTarget::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    margin-left: -16px;
+    border: 1.25px dashed var(--ink);
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 1100px) {
+  :root {
+    --type-chain: clamp(33px, 4.9vw, 54px);
+  }
+}
+@media (max-width: 600px) {
+  .act2Frame {
+    padding-left: 24px;
+  }
+  .act3Frame {
+    padding: 88px 24px 96px;
+  }
+  .act3 .actTitle {
+    max-width: none;
+    line-height: 1.08;
+  }
+  .act3Spine {
+    font-size: 17px;
+  }
+  .chain {
+    margin-top: 48px;
+    line-height: 1.3;
+  }
+  .chain .noteKey {
+    margin-left: 3px;
+    font-size: 12px;
+  }
+  .act3Notes {
+    margin-top: 80px;
+  }
+  .noteFull + .noteFull {
+    margin-top: 80px;
+  }
+  .noteText,
+  .noteRule p {
+    font-size: 17px;
+  }
+  .noteShort {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 72px;
+  }
+  .act3RefEnd {
+    margin-top: 48px;
+  }
+  .bpxControls legend {
+    float: none;
+    margin-bottom: 4px;
+  }
+  /* Vertical path: nodes stacked, hairline edges run down the left. */
+  .bpxFigure {
+    padding: 28px 0 22px;
+  }
+  .bpxPath {
+    grid-template-columns: 1fr;
+  }
+  .bpxNode {
+    min-height: 46px;
+    padding: 0 0 0 30px;
+    text-align: left;
+  }
+  .bpxNode::before {
+    top: 4px;
+    left: 6px;
+  }
+  .bpxEdge {
+    top: 20px;
+    left: 5.5px;
+    width: 0;
+    height: calc(100% - 18px);
     border-top: 0;
-    border-left: 1.5px solid var(--ink-2);
+    border-left: var(--edge-w) var(--edge-style) var(--edge);
   }
-  .rcStep:not(:last-child)::before {
-    top: auto;
-    bottom: 0;
-    left: 4.5px;
-    right: auto;
-    border-left: 4.5px solid transparent;
-    border-right: 4.5px solid transparent;
-    border-top: 7px solid var(--ink-2);
-    border-bottom: 0;
+  .bpxMark {
+    top: 50%;
+    left: -10px;
+    width: 22px;
+    height: 0;
+    border-left: 0;
+    border-top: 1.5px solid var(--ink);
   }
-  .rcStage {
-    font-size: 19px;
+  .bpxMarkLabel {
+    bottom: auto;
+    top: 50%;
+    left: calc(100% + 34px);
+    transform: translateY(-50%);
+  }
+  @supports selector(:has(*)) {
+    .bpx:has(.bpxRadio-stop:checked) .bpxMark {
+      border-left-width: 0;
+      border-top-width: 3px;
+      margin-left: 0;
+    }
+    .bpx:has(.bpxRadio-constrain:checked) .bpxMark {
+      width: 22px;
+      height: 8px;
+      margin: -4px 0 0;
+      border-right: 0;
+      border-bottom: 1.5px solid var(--ink);
+    }
+    .bpx:has(.bpxRadio-detect:checked) .bpxMark::after {
+      margin: -9.75px 0 0 -9px;
+    }
+    .bpx:has(.bpxRadio-contain:checked) .bpxTarget::after {
+      top: -6px;
+      left: 12px;
+      margin-left: 0;
+    }
   }
 }
 
@@ -1434,80 +2080,39 @@ h3 {
   }
 }
 
-/* ───────────── Authority ───────────── */
-.authority {
-  padding: clamp(88px, 12vw, 150px) 0;
-}
-.assertions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 0;
-}
-.assertions li {
-  display: flex;
-  align-items: center;
-}
-.assertion {
-  display: inline-block;
-  padding: 16px 22px;
-  border: 1px solid var(--line-dark);
-  border-radius: 14px;
-  background: var(--graphite-2);
-  font-family: var(--font-display, system-ui), system-ui, sans-serif;
-  font-size: clamp(18px, 2vw, 24px);
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  white-space: nowrap;
-}
-.neq {
-  display: inline-block;
-  width: 44px;
-  text-align: center;
-  font-size: 26px;
-  color: var(--cyan-on-dark);
-}
-.assertionNote {
-  margin-top: 22px;
-  font-size: 14.5px;
-  color: var(--on-dark-muted);
-}
-.authorityCanon {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(28px, 5vw, 64px);
-  margin-top: 72px;
-  padding-top: 48px;
-  border-top: 1px solid var(--line-dark);
-}
-blockquote p {
+/* ───────────── Shared by sections not yet redesigned ─────────────
+   Formerly in the Authority block. Blockquote rules apply to UNKNOWN and
+   Status only; :where() keeps their original (element-level) specificity and
+   excludes the redesigned acts' blockquotes. */
+:where(blockquote:not(.act2Quote, .noteRule)) p {
   font-family: var(--font-display, system-ui), system-ui, sans-serif;
   font-size: clamp(21px, 2.2vw, 27px);
   line-height: 1.3;
   letter-spacing: -0.015em;
   font-weight: 500;
 }
-blockquote p::before {
+:where(blockquote:not(.act2Quote, .noteRule)) p::before {
   content: "“";
 }
-blockquote p::after {
+:where(blockquote:not(.act2Quote, .noteRule)) p::after {
   content: "”";
 }
-blockquote footer {
+:where(blockquote:not(.act2Quote, .noteRule)) footer {
   margin-top: 16px;
   font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 12.5px;
   color: var(--on-dark-muted);
 }
-.authorityCanon h3,
-.unknownCanon h3,
-.pathDims h3 {
+.unknownCanon h3 {
   font-size: 15px;
   font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 14px;
+}
+.unknownCanon .small {
+  margin-top: 16px;
 }
 .chips {
   display: flex;
@@ -1521,40 +2126,10 @@ blockquote footer {
   border-radius: 999px;
   background: var(--surface);
 }
-.chipsDark li,
 .unknown .chips li {
   background: transparent;
   border-color: var(--line-dark);
   color: var(--on-dark);
-}
-.authorityCanon .small,
-.unknownCanon .small {
-  margin-top: 16px;
-}
-@media (max-width: 820px) {
-  .authorityCanon {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 640px) {
-  .assertions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-  }
-  .assertions li {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .assertion {
-    display: block;
-    white-space: normal;
-  }
-  .neq {
-    width: auto;
-    padding: 2px 0;
-    font-size: 22px;
-  }
 }
 
 /* ───────────── UNKNOWN ───────────── */
@@ -1742,343 +2317,6 @@ blockquote footer {
 @media (max-width: 420px) {
   .unknownGrid {
     grid-template-columns: 1fr;
-  }
-}
-
-/* ───────────── Breakpoints ───────────── */
-.bp {
-  display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
-  gap: 32px;
-  align-items: start;
-}
-.bpControls {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 8px;
-}
-.bpControls legend {
-  padding: 0;
-  margin-bottom: 14px;
-  font-size: 14.5px;
-  color: var(--muted);
-}
-.bpOption {
-  position: relative;
-  display: block;
-  cursor: pointer;
-}
-.bpOption input {
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-}
-.bpOption span {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 16px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--surface);
-  font-weight: 600;
-  font-size: 16px;
-}
-.bpOption span::before {
-  content: "";
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 1.5px solid var(--line-strong);
-  flex: none;
-}
-.bpOption input:checked + span {
-  border-color: var(--ink);
-  box-shadow: inset 0 0 0 1px var(--ink);
-}
-.bpOption input:focus-visible + span {
-  box-shadow: inset 0 0 0 1px var(--ink), var(--focus);
-}
-.bpOption input:checked + span::before {
-  border-color: var(--ink);
-  background: radial-gradient(circle, var(--ink) 40%, transparent 45%);
-}
-.bpOption input:checked + span::after {
-  content: "Selected";
-  margin-left: auto;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.bpFigure {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: clamp(24px, 4vw, 44px) clamp(18px, 3vw, 36px) 24px;
-}
-.bpPath {
-  display: flex;
-  align-items: center;
-  padding-top: 44px;
-}
-.bpNode {
-  display: flex;
-  align-items: center;
-  flex: 1 1 0;
-  min-width: 0;
-}
-.bpNode:last-child {
-  flex: 0 0 auto;
-}
-.bpLabel {
-  flex: none;
-  padding: 10px 14px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--paper);
-  font-weight: 600;
-  font-size: 14.5px;
-  white-space: nowrap;
-  transition: opacity 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
-}
-.bpTarget .bpLabel {
-  border-color: var(--indigo);
-  color: var(--indigo);
-  background: #eef0ff;
-}
-.bpEdge {
-  position: relative;
-  flex: 1;
-  min-width: 18px;
-  height: 1.5px;
-  margin: 0 4px;
-  /* Border, not background: connector stays visible in forced colours. */
-  border-top: 1.5px solid var(--ink-2);
-}
-.bpEdge::after {
-  content: "";
-  position: absolute;
-  right: -1px;
-  top: -0.75px; /* centre on the 1.5px border line */
-  border: 4px solid transparent;
-  border-left: 6px solid var(--ink-2);
-  transform: translateY(-50%);
-}
-.bpMarker {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 4px;
-  height: 46px;
-  border-radius: 3px;
-  /* Border, not background: the marker stays visible in forced colours. */
-  border: 2px solid var(--green);
-  transform: translate(-50%, -50%);
-}
-.bpMarkerLabel {
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--green);
-  font-weight: 600;
-}
-.bpGlosses {
-  margin-top: 36px;
-  min-height: 3.2em;
-}
-.bpGloss {
-  font-size: 16.5px;
-  line-height: 1.5;
-}
-.bpGloss + .bpGloss {
-  margin-top: 6px;
-}
-.bpFigure figcaption {
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-  font-size: 13.5px;
-  color: var(--muted);
-}
-.bpFigure figcaption .tag {
-  color: var(--ink-2);
-}
-
-/* Effect-specific illustration, enabled only where :has() is supported.
-   Without it, all four glosses stay visible and the path is shown neutrally. */
-@supports selector(:has(*)) {
-  .bpGloss {
-    display: none;
-  }
-  .bpGloss + .bpGloss {
-    margin-top: 0;
-  }
-  .bp:has(.bpRadio-stop:checked) .bpGloss-stop,
-  .bp:has(.bpRadio-constrain:checked) .bpGloss-constrain,
-  .bp:has(.bpRadio-detect:checked) .bpGloss-detect,
-  .bp:has(.bpRadio-contain:checked) .bpGloss-contain {
-    display: block;
-  }
-
-  /* Stop: downstream steps are not reached (muted + dashed). Colour, not
-     opacity, so the labels keep AA text contrast (muted on paper ≈ 5.9:1). */
-  .bp:has(.bpRadio-stop:checked) .bpDownstream .bpLabel {
-    color: var(--muted);
-    background: var(--paper);
-    border-style: dashed;
-  }
-  .bp:has(.bpRadio-stop:checked) .bpEdgeBreak,
-  .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge {
-    border-top-style: dashed;
-    border-top-color: var(--line-strong);
-  }
-  .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
-  .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
-    border-left-color: var(--line-strong);
-  }
-
-  /* Constrain: progression continues through a narrower channel. */
-  .bp:has(.bpRadio-constrain:checked) .bpDownstream .bpEdge {
-    height: 1px;
-    border-top-width: 1px;
-  }
-  .bp:has(.bpRadio-constrain:checked) .bpMarker {
-    height: 30px;
-    width: 12px;
-    background: transparent;
-    border: 3px solid var(--green);
-    border-block: 0;
-    border-radius: 2px;
-  }
-
-  /* Detect: progression continues; the breakpoint emits a signal. */
-  .bp:has(.bpRadio-detect:checked) .bpMarker {
-    background: transparent;
-    border: 2px solid var(--green);
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    box-shadow: 0 0 0 6px color-mix(in srgb, var(--green) 14%, transparent),
-      0 0 0 12px color-mix(in srgb, var(--green) 7%, transparent);
-  }
-
-  /* Contain: downstream effect is enclosed. */
-  .bp:has(.bpRadio-contain:checked) .bpDownstream .bpLabel {
-    border-color: var(--green);
-    border-style: dashed;
-    background: color-mix(in srgb, var(--green) 7%, var(--surface));
-  }
-  .bp:has(.bpRadio-contain:checked) .bpTarget .bpLabel {
-    color: var(--ink);
-  }
-}
-
-.pathDims {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
-  gap: 28px;
-  margin-top: 48px;
-}
-.pathDimsNote {
-  grid-column: 1 / -1;
-  margin-top: -8px;
-}
-@media (max-width: 900px) {
-  .bp {
-    grid-template-columns: 1fr;
-  }
-  .bpControls {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .bpControls legend {
-    grid-column: 1 / -1;
-  }
-  .bpOption input:checked + span::after {
-    display: none;
-  }
-  .pathDims {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 760px) {
-  .bpPath {
-    flex-direction: column;
-    align-items: stretch;
-    padding-top: 0;
-  }
-  .bpNode {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .bpLabel {
-    align-self: flex-start;
-  }
-  .bpEdge {
-    width: 1.5px;
-    height: 34px;
-    min-width: 0;
-    flex: none;
-    margin: 4px 0 4px 26px;
-    border-top: 0;
-    border-left: 1.5px solid var(--ink-2);
-  }
-  .bpEdge::after {
-    right: auto;
-    top: auto;
-    bottom: -1px;
-    left: -0.75px; /* centre on the 1.5px border line */
-    border: 4px solid transparent;
-    border-top: 6px solid var(--ink-2);
-    transform: translateX(-50%);
-  }
-  .bpEdgeBreak {
-    height: 70px;
-  }
-  .bpMarker {
-    width: 46px;
-    height: 4px;
-  }
-  .bpMarkerLabel {
-    bottom: auto;
-    top: 50%;
-    left: calc(100% + 10px);
-    transform: translateY(-50%);
-  }
-  @supports selector(:has(*)) {
-    .bp:has(.bpRadio-stop:checked) .bpEdgeBreak,
-    .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge {
-      border-left-style: dashed;
-      border-left-color: var(--line-strong);
-    }
-    .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
-    .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
-      border-left-color: transparent;
-      border-top-color: var(--line-strong);
-    }
-    .bp:has(.bpRadio-constrain:checked) .bpDownstream .bpEdge {
-      width: 1px;
-      height: 34px;
-      border-left-width: 1px;
-    }
-    .bp:has(.bpRadio-constrain:checked) .bpMarker {
-      width: 30px;
-      height: 12px;
-      border: 3px solid var(--green);
-      border-inline: 0;
-    }
   }
 }
 
@@ -2591,16 +2829,10 @@ blockquote footer {
     outline: 3px solid Highlight;
     outline-offset: 2px;
   }
-  /* Breakpoint radios: background dots and inset shadows are dropped, so mark
-     the selected option with a system-colour dot and a heavier border (the
-     desktop "Selected" text remains as well). */
-  .bpOption input:checked + span {
-    border: 3px solid Highlight;
-  }
-  .bpOption input:checked + span::before {
-    forced-color-adjust: none;
-    background: Highlight;
-    border-color: Highlight;
+  /* Breakpoint text toggle: the selected option keeps its underline (a
+     border, so it survives) in the system highlight colour. */
+  .bpxOption input:checked + span {
+    border-bottom-color: Highlight;
   }
   /* Disclosure +/− strokes are backgrounds, which forced colours drops. */
   .summaryIcon::before,
@@ -2610,7 +2842,6 @@ blockquote footer {
   }
   /* Arrowheads are border triangles; without this, forced colours paints the
      transparent sides and they render as squares. */
-  .bpEdge::after,
   .evSteps::after {
     forced-color-adjust: none;
     border-top-color: transparent;
@@ -2618,23 +2849,22 @@ blockquote footer {
     border-right-color: transparent;
     border-left-color: CanvasText;
   }
-  .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
-  .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
-    border-left-color: GrayText;
-  }
-  /* Graph field: decorative, so it recedes to GrayText; the reading path and
-     accent nodes lose their colour (they never carried meaning). */
-  .gfEdges line,
-  .gfPathQuiet {
+  /* Graph field (light and dark tone): decorative, so it recedes to GrayText;
+     the reading path and accent nodes lose their colour (they never carried
+     meaning). Selectors outrank the tone-specific rules. */
+  .graphField .gfEdges line,
+  .graphField .gfPathQuiet {
     stroke: GrayText;
   }
-  .gfNodes circle,
-  .gfNodes circle[class] {
+  .graphField .gfNodes circle,
+  .graphField .gfNodes circle[class] {
     fill: Canvas;
     stroke: GrayText;
     stroke-opacity: 1;
   }
-  .gfPathLine {
+  .graphField .gfPathLine,
+  .graphField .gfUnresolved line,
+  .graphField .gfUnresolved circle {
     stroke: GrayText;
     stroke-opacity: 1;
   }
@@ -2649,32 +2879,8 @@ blockquote footer {
   .lnNodes circle {
     fill: Canvas;
   }
-  .rcStep:not(:last-child)::before {
-    forced-color-adjust: none;
-    border-top-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: CanvasText;
-  }
   .lcPhase:nth-child(8)::before {
     forced-color-adjust: none;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-top-color: CanvasText;
-  }
-}
-@media (forced-colors: active) and (max-width: 760px) {
-  .bpEdge::after {
-    border-left-color: transparent;
-    border-top-color: CanvasText;
-  }
-  .bp:has(.bpRadio-stop:checked) .bpEdgeBreak::after,
-  .bp:has(.bpRadio-stop:checked) .bpDownstream .bpEdge::after {
-    border-left-color: transparent;
-    border-top-color: GrayText;
-  }
-}
-@media (forced-colors: active) and (max-width: 1100px) {
-  .rcStep:not(:last-child)::before {
     border-left-color: transparent;
     border-right-color: transparent;
     border-top-color: CanvasText;
@@ -2703,7 +2909,7 @@ blockquote footer {
 @media print {
   .siteHeader,
   .skipLink,
-  .bpControls {
+  .bpxControls {
     display: none;
   }
   .dark,

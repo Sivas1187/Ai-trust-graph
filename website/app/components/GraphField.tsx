@@ -4,8 +4,12 @@
  * - Hollow nodes, hairline edges, no labels, no glow, no animation.
  * - One optional reading path (cyan). Its first `quietSegments` segments are
  *   drawn in neutral graphite so the path does not compete with nearby type.
+ * - Optional `unresolved` ending: a dashed hand-off from the last path node to
+ *   an open, dashed ring, then a fainter dashed tail — the path is left
+ *   explicitly unresolved rather than shown as complete.
  * - Accent nodes (indigo / green / amber) are sparse texture only: they never
  *   encode maturity, safety, severity, quality, ranking or pass/fail.
+ * - `tone="dark"` draws the same grammar for graphite grounds.
  *
  * Always decorative: the SVG is aria-hidden and not focusable, so the
  * meaning of a section lives in its text. Coordinates are curated data (see
@@ -22,17 +26,32 @@ export type GraphFieldData = {
   height: number;
   nodes: readonly GraphNode[];
   edges: readonly (readonly [from: number, to: number])[];
-  path?: { points: readonly GraphPoint[]; quietSegments?: number };
+  path?: {
+    points: readonly GraphPoint[];
+    quietSegments?: number;
+    unresolved?: { at: GraphPoint; tail: readonly GraphPoint[] };
+  };
 };
 
 const pts = (points: readonly GraphPoint[]) => points.map(([x, y]) => `${x},${y}`).join(" ");
 
-export function GraphField({ data, className }: { data: GraphFieldData; className?: string }) {
+export function GraphField({
+  data,
+  className,
+  tone = "light",
+}: {
+  data: GraphFieldData;
+  className?: string;
+  tone?: "light" | "dark";
+}) {
   const { width, height, nodes, edges, path } = data;
   const quiet = path?.quietSegments ?? 0;
+  const unresolved = path?.unresolved;
+  const last = path?.points[path.points.length - 1];
+  const classes = ["graphField", tone === "dark" ? "graphFieldDark" : "", className ?? ""].filter(Boolean).join(" ");
   return (
     <svg
-      className={className ? `graphField ${className}` : "graphField"}
+      className={classes}
       viewBox={`0 0 ${width} ${height}`}
       preserveAspectRatio="xMidYMin slice"
       aria-hidden="true"
@@ -57,6 +76,16 @@ export function GraphField({ data, className }: { data: GraphFieldData; classNam
           <circle key={`p${i}`} cx={x} cy={y} r={i < quiet ? 3.6 : 4} className={i < quiet ? "gfPathNodeQuiet" : "gfPathNode"} />
         ))}
       </g>
+      {unresolved && last && (
+        <g className="gfUnresolved">
+          <line x1={last[0]} y1={last[1]} x2={unresolved.at[0]} y2={unresolved.at[1]} />
+          {unresolved.tail.map(([x, y], i) => {
+            const [px, py] = i === 0 ? unresolved.at : unresolved.tail[i - 1];
+            return <line key={i} className="gfUnresolvedTail" x1={px} y1={py} x2={x} y2={y} />;
+          })}
+          <circle cx={unresolved.at[0]} cy={unresolved.at[1]} r={9} />
+        </g>
+      )}
     </svg>
   );
 }
