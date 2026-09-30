@@ -128,11 +128,15 @@ sent.
 
 **Cause.** In the Cloudflare dashboard, Web Analytics → Manage site for the hostname
 `aitrustgraph.org` had **Real User Measurements (RUM)** set to **"Enable, excluding
-visitor data in the EU"**. With that option, Cloudflare injects the RUM snippet at the
-edge into HTML served through the `aitrustgraph.org` zone, for non-EU visitors.
+visitor data in the EU"**. When RUM / Web Analytics is enabled, Cloudflare can
+automatically inject the beacon snippet at the edge into proxied HTML served through the
+`aitrustgraph.org` zone. The selected option was configured to exclude visitor data in
+the EU.
 
 - This is separate from the Pages project's own Web Analytics toggle, which was already
-  off. That is why `*.pages.dev` never carried the beacon.
+  off. During troubleshooting, `*.pages.dev` did not carry the beacon while the proxied
+  apex did, which was consistent with the hostname/zone-level RUM setting being the
+  source.
 - The snippet was injected only for browser-like requests. A plain `curl` showed clean
   HTML; a request with a browser `User-Agent` and `Accept: text/html` showed the tag.
 
@@ -157,8 +161,9 @@ that, the site loaded with no CSP errors in DevTools.
 
   Empty output means no injection. Compare with the `*.pages.dev` hostname: a tag only on
   the apex means a zone or hostname-level Cloudflare setting.
-- A `feature_collector.js` "deprecated parameters" console warning seen during this
-  investigation came from a browser extension, not from the site.
+- The `feature_collector.js` "deprecated parameters" console warning observed during this
+  troubleshooting session came from a browser extension, not from the site. This does not
+  mean every future `feature_collector.js` warning necessarily has the same origin.
 
 ### Verify headers after deploying
 
