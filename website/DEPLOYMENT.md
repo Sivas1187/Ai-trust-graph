@@ -115,21 +115,55 @@ rewrite scripts at the edge and would conflict with it:
 | --- | --- | --- |
 | **Rocket Loader** (Speed → Optimization) | **Off** | Rewrites inline scripts, so their hashes stop matching. The site would then fail to hydrate, and the **mobile menu would stop working**. |
 | Cloudflare **Web Analytics** (Pages project → Metrics) / **Zaraz** | Off | Would inject a third-party beacon. The CSP blocks it and logs a console error. The site deliberately has no analytics. |
+| **Web Analytics → Manage site → Real User Measurements (RUM)** for the `aitrustgraph.org` hostname (account level, separate from the Pages project setting) | **Disable** | When enabled, Cloudflare RUM/Web Analytics can inject `static.cloudflareinsights.com/beacon.min.js` at the edge for proxied HTML. This setting was the source of the incident below. |
 | Email Address Obfuscation (Scrape Shield) | Either state | The pages contain no email addresses, so it is a no-op. |
 
 
-### Known Cloudflare beacon injection
+### Resolved: Cloudflare beacon injection
 
-During production verification, Cloudflare injected a request for
-`https://static.cloudflareinsights.com/beacon.min.js`. The active CSP blocks that script
-because the site deliberately permits only same-origin scripts. The site continues to
-function correctly with the beacon blocked.
+**Symptom.** After launch, browsers showed a CSP console error on every page: a
+`<script>` for `https://static.cloudflareinsights.com/beacon.min.js` was blocked by
+`script-src`. The CSP was working as intended. The script never loaded, so no data was
+sent.
 
-The following visible Cloudflare settings were checked and were not enabled: Pages Web
-Analytics, account-level Web Analytics setup, Real User Monitoring (RUM), Rocket Loader,
-and Smart Shield. The exact source of the injection remains under investigation. Until
-it is identified, **do not weaken the CSP** to allow `static.cloudflareinsights.com`.
-This is tracked as a non-blocking operational issue, not as an application dependency.
+**Cause.** In the Cloudflare dashboard, Web Analytics → Manage site for the hostname
+`aitrustgraph.org` had **Real User Measurements (RUM)** set to **"Enable, excluding
+visitor data in the EU"**. When RUM / Web Analytics is enabled, Cloudflare can
+automatically inject the beacon snippet at the edge into proxied HTML served through the
+`aitrustgraph.org` zone. The selected option was configured to exclude visitor data in
+the EU.
+
+- This is separate from the Pages project's own Web Analytics toggle, which was already
+  off. During troubleshooting, `*.pages.dev` did not carry the beacon while the proxied
+  apex did, which was consistent with the hostname/zone-level RUM setting being the
+  source.
+- The snippet was injected only for browser-like requests. A plain `curl` showed clean
+  HTML; a request with a browser `User-Agent` and `Accept: text/html` showed the tag.
+
+**Fix.** Set RUM for `aitrustgraph.org` to **Disable**, then purge the zone cache. After
+that, the site loaded with no CSP errors in DevTools.
+
+**Rules going forward:**
+
+- Keep RUM for this hostname **Disabled**. The site deliberately has no analytics.
+- **Do not weaken the CSP** to allow `static.cloudflareinsights.com`.
+- If the error reappears, check for the injected tag with a browser-like request:
+
+  ```powershell
+  $ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Safari/537.36'
+  $html = (curl.exe -s -A $ua -H 'Accept: text/html,application/xhtml+xml' https://aitrustgraph.org/) -join ''
+  [regex]::Match($html, '<script[^>]*cloudflareinsights[^>]*>').Value
+  ```
+
+  ```bash
+  curl -s -A 'Mozilla/5.0 Chrome/141.0' -H 'Accept: text/html' https://aitrustgraph.org/ | grep -o '<script[^>]*cloudflareinsights[^>]*>'
+  ```
+
+  Empty output means no injection. Compare with the `*.pages.dev` hostname: a tag only on
+  the apex means a zone or hostname-level Cloudflare setting.
+- The `feature_collector.js` "deprecated parameters" console warning observed during this
+  troubleshooting session came from a browser extension, not from the site. This does not
+  mean every future `feature_collector.js` warning necessarily has the same origin.
 
 ### Verify headers after deploying
 
