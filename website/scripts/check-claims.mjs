@@ -45,10 +45,32 @@ const required = [
   "Testing required for a stronger conclusion was not performed.",
   "May retain a design score if separately supported.",
   "The only defensible conclusion is UNKNOWN or Not Tested.",
+  // Problem section (Artifact #1 §4 invariant).
+  "A topological connection is not automatically an exploitable path.",
+  "Required permissions, protocols, state and preconditions must be evidenced or explicitly marked Unknown.",
+  // Assessment lifecycle (Artifact #7 §0.11 iteration rule).
+  "Phases may iterate, but required gates cannot be skipped merely because information was available earlier.",
   // Evidence model (Artifact #6 §1.8).
   "Grade is not sufficiency.",
   "A high grade can confirm an adverse state.",
 ];
+
+// Assessment Methodology phases in canonical order (Artifact #7 §0.11).
+const assessmentPhases = [
+  "Initiate", "Scope", "Discover", "Model", "Evidence", "Controls", "Paths",
+  "Maturity", "Scoring", "Findings", "Decisions", "Report", "Reassess",
+];
+
+// Assessment types in canonical order (Artifact #7 §1.1–§1.10).
+const assessmentTypes = [
+  "Baseline assessment", "Periodic reassessment", "Material-change assessment",
+  "High-impact deep dive", "Incident-driven assessment", "Third-party and provider assessment",
+  "Portfolio assessment", "Pre-deployment readiness assessment",
+  "Continuous or event-driven assessment", "Regulatory or obligation-focused assessment",
+];
+
+// Problem constellation terms (Artifact #1 core proposition).
+const problemTerms = ["Identities", "Agents", "Tools", "Data", "Models", "Providers", "Business actions"];
 
 // Evidence grades in canonical order with canonical names (Artifact #6 §1.1–§1.7).
 const evidenceGrades = [
@@ -86,12 +108,27 @@ for (const [file, raw] of html) {
     for (const phrase of required) {
       if (!text.toLowerCase().includes(phrase.toLowerCase())) errors.push(`${file}: required canonical wording missing: "${phrase}"`);
     }
-    // Canonical chain order (Artifact #2 §0.10), read from the rendered stage headings.
-    const stages = [...raw.matchAll(/<h3 class="flowStage">([^<]+)<\/h3>/g)].map((m) => m[1].replace(/&amp;/g, "&"));
+    // Canonical chain order (Artifact #2 §0.10), read from the rendered diagram nodes.
+    const stages = [...raw.matchAll(/<span class="rcStage">([^<]+)<\/span>/g)].map((m) => m[1].replace(/&amp;/g, "&"));
     const expected = required.slice(0, 9);
     if (stages.join(" > ") !== expected.join(" > ")) {
       errors.push(`${file}: reasoning chain on page is "${stages.join(" > ")}", expected "${expected.join(" > ")}"`);
     }
+    // Lifecycle phases, assessment types and problem terms, read from the rendered lists.
+    const inOrder = (label, source, re, expectedList) => {
+      const got = [...source.matchAll(re)].map((m) => m[1].replace(/&amp;/g, "&"));
+      if (got.join(" > ") !== expectedList.join(" > ")) {
+        errors.push(`${file}: ${label} on page are "${got.join(" > ")}", expected "${expectedList.join(" > ")}"`);
+      }
+    };
+    inOrder("assessment phases", raw, /<span class="lcName">([^<]+)<\/span>/g, assessmentPhases);
+    const typeList = raw.match(/<ul class="chips lcTypeList"[^>]*>([\s\S]*?)<\/ul>/)?.[1] ?? "";
+    inOrder("assessment types", typeList, /<li>([^<]+)<\/li>/g, assessmentTypes);
+    inOrder("problem terms", raw, /<li class="cstNode"[^>]*>([^<]+)<\/li>/g, problemTerms);
+    if (!/<p class="cstTag"><span class="tag">Illustrative<\/span><\/p>/.test(raw)) {
+      errors.push(`${file}: problem constellation is missing its visible "Illustrative" label`);
+    }
+
     // Evidence grade order and names, read from the rendered disclosure summaries.
     const grades = [...raw.matchAll(/<span class="evId">([^<]+)<\/span>[\s\S]*?<span class="evName">([^<]+)<\/span>/g)].map(
       (m) => `${m[1]} — ${m[2].replace(/&amp;/g, "&")}`,
