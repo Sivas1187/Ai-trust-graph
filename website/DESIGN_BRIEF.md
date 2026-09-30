@@ -17,7 +17,9 @@ Owner-approved direction for the visual reset, delivered in slices on the
 `website-visual-reset` integration branch. The approved reference is the refined
 prototype (`website/review-artifacts/visual-reset-prototype/*-refined.png` on the
 `visual-reset-prototype-review` branch). Implemented so far: the system
-foundation, header/navigation and the Cover (Act I). Every other section keeps
+foundation, header/navigation, the Cover (Act I), Act II (why graph reasoning)
+and Act III (how the method thinks, with the Authority and control-breakpoint
+annotations). Every other section keeps
 its previous design until its own reset PR; during construction the
 integration branch is intentionally mixed.
 
@@ -65,7 +67,45 @@ integration branch is intentionally mixed.
   (canonical-source citation in the margin column on wide screens, at the end
   of the act on narrow ones; replaces "Source:" lines as acts are redesigned)
   and `FigureNote` (a quiet italic caption such as "Illustrative topology").
-  Introduced for the upcoming acts; the Cover carries no citation.
+  The Cover carries no citation.
+- **Citation treatment in redesigned acts.** No visible "Source: …" prose. On
+  wide layouts (≥ 1024px) each act and each full annotation carries a quiet
+  mono marginal reference in the margin column ("Artifact #2 / §3.6 · §5.2"),
+  linked to the pinned canonical artifact; on narrow layouts one act-end
+  reference line lists the act's sections, with the same link.
+- **Act II — why graph reasoning** (`components/ActTwo.tsx`). A full-width
+  graphite act that continues the Cover's graph field: the cyan path enters
+  where it left the Cover and ends in a dashed, open "unresolved" motif (the
+  path is illustrative topology, never a validated path). Headline and the
+  Manifesto thesis top left; the §4 topology invariant is the act's dominant
+  serif pull quote, with its second sentence below; a quiet italic
+  "Illustrative topology" note. No constellation, cards, tags, frame, glow or
+  gradient. Desktop (≥ 1024px) is the approved 1440 × 880 composition scaled as
+  a whole, so type and drawing keep their relationship; narrower layouts stack
+  the copy in flow with the field in a right-hand strip, the path zig-zagging
+  down it rather than running as a rail. Curated coordinates:
+  `app/graph/problemField.ts`.
+- **Act III — the typographic reasoning chain** (`components/ActThree.tsx`).
+  The nine canonical stages set as one serif argument (54px desktop, 33px
+  mobile), joined by light arrows and wrapping naturally — no numbers, dots,
+  rail, progress framing or card row. The theory map sits in one quiet native
+  disclosure. Four stages carry small mono superscript keys (a–d; underline
+  only on hover/focus) that point to footnote-style annotations below a short
+  rule.
+- **Authority annotation (a).** One strong assertion line ("Can connect ≠ Can
+  authenticate ≠ … ≠ Can transact", marked as an illustration, not a sequence),
+  the §3.6 separation rule verbatim beside a hairline, and the §5.2 authority
+  classes as a quiet inline list with the "not maturity levels / not ranked"
+  sentence. No tiles, icons or ranking.
+- **Control-breakpoint annotation (b).** Stop · Constrain · Detect · Contain
+  as a text toggle (a native radio group: arrow keys, visible focus, selected
+  state exposed semantically, works without JavaScript) over a synthetic path
+  drawn in the graph grammar inside top and bottom hairlines. Each effect
+  changes the drawing's shape (dashed downstream, a dotted gate, a signal ring,
+  a dashed enclosure) and shows a one-line gloss, so nothing depends on colour.
+  Path validation state and role sit in a quiet disclosure. Annotations c
+  (Evidence) and d (Decision) are one-line pointers to the Evidence and UNKNOWN
+  sections until those are redesigned.
 
 ## Signature interaction
 
@@ -92,20 +132,20 @@ The graph is not decorative. Where motion is used, it must reinforce methodology
 
 ## Homepage sequence
 
-(Current sequence. Item 1 is redesigned; items 2–12 are unchanged until their visual-reset PRs.)
+(Current sequence. Items 1–3 are redesigned; items 4–10 are unchanged until their visual-reset PRs.)
 
 1. Cover (visual reset, Act I) - methodology name, approved proposition, "Read the methodology ↗" and "How it reasons ↓" text links, decorative graph field, running colophon (status, bundle, snapshot date, not independently validated)
-2. Problem - "AI systems are no longer isolated models", illustrative constellation, topology invariant
-3. Reasoning chain - the nine-stage canonical Artifact #2 §0.10 chain as equal nodes with directional connectors; theory-map table in one disclosure
+2. Act II, why graph reasoning (visual reset) - "AI systems are no longer isolated models", the Manifesto thesis, the topology invariant as pull quote, continued graph field ending unresolved, "Illustrative topology"
+3. Act III, how the method thinks (visual reset) - the nine-stage canonical Artifact #2 §0.10 chain as a typographic argument; theory map in one disclosure; annotations a (Authority and Influence: "Access is not authority"), b (Controls: control breakpoints), c (Evidence) and d (Decision) pointing onward
 4. Six domains - graph-centred lens model: the shared graph with six equal domain cards (D1-D3 | graph | D4-D6 on wide screens; graph first on narrow), capabilities in disclosures, labelled Explanatory
-5. Authority - "Access is not authority"
-6. UNKNOWN - dark, high-impact assurance section
-7. Control breakpoints - synthetic path visualization
-8. Evidence model - E0-E5 explainer
-9. Assessment lifecycle - the 13 Artifact #7 phases as a two-row timeline, separate from the reasoning chain, with the iteration rule and assessment types
-10. Release, review and limitations - status, bundle, snapshot, review state, validation statement, one-line provenance, the five manifest gates (Pending), limitations; calm and neutral
-11. Canonical source - the manifest as authority map, where the model's figures are defined (6 domains, 72 controls, 36 capabilities, M1-M5, E0-E5), then artifact cards in reading order
-12. Public review - four equal entry points: report a finding, share feedback, propose a change, inspect the source
+5. UNKNOWN - dark, high-impact assurance section
+6. Evidence model - E0-E5 explainer
+7. Assessment lifecycle - the 13 Artifact #7 phases as a two-row timeline, separate from the reasoning chain, with the iteration rule and assessment types
+8. Release, review and limitations - status, bundle, snapshot, review state, validation statement, one-line provenance, the five manifest gates (Pending), limitations; calm and neutral
+9. Canonical source - the manifest as authority map, where the model's figures are defined (6 domains, 72 controls, 36 capabilities, M1-M5, E0-E5), then artifact cards in reading order
+10. Public review - four equal entry points: report a finding, share feedback, propose a change, inspect the source
+
+The former standalone Authority and Control breakpoints sections are now annotations a and b inside Act III.
 
 The former standalone scale band is removed; its figures live in the Domains and Canonical source sections.
 

@@ -1,12 +1,11 @@
-import { BreakpointExplorer } from "./components/BreakpointExplorer";
+import { ActThree } from "./components/ActThree";
+import { ActTwo } from "./components/ActTwo";
 import { Cover } from "./components/Cover";
 import { PrimaryNav, type NavItem } from "./components/PrimaryNav";
-import { ProblemConstellation } from "./components/ProblemConstellation";
 import {
   artifacts,
   assessmentPhases,
   assessmentTypes,
-  canonicalReasoningChain,
   changeReviewNote,
   companion,
   domains,
@@ -20,17 +19,12 @@ import {
   methodologyAuthor,
   nonNumericResultStates,
   notValidated,
-  pathRoles,
-  pathValidationStates,
   pendingGates,
   phaseIterationRule,
-  problemThesis,
   release,
   reviewStatus,
   roadmapNote,
   scale,
-  theoryMap,
-  topologyInvariant,
   unknownVsNotTested,
 } from "./content";
 
@@ -50,23 +44,6 @@ const navItems: NavItem[] = [
   { href: "#evidence", label: "Assurance" },
   { href: "#methodology", label: "Source" },
   { href: links.repo, label: "GitHub", srSuffix: "(canonical source)", external: true },
-];
-
-const assertions = ["Can connect", "Can authenticate", "Can access", "Can invoke", "Can modify", "Can transact"];
-
-/** Artifact #2 §5.2 authority classes, verbatim names. */
-const authorityClasses = [
-  "Observe",
-  "Read",
-  "Retrieve",
-  "Infer",
-  "Recommend",
-  "Approve",
-  "Execute",
-  "Modify",
-  "Delete",
-  "Disclose",
-  "Transact",
 ];
 
 function Source({ children }: { children: React.ReactNode }) {
@@ -115,83 +92,12 @@ export default function Home() {
         {/* ─────────────────────────── Act I · Cover ──────────────────────── */}
         <Cover />
 
-        {/* ──────────────────────────── Problem ─────────────────────────── */}
-        <section className="dark problem" aria-labelledby="problem-title">
-          <div className="shell problemGrid">
-            <div>
-              <p className="eyebrow">The problem</p>
-              <h2 id="problem-title">AI systems are no longer isolated models.</h2>
-              <p className="problemThesis">{problemThesis}</p>
-            </div>
-            <figure className="problemFigure">
-              <ProblemConstellation />
-              <figcaption className="problemInvariant">
-                <strong>{topologyInvariant[0]}</strong> {topologyInvariant[1]}
-              </figcaption>
-            </figure>
-          </div>
-          <div className="shell">
-            <Source>
-              <Ext href={links.doc("01-manifesto.md")}>Artifact #1 — Manifesto</Ext> §2.2 (thesis), §4
-              (invariant); terms from its core proposition.
-            </Source>
-          </div>
-        </section>
+        {/* ──────────────────── Act II · Why graph reasoning ─────────────────── */}
+        <ActTwo />
 
-        {/* ─────────────────── Canonical reasoning chain ─────────────────── */}
-        <section id="flow" className="section flow" aria-labelledby="flow-title">
-          <div className="shell">
-            <div className="sectionHead">
-              <p className="eyebrow">The reasoning chain</p>
-              <h2 id="flow-title">From what exists to what can be defended.</h2>
-              <p className="sectionLede">
-                The Core Conceptual Model calls this chain{" "}
-                <q>the intellectual spine of the methodology</q>.
-              </p>
-            </div>
-
-            {/* Node-link reasoning chain: the ordered list is the source of truth; connectors
-                and arrowheads are CSS borders. All nodes are equal: no numbering, no fill, no
-                progress. */}
-            <ol className="rcChain" aria-label="Canonical reasoning chain, Artifact #2 §0.10">
-              {canonicalReasoningChain.map((stage) => (
-                <li key={stage} className="rcStep">
-                  <span className="rcNode" aria-hidden="true" />
-                  <span className="rcStage">{stage}</span>
-                </li>
-              ))}
-            </ol>
-
-            <details className="dgDisclosure dgPanel">
-              <summary>
-                <span>Canonical reasoning questions</span>
-                <span className="summaryIcon" aria-hidden="true" />
-              </summary>
-              <table className="dgTable">
-                <caption className="visuallyHidden">Theory map, Artifact #2 §0.10</caption>
-                <thead>
-                  <tr>
-                    <th scope="col">Question</th>
-                    <th scope="col">Concept</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {theoryMap.map((row) => (
-                    <tr key={row.question}>
-                      <td className="rcQuestion">{row.question}</td>
-                      <td>{row.concept}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </details>
-            <Source>
-              stage names and order from the reasoning chain in{" "}
-              <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 — Core Conceptual Model §0.10</Ext>;
-              questions and concepts are the same section’s theory-map table, verbatim.
-            </Source>
-          </div>
-        </section>
+        {/* ──────────────────── Act III · How the method thinks ───────────────── */}
+        {/* Authority (annotation a) and control breakpoints (annotation b) live inside Act III. */}
+        <ActThree />
 
         {/* ─────────────────────────── Domains ──────────────────────────── */}
         <section id="domains" className="section domains" aria-labelledby="domains-title">
@@ -335,65 +241,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ────────────────────────── Authority ─────────────────────────── */}
-        <section id="authority" className="dark authority" aria-labelledby="authority-title">
-          <div className="shell">
-            <div className="sectionHead">
-              <p className="eyebrow">Authority</p>
-              <h2 id="authority-title">Access is not authority.</h2>
-              <p className="sectionLede">
-                Each of these is a separate claim. Each needs its own evidence, and none is silently
-                inferred from another.
-              </p>
-            </div>
-            <ul className="assertions" aria-label="Distinct assertions">
-              {assertions.map((a, i) => (
-                <li key={a}>
-                  {i > 0 && (
-                    <span className="neq" aria-hidden="true">
-                      ≠
-                    </span>
-                  )}
-                  <span className="assertion">{a}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="assertionNote">
-              Illustration of distinct assertions only — not a canonical sequence, ladder or state
-              machine.
-            </p>
-
-            <div className="authorityCanon">
-              <blockquote>
-                <p>
-                  The capability definition, its network reachability, granted authority and actual
-                  invocation are different concepts and require different relationships.
-                </p>
-                <footer>
-                  Separation rule —{" "}
-                  <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 §3.6</Ext>
-                </footer>
-              </blockquote>
-              <div>
-                <h3>Canonical authority classes</h3>
-                <ul className="chips chipsDark">
-                  {authorityClasses.map((c) => (
-                    <li key={c}>{c}</li>
-                  ))}
-                </ul>
-                <p className="small">
-                  Authority classes describe the kind of consequence an entity can cause. They are not
-                  maturity levels and should not be ranked without considering target, scope, conditions and
-                  criticality.
-                </p>
-                <Source>
-                  <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 §5.2</Ext>
-                </Source>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ─────────────────────────── UNKNOWN ──────────────────────────── */}
         <section id="unknown" className="unknown" aria-labelledby="unknown-title">
           <div className="shell">
@@ -475,47 +322,6 @@ export default function Home() {
                 </Source>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* ──────────────────────── Breakpoints ─────────────────────────── */}
-        <section id="breakpoints" className="section breakpoints" aria-labelledby="bp-title">
-          <div className="shell">
-            <div className="sectionHead">
-              <p className="eyebrow">Control breakpoints</p>
-              <h2 id="bp-title">Where can a material path be interrupted?</h2>
-              <p className="sectionLede">
-                A control breakpoint is a node, relationship or boundary where an effective control can
-                materially stop, constrain, detect or contain a path. Alternate and residual paths must
-                still be checked.
-              </p>
-            </div>
-            <BreakpointExplorer />
-            <div className="pathDims">
-              <div>
-                <h3>Path validation state</h3>
-                <ul className="chips">
-                  {pathValidationStates.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3>Path role</h3>
-                <ul className="chips">
-                  {pathRoles.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
-              </div>
-              <p className="small pathDimsNote">
-                Validation state and role are orthogonal dimensions and are not collapsed into one
-                state machine.
-              </p>
-            </div>
-            <Source>
-              <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2 §1.8, §6.3, §6.6</Ext>
-            </Source>
           </div>
         </section>
 
