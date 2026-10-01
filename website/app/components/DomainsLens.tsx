@@ -10,7 +10,8 @@ import { FigureNote, MarginReference } from "./Marginalia";
  * list of six is the source of truth; the figure note states the relationship
  * in text. Order is the canonical order (README); position, line and colour
  * imply no ranking, hierarchy, sequence or maturity — every anchor and leader
- * is drawn identically, and no domain has its own colour.
+ * is drawn identically (anchors and leaders share the one structural cyan),
+ * and no domain has its own colour.
  *
  * Narrow screens: the band sits above a two- or one-column list.
  *
@@ -23,18 +24,20 @@ type P = readonly [x: number, y: number];
 // Coordinates in percent of the band (x: width, y: height). Anchors a0–a5 sit
 // on the lower edge at each column's left rule (0, 1/6 … 5/6 of the width).
 const anchors: P[] = [0, 1, 2, 3, 4, 5].map((i) => [(i * 100) / 6, 100] as const);
-const inner: (readonly [x: number, y: number, accent?: "indigo" | "green" | "amber"])[] = [
+// No secondary accents: every inner node is neutral, so no colour sits beside
+// (or could be read as belonging to) any one domain.
+const inner: (readonly [x: number, y: number])[] = [
   [6, 34],
-  [14, 70, "indigo"],
+  [14, 70],
   [24, 22],
   [31, 58],
-  [41, 30, "green"],
+  [41, 30],
   [49, 66],
   [57, 18],
-  [64, 50, "indigo"],
+  [64, 50],
   [73, 26],
   [81, 64],
-  [89, 34, "amber"],
+  [89, 34],
   [97, 58],
 ];
 // Edges: [kind, index] pairs; "a" = anchor, "n" = inner node. One connected component.
@@ -99,8 +102,8 @@ export function DomainsLens() {
               })}
             </g>
             <g className="gfNodes">
-              {inner.map(([x, y, accent], i) => (
-                <circle key={`n${i}`} cx={pc(x)} cy={pc(y)} r={3.6} className={accent ? `gfNode-${accent}` : undefined} />
+              {inner.map(([x, y], i) => (
+                <circle key={`n${i}`} cx={pc(x)} cy={pc(y)} r={3.6} />
               ))}
               {anchors.map(([x, y], i) => (
                 <circle key={`a${i}`} cx={pc(x)} cy={pc(y)} r={5} className="lensAnchor" />

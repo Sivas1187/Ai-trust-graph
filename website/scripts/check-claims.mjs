@@ -149,6 +149,23 @@ const evidenceRegister = [
 ];
 
 // Cover (visual reset): the approved proposition and the primary navigation, in order.
+// Cover context line: website copy built from the Artifact #1 Manifesto CORE PROPOSITION.
+const coverContext =
+  "AI risk is not located only inside a model. It emerges through relationships that must be made visible, evidenced and governed as a connected system.";
+// Marketing / outcome claims the Cover copy must not make.
+const coverMarketing =
+  /\b(reduc\w*|prevent\w*|ensur\w*|guarantee\w*|prove[sn]?|protect\w*|secures?|compliance|compliant|safer|catch\w*|replac\w*|stops?|eliminat\w*|world[- ]class|leading|revolutionary|trusted by)\b/i;
+// "On this page": website orientation only, eight destinations in page order.
+const pageIndexLinks = [
+  ["#flow", "Method"], ["#domains", "Domains"], ["#unknown", "UNKNOWN"], ["#evidence", "Evidence"],
+  ["#lifecycle", "Lifecycle"], ["#status", "Status"], ["#methodology", "Source"], ["#review", "Review"],
+];
+// Class tokens that would give colour or styling a semantic (assurance / risk / pass-fail) meaning.
+const semanticColourClass =
+  /(^|[-_])(safe|unsafe|danger|success|warning|warn|critical|alert|error|pass|passed|fail|failed|ok|risky?)([-_]|$)|(^|[a-z])(Safe|Unsafe|Danger|Success|Warning|Warn|Critical|Alert|Error|Pass|Passed|Fail|Failed|Risk|Risky)([A-Z0-9]|$)|(^|[-_])(red|amber|yellow|orange)([-_]|$)|(^|[a-z])(Red|Amber|Yellow|Orange)([A-Z0-9]|$)/;
+
+// Colour-role or rating class names, in any case ("gradeColor", "risk-high", "traffic-light").
+const semanticColourRole = /risk-?(high|low|medium)|traffic|rag-?status|(maturity|grade|domain|phase|state|status|gate|evidence|level|tier|severity|score)-?colou?r/i;
 const coverProposition =
   "An open methodology for reasoning about connected AI systems through graph structure, controls and evidence.";
 const primaryNav = ["Method", "Domains", "Assurance", "Source", "GitHub"];
@@ -234,6 +251,11 @@ for (const [file, raw] of html) {
       if (title !== "AI Trust Graph") errors.push(`${file}: Cover title is "${title}", expected "AI Trust Graph"`);
       const prop = visibleText(cover.match(/<p class="coverProp">([\s\S]*?)<\/p>/)?.[1] ?? "");
       if (prop !== coverProposition) errors.push(`${file}: Cover proposition is "${prop}", expected "${coverProposition}"`);
+      const context = visibleText(cover.match(/<p class="coverContext">([\s\S]*?)<\/p>/)?.[1] ?? "");
+      if (context !== coverContext) errors.push(`${file}: Cover context line is "${context}", expected "${coverContext}"`);
+      const copyText = visibleText(cover.match(/<div class="coverCopy">([\s\S]*?)<\/div>/)?.[1] ?? "");
+      const sell = copyText.match(coverMarketing);
+      if (sell) errors.push(`${file}: Cover copy makes an unsupported marketing / outcome claim ("${sell[0]}")`);
       const coverLinks = [...cover.matchAll(/<a href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)].map((m) => [m[1], visibleText(m[2])]);
       const wantLinks = [
         ["https://github.com/Sivas1187/Ai-trust-graph", "Read the methodology ↗"],
@@ -615,8 +637,30 @@ for (const [file, raw] of html) {
     const ids = [...raw.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
     const dupes = [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
     if (dupes.length) errors.push(`${file}: duplicate id(s): ${dupes.join(", ")}`);
-    if (/<nav aria-label="Primary"[\s\S]*?<a href="#evidence"[\s\S]*?<\/nav>/.test(raw)) errors.push(`${file}: the Assurance navigation item must target #unknown, not #evidence`);
+    if (/<a href="#evidence"/.test(nav)) errors.push(`${file}: the Assurance navigation item must target #unknown, not #evidence`);
     if (!/<li id="note-evidence"><a href="#evidence">/.test(actIII) || !/<section id="evidence"/.test(raw)) errors.push(`${file}: Act III annotation c no longer reaches the #evidence section`);
+    // ── On this page: website orientation only — eight links, page order, real targets, no progress ──
+    const pix = raw.match(/<nav class="pageIndex" aria-labelledby="page-index-label">[\s\S]*?<\/nav>/)?.[0] ?? "";
+    if (!pix || !/<p id="page-index-label" class="pageIndexLabel">On this page<\/p>/.test(pix)) errors.push(`${file}: the "On this page" navigation (labelled landmark) is missing`);
+    const pixLinks = [...pix.matchAll(/<a ([^>]*)>([\s\S]*?)<\/a>/g)].map((m) => [m[1].match(/href="([^"]*)"/)?.[1], visibleText(m[2])]);
+    if (JSON.stringify(pixLinks) !== JSON.stringify(pageIndexLinks)) {
+      errors.push(`${file}: "On this page" links are ${JSON.stringify(pixLinks)}, expected ${JSON.stringify(pageIndexLinks)}`);
+    }
+    for (const [href] of pageIndexLinks) if (!new RegExp(`<section id="${href.slice(1)}"`).test(raw)) errors.push(`${file}: "On this page" target ${href} is not a section`);
+    const pixClasses = [...pix.matchAll(/class="([^"]*)"/g)].map((m) => m[1]).join(" ");
+    if (/aria-current|<progress|<meter|<ol\b/.test(pix) || /[✓✔☑%\d]/.test(visibleText(pix)) || /progress|complete|done|current|active|step|visited/i.test(pixClasses)) {
+      errors.push(`${file}: "On this page" carries numbering, progress, completion or active-state semantics`);
+    }
+    if (raw.indexOf('<nav class="pageIndex"') < raw.indexOf("</section>") || raw.indexOf('<nav class="pageIndex"') > raw.indexOf('<section id="problem"')) {
+      errors.push(`${file}: "On this page" must sit between the Cover and Act II`);
+    }
+    // ── Domains: equal treatment in the graph band — no secondary accent beside any domain ──
+    const band = dom.match(/<svg class="graphField lensBand"[\s\S]*?<\/svg>/)?.[0] ?? "";
+    if (/gfNode-|style=|class="[^"]*(cyan|indigo|green|amber|ochre|red)/.test(band)) errors.push(`${file}: the Domains graph band carries a per-node or per-domain colour accent`);
+    // ── Colour never carries meaning: no semantic colour / status classes anywhere on the page ──
+    const classTokens = [...new Set([...raw.matchAll(/\sclass="([^"]*)"/g)].flatMap((m) => m[1].split(/\s+/)).filter(Boolean))];
+    const semantic = classTokens.filter((t) => !/^gfNode-(indigo|green|amber)$/.test(t) && (semanticColourClass.test(t) || semanticColourRole.test(t)));
+    if (semantic.length) errors.push(`${file}: semantic colour / status class(es) present: ${semantic.join(", ")}`);
   }
   for (const ctx of allowedContexts) text = text.replace(new RegExp(ctx.source, "gi"), " ");
   for (const re of forbidden) {

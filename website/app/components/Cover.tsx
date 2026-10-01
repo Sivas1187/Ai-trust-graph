@@ -1,12 +1,13 @@
 import { coverFieldDesktop, coverFieldMobile } from "../graph/coverField";
-import { coverProposition, links, notValidatedShort, release } from "../content";
+import { coverContext, coverProposition, links, notValidatedShort, release } from "../content";
 import { GraphField } from "./GraphField";
 
 /**
  * Act I — the research cover.
  *
  * Editorial title page: the methodology name set large in the serif display
- * face, the approved proposition, two plain text links, and a running
+ * face, the approved proposition with one subordinate context line (from the
+ * Manifesto core proposition), two plain text links, and a running
  * colophon under a full-width hairline. The graph field behind it is
  * decorative; desktop and mobile use separately curated compositions.
  *
@@ -26,6 +27,7 @@ export function Cover() {
             AI Trust Graph
           </h1>
           <p className="coverProp">{coverProposition}</p>
+          <p className="coverContext">{coverContext}</p>
           <p className="coverLinks">
             <a href={links.repo} rel="noopener noreferrer" className="coverLinkPrimary">
               Read the methodology
