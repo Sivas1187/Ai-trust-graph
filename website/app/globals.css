@@ -1,15 +1,13 @@
 /* AI Trust Graph — public methodology site
    Visual system: warm paper + graphite, thin graph lines, restrained cyan/green/indigo.
    No information is carried by colour alone; every state also has a text label.
-   Visual reset (in progress): research-monograph direction — serif display
+   Visual reset (complete): research-monograph direction — serif display
    (Source Serif 4), Inter body, IBM Plex Mono metadata; see DESIGN_BRIEF.md.
-   Redesigned acts use the "vr" layout tokens and the graph-field grammar;
-   sections not yet redesigned keep their original rules unchanged. */
+   Every section uses the "vr" layout tokens, the shared act frame and the
+   graph-field grammar. */
 
 :root {
   --paper: #f6f6f1;
-  --paper-2: #efefe8;
-  --surface: #ffffff;
   --ink: #0e1312;
   --ink-2: #2f3836;
   --muted: #56615e;
@@ -17,8 +15,6 @@
   --line-strong: #b9bdb3;
 
   --graphite: #0f1514;
-  --graphite-2: #161f1d;
-  --graphite-3: #1e2927;
   --on-dark: #eaf0ed;
   --on-dark-muted: #a8b5b0;
   --line-dark: #2e3b38;
@@ -55,9 +51,6 @@
   --type-note: clamp(30px, 2.78vw, 40px); /* annotation titles */
   --type-assert: clamp(22px, 1.95vw, 28px); /* assertion lines */
 
-  --radius: 18px;
-  --gutter: 16px;
-  --shell: 1200px;
   --focus: 0 0 0 3px var(--paper), 0 0 0 5px var(--cyan);
   --focus-dark: 0 0 0 3px var(--graphite), 0 0 0 5px var(--cyan-on-dark);
 
@@ -109,7 +102,7 @@ ol {
 h1,
 h2,
 h3 {
-  font-family: var(--font-display, var(--font-body, system-ui)), system-ui, sans-serif;
+  font-family: var(--font-body, system-ui), system-ui, sans-serif;
   color: inherit;
   text-wrap: balance;
 }
@@ -133,12 +126,6 @@ input:focus-visible + span {
   box-shadow: var(--focus);
   border-radius: 6px;
 }
-.dark a:focus-visible,
-.dark summary:focus-visible,
-.unknown a:focus-visible,
-.siteFooter a:focus-visible {
-  box-shadow: var(--focus-dark);
-}
 main:focus {
   outline: none;
 }
@@ -153,16 +140,6 @@ main:focus {
   white-space: nowrap;
   border: 0;
 }
-.shell {
-  width: min(var(--shell), 100% - 2 * var(--gutter));
-  margin-inline: auto;
-}
-@media (min-width: 720px) {
-  :root {
-    --gutter: 32px;
-  }
-}
-
 .skipLink {
   position: absolute;
   left: 16px;
@@ -181,19 +158,6 @@ main:focus {
 }
 
 /* ───────────── Shared type ───────────── */
-.eyebrow {
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 12.5px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  margin-bottom: 18px;
-}
-.dark .eyebrow,
-.unknown .eyebrow {
-  color: var(--cyan-on-dark);
-}
 h2 {
   font-size: clamp(36px, 5.2vw, 64px);
   line-height: 1.04;
@@ -206,135 +170,6 @@ h3 {
   letter-spacing: -0.015em;
   font-weight: 600;
 }
-.sectionHead {
-  max-width: 820px;
-  margin-bottom: 56px;
-}
-.sectionLede {
-  margin-top: 22px;
-  font-size: 19px;
-  line-height: 1.6;
-  color: var(--ink-2);
-  max-width: 720px;
-}
-.dark .sectionLede {
-  color: var(--on-dark-muted);
-}
-.small {
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: var(--muted);
-}
-.dark .small,
-.unknown .small {
-  color: var(--on-dark-muted);
-}
-.source {
-  margin-top: 22px;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 12.5px;
-  line-height: 1.6;
-  color: var(--muted);
-}
-.dark .source,
-.unknown .source {
-  color: var(--on-dark-muted);
-}
-.tag {
-  display: inline-block;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border: 1px solid currentColor;
-  border-radius: 999px;
-  margin-right: 6px;
-  vertical-align: 1px;
-}
-.section {
-  padding: clamp(80px, 11vw, 140px) 0;
-}
-.dark {
-  background: var(--graphite);
-  color: var(--on-dark);
-}
-
-/* ───────────── Diagram primitives ─────────────
-   Conventions for diagrams (semantic HTML is the source of truth; CSS draws it):
-   - Connector lines are CSS borders (never background fills), so they survive
-     forced-colours mode. Arrowheads are border triangles; the forced-colours
-     block at the end of this file keeps them as triangles in system colours.
-   - State is never carried by colour or box-shadow alone.
-   .dgDisclosure is the shared native-<details> treatment used inside diagrams. */
-.dgDisclosure > summary {
-  list-style: none;
-  cursor: pointer;
-}
-.dgDisclosure > summary::-webkit-details-marker {
-  display: none;
-}
-.dgDisclosure[open] .summaryIcon::after {
-  transform: translate(-50%, -50%) rotate(0deg);
-}
-/* .dgPanel: a full-width disclosure placed directly below a diagram. */
-.dgPanel {
-  margin-top: 40px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.dgPanel > summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 0;
-  font-weight: 600;
-  color: var(--ink-2);
-}
-.dgPanel[open] > summary {
-  border-bottom: 1px solid var(--line);
-}
-.dgTable {
-  width: 100%;
-  margin: 8px 0 20px;
-  border-collapse: collapse;
-  font-size: 15px;
-  text-align: left;
-}
-.dgTable th {
-  padding: 12px 16px 8px 0;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 11.5px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 1px solid var(--line);
-}
-.dgTable td {
-  padding: 10px 16px 10px 0;
-  vertical-align: top;
-  border-bottom: 1px solid var(--line);
-  color: var(--ink-2);
-}
-.dgTable tr:last-child td {
-  border-bottom: 0;
-}
-.dgCaption {
-  caption-side: top;
-  padding-top: 16px;
-  text-align: left;
-  font-weight: 600;
-  font-size: 14px;
-}
-.dgNote {
-  max-width: 760px;
-  font-size: 15px;
-  color: var(--ink-2);
-}
-
 /* ───────────── Header (visual reset) ─────────────
    Quiet editorial running head: brand left, text links right, no chrome.
    Not sticky: the cover is a title page, and the header scrolls with it. */
@@ -2085,654 +1920,730 @@ h3 {
   }
 }
 
-/* ───────────── Assessment lifecycle ───────────── */
-.lcRule {
-  max-width: 760px;
-  margin-bottom: 44px;
-  padding-left: 18px;
-  border-left: 2px solid var(--indigo);
-  font-size: 17px;
-  line-height: 1.55;
+/* ───────────── PR D acts: shared disclosure ─────────────
+   UNKNOWN, Evidence and Lifecycle keep their detail in native <details>: a
+   quiet mono summary on a hairline, with a text +/− (no icon, no chrome). */
+.unknownDetails > summary,
+.evDetails > summary,
+.lcDetails > summary,
+.typeEntry > summary {
+  cursor: pointer;
+  list-style: none;
+}
+.unknownDetails > summary::-webkit-details-marker,
+.evDetails > summary::-webkit-details-marker,
+.lcDetails > summary::-webkit-details-marker,
+.typeEntry > summary::-webkit-details-marker {
+  display: none;
+}
+.unknownDetails > summary,
+.evDetails > summary,
+.lcDetails > summary {
+  display: inline-block;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
   color: var(--ink-2);
 }
-.lcRule strong {
-  color: var(--ink);
+.unknownDetails > summary::after,
+.evDetails > summary::after,
+.lcDetails > summary::after,
+.typeEntry > summary::after {
+  content: " +";
 }
-/* Wide: phases 1–7 on row one, 8–13 on row two, joined by one return connector
-   (phase 7 → down → back → phase 8). Square markers distinguish it from the
-   round reasoning-chain nodes. Row height is fixed so the connector can meet. */
-.lcPhases {
-  --lc-row: 78px;
-  --lc-gap: 56px;
-  position: relative;
+.unknownDetails[open] > summary::after,
+.evDetails[open] > summary::after,
+.lcDetails[open] > summary::after,
+.typeEntry[open] > summary::after {
+  content: " −";
+}
+
+/* ───────────── UNKNOWN · an assurance invariant ─────────────
+   components/UnknownAssurance.tsx. Graphite, the page's second dark field.
+   One dominant serif assertion, a typographic non-equivalence argument and
+   the SC-INV-01 invariant; the distinction from Not Tested as a register.
+   UNKNOWN is an assurance state, not an error: no amber, red, warning icon,
+   alert box or traffic light — every state is drawn identically. */
+.unknownAct {
+  background: var(--graphite);
+  color: var(--on-dark);
+}
+.unknownAct a:focus-visible,
+.unknownAct summary:focus-visible {
+  box-shadow: var(--focus-dark);
+}
+.unknownAct .marginRef,
+.unknownAct .noteLabel,
+.unknownAct .noteRuleLabel {
+  color: #7f8c87;
+}
+.unknownAct .marginRef a {
+  text-decoration-color: var(--line-dark);
+}
+.unknownTitle {
+  max-width: calc(100% - 160px);
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: clamp(46px, 8.4vw, 120px);
+  line-height: 0.98;
+  letter-spacing: -0.022em;
+  text-wrap: wrap;
+}
+.unknownStays {
+  font-family: var(--font-serif-italic), var(--font-serif), Georgia, serif;
+  font-style: italic;
+  color: var(--on-dark-muted);
+}
+/* The unresolved motif from Act II: a dashed hand-off into an open ring. */
+.unknownMotif {
+  position: absolute;
+  top: 18px;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  fill: none;
+  stroke: var(--on-dark-muted);
+  stroke-width: 1.25;
+  stroke-dasharray: 4 6;
+}
+.unknownMotif circle {
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+.unknownLead {
+  margin-top: 44px;
+  max-width: 54ch;
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--on-dark);
+}
+.unknownBody {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  row-gap: var(--lc-gap);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0 80px;
+  align-items: start;
+  margin-top: 104px;
 }
-.lcPhase {
-  position: relative;
-  height: var(--lc-row);
-  padding-top: 28px;
+.unknownNot {
+  border-top: 1px solid var(--line-dark);
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: clamp(24px, 2.36vw, 34px);
+  line-height: 1.25;
+}
+.unknownNot li {
+  padding: 16px 0 17px;
+  border-bottom: 1px solid var(--line-dark);
+}
+.unknownFrom {
+  color: var(--on-dark-muted);
+}
+.unknownNeq {
+  color: #7f8c87;
+}
+.unknownInvariant {
+  padding: 4px 0 0 28px;
+  border-left: 1px solid var(--line-dark);
+}
+.unknownInvariant p {
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: var(--type-quote);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  color: var(--on-dark);
+}
+.unknownInvariant .noteRuleLabel {
+  margin-bottom: 18px;
+  letter-spacing: 0;
+}
+.unknownInvariant .noteRuleLabel a {
+  color: inherit;
+  text-decoration-color: var(--line-dark);
+}
+.unknownStates {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 0 80px;
+  margin-top: 120px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line-dark);
+}
+.unknownStatesTitle {
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: var(--type-note);
+  line-height: 1.12;
+  letter-spacing: -0.012em;
+}
+.unknownStatesLede {
+  grid-column: 1;
+  margin-top: 16px;
+  max-width: 34ch;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--on-dark-muted);
+}
+.stateRegister,
+.unknownDetails,
+.unknownRule {
+  grid-column: 2;
+}
+.stateRegister {
+  grid-row: 1 / span 2;
+}
+.stateRegister > div {
+  display: grid;
+  grid-template-columns: 9.5em minmax(0, 1fr);
+  gap: 4px 24px;
+  padding: 18px 0 20px;
+  border-bottom: 1px solid var(--line-dark);
+}
+.stateRegister > div:first-child {
+  padding-top: 4px;
+}
+.stateRegister dt {
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 22px;
+  line-height: 1.3;
+}
+.stateRegister dd {
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--on-dark-muted);
+}
+.unknownDetails {
+  margin-top: 28px;
+}
+.unknownAct .unknownDetails > summary {
+  border-bottom-color: var(--line-dark);
+  color: var(--on-dark);
+}
+.stateTable {
+  width: 100%;
+  margin-top: 18px;
+  border-collapse: collapse;
+  font-size: 15.5px;
+  line-height: 1.5;
+  text-align: left;
+}
+.stateTable th,
+.stateTable td {
+  padding: 12px 20px 12px 0;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line-dark);
+}
+.stateTable thead th {
+  padding-top: 0;
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: #7f8c87;
+}
+.stateTable tbody th {
+  font-weight: 400;
   white-space: nowrap;
 }
-.lcMarker {
+.stateTable td {
+  color: var(--on-dark-muted);
+}
+.unknownRule {
+  margin-top: 32px;
+  max-width: 62ch;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--on-dark-muted);
+}
+.unknownRule strong {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: var(--on-dark);
+}
+.unknownResultStates {
+  margin-top: 112px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line-dark);
+}
+.stateIds {
+  margin-top: 10px;
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: var(--on-dark);
+}
+.stateIds {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 2px;
+}
+.stateIds li {
+  white-space: nowrap;
+}
+/* Separators trail each name, so a wrapped line never starts with one. */
+.stateIds li:not(:last-child)::after {
+  content: "·";
+  margin-inline: 0.9em;
+  color: #7f8c87;
+}
+.unknownNote {
+  margin-top: 18px;
+  max-width: 66ch;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--on-dark-muted);
+}
+.unknownNote strong {
+  font-weight: 600;
+  color: var(--on-dark);
+}
+@media (max-width: 1023px) {
+  .unknownTitle {
+    max-width: none;
+  }
+  .unknownMotif {
+    display: none;
+  }
+  .unknownBody,
+  .unknownStates {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .unknownInvariant {
+    margin-top: 56px;
+  }
+  .unknownStatesLede,
+  .stateRegister,
+  .unknownDetails,
+  .unknownRule {
+    grid-column: 1;
+  }
+  .stateRegister {
+    grid-row: auto;
+    margin-top: 32px;
+  }
+}
+@media (max-width: 600px) {
+  .unknownLead {
+    font-size: 18px;
+  }
+  .unknownBody {
+    margin-top: 72px;
+  }
+  .unknownStates,
+  .unknownResultStates {
+    margin-top: 80px;
+  }
+  .stateRegister > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .stateTable {
+    font-size: 14.5px;
+    hyphens: auto;
+  }
+  .stateTable th,
+  .stateTable td {
+    padding-right: 12px;
+  }
+  .stateTable tbody th {
+    white-space: normal;
+  }
+}
+
+/* ───────────── Evidence · six grades of evidentiary support ─────────────
+   components/EvidenceSequence.tsx. One quiet axis: a hairline with six
+   identical hollow nodes and textual stops (vertical on narrow screens). No
+   colour progression, size change, fill, ladder or gauge: the order means
+   increasing evidentiary support only, and the caption says so. */
+.evidenceAct {
+  background: var(--paper);
+}
+.evAxis {
+  margin: 96px 0 0;
+}
+.evLine {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  border-top: 1px solid rgba(16, 22, 21, 0.45);
+}
+.evStop {
+  position: relative;
+  padding: 30px 20px 0 0;
+}
+.evStop::before {
+  content: "";
   position: absolute;
+  top: -6px;
   left: 0;
-  top: 0;
-  width: 16px;
-  height: 16px;
-  border: 2px solid var(--cyan);
-  border-radius: 2px;
-  background: color-mix(in srgb, var(--cyan) 14%, var(--paper));
+  width: 11px;
+  height: 11px;
+  border: 1.25px solid rgba(16, 22, 21, 0.7);
+  border-radius: 50%;
+  background: var(--paper);
 }
-/* Colour pass: markers alternate cyan / green for rhythm only. Every marker
-   has the same faint tint (never a solid fill or tick), so no phase reads as
-   done, current, passed or failed. */
-.lcPhase:nth-child(even) .lcMarker {
-  border-color: var(--green);
-  background: color-mix(in srgb, var(--green) 16%, var(--paper));
-}
-.lcNum {
+.evGrade {
+  display: block;
   font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 13px;
   color: var(--muted);
 }
-.lcName {
+.evGradeName {
   display: block;
-  margin-top: 2px;
-  font-family: var(--font-display, system-ui), system-ui, sans-serif;
-  font-size: 17px;
-  font-weight: 600;
+  margin-top: 6px;
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 22px;
+  line-height: 1.22;
   letter-spacing: -0.01em;
 }
-.lcPhase:not(:nth-child(7)):not(:last-child)::after {
-  /* connector to the next phase on the same row */
-  content: "";
-  position: absolute;
-  top: 7.25px;
-  left: 22px;
-  right: 6px;
-  border-top: 1.5px solid var(--ink-2);
-}
-.lcPhase:nth-child(7)::after {
-  /* return connector, part 1: along from phase 7, then down into the row gap */
-  content: "";
-  position: absolute;
-  top: 7.25px;
-  left: 22px;
-  right: 0;
-  height: calc(var(--lc-row) - 7.25px + var(--lc-gap) / 2);
-  /* The return connector shares the iteration rule's indigo accent. */
-  border-top: 1.5px solid var(--indigo);
-  border-right: 1.5px solid var(--indigo);
-  border-top-right-radius: 10px;
-}
-.lcPhases::before {
-  /* return connector, part 2: back across the gap, then down to phase 8 */
-  content: "";
-  position: absolute;
-  top: calc(var(--lc-row) + var(--lc-gap) / 2);
-  left: 7.25px;
-  right: 0;
-  height: calc(var(--lc-gap) / 2);
-  border-top: 1.5px solid var(--indigo);
-  border-left: 1.5px solid var(--indigo);
-  border-top-left-radius: 10px;
-}
-.lcPhase:nth-child(8)::before {
-  /* arrowhead into phase 8 */
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: 3.5px;
-  border-top: 7px solid var(--indigo);
-  border-left: 4.5px solid transparent;
-  border-right: 4.5px solid transparent;
-}
-@media (max-width: 900px) {
-  .lcPhases {
-    grid-template-columns: 1fr;
-    row-gap: 0;
-  }
-  .lcPhases::before,
-  .lcPhase:nth-child(8)::before {
-    display: none;
-  }
-  .lcPhase {
-    height: auto;
-    padding: 0 0 18px 34px;
-  }
-  .lcPhase:last-child {
-    padding-bottom: 0;
-  }
-  .lcMarker {
-    top: 3px;
-  }
-  .lcNum {
-    display: inline-block;
-    min-width: 2.4ch;
-  }
-  .lcName {
-    display: inline;
-    margin: 0 0 0 6px;
-  }
-  .lcPhase:not(:nth-child(7)):not(:last-child)::after,
-  .lcPhase:nth-child(7)::after {
-    content: "";
-    position: absolute;
-    top: 21px;
-    bottom: 1px;
-    left: 7.25px;
-    right: auto;
-    height: auto;
-    border-top: 0;
-    border-right: 0;
-    border-radius: 0;
-    border-left: 1.5px solid var(--ink-2);
-  }
-}
-.lcTypes {
-  margin-top: 64px;
-}
-.lcTypes h3 {
-  margin-bottom: 6px;
-}
-.lcTypes .small {
-  margin-bottom: 16px;
-}
-.lcTypeDefs div {
-  padding: 12px 0;
-  border-top: 1px solid var(--line);
-}
-.lcTypeDefs div:first-child {
-  border-top: 0;
-}
-.lcTypeDefs dt {
-  font-weight: 600;
-}
-.lcTypeDefs dd {
-  margin-top: 4px;
-  color: var(--ink-2);
-  max-width: 760px;
-}
-
-/* ───────────── Shared by sections not yet redesigned ─────────────
-   Formerly in the Authority block. Blockquote rules apply to UNKNOWN only;
-   :where() keeps their original (element-level) specificity and excludes the
-   redesigned acts' blockquotes. */
-:where(blockquote:not(.act2Quote, .noteRule, .colophonQuote)) p {
-  font-family: var(--font-display, system-ui), system-ui, sans-serif;
-  font-size: clamp(21px, 2.2vw, 27px);
-  line-height: 1.3;
-  letter-spacing: -0.015em;
-  font-weight: 500;
-}
-:where(blockquote:not(.act2Quote, .noteRule, .colophonQuote)) p::before {
-  content: "“";
-}
-:where(blockquote:not(.act2Quote, .noteRule, .colophonQuote)) p::after {
-  content: "”";
-}
-:where(blockquote:not(.act2Quote, .noteRule, .colophonQuote)) footer {
-  margin-top: 16px;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 12.5px;
-  color: var(--on-dark-muted);
-}
-.unknownCanon h3 {
-  font-size: 15px;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
-.unknownCanon .small {
-  margin-top: 16px;
-}
-/* Disclosure +/− icon, shared by the Evidence and Lifecycle disclosures
-   (formerly in the Domains block). */
-.summaryIcon {
-  position: relative;
-  width: 22px;
-  height: 22px;
-  border: 1px solid var(--line-strong);
-  border-radius: 50%;
-  flex: none;
-}
-.summaryIcon::before,
-.summaryIcon::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 9px;
-  height: 1.5px;
-  background: var(--ink); /* forced colours: see the system-colour override below */
-  transform: translate(-50%, -50%);
-}
-.summaryIcon::after {
-  transform: translate(-50%, -50%) rotate(90deg);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .summaryIcon::after {
-    transition: transform 0.2s ease;
-  }
-}
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.chips li {
-  font-size: 14px;
-  padding: 5px 12px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--surface);
-}
-.unknown .chips li {
-  background: transparent;
-  border-color: var(--line-dark);
-  color: var(--on-dark);
-}
-
-/* ───────────── UNKNOWN ───────────── */
-.unknown {
-  position: relative;
-  background: #080b0b;
-  color: var(--on-dark);
-  padding: clamp(96px, 13vw, 170px) 0;
-  overflow: hidden;
-  border-top: 1px solid var(--line-dark);
-}
-.unknown::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1.2px);
-  background-size: 28px 28px;
-  mask-image: radial-gradient(ellipse 70% 60% at 30% 40%, #000, transparent);
-  pointer-events: none;
-}
-.unknown .shell {
-  position: relative;
-}
-.unknownTitle {
-  font-size: clamp(52px, 10.5vw, 150px);
-  line-height: 0.92;
-  letter-spacing: -0.05em;
-  font-weight: 700;
-}
-.unknownTitle span:first-child,
-.unknownTitle span:last-child {
-  display: inline-block;
-}
-.unknownStays {
-  font-weight: 400;
-  font-style: italic;
-  color: var(--amber-on-dark);
-  letter-spacing: -0.03em;
-}
-.unknownLead {
-  margin-top: 32px;
-  font-size: clamp(19px, 2vw, 24px);
-  line-height: 1.45;
-  color: var(--on-dark-muted);
-  max-width: 640px;
-}
-.unknownGrid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 56px;
-}
-.unknownGrid li {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 22px 22px 24px;
-  border: 1px solid var(--line-dark);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.02);
-}
-.unknownFrom {
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 12.5px;
-  letter-spacing: 0.08em;
-  color: var(--amber-on-dark);
-}
-.unknownNeq {
-  font-size: 14px;
-  color: var(--on-dark-muted);
-}
-.unknownTo {
-  font-family: var(--font-display, system-ui), system-ui, sans-serif;
-  font-size: clamp(24px, 2.6vw, 32px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-  text-decoration-color: var(--amber-on-dark);
-}
-.stateCompare {
-  margin-top: 64px;
-  padding-top: 48px;
-  border-top: 1px solid var(--line-dark);
-}
-.stateCompareTitle {
-  font-size: clamp(26px, 3vw, 38px);
-  letter-spacing: -0.025em;
-}
-.stateCompareLede {
-  margin-top: 10px;
-  color: var(--on-dark-muted);
-  font-size: 17px;
-}
-.stateCards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 28px;
-}
-.stateCard {
-  border: 1px solid var(--line-dark);
-  border-radius: var(--radius);
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.02);
-}
-.stateCard dt {
-  display: inline-block;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--amber-on-dark);
-  padding: 3px 10px;
-  border: 1px solid currentColor;
-  border-radius: 8px;
-}
-.stateCard:nth-child(2) dt {
-  color: var(--indigo-on-dark);
-  border-style: dashed;
-}
-.stateMeaning {
-  margin-top: 16px;
-  font-family: var(--font-display, system-ui), system-ui, sans-serif;
-  font-size: clamp(18px, 1.8vw, 21px);
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-  color: var(--on-dark);
-}
-.stateTreatment {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px dashed var(--line-dark);
-  font-size: 14.5px;
+.evAxisNote {
+  margin-top: 40px;
+  font-size: 15.5px;
   line-height: 1.55;
-  color: var(--on-dark-muted);
-}
-.stateTreatment {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-.stateLabel {
-  display: block;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 11.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.stateRule {
-  margin-top: 20px;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--on-dark-muted);
-  max-width: 900px;
-}
-.stateRule strong {
-  color: var(--on-dark);
-}
-.stateRule q {
-  color: var(--on-dark);
-}
-@media (max-width: 720px) {
-  .stateCards {
-    grid-template-columns: 1fr;
-  }
-}
-.unknownCanon {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(28px, 5vw, 64px);
-  margin-top: 72px;
-  padding-top: 48px;
-  border-top: 1px solid var(--line-dark);
-}
-@media (max-width: 820px) {
-  .unknownGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .unknownCanon {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 420px) {
-  .unknownGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ───────────── Evidence ───────────── */
-/* A neutral E0 → E5 scale: identical nodes on one line with a direction arrow.
-   Deliberately no rising bars, colour progression or size change, so the scale
-   reads as evidentiary support only (not safety, maturity or compliance). */
-.evidence {
-  border-top: 1px solid var(--line);
-}
-.evScale {
-  position: relative;
-  padding-top: 30px;
-}
-.evAxis {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--muted);
 }
-.evSteps {
-  position: relative;
+.evDetails {
+  margin-top: 40px;
+}
+.evRegister {
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.evEntry {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0 20px;
-  align-items: start;
-}
-/* Connector through the nodes (border, forced-colours safe) … */
-.evSteps::before {
-  content: "";
-  position: absolute;
-  left: 8px;
-  right: 10px;
-  top: 8px;
-  border-top: 1.5px solid var(--ink-2);
-}
-/* … ending in a direction arrowhead (border triangle). */
-.evSteps::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 8.75px;
-  border: 5px solid transparent;
-  border-left: 8px solid var(--ink-2);
-  border-right: 0;
-  transform: translateY(-50%);
-}
-.evStep {
-  position: relative;
-  padding-top: 34px;
-  min-width: 0;
-}
-.evNode {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 18px;
-  height: 18px;
-  border: 1.5px solid var(--ink);
-  border-radius: 50%;
-  background: var(--paper);
-}
-.evDetails > summary {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas: "id icon" "name name";
-  align-items: center;
-  gap: 6px 10px;
-  padding: 2px 0 12px;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6px 40px;
+  padding: 20px 0 22px;
   border-bottom: 1px solid var(--line);
 }
-.evId {
-  grid-area: id;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--ink);
+.evEntry dt .evGrade {
+  display: inline;
+  margin-right: 8px;
 }
-.evName {
-  grid-area: name;
-  font-family: var(--font-display, system-ui), system-ui, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+.evEntryName {
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 19px;
   line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: var(--ink);
 }
-.evDetails > summary .summaryIcon {
-  grid-area: icon;
-}
-.evMeta {
-  padding-top: 12px;
-}
-.evMeta dt {
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.evMeta dt + dd {
-  margin-top: 4px;
-}
-.evMeta dd {
-  font-size: 14.5px;
-  line-height: 1.55;
-  color: var(--ink-2);
-}
-.evMeta dd + dt {
-  margin-top: 12px;
-}
-.evidenceRules {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 44px;
-}
-.evidenceRules li {
-  padding: 20px 22px;
-  border-left: 3px solid var(--indigo);
-  background: color-mix(in srgb, var(--indigo) 5%, var(--surface));
-  border-radius: 0 12px 12px 0;
+.evEntry dd {
   font-size: 15.5px;
   line-height: 1.55;
   color: var(--ink-2);
 }
-.evidenceRules strong {
+.evEntry dd .noteLabel {
   display: block;
-  color: var(--ink);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
-/* Narrow: vertical scale (top → bottom), no horizontal scrolling. */
-@media (max-width: 900px) {
-  .evScale {
-    padding-top: 0;
+.evRules {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 56px;
+  margin-top: 112px;
+}
+.evRules li {
+  padding-top: 22px;
+  border-top: 1px solid var(--line-strong);
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.evRules strong {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: 24px;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+@media (max-width: 1279px) {
+  .evGradeName {
+    font-size: 19px;
   }
-  .evAxis {
-    position: static;
-    margin-bottom: 14px;
+}
+@media (max-width: 1023px) {
+  .evEntry {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
-  .evSteps {
+  .evEntry dt {
+    grid-column: 1 / -1;
+  }
+  .evRules {
     grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-    padding-left: 36px;
-    padding-bottom: 18px;
+    gap: 40px;
+    margin-top: 88px;
   }
-  .evSteps::before {
-    left: 8px;
-    right: auto;
-    top: 8px;
-    bottom: 10px;
+}
+/* Narrow: the axis turns vertical — the same hairline and identical nodes. */
+@media (max-width: 1023px) {
+  .evAxis {
+    margin-top: 72px;
+  }
+  .evLine {
+    grid-template-columns: minmax(0, 1fr);
     border-top: 0;
-    border-left: 1.5px solid var(--ink-2);
+    border-left: 1px solid rgba(16, 22, 21, 0.45);
   }
-  .evSteps::after {
-    right: auto;
-    top: auto;
-    left: 8.75px;
-    bottom: 0;
-    border: 5px solid transparent;
-    border-top: 8px solid var(--ink-2);
-    border-bottom: 0;
-    transform: translateX(-50%);
+  .evStop {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 0 0 22px 26px;
   }
-  .evStep {
-    padding-top: 0;
-    padding-bottom: 18px;
+  .evStop:last-child {
+    padding-bottom: 0;
   }
-  .evNode {
-    left: -36px;
-    top: 0;
+  .evStop::before {
+    top: 7px;
+    left: -6px;
   }
-  .evidenceRules {
+  .evGradeName {
+    margin-top: 0;
+  }
+  .evAxisNote {
+    margin-top: 32px;
+  }
+}
+@media (max-width: 600px) {
+  .evEntry {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
-/* ───────────── Footer ───────────── */
+/* ───────────── Assessment lifecycle · thirteen controlled phases ─────────────
+   components/AssessmentLifecycle.tsx. A numbered register, deliberately
+   unlike Act III's chain: no nodes, arrows, markers, check marks, fills or
+   "current" state; every row is drawn identically. Two columns on wide
+   screens (1–7, 8–13), read top to bottom; one column on narrow ones. */
+.lifecycleAct {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.lcRuleLine {
+  margin-top: 22px;
+  max-width: 62ch;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.lcRuleLine strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.phaseRegister {
+  display: grid;
+  grid-template-rows: repeat(7, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  column-gap: 72px;
+  margin-top: 88px;
+  counter-reset: none;
+}
+.phaseRow {
+  display: grid;
+  grid-template-columns: 3.2em minmax(0, 1fr);
+  gap: 2px 12px;
+  padding: 16px 0 17px;
+  border-top: 1px solid var(--line);
+}
+.phaseRow:nth-child(7),
+.phaseRow:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.phaseNum {
+  grid-row: 1 / span 2;
+  padding-top: 5px;
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  color: var(--muted);
+}
+.phaseName {
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.phaseOutcome {
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.lcDetails {
+  margin-top: 44px;
+}
+.lcGateIntro {
+  margin-top: 18px;
+  max-width: 70ch;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.gateRegister {
+  margin-top: 18px;
+  max-width: 900px;
+  border-top: 1px solid var(--line);
+}
+.gateRegister > div {
+  display: grid;
+  grid-template-columns: 11em minmax(0, 1fr);
+  gap: 4px 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+.gateRegister dt {
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--ink-2);
+}
+.gateRegister dd {
+  color: var(--ink-2);
+}
+.lcTypesBlock {
+  margin-top: 120px;
+}
+.lcTypesTitle {
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: var(--type-note);
+  line-height: 1.12;
+  letter-spacing: -0.012em;
+}
+.typeRegister {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 72px;
+  margin-top: 36px;
+}
+.typeRegister > li {
+  border-top: 1px solid var(--line);
+}
+.typeEntry > summary {
+  padding: 13px 0 14px;
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 19px;
+  line-height: 1.35;
+}
+.typeEntry > summary::after {
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  color: var(--muted);
+}
+.typeEntry > summary:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--hairline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.typeEntry > p {
+  padding-bottom: 18px;
+  max-width: 58ch;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+@media (max-width: 1023px) {
+  .phaseRegister {
+    grid-template-rows: none;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .phaseRow:nth-child(7) {
+    border-bottom: 0;
+  }
+  .typeRegister {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .typeRegister > li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+}
+@media (max-width: 600px) {
+  .phaseRegister {
+    margin-top: 64px;
+  }
+  .phaseName {
+    font-size: 20px;
+  }
+  .phaseRow {
+    grid-template-columns: 2.6em minmax(0, 1fr);
+  }
+  .gateRegister > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lcTypesBlock {
+    margin-top: 88px;
+  }
+}
+
+/* ───────────── Footer · closing colophon ─────────────
+   components/SiteFooter.tsx. Paper, a hairline, facts only. */
 .siteFooter {
-  background: var(--graphite);
-  color: var(--on-dark-muted);
-  border-top: 1px solid var(--line-dark);
-  padding: 44px 0 56px;
-  font-size: 14px;
+  background: var(--paper);
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+.footerFrame {
+  display: grid;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr);
+  gap: 24px 72px;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 64px var(--vr-right) 96px var(--vr-margin);
+  font-size: 14.5px;
   line-height: 1.6;
 }
-.footerGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.4fr) minmax(0, 1fr);
-  gap: 32px;
+.footerBrand {
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--ink);
 }
-.footerGrid p + p {
+.footerMeta {
+  margin-top: 8px;
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.footerMeta span {
+  white-space: nowrap;
+}
+.footerText {
+  max-width: 72ch;
+}
+.footerText p + p {
   margin-top: 10px;
 }
-.footerBrand {
-  font-family: var(--font-display, system-ui), system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: var(--on-dark);
-}
 .siteFooter a {
-  color: var(--on-dark);
+  color: var(--ink-2);
+  text-decoration-color: var(--hairline);
 }
-@media (max-width: 760px) {
-  .footerGrid {
-    grid-template-columns: 1fr;
+.siteFooter a:hover {
+  text-decoration-color: currentColor;
+}
+@media (max-width: 1023px) {
+  .footerFrame {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .footerFrame {
+    padding: 56px 24px 80px;
   }
 }
 
@@ -2740,12 +2651,6 @@ h3 {
 @media (max-width: 520px) {
   body {
     font-size: 16px;
-  }
-  .sectionHead {
-    margin-bottom: 40px;
-  }
-  .sectionLede {
-    font-size: 17px;
   }
 }
 
@@ -2763,21 +2668,6 @@ h3 {
      border, so it survives) in the system highlight colour. */
   .bpxOption input:checked + span {
     border-bottom-color: Highlight;
-  }
-  /* Disclosure +/− strokes are backgrounds, which forced colours drops. */
-  .summaryIcon::before,
-  .summaryIcon::after {
-    forced-color-adjust: none;
-    background: CanvasText;
-  }
-  /* Arrowheads are border triangles; without this, forced colours paints the
-     transparent sides and they render as squares. */
-  .evSteps::after {
-    forced-color-adjust: none;
-    border-top-color: transparent;
-    border-bottom-color: transparent;
-    border-right-color: transparent;
-    border-left-color: CanvasText;
   }
   /* Graph field (light and dark tone): decorative, so it recedes to GrayText;
      the reading path and accent nodes lose their colour (they never carried
@@ -2801,18 +2691,6 @@ h3 {
   .brandMarkNodes {
     fill: Canvas;
   }
-  .lcPhase:nth-child(8)::before {
-    forced-color-adjust: none;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-top-color: CanvasText;
-  }
-}
-@media (forced-colors: active) and (max-width: 900px) {
-  .evSteps::after {
-    border-left-color: transparent;
-    border-top-color: CanvasText;
-  }
 }
 
 /* ───────────── Motion safety net ───────────── */
@@ -2834,9 +2712,7 @@ h3 {
   .bpxControls {
     display: none;
   }
-  .dark,
-  .unknown,
-  .siteFooter {
+  .unknownAct {
     background: #fff;
     color: #000;
   }
