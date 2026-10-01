@@ -1,0 +1,2310 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 3351 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(AI Trust Graph: A Graph-Driven, Evidence-Based Methodology for AI Assurance) Tj
+T*
+() Tj
+T*
+(Reasoning about trust, authority, paths, controls, evidence, and accountable decisions) Tj
+T*
+(across connected AI systems) Tj
+T*
+() Tj
+T*
+(Siva Sethumadhavan) Tj
+T*
+() Tj
+T*
+(Whitepaper v1.0-rc.1 - Publication review candidate) Tj
+T*
+(October 2026) Tj
+T*
+() Tj
+T*
+(Methodology baseline: AI Trust Graph methodology bundle 1.0-rc.4, snapshot 26 September 2026) Tj
+T*
+(Manifest blob: 82c401ad27d31ddc0078e58dd99f38ac0b71a7d9) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(Publication status) Tj
+T*
+() Tj
+T*
+(This whitepaper is a non-normative narrative introduction to the AI Trust Graph methodology.) Tj
+T*
+(The governed AI Trust Graph methodology artifacts maintained in the public repository remain) Tj
+T*
+(the canonical source for definitions, controls, evidence grades, maturity rules, scoring) Tj
+T*
+(rules, assessment procedures, reporting requirements, ontology, governance and conformance) Tj
+T*
+(requirements. If explanatory language in this paper appears inconsistent with the canonical) Tj
+T*
+(methodology, the governed canonical artifacts prevail.) Tj
+T*
+() Tj
+T*
+(This draft is frozen to AI Trust Graph methodology bundle 1.0-rc.4, snapshot 26 September) Tj
+T*
+(2026. The corresponding methodology manifest blob is) Tj
+T*
+(82c401ad27d31ddc0078e58dd99f38ac0b71a7d9. That pin is a reproducibility reference, not a) Tj
+T*
+(validation claim.) Tj
+T*
+() Tj
+T*
+(At this baseline, AI Trust Graph is a public-release candidate. The methodology author's) Tj
+T*
+(internal review is complete. The following external release gates remain pending until) Tj
+T*
+(completed and recorded through governance: independent methodology or architecture review;) Tj
+T*
+(independent AI-security review; an inter-assessor reproducibility study using the protocol) Tj
+T*
+(in Artifact #10 Appendix B.4; employer, IP and confidentiality review; and legal approval of) Tj
+T*
+(the licence and trademark position. Nothing in this paper should be interpreted as a claim) Tj
+T*
+(that AI Trust Graph has been independently validated, academically peer reviewed,) Tj
+T*
+(standardized, accredited, certified, or empirically proven to guarantee AI safety, security) Tj
+T*
+(or compliance.) Tj
+T*
+() Tj
+T*
+(AI Trust Graph is a methodology, not a product. It is vendor-neutral and tool-independent.) Tj
+T*
+(ExposureGraph product design, proprietary algorithms, connectors, customer data and) Tj
+T*
+(commercial workflows are outside the public methodology and outside this whitepaper.) Tj
+T*
+() Tj
+T*
+(Abstract) Tj
+T*
+() Tj
+T*
+(AI systems increasingly operate as connected systems rather than isolated models. Models) Tj
+T*
+(interact with identities, agents, tools, APIs, data stores, retrieval mechanisms,) Tj
+T*
+(infrastructure, external providers, human decision-makers and business processes. In such) Tj
+T*
+(environments, consequential risk may not reside within any single component. It can emerge) Tj
+T*
+(through the relationships that connect them: who or what is trusted, what authority has been) Tj
+T*
+(delegated, which actions are reachable, where boundaries are crossed, and whether effective) Tj
+T*
+(controls interrupt a material path.) Tj
+T*
+() Tj
+T*
+(AI Trust Graph is an open, vendor-neutral and product-independent methodology for reasoning) Tj
+T*
+ET
+endstream
+endobj
+3 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+4 0 obj
+<< /Length 4012 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(about these conditions as a connected assurance problem. It represents an AI-enabled) Tj
+T*
+(environment as a directed, labelled multigraph in which relevant assets and assessment) Tj
+T*
+(objects are connected through explicit relationships involving trust, authority, access,) Tj
+T*
+(invocation, dependency, data movement and control. The objective is not merely to inventory) Tj
+T*
+(components, but to understand how relationships compose into consequential paths and how) Tj
+T*
+(those paths are constrained, evidenced and governed.) Tj
+T*
+() Tj
+T*
+(The methodology organizes assessment across six domains: Discovery and AI Bill of Materials) Tj
+T*
+(\(AIBOM\); Trust and Privilege Paths; Authority Governance; AI Security Validation; AI) Tj
+T*
+(Governance and Assurance; and Operational Resilience. These domains are operationalized) Tj
+T*
+(through seventy-two canonical controls and supported by a cumulative maturity model, an) Tj
+T*
+(evidence-grading model, a controlled thirteen-phase assessment lifecycle, path-oriented) Tj
+T*
+(analysis, reporting requirements and methodology governance.) Tj
+T*
+() Tj
+T*
+(A central principle is that evidence strength and control effectiveness are different) Tj
+T*
+(questions. A claim that a control exists or operates effectively must be supported by) Tj
+T*
+(evidence appropriate to that claim. Strong evidence may demonstrate that a control is) Tj
+T*
+(ineffective, while weak evidence cannot justify a strong assurance conclusion merely because) Tj
+T*
+(an expected control has been documented.) Tj
+T*
+() Tj
+T*
+(The methodology also preserves uncertainty explicitly. UNKNOWN represents a condition in) Tj
+T*
+(which material evidence is absent, insufficient or materially conflicting. It is not) Tj
+T*
+(equivalent to safety, failure, low risk, zero, Not Applicable or Not Tested. Unresolved) Tj
+T*
+(uncertainty remains part of the assurance state rather than being silently converted into a) Tj
+T*
+(favourable or adverse score.) Tj
+T*
+() Tj
+T*
+(AI Trust Graph does not produce a universal or overall trust score. Quantitative mechanisms) Tj
+T*
+(are used only for defined purposes. The Path Exposure Index \(PEI\) supports prioritization of) Tj
+T*
+(eligible, sufficiently determined active paths; it is not probability, expected loss,) Tj
+T*
+(certification status or a substitute for professional judgment. Maturity is similarly) Tj
+T*
+(determined through cumulative, evidence-gated requirements rather than by averaging control) Tj
+T*
+(scores.) Tj
+T*
+() Tj
+T*
+(The resulting assurance model links system structure to accountable decision-making through) Tj
+T*
+(a reasoning chain: Assets -> Relationships -> Authority -> Paths -> Controls -> Evidence ->) Tj
+T*
+(Decisions. This paper explains that model, its six assessment domains, evidence and) Tj
+T*
+(uncertainty discipline, lifecycle, scoring boundaries, governance and limitations, and) Tj
+T*
+(demonstrates their interaction through a governed synthetic reference case.) Tj
+T*
+() Tj
+T*
+(1. The assurance problem) Tj
+T*
+() Tj
+T*
+(1.1 Connected AI changes the unit of analysis) Tj
+T*
+() Tj
+T*
+(An AI-enabled service is rarely just a model endpoint. In a production environment, it may) Tj
+T*
+(depend on identity federation, prompt and policy layers, retrieval systems, vector stores,) Tj
+T*
+(memory, tool invocation, software pipelines, API gateways, model providers, data platforms) Tj
+T*
+(and human approval workflows. An agent can also inherit the permissions of the workload or) Tj
+T*
+(user identity under which it operates. A system that appears low-impact when viewed) Tj
+T*
+(component by component may therefore become consequential when those components are) Tj
+T*
+(composed.) Tj
+T*
+() Tj
+T*
+(This creates an assurance problem. A component inventory can establish what exists. A) Tj
+T*
+(control checklist can establish whether expected safeguards are claimed or observed at) Tj
+T*
+(individual points. A policy can define desired behaviour. None of these views, by itself,) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 3981 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(guarantees that the assessor can answer a different set of questions: What can this) Tj
+T*
+(component reach? Through which identity? Under what authority? Across which boundary? Under) Tj
+T*
+(what preconditions? Which control would stop, constrain, detect or contain the path? What) Tj
+T*
+(evidence supports each step? What remains unresolved?) Tj
+T*
+() Tj
+T*
+(The AI Trust Graph methodology is designed around those questions. It does not assume that) Tj
+T*
+(risk exists only inside a model, nor that every graph connection is dangerous. It treats) Tj
+T*
+(material assurance as a systems problem in which the composition of relationships,) Tj
+T*
+(permissions and dependencies can matter as much as the security posture of individual) Tj
+T*
+(components [ATG-1][ATG-2].) Tj
+T*
+() Tj
+T*
+(1.2 From component posture to composed consequence) Tj
+T*
+() Tj
+T*
+(Consider an enterprise assistant that can retrieve internal documents. A conventional review) Tj
+T*
+(may verify that the model is approved, the application is registered, authentication is) Tj
+T*
+(enabled and the document platform has access controls. Those are useful facts. But the) Tj
+T*
+(consequential question may be whether the assistant's retrieval path applies user-level) Tj
+T*
+(authorization correctly for every source. If a retriever executes with a broad service) Tj
+T*
+(entitlement, then a user who cannot directly open a restricted document may still obtain) Tj
+T*
+(content through the assistant. The material risk emerges from a sequence: user identity ->) Tj
+T*
+(assistant -> retriever -> inherited source entitlement -> restricted document.) Tj
+T*
+() Tj
+T*
+(The weakness is not necessarily located in the model. It may be produced by the interaction) Tj
+T*
+(between identity, retrieval architecture, data permissions and missing validation evidence.) Tj
+T*
+(That is exactly the kind of relationship-dependent assurance problem a graph representation) Tj
+T*
+(is intended to make explicit.) Tj
+T*
+() Tj
+T*
+(1.3 Complement, not replacement) Tj
+T*
+() Tj
+T*
+(AI Trust Graph is not positioned as a substitute for established AI risk, security or) Tj
+T*
+(management frameworks. NIST AI RMF 1.0 provides a voluntary framework for managing AI risk,) Tj
+T*
+(and NIST's Generative AI Profile extends that work for generative-AI risks [1][2]. ISO/IEC) Tj
+T*
+(42001:2023 defines requirements for an AI management system, while ISO/IEC 23894:2023) Tj
+T*
+(provides guidance for AI risk management [3][4]. MITRE ATLAS organizes adversary tactics and) Tj
+T*
+(techniques involving AI systems [5]. OWASP's 2026 agentic-security work addresses risks and) Tj
+T*
+(runtime control for autonomous agents, including the Top 10 for Agentic Applications and the) Tj
+T*
+(Agent Control Standard [6][7]. The World Economic Forum's 2026 agent playbook also) Tj
+T*
+(emphasizes explicit authorization profiles, auditability and accountable delegated action) Tj
+T*
+([8].) Tj
+T*
+() Tj
+T*
+(AI Trust Graph addresses a narrower methodological question: how to represent and assess) Tj
+T*
+(connected trust, authority and exposure relationships, link them to controls and evidence,) Tj
+T*
+(preserve uncertainty, and produce bounded assurance conclusions. It is therefore intended to) Tj
+T*
+(interoperate with, and provide evidence to, broader governance, risk and security processes) Tj
+T*
+(rather than replace them.) Tj
+T*
+() Tj
+T*
+(1.4 Related work and differentiation) Tj
+T*
+() Tj
+T*
+(Graph-based security analysis is not new. Attack-graph research has long represented) Tj
+T*
+(multistep compromise paths and used graph analysis to reason about defensive interventions) Tj
+T*
+([9][10]. Likewise, trust graphs, identity graphs, authorization models and) Tj
+T*
+(delegated-authority controls have established precedents across security and distributed) Tj
+T*
+(systems. Current agentic-security guidance increasingly focuses on identity, privilege, tool) Tj
+T*
+(use, authorization and runtime control [6][7][8].) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 3548 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+() Tj
+T*
+(This whitepaper therefore does not claim that graphs, attack paths, trust relationships,) Tj
+T*
+(evidence grading, maturity models, or delegated-authority governance are individually novel.) Tj
+T*
+(The proposed contribution of AI Trust Graph is their integration into one governed) Tj
+T*
+(AI-assurance methodology: a directed, labelled multigraph of assessment objects and) Tj
+T*
+(conditional relationships; explicit separation of trust from effective authority;) Tj
+T*
+(evidence-gated path validation; control-breakpoint reasoning; first-class uncertainty) Tj
+T*
+(states; six-domain maturity and control assessment; a controlled lifecycle; and bounded) Tj
+T*
+(reporting and decision discipline.) Tj
+T*
+() Tj
+T*
+(That distinction matters for evaluation. The relevant question is not whether ATG invented) Tj
+T*
+(graph reasoning, but whether the integrated method is coherent, reproducible, useful and) Tj
+T*
+(sufficiently differentiated in practice. Those questions require external review,) Tj
+T*
+(inter-assessor testing and field calibration; this paper does not treat architectural) Tj
+T*
+(synthesis as empirical validation.) Tj
+T*
+() Tj
+T*
+(1.5 Assurance must remain bounded) Tj
+T*
+() Tj
+T*
+(A credible assessment has limits. Discovery may be incomplete. Provider internals may be) Tj
+T*
+(opaque. Runtime behaviour can change. Evidence may be stale or narrow. A path may be) Tj
+T*
+(plausible but not sufficiently evidenced. The methodology therefore rejects the idea that) Tj
+T*
+(every assessment must end in a single definitive number.) Tj
+T*
+() Tj
+T*
+(Its governing doctrine can be summarized as: scope before collection; evidence before) Tj
+T*
+(conclusion; conditions before path claims; tests before effectiveness; gates before) Tj
+T*
+(averages; review before release [ATG-7]. The goal is not to manufacture certainty. It is to) Tj
+T*
+(make the limits of certainty visible enough that decisions remain accountable.) Tj
+T*
+() Tj
+T*
+(2. Why graph reasoning) Tj
+T*
+() Tj
+T*
+(2.1 Why a directed, labelled multigraph) Tj
+T*
+() Tj
+T*
+(The canonical representation is a directed, labelled multigraph [ATG-2]. Direction matters) Tj
+T*
+(because authority, invocation, data movement and dependency are not generally symmetric.) Tj
+T*
+(Labels matter because a connection called "can invoke" has a different assurance meaning) Tj
+T*
+(from one called "trusts", "reads from", "delegates to" or "controlled by". Multiple edges) Tj
+T*
+(between the same objects matter because two components may simultaneously have data,) Tj
+T*
+(identity, trust and control relationships.) Tj
+T*
+() Tj
+T*
+(This representation allows the methodology to preserve context that is easily lost in an) Tj
+T*
+(inventory or undifferentiated architecture diagram. A relationship is not merely a line. It) Tj
+T*
+(is an assertion with scope, conditions, evidence and confidence. A path is not merely) Tj
+T*
+(reachability in the mathematical sense. It is an ordered explanatory structure whose) Tj
+T*
+(material steps and preconditions must be supported or explicitly marked unresolved.) Tj
+T*
+() Tj
+T*
+(2.2 The reasoning chain) Tj
+T*
+() Tj
+T*
+(The narrative reasoning chain used in this paper is:) Tj
+T*
+() Tj
+T*
+(Assets -> Relationships -> Authority -> Paths -> Controls -> Evidence -> Decisions) Tj
+T*
+() Tj
+T*
+(This is not the six-domain assessment model and does not replace the thirteen-phase) Tj
+T*
+(lifecycle. It is a conceptual reading order for understanding how ATG turns system structure) Tj
+T*
+(into an assurance conclusion.) Tj
+T*
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 3750 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+() Tj
+T*
+(Assets establish the objects in scope. Relationships describe how those objects interact.) Tj
+T*
+(Authority describes the effective or permitted capacity to access, influence or change a) Tj
+T*
+(target. Paths compose ordered relationships into potential consequences. Controls identify) Tj
+T*
+(breakpoints that can stop, constrain, detect or contain progression. Evidence establishes) Tj
+T*
+(what can defensibly be asserted about those objects, relationships, conditions and controls.) Tj
+T*
+(Decisions record accountable treatment, acceptance, escalation or other disposition.) Tj
+T*
+() Tj
+T*
+(2.3 Graph locality and systemic consequence) Tj
+T*
+() Tj
+T*
+(A useful property of graph reasoning is the ability to move between local detail and) Tj
+T*
+(systemic effect. A weak approval control may be local to one workflow edge, but its) Tj
+T*
+(consequence can be systemic if that edge sits on many paths to high-impact actions.) Tj
+T*
+(Conversely, an alarming-looking component may not create a material path if necessary) Tj
+T*
+(permissions, protocols or conditions are absent.) Tj
+T*
+() Tj
+T*
+(The methodology therefore includes a strict anti-error rule: a topological connection is not) Tj
+T*
+(automatically an exploitable or active path. Required permissions, state and preconditions) Tj
+T*
+(must be evidenced or explicitly preserved as UNKNOWN [ATG-1][ATG-4]. Graph structure creates) Tj
+T*
+(a hypothesis space; evidence and validation determine which claims can be made within scope.) Tj
+T*
+() Tj
+T*
+(2.4 Boundaries are first-class) Tj
+T*
+() Tj
+T*
+(A boundary is not merely a drawing convention. It marks a change in ownership, enforcement,) Tj
+T*
+(trust assumptions, data handling or assurance responsibility. Provider transitions, account) Tj
+T*
+(boundaries, privilege boundaries, human-approval points and data-classification transitions) Tj
+T*
+(can all be material. Treating boundaries as first-class assessment objects makes it possible) Tj
+T*
+(to ask whether the assumptions on one side remain valid after the system crosses to the) Tj
+T*
+(other.) Tj
+T*
+() Tj
+T*
+(This matters in AI ecosystems because a workflow can move rapidly across organizational and) Tj
+T*
+(technical domains: a user action can reach a hosted model, trigger an agent, invoke a) Tj
+T*
+(third-party tool and act against an enterprise system. The point of graph reasoning is not) Tj
+T*
+(to make the picture more complex. It is to make the consequential transitions reviewable.) Tj
+T*
+() Tj
+T*
+(3. The AI Trust Graph model) Tj
+T*
+() Tj
+T*
+(3.1 Core objects) Tj
+T*
+() Tj
+T*
+(The whitepaper uses a compact conceptual vocabulary while leaving the full ontology to) Tj
+T*
+(Artifact #12. Nodes represent typed assets or assessment objects such as identities, agents,) Tj
+T*
+(applications, tools, data resources, providers, controls, evidence objects and findings.) Tj
+T*
+(Edges represent directional relationships such as access, authorization, invocation,) Tj
+T*
+(retrieval, delegation, dependency, trust, data movement and control coverage. Boundaries) Tj
+T*
+(capture material changes in ownership, policy or enforcement. Paths join ordered) Tj
+T*
+(relationships from a start condition to a material target or outcome. Control breakpoints) Tj
+T*
+(are points where an effective control can materially interrupt progression. Evidence objects) Tj
+T*
+(support, dispute or qualify assertions.) Tj
+T*
+() Tj
+T*
+(These objects are intentionally more precise than ordinary architecture notation. Each) Tj
+T*
+(material relationship should carry enough context to answer: what are the endpoints, what) Tj
+T*
+(relationship is asserted, in which direction, under which conditions, within which scope,) Tj
+T*
+(and on what evidence?) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 3455 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(3.2 Trust as conditional reliance) Tj
+T*
+() Tj
+T*
+(ATG does not treat trust as a positive label or reputation score. Canonically, trust is) Tj
+T*
+(conditional reliance by one entity on another entity, assertion, output, dependency or) Tj
+T*
+(control for a defined purpose [ATG-12]. A material trust relationship should identify its) Tj
+T*
+(purpose, basis, scope, owner, transitivity rule if any, expiry, revocation and evidence.) Tj
+T*
+() Tj
+T*
+(Trust is non-transitive by default. If A relies on B and B relies on C, the methodology does) Tj
+T*
+(not silently infer that A trusts C for the same purpose. Any such transitivity must be) Tj
+T*
+(explicit and constrained. This is particularly important in AI supply chains and provider) Tj
+T*
+(ecosystems, where inherited assumptions can otherwise become invisible.) Tj
+T*
+() Tj
+T*
+(3.3 Authority as effective capacity) Tj
+T*
+() Tj
+T*
+(Authority is more than access. It is the effective or permitted capacity of an actor,) Tj
+T*
+(identity, application, agent, tool or workflow to access, influence or change a target) Tj
+T*
+([ATG-12]. A material authority assertion records the acting identity, capability, target,) Tj
+T*
+(scope, conditions, duration, approval, reversibility, telemetry and revocation.) Tj
+T*
+() Tj
+T*
+(This model is useful for agentic systems because actionability can be amplified by) Tj
+T*
+(composition. A model that can only recommend is different from an agent that can invoke a) Tj
+T*
+(write-capable tool. An agent executing through a privileged service identity is different) Tj
+T*
+(again. The critical assurance question is therefore not simply "what can the model output?") Tj
+T*
+(but "what effective action can the composed system cause, under which identity and) Tj
+T*
+(controls?") Tj
+T*
+() Tj
+T*
+(3.4 Reachability and paths) Tj
+T*
+() Tj
+T*
+(Reachability may be direct, indirect, chained, inherited, delegated or UNKNOWN [ATG-12]. A) Tj
+T*
+(path records a start condition, ordered traversal, conditions, boundary crossings, target,) Tj
+T*
+(controls, evidence and confidence, and any residual path after intervention.) Tj
+T*
+() Tj
+T*
+(The path is an explanatory object, not just a graph query result. If a consequential step) Tj
+T*
+(lacks evidence, the assessor must not invent the missing condition. The path remains) Tj
+T*
+(constrained by UNKNOWN until evidence or authorized testing resolves the question. This) Tj
+T*
+(discipline prevents graph density from being mistaken for risk certainty.) Tj
+T*
+() Tj
+T*
+(3.5 Historical integrity) Tj
+T*
+() Tj
+T*
+(Completed assessment runs are historical records. Later evidence, architectural change or) Tj
+T*
+(remediation does not rewrite what was true at the time of the prior run. New evidence) Tj
+T*
+(creates a new or superseding state. This version discipline supports reproducibility and) Tj
+T*
+(makes trend claims more defensible.) Tj
+T*
+() Tj
+T*
+(4. Trust, authority and material paths) Tj
+T*
+() Tj
+T*
+(4.1 Why trust and authority must be separated) Tj
+T*
+() Tj
+T*
+(Trust and authority interact but are not interchangeable. A system may trust a provider's) Tj
+T*
+(model output for summarization while granting that provider no authority to modify an) Tj
+T*
+(enterprise record. A workflow may grant an agent authority to open a ticket while the human) Tj
+T*
+(operator does not trust the agent to approve a financial transaction. Conflating the two) Tj
+T*
+(hides the decision boundary.) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 3650 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(ATG therefore asks two separate questions. First: what reliance is being accepted, for what) Tj
+T*
+(purpose and on what basis? Second: what action can actually be taken, against which target,) Tj
+T*
+(under which identity, conditions and approval model? Only after these questions are answered) Tj
+T*
+(should the assessor reason about the path that composes them.) Tj
+T*
+() Tj
+T*
+(4.2 Authority amplification) Tj
+T*
+() Tj
+T*
+(Authority can be amplified when a downstream relationship increases reach, privilege, scale,) Tj
+T*
+(impact or autonomy. Several forms are especially important in connected AI systems: identity) Tj
+T*
+(amplification through inherited credentials; tool amplification when a reasoning component) Tj
+T*
+(gains access to a powerful action surface; data amplification when retrieval broadens) Tj
+T*
+(accessible information; workflow amplification when repeated or automated actions compound) Tj
+T*
+(effect; temporal amplification when standing permissions persist; and trust amplification) Tj
+T*
+(when one accepted assertion cascades into downstream decisions.) Tj
+T*
+() Tj
+T*
+(Amplification is not automatically a vulnerability. It is a property that changes the) Tj
+T*
+(assurance question. Stronger actionability generally requires stronger identity isolation,) Tj
+T*
+(meaningful approval, telemetry, revocation, resource bounds and recovery capability.) Tj
+T*
+() Tj
+T*
+(4.3 Path validation) Tj
+T*
+() Tj
+T*
+(A material path requires evidence for every consequential relationship and condition) Tj
+T*
+([ATG-6]. Unsupported conditions remain UNKNOWN and constrain the path state. This) Tj
+T*
+(requirement is central because graph analysis can otherwise overstate exposure by treating) Tj
+T*
+(every theoretical route as active.) Tj
+T*
+() Tj
+T*
+(For example, a graph may show an agent connected to a payment API. That alone does not prove) Tj
+T*
+(the agent can execute a transaction. Relevant conditions may include authentication, allowed) Tj
+T*
+(operations, transaction thresholds, human approval, environment, rate limits and runtime) Tj
+T*
+(policy. The assurance conclusion should reflect what is actually demonstrated.) Tj
+T*
+() Tj
+T*
+(4.4 Alternate and residual paths) Tj
+T*
+() Tj
+T*
+(Breaking one path does not necessarily remove exposure. A control breakpoint analysis should) Tj
+T*
+(consider alternate routes and the residual path that remains after intervention. If a) Tj
+T*
+(workflow blocks one tool but another tool reaches the same target, the system may still have) Tj
+T*
+(equivalent effective authority. Likewise, a human approval gate may be nominally present but) Tj
+T*
+(ineffective if the workflow can bypass it through another integration.) Tj
+T*
+() Tj
+T*
+(Graph reasoning adds value by making these alternate compositions visible and by showing) Tj
+T*
+(whether a remediation genuinely cuts the relevant path or merely changes its route.) Tj
+T*
+() Tj
+T*
+(5. The six assurance domains) Tj
+T*
+() Tj
+T*
+(The canonical control library contains seventy-two controls: twelve controls in each of six) Tj
+T*
+(domains [ATG-5]. The whitepaper does not reproduce those controls; it explains how the) Tj
+T*
+(domains divide the assurance problem.) Tj
+T*
+() Tj
+T*
+(5.1 D1 - Discovery and AIBOM) Tj
+T*
+() Tj
+T*
+(Discovery establishes the assessed estate, ownership, dependencies, source coverage and) Tj
+T*
+(blind spots. An AI Bill of Materials \(AIBOM\) supports lineage across models, data,) Tj
+T*
+(identities, tools, runtime components and dependencies. The domain does not assume that) Tj
+T*
+(automated discovery proves completeness. Coverage and unresolved population remain visible.) Tj
+T*
+ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Length 3193 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+() Tj
+T*
+(5.2 D2 - Trust and Privilege Paths) Tj
+T*
+() Tj
+T*
+(This domain represents trust relationships, identity and privilege paths, boundaries,) Tj
+T*
+(provider dependencies, path conditions and graph quality. It is where the methodology asks) Tj
+T*
+(whether a topological route is actually supported by the permissions, state and evidence) Tj
+T*
+(required to make it material.) Tj
+T*
+() Tj
+T*
+(5.3 D3 - Authority Governance) Tj
+T*
+() Tj
+T*
+(Authority Governance focuses on what actors and machine entities can actually cause: action) Tj
+T*
+(taxonomy, delegation, impersonation, least authority, approvals, amplification, resource) Tj
+T*
+(limits, data destination authority, segregation, revocation and recertification. For agentic) Tj
+T*
+(AI, this domain is the bridge between model behaviour and operational consequence.) Tj
+T*
+() Tj
+T*
+(5.4 D4 - AI Security Validation) Tj
+T*
+() Tj
+T*
+(Security Validation converts threat hypotheses into authorized testing. It covers model,) Tj
+T*
+(prompt, context, retrieval, memory, agent, multi-agent, tool, MCP, supply-chain, runtime and) Tj
+T*
+(control-breakpoint testing. Testing is governed by rules of engagement and safety; a) Tj
+T*
+(technically possible test is not automatically authorized [ATG-7].) Tj
+T*
+() Tj
+T*
+(5.5 D5 - AI Governance and Assurance) Tj
+T*
+() Tj
+T*
+(This domain connects technical assurance to policy, risk appetite, use-case intake, impact) Tj
+T*
+(and misuse assessment, jurisdiction and obligations, lifecycle approval, exceptions,) Tj
+T*
+(provider due diligence, competence and independent assurance. It prevents technical controls) Tj
+T*
+(from becoming disconnected from decision rights and business accountability.) Tj
+T*
+() Tj
+T*
+(5.6 D6 - Operational Resilience) Tj
+T*
+() Tj
+T*
+(Operational Resilience covers telemetry, attribution, detection, incident taxonomy, triage,) Tj
+T*
+(containment, agent kill or pause mechanisms, credential and delegation revocation, rollback,) Tj
+T*
+(business recovery, evidence preservation and exercises. It asks not only whether a path can) Tj
+T*
+(be prevented, but whether the organization can detect, contain and recover when prevention) Tj
+T*
+(fails.) Tj
+T*
+() Tj
+T*
+(5.7 The domains are integrated, not six silos) Tj
+T*
+() Tj
+T*
+(A material issue often crosses domains. A broad service identity may originate as a D3) Tj
+T*
+(authority problem, create a D2 privilege path, require D4 validation, depend on D1 inventory) Tj
+T*
+(accuracy, trigger D5 exception governance and require D6 containment capability. The) Tj
+T*
+(six-domain profile is therefore intended to show uneven capability without collapsing it) Tj
+T*
+(into one number.) Tj
+T*
+() Tj
+T*
+(6. Control breakpoints) Tj
+T*
+() Tj
+T*
+(6.1 Controls as graph interventions) Tj
+T*
+() Tj
+T*
+(A control breakpoint is a node, relationship or boundary where an effective control can) Tj
+T*
+(materially stop, constrain, detect or contain a path [ATG-12]. The concept shifts attention) Tj
+T*
+(from the existence of controls to their position and effect within a consequential sequence.) Tj
+T*
+() Tj
+T*
+(A breakpoint may prevent progression, for example by denying an unauthorized tool call. It) Tj
+T*
+ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 16 0 R >>
+endobj
+18 0 obj
+<< /Length 3573 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(may constrain progression through least privilege or transaction limits. It may require) Tj
+T*
+(meaningful approval. It may detect an anomalous action and trigger containment. It may) Tj
+T*
+(reduce blast radius through segmentation or isolated identities. Or it may support recovery) Tj
+T*
+(and forensic reconstruction after an event.) Tj
+T*
+() Tj
+T*
+(6.2 Design intent is not operating effectiveness) Tj
+T*
+() Tj
+T*
+(ATG distinguishes control design, implementation and operating effectiveness. A documented) Tj
+T*
+(approval requirement can support design evidence, but it does not prove that the production) Tj
+T*
+(workflow enforces the approval every time. A configuration export may demonstrate) Tj
+T*
+(implementation, but an operating-effectiveness claim requires stronger evidence of actual or) Tj
+T*
+(representative operation under the relevant conditions [ATG-6].) Tj
+T*
+() Tj
+T*
+(This distinction is essential for breakpoint reasoning because a path is only constrained to) Tj
+T*
+(the extent that the breakpoint actually operates. A control drawn on an architecture diagram) Tj
+T*
+(is not automatically a path cut.) Tj
+T*
+() Tj
+T*
+(6.3 Independence and concentration) Tj
+T*
+() Tj
+T*
+(Breakpoints should also be reviewed for independence. Two nominally separate controls may) Tj
+T*
+(depend on the same identity provider, administrator or policy engine. If that common) Tj
+T*
+(dependency fails, the graph can reveal correlated control failure. Conversely, a) Tj
+T*
+(strategically placed independent breakpoint can reduce multiple material paths.) Tj
+T*
+() Tj
+T*
+(The purpose is not to optimize purely for the largest number of graph edges removed.) Tj
+T*
+(Remediation must still consider consequence, feasibility, ownership, resilience and the risk) Tj
+T*
+(of creating alternate routes.) Tj
+T*
+() Tj
+T*
+(7. Evidence and epistemic discipline) Tj
+T*
+() Tj
+T*
+(7.1 Evidence is a relationship, not a document count) Tj
+T*
+() Tj
+T*
+(The canonical Evidence Model states that evidence is a governed relationship between a) Tj
+T*
+(source and a precisely stated assertion within defined scope, time, conditions and) Tj
+T*
+(limitations [ATG-6]. This is a fundamental design choice. An assessment should be able to) Tj
+T*
+(explain what was observed, how it was obtained, what the evidence supports, what it does not) Tj
+T*
+(support, and who approved the conclusion.) Tj
+T*
+() Tj
+T*
+(The model separates evidence grade, evidence quality, assertion confidence, coverage and) Tj
+T*
+(reviewer decision. Combining these dimensions into one score would create false certainty.) Tj
+T*
+() Tj
+T*
+(7.2 Evidence grades E0-E5) Tj
+T*
+() Tj
+T*
+(The methodology uses six evidence grades from E0 to E5. At a high level, E0 represents a) Tj
+T*
+(reviewed no-evidence basis for the specific assertion; E1 represents inference or) Tj
+T*
+(uncorroborated signal; E2 represents attestation; E3 represents approved documentary) Tj
+T*
+(evidence; E4 represents corroborated technical evidence; and E5 represents direct technical) Tj
+T*
+(and representative evidence [ATG-6]. E0 is used only where an E0 evidence basis is) Tj
+T*
+(explicitly recorded and reviewed; the simple absence of a linked EvidenceItem is not) Tj
+T*
+(automatically an E0 EvidenceItem.) Tj
+T*
+() Tj
+T*
+(The grade describes support, not desirability. High-grade evidence can prove that a control) Tj
+T*
+(is ineffective. Low-grade evidence can weakly suggest that a control is effective. Evidence) Tj
+T*
+(grade must therefore never be added to control effectiveness, severity, maturity or risk as) Tj
+T*
+ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 18 0 R >>
+endobj
+20 0 obj
+<< /Length 3350 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(if they were the same quantity.) Tj
+T*
+() Tj
+T*
+(7.3 Sufficiency is claim-specific) Tj
+T*
+() Tj
+T*
+(Evidence is sufficient only for a specific conclusion. The Evidence Model establishes) Tj
+T*
+(claim-specific minimums and additional quality conditions. Design, implementation and) Tj
+T*
+(operating effectiveness are distinct claims. Evidence sufficient for one does not) Tj
+T*
+(automatically support the others.) Tj
+T*
+() Tj
+T*
+(At the frozen baseline, a finalized numeric design component requires claim-specific) Tj
+T*
+(E3-or-stronger support; implementation requires claim-specific E4-or-stronger technical) Tj
+T*
+(evidence from the deployed or configured environment; operating effectiveness requires) Tj
+T*
+(claim-specific E5-quality evidence. A component score of 5 or an adaptive or) Tj
+T*
+(continuous-assurance claim requires repeated E5-quality evidence across relevant material) Tj
+T*
+(changes [ATG-6]. Meeting the grade threshold is necessary but not sufficient: relevance,) Tj
+T*
+(scope, currentness, representativeness, conflict status and reviewer decision still govern.) Tj
+T*
+() Tj
+T*
+(7.4 Evidence-supported score caps) Tj
+T*
+() Tj
+T*
+(The Scoring Framework includes an evidence support ceiling. It limits the highest numeric) Tj
+T*
+(component score the accepted evidence can support; it does not turn evidence quality into) Tj
+T*
+(effectiveness and does not grant a score merely because a high-grade item exists [ATG-4].) Tj
+T*
+(This prevents a weakly supported favourable observation from being expressed with) Tj
+T*
+(unjustified numeric precision.) Tj
+T*
+() Tj
+T*
+(7.5 Conflict and provenance) Tj
+T*
+() Tj
+T*
+(Evidence can support, dispute, qualify, corroborate, derive from, supersede or duplicate) Tj
+T*
+(another assertion or evidence item. Conflicting evidence remains visible until it is) Tj
+T*
+(resolved or the conclusion is bounded. Provenance and supersession are retained so that the) Tj
+T*
+(assessment can be reconstructed later.) Tj
+T*
+() Tj
+T*
+(This discipline is also the boundary for AI-assisted analysis. Automated extraction,) Tj
+T*
+(classification or summarization may propose assertions, but model output cannot silently) Tj
+T*
+(become approved fact. Material facts and high-impact decisions require accountable human) Tj
+T*
+(review.) Tj
+T*
+() Tj
+T*
+(8. UNKNOWN and bounded assurance) Tj
+T*
+() Tj
+T*
+(8.1 UNKNOWN is a first-class state) Tj
+T*
+() Tj
+T*
+(The canonical result-state model preserves UNKNOWN, Not Assessed, Not Applicable, Not) Tj
+T*
+(Tested, Inconclusive, Provisional and Final within scope as distinct states [ATG-7][ATG-12].) Tj
+T*
+(UNKNOWN means that material evidence is absent, insufficient or materially conflicting.) Tj
+T*
+() Tj
+T*
+(UNKNOWN is not zero. It is not a weak score. It is not proof of failure. It is not safety.) Tj
+T*
+(It is not Not Applicable. It is not Not Tested. These distinctions matter because silently) Tj
+T*
+(collapsing uncertainty into a numeric value can change a decision.) Tj
+T*
+() Tj
+T*
+(8.2 Why UNKNOWN matters for paths) Tj
+T*
+() Tj
+T*
+(Suppose a graph shows that an agent can invoke a tool, but the assessor cannot establish) Tj
+T*
+(whether the production identity has permission to execute a sensitive operation. Encoding) Tj
+T*
+(that missing condition as zero would make the path appear safer than the evidence justifies.) Tj
+T*
+ET
+endstream
+endobj
+21 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 20 0 R >>
+endobj
+22 0 obj
+<< /Length 3136 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(Encoding it as maximum exposure would be equally unjustified. The correct state is UNKNOWN) Tj
+T*
+(until evidence or authorized validation resolves the question.) Tj
+T*
+() Tj
+T*
+(For path sufficiency, every consequential relationship and condition must either be) Tj
+T*
+(supported or explicitly remain UNKNOWN [ATG-6]. An unresolved material reachability question) Tj
+T*
+(therefore prevents a final point PEI rather than being encoded as zero merely to complete) Tj
+T*
+(the arithmetic.) Tj
+T*
+() Tj
+T*
+(8.3 Bounded assurance) Tj
+T*
+() Tj
+T*
+(This leads to a broader doctrine: assurance should be no stronger than the evidence and) Tj
+T*
+(declared scope permit. The methodology therefore prefers a narrower, defensible statement) Tj
+T*
+(over a broad but weak one. "Final within scope" is not the same as universal truth; it means) Tj
+T*
+(required review and evidence gates are complete for the declared scope.) Tj
+T*
+() Tj
+T*
+(Bounded assurance is not a weakness in the methodology. It is a control against false) Tj
+T*
+(precision. In complex AI ecosystems, the ability to state what remains unknown can be as) Tj
+T*
+(decision-relevant as the ability to state what has been verified.) Tj
+T*
+() Tj
+T*
+(9. Assessment lifecycle) Tj
+T*
+() Tj
+T*
+(The canonical Assessment Methodology defines thirteen controlled phases. Phases may iterate,) Tj
+T*
+(but required gates cannot be skipped merely because information was available earlier) Tj
+T*
+([ATG-7].) Tj
+T*
+() Tj
+T*
+(1 Initiate. Establish an approved charter and decision purpose. This defines why the) Tj
+T*
+(assessment exists and who has authority to act on its result.) Tj
+T*
+() Tj
+T*
+(2 Scope. Establish the versioned boundary, population, period, exclusions and assessment) Tj
+T*
+(unit. Claims later in the assessment cannot silently exceed this boundary.) Tj
+T*
+() Tj
+T*
+(3 Discover. Measure the AI-enabled estate using authorized sources and preserve blind spots.) Tj
+T*
+(Automated discovery does not prove completeness.) Tj
+T*
+() Tj
+T*
+(4 Model. Construct and review the graph snapshot: objects, relationships, boundaries and) Tj
+T*
+(relevant context.) Tj
+T*
+() Tj
+T*
+(5 Evidence. Collect, protect, grade and link evidence to precise assertions. Conflicts,) Tj
+T*
+(limitations and provenance remain visible.) Tj
+T*
+() Tj
+T*
+(6 Controls. Determine applicability and assess control design, implementation and operation) Tj
+T*
+(according to the canonical control library and evidence rules.) Tj
+T*
+() Tj
+T*
+(7 Paths. Validate material paths, conditions, boundary crossings, controls and residual) Tj
+T*
+(routes. A graph connection alone does not establish exploitability or active reachability.) Tj
+T*
+() Tj
+T*
+(8 Maturity. Determine the six-domain maturity profile using cumulative, evidence-gated) Tj
+T*
+(rules.) Tj
+T*
+() Tj
+T*
+(9 Scoring. Produce transparent scorecards, coverage measures and eligible path triage values) Tj
+T*
+(without manufacturing an overall trust score.) Tj
+T*
+() Tj
+T*
+(10 Findings. Record evidence-linked gaps, control deficiencies, path exposures and) Tj
+T*
+(remediation objectives with clear condition and consequence.) Tj
+T*
+ET
+endstream
+endobj
+23 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 22 0 R >>
+endobj
+24 0 obj
+<< /Length 3002 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+() Tj
+T*
+(11 Decisions. Record accountable gates, exceptions, acceptance or other disposition.) Tj
+T*
+(Management acceptance changes disposition, not the underlying technical result.) Tj
+T*
+() Tj
+T*
+(12 Report. Release a quality-reviewed decision package with scope, evidence, uncertainty,) Tj
+T*
+(paths, findings, maturity and limitations.) Tj
+T*
+() Tj
+T*
+(13 Reassess. Trigger a new or updated run after material change, evidence expiry,) Tj
+T*
+(remediation or other defined events. Completed prior runs remain historical records.) Tj
+T*
+() Tj
+T*
+(The lifecycle turns graph analysis into governed assurance. It also separates activities) Tj
+T*
+(that are often collapsed in informal assessments: discovery from completeness, evidence from) Tj
+T*
+(conclusion, control design from effectiveness, findings from management disposition, and) Tj
+T*
+(historical records from current state.) Tj
+T*
+() Tj
+T*
+(10. Scoring and decision discipline) Tj
+T*
+() Tj
+T*
+(10.1 No overall trust score) Tj
+T*
+() Tj
+T*
+(AI Trust Graph intentionally does not publish one overall AI Trust Graph or "trust" score in) Tj
+T*
+(v1.0 [ATG-4]. The evidence base does not justify reducing trust, authority, security,) Tj
+T*
+(governance, resilience, uncertainty and maturity into a universal number. A six-domain) Tj
+T*
+(profile is more transparent because it preserves uneven capability and unresolved gates.) Tj
+T*
+() Tj
+T*
+(10.2 Maturity is cumulative and non-compensating) Tj
+T*
+() Tj
+T*
+(The M1-M5 maturity model is rule-based, cumulative and evidence-gated [ATG-3]. Higher) Tj
+T*
+(capability in one area cannot average away a missing prerequisite or critical gate in) Tj
+T*
+(another. This protects against a common dashboard failure mode in which many favourable) Tj
+T*
+(low-impact measures obscure one consequential weakness.) Tj
+T*
+() Tj
+T*
+(10.3 Control scoring remains evidence-bounded) Tj
+T*
+() Tj
+T*
+(Control scoring separates design, implementation and operating effectiveness. Critical gates) Tj
+T*
+(apply before aggregation. Evidence grades and confidence are not added to effectiveness.) Tj
+T*
+(Coverage retains a visible denominator and unresolved population. Severity and confidence) Tj
+T*
+(remain separate [ATG-4].) Tj
+T*
+() Tj
+T*
+(The whitepaper deliberately does not reproduce the full scoring tables. Those remain) Tj
+T*
+(canonical in Artifact #4.) Tj
+T*
+() Tj
+T*
+(10.4 Path Exposure Index) Tj
+T*
+() Tj
+T*
+(For eligible, determinate active paths, the methodology defines the Path Exposure Index for) Tj
+T*
+(triage:) Tj
+T*
+() Tj
+T*
+(PEI = 4 x Consequence + 3 x Reachability + 3 x Authority + 2 x Amplification + 3 x Control) Tj
+T*
+(Resistance) Tj
+T*
+() Tj
+T*
+(The range is 7 to 62 for determinate eligible active paths [ATG-4]. The arithmetic promotes) Tj
+T*
+(consistent prioritization, but it does not create probability. PEI is not expected loss,) Tj
+T*
+(certification status or a universal comparison score. The component profile remains the) Tj
+T*
+(explanation.) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+25 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 24 0 R >>
+endobj
+26 0 obj
+<< /Length 3302 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(The methodology also preserves critical overrides and eligibility rules. A mathematically) Tj
+T*
+(calculated value must not be used to conceal an invalid path state or an unresolved material) Tj
+T*
+(condition.) Tj
+T*
+() Tj
+T*
+(10.5 Decision discipline) Tj
+T*
+() Tj
+T*
+(A score is an input to judgment, not a substitute for it. A decision should preserve the) Tj
+T*
+(reasoning chain: scope -> claim -> evidence -> graph context -> control or path state ->) Tj
+T*
+(finding -> accountable disposition. This lets a reviewer understand why the decision was) Tj
+T*
+(made and what evidence or change would cause it to be revisited.) Tj
+T*
+() Tj
+T*
+(11. Worked synthetic example: Enterprise Knowledge Copilot) Tj
+T*
+() Tj
+T*
+(This section uses the governed synthetic reference case RA-01 from Artifact #10 rather than) Tj
+T*
+(inventing a new case. The case is fictional and has no relationship to a real environment,) Tj
+T*
+(vendor, tenant or organization [ATG-10]. Its purpose is calibration and explanation, not) Tj
+T*
+(empirical validation.) Tj
+T*
+() Tj
+T*
+(11.1 Decision question and bounded architecture) Tj
+T*
+() Tj
+T*
+(RA-01 represents an advisory enterprise knowledge copilot grounded in enterprise) Tj
+T*
+(repositories and user identity. The synthetic decision question is whether the copilot may) Tj
+T*
+(proceed within the stated conditions. The scope is one bounded production-like use case and) Tj
+T*
+(directly material dependencies.) Tj
+T*
+() Tj
+T*
+(Discovery produces usable but explicitly incomplete coverage: four of five approved source) Tj
+T*
+(classes return usable evidence; five of six material objects have accountable ownership;) Tj
+T*
+(model, data, identity, tool and runtime components are represented in the AIBOM; and one) Tj
+T*
+(component is externally controlled or indirectly observed. The resulting conclusion is a) Tj
+T*
+(usable bounded inventory, not complete-estate assurance.) Tj
+T*
+() Tj
+T*
+(11.2 Graph, trust and authority) Tj
+T*
+() Tj
+T*
+(The material path hypothesis is:) Tj
+T*
+() Tj
+T*
+(User identity -> copilot -> retriever -> inherited broad source entitlement -> restricted) Tj
+T*
+(document) Tj
+T*
+() Tj
+T*
+(The effective authority is characterized as read, retrieve, infer and recommend. The case) Tj
+T*
+(requires stable typed nodes and directed edges with scope, conditions, evidence and) Tj
+T*
+(confidence. Trust has a stated purpose, basis, owner and revocation. Authority records) Tj
+T*
+(capability, target, duration, approval and reversibility. The calibration explicitly) Tj
+T*
+(prohibits adding conventional architecture edges that are not supported by the case) Tj
+T*
+(evidence.) Tj
+T*
+() Tj
+T*
+(The key architectural issue is compositional. The user may not have direct entitlement to) Tj
+T*
+(the restricted document, but the retriever can inherit a broader source entitlement. Whether) Tj
+T*
+(the path is material depends on the actual authorization behaviour and evidence for) Tj
+T*
+(denied-access retrieval, not merely on the existence of a connection to the repository.) Tj
+T*
+() Tj
+T*
+(11.3 Evidence package) Tj
+T*
+() Tj
+T*
+(The synthetic evidence set intentionally mixes stronger support and a material weakness.) Tj
+T*
+(Approved architecture or policy provides E3 design support. Configuration or runtime export) Tj
+T*
+ET
+endstream
+endobj
+27 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 26 0 R >>
+endobj
+28 0 obj
+<< /Length 3246 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(provides E4 implementation support. A representative authorized test provides E5 where) Tj
+T*
+(stated. Owner attestation is E2 and requires corroboration. The weakest item is an E0) Tj
+T*
+(representative denied-access retrieval test.) Tj
+T*
+() Tj
+T*
+(Confidence is assigned per assertion rather than once for the entire case. SUPPORTS,) Tj
+T*
+(DISPUTES and QUALIFIES relationships remain visible. This means a single high-grade item) Tj
+T*
+(does not upgrade every claim in the case.) Tj
+T*
+() Tj
+T*
+(11.4 Calibrated control subset) Tj
+T*
+() Tj
+T*
+(The reference subset contains one control from each domain: ATG-DIS-005 scores 3 with E3) Tj
+T*
+(evidence and Medium confidence; ATG-TRU-009 scores 2 with E4 and Medium confidence;) Tj
+T*
+(ATG-AUT-003 scores 2 with E4 and Medium confidence; ATG-VAL-006 scores 1 with E5 and Low) Tj
+T*
+(confidence; ATG-GOV-001 scores 3 with E3 and Medium confidence; and ATG-RES-001 scores 2) Tj
+T*
+(with E4 and Medium confidence.) Tj
+T*
+() Tj
+T*
+(This subset is illustrative and does not replace full applicability analysis. The example) Tj
+T*
+(also shows why evidence grade is not the same as effectiveness: ATG-VAL-006 has E5 evidence) Tj
+T*
+(but a low score. Strong evidence can establish that a condition is weak.) Tj
+T*
+() Tj
+T*
+(11.5 Material path and PEI) Tj
+T*
+() Tj
+T*
+(The calibrated path has the following PEI components: Consequence 4, Reachability 3,) Tj
+T*
+(Authority 2, Amplification 2 and Control Resistance 4. Using the canonical formula produces) Tj
+T*
+(a PEI of 47, in the High band. The interpretation is strictly triage priority; it is not) Tj
+T*
+(probability or expected loss.) Tj
+T*
+() Tj
+T*
+(The case remains disciplined about what the number means. PEI does not say that exploitation) Tj
+T*
+(is 47 percent likely, that expected loss is 47 units, or that the whole system is 47 percent) Tj
+T*
+(trustworthy. It prioritizes this eligible path relative to the methodology's own component) Tj
+T*
+(model.) Tj
+T*
+() Tj
+T*
+(11.6 Uneven maturity is preserved) Tj
+T*
+() Tj
+T*
+(The six-domain maturity vector is D1 M3, D2 M2, D3 M2, D4 M1, D5 M3 and D6 M2. The values) Tj
+T*
+(are not averaged into a single maturity number. The vector makes the weak) Tj
+T*
+(security-validation domain visible even though discovery and governance are further) Tj
+T*
+(developed.) Tj
+T*
+() Tj
+T*
+(11.7 Findings and accountable decision) Tj
+T*
+() Tj
+T*
+(The synthetic findings include an Evidence Gap because the representative denied-access) Tj
+T*
+(retrieval test is E0, a Control Deficiency because an applicable control objective is not) Tj
+T*
+(sufficiently effective, and a Path Exposure covering the user-to-restricted-document route.) Tj
+T*
+() Tj
+T*
+(The calibrated decision is: Conditionally continue bounded use; close source-entitlement and) Tj
+T*
+(representative retrieval-test gaps before sensitive-source expansion.) Tj
+T*
+() Tj
+T*
+(This is an important illustration of ATG's decision discipline. The methodology does not) Tj
+T*
+(need to call the whole system safe or unsafe. It can support a bounded continuation decision) Tj
+T*
+(while making the evidence gap, path exposure and prerequisite actions explicit.) Tj
+T*
+() Tj
+T*
+(11.8 Ruthless reviewer question) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+29 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 28 0 R >>
+endobj
+30 0 obj
+<< /Length 3354 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(Artifact #10 attaches a useful calibration challenge: Which conclusion changes if the) Tj
+T*
+(weakest evidence item is removed, narrowed or contradicted? That question forces the) Tj
+T*
+(assessor to distinguish conclusions that are structurally robust from conclusions that) Tj
+T*
+(depend on one fragile evidence item.) Tj
+T*
+() Tj
+T*
+(12. Reporting and accountable decisions) Tj
+T*
+() Tj
+T*
+(12.1 The graph is not the final deliverable) Tj
+T*
+() Tj
+T*
+(The purpose of an assessment is not to produce an impressive network visualization. The) Tj
+T*
+(graph is an analytical substrate. The report must translate graph context into claims,) Tj
+T*
+(evidence, findings and decisions without hiding scope or uncertainty.) Tj
+T*
+() Tj
+T*
+(The canonical Reporting Standard requires an assessment identity, versioned scope, method) Tj
+T*
+(and limitations, estate and AIBOM view, trust and boundary view, authority view, control) Tj
+T*
+(assessment, path portfolio, maturity profile, scorecards and coverage, findings, decisions,) Tj
+T*
+(roadmap, limitations and sign-off [ATG-9]. Executive reporting must disclose critical gates,) Tj
+T*
+(coverage and residual uncertainty rather than reduce the result to a traffic light.) Tj
+T*
+() Tj
+T*
+(12.2 Findings remain separate from disposition) Tj
+T*
+() Tj
+T*
+(A finding records the technical or assurance condition. Management acceptance, exception or) Tj
+T*
+(treatment records what the organization decides to do about it. Acceptance does not make the) Tj
+T*
+(underlying condition disappear. This separation preserves technical integrity and allows) Tj
+T*
+(future reviewers to understand whether risk changed or only its disposition changed.) Tj
+T*
+() Tj
+T*
+(12.3 Traceability survives to the decision) Tj
+T*
+() Tj
+T*
+(A defensible decision should be traceable back to the evidence and graph context that) Tj
+T*
+(support it. This is particularly important for consequential AI because policy statements) Tj
+T*
+(and high-level risk language can otherwise become disconnected from the actual system path.) Tj
+T*
+(ATG's reporting discipline is intended to preserve the chain from observed state to) Tj
+T*
+(accountable action.) Tj
+T*
+() Tj
+T*
+(13. Limitations and current validation status) Tj
+T*
+() Tj
+T*
+(13.1 Methodological coherence is not empirical validation) Tj
+T*
+() Tj
+T*
+(A governed methodology can be internally coherent without having demonstrated that) Tj
+T*
+(independent assessors will apply it consistently across real organizations. The current) Tj
+T*
+(artifact stack includes synthetic calibration material and a reproducibility protocol, but) Tj
+T*
+(the frozen baseline explicitly records inter-assessor reproducibility validation as a) Tj
+T*
+(pending external gate.) Tj
+T*
+() Tj
+T*
+(13.2 Synthetic cases are not field proof) Tj
+T*
+() Tj
+T*
+(Artifact #10 contains synthetic reference cases designed for calibration, adversarial checks) Tj
+T*
+(and reasoning consistency. They must not be represented as observed facts about real vendors) Tj
+T*
+(or organizations. A synthetic worked example can demonstrate how rules interact; it cannot) Tj
+T*
+(prove predictive validity, business impact or external effectiveness.) Tj
+T*
+() Tj
+T*
+(13.3 Scoring has known limits) Tj
+T*
+() Tj
+T*
+(The Scoring Framework states that ordinal judgments do not become objective probabilities) Tj
+T*
+ET
+endstream
+endobj
+31 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 30 0 R >>
+endobj
+32 0 obj
+<< /Length 3471 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(merely because arithmetic is applied. Weight choices require transparency and calibration.) Tj
+T*
+(Cross-organization benchmarking is unsafe unless scope, profile, evidence, formula version) Tj
+T*
+(and review quality are equivalent. UNKNOWN dependencies must remain UNKNOWN rather than) Tj
+T*
+(being forced into the scoring model [ATG-4].) Tj
+T*
+() Tj
+T*
+(13.4 Evidence also has limits) Tj
+T*
+() Tj
+T*
+(The Evidence Model cannot guarantee source truth, complete discovery, legal admissibility,) Tj
+T*
+(statistical representativeness, absence of deception or permanent currency [ATG-6]. Provider) Tj
+T*
+(opacity, rapid change, sampling limitations and human judgment remain real constraints. The) Tj
+T*
+(methodology's response is not to deny these limits but to disclose them and narrow claims) Tj
+T*
+(accordingly.) Tj
+T*
+() Tj
+T*
+(13.5 No guarantee of safety, compliance or certification) Tj
+T*
+() Tj
+T*
+(AI Trust Graph assessments do not guarantee future system behaviour, complete risk) Tj
+T*
+(elimination or legal compliance. The governance model prohibits scores, maturity levels,) Tj
+T*
+(conformance statements or future certificates from implying guaranteed safety or) Tj
+T*
+(trustworthiness [ATG-11]. Version 1.0 defines certification readiness architecture; it does) Tj
+T*
+(not launch an accredited certification scheme.) Tj
+T*
+() Tj
+T*
+(13.6 Frozen validation status for this paper) Tj
+T*
+() Tj
+T*
+(As of methodology bundle 1.0-rc.4, the pending external release gates are: independent) Tj
+T*
+(methodology or architecture review; independent AI-security review; inter-assessor) Tj
+T*
+(reproducibility study; employer/IP/confidentiality review; and legal approval of the) Tj
+T*
+(licence/trademark position. If those gates change after this paper is published, the) Tj
+T*
+(historical paper should remain unchanged and a later version should update the status rather) Tj
+T*
+(than silently rewriting the old record.) Tj
+T*
+() Tj
+T*
+(13.7 Non-normative validation agenda) Tj
+T*
+() Tj
+T*
+(The next credibility step is empirical rather than rhetorical. Without changing canonical) Tj
+T*
+(semantics, independent evaluation should test whether separate assessors reach materially) Tj
+T*
+(consistent conclusions from the same evidence; whether path and breakpoint reasoning remains) Tj
+T*
+(stable under realistic architectural change; whether PEI weights and bands are useful after) Tj
+T*
+(field calibration and sensitivity analysis; and whether the resulting reports improve) Tj
+T*
+(decision traceability without encouraging false precision [ATG-4][ATG-10][ATG-M].) Tj
+T*
+() Tj
+T*
+(This agenda is intentionally non-normative. It describes evidence that would strengthen) Tj
+T*
+(confidence in the methodology; it does not create new conformance requirements or imply that) Tj
+T*
+(the pending validation has already occurred.) Tj
+T*
+() Tj
+T*
+(14. Governance and methodology evolution) Tj
+T*
+() Tj
+T*
+(14.1 Scope-based authority) Tj
+T*
+() Tj
+T*
+(The methodology does not use a simplistic one-dimensional precedence order. The Methodology) Tj
+T*
+(Manifest resolves authority by scope: the Manifesto governs public purpose and) Tj
+T*
+(non-negotiable commitments; the Core Conceptual Model governs conceptual semantics; the) Tj
+T*
+(Ontology formalizes those semantics; specialist artifacts govern maturity, scoring,) Tj
+T*
+(controls, evidence, execution, reporting and governance within their declared authority) Tj
+T*
+([ATG-M].) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+33 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 32 0 R >>
+endobj
+34 0 obj
+<< /Length 3580 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(If a conflict is detected, the affected conclusion or claim is paused, evidence and version) Tj
+T*
+(state are preserved, and the issue is resolved through governance. The whitepaper has no) Tj
+T*
+(authority to resolve such a conflict by reinterpretation.) Tj
+T*
+() Tj
+T*
+(14.2 Controlled evolution) Tj
+T*
+() Tj
+T*
+(Canonical concepts, control IDs, evidence grades, maturity semantics and scoring logic) Tj
+T*
+(should change only through governed methodology change. Published versions and completed) Tj
+T*
+(assessments remain immutable historical records and are superseded rather than overwritten.) Tj
+T*
+(This principle protects the methodology from silent semantic drift and allows users to) Tj
+T*
+(reconstruct which rules were applied to a particular assessment.) Tj
+T*
+() Tj
+T*
+(14.3 Tool independence) Tj
+T*
+() Tj
+T*
+(The methodology can be executed with documents, spreadsheets, graph stores or compatible) Tj
+T*
+(platforms. Tool output remains proposed until evidence, scope, method and review support) Tj
+T*
+(acceptance. A commercial implementation may automate execution but cannot become a hidden) Tj
+T*
+(source of canonical meaning.) Tj
+T*
+() Tj
+T*
+(Artifact #13, the Reference Graph Schema and Illustrative Query Library, is a Phase 2) Tj
+T*
+(non-normative companion. It carries no conformance weight at this baseline and cannot) Tj
+T*
+(redefine the twelve core artifacts. L4 Tool-compatible conformance is explicitly unavailable) Tj
+T*
+(until approved normative machine-readable schemas and conformance test vectors exist) Tj
+T*
+([ATG-M].) Tj
+T*
+() Tj
+T*
+(14.4 Publication boundary) Tj
+T*
+() Tj
+T*
+(This whitepaper is intentionally a front door. It synthesizes the reasoning model but does) Tj
+T*
+(not replicate the seventy-two controls, complete M1-M5 capability matrices, full E0-E5) Tj
+T*
+(tables, ontology registry, scoring tables, assessor field guidance, reporting templates or) Tj
+T*
+(implementation query library. Readers who need operational rules should use the pinned) Tj
+T*
+(canonical artifact stack.) Tj
+T*
+() Tj
+T*
+(Conclusion) Tj
+T*
+() Tj
+T*
+(AI assurance becomes harder when the relevant unit is no longer an isolated model but a) Tj
+T*
+(connected system of identities, agents, tools, data, providers, workflows and human) Tj
+T*
+(decisions. In such systems, consequential exposure can emerge from composition: a trust) Tj
+T*
+(assumption inherited across a provider boundary, a delegated identity that increases) Tj
+T*
+(actionability, a retrieval path that crosses authorization expectations, or a control that) Tj
+T*
+(exists in design but does not reliably interrupt the path in operation.) Tj
+T*
+() Tj
+T*
+(AI Trust Graph proposes a structured way to make those relationships explicit. It represents) Tj
+T*
+(assets and relationships as a directed, labelled multigraph; distinguishes conditional trust) Tj
+T*
+(from effective authority; treats paths as evidenced explanatory structures; locates control) Tj
+T*
+(breakpoints; separates evidence strength from effectiveness; preserves UNKNOWN rather than) Tj
+T*
+(scoring it away; and links technical conclusions to accountable decisions through a) Tj
+T*
+(controlled assessment lifecycle.) Tj
+T*
+() Tj
+T*
+(Its contribution is not a universal trust number. It is a discipline for asking what can be) Tj
+T*
+(concluded, why it can be concluded, what path or control the conclusion concerns, and where) Tj
+T*
+(the evidence requires the answer to remain bounded.) Tj
+T*
+() Tj
+T*
+(The methodology remains a public-release candidate at the frozen baseline and has important) Tj
+T*
+ET
+endstream
+endobj
+35 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 34 0 R >>
+endobj
+36 0 obj
+<< /Length 3583 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(external validation gates still open. Those limitations should remain visible. If AI Trust) Tj
+T*
+(Graph develops further, its credibility will depend not only on richer artifacts or tooling,) Tj
+T*
+(but on independent challenge, reproducibility, field calibration, transparent governance and) Tj
+T*
+(continued resistance to false precision.) Tj
+T*
+() Tj
+T*
+(Better assurance does not require pretending that every uncertainty can be scored away. It) Tj
+T*
+(requires knowing what can be concluded, why it can be concluded, and where the evidence) Tj
+T*
+(requires the answer to remain UNKNOWN.) Tj
+T*
+() Tj
+T*
+(Appendix A. Whitepaper-to-canonical traceability matrix) Tj
+T*
+() Tj
+T*
+( Whitepaper subject | Canonical authority | Semantic guardrail) Tj
+T*
+(---|---|---) Tj
+T*
+( Publication status / authority | METHODOLOGY_MANIFEST.md; #1; #11 | Non-normative paper;) Tj
+T*
+(canonical artifacts prevail; frozen validation status) Tj
+T*
+( Assurance problem | #1; #2 | System-level reasoning; composition and path emphasis;) Tj
+T*
+(complement existing standards) Tj
+T*
+( Graph reasoning | #2; #12 | Directed labelled multigraph; edges are conditional assertions;) Tj
+T*
+(topology is not exploitability) Tj
+T*
+( Trust | #2; #12 | Conditional reliance; purpose/basis/scope/owner/revocation/evidence;) Tj
+T*
+(non-transitive by default) Tj
+T*
+( Authority | #2; #12 | Effective/permitted capacity;) Tj
+T*
+(identity/capability/target/scope/conditions/approval/revocation) Tj
+T*
+( Paths | #2; #6; #12 | Ordered explanatory structure; evidence for consequential conditions;) Tj
+T*
+(residual and alternate paths) Tj
+T*
+( Six domains | #3; #5 | Exact canonical domain names; 12 controls per domain; do not) Tj
+T*
+(reproduce full catalog) Tj
+T*
+( Control breakpoints | #2; #5; #12 | Stop/constrain/detect/contain; design is not operating) Tj
+T*
+(effectiveness) Tj
+T*
+( Evidence | #6; #4 | E0-E5; grade is support not truth; sufficiency is claim-specific;) Tj
+T*
+(evidence cap is a ceiling not an entitlement) Tj
+T*
+( UNKNOWN | #4; #6; #7; #9; #11; #12 | Never zero/pass/fail/NA; distinct from Not Tested and) Tj
+T*
+(Inconclusive) Tj
+T*
+( Lifecycle | #7 | Exact 13 phases: Initiate, Scope, Discover, Model, Evidence, Controls,) Tj
+T*
+(Paths, Maturity, Scoring, Findings, Decisions, Report, Reassess) Tj
+T*
+( Maturity | #3 | M1-M5 cumulative, evidence-gated and non-compensating; no averaging) Tj
+T*
+( PEI | #4 | Exact formula and 7-62 eligible determinate range; triage only, not probability) Tj
+T*
+(or expected loss) Tj
+T*
+( Worked example | #10 | RA-01 only; fictional/synthetic; retain calibrated path, maturity) Tj
+T*
+(vector, PEI and bounded decision) Tj
+T*
+( Reporting | #9 | No one-number trust score; disclose coverage, uncertainty, critical gates) Tj
+T*
+(and evidence) Tj
+T*
+( Governance | #11; Manifest | Scope-based authority; historical integrity; tool) Tj
+T*
+(independence; #13 non-normative) Tj
+T*
+( ExposureGraph boundary | #1; #2; #7; #11 | Product and proprietary implementation excluded) Tj
+T*
+() Tj
+T*
+(References) Tj
+T*
+() Tj
+T*
+([1] Tabassi, E. \(2023\). Artificial Intelligence Risk Management Framework \(AI RMF 1.0\). NIST) Tj
+T*
+(AI 100-1. DOI: 10.6028/NIST.AI.100-1.) Tj
+T*
+([2] Autio, C., Schwartz, R., Dunietz, J., Jain, S., Stanley, M., Tabassi, E., Hall, P., &) Tj
+T*
+(Roberts, K. \(2024\). Artificial Intelligence Risk Management Framework: Generative Artificial) Tj
+T*
+(Intelligence Profile. NIST AI 600-1. DOI: 10.6028/NIST.AI.600-1.) Tj
+T*
+([3] ISO/IEC 42001:2023. Information technology - Artificial intelligence - Management) Tj
+T*
+ET
+endstream
+endobj
+37 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 36 0 R >>
+endobj
+38 0 obj
+<< /Length 2422 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(system. International Organization for Standardization.) Tj
+T*
+([4] ISO/IEC 23894:2023. Information technology - Artificial intelligence - Guidance on risk) Tj
+T*
+(management. International Organization for Standardization.) Tj
+T*
+([5] MITRE ATLAS. Adversarial Threat Landscape for AI Systems. https://atlas.mitre.org/) Tj
+T*
+([6] OWASP GenAI Security Project. OWASP Top 10 for Agentic Applications for 2026.) Tj
+T*
+(https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) Tj
+T*
+([7] OWASP GenAI Security Project. Agent Control Standard \(ACS\). 1 September 2026.) Tj
+T*
+(https://genai.owasp.org/resource/agent-control-standard-acs/) Tj
+T*
+([8] World Economic Forum. \(2026\). AI Agents in Action: A Playbook for Trusted Adoption,) Tj
+T*
+(Authorization and Scaling. 26 May 2026.) Tj
+T*
+([9] Swiler, L. P., Phillips, C., Ellis, D., & Chakerian, S. \(1998\). A graph-based) Tj
+T*
+(network-vulnerability analysis system. Sandia National Laboratories. DOI: 10.2172/573291.) Tj
+T*
+([10] Sheyner, O., Haines, J., Jha, S., Lippmann, R., & Wing, J. M. \(2002\). Automated) Tj
+T*
+(Generation and Analysis of Attack Graphs. Proceedings of the IEEE Symposium on Security and) Tj
+T*
+(Privacy, 254-265. DOI: 10.1109/SECPRI.2002.1004377.) Tj
+T*
+([ATG-M] AI Trust Graph Methodology Manifest, bundle 1.0-rc.4, snapshot 2026-09-26, manifest) Tj
+T*
+(blob 82c401ad27d31ddc0078e58dd99f38ac0b71a7d9.) Tj
+T*
+([ATG-1] AI Trust Graph Artifact #1 - Manifesto, v1.0.) Tj
+T*
+([ATG-2] AI Trust Graph Artifact #2 - Core Conceptual Model, v3.0.0.) Tj
+T*
+([ATG-3] AI Trust Graph Artifact #3 - Maturity Model, v1.0.) Tj
+T*
+([ATG-4] AI Trust Graph Artifact #4 - Scoring Framework, v3.0.0.) Tj
+T*
+([ATG-5] AI Trust Graph Artifact #5 - Master Control Library, v2.0.0.) Tj
+T*
+([ATG-6] AI Trust Graph Artifact #6 - Evidence Model, v2.0.0.) Tj
+T*
+([ATG-7] AI Trust Graph Artifact #7 - Assessment Methodology, v1.1.0.) Tj
+T*
+([ATG-9] AI Trust Graph Artifact #9 - Reporting Standard, v1.1.0.) Tj
+T*
+([ATG-10] AI Trust Graph Artifact #10 - Reference Assessment Repository, v2.0.0.) Tj
+T*
+([ATG-11] AI Trust Graph Artifact #11 - Governance & Certification Model, v1.0.) Tj
+T*
+([ATG-12] AI Trust Graph Artifact #12 - Ontology Specification, v3.0.0.) Tj
+T*
+([ATG-13] AI Trust Graph Artifact #13 - Reference Graph Schema and Illustrative Query) Tj
+T*
+(Library, v0.4.0, Phase 2 non-normative companion.) Tj
+T*
+ET
+endstream
+endobj
+39 0 obj
+<< /Type /Page /Parent 40 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 38 0 R >>
+endobj
+40 0 obj
+<< /Type /Pages /Count 19 /Kids [3 0 R 5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R 23 0 R 25 0 R 27 0 R 29 0 R 31 0 R 33 0 R 35 0 R 37 0 R 39 0 R] >>
+endobj
+41 0 obj
+<< /Type /Catalog /Pages 40 0 R >>
+endobj
+xref
+0 42
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000003481 00000 n 
+0000003608 00000 n 
+0000007671 00000 n 
+0000007798 00000 n 
+0000011830 00000 n 
+0000011957 00000 n 
+0000015556 00000 n 
+0000015683 00000 n 
+0000019485 00000 n 
+0000019614 00000 n 
+0000023121 00000 n 
+0000023250 00000 n 
+0000026952 00000 n 
+0000027081 00000 n 
+0000030326 00000 n 
+0000030455 00000 n 
+0000034080 00000 n 
+0000034209 00000 n 
+0000037611 00000 n 
+0000037740 00000 n 
+0000040928 00000 n 
+0000041057 00000 n 
+0000044111 00000 n 
+0000044240 00000 n 
+0000047594 00000 n 
+0000047723 00000 n 
+0000051021 00000 n 
+0000051150 00000 n 
+0000054556 00000 n 
+0000054685 00000 n 
+0000058208 00000 n 
+0000058337 00000 n 
+0000061969 00000 n 
+0000062098 00000 n 
+0000065733 00000 n 
+0000065862 00000 n 
+0000068336 00000 n 
+0000068465 00000 n 
+0000068647 00000 n 
+trailer
+<< /Size 42 /Root 41 0 R >>
+startxref
+68698
+%%EOF
