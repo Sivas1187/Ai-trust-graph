@@ -138,12 +138,38 @@ const evidenceGrades = [
   "E5 — Direct technical and representative evidence",
 ];
 
+// Evidence grade meaning and what each grade can support (Artifact #6 §1.1–§1.6), E0…E5.
+const evidenceRegister = [
+  ["No source is available or the supplied item cannot be linked to the assertion.", "The only defensible conclusion is UNKNOWN or Not Tested. E0 is not evidence that the control is absent."],
+  ["A hypothesis is derived from incomplete, indirect, automated or unverified information.", "E1 can prioritize investigation and create candidate graph assertions, but cannot establish implementation or operating effectiveness."],
+  ["An accountable person states that a condition or practice exists.", "E2 supports claimed practice and context. It is vulnerable to memory, interpretation, incentives and incomplete visibility and therefore needs corroboration for material technical claims."],
+  ["A governed document records approved design, policy, architecture, procedure, contract or decision.", "E3 can support design intent and governance state. It does not alone prove actual configuration, runtime behavior or sustained operation."],
+  ["Technical evidence from authoritative sources is supported by an independent source, consistent observation or reproducible inspection.", "E4 can support implementation or operation within observed scope when current, relevant and representative."],
+  ["Current direct technical evidence is combined with a representative test or operating record that demonstrates the claimed behavior under stated conditions.", "E5 may support verified effectiveness or adaptive operation, but only for the tested scope, period and conditions."],
+];
+
 // Cover (visual reset): the approved proposition and the primary navigation, in order.
 const coverProposition =
   "An open methodology for reasoning about connected AI systems through graph structure, controls and evidence.";
 const primaryNav = ["Method", "Domains", "Assurance", "Source", "GitHub"];
-// Fragment targets of the in-page navigation items, in order (PR C keeps #domains and #methodology).
-const primaryNavTargets = ["#flow", "#domains", "#evidence", "#methodology"];
+// Fragment targets of the in-page navigation items, in order (final visual-reset mapping:
+// Assurance opens the UNKNOWN → Evidence → Lifecycle sequence at #unknown).
+const primaryNavTargets = ["#flow", "#domains", "#unknown", "#methodology"];
+
+// Assessment phase outcomes (Artifact #7 §0.11), paired with assessmentPhases.
+const phaseOutcomes = [
+  "Approved charter and decision purpose.", "Versioned boundary and population.", "Measured estate and blind spots.",
+  "Reviewed graph snapshot.", "Graded and traceable evidence set.", "Applicability and control results.",
+  "Validated material path portfolio.", "Six-domain capability profile.", "Transparent scorecards and coverage.",
+  "Evidence-linked gaps and remediation objectives.", "Approved gates, exceptions and dispositions.",
+  "Quality-reviewed decision package.", "Trigger-based new or updated run.",
+];
+// Gate tests between phases (Artifact #7 §0.12), in order.
+const gateTests = ["Completeness", "Evidence", "Safety", "Traceability", "Critical gates", "Quality", "Decision"];
+// UNKNOWN is never silently converted into any of these (Artifact #4 §0.5, SC-INV-01).
+const unknownNotConverted = ["Safe", "Failed", "Zero risk", "N/A"];
+// Distinct non-numeric result states (Artifact #4 §0.5), in order.
+const nonNumericStates = ["Not Assessed", "UNKNOWN", "Inconclusive", "Not Tested", "Not Applicable"];
 
 // Release facts the Cover colophon must repeat, read from the canonical manifest header.
 const manifest = readFileSync(manifestPath, "utf8");
@@ -303,11 +329,6 @@ for (const [file, raw] of html) {
     if (/Decision\s*—\s*UNKNOWN stays UNKNOWN/i.test(visibleText(raw.replace(/<script[\s\S]*?<\/script>/gi, "")))) {
       errors.push(`${file}: "Decision — UNKNOWN stays UNKNOWN" must not reappear`);
     }
-    // The UNKNOWN section itself stays as it is.
-    const unknownTitle = visibleText(raw.match(/<h2 id="unknown-title" class="unknownTitle">([\s\S]*?)<\/h2>/)?.[1] ?? "");
-    if (!/<section id="unknown" class="unknown"/.test(raw) || unknownTitle !== "UNKNOWN stays UNKNOWN.") {
-      errors.push(`${file}: the UNKNOWN section or its title changed ("${unknownTitle}")`);
-    }
     // The theory map stays in one native disclosure: Question / Concept only, not mapped onto stages.
     const questions = actIII.match(/<details class="act3Questions"><summary>Canonical reasoning questions<\/summary>([\s\S]*?)<\/details>/)?.[1] ?? "";
     const heads = [...questions.matchAll(/<th scope="col">([^<]+)<\/th>/g)].map((m) => m[1]);
@@ -355,9 +376,6 @@ for (const [file, raw] of html) {
     if (!pathValidationStates.every((x) => bpText.includes(x)) || !bpText.includes(pathValidationStates.join(" · ")) || !bpText.includes(pathRoles.join(" · "))) {
       errors.push(`${file}: path validation states / roles (Artifact #2 §6.3) missing or reordered`);
     }
-    inOrder("assessment phases", raw, /<span class="lcName">([^<]+)<\/span>/g, assessmentPhases);
-    const typeList = raw.match(/<ul class="chips lcTypeList"[^>]*>([\s\S]*?)<\/ul>/)?.[1] ?? "";
-    inOrder("assessment types", typeList, /<li>([^<]+)<\/li>/g, assessmentTypes);
     // ── Domains (PR C): six coordinated lenses over one graph ──
     const dom = (raw.match(/<section id="domains" class="domainsAct"[\s\S]*?<\/section>/)?.[0] ?? "").replace(/<!-- -->/g, "");
     if (!dom) errors.push(`${file}: Domains section (#domains.domainsAct) not found`);
@@ -453,13 +471,152 @@ for (const [file, raw] of html) {
       errors.push(`${file}: the removed standalone scale band is present again`);
     }
 
-    // Evidence grade order and names, read from the rendered disclosure summaries.
-    const grades = [...raw.matchAll(/<span class="evId">([^<]+)<\/span>[\s\S]*?<span class="evName">([^<]+)<\/span>/g)].map(
-      (m) => `${m[1]} — ${m[2].replace(/&amp;/g, "&")}`,
-    );
-    if (grades.join(" > ") !== evidenceGrades.join(" > ")) {
-      errors.push(`${file}: evidence grades on page are "${grades.join(" > ")}", expected "${evidenceGrades.join(" > ")}"`);
+    // ── UNKNOWN (PR D): an assurance invariant, not an error state ──
+    const unk = (raw.match(/<section id="unknown" class="unknownAct"[\s\S]*?<\/section>/)?.[0] ?? "").replace(/<!-- -->/g, "");
+    if (!unk) errors.push(`${file}: UNKNOWN section (#unknown.unknownAct) not found`);
+    const unknownTitle = visibleText(unk.match(/<h2 id="unknown-title" class="unknownTitle">([\s\S]*?)<\/h2>/)?.[1] ?? "");
+    if (unknownTitle !== "UNKNOWN stays UNKNOWN.") errors.push(`${file}: the UNKNOWN title is "${unknownTitle}", expected "UNKNOWN stays UNKNOWN."`);
+    const unkText = visibleText(unk);
+    const unkLead =
+      "Insufficient evidence does not silently become a favourable — or an adverse — conclusion. UNKNOWN remains visible until sufficient evidence and accountable review resolve the material assertion.";
+    if (visibleText(unk.match(/<p class="unknownLead">([\s\S]*?)<\/p>/)?.[1] ?? "") !== unkLead) errors.push(`${file}: the UNKNOWN lead sentence is missing or changed`);
+    const notList = unk.match(/<ul class="unknownNot" aria-label="UNKNOWN is never silently converted into">([\s\S]*?)<\/ul>/)?.[1] ?? "";
+    const notItems = [...notList.matchAll(/<li><span class="unknownFrom">UNKNOWN<\/span><span class="unknownNeq" aria-hidden="true"> ≠ <\/span><span class="visuallyHidden"> is not <\/span><span class="unknownTo">([^<]+)<\/span><\/li>/g)].map((m) => m[1]);
+    if (notItems.join(" > ") !== unknownNotConverted.join(" > ") || (notList.match(/<li>/g) ?? []).length !== unknownNotConverted.length) {
+      errors.push(`${file}: UNKNOWN non-equivalences are "${notItems.join(" > ")}", expected "${unknownNotConverted.join(" > ")}" (each "UNKNOWN ≠ x" with a spoken "is not")`);
     }
+    if (!/<blockquote class="unknownInvariant"[^>]*><p><span class="noteRuleLabel">Invariant SC-INV-01 · <a href="[^"]*docs\/04-scoring-framework\.md"[^>]*>Artifact #4 — Scoring Framework<\/a><\/span>UNKNOWN is not zero, weak, safe or effective\.<\/p><\/blockquote>/.test(unk)) {
+      errors.push(`${file}: invariant SC-INV-01 ("UNKNOWN is not zero, weak, safe or effective.") with its Artifact #4 link is missing or changed`);
+    }
+    if (!/<h3 class="unknownStatesTitle">UNKNOWN is not Not Tested\.<\/h3>/.test(unk) || !unkText.includes("They are distinct non-numeric result states with different meanings.")) {
+      errors.push(`${file}: the UNKNOWN / Not Tested distinction is missing or changed`);
+    }
+    const register = [...(unk.match(/<dl class="stateRegister">([\s\S]*?)<\/dl>/)?.[1] ?? "").matchAll(/<div><dt>([^<]+)<\/dt><dd>([^<]+)<\/dd><\/div>/g)].map((m) => [m[1], m[2]]);
+    const wantRegister = [
+      ["UNKNOWN", "The material state remains unresolved because evidence is absent, insufficient or materially conflicting."],
+      ["Not Tested", "Testing required for a stronger conclusion was not performed."],
+    ];
+    if (JSON.stringify(register) !== JSON.stringify(wantRegister)) errors.push(`${file}: the UNKNOWN / Not Tested meanings changed: ${JSON.stringify(register)}`);
+    const stateRows = [...(unk.match(/<details class="unknownDetails"><summary>Numeric and reporting treatment<\/summary>([\s\S]*?)<\/details>/)?.[1] ?? "").matchAll(/<tr><th scope="row">([^<]+)<\/th><td>([^<]+)<\/td><td>([^<]+)<\/td><\/tr>/g)].map((m) => [m[1], m[2], m[3]]);
+    const wantRows = [
+      ["UNKNOWN", "No numeric value.", "Included in uncertainty and evidence-gap counts."],
+      ["Not Tested", "No numeric value for effectiveness.", "May retain a design score if separately supported."],
+    ];
+    if (JSON.stringify(stateRows) !== JSON.stringify(wantRows)) errors.push(`${file}: the numeric / reporting treatment disclosure is missing or changed: ${JSON.stringify(stateRows)}`);
+    if (!unkText.includes("Neither may be silently converted into a fabricated effectiveness result. Evidence grade E0 (no evidence) can support either, according to context: The only defensible conclusion is UNKNOWN or Not Tested.")) {
+      errors.push(`${file}: the E0 → UNKNOWN or Not Tested rule is missing or changed`);
+    }
+    inOrder("non-numeric result states", unk.match(/<ul class="stateIds"[^>]*>([\s\S]*?)<\/ul>/)?.[1] ?? "", /<li>([^<]+)<\/li>/g, nonNumericStates);
+    if (!unkText.includes("They must never be silently collapsed into one another, into a score, or into a pass/fail. AI Trust Graph deliberately produces no single overall trust score.")) {
+      errors.push(`${file}: UNKNOWN lost the "no single overall trust score" statement`);
+    }
+    for (const f of ["04-scoring-framework.md", "06-evidence-model.md"]) if (!unk.includes(`docs/${f}`)) errors.push(`${file}: UNKNOWN lost its canonical source link to ${f}`);
+    // An assurance state, not an alert: no warning, error, risk or traffic-light treatment.
+    if (/class="[^"]*\b\w*(alert|warn|danger|error|risk|amber|red|traffic|status|badge|pill|chip)\w*\b/i.test(unk) || /role="alert"|[⚠❗❌✓✔✗]/.test(unk) || /\b(warning|danger|alert)\b/i.test(unkText)) {
+      errors.push(`${file}: UNKNOWN carries alert, warning, error or traffic-light treatment`);
+    }
+    // ── Evidence (PR D): six grades on one quiet axis ──
+    const ev = (raw.match(/<section id="evidence" class="evidenceAct"[\s\S]*?<\/section>/)?.[0] ?? "").replace(/<!-- -->/g, "");
+    if (!ev) errors.push(`${file}: Evidence section (#evidence.evidenceAct) not found — Act III annotation c points to #evidence`);
+    const evText = visibleText(ev);
+    if (!/<h2 id="evidence-title" class="actTitle">Six grades of evidentiary support\.<\/h2>/.test(ev)) errors.push(`${file}: Evidence heading missing or changed`);
+    if (!/<p class="actLede">Grade measures evidentiary support, not desirability, safety or compliance\.<\/p>/.test(ev)) errors.push(`${file}: Evidence lost "Grade measures evidentiary support, not desirability, safety or compliance."`);
+    const axis = ev.match(/<ol class="evLine" aria-label="Evidence grades E0 to E5, in order of increasing evidentiary support">([\s\S]*?)<\/ol>/)?.[1] ?? "";
+    const stops = [...axis.matchAll(/<li class="evStop"><span class="evGrade">([^<]+)<\/span><span class="visuallyHidden"> — <\/span><span class="evGradeName">([^<]+)<\/span><\/li>/g)].map((m) => `${m[1]} — ${m[2].replace(/&amp;/g, "&")}`);
+    if (stops.join(" > ") !== evidenceGrades.join(" > ") || (axis.match(/<li\b/g) ?? []).length !== 6) {
+      errors.push(`${file}: evidence grades on the axis are "${stops.join(" > ")}", expected "${evidenceGrades.join(" > ")}"`);
+    }
+    if (visibleText(ev.match(/<figcaption class="evAxisNote">([\s\S]*?)<\/figcaption>/)?.[1] ?? "") !== "E0 → E5 Increasing evidentiary support only. The order does not measure safety, desirability or compliance.") {
+      errors.push(`${file}: the evidence axis lost its "increasing evidentiary support only" caption`);
+    }
+    const evDetails = ev.match(/<details class="evDetails"><summary>Meaning, and what each grade can support<\/summary>([\s\S]*?)<\/details>/)?.[1] ?? "";
+    const entries = [...evDetails.matchAll(/<div class="evEntry"><dt><span class="evGrade">([^<]+)<\/span> <span class="evEntryName">([^<]+)<\/span><\/dt><dd><span class="noteLabel">Meaning<\/span> ([^<]+)<\/dd><dd><span class="noteLabel">What it can support<\/span> ([^<]+)<\/dd><\/div>/g)];
+    const entryNames = entries.map((m) => `${m[1]} — ${m[2].replace(/&amp;/g, "&")}`);
+    if (entryNames.join(" > ") !== evidenceGrades.join(" > ")) errors.push(`${file}: the evidence register is "${entryNames.join(" > ")}", expected each grade with its meaning and what it can support`);
+    const gotRegister = entries.map((m) => [m[3], m[4]]);
+    if (JSON.stringify(gotRegister) !== JSON.stringify(evidenceRegister)) {
+      const i = evidenceRegister.findIndex((r, k) => JSON.stringify(r) !== JSON.stringify(gotRegister[k]));
+      errors.push(`${file}: evidence register content changed or lost at E${i} (meaning / what it can support): ${JSON.stringify(gotRegister[i] ?? null)}`);
+    }
+    if (/\b(higher|better|stronger) grades?\b[^.]*\b(safer|safe|more secure|compliant|better|desirable)\b/i.test(evText) || /\bE\d\s*=\s*(safe|unsafe|pass|fail)/i.test(evText)) {
+      errors.push(`${file}: Evidence equates grade with safety, desirability or compliance`);
+    }
+    const rules = [...(ev.match(/<ul class="evRules" aria-label="How to read evidence grades">([\s\S]*?)<\/ul>/)?.[1] ?? "").matchAll(/<li>([\s\S]*?)<\/li>/g)].map((m) => visibleText(m[1]));
+    const wantRules = [
+      "Grade is not sufficiency. Meeting the grade minimum is necessary but not sufficient; relevance, scope, currentness, representativeness, conflict status and an approved reviewer decision still govern.",
+      "A high grade can confirm an adverse state. A low grade can weakly suggest a favorable state.",
+      "Grade is its own quantity. Never add evidence grade to control effectiveness, severity, maturity or risk as if they were the same quantity.",
+    ];
+    if (JSON.stringify(rules) !== JSON.stringify(wantRules)) errors.push(`${file}: the evidence reading rules changed: ${JSON.stringify(rules)}`);
+    if (!ev.includes("docs/06-evidence-model.md")) errors.push(`${file}: Evidence lost its canonical Artifact #6 link`);
+    // Not a maturity, safety or pass/fail scale: no such labels, no colour progression, ladder or gauge.
+    if (/\b(low|medium|high|weak|strong|poor|good|excellent|safe|unsafe|pass|fail|mature|immature)\b/i.test(stops.join(" ")) ||
+      /class="[^"]*\b\w*(ladder|gauge|meter|progress|level|tier|rank|red|green|amber|cyan|indigo|gfNode-)\w*\b/i.test(ev) || /style=|<meter|<progress/.test(ev)) {
+      errors.push(`${file}: Evidence grades carry maturity / safety / pass-fail labels, colour progression, ladder or gauge structure`);
+    }
+    if (/class="[^"]*\b(evScale|evSteps|evStep|evNode|evId|evName|evidenceRules)\b/.test(raw)) errors.push(`${file}: the retired evidence step diagram is present again`);
+    // ── Assessment lifecycle (PR D): a numbered register, not a progress chain ──
+    const lc = (raw.match(/<section id="lifecycle" class="lifecycleAct"[\s\S]*?<\/section>/)?.[0] ?? "").replace(/<!-- -->/g, "");
+    if (!lc) errors.push(`${file}: Lifecycle section (#lifecycle.lifecycleAct) not found`);
+    if (!/<h2 id="lifecycle-title" class="actTitle">Thirteen controlled phases\.<\/h2>/.test(lc)) errors.push(`${file}: Lifecycle heading missing or changed`);
+    const lcText = visibleText(lc);
+    if (!lcText.includes("Separate from the reasoning chain: Artifact #7 governs the controlled fieldwork lifecycle and gates without redefining upstream semantics.")) {
+      errors.push(`${file}: Lifecycle lost its "separate from the reasoning chain" statement`);
+    }
+    if (visibleText(lc.match(/<p class="lcRuleLine">([\s\S]*?)<\/p>/)?.[1] ?? "") !== "The lifecycle contains thirteen controlled phases. Phases may iterate, but required gates cannot be skipped merely because information was available earlier.") {
+      errors.push(`${file}: the lifecycle iteration rule is missing or changed`);
+    }
+    const phaseOl = lc.match(/<ol class="phaseRegister" aria-label="Assessment Methodology phases, Artifact #7 §0.11">([\s\S]*?)<\/ol>/)?.[1] ?? "";
+    const phases = [...phaseOl.matchAll(/<li class="phaseRow"><span class="phaseNum"><span class="visuallyHidden">Phase <\/span>(\d+)<\/span><span class="phaseName">([^<]+)<\/span><span class="phaseOutcome">([^<]+)<\/span><\/li>/g)].map((m) => `${m[1]} ${m[2]}: ${m[3]}`);
+    const wantPhases = assessmentPhases.map((n, i) => `${i + 1} ${n}: ${phaseOutcomes[i]}`);
+    if (phases.join(" > ") !== wantPhases.join(" > ") || (phaseOl.match(/<li\b/g) ?? []).length !== 13) {
+      errors.push(`${file}: assessment phases on page are "${phases.join(" > ")}", expected "${wantPhases.join(" > ")}"`);
+    }
+    const gateDl = lc.match(/<details class="lcDetails"><summary>Gate tests between phases<\/summary>([\s\S]*?)<\/details>/)?.[1] ?? "";
+    inOrder("gate tests", gateDl, /<div><dt>([^<]+)<\/dt><dd>[^<]+<\/dd><\/div>/g, gateTests);
+    const typeUl = lc.match(/<ul class="typeRegister" aria-labelledby="assessment-types-title">([\s\S]*?)<\/ul>/)?.[1] ?? "";
+    inOrder("assessment types", typeUl, /<li><details class="typeEntry"><summary>([^<]+)<\/summary><p>[^<]+<\/p><\/details><\/li>/g, assessmentTypes);
+    if (!/<h3 id="assessment-types-title" class="lcTypesTitle">Assessment types<\/h3><p class="noteSmall">Listed in Artifact #7 order; the order implies no priority\.<\/p>/.test(lc)) {
+      errors.push(`${file}: the assessment types lost their "the order implies no priority" note`);
+    }
+    if (!lc.includes("docs/07-assessment-methodology.md")) errors.push(`${file}: Lifecycle lost its canonical Artifact #7 link`);
+    // No progress, completion or "current" semantics; not chips; the retired timeline must not return.
+    if (/aria-current|<progress|<meter|[✓✔☑%]|class="[^"]*\b\w*(progress|complete|done|current|active|check|tick|chip|pill|badge|step|marker)\w*\b/i.test(lc)) {
+      errors.push(`${file}: Lifecycle carries progress, completion, current-state, check-mark or chip treatment`);
+    }
+    if (/class="[^"]*\b(lcPhases|lcPhase|lcMarker|lcNum|lcName|lcRule|lcTypes|lcTypeDefs|lcTypeList|chips)\b/.test(raw)) errors.push(`${file}: the retired lifecycle timeline or chip list is present again`);
+    // Retired UNKNOWN layout (cards, grid) must not return.
+    if (/class="[^"]*\b(unknownGrid|unknownCanon|stateCards|stateCard|stateCompare)\b/.test(raw) || /<section id="unknown" class="unknown"/.test(raw)) {
+      errors.push(`${file}: the retired UNKNOWN card layout is present again`);
+    }
+    // ── Footer (PR D): facts only ──
+    const ft = (raw.match(/<footer class="siteFooter">[\s\S]*?<\/footer>/)?.[0] ?? "").replace(/<!-- -->/g, "");
+    if (!ft) errors.push(`${file}: footer (.siteFooter) not found`);
+    const ftText = visibleText(ft);
+    const wantFooter = [
+      "AI Trust Graph",
+      `${manifestRelease.status} · Bundle ${manifestRelease.bundle} · Snapshot ${manifestRelease.snapshot}`,
+      "AI Trust Graph is a methodology, not a product. This website is explanatory. The GitHub methodology artifacts are canonical and win on any conflict.",
+      `Copyright © 2026 Siva Sethumadhavan. Methodology text licensed CC BY 4.0; the name is reserved separately — see TRADEMARKS.`,
+    ];
+    const gotFooter = [...ft.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) => visibleText(m[1]));
+    if (JSON.stringify(gotFooter) !== JSON.stringify(wantFooter)) errors.push(`${file}: footer facts changed: ${JSON.stringify(gotFooter)}`);
+    const ftLinks = [...ft.matchAll(/<a href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)].map((m) => [m[1].replace(/\/blob\/[0-9a-f]{40}\//, "/blob/<pinned>/"), visibleText(m[2])]);
+    const wantFtLinks = [
+      ["https://github.com/Sivas1187/Ai-trust-graph", "GitHub methodology artifacts"],
+      ["https://github.com/Sivas1187/Ai-trust-graph/blob/<pinned>/LICENSE", "CC BY 4.0"],
+      ["https://github.com/Sivas1187/Ai-trust-graph/blob/main/TRADEMARKS.md", "TRADEMARKS"],
+    ];
+    if (JSON.stringify(ftLinks) !== JSON.stringify(wantFtLinks)) errors.push(`${file}: footer links are ${JSON.stringify(ftLinks)}, expected ${JSON.stringify(wantFtLinks)}`);
+    if (/<img\b|<form\b|<input\b|<button\b/.test(ft) || /newsletter|subscribe|sign up|get started|contact|follow|twitter|linkedin|mastodon|bluesky|about the author|hire|book a|consult|services|engagement|pricing|demo/i.test(ftText) || /linkedin\.com|twitter\.com|x\.com\/|mailto:/i.test(ft)) {
+      errors.push(`${file}: the footer carries social, contact, biography, CTA or newsletter material`);
+    }
+    // ── Whole page: unique ids; Assurance is #unknown, and #evidence stays for annotation c ──
+    const ids = [...raw.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
+    const dupes = [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
+    if (dupes.length) errors.push(`${file}: duplicate id(s): ${dupes.join(", ")}`);
+    if (/<nav aria-label="Primary"[\s\S]*?<a href="#evidence"[\s\S]*?<\/nav>/.test(raw)) errors.push(`${file}: the Assurance navigation item must target #unknown, not #evidence`);
+    if (!/<li id="note-evidence"><a href="#evidence">/.test(actIII) || !/<section id="evidence"/.test(raw)) errors.push(`${file}: Act III annotation c no longer reaches the #evidence section`);
   }
   for (const ctx of allowedContexts) text = text.replace(new RegExp(ctx.source, "gi"), " ");
   for (const re of forbidden) {
