@@ -113,7 +113,7 @@ const chainNotes = [
   ["Authority and Influence", "a", "#authority"],
   ["Controls", "b", "#breakpoints"],
   ["Evidence", "c", "#note-evidence"],
-  ["Decision", "d", "#note-decision"],
+  ["Decision", "d", "#decision"],
 ];
 // Authority annotation (Artifact #2 §3.6 separation rule, §5.2 classes; the site's distinct-assertion illustration).
 const separationRule =
@@ -342,12 +342,49 @@ for (const [file, raw] of html) {
       errors.push(`${file}: chain annotation keys are ${JSON.stringify(keys)}, expected ${JSON.stringify(chainNotes)}`);
     }
     for (const [, , target] of chainNotes) if (!new RegExp(`id="${target.slice(1)}"`).test(actIII)) errors.push(`${file}: annotation target ${target} is missing from Act III`);
-    // Annotation d must not equate the Decision stage with the UNKNOWN assurance state:
-    // it reads "Accountable decision." (§0.10 theory map) and links nowhere, least of all #unknown.
+    // Annotation d must not equate the Decision stage with the UNKNOWN assurance state (or with
+    // Evidence): it reads "Accountable decision." (§0.10 theory map) and links only to its own
+    // local note, #decision — never to #unknown or #evidence.
     const noteD = actIII.match(/<li id="note-decision">([\s\S]*?)<\/li>/)?.[1] ?? "";
     const noteDText = visibleText(noteD.replace(/<span class="noteKey"[^>]*>[\s\S]*?<\/span>/, ""));
     if (noteDText !== "Decision — Accountable decision.") errors.push(`${file}: annotation d reads "${noteDText}", expected "Decision — Accountable decision."`);
-    if (/<a\b|href=/.test(noteD)) errors.push(`${file}: annotation d must not link anywhere (in particular not to #unknown)`);
+    const noteDHrefs = [...noteD.matchAll(/href="([^"]*)"/g)].map((m) => m[1]);
+    if (!/^\s*<a href="#decision">[\s\S]*<\/a>\s*$/.test(noteD) || noteDHrefs.join(" ") !== "#decision") {
+      errors.push(`${file}: annotation d must be one plain link to the local Decision note (#decision); found ${JSON.stringify(noteDHrefs)}`);
+    }
+    const chainDecision = chainOl.match(/<a class="chainAnchor" href="([^"]+)"><span class="chainStage">Decision<\/span>/)?.[1];
+    if (chainDecision !== "#decision") errors.push(`${file}: the chain's Decision stage links to "${chainDecision}", expected "#decision"`);
+    if ((raw.match(/\sid="decision"/g) ?? []).length !== 1) errors.push(`${file}: expected exactly one id="decision", found ${(raw.match(/\sid="decision"/g) ?? []).length}`);
+    // The Decision note: every sentence verbatim from Artifact #2 (§0.10, §7.4, §3.8, §1.10), cited to the pinned artifact.
+    const decisionNote = actIII.match(/<article id="decision" class="note noteDecision" aria-labelledby="decision-title">([\s\S]*?)<\/article>/)?.[1] ?? "";
+    if (!decisionNote) errors.push(`${file}: the Decision note (article#decision) is missing from Act III`);
+    else {
+      const wantDecision = {
+        title: "Accountable decision.",
+        text: "A finding is an evidence-linked assessment conclusion. A decision is accountable disposition. Keeping them separate prevents management acceptance or remediation preference from changing the assessed condition.",
+        small: "This separation prevents observations, interpretations and management choices from being collapsed into a single status field. Human approval is required for material facts, findings, exceptions and risk decisions. Inference accelerates review; accountable approval determines accepted state.",
+      };
+      const gotDecision = {
+        title: visibleText(decisionNote.match(/<h3 id="decision-title" class="noteDecisionTitle">([\s\S]*?)<\/h3>/)?.[1] ?? ""),
+        text: visibleText(decisionNote.match(/<p class="noteText">([\s\S]*?)<\/p>/)?.[1] ?? ""),
+        small: visibleText(decisionNote.match(/<p class="noteSmall">([\s\S]*?)<\/p>/)?.[1] ?? ""),
+      };
+      for (const k of Object.keys(wantDecision)) if (gotDecision[k] !== wantDecision[k]) errors.push(`${file}: the Decision note ${k} is "${gotDecision[k]}", expected the approved Artifact #2 wording`);
+      const cite = decisionNote.match(/<p class="marginRef marginRefSide">([\s\S]*?)<\/p>/)?.[1] ?? "";
+      if (!/<a href="https:\/\/github\.com\/Sivas1187\/Ai-trust-graph\/blob\/[0-9a-f]{40}\/docs\/02-core-conceptual-model\.md"[^>]*>Artifact #2<\/a>/.test(cite) || !/^Artifact #2\s*§7\.4 · §3\.8\s*(·\s*)?§1\.10$/.test(visibleText(cite))) {
+        errors.push(`${file}: the Decision note must cite the pinned Artifact #2 at §7.4 · §3.8 · §1.10 (found "${visibleText(cite)}")`);
+      }
+      if (!/§7\.4 · §3\.8 · §1\.10/.test(visibleText(actIII.match(/<p class="marginRef marginRefEnd act3RefEnd">([\s\S]*?)<\/p>/)?.[1] ?? ""))) {
+        errors.push(`${file}: the Act III end reference (narrow layouts) lost the Decision note's §7.4 · §3.8 · §1.10`);
+      }
+      if (/href="#(unknown|evidence)"/.test(decisionNote)) errors.push(`${file}: the Decision note links to UNKNOWN or Evidence`);
+      const dText = visibleText(decisionNote);
+      const loaded = dText.match(/\b(approved outcome|pass(ed)?|fail(ed)?|score[sd]?|scoring|assurance state|result state|automat\w*|AI decides|final decision|certif\w*|guarantee\w*|resolves? UNKNOWN|overrides?)\b/i);
+      if (loaded) errors.push(`${file}: the Decision note introduces unsupported wording ("${loaded[0]}")`);
+    }
+    if (/href="#evidence"/.test(chainOl.match(/<a class="chainAnchor" href="[^"]*"><span class="chainStage">Decision<\/span>/)?.[0] ?? "")) {
+      errors.push(`${file}: the Decision stage must not point to the Evidence section`);
+    }
     if (/href="#unknown"/.test(actIII)) errors.push(`${file}: Act III links to #unknown — the Decision stage must not point to the UNKNOWN state`);
     if (/Decision\s*—\s*UNKNOWN stays UNKNOWN/i.test(visibleText(raw.replace(/<script[\s\S]*?<\/script>/gi, "")))) {
       errors.push(`${file}: "Decision — UNKNOWN stays UNKNOWN" must not reappear`);
