@@ -19,17 +19,19 @@
   --on-dark-muted: #a8b5b0;
   --line-dark: #2e3b38;
 
-  /* Colour roles. cyan: reading-path emphasis and selected links.
-     indigo: structural detail. green / amber: very sparse decorative texture.
-     None of them ever means maturity, safety, severity, quality, rank or pass/fail. */
-  --cyan: #0a6c7c;
+  /* Colour roles. Cyan is the one structural / navigation accent: the reading
+     path, primary links and hover underlines, the shared Domains connectivity.
+     Indigo, green and ochre ("amber" tokens, muted toward brass) are sparse
+     decorative graph texture only. No colour ever carries assurance, risk,
+     maturity, evidence sufficiency, lifecycle state, domain rank or pass/fail. */
+  --cyan: #0b7685;
   --cyan-on-dark: #6fd6e3;
   --green: #17704c;
   --green-on-dark: #7fdcb1;
-  --indigo: #4146b8;
-  --indigo-on-dark: #aeb1ff;
-  --amber: #9a6b12;
-  --amber-on-dark: #f0c674;
+  --indigo: #4d55a8;
+  --indigo-on-dark: #b3b8ea;
+  --amber: #8a702c;
+  --amber-on-dark: #d8bf80;
   --hairline: #c9ccc3; /* editorial rules: cover foot, link underlines */
 
   /* Graph field (light ground). */
@@ -295,8 +297,8 @@ h3 {
 }
 
 /* ───────────── Graph field (shared grammar) ─────────────
-   components/GraphField.tsx. Hollow nodes, hairline edges, one restrained
-   cyan reading path, sparse indigo / green / amber texture. Decorative only:
+   components/GraphField.tsx. Hollow nodes, hairline edges, one cyan reading
+   path (the primary accent), very sparse indigo / green / ochre texture. Decorative only:
    colour never encodes maturity, safety, severity, quality, rank or pass/fail. */
 .graphField {
   display: block;
@@ -334,8 +336,8 @@ h3 {
 }
 .gfPathLine {
   stroke: var(--cyan);
-  stroke-width: 1.25;
-  stroke-opacity: 0.55;
+  stroke-width: 1.4;
+  stroke-opacity: 0.72;
 }
 .gfPathQuiet {
   stroke: var(--gf-path-quiet);
@@ -343,7 +345,7 @@ h3 {
 }
 .gfNodes .gfPathNode {
   stroke: var(--cyan);
-  stroke-opacity: 0.7;
+  stroke-opacity: 0.85;
 }
 
 /* ───────────── Act I · Cover ─────────────
