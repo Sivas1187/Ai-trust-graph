@@ -193,6 +193,24 @@ the pre-reset design.
   Review. Static links in a labelled `<nav>`; no numbering, progress,
   active state, sticky panel or script; two columns of 44px targets on small
   screens. Website navigation only, not a methodology hierarchy or sequence.
+  The nav carries the stable id `page-index`.
+- **Deep-page return links (`components/PageIndexReturn.tsx`).** At the end
+  of six major reading blocks — Act III, Domains, UNKNOWN, Evidence,
+  Lifecycle and Canonical source — one quiet mono "↑ On this page" link back
+  to `#page-index` (none in the Cover, Act II, Status, Review or footer). A
+  plain anchor with a hairline underline and the cyan hover; no button
+  chrome, sticky or fixed position, script, active or progress state.
+  Publication navigation, not an app control.
+- **Brand mark (`components/BrandMark.tsx`).** "A relationship with a
+  breakpoint": three graph nodes in a closed triangle of relationships, two
+  holding and the third interrupted by a perpendicular control bar —
+  connection is not authority, and a path can be interrupted (Act II's
+  unresolved path, annotation b's control breakpoint). Replaces the
+  provisional node-cluster mark. Monochrome `currentColor` inline SVG (no
+  text, gradient, filter, image or dependency), 20px in the header, decorative
+  inside the "AI Trust Graph — back to top" link; it follows the text colour
+  on paper, graphite and in forced colours. The wordmark stays "AI Trust
+  Graph" with no tagline.
 - **Domains emphasis (website refinement).** A taller graph band, firmer
   shared edges, more space above the band, and the six anchors and their
   leaders in the one structural cyan — all six identical. The band carries no
