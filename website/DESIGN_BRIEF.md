@@ -18,8 +18,10 @@ Owner-approved direction for the visual reset, delivered in slices on the
 prototype (`website/review-artifacts/visual-reset-prototype/*-refined.png` on the
 `visual-reset-prototype-review` branch). Implemented so far: the system
 foundation, header/navigation, the Cover (Act I), Act II (why graph reasoning)
-and Act III (how the method thinks, with the Authority and control-breakpoint
-annotations). Every other section keeps
+Act III (how the method thinks, with the Authority and control-breakpoint
+annotations), and — PR C — the Domains lens, the Release, review and
+limitations colophon, the Canonical source and Public review. Every other
+section (UNKNOWN, Evidence, Lifecycle, footer) keeps
 its previous design until its own reset PR; during construction the
 integration branch is intentionally mixed.
 
@@ -108,6 +110,32 @@ integration branch is intentionally mixed.
   redesigned; annotation d (Decision) is a plain-text note, "Accountable
   decision." (§0.10 theory map), with no destination yet — it is deliberately
   not linked to UNKNOWN, which is an assurance state, not the Decision stage.
+- **Domains — six coordinated lenses over one graph** (`components/DomainsLens.tsx`).
+  One connected graph band (decorative, `aria-hidden`) with six identical
+  anchor nodes on its lower edge; on wide screens (≥ 1280px) the six canonical
+  domains hang from them as equal columns, each a hairline rule reading the
+  same graph. Each shows only its name (serif), its §8.1 purpose and a two-line
+  mono count ("12 controls / 6 capabilities") that opens a native disclosure
+  with the control-ID range and the six Artifact #3 capabilities. No cards, hub
+  panel, D-numbers or per-domain colour: every anchor and rule is drawn the
+  same, and the italic "Explanatory figure" note states that position, line and
+  order imply no ranking, hierarchy, sequence or maturity. Narrower layouts keep
+  the band above a three-, two- or one-column list.
+- **Release, review and limitations — a publication colophon**
+  (`components/StatusColophon.tsx`). Mono labels over quiet rules: status,
+  bundle, snapshot, review, validation, one factual authorship line and change
+  review; the five external gates as text marked "Pending" (no badges, traffic
+  lights or seals); the manifest §6 principle and roadmap note; limitations set
+  apart under a rule. Authorship stays one line, subordinate to the work.
+- **Canonical source — a table of contents** (`components/CanonicalSource.tsx`).
+  The METHODOLOGY_MANIFEST first as the authority map, where the model's figures
+  are defined, then the twelve artifacts in the manifest's reading order as
+  hairline rows (number · title · role · version) and the non-normative #13
+  companion; every link pinned to the bundle commit. Not a GitHub CTA.
+- **Public review — an invitation** (`components/ReviewInvitation.tsx`). On
+  graphite, the four routes as typographic entries with plain text links;
+  canonical changes still require a formal change proposal (Artifact #11 §2.4).
+  No buttons, growth mechanics or sales language.
 
 ## Signature interaction
 
@@ -134,18 +162,18 @@ The graph is not decorative. Where motion is used, it must reinforce methodology
 
 ## Homepage sequence
 
-(Current sequence. Items 1–3 are redesigned; items 4–10 are unchanged until their visual-reset PRs.)
+(Current sequence. Items 1–4 and 8–10 are redesigned; items 5–7 are unchanged until their visual-reset PRs.)
 
 1. Cover (visual reset, Act I) - methodology name, approved proposition, "Read the methodology ↗" and "How it reasons ↓" text links, decorative graph field, running colophon (status, bundle, snapshot date, not independently validated)
 2. Act II, why graph reasoning (visual reset) - "AI systems are no longer isolated models", the Manifesto thesis, the topology invariant as pull quote, continued graph field ending unresolved, "Illustrative topology"
 3. Act III, how the method thinks (visual reset) - the nine-stage canonical Artifact #2 §0.10 chain as a typographic argument; theory map in one disclosure; annotations a (Authority and Influence: "Access is not authority"), b (Controls: control breakpoints), c (Evidence, pointing to the Evidence section) and d (Decision: "Accountable decision.", plain text)
-4. Six domains - graph-centred lens model: the shared graph with six equal domain cards (D1-D3 | graph | D4-D6 on wide screens; graph first on narrow), capabilities in disclosures, labelled Explanatory
+4. Six domains (visual reset) - one connected graph band read by six equal domain lenses (names, §8.1 purposes, counts; controls and capabilities in disclosures), with an explanatory no-ranking note
 5. UNKNOWN - dark, high-impact assurance section
 6. Evidence model - E0-E5 explainer
 7. Assessment lifecycle - the 13 Artifact #7 phases as a two-row timeline, separate from the reasoning chain, with the iteration rule and assessment types
-8. Release, review and limitations - status, bundle, snapshot, review state, validation statement, one-line provenance, the five manifest gates (Pending), limitations; calm and neutral
-9. Canonical source - the manifest as authority map, where the model's figures are defined (6 domains, 72 controls, 36 capabilities, M1-M5, E0-E5), then artifact cards in reading order
-10. Public review - four equal entry points: report a finding, share feedback, propose a change, inspect the source
+8. Release, review and limitations (visual reset) - a publication colophon: status, bundle, snapshot, review state, validation statement, one-line authorship, change review, the five manifest gates (Pending, as text), limitations
+9. Canonical source (visual reset) - the manifest as authority map, where the model's figures are defined (6 domains, 72 controls, 36 capabilities, M1-M5, E0-E5), then the artifacts in reading order as a table of contents
+10. Public review (visual reset) - four equal entry points as typographic rows: report a finding, share feedback, propose a change, inspect the source
 
 The former standalone Authority and Control breakpoints sections are now annotations a and b inside Act III.
 
