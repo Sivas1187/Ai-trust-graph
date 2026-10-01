@@ -11,6 +11,7 @@ import { fileURLToPath } from "node:url";
 
 const outDir = resolve(dirname(fileURLToPath(import.meta.url)), "..", "out");
 const manifestPath = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..", "METHODOLOGY_MANIFEST.md");
+const siteDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 const forbidden = [
   /industry[- ]standard/i,
@@ -633,6 +634,36 @@ for (const [file, raw] of html) {
     if (/<img\b|<form\b|<input\b|<button\b/.test(ft) || /newsletter|subscribe|sign up|get started|contact|follow|twitter|linkedin|mastodon|bluesky|about the author|hire|book a|consult|services|engagement|pricing|demo/i.test(ftText) || /linkedin\.com|twitter\.com|x\.com\/|mailto:/i.test(ft)) {
       errors.push(`${file}: the footer carries social, contact, biography, CTA or newsletter material`);
     }
+    // ── Brand: the header lockup, and a mark that stays a plain, self-contained monochrome drawing ──
+    const header = raw.match(/<header class="siteHeader">[\s\S]*?<\/header>/)?.[0] ?? "";
+    const brand = header.match(/<a class="brand" href="([^"]*)" aria-label="([^"]*)">([\s\S]*?)<\/a>/);
+    if (!brand) errors.push(`${file}: the header brand link (a.brand) is missing`);
+    else {
+      if (brand[1] !== "#top") errors.push(`${file}: the brand link targets "${brand[1]}", expected "#top"`);
+      if (brand[2] !== "AI Trust Graph — back to top") errors.push(`${file}: the brand link label is "${brand[2]}", expected "AI Trust Graph — back to top"`);
+      if (visibleText(brand[3]) !== "AI Trust Graph") errors.push(`${file}: the brand text is "${visibleText(brand[3])}", expected "AI Trust Graph"`);
+      const mark = brand[3].match(/<svg class="brandMark"[^>]*>[\s\S]*?<\/svg>/)?.[0] ?? "";
+      if (!mark || !/aria-hidden="true"/.test(mark.slice(0, mark.indexOf(">")))) errors.push(`${file}: the brand mark is missing or not decorative (aria-hidden)`);
+      const bad = mark.match(/<(image|text|foreignObject|style|script|use|filter|linearGradient|radialGradient|pattern|mask)\b|\b(filter|mask|style|href|xlink:href|src)=|url\(|https?:/i);
+      if (bad) errors.push(`${file}: the brand mark contains "${bad[0]}" (no images, text, gradients, filters, styles or external references)`);
+      const paints = [...mark.matchAll(/\b(fill|stroke)="([^"]*)"/g)].map((m) => m[2]).filter((v) => !/^(currentColor|none)$/.test(v));
+      if (paints.length) errors.push(`${file}: the brand mark uses colour values ${paints.join(", ")} (monochrome currentColor only)`);
+    }
+    // ── Deep-page return links: "↑ On this page" → #page-index, at the end of six major blocks only ──
+    if ((raw.match(/\sid="page-index"/g) ?? []).length !== 1 || !/<nav id="page-index" class="pageIndex"/.test(raw)) {
+      errors.push(`${file}: the page index must carry the single stable id "page-index"`);
+    }
+    const returns = [...raw.matchAll(/<p class="pageReturn">([\s\S]*?)<\/p>/g)].map((m) => m[1]);
+    const returnAnchors = [...raw.matchAll(/<a [^>]*href="#page-index"[^>]*>/g)].map((m) => m[0]);
+    if (returns.length !== 6 || returnAnchors.length !== 6) errors.push(`${file}: expected 6 "↑ On this page" return links to #page-index, found ${returns.length} (${returnAnchors.length} anchors)`);
+    for (const r of returns) {
+      const a = r.match(/^<a ([^>]*)>([\s\S]*)<\/a>$/);
+      if (!a || a[1] !== 'href="#page-index"') errors.push(`${file}: a return link is not a plain anchor to #page-index: ${r.slice(0, 120)}`);
+      else if (visibleText(a[2]) !== "↑ On this page") errors.push(`${file}: a return link reads "${visibleText(a[2])}", expected "↑ On this page"`);
+      if (/aria-current|role=|style=|onclick|class="[^"]*(active|current|progress|complete|done|sticky|fixed|button)/i.test(r)) errors.push(`${file}: a return link carries state, role, style or button semantics`);
+    }
+    const sectionsWithReturn = [...raw.matchAll(/<section id="([^"]+)"[\s\S]*?<\/section>/g)].filter((m) => m[0].includes('class="pageReturn"')).map((m) => m[1]);
+    if (sectionsWithReturn.join(" ") !== "flow domains unknown evidence lifecycle methodology") errors.push(`${file}: return links sit in "${sectionsWithReturn.join(" ")}", expected "flow domains unknown evidence lifecycle methodology"`);
     // ── Whole page: unique ids; Assurance is #unknown, and #evidence stays for annotation c ──
     const ids = [...raw.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
     const dupes = [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
@@ -640,8 +671,8 @@ for (const [file, raw] of html) {
     if (/<a href="#evidence"/.test(nav)) errors.push(`${file}: the Assurance navigation item must target #unknown, not #evidence`);
     if (!/<li id="note-evidence"><a href="#evidence">/.test(actIII) || !/<section id="evidence"/.test(raw)) errors.push(`${file}: Act III annotation c no longer reaches the #evidence section`);
     // ── On this page: website orientation only — eight links, page order, real targets, no progress ──
-    const pix = raw.match(/<nav class="pageIndex" aria-labelledby="page-index-label">[\s\S]*?<\/nav>/)?.[0] ?? "";
-    if (!pix || !/<p id="page-index-label" class="pageIndexLabel">On this page<\/p>/.test(pix)) errors.push(`${file}: the "On this page" navigation (labelled landmark) is missing`);
+    const pix = raw.match(/<nav id="page-index" class="pageIndex" aria-labelledby="page-index-label">[\s\S]*?<\/nav>/)?.[0] ?? "";
+    if (!pix || !/<p id="page-index-label" class="pageIndexLabel">On this page<\/p>/.test(pix)) errors.push(`${file}: the "On this page" navigation (labelled landmark with the stable id "page-index") is missing`);
     const pixLinks = [...pix.matchAll(/<a ([^>]*)>([\s\S]*?)<\/a>/g)].map((m) => [m[1].match(/href="([^"]*)"/)?.[1], visibleText(m[2])]);
     if (JSON.stringify(pixLinks) !== JSON.stringify(pageIndexLinks)) {
       errors.push(`${file}: "On this page" links are ${JSON.stringify(pixLinks)}, expected ${JSON.stringify(pageIndexLinks)}`);
@@ -651,7 +682,7 @@ for (const [file, raw] of html) {
     if (/aria-current|<progress|<meter|<ol\b/.test(pix) || /[✓✔☑%\d]/.test(visibleText(pix)) || /progress|complete|done|current|active|step|visited/i.test(pixClasses)) {
       errors.push(`${file}: "On this page" carries numbering, progress, completion or active-state semantics`);
     }
-    if (raw.indexOf('<nav class="pageIndex"') < raw.indexOf("</section>") || raw.indexOf('<nav class="pageIndex"') > raw.indexOf('<section id="problem"')) {
+    if (raw.indexOf('class="pageIndex"') < raw.indexOf("</section>") || raw.indexOf('class="pageIndex"') > raw.indexOf('<section id="problem"')) {
       errors.push(`${file}: "On this page" must sit between the Cover and Act II`);
     }
     // ── Domains: equal treatment in the graph band — no secondary accent beside any domain ──
@@ -667,6 +698,30 @@ for (const [file, raw] of html) {
     const m = text.match(re);
     if (m) errors.push(`${file}: forbidden wording "${m[0]}" … ${text.slice(Math.max(0, m.index - 60), m.index + 60)}`);
   }
+}
+
+// Source-level guards: the mark and the return links stay static, server-rendered and dependency-free.
+const pkg = JSON.parse(readFileSync(join(siteDir, "package.json"), "utf8"));
+const deps = Object.keys({ ...pkg.dependencies, ...pkg.devDependencies });
+const iconLib = /icon|lucide|heroicons|fontawesome|feather|phosphor|tabler|iconify|svgr|remixicon|ionicons/i;
+for (const d of deps) if (iconLib.test(d)) errors.push(`package.json: icon dependency "${d}" is not allowed`);
+const sources = readdirSync(join(siteDir, "app"), { recursive: true }).filter((f) => /\.(tsx?|mjs)$/.test(f));
+for (const f of sources) {
+  const src = readFileSync(join(siteDir, "app", f), "utf8");
+  for (const m of src.matchAll(/^\s*import\b[^;]*?from\s+["']([^"']+)["']/gm)) {
+    if (!/^(\.|next(\/|$)|react(\/|$)|react-dom)/.test(m[1]) || iconLib.test(m[1])) errors.push(`app/${f}: imports "${m[1]}" (no icon or third-party UI dependency)`);
+  }
+}
+for (const f of ["BrandMark.tsx", "PageIndexReturn.tsx"]) {
+  const src = readFileSync(join(siteDir, "app", "components", f), "utf8");
+  if (/["']use client["']|\buse(State|Effect|Ref)\b|\bon[A-Z]\w*=/.test(src)) errors.push(`app/components/${f}: must stay a static server component (no client code, state or handlers)`);
+}
+const css = readFileSync(join(siteDir, "app", "globals.css"), "utf8");
+for (const m of css.matchAll(/([^{}]*\.pageReturn[^{}]*)\{([^}]*)\}/g)) {
+  if (/position\s*:\s*(fixed|sticky)/i.test(m[2])) errors.push(`app/globals.css: "${m[1].trim()}" makes the return link fixed or sticky`);
+}
+for (const m of css.matchAll(/([^{}]*\.brandMark[^{}]*)\{([^}]*)\}/g)) {
+  if (/filter|drop-shadow|gradient|url\(/i.test(m[2])) errors.push(`app/globals.css: "${m[1].trim()}" adds a filter, gradient or image to the brand mark`);
 }
 
 if (errors.length) {

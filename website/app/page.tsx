@@ -1,5 +1,6 @@
 import { ActThree } from "./components/ActThree";
 import { AssessmentLifecycle } from "./components/AssessmentLifecycle";
+import { BrandMark } from "./components/BrandMark";
 import { ActTwo } from "./components/ActTwo";
 import { CanonicalSource } from "./components/CanonicalSource";
 import { Cover } from "./components/Cover";
@@ -43,20 +44,7 @@ export default function Home() {
       <header className="siteHeader">
         <div className="headerInner">
           <a className="brand" href="#top" aria-label="AI Trust Graph — back to top">
-            {/* PROVISIONAL brand mark: placeholder pending a separate visual-brand review.
-                Hollow nodes, matching the graph grammar. */}
-            <svg className="brandMark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-              <g stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" fill="none">
-                <path d="M16 22 L32 14 L48 24 M16 22 L26 44 L48 24 M26 44 L46 48" />
-              </g>
-              <g className="brandMarkNodes" stroke="currentColor" strokeWidth="3.5">
-                <circle cx="16" cy="22" r="5" />
-                <circle cx="32" cy="14" r="4.5" />
-                <circle cx="48" cy="24" r="5" />
-                <circle cx="26" cy="44" r="5" />
-              </g>
-              <circle cx="46" cy="48" r="5" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="3 2.5" />
-            </svg>
+            <BrandMark />
             <span>AI Trust Graph</span>
           </a>
           <PrimaryNav items={navItems} />

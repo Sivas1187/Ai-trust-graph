@@ -1,5 +1,6 @@
 import { links, nonNumericResultStates, unknownVsNotTested } from "../content";
 import { MarginReference } from "./Marginalia";
+import { PageIndexReturn } from "./PageIndexReturn";
 
 /**
  * UNKNOWN — an assurance invariant, set on graphite.
@@ -139,6 +140,7 @@ export function UnknownAssurance() {
         <MarginReference className="marginRefEnd actRefEnd">
           <A href={scoring}>Artifact #4</A> §0.5 · SC-INV-01 · <A href={evidence}>Artifact #6</A> §0.5 · §1.1
         </MarginReference>
+        <PageIndexReturn />
       </div>
     </section>
   );

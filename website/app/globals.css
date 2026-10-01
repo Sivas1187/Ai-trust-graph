@@ -203,9 +203,6 @@ h3 {
   height: 20px;
   color: var(--ink);
 }
-.brandMarkNodes {
-  fill: var(--paper);
-}
 .primaryNav ul {
   display: flex;
   gap: 34px;
@@ -597,6 +594,48 @@ h3 {
     display: block;
     min-height: 44px;
     padding: 10px 0;
+  }
+}
+
+/* Return links ("↑ On this page") at the end of the major reading blocks:
+   mono, quiet, text only — publication navigation, not a UI control. */
+.pageReturn {
+  margin-top: 56px;
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.pageReturn a {
+  display: inline-block;
+  padding: 6px 0;
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--hairline);
+  text-underline-offset: 4px;
+}
+.pageReturn a:hover {
+  color: var(--ink);
+  text-decoration-color: var(--cyan);
+}
+.unknownAct .pageReturn a {
+  color: #7f8c87;
+  text-decoration-color: var(--line-dark);
+}
+.unknownAct .pageReturn a:hover {
+  color: var(--on-dark);
+  text-decoration-color: var(--cyan-on-dark);
+}
+@media (max-width: 1023px) {
+  /* Narrow: directly under the act-end reference line. */
+  .pageReturn {
+    margin-top: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .pageReturn a {
+    min-height: 44px;
+    padding: 12px 0;
   }
 }
 
@@ -2803,9 +2842,6 @@ h3 {
   .graphField .gfUnresolved circle {
     stroke: GrayText;
     stroke-opacity: 1;
-  }
-  .brandMarkNodes {
-    fill: Canvas;
   }
 }
 
