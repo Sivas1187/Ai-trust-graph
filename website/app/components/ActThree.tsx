@@ -9,6 +9,7 @@ import {
 } from "../content";
 import { BreakpointExplorer } from "./BreakpointExplorer";
 import { MarginReference } from "./Marginalia";
+import { PageIndexReturn } from "./PageIndexReturn";
 
 /**
  * Act III — how the method thinks.
@@ -233,6 +234,7 @@ export function ActThree() {
         <MarginReference className="marginRefEnd act3RefEnd">
           <Ref href={ccm}>Artifact #2 Core Conceptual Model</Ref> · §0.10 · §3.6 · §5.2 · §1.8 · §6.3 · §6.6
         </MarginReference>
+        <PageIndexReturn />
       </div>
     </section>
   );

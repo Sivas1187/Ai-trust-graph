@@ -1,5 +1,6 @@
 import { domains, domainsLede, links, scale } from "../content";
 import { FigureNote, MarginReference } from "./Marginalia";
+import { PageIndexReturn } from "./PageIndexReturn";
 
 /**
  * Domains — six coordinated lenses over one graph.
@@ -156,6 +157,7 @@ export function DomainsLens() {
             Artifact #5
           </a>
         </MarginReference>
+        <PageIndexReturn />
       </div>
     </section>
   );

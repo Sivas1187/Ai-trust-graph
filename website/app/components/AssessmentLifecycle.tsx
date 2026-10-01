@@ -1,5 +1,6 @@
 import { assessmentPhases, assessmentTypes, exitCriteria, lifecycleIntro, links, phaseIterationRule } from "../content";
 import { MarginReference } from "./Marginalia";
+import { PageIndexReturn } from "./PageIndexReturn";
 
 /**
  * Assessment lifecycle — the controlled fieldwork sequence (Artifact #7).
@@ -99,6 +100,7 @@ export function AssessmentLifecycle() {
           </a>{" "}
           §1
         </MarginReference>
+        <PageIndexReturn />
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { evidenceGrades, links } from "../content";
 import { MarginReference } from "./Marginalia";
+import { PageIndexReturn } from "./PageIndexReturn";
 
 /**
  * Evidence — six grades of evidentiary support.
@@ -90,6 +91,7 @@ export function EvidenceSequence() {
           </a>{" "}
           §1.1–§1.8 · the full sufficiency rules are deliberately not summarized here
         </MarginReference>
+        <PageIndexReturn />
       </div>
     </section>
   );

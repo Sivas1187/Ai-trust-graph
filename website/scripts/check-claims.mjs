@@ -640,8 +640,8 @@ for (const [file, raw] of html) {
     if (/<a href="#evidence"/.test(nav)) errors.push(`${file}: the Assurance navigation item must target #unknown, not #evidence`);
     if (!/<li id="note-evidence"><a href="#evidence">/.test(actIII) || !/<section id="evidence"/.test(raw)) errors.push(`${file}: Act III annotation c no longer reaches the #evidence section`);
     // ── On this page: website orientation only — eight links, page order, real targets, no progress ──
-    const pix = raw.match(/<nav class="pageIndex" aria-labelledby="page-index-label">[\s\S]*?<\/nav>/)?.[0] ?? "";
-    if (!pix || !/<p id="page-index-label" class="pageIndexLabel">On this page<\/p>/.test(pix)) errors.push(`${file}: the "On this page" navigation (labelled landmark) is missing`);
+    const pix = raw.match(/<nav id="page-index" class="pageIndex" aria-labelledby="page-index-label">[\s\S]*?<\/nav>/)?.[0] ?? "";
+    if (!pix || !/<p id="page-index-label" class="pageIndexLabel">On this page<\/p>/.test(pix)) errors.push(`${file}: the "On this page" navigation (labelled landmark with the stable id "page-index") is missing`);
     const pixLinks = [...pix.matchAll(/<a ([^>]*)>([\s\S]*?)<\/a>/g)].map((m) => [m[1].match(/href="([^"]*)"/)?.[1], visibleText(m[2])]);
     if (JSON.stringify(pixLinks) !== JSON.stringify(pageIndexLinks)) {
       errors.push(`${file}: "On this page" links are ${JSON.stringify(pixLinks)}, expected ${JSON.stringify(pageIndexLinks)}`);
@@ -651,7 +651,7 @@ for (const [file, raw] of html) {
     if (/aria-current|<progress|<meter|<ol\b/.test(pix) || /[✓✔☑%\d]/.test(visibleText(pix)) || /progress|complete|done|current|active|step|visited/i.test(pixClasses)) {
       errors.push(`${file}: "On this page" carries numbering, progress, completion or active-state semantics`);
     }
-    if (raw.indexOf('<nav class="pageIndex"') < raw.indexOf("</section>") || raw.indexOf('<nav class="pageIndex"') > raw.indexOf('<section id="problem"')) {
+    if (raw.indexOf('class="pageIndex"') < raw.indexOf("</section>") || raw.indexOf('class="pageIndex"') > raw.indexOf('<section id="problem"')) {
       errors.push(`${file}: "On this page" must sit between the Cover and Act II`);
     }
     // ── Domains: equal treatment in the graph band — no secondary accent beside any domain ──

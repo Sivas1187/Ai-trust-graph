@@ -1,5 +1,6 @@
 import { artifacts, companion, links, release, scale } from "../content";
 import { MarginReference } from "./Marginalia";
+import { PageIndexReturn } from "./PageIndexReturn";
 
 /**
  * Canonical source — the governed artifacts, set as a publication's table of
@@ -102,6 +103,7 @@ export function CanonicalSource() {
           </a>{" "}
           §2 · §4
         </MarginReference>
+        <PageIndexReturn />
       </div>
     </section>
   );
