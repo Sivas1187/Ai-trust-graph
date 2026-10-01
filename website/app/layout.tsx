@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Inter_Tight, IBM_Plex_Mono } from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { SITE_URL, release } from "./content";
 import "./globals.css";
@@ -7,12 +7,6 @@ import "./globals.css";
 // next/font downloads these at build time and serves them from this site:
 // no runtime request to a third-party font host, no cookies.
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
-const display = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["500", "600", "700"],
-  display: "swap",
-});
 const mono = IBM_Plex_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
@@ -87,7 +81,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${body.variable} ${display.variable} ${mono.variable} ${sourceSerif.variable} ${sourceSerifItalic.variable}`}>
+    <html lang="en" className={`${body.variable} ${mono.variable} ${sourceSerif.variable} ${sourceSerifItalic.variable}`}>
       <body>{children}</body>
     </html>
   );
