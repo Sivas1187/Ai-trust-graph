@@ -203,9 +203,6 @@ h3 {
   height: 20px;
   color: var(--ink);
 }
-.brandMarkNodes {
-  fill: var(--paper);
-}
 .primaryNav ul {
   display: flex;
   gap: 34px;
@@ -2803,9 +2800,6 @@ h3 {
   .graphField .gfUnresolved circle {
     stroke: GrayText;
     stroke-opacity: 1;
-  }
-  .brandMarkNodes {
-    fill: Canvas;
   }
 }
 
