@@ -26,7 +26,7 @@ export const problemFieldDesktop: GraphFieldData = {
   nodes: [
     [220, 16, 4.7],
     [438, 11, 3.4],
-    [720, 54, 4.1, "indigo"],
+    [720, 54, 4.1],
     [925, 58, 3.7, "green"],
     [1019, 147, 3.2],
     [1417, 189, 4.7],
@@ -37,7 +37,7 @@ export const problemFieldDesktop: GraphFieldData = {
     [1391, 383, 4.1],
     [16, 532, 2.8],
     [1056, 467, 4.7],
-    [1433, 486, 4.1, "indigo"],
+    [1433, 486, 4.1],
     [68, 640, 4.8],
     [179, 600, 2.9],
     [506, 630, 3.7],
@@ -78,10 +78,10 @@ export const problemFieldMobile: GraphFieldData = {
     [378, 309, 3.6],
     [372, 644, 2.7],
     [345, 711, 3.3, "indigo"],
-    [373, 881, 3.1, "green"],
+    [373, 881, 3.1],
     [344, 965, 4.2],
     [330, 999, 3.9, "amber"],
-    [335, 1065, 3.2, "indigo"],
+    [335, 1065, 3.2],
   ],
   // pairs of indexes into `nodes`
   edges: [

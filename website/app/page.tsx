@@ -5,6 +5,7 @@ import { CanonicalSource } from "./components/CanonicalSource";
 import { Cover } from "./components/Cover";
 import { DomainsLens } from "./components/DomainsLens";
 import { EvidenceSequence } from "./components/EvidenceSequence";
+import { PageIndex } from "./components/PageIndex";
 import { PrimaryNav, type NavItem } from "./components/PrimaryNav";
 import { ReviewInvitation } from "./components/ReviewInvitation";
 import { SiteFooter } from "./components/SiteFooter";
@@ -65,6 +66,9 @@ export default function Home() {
       <main id="main" tabIndex={-1}>
         {/* ─────────────────────────── Act I · Cover ──────────────────────── */}
         <Cover />
+
+        {/* "On this page" — website orientation only, not a methodology construct. */}
+        <PageIndex />
 
         {/* ──────────────────── Act II · Why graph reasoning ─────────────────── */}
         <ActTwo />

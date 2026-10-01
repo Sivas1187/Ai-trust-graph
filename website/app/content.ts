@@ -85,6 +85,32 @@ export const coverProposition =
   "An open methodology for reasoning about connected AI systems through graph structure, controls and evidence.";
 
 /**
+ * Cover context line: explanatory website copy (not canonical text), placed
+ * under the proposition for a first-time visitor. Built only from the
+ * Artifact #1 Manifesto CORE PROPOSITION ("AI risk is not located only inside
+ * a model. It emerges through relationships among … These relationships must
+ * be made visible, evidenced and governed as a connected system."): the two
+ * sentences are joined and the enumerated list is elided; no claim is added.
+ */
+export const coverContext =
+  "AI risk is not located only inside a model. It emerges through relationships that must be made visible, evidenced and governed as a connected system.";
+
+/**
+ * "On this page": website navigation only, in page order. Not a methodology
+ * construct, hierarchy or sequence; labels reuse existing section names.
+ */
+export const pageIndex = [
+  { href: "#flow", label: "Method" },
+  { href: "#domains", label: "Domains" },
+  { href: "#unknown", label: "UNKNOWN" },
+  { href: "#evidence", label: "Evidence" },
+  { href: "#lifecycle", label: "Lifecycle" },
+  { href: "#status", label: "Status" },
+  { href: "#methodology", label: "Source" },
+  { href: "#review", label: "Review" },
+] as const;
+
+/**
  * Source: Artifact #1 Manifesto.
  * `problemThesis`: §2.2 "The core risk thesis", first sentence, verbatim.
  * `topologyInvariant`: §4 INVARIANT, both sentences, verbatim.
