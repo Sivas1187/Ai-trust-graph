@@ -44,10 +44,17 @@ the pre-reset design.
   200px); a right margin `--vr-right` (up to 120px). Composition frames are at
   most 1440px wide and centred.
 - **Colour roles.** Paper `--paper`, graphite `--graphite`, near-black
-  `--ink`; cyan = the reading path and the primary link; indigo = structural
-  detail; green / amber = very sparse decorative texture. No gradients. Colour
-  never encodes maturity, safety, severity, quality, ranking or pass/fail.
-  Forced-colours mode uses system colours (decorative graph → GrayText).
+  `--ink`. **Cyan is the one primary structural / navigation accent**
+  (`--cyan` `#0b7685` on paper, `--cyan-on-dark` on graphite): the reading
+  path, primary-link and hover underlines, chain-key and focus accents, and
+  the shared Domains connectivity (anchors and leaders). **Secondary colours
+  are decorative only**: muted slate indigo (`#4d55a8`), green and a muted
+  brass ochre (`--amber` `#8a702c`) appear as a few incidental graph nodes and
+  never cluster or sit beside a particular domain, grade, phase or state.
+  No gradients. **Colour never carries assurance, risk, maturity, evidence
+  sufficiency, lifecycle state, domain rank or pass/fail meaning**; every
+  section reads correctly in monochrome. Forced-colours mode uses system
+  colours (decorative graph → GrayText).
 - **Graph system** (`components/GraphField.tsx`). Hollow nodes, hairline edges,
   one restrained cyan reading path whose segments nearest the type stay neutral,
   sparse accent nodes. No labels, glow, shadows, gradients, enclosures or
@@ -172,6 +179,29 @@ the pre-reset design.
   `#unknown` (the first section of the UNKNOWN → Evidence → Lifecycle
   sequence), Source → `#methodology`, GitHub ↗. `#evidence` keeps its id for
   annotation c.
+- **Cover context line (website refinement).** Under the unchanged
+  proposition, one smaller, muted line for a first-time visitor: "AI risk is
+  not located only inside a model. It emerges through relationships that must
+  be made visible, evidenced and governed as a connected system." It is
+  explanatory website copy compressed from the Artifact #1 Manifesto CORE
+  PROPOSITION (the enumerated list elided), not canonical text, and makes no
+  outcome claim. The Cover still fits the first viewport at 1024–1440.
+- **"On this page" (website refinement, `components/PageIndex.tsx`).** A
+  quiet typographic index directly below the Cover's colophon and before
+  Act II: a mono label in the margin column and eight plain fragment links in
+  page order — Method, Domains, UNKNOWN, Evidence, Lifecycle, Status, Source,
+  Review. Static links in a labelled `<nav>`; no numbering, progress,
+  active state, sticky panel or script; two columns of 44px targets on small
+  screens. Website navigation only, not a methodology hierarchy or sequence.
+- **Domains emphasis (website refinement).** A taller graph band, firmer
+  shared edges, more space above the band, and the six anchors and their
+  leaders in the one structural cyan — all six identical. The band carries no
+  secondary accent nodes, so no colour sits beside any one domain. Names,
+  order, purposes and the no-ranking note are unchanged.
+- **Lifecycle density (website refinement).** The same content — 13 phases
+  with outcomes, iteration rule, gate tests, ten assessment types — in a
+  shorter frame: tighter row padding, outcome line height and section gaps
+  (about 16% shorter at 1440 and 15% at 390). Outcomes stay visible.
 - **Whole-page cadence.** Paper (Cover) · graphite (Act II) · paper (Act III,
   Domains) · graphite (UNKNOWN) · paper (Evidence, Lifecycle, Release, Source) ·
   graphite (Public review) · paper (footer).
@@ -203,7 +233,7 @@ The graph is not decorative. Where motion is used, it must reinforce methodology
 
 (Final visual-reset sequence; every item is redesigned.)
 
-1. Cover (visual reset, Act I) - methodology name, approved proposition, "Read the methodology ↗" and "How it reasons ↓" text links, decorative graph field, running colophon (status, bundle, snapshot date, not independently validated)
+1. Cover (visual reset, Act I) - methodology name, approved proposition, a subordinate context line (from the Manifesto core proposition), "Read the methodology ↗" and "How it reasons ↓" text links, decorative graph field, running colophon (status, bundle, snapshot date, not independently validated); followed by the "On this page" index (website navigation only)
 2. Act II, why graph reasoning (visual reset) - "AI systems are no longer isolated models", the Manifesto thesis, the topology invariant as pull quote, continued graph field ending unresolved, "Illustrative topology"
 3. Act III, how the method thinks (visual reset) - the nine-stage canonical Artifact #2 §0.10 chain as a typographic argument; theory map in one disclosure; annotations a (Authority and Influence: "Access is not authority"), b (Controls: control breakpoints), c (Evidence, pointing to the Evidence section) and d (Decision: "Accountable decision.", plain text)
 4. Six domains (visual reset) - one connected graph band read by six equal domain lenses (names, §8.1 purposes, counts; controls and capabilities in disclosures), with an explanatory no-ranking note
