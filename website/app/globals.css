@@ -1198,6 +1198,29 @@ h3 {
   margin-right: 8px;
   vertical-align: 0.35em;
 }
+/* Annotation d — Decision: compact, below the short notes and visually
+   subordinate to the full Authority and Controls notes. */
+.noteDecision {
+  position: relative;
+  max-width: 760px;
+  margin-top: 72px;
+  scroll-margin-top: 24px;
+}
+.noteDecision .marginRefSide {
+  top: 4px;
+}
+.noteDecisionTitle {
+  margin-top: 8px;
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.noteDecision .noteText {
+  margin-top: 14px;
+}
 .act3RefEnd {
   margin-top: 64px;
 }
@@ -1447,6 +1470,12 @@ h3 {
     grid-template-columns: 1fr;
     gap: 12px;
     margin-top: 72px;
+  }
+  .noteDecision {
+    margin-top: 56px;
+  }
+  .noteDecisionTitle {
+    font-size: 23px;
   }
   .act3RefEnd {
     margin-top: 48px;

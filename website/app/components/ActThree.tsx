@@ -19,10 +19,13 @@ import { PageIndexReturn } from "./PageIndexReturn";
  * native disclosure, and footnote-style annotations keyed a–d to four stages:
  *   a  Authority and Influence — "Access is not authority." (§3.6, §5.2)
  *   b  Controls — control breakpoints (§1.8, §6.3, §6.6)
- *   c  Evidence — continues in the Evidence section (not redesigned yet)
- *   d  Decision — "Accountable decision" (from the §0.10 theory map: "Evidence,
- *      confidence and accountable decision."); plain text, no destination yet.
- *      Deliberately not linked to UNKNOWN: Decision is not an assurance state.
+ *   c  Evidence — continues in the Evidence section (#evidence)
+ *   d  Decision — "Accountable decision" (§0.10 theory map: "Evidence,
+ *      confidence and accountable decision."), explained by a compact local
+ *      note (#decision) quoting Artifact #2 §7.4, §3.8 and §1.10 verbatim: a
+ *      decision is accountable disposition, kept separate from findings and
+ *      from any status. Deliberately not linked to UNKNOWN or Evidence:
+ *      Decision is not an assurance state.
  * The keys are editorial pointers, not a mapping of questions onto stages.
  */
 
@@ -30,7 +33,7 @@ const notes: Record<string, { key: string; id: string }> = {
   "Authority and Influence": { key: "a", id: "authority" },
   Controls: { key: "b", id: "breakpoints" },
   Evidence: { key: "c", id: "note-evidence" },
-  Decision: { key: "d", id: "note-decision" },
+  Decision: { key: "d", id: "decision" },
 };
 
 function Ref({ href, children }: { href: string; children: React.ReactNode }) {
@@ -209,8 +212,7 @@ export function ActThree() {
             </details>
           </article>
 
-          {/* c points to the Evidence section; d stays a plain-text note until a later
-              visual-reset PR gives Decision its own destination. */}
+          {/* c points to the Evidence section; d to the Decision note below. */}
           <ul className="noteShort" aria-label="Where the chain continues">
             <li id="note-evidence">
               <a href="#evidence">
@@ -222,17 +224,46 @@ export function ActThree() {
               </a>
             </li>
             <li id="note-decision">
-              <span className="noteKey" aria-hidden="true">
-                d
-              </span>
-              <span className="visuallyHidden">Annotation d: </span>
-              <i>Decision</i> — Accountable decision.
+              <a href="#decision">
+                <span className="noteKey" aria-hidden="true">
+                  d
+                </span>
+                <span className="visuallyHidden">Annotation d: </span>
+                <i>Decision</i> — Accountable decision.
+              </a>
             </li>
           </ul>
+
+          {/* d — Decision: a compact note, every sentence verbatim from Artifact #2
+              (§0.10 title; §7.4; §3.8; §1.10). Not an assurance state, score or status. */}
+          <article id="decision" className="note noteDecision" aria-labelledby="decision-title">
+            <MarginReference className="marginRefSide">
+              <Ref href={ccm}>Artifact #2</Ref>
+              <br />
+              §7.4 · §3.8
+              <br />
+              §1.10
+            </MarginReference>
+            <NoteHead k="d" stage="Decision" />
+            <h3 id="decision-title" className="noteDecisionTitle">
+              Accountable decision.
+            </h3>
+            <p className="noteText">
+              A finding is an evidence-linked assessment conclusion. A decision is accountable disposition. Keeping
+              them separate prevents management acceptance or remediation preference from changing the assessed
+              condition.
+            </p>
+            <p className="noteSmall">
+              This separation prevents observations, interpretations and management choices from being collapsed into
+              a single status field. Human approval is required for material facts, findings, exceptions and risk
+              decisions. Inference accelerates review; accountable approval determines accepted state.
+            </p>
+          </article>
         </div>
 
         <MarginReference className="marginRefEnd act3RefEnd">
-          <Ref href={ccm}>Artifact #2 Core Conceptual Model</Ref> · §0.10 · §3.6 · §5.2 · §1.8 · §6.3 · §6.6
+          <Ref href={ccm}>Artifact #2 Core Conceptual Model</Ref> · §0.10 · §3.6 · §5.2 · §1.8 · §6.3 · §6.6 · §7.4 ·
+          §3.8 · §1.10
         </MarginReference>
         <PageIndexReturn />
       </div>

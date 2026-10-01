@@ -115,9 +115,14 @@ the pre-reset design.
   a dashed enclosure) and shows a one-line gloss, so nothing depends on colour.
   Path validation state and role sit in a quiet disclosure. Annotation c
   (Evidence) is a one-line pointer to the Evidence section (`#evidence`);
-  annotation d (Decision) is a plain-text note, "Accountable
-  decision." (§0.10 theory map), with no destination yet — it is deliberately
-  not linked to UNKNOWN, which is an assurance state, not the Decision stage.
+  annotation d (Decision), "Accountable decision." (§0.10 theory map), links —
+  like the chain's Decision key — to a compact local note (`#decision`) below
+  the short annotations: every sentence verbatim from Artifact #2 (§7.4 a
+  decision is accountable disposition, separate from findings; §3.8 not
+  collapsed into a single status field; §1.10 accountable approval, not
+  inference, determines accepted state), cited to the pinned Artifact #2.
+  It is deliberately never linked to UNKNOWN or Evidence: Decision is not an
+  assurance state.
 - **Domains — six coordinated lenses over one graph** (`components/DomainsLens.tsx`).
   One connected graph band (decorative, `aria-hidden`) with six identical
   anchor nodes on its lower edge; on wide screens (≥ 1280px) the six canonical
@@ -253,7 +258,7 @@ The graph is not decorative. Where motion is used, it must reinforce methodology
 
 1. Cover (visual reset, Act I) - methodology name, approved proposition, a subordinate context line (from the Manifesto core proposition), "Read the methodology ↗" and "How it reasons ↓" text links, decorative graph field, running colophon (status, bundle, snapshot date, not independently validated); followed by the "On this page" index (website navigation only)
 2. Act II, why graph reasoning (visual reset) - "AI systems are no longer isolated models", the Manifesto thesis, the topology invariant as pull quote, continued graph field ending unresolved, "Illustrative topology"
-3. Act III, how the method thinks (visual reset) - the nine-stage canonical Artifact #2 §0.10 chain as a typographic argument; theory map in one disclosure; annotations a (Authority and Influence: "Access is not authority"), b (Controls: control breakpoints), c (Evidence, pointing to the Evidence section) and d (Decision: "Accountable decision.", plain text)
+3. Act III, how the method thinks (visual reset) - the nine-stage canonical Artifact #2 §0.10 chain as a typographic argument; theory map in one disclosure; annotations a (Authority and Influence: "Access is not authority"), b (Controls: control breakpoints), c (Evidence, pointing to the Evidence section) and d (Decision: "Accountable decision.", linking to a compact local Decision note, `#decision`, quoting Artifact #2 §7.4 · §3.8 · §1.10)
 4. Six domains (visual reset) - one connected graph band read by six equal domain lenses (names, §8.1 purposes, counts; controls and capabilities in disclosures), with an explanatory no-ranking note
 5. UNKNOWN (visual reset) - "UNKNOWN stays UNKNOWN." on graphite; UNKNOWN ≠ Safe / Failed / Zero risk / N/A; SC-INV-01; UNKNOWN is not Not Tested (meanings, numeric and reporting treatment, E0 rule); the non-numeric result states; no single overall trust score
 6. Evidence (visual reset) - E0–E5 on one quiet axis of increasing evidentiary support; meanings and what each grade can support in a disclosure; the three §1.8 reading rules
