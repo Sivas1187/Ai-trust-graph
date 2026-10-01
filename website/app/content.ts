@@ -48,6 +48,8 @@ export const release = {
   bundle: "1.0-rc.4",
   status: "Public-release candidate",
   snapshot: "2026-09-26",
+  /** `snapshot` written out for the Cover colophon; check-claims verifies both against the manifest. */
+  snapshotLabel: "26 September 2026",
 };
 
 /**
@@ -63,6 +65,8 @@ export const release = {
 export const methodologyAuthor = "Siva Sethumadhavan";
 export const reviewStatus = ["Author’s internal review complete", "Independent review pending"] as const;
 export const notValidated = "AI Trust Graph is not independently validated.";
+/** Short form of `notValidated` for the Cover colophon. */
+export const notValidatedShort = "Not independently validated";
 export const changeReviewNote =
   "Until the governance bodies defined in Artifact #11 are standing, the methodology author reviews proposed changes directly.";
 export const limitation =
@@ -72,21 +76,21 @@ export const limitation =
 export const manifestGatePrinciple =
   "This manifest pins content; it does not convert pending external gates into completed review.";
 
-/** Source: README.md, first line (the repository's one-sentence description), verbatim. */
-export const methodologySummary =
-  "An open methodology for assessing AI systems using graph-based trust, authority, evidence, controls, paths, governance, and security validation.";
+/**
+ * Cover proposition. Owner-approved wording for the visual-reset Cover
+ * (explanatory website copy, not canonical methodology text). It replaces the
+ * README first line that the previous hero used as its lede.
+ */
+export const coverProposition =
+  "An open methodology for reasoning about connected AI systems through graph structure, controls and evidence.";
 
 /**
  * Source: Artifact #1 Manifesto.
  * `problemThesis`: §2.2 "The core risk thesis", first sentence, verbatim.
- * `problemTerms`: terms from the Manifesto CORE PROPOSITION list ("identities,
- * agents, tools, data, prompts, models, infrastructure, providers, controls and
- * business actions"), a subset in the same order; illustrative, not ontology types.
  * `topologyInvariant`: §4 INVARIANT, both sentences, verbatim.
  */
 export const problemThesis =
   "The methodology treats enterprise AI risk as a property of interconnected authority, influence and dependency.";
-export const problemTerms = ["Identities", "Agents", "Tools", "Data", "Models", "Providers", "Business actions"] as const;
 export const topologyInvariant = [
   "A topological connection is not automatically an exploitable path.",
   "Required permissions, protocols, state and preconditions must be evidenced or explicitly marked Unknown.",
@@ -419,6 +423,28 @@ export const pathValidationStates = [
   "Invalidated",
 ];
 export const pathRoles = ["Primary", "Alternate", "Residual"];
+
+/**
+ * Authority annotation (Act III, a).
+ * `distinctAssertions`: the site's illustration of distinct claims, each needing
+ * its own evidence (Artifact #2 §3.6 separation rule); explicitly not
+ * a canonical sequence, ladder or state machine.
+ * `authorityClasses`: Artifact #2 §5.2 authority classes, verbatim names, in order.
+ */
+export const distinctAssertions = ["Can connect", "Can authenticate", "Can access", "Can invoke", "Can modify", "Can transact"];
+export const authorityClasses = [
+  "Observe",
+  "Read",
+  "Retrieve",
+  "Infer",
+  "Recommend",
+  "Approve",
+  "Execute",
+  "Modify",
+  "Delete",
+  "Disclose",
+  "Transact",
+];
 
 /** Source: Artifact #2 Core Conceptual Model §1.8 / §6.6 ("stop, constrain, detect or contain"). */
 export const breakpointEffects = ["Stop", "Constrain", "Detect", "Contain"];

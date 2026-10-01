@@ -13,8 +13,8 @@ export type NavItem = {
 /**
  * Primary navigation.
  *
- * Desktop (> 900px): the full link row, unchanged; the toggle is hidden by CSS.
- * Mobile (<= 900px): a disclosure pattern — a "Menu" button with aria-expanded
+ * Desktop (> 900px): a quiet row of text links; the toggle is hidden by CSS.
+ * Mobile (<= 900px): a disclosure pattern — a text-only "Menu" button (no icon) with aria-expanded
  * and aria-controls shows/hides the link list. Escape closes the menu and
  * returns focus to the button; choosing a link or clicking outside closes it.
  * No animation. Without JavaScript the <noscript> style shows the list inline
@@ -55,8 +55,7 @@ export function PrimaryNav({ items }: { items: NavItem[] }) {
         aria-controls={listId}
         onClick={() => setOpen((v) => !v)}
       >
-        <span className="navToggleIcon" aria-hidden="true" />
-        <span>Menu</span>
+        Menu
       </button>
       <ul id={listId}>
         {items.map((item) => (
@@ -69,6 +68,7 @@ export function PrimaryNav({ items }: { items: NavItem[] }) {
             >
               {item.label}
               {item.srSuffix && <span className="visuallyHidden"> {item.srSuffix}</span>}
+              {item.external && <span aria-hidden="true"> ↗</span>}
             </a>
           </li>
         ))}
@@ -76,7 +76,9 @@ export function PrimaryNav({ items }: { items: NavItem[] }) {
       <noscript>
         <style>{`@media (max-width: 900px) {
   .primaryNav .navToggle { display: none !important; }
-  .primaryNav ul { display: flex !important; position: static !important; flex-wrap: wrap; box-shadow: none !important; border: 0 !important; padding: 0 0 8px !important; }
+  .headerInner { flex-wrap: wrap; }
+  .primaryNav ul { display: flex !important; position: static !important; flex-wrap: wrap; gap: 0 20px; border: 0 !important; padding: 0 0 8px !important; }
+  .primaryNav li + li { border-top: 0 !important; }
 }`}</style>
       </noscript>
     </nav>
