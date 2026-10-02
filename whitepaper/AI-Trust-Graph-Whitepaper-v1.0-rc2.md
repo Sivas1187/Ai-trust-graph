@@ -58,6 +58,8 @@ AI Trust Graph addresses a narrower methodological question: how to represent an
 
 Graph-based security analysis is not new. Attack-graph research has long represented multistep compromise paths and used graph analysis to reason about defensive interventions [9][10]. Identity attack-path analysis, including BloodHound-style graph reasoning, demonstrates the value of making privilege and control paths explicit [11]. Relationship-based authorization systems such as Zanzibar show a different but relevant lineage: large-scale authorization decisions can be expressed through relationships between subjects and objects [12]. Earlier trust-management work similarly formalized trusted actions, credentials and delegated policy decisions [13], while the confused-deputy problem remains a foundational warning about exercising authority on another principal's behalf [14].
 
+Assurance-case practice is another close intellectual relative. ISO/IEC/IEEE 15026-2:2022 specifies assurance-case structure terminology for claims, arguments and evidence, reinforcing the broader lineage of evidence-linked assurance reasoning [18]. Work critiquing weighted vulnerability indices is also relevant to PEI's explicit limitations: Spring et al. argue that CVSS severity scoring should not be treated as a risk score and question the formal and empirical justification of its scoring algorithm [19]. These precedents strengthen, rather than weaken, ATG's insistence that arithmetic remain bounded by declared semantics, evidence and decision purpose.
+
 AI-specific work adds further adjacent concepts. Indirect prompt injection demonstrates that data can become an influence channel capable of steering an LLM-integrated application and affecting downstream tool use [15]. CycloneDX ML-BOM and the SPDX 3 AI Profile provide structured approaches to AI/ML component transparency [16][17]. The World Economic Forum's 2026 Agent Capability and Authorization Profile (ACAP) is a particularly close contemporary precedent for deployment-level authorization: it focuses on defining, enforcing and auditing what an agent is permitted to do [8]. OWASP's Agent Control Standard likewise emphasizes inspectability, traceability, middleware control hooks and runtime policy enforcement [7].
 
 ATG does **not** claim that graphs, attack paths, trust relationships, authorization models, evidence-supported assurance, maturity models or delegated-authority governance are individually novel. Its proposed contribution is the governed integration of connected-system representation; conditions; trust; authority and influence; path reasoning; consequence; control breakpoints; evidence grading and sufficiency; explicit unresolved uncertainty; maturity; assessment execution; reporting; and accountable decision-making within one AI-assurance methodology.
@@ -86,7 +88,7 @@ The Core Conceptual Model defines one reasoning chain as the intellectual spine 
 
 **Objects -> Relationships -> Conditions -> Paths -> Authority and Influence -> Consequence -> Controls -> Evidence -> Decision**
 
-Objects establish what exists within the system boundary. Relationships establish how those objects interact. Conditions capture the permissions, protocol, state, data, approval, timing and other prerequisites that must hold. Paths combine relationships under those conditions. Authority and influence explain who or what can cause, steer or shape an outcome; this explicitly includes cases where content has influence without possessing authority. Consequence explains why the path matters. Controls identify where progression can be stopped, constrained, detected or contained. Evidence determines what the assessment can defend. Decision records the accountable disposition without changing the underlying assessed condition.
+Objects establish what exists within the system boundary. Relationships establish how those objects interact. Conditions capture the permissions, protocol, state, data, approval, timing and other prerequisites that must hold. Paths combine relationships under those conditions. Authority and influence explain who or what can cause, steer or shape an outcome; for example, content can influence without possessing authority [ATG-2 §0.10–1.1]. Consequence explains why the path matters. Controls identify where progression can be stopped, constrained, detected or contained. Evidence determines what the assessment can defend. Decision records the accountable disposition without changing the underlying assessed condition.
 
 This chain is distinct from both the six-domain assessment model and the thirteen-phase lifecycle. It is not a maturity ladder, workflow sequence or scoring pipeline; it is the conceptual reasoning order used to explain an assurance claim.
 
@@ -102,7 +104,7 @@ The inverse error is equally important: a missing represented edge or path is no
 
 ### 2.4 Boundaries are first-class
 
-The Core Conceptual Model treats a boundary as a governed separation where ownership, control, trust, policy, legal obligation, enforcement or consequence assumptions materially change [ATG-2 §3.2]. Boundaries are therefore analytical objects rather than drawing conventions. Provider transitions, account and privilege boundaries, human-approval points, data-handling changes and responsibility transfers can all be material.
+The Core Conceptual Model defines a boundary as a first-class object representing a change in trust assumption, ownership, policy, enforcement, residency, privilege or consequence [ATG-2 §3.2]. Boundaries are therefore analytical objects rather than drawing conventions. Provider transitions, account and privilege boundaries, human-approval points, data-handling changes and responsibility transfers can all be material.
 
 This matters in AI ecosystems because a workflow can move quickly across organizational and technical domains: a user input can influence a hosted model, that model can steer an agent, the agent can invoke a third-party tool, and the resulting action can affect an enterprise system. Making the boundary crossings explicit allows the assessor to test whether identity, authorization, evidence and control assumptions remain valid after each transition.
 
@@ -142,7 +144,7 @@ A path records a start condition, ordered traversal, conditions, boundary crossi
 
 PathRole is separately **Primary**, **Alternate** or **Residual**. A residual or alternate path retains its own PathState. This separation prevents a controlled primary route from hiding another material route and prevents intervention status from being confused with evidentiary strength.
 
-![Figure 2. Path reasoning preserves conditions, authority and influence, breakpoints, uncertainty and alternate routes.](figures/figure-2-path-reasoning.png)
+![Figure 2. Illustrative path reasoning with explicit conditions, authority and candidate control breakpoints.](figures/figure-2-path-reasoning.png)
 
 ### 3.5 Historical integrity
 
@@ -154,7 +156,7 @@ Completed assessment runs are historical records. Later evidence, architectural 
 
 Trust, authority and influence interact but are not interchangeable. A system may trust a provider output for summarization while granting the provider no authority to modify enterprise records. Conversely, an agent may possess write authority while its generated recommendation is not trusted for autonomous approval. Influence adds a third dimension: content can steer a model or agent without possessing an identity, permission grant or trusted status.
 
-Indirect prompt injection is a concrete example. Adversarial text embedded in retrieved content can influence an LLM-integrated application and thereby shape downstream API or tool invocation [15]. In ATG terms, the content need not hold authority itself; the risk emerges when its influence is composed with the authority of the agent, tool or workload identity. Restoring this distinction is essential to AI-native path reasoning.
+Indirect prompt injection is a concrete example. Adversarial text embedded in retrieved content can influence an LLM-integrated application and thereby shape downstream API or tool invocation [15]. In ATG terms, the content need not hold authority itself; the risk emerges when its influence is composed with the authority of the agent, tool or workload identity. This distinction is essential to AI-native path reasoning.
 
 ### 4.2 Authority amplification
 
@@ -218,7 +220,7 @@ Recovery, rollback, compensation, incident reconstruction and forensics remain i
 
 ### 6.2 Design intent is not operating effectiveness
 
-ATG distinguishes control design, implementation and operating effectiveness. A documented approval requirement can support design evidence, but it does not prove that the production workflow enforces the approval every time. A configuration export may demonstrate implementation, but an operating-effectiveness claim requires stronger evidence of actual or representative operation under the relevant conditions [ATG-6].
+ATG distinguishes control design, implementation and operating effectiveness. A documented approval requirement can support design evidence, but it does not prove that the production workflow enforces the approval every time. A configuration export may demonstrate implementation, but an operating-effectiveness claim requires stronger evidence from current representative operation under the relevant conditions [ATG-6].
 
 This distinction is essential for breakpoint reasoning because a path is only constrained to the extent that the breakpoint actually operates. A control drawn on an architecture diagram is not automatically a path cut.
 
@@ -242,11 +244,13 @@ Evidence grade describes support for an assertion; it does not describe whether 
 
 A separate scoring rule is equally important: absence of a linked EvidenceItem is **not itself** an E0 EvidenceItem. E0 is used only where an E0 evidence basis is explicitly recorded and reviewed under the Evidence Model [ATG-4 §1.8].
 
-At the other end of the scale, E5 represents direct technical and representative evidence within stated scope. Even E5 does not equal truth or a favourable result. A high grade can **confirm an adverse state**, while a low grade can weakly suggest a favourable state [ATG-6 §1.8].
+At the other end of the scale, E5 represents direct current technical evidence plus representative test or operating record within stated scope. Even E5 does not equal truth or a favourable result. A high grade can **confirm an adverse state**, while a low grade can weakly suggest a favourable state [ATG-6 §1.8].
+
+![Figure 3. Evidence support and control effectiveness are distinct dimensions.](figures/figure-5-evidence-effectiveness.png)
 
 ### 7.3 Sufficiency is claim-specific
 
-Evidence sufficient for one component claim does **not support another**. Sufficiency is decided separately for design, implementation, operating effectiveness and, where an M5/adaptive claim is made, level-5 and adaptive operation [ATG-6 §4.1]. A finalized numeric component score requires an **approved Evidence Sufficiency Decision** and an approved reviewer decision.
+Evidence sufficient for one component claim does **not support another**. Sufficiency is decided separately for design, implementation, operating effectiveness and, where a level-5 (component score of 5) or adaptive claim is made, level-5 and adaptive operation [ATG-6 §4.1]. A finalized numeric component score requires an **approved Evidence Sufficiency Decision** and an approved reviewer decision.
 
 The canonical minimums are claim-specific: design requires E3 or stronger; implementation, for **any score 0-5**, requires E4-or-stronger technical evidence from the deployed or configured environment; operating effectiveness requires E5-quality evidence; and a score of 5 or adaptive/continuous-assurance claim requires repeated E5-quality evidence across relevant material changes. Meeting the grade threshold is necessary but not sufficient: relevance, scope, currentness, representativeness and conflict status still govern.
 
@@ -260,7 +264,7 @@ Current rc.4 calibration makes the distinction concrete. In S-CAL-05, E3 policy/
 
 Evidence can support, dispute, qualify, corroborate, derive from, supersede or duplicate another assertion or evidence item. Conflicting evidence remains visible until it is resolved or the conclusion is bounded. Provenance and supersession are retained so that the assessment can be reconstructed later.
 
-This discipline is also the boundary for AI-assisted analysis. Automated extraction, classification or summarization may propose assertions, but model output cannot silently become approved fact. Material facts and high-impact decisions require accountable human review.
+This discipline is also the boundary for AI-assisted analysis. AI-generated extraction, classification or summarization may propose assertions, but model output cannot silently become approved fact. Material facts, risk acceptance and high-impact decisions require accountable human approval [ATG-1].
 
 # 8. UNKNOWN and bounded assurance
 
@@ -288,25 +292,25 @@ Bounded assurance is not a weakness in the methodology. It is a control against 
 
 Artifact #7 defines thirteen canonical phases. The whitepaper preserves their names and order and summarizes the expected output without redefining the method:
 
-| Phase | Canonical output emphasis |
+| Phase | Primary outcome [ATG-7] |
 |---|---|
-| 1. Initiate | Authorized engagement, decision question, methodology/version pin and stop conditions |
-| 2. Scope | Declared system-of-interest, boundaries, exclusions and assessment profile |
-| 3. Discover | Evidence-backed inventory, source coverage, ownership and known blind spots |
-| 4. Model | Approved versioned graph snapshot; unsupported edges rejected; UNKNOWN conditions preserved |
-| 5. Evidence | Assertion-linked evidence register, grades, conflicts and sufficiency planning |
-| 6. Controls | Applicability and component-level control assessment under evidence gates |
-| 7. Paths | Material paths with conditions, evidence, PathState and PathRole |
-| 8. Maturity | Capability and domain determinations under cumulative and critical-gate rules |
-| 9. Scoring | Evidence-bounded control outputs and eligible path triage without false precision |
-| 10. Findings | Findings classified using the canonical finding taxonomy and linked evidence |
-| 11. Decisions | Accountable disposition kept separate from the assessed condition |
-| 12. Report | Versioned report package with coverage, uncertainty, gates and limitations |
-| 13. Reassess | Triggered reassessment after material change, expiry, evidence change or decision need |
+| 1. Initiate | Approved charter and decision purpose. |
+| 2. Scope | Versioned boundary and population. |
+| 3. Discover | Measured estate and blind spots. |
+| 4. Model | Reviewed graph snapshot. |
+| 5. Evidence | Graded and traceable evidence set. |
+| 6. Controls | Applicability and control results. |
+| 7. Paths | Validated material path portfolio. |
+| 8. Maturity | Six-domain capability profile. |
+| 9. Scoring | Transparent scorecards and coverage. |
+| 10. Findings | Evidence-linked gaps and remediation objectives. |
+| 11. Decisions | Approved gates, exceptions and dispositions. |
+| 12. Report | Quality-reviewed decision package. |
+| 13. Reassess | Trigger-based new or updated run. |
 
-The lifecycle is gate-driven. The thirteen phase gates are: **Initiation Gate, Scope Gate, Discovery Gate, Graph Gate, Evidence Gate, Control Gate, Path Gate, Maturity Gate, Scoring Gate, Finding Gate, Decision Gate, Report Gate, and Reassessment Gate** [ATG-7]. The gate names are shown here to preserve the canonical control structure; operational entry/exit criteria remain in Artifact #7.
+The lifecycle is gate-driven. The thirteen canonical phase gates are: **Initiation gate, Scope baseline gate, Discovery gate, Graph approval gate, Evidence sufficiency gate, Control determination gate, Path conclusion gate, Maturity approval gate, Scoring quality gate, Finding release gate, Decision gate, Report release gate, and Closure and continuity gate** [ATG-7 §§2.4-14.4]. Operational entry and exit criteria remain in Artifact #7.
 
-![Figure 3. Thirteen-phase assessment lifecycle and gates.](figures/figure-3-lifecycle-gates.png)
+![Figure 4. Thirteen-phase assessment lifecycle and gates.](figures/figure-3-lifecycle-gates.png)
 
 The lifecycle should not be read as a one-time waterfall. A new provider, permission, model version, tool, data source, control change or material incident can trigger reassessment. Historical runs remain immutable; reassessment creates a new governed state rather than rewriting the old one.
 
@@ -346,7 +350,7 @@ A score is an input to judgment, not a substitute for it. A decision should pres
 
 # 11. Worked example: knowledge-copilot reasoning under rc.4
 
-This section uses the historical RA-01 Enterprise Knowledge Copilot only as a **synthetic architecture and decision-question context**. Artifact #10 explicitly states that RA-01 to RA-12 are historical calibration snapshots authored under bundle 1.0-rc.3 or earlier. Their legacy control scores, evidence grades, confidence, findings, decisions and result states **MUST NOT** be presented as results under bundle 1.0-rc.4 or later [ATG-10 §0.16]. Accordingly, RC2 does not carry forward RA-01's legacy control scores, maturity vector or point PEI as current rc.4 results.
+This section uses the historical RA-01 Enterprise Knowledge Copilot only as a **synthetic architecture and decision-question context**. Artifact #10 explicitly states that RA-01 to RA-12 are historical calibration snapshots authored under bundle 1.0-rc.3 or earlier. Their legacy control scores, evidence grades, confidence, findings, decisions and result states **MUST NOT** be presented as results under bundle 1.0-rc.4 or later [ATG-10 §0.16]. Accordingly, this paper does not carry forward RA-01's legacy control scores, maturity vector or point PEI as current rc.4 results.
 
 ### 11.1 Historical scenario retained only for context
 
@@ -360,7 +364,7 @@ The architectural concern remains useful for teaching: a user may lack direct en
 
 A current rc.4 re-execution would create new component observations and approved component-specific Evidence Sufficiency Decisions. It would not reverse-engineer the historical RA-01 score into design, implementation or operating-effectiveness components. The graph would record PathState and PathRole, preserve unresolved conditions, and evaluate the current evidence rather than inheriting historical confidence.
 
-A useful reviewer question is therefore: **what conclusion changes if the weakest material evidence item is removed, narrowed or contradicted?** The answer depends on which claim that item supports.
+Artifact #10 asks: **Which conclusion changes if the weakest evidence item is removed, narrowed or contradicted?** [ATG-10 §1.10]. The answer depends on which claim that item supports.
 
 ### 11.3 Calibration lens: unresolved reachability
 
@@ -388,7 +392,7 @@ M-CAL-02 provides the current non-compensation example. Several Authority Govern
 
 The worked example deliberately stops short of inventing a new rc.4 decision for RA-01. A real re-execution would require current evidence, graph state, control conclusions, gates and accountable review. The teaching outcome is instead methodological: unresolved material conditions remain visible; alternate routes remain independent; adverse evidence can support an adverse control conclusion; and advanced capability does not erase foundational gaps.
 
-![Figure 4. RC4 worked-example reasoning: historical scenario context with current calibration lenses.](figures/figure-4-rc4-worked-example.png)
+![Figure 5. rc.4 worked-example reasoning: historical scenario context with current calibration lenses.](figures/figure-4-rc4-worked-example.png)
 
 # 12. Reporting and accountable decisions
 
@@ -428,7 +432,7 @@ The Evidence Model cannot guarantee source truth, complete discovery, legal admi
 
 Agentic systems can compose tool paths at runtime, registries and tool descriptions can change, providers can update models without synchronizing an assessment, and long-running agents can accumulate state across interactions. A versioned graph snapshot can bound what was represented and assessed at a point in time; it cannot guarantee that every future runtime composition is already enumerated.
 
-Some AI controls are probabilistic rather than deterministic. Classifiers, content filters and LLM-based guardrails can have measured error rates and correlated failure modes. The current canonical methodology does not define a special mapping from probabilistic control performance to `Validated block`, Control Resistance or E5. RC2 therefore identifies stochastic-control treatment as an open methodology question rather than inventing a scoring rule.
+Some AI controls are probabilistic rather than deterministic. Classifiers, content filters and LLM-based guardrails can have measured error rates and correlated failure modes. The current canonical methodology does not define a special mapping from probabilistic control performance to `Validated block`, Control Resistance or E5. This paper therefore identifies stochastic-control treatment as an open methodology question rather than inventing a scoring rule.
 
 Large estates also create path-explosion and selection-bias risks. Assessor decisions about which paths are material enough for deeper validation can shape the resulting portfolio. Coverage, selection criteria and unresolved populations should therefore remain visible.
 
@@ -496,7 +500,7 @@ Better assurance does not require pretending that every uncertainty can be score
 | UNKNOWN | #4; #6; #7; #9; #11; #12 | Evidence absent/insufficient/materially conflicting; never zero/pass/fail/effective/NA; distinct from Not Tested and Inconclusive |
 | Lifecycle | #7 | Exact 13 phases: Initiate, Scope, Discover, Model, Evidence, Controls, Paths, Maturity, Scoring, Findings, Decisions, Report, Reassess |
 | Maturity | #3 | M1-M5 cumulative, evidence-gated and non-compensating; no averaging |
-| PEI | #4 | Exact formula and 7-62 eligible determinate range; triage only, not probability or expected loss |
+| PEI | #4 | Exact formula and 7-62 eligible determinate range; triage only; does not prove exploitability, probability or expected loss |
 | Worked example | #10 | RA-01 architecture only as historical context; rc.4 mechanics use Appendix B current calibration vectors; no legacy score carry-forward |
 | Reporting | #9 | No one-number trust score; disclose coverage, uncertainty, critical gates and evidence |
 | Governance | #11; Manifest | Scope-based authority; historical integrity; tool independence; #13 non-normative |
@@ -521,6 +525,8 @@ Better assurance does not require pretending that every uncertainty can be score
 [15] Greshake, K., Abdelnabi, S., Mishra, S., Endres, C., Holz, T., & Fritz, M. (2023). Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection. arXiv:2302.12173.
 [16] CycloneDX. Machine Learning Bill of Materials (ML-BOM). https://cyclonedx.org/capabilities/mlbom/
 [17] SPDX. SPDX Specification 3.0.1 - AI Profile. https://spdx.github.io/spdx-spec/latest/model/AI/AI/
+[18] ISO/IEC/IEEE 15026-2:2022. Systems and software engineering - Systems and software assurance - Part 2: Assurance case. International Organization for Standardization.
+[19] Spring, J. M., Hatleback, E., Householder, A., Manion, A., & Shick, D. (2021). Time to Change the CVSS? IEEE Security & Privacy, 19(2), 74-78. DOI: 10.1109/MSEC.2020.3044475.
 [ATG-M] AI Trust Graph Methodology Manifest, bundle 1.0-rc.4, snapshot 2026-09-26, manifest blob 82c401ad27d31ddc0078e58dd99f38ac0b71a7d9.
 [ATG-1] AI Trust Graph Artifact #1 - Manifesto, v1.0.
 [ATG-2] AI Trust Graph Artifact #2 - Core Conceptual Model, v3.0.0.
@@ -529,7 +535,7 @@ Better assurance does not require pretending that every uncertainty can be score
 [ATG-5] AI Trust Graph Artifact #5 - Master Control Library, v2.0.0.
 [ATG-6] AI Trust Graph Artifact #6 - Evidence Model, v2.0.0.
 [ATG-7] AI Trust Graph Artifact #7 - Assessment Methodology, v1.1.0.
-[ATG-8] AI Trust Graph Artifact #8 - Assessor Handbook.
+[ATG-8] AI Trust Graph Artifact #8 - Assessor Handbook, v1.0.
 [ATG-9] AI Trust Graph Artifact #9 - Reporting Standard, v1.1.0.
 [ATG-10] AI Trust Graph Artifact #10 - Reference Assessment Repository, v2.0.0.
 [ATG-11] AI Trust Graph Artifact #11 - Governance & Certification Model, v1.0.
