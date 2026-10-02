@@ -493,14 +493,16 @@ export const pendingGates = [
   "Legal approval of licence / trademark position",
 ];
 
-/** Source: METHODOLOGY_MANIFEST.md §6.1 gate records (status, date and basis, verbatim). */
+/**
+ * Source: METHODOLOGY_MANIFEST.md §6.1 gate records. A short form of each
+ * record (author-approved wording); the full basis and its limits stay in the
+ * manifest, which the status section links to.
+ */
 export const closedGates = [
   {
     gate: "Employer / IP / confidentiality review",
-    status: "Closed by author declaration",
+    summary: "closed by the author’s declaration (independent research, author-owned IP)",
     recorded: "2026-10-02",
-    basis:
-      "This is a self-declaration by the author. It is not an external legal review or opinion.",
   },
 ];
 

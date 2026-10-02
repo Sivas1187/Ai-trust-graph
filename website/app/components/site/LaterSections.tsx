@@ -343,7 +343,7 @@ export function StatusReview() {
               {closedGates.map((g) => (
                 <li key={g.gate}>
                   <span aria-hidden="true">✓ </span>
-                  <strong>{g.gate}</strong>: {g.status} ({g.recorded}). {g.basis}
+                  <strong>{g.gate}</strong>: {g.summary}, {g.recorded}.
                 </li>
               ))}
             </ul>

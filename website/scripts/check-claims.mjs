@@ -469,7 +469,7 @@ for (const m of authorHtml.matchAll(/href="([^"]+)"/g)) if (!/^https:\/\/github\
   inOrder("pending gates", all(st.match(/<ul class="gates">[\s\S]*?<\/ul>/)?.[0] ?? "", /<li>([\s\S]*?)<\/li>/g).map((t) => t.replace(/^○\s*/, "")), pendingGates);
   const closed = all(st.match(/<ul class="gates gatesClosed">[\s\S]*?<\/ul>/)?.[0] ?? "", /<li>([\s\S]*?)<\/li>/g);
   for (const c of closed) {
-    if (!/not an external legal review/i.test(c)) fail(`index.html: closed gate "${c.slice(0, 60)}" does not state that it is not an external legal review`);
+    if (!/closed by the author’s declaration/i.test(c)) fail(`index.html: closed gate "${c.slice(0, 60)}" does not say it was closed by the author's declaration`);
     const name = c.replace(/^✓\s*/, "").split(":")[0];
     if (!manifest.includes(`| ${name} | Closed`)) fail(`index.html: closed gate "${name}" has no §6.1 record in the manifest`);
   }
