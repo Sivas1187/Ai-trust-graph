@@ -1,8 +1,8 @@
 /* ───────────── Interactive graph implementation view ─────────────
    /graph/ is an optional implementation demonstration. It does not replace
-   canonical methodology artifacts or bind the methodology to Neo4j. Colour
-   is structural/UI emphasis only; UNKNOWN is also written in text and drawn
-   with a dashed relationship. */
+   canonical methodology artifacts or bind the methodology to Neo4j. Colour is
+   never the only signal: UNKNOWN is violet, dotted and written in text; the
+   ring colour repeats the ontology family that the inspector states in words. */
 .graphPage {
   min-height: 70vh;
   background: var(--paper);
@@ -20,8 +20,9 @@
 }
 .graphKicker,
 .graphSource,
-.graphInspectorType {
-  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+.graphInspectorType,
+.graphCanonLabel {
+  font-family: var(--font-code);
   font-size: 12.5px;
   color: var(--muted);
 }
@@ -53,6 +54,8 @@
   border: 1.5px solid var(--cyan);
   border-radius: 50%;
 }
+
+/* View switch */
 .graphViewSwitch {
   display: flex;
   flex-wrap: wrap;
@@ -81,117 +84,500 @@
 }
 .graphViewDescription {
   margin-top: 12px;
-  max-width: 66ch;
+  max-width: 72ch;
   font-size: 15.5px;
   color: var(--muted);
 }
+.graphViewCount {
+  font-family: var(--font-code);
+  font-size: 12.5px;
+}
+
+/* Workspace: canvas and inspector */
 .graphWorkspace {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
-  gap: 0;
-  margin-top: 38px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 24px;
+  align-items: start;
+  margin-top: 32px;
 }
 .graphCanvas {
   min-width: 0;
-  background: var(--graphite);
+  padding: 20px 20px 18px;
+  border: 1px solid var(--line-dark);
+  border-radius: var(--r-xl);
+  background: var(--navy-950);
 }
-.graphCanvas svg {
+.graphScrollHint {
+  display: none;
+  margin-bottom: 8px;
+  font-size: var(--fs-micro);
+  color: var(--on-dark-2);
+}
+.graphScroll {
+  overflow-x: auto;
+}
+.graphScroll svg {
   display: block;
   width: 100%;
-  min-height: 520px;
+  min-width: 760px;
+  height: auto;
 }
-.graphEdge {
-  stroke: var(--cyan-on-dark);
-  stroke-width: 1.35;
-  stroke-opacity: 0.72;
-  vector-effect: non-scaling-stroke;
+.gxDot {
+  fill: var(--line-dark);
 }
-.graphEdgeUnknown {
-  stroke-dasharray: 6 6;
+
+/* Relationships */
+.gxEdge line {
+  stroke: var(--on-dark-2);
+  stroke-width: 1.6;
+  stroke-opacity: 0.6;
+  transition: stroke-opacity var(--dur) var(--ease), stroke-width var(--dur) var(--ease);
 }
-.graphArrowHead {
-  fill: var(--cyan-on-dark);
-  fill-opacity: 0.8;
+.gxEdgeUnknown line {
+  stroke: var(--st-unknown-bright);
+  stroke-opacity: 1;
+  stroke-width: 2.2;
+  stroke-dasharray: 2 5;
+  stroke-linecap: round;
 }
-.graphEdgeLabel {
-  fill: var(--on-dark-muted);
-  font-family: var(--font-mono, ui-monospace), ui-monospace, monospace;
-  font-size: 9px;
-  letter-spacing: 0.02em;
+.gxEdge.isLinked line {
+  stroke-opacity: 1;
+  stroke-width: 2.2;
 }
-.graphNode {
+.gxEdge.isActive line {
+  stroke: var(--white);
+  stroke-opacity: 1;
+  stroke-width: 2.8;
+}
+.gxEdgeUnknown.isActive line {
+  stroke: var(--st-unknown-bright);
+  stroke-width: 3.2;
+}
+.gxEdge .gxHit {
+  stroke: transparent;
+  stroke-width: 16;
+  stroke-dasharray: none;
+  cursor: pointer;
+}
+.gxArrow-default {
+  fill: var(--on-dark-2);
+}
+.gxArrow-unknown {
+  fill: var(--st-unknown-bright);
+}
+.gxArrow-active {
+  fill: var(--white);
+}
+.gxPill {
   cursor: pointer;
   outline: none;
 }
-.graphNode circle {
-  fill: var(--graphite);
-  stroke: var(--on-dark-muted);
-  stroke-width: 1.2;
-  vector-effect: non-scaling-stroke;
+.gxPill > rect {
+  fill: var(--navy-900);
+  stroke: var(--line-dark);
+  stroke-width: 1;
 }
-.graphNode:hover circle,
-.graphNode:focus-visible circle,
-.graphNodeSelected circle {
-  stroke: var(--cyan-on-dark);
-  stroke-width: 2;
-}
-.graphNodeType {
+.gxPill > text {
   fill: var(--on-dark);
-  font-family: var(--font-mono, ui-monospace), ui-monospace, monospace;
-  font-size: 7.5px;
+  font-family: var(--font-code);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
-.graphNodeLabel {
+.gxPill:hover > rect,
+.gxPill.isLinked > rect {
+  stroke: var(--on-dark-2);
+}
+.gxPill.isActive > rect {
+  fill: var(--white);
+  stroke: var(--white);
+}
+.gxPill.isActive > text {
+  fill: var(--navy-950);
+  font-weight: 600;
+}
+.gxPill:focus-visible > rect {
+  stroke: var(--st-info-bright);
+  stroke-width: 2.5;
+}
+.gxUnknownTag rect {
+  fill: var(--navy-950);
+  stroke: var(--st-unknown-bright);
+  stroke-dasharray: 3 3;
+}
+.gxUnknownTag text {
+  fill: var(--st-unknown-bright);
+  font-family: var(--font-code);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+/* Objects */
+.gxNode {
+  cursor: pointer;
+  outline: none;
+}
+.gxRing {
+  fill: var(--navy-800);
+  stroke: var(--tone);
+  stroke-width: 3;
+  transition: fill var(--dur) var(--ease);
+}
+.gxNode:hover .gxRing,
+.gxNode.isLinked .gxRing {
+  fill: color-mix(in srgb, var(--tone) 28%, var(--navy-800));
+}
+.gxNode.isActive .gxRing {
+  fill: var(--tone);
+}
+.gxFocus {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 2.5;
+}
+.gxNode:focus-visible .gxFocus {
+  stroke: var(--st-info-bright);
+}
+.gxName {
   fill: var(--on-dark);
-  font-family: var(--font-body, system-ui), sans-serif;
-  font-size: 10.5px;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
 }
+.gxType {
+  fill: var(--on-dark-2);
+  font-family: var(--font-code);
+  font-size: 11.5px;
+}
+.gxTone-d1 { --tone: var(--d1-bright); }
+.gxTone-d2 { --tone: var(--d2-bright); }
+.gxTone-d4 { --tone: var(--d4-bright); }
+.gxTone-d5 { --tone: var(--d5-bright); }
+.gxTone-d6 { --tone: var(--d6-bright); }
+.gxTone-info { --tone: var(--st-info-bright); }
+.gxTone-neutral { --tone: var(--on-dark); }
+
+/* Outside the current view */
+.isDim {
+  opacity: 0.14;
+  pointer-events: none;
+}
+.gxEdge,
+.gxNode,
+.gxPill {
+  transition: opacity var(--dur) var(--ease);
+}
+
+/* Legend */
+.graphLegend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  gap: 8px 20px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-dark);
+  list-style: none;
+  font-size: var(--fs-small);
+  color: var(--on-dark);
+}
+.graphLegend li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lgArrow {
+  position: relative;
+  flex: none;
+  width: 34px;
+  height: 0;
+  border-top: 2px solid var(--on-dark-2);
+}
+.lgArrow::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: -6px;
+  border-left: 8px solid var(--on-dark-2);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+.lgArrowUnknown {
+  border-top: 2.5px dotted var(--st-unknown-bright);
+}
+.lgArrowUnknown::after {
+  border-left-color: var(--st-unknown-bright);
+}
+.lgArrowActive {
+  border-top-color: var(--white);
+  border-top-width: 3px;
+}
+.lgArrowActive::after {
+  border-left-color: var(--white);
+}
+.graphLegendFamilies {
+  margin-top: 6px;
+  padding-top: 0;
+  border-top: 0;
+}
+.graphLegendTitle {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+  font-family: var(--font-code);
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--on-dark-2);
+}
+.lgRing {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-inline: 9px;
+  border-radius: 50%;
+  border: 3px solid var(--tone);
+  background: var(--navy-800);
+}
+
+/* Inspector */
 .graphInspector {
-  padding: 36px 30px;
-  border-left: 1px solid var(--line);
-  background: var(--paper);
+  position: sticky;
+  top: calc(var(--header-h) + 16px);
+  max-height: calc(100vh - var(--header-h) - 32px);
+  overflow-y: auto;
+  padding: 26px 26px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background: var(--white);
+}
+.graphInspectorType {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.gxSwatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 3px solid var(--tone);
+  background: var(--navy-800);
+}
+.gxSwatch.gxTone-neutral {
+  --tone: var(--ink-500);
 }
 .graphInspector h2 {
   margin-top: 8px;
   font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
-  font-size: 31px;
+  font-size: 30px;
   font-weight: 400;
-  line-height: 1.08;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
 }
-.graphInspector > p:not(.graphInspectorType) {
-  margin-top: 16px;
+.graphInspector h2.graphInspectorRel {
+  font-family: var(--font-code);
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.graphInspectorSummary,
+.graphExample p:not(.graphCanonLabel) {
+  margin-top: 12px;
   font-size: 15.5px;
   line-height: 1.55;
   color: var(--ink-2);
 }
-.graphInspector dl {
-  margin-top: 32px;
-  border-top: 1px solid var(--line);
+.graphExample p:not(.graphCanonLabel) {
+  margin-top: 6px;
 }
-.graphInspector dl > div {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 14px;
+.graphExample,
+.graphCanon,
+.graphRelList {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
 }
-.graphInspector dt {
+.graphCanonText {
+  margin-top: 6px;
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 3px solid var(--cyan);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.graphCanonSource {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.5;
   color: var(--muted);
 }
-.graphInspector dd {
-  font-family: var(--font-mono, ui-monospace), ui-monospace, monospace;
+.graphCanonSource a {
+  color: var(--cyan);
 }
-.graphMobile {
-  display: none;
+.graphEnds {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 12px;
+  color: var(--muted);
 }
+.graphEnds button,
+.graphRelList button {
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14.5px;
+  text-align: left;
+  cursor: pointer;
+}
+.graphEnds button:hover,
+.graphRelList button:hover {
+  border-color: var(--cyan);
+}
+.graphState {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border: 1px dashed var(--st-unknown);
+  border-radius: 8px;
+  background: var(--st-unknown-tint);
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.graphUnknownPill {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border: 1px dashed var(--st-unknown);
+  border-radius: 999px;
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--st-unknown);
+  white-space: nowrap;
+}
+.graphState .graphUnknownPill {
+  margin: 0 6px 0 0;
+}
+.graphRelList ul {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  list-style: none;
+}
+.graphRelList button {
+  width: 100%;
+  line-height: 1.4;
+}
+.graphRelList code {
+  font-family: var(--font-code);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.graphRelNone {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Relationship list */
+.graphListHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 24px;
+  margin-top: 48px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.graphListHead h2 {
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+}
+.graphListHead p {
+  font-size: 14.5px;
+  color: var(--muted);
+}
+.graphList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 0 32px;
+  list-style: none;
+}
+.graphRow {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  min-height: 44px;
+  padding: 14px 0 16px;
+  border: 0;
+  border-bottom: 1px solid var(--hairline);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.graphRow:hover .graphRowRel,
+.graphRow.isActive .graphRowRel {
+  background: var(--ink);
+  color: var(--white);
+}
+.graphRowPath {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+}
+.graphRowNode {
+  font-size: 15.5px;
+  font-weight: 600;
+}
+.graphRowArrow {
+  color: var(--muted);
+}
+.graphRowRel {
+  padding: 1px 7px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-family: var(--font-code);
+  font-size: 12.5px;
+  transition: background var(--dur) var(--ease);
+}
+.graphRowNote {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
 .graphMethodNote {
-  max-width: 72ch;
-  margin-top: 24px;
+  max-width: 78ch;
+  margin-top: 32px;
   font-size: 14.5px;
   line-height: 1.55;
   color: var(--muted);
+}
+.graphMethodNote a {
+  color: var(--cyan);
+}
+
+@media (max-width: 1023px) {
+  .graphWorkspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .graphInspector {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    scroll-margin-top: calc(var(--header-h) + 16px);
+  }
 }
 @media (max-width: 900px) {
   .graphExplorer {
@@ -208,59 +594,15 @@
   .graphSource {
     white-space: normal;
   }
-  .graphWorkspace {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .graphCanvasDesktop {
-    display: none;
-  }
-  .graphMobile {
+}
+@media (max-width: 799px) {
+  .graphScrollHint {
     display: block;
-    background: var(--graphite);
-    color: var(--on-dark);
-    padding: 8px 20px;
-  }
-  .graphTrailRow {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 5px;
-    width: 100%;
-    min-height: 44px;
-    padding: 16px 0 18px;
-    border: 0;
-    border-bottom: 1px solid var(--line-dark);
-    background: transparent;
-    color: inherit;
-    text-align: left;
-    cursor: pointer;
-  }
-  .graphTrailNode {
-    font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
-    font-size: 21px;
-    line-height: 1.15;
-  }
-  .graphTrailRel {
-    font-family: var(--font-mono, ui-monospace), ui-monospace, monospace;
-    font-size: 11.5px;
-    color: var(--cyan-on-dark);
-  }
-  .graphTrailRel::before {
-    content: "↓ ";
-  }
-  .graphTrailRelUnknown {
-    text-decoration: underline dashed;
-    text-underline-offset: 4px;
-  }
-  .graphInspector {
-    border-top: 1px solid var(--line);
-    border-left: 0;
-    padding: 30px 0 0;
-    margin-top: 30px;
   }
 }
 @media (max-width: 520px) {
   .graphExplorer {
-    padding-top: 64px;
+    padding: 64px 16px 88px;
   }
   .graphLede {
     font-size: 17px;
@@ -274,8 +616,21 @@
   .graphViewButton {
     text-align: left;
   }
-  .graphMobile {
-    margin-inline: -24px;
-    padding-inline: 24px;
+  .graphCanvas {
+    padding: 14px 12px;
+    border-radius: var(--r-lg);
+  }
+  .graphInspector {
+    padding: 22px 18px 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gxEdge,
+  .gxNode,
+  .gxPill,
+  .gxEdge line,
+  .gxRing,
+  .graphRowRel {
+    transition: none;
   }
 }
