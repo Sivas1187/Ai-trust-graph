@@ -25,32 +25,73 @@ enforced by `scripts/check-claims.mjs`.
 
 ## 2. Page structure (single page with anchors)
 
+The narrative restructure (October 2026) puts the reason for the research
+before the mechanics. The order below is mandatory and enforced by
+`scripts/check-claims.mjs`.
+
 | # | Section | Anchor | Purpose | Visual device |
 |---|---|---|---|---|
-| | Hero | `#top` | Name, line, author, actions, release status | Navy field; hero graph with trust boundary and one UNKNOWN authority assertion |
-| | On this page | `#page-index` | Orientation and reading depth | Numbered index; Overview / Detail / Sources control |
-| 01 | Why it exists | `#why` (+ legacy `#problem`) | Narrative; component vs connected view | Side-by-side conceptual comparison (labelled conceptual) and two Manifesto quotes |
-| 02 | Methodology | `#methodology` | What a practitioner does | Six outcome blocks with different shapes and domain tints |
-| 03 | The graph | `#graph` | The signature path read the methodology's way | Interactive SVG + inspector; legend; text list is the accessible equivalent |
-| 04 | Reasoning chain | `#flow`, `#decision` | Nine canonical stages | Serpentine (desktop), two-column snake (tablet), vertical (mobile) |
-| 05 | Authority | `#authority`, `#breakpoints` | Access is not authority | Six independent tiles, offset so they cannot read as steps; "Not a ladder" note |
-| 06 | Evidence and UNKNOWN | `#unknown`, `#evidence` | UNKNOWN discipline; evidence relations; grades | Hatched violet UNKNOWN panel; relation list with symbols; graded bars |
-| 07 | Domains | `#domains` | D1 to D6 as lenses over one graph | Coloured domain panels with glyphs and alternating edge treatment; "one graph" band |
-| 08 | Lifecycle | `#lifecycle` | Thirteen fieldwork phases | Staged loop (desktop), tiles (tablet), timeline (mobile); Reassess loops back |
-| 09 | Worked example | `#example` | Synthetic procurement agent | Four views: System, Graph, Evidence, Decision (tabs with JS; all views without) |
-| 10 | Frameworks | `#frameworks` | Complementary positioning | Two panels joined by "+", boundary note |
-| 11 | Artifacts | `#artifacts` | Library with filters | Grouped cards; filters All / Foundation / Assessment / Execution / Published / Release candidate |
-| 12 | Publications | `#publications` | Whitepaper status | Config-driven card |
-| 13 | About the author | `#author` | Restrained author note | Text only, verified links only, independence statement |
-| 14 | Status and review | `#status`, `#review` | Release facts, gates, critique invitation | Fact card, pending-gate list, review panel |
+| 1 | Why AI Trust Graph exists (hero) | `#top` | Name, descriptor, why it was created, author, actions; release metadata as one quiet line | Navy field; decorative graph motif (desktop only, hidden from assistive technology) |
+| 1 | Why AI Trust Graph exists (narrative) | `#why` | Why the work was initiated | Large opening statement beside the narrative; component vs connected-system comparison (labelled conceptual); proposition |
+| 2 | The problem | `#problem` | What connected AI systems make difficult to assess | Seven-step synthetic scenario path; what the components do not establish; five ≠ distinctions |
+| 3 | The big idea | `#big-idea` (+ `#frameworks`) | What changes in the unit and method of reasoning | Five stacked concepts; "What changes?" panel; framework positioning |
+| 4 | The signature visual | `#graph` | What the idea looks like applied to the same scenario | Interactive graph (desktop) and a vertical drawing (mobile), legend, structured list alternative |
+| 5 | The methodology | `#methodology` (+ `#page-index`) | How reasoning and assessment are performed | Subsection index and reading-depth control |
+| 5.1 | Reasoning chain | `#flow`, `#decision` | From what exists to what can be defended | Editorial serpentine (desktop), two-column snake (tablet), vertical (mobile) |
+| 5.2 | Authority and influence | `#authority`, `#breakpoints` | Access is not authority | Six offset assertion tiles, then authority classes and breakpoints |
+| 5.3 | Evidence and UNKNOWN | `#unknown`, `#evidence` | UNKNOWN stays UNKNOWN | Discipline points, hatched UNKNOWN panel, relations with symbols, grades |
+| 5.4 | Six assurance domains | `#domains` | Coordinated lenses over one graph | Constellation: a sticky hub drawing beside a staggered two-column list |
+| 5.5 | Assessment lifecycle | `#lifecycle` | How fieldwork is conducted | Staged loop (desktop), timeline (mobile) |
+| 5.6 | Worked example | `#example` | The scenario, assessed | Six views: System, Graph, Authority, Evidence, Control, Decision |
+| 6 | The artifacts | `#artifacts` | Where specifications are maintained | Compact rows with expandable details, filters, source register |
+| 7 | Publications | `#publications` | Where the citable research will appear | Config-driven card; publication-only actions listed as not yet available |
+| 8 | About the author | `#author` | Who created and maintains the methodology | Two-column editorial text, verified links, independence statement |
+| | Review and contribution | `#status`, `#review` | Critique, status and gates | Review actions, release facts, pending gates |
 | | Footer | | Facts, links, notices, licence | Navy colophon |
 
-Sub-pages: `/graph/` (existing non-normative implementation view), `/privacy/`,
-`/accessibility/`, and the 404 page.
+Every anchor of the previous version still resolves. `#problem` was a legacy
+anchor on the why section; it is now the problem section itself, which is
+where a reader following an old "problem" link expects to land.
 
-Every anchor of the previous site still resolves (`#problem`, `#flow`,
-`#authority`, `#breakpoints`, `#evidence`, `#decision`, `#domains`, `#unknown`,
-`#lifecycle`, `#status`, `#review`, `#methodology`, `#page-index`).
+### Narrative restructure decisions
+
+- **Hero starts with the reason, not the mechanics.** The descriptor and
+  supporting message come from the narrative brief; release metadata is one
+  compact line (version, status, independent review, not validated). The
+  hero graph lost its labels and UNKNOWN tag and became a decorative motif,
+  because the semantic graph now has its own section and repeating it in the
+  hero would introduce mechanics too early.
+- **One scenario runs through the page.** The problem, the signature visual
+  and the worked example all use the same synthetic procurement request, so
+  each section adds depth rather than introducing a new example.
+- **The distinctions are pairs, not a ladder.** "Connected ≠ Authorised" and
+  the other four are shown as separate rows with a caveat that they are not a
+  linear sequence; screen readers hear "is not".
+- **"Unsupported assertion" maps to the canonical DISPUTES relation.** The
+  signature visual shows the approval control's claimed scope (attested, E2)
+  disputed by the workflow configuration (E3). This uses Artifact #6 §0.9
+  vocabulary instead of inventing a new state.
+- **The graph qualifier was amended for accuracy.** The brief proposed "A
+  connection alone does not prove reachability, authority, invocation or
+  exploitability". A drawn CONNECTS_TO relationship does represent
+  connectivity, so the site says a connection drawn in the graph does not, on
+  its own, prove reachability *under current conditions*, authority,
+  invocation or exploitability (Artifact #12 CONNECTS_TO caveat, Artifact #1
+  §4 invariant).
+- **Mobile graph is a separate composition**, not a scaled copy: a vertical
+  drawing with labels beside the nodes, so no label is crossed by an edge.
+- **Methodology subsections are h3.** Section 5 is one h2 with six h3
+  subsections, so the heading outline matches the narrative.
+- **Domains show only purpose, question, output and links** (integration
+  notes and capability lists were removed from the page; they remain in the
+  linked artifacts).
+- **Outcomes (Discover to Reassess) were removed.** They duplicated the
+  lifecycle and introduced mechanics before the reader needed them.
+- **Framework positioning moved into the big idea**, where it answers "does
+  this replace control-based assessment?" at the moment the question arises.
+- **Central configuration.** `app/site.config.ts` holds version, status,
+  review state, repository, author, licence, social metadata and the
+  whitepaper record. Publishing is a data change there.
 
 ## 3. Design decisions
 
@@ -81,11 +122,12 @@ Every anchor of the previous site still resolves (`#problem`, `#flow`,
 8. **Domains are not identical boxes.** Each has its own accent, glyph and
    gradient, and every second panel moves its accent edge from the side to
    the top. The "one graph" band under them states that they share one model.
-9. **The signature graph has two equal representations.** The SVG (with
-   title and description) and a list of every node and relationship. On
-   desktop the selected element's detail is shown in a sticky panel; on
-   narrow screens the detail opens under the item and the drawing scrolls
-   sideways. Without JavaScript every detail is shown.
+9. **The signature graph has two drawings and a list.** A wide drawing for
+   laptop and desktop, a separately composed vertical drawing for mobile, and
+   a list of every node and relationship as the structured text alternative.
+   Elements can be selected in the drawing (pointer) or the list (pointer or
+   keyboard); on desktop the detail shows in a sticky panel, on narrow screens
+   under the item. Without JavaScript every detail is shown.
 10. **The worked example is new synthetic content.** Artifact #10 has no
     procurement case. The example is labelled "Synthetic example for
     methodology illustration only" and uses only canonical vocabulary.
@@ -101,8 +143,8 @@ Every anchor of the previous site still resolves (`#problem`, `#flow`,
 14. **Typography.** Source Serif 4 for display headings and canonical
     quotations; Inter for body (16px mobile to 18px desktop via `clamp()`);
     IBM Plex Mono for labels, predicates and IDs. Lines are held to 68ch.
-15. **Navigation collapses at 1100px**, because eight items need that width;
-    the noscript fallback shows them inline.
+15. **Navigation collapses at 960px.** Six journey items plus the separate
+    GitHub action fit above that width; the noscript fallback shows them inline.
 16. **Minimal JavaScript.** Client components: navigation menu, depth control,
     signature graph inspector, worked-example tabs, artifact filters, the
     (post-publication) copy buttons, and the existing `/graph/` explorer.
@@ -123,7 +165,7 @@ colour (foundation, domain light / bright / tint, state), type (families,
 `clamp()` sizes, line height, measure), spacing (4px scale, section padding,
 gutter), radii, borders, shadows, motion (durations, easing), containers.
 Breakpoints are documented there (CSS cannot use custom properties in media
-queries): 600px, 768px, 900px, 1024px, 1100px (navigation), 1280px.
+queries): 600px, 768px, 900px, 1024px, 960px (navigation), 1280px.
 
 ## 5. Accessibility and motion
 
