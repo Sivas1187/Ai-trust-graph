@@ -40,6 +40,7 @@ export const links = {
   license: pinned("LICENSE"),
   trademarks: blob("TRADEMARKS.md"),
   readme: blob("README.md"),
+  changelog: blob("CHANGELOG.md"),
   doc: (file: string) => pinned(`docs/${file}`),
 };
 
