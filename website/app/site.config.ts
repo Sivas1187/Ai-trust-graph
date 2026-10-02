@@ -78,7 +78,8 @@ export const siteConfig = {
    * yet available. To publish (only after the Zenodo record and DOI exist):
    *   1. set status to "published";
    *   2. fill doi ("10.5281/zenodo.<record>"), zenodoUrl, pdfUrl,
-   *      publishedDate (YYYY-MM-DD), licence and abstract from the record;
+   *      publishedDate (YYYY-MM-DD) and abstract from the record, and confirm
+   *      the record's licence matches `licence`;
    *   3. optionally fill subtitle, fileSize, pdfSha256, citation overrides and
    *      earlier versions;
    *   4. run `npm run check`.
@@ -100,7 +101,14 @@ export const siteConfig = {
     zenodoUrl: "",
     pdfUrl: "",
     fileSize: "",
-    licence: "",
+    /**
+     * Author's licence decision for the whitepaper (2026-10-02): CC BY 4.0, the
+     * same licence as the methodology text. This is the author's choice, not the
+     * legal approval of the licence / trademark position, which stays a pending
+     * gate in METHODOLOGY_MANIFEST §6. Shown as the licence on publication while
+     * the whitepaper is in preparation.
+     */
+    licence: "CC BY 4.0",
     pdfSha256: "",
     citationOverrides: { apa: "", ieee: "", bibtex: "" },
     versions: [] as { version: string; date: string; doi: string; note?: string }[],
