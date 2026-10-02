@@ -13,8 +13,8 @@ export type NavItem = {
 /**
  * Primary navigation.
  *
- * Desktop (> 900px): a quiet row of text links; the toggle is hidden by CSS.
- * Mobile (<= 900px): a disclosure pattern — a text-only "Menu" button (no icon) with aria-expanded
+ * Desktop (> 1100px): a quiet row of text links; the toggle is hidden by CSS.
+ * Mobile and tablet (<= 1100px): a disclosure pattern — a text-only "Menu" button (no icon) with aria-expanded
  * and aria-controls shows/hides the link list. Escape closes the menu and
  * returns focus to the button; choosing a link or clicking outside closes it.
  * No animation. Without JavaScript the <noscript> style shows the list inline
@@ -74,7 +74,7 @@ export function PrimaryNav({ items }: { items: NavItem[] }) {
         ))}
       </ul>
       <noscript>
-        <style>{`@media (max-width: 900px) {
+        <style>{`@media (max-width: 1100px) {
   .primaryNav .navToggle { display: none !important; }
   .headerInner { flex-wrap: wrap; }
   .primaryNav ul { display: flex !important; position: static !important; flex-wrap: wrap; gap: 0 20px; border: 0 !important; padding: 0 0 8px !important; }

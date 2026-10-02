@@ -111,7 +111,7 @@ export function GraphExplorer() {
 
       <div className="graphWorkspace">
         <div className="graphCanvas graphCanvasDesktop">
-          <svg viewBox="0 0 720 440" role="img" aria-labelledby="graph-svg-title graph-svg-desc">
+          <svg viewBox="0 0 720 440" role="group" aria-labelledby="graph-svg-title graph-svg-desc">
             <title id="graph-svg-title">Synthetic AI Trust Graph system view</title>
             <desc id="graph-svg-desc">
               Nodes and directional relationships from a human actor through an AI agent and governed action surface,
@@ -202,7 +202,7 @@ export function GraphExplorer() {
           })}
         </div>
 
-        <aside className="graphInspector" aria-live="polite">
+        <div className="graphInspector" aria-live="polite">
           <p className="graphInspectorType">{selected?.type}</p>
           <h2>{selected?.label}</h2>
           <p>{selected?.summary}</p>
@@ -216,7 +216,7 @@ export function GraphExplorer() {
               <dd>{snapshot.relationships.filter((rel) => rel.to === selected?.id).length}</dd>
             </div>
           </dl>
-        </aside>
+        </div>
       </div>
 
       <p className="graphMethodNote">
