@@ -460,10 +460,13 @@ for (const [, href] of index.matchAll(/href="([^"]*\/docs\/[^"]+)"/g)) {
 }
 if (/Published<\/span>\s*<\/dd>|libStatus-published/.test(artifactsHtml)) fail("index.html: an artifact is labelled Published");
 
-// Author: no portrait, no employer claims, only verified links.
+// Author: no portrait, no employer claims, only verified links. The ORCID iD
+// was supplied by the author on 2026-10-02 (check digit valid); add others the
+// same way, as exact URLs.
 const authorHtml = section(index, "author");
 if (/<img\b/.test(authorHtml)) fail("index.html: the author section contains an image");
-for (const m of authorHtml.matchAll(/href="([^"]+)"/g)) if (!/^https:\/\/github\.com\/Sivas1187\b/.test(m[1])) fail(`index.html: unverified author link ${m[1]}`);
+const verifiedAuthorLinks = [/^https:\/\/github\.com\/Sivas1187\b/, /^https:\/\/orcid\.org\/0009-0009-9383-6037$/];
+for (const m of authorHtml.matchAll(/href="([^"]+)"/g)) if (!verifiedAuthorLinks.some((re) => re.test(m[1]))) fail(`index.html: unverified author link ${m[1]}`);
 
 // Gates: the pending list matches the manifest, and every closed gate is stated as bounded.
 {
