@@ -35,7 +35,7 @@ Per the Manifesto's own Appendix B publication-acceptance criteria and Governanc
 - [ ] **Independent AI-security architecture review** — same status.
 - [ ] **Independent inter-assessor reproducibility study** — execute Artifact #10 Appendix B.4 with independent assessors and publish agreement/disagreement results. Until complete, no empirical reproducibility claim is permitted (R-16).
 - [x] **Licence and trademark decision** — CC BY 4.0 chosen for the methodology text (`LICENSE`); "AI Trust Graph" name/marks reserved separately (`TRADEMARKS.md`). Legal approval of this licence / trademark position is still pending (METHODOLOGY_MANIFEST §6) ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
-- [ ] **Security disclosure process** — add `SECURITY.md` for the repository itself ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
+- [x] **Security disclosure process** — [`SECURITY.md`](SECURITY.md) added 2026-10-02 on the author's decision: private reporting through GitHub for the repository, website and graph API; best-effort response by a single maintainer; no bug bounty ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
 - [ ] **Legal review of external standards references** — confirm the ISO/IEC and Singapore Accreditation Council references in the Governance Model's source register (Artifact #11, Appendix A.7) require no further permission or reproduction review ([R-10](REVIEW_FINDINGS.md#r-10--governance-model-cites-real-external-standards-should-fix)).
 
 ## Phase 3 — Governance activation (not started)
