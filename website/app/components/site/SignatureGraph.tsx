@@ -4,20 +4,29 @@ import { useEffect, useState } from "react";
 import { sigEdges, sigNodes, sigOrder, stateLabel, type SigEdge, type SigNode } from "./signatureData";
 
 /**
- * Signature figure. Desktop: an SVG graph plus an inspector; selecting an
- * element (button, keyboard or touch) highlights it in the drawing and shows
- * its detail. Narrow screens: the same elements as a vertical path, each with
- * its detail. Before hydration (or without JavaScript) every detail is shown,
- * so nothing depends on script.
+ * Signature figure: the procurement path drawn with the methodology's own
+ * vocabulary.
+ *
+ * - Desktop: a wide drawing (1040 × 600). Selecting an element in the
+ *   drawing (pointer) or in the list (pointer or keyboard) highlights it and
+ *   shows its detail in a side panel.
+ * - Mobile: a separately composed vertical drawing (360 × 1160), so labels
+ *   stay readable without zooming, followed by the same list with inline
+ *   detail.
+ * - Without JavaScript every detail is shown under its list item.
+ * The list is the structured text alternative for both drawings.
  */
 
 const nodeByKey = Object.fromEntries(sigNodes.map((n) => [n.key, n]));
 const edgeByKey = Object.fromEntries(sigEdges.map((e) => [e.key, e]));
 const R = 16;
 
-function edgeGeometry(e: SigEdge) {
-  const a = nodeByKey[e.from];
-  const b = nodeByKey[e.to];
+type Mode = "d" | "m";
+const pos = (n: SigNode, m: Mode) => (m === "d" ? { x: n.x, y: n.y } : { x: n.mx, y: n.my });
+
+function edgeGeometry(e: SigEdge, m: Mode) {
+  const a = pos(nodeByKey[e.from], m);
+  const b = pos(nodeByKey[e.to], m);
   const len = Math.hypot(b.x - a.x, b.y - a.y);
   const ux = (b.x - a.x) / len;
   const uy = (b.y - a.y) / len;
@@ -25,13 +34,13 @@ function edgeGeometry(e: SigEdge) {
   const y1 = a.y + uy * (R + 4);
   const x2 = b.x - ux * (R + 8);
   const y2 = b.y - uy * (R + 8);
-  const bend = e.bend ?? 0;
-  const mx = (x1 + x2) / 2 - uy * bend;
-  const my = (y1 + y2) / 2 + ux * bend;
-  // Quadratic curve; the visual midpoint of the curve is halfway between control point and chord midpoint.
-  const vx = ((x1 + x2) / 2 + mx) / 2;
-  const vy = ((y1 + y2) / 2 + my) / 2;
-  return { d: `M${x1} ${y1} Q${mx} ${my} ${x2} ${y2}`, vx, vy, ux, uy };
+  const bend = (m === "d" ? e.bend : e.mbend) ?? 0;
+  const cx = (x1 + x2) / 2 - uy * bend;
+  const cy = (y1 + y2) / 2 + ux * bend;
+  // The visual midpoint of a quadratic curve is halfway between the control point and the chord midpoint.
+  const vx = ((x1 + x2) / 2 + cx) / 2;
+  const vy = ((y1 + y2) / 2 + cy) / 2;
+  return { d: `M${x1} ${y1} Q${cx} ${cy} ${x2} ${y2}`, vx, vy };
 }
 
 function Detail({ k }: { k: string }) {
@@ -80,6 +89,14 @@ function Detail({ k }: { k: string }) {
             <dd>{e.breakpoint}</dd>
           </div>
         )}
+        {e.controlClaim && (
+          <div>
+            <dt>Control claim</dt>
+            <dd>
+              {e.controlClaim.claim} <span className="relWord">{e.controlClaim.relation}</span>: {e.controlClaim.by}
+            </dd>
+          </div>
+        )}
         {e.crossesBoundary && (
           <div>
             <dt>Boundary</dt>
@@ -95,6 +112,161 @@ function Detail({ k }: { k: string }) {
   );
 }
 
+function Drawing({ m, active, onPick }: { m: Mode; active: string; onPick: (k: string) => void }) {
+  const wide = m === "d";
+  const id = (s: string) => `sig-${s}-${m}`;
+  return (
+    <svg
+      viewBox={wide ? "0 0 1040 600" : "0 0 360 1160"}
+      className={wide ? "sigSvg sigSvgDesktop" : "sigSvg sigSvgMobile"}
+      role="img"
+      aria-labelledby={`${id("title")} ${id("desc")}`}
+    >
+      <title id={id("title")}>Signature graph: the procurement path from an employee to a business system</title>
+      <desc id={id("desc")}>
+        An employee instructs an AI procurement agent. The agent invokes a model, which is hosted on a provider; retrieves
+        supplier data (inferred, not yet evidenced, and conditional on the employee's context being passed); and invokes a
+        procurement tool through a human approval step whose claimed scope is disputed by the evidence. The tool
+        authenticates as a service identity. The identity connects to the business system across a trust boundary; whether
+        it is authorised to act there is UNKNOWN. If every condition held, the business system would trigger a potential
+        consequence. The list that follows the figure describes every element.
+      </desc>
+      <defs>
+        {(["observed", "candidate", "unknown"] as const).map((s) => (
+          <marker key={s} id={id(`arrow-${s}`)} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" className={`sigArrow sigArrow-${s}`} />
+          </marker>
+        ))}
+        <pattern id={id("hatch")} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" className="sigHatch" />
+        </pattern>
+      </defs>
+
+      <g className="sigBoundary">
+        {wide ? (
+          <>
+            <rect x="790" y="40" width="240" height="530" rx="14" />
+            <text x="1018" y="64" textAnchor="end">
+              trust boundary
+            </text>
+          </>
+        ) : (
+          <>
+            <rect x="14" y="780" width="332" height="370" rx="14" />
+            <text x="28" y="1138">
+              trust boundary
+            </text>
+          </>
+        )}
+      </g>
+
+      {sigEdges.map((e) => {
+        const g = edgeGeometry(e, m);
+        const isActive = active === e.key;
+        const left = !wide && e.side === "left";
+        // Wide drawing: labels above the line, tags below. Mobile: labels beside the (mostly vertical) line.
+        const lab = wide
+          ? { x: g.vx, y: g.vy - 10, anchor: "middle" as const }
+          : { x: left ? g.vx - 12 : g.vx + 12, y: g.vy - 4, anchor: left ? ("end" as const) : ("start" as const) };
+        const tagX = wide ? g.vx : left ? g.vx - 12 : g.vx + 12;
+        const tagY = wide ? g.vy + 16 : g.vy + 14;
+        const tagAlign = wide ? "middle" : left ? "end" : "start";
+        const evW = 32;
+        const unW = 80;
+        const tagRectX = (w: number) => (tagAlign === "middle" ? -w / 2 : tagAlign === "end" ? -w : 0);
+        const condY = wide ? g.vy + 44 : g.vy + 42;
+        const condLeft = wide ? e.conditionLeft : left;
+        const condText = wide ? e.condition : e.conditionShort ?? e.condition;
+        return (
+          <g
+            key={e.key}
+            className={`sigEdge sigEdge-${e.state}${isActive ? " isActive" : ""}`}
+            onClick={() => onPick(e.key)}
+          >
+            <path d={g.d} markerEnd={`url(#${id(`arrow-${e.state}`)})`} />
+            <path d={g.d} className="sigHit" />
+            <text x={lab.x} y={lab.y} textAnchor={lab.anchor} className="sigPredicate">
+              {e.predicate}
+            </text>
+            {e.evidence && (
+              <g className="sigEvidence" transform={`translate(${tagX} ${tagY})`}>
+                <rect x={tagRectX(evW)} y="-10" width={evW} height="20" rx="4" />
+                <text x={tagRectX(evW) + evW / 2} y="4" textAnchor="middle">
+                  {e.evidence}
+                </text>
+              </g>
+            )}
+            {e.state === "unknown" && (
+              <g className="sigUnknownTag" transform={`translate(${tagX} ${tagY})`}>
+                <rect x={tagRectX(unW)} y="-11" width={unW} height="22" rx="4" fill={`url(#${id("hatch")})`} />
+                <rect x={tagRectX(unW)} y="-11" width={unW} height="22" rx="4" className="sigUnknownBorder" />
+                <text x={tagRectX(unW) + unW / 2} y="4" textAnchor="middle">
+                  UNKNOWN
+                </text>
+              </g>
+            )}
+            {condText && (
+              <g className="sigCondition" transform={`translate(${tagX} ${condY})`}>
+                <path d={`M${tagRectX(16) + 8} -8 l8 8 -8 8 -8 -8 Z`} />
+                <text x={condLeft ? tagRectX(16) - 4 : tagRectX(16) + 22} y="4" textAnchor={condLeft ? "end" : "start"}>
+                  {condText}
+                </text>
+              </g>
+            )}
+            {e.breakpoint && (
+              <g className={`sigBreakpoint${e.controlClaim ? " sigBreakpointDisputed" : ""}`} transform={wide ? `translate(${g.vx + 28} ${g.vy})` : `translate(${g.vx} ${g.vy + 44})`}>
+                {wide ? <line x1="0" y1="-16" x2="0" y2="16" /> : <line x1="-16" y1="0" x2="16" y2="0" />}
+                <text x={wide ? 8 : 24} y={wide ? -22 : 5} textAnchor="start">
+                  {e.breakpointLabel ?? e.breakpoint}
+                </text>
+                {e.controlClaim && (
+                  <g className="sigDisputeTag" transform={wide ? "translate(8 -38)" : "translate(24 26)"}>
+                    <text x="0" y="0" textAnchor="start">
+                      ✕ scope disputed
+                    </text>
+                  </g>
+                )}
+              </g>
+            )}
+          </g>
+        );
+      })}
+
+      {sigNodes.map((n) => {
+        const p = pos(n, m);
+        return (
+          <g
+            key={n.key}
+            className={`sigNode sigTone-${n.tone}${n.key === "consequence" ? " sigNodeConsequence" : ""}${active === n.key ? " isActive" : ""}`}
+            transform={`translate(${p.x} ${p.y})`}
+            onClick={() => onPick(n.key)}
+          >
+            {n.key === "consequence" ? <path d="M0 -18 L18 14 L-18 14 Z" /> : <circle r={R} />}
+            {wide ? (
+              <text y={R + 24} textAnchor="middle" className="sigLabel">
+                {n.label}
+              </text>
+            ) : (
+              // Mobile: labels beside the node, so vertical edges never cross them.
+              <text
+                x={n.key === "consequence" ? 0 : n.mx === 180 ? -(R + 8) : R + 8}
+                y={n.key === "consequence" ? R + 24 : 5}
+                textAnchor={n.key === "consequence" ? "middle" : n.mx === 180 ? "end" : "start"}
+                className="sigLabel"
+              >
+                {n.label}
+              </text>
+            )}
+            <text y={R + 41} textAnchor="middle" className="sigKind">
+              {n.kind}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 export function SignatureGraph() {
   const [active, setActive] = useState<string>("e-authz");
   const [enhanced, setEnhanced] = useState(false);
@@ -102,115 +274,35 @@ export function SignatureGraph() {
 
   return (
     <div className="sig" data-enhanced={enhanced ? "true" : "false"} data-active={active}>
-      <div className="sigCanvas" role="region" aria-label="Signature graph drawing" tabIndex={0}>
-        <p className="sigScrollHint">The drawing scrolls sideways. The list below describes every element.</p>
-        <svg viewBox="0 0 1040 600" className="sigSvg" role="img" aria-labelledby="sig-title sig-desc">
-          <title id="sig-title">Signature AI Trust Graph: a synthetic path from an employee to a business system</title>
-          <desc id="sig-desc">
-            An employee instructs an agent. The agent invokes a model, retrieves from a data source (inferred, not yet
-            evidenced) and invokes a tool through a human approval step. The tool authenticates as a service identity. The
-            identity connects to a business system across a trust boundary; whether it is authorised to act there is
-            UNKNOWN. If every condition held, the business system would trigger a potential consequence. The list that
-            follows the figure describes every element.
-          </desc>
-          <defs>
-            {(["observed", "candidate", "unknown"] as const).map((s) => (
-              <marker key={s} id={`sig-arrow-${s}`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M0 0 L10 5 L0 10 z" className={`sigArrow sigArrow-${s}`} />
-              </marker>
-            ))}
-            <pattern id="sig-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="6" className="sigHatch" />
-            </pattern>
-          </defs>
+      <div className="sigCanvas">
+        <Drawing m="d" active={active} onPick={setActive} />
+        <Drawing m="m" active={active} onPick={setActive} />
 
-          <g className="sigBoundary">
-            <rect x="790" y="40" width="240" height="530" rx="14" />
-            <text x="1018" y="64" textAnchor="end">
-              trust boundary
-            </text>
-          </g>
-
-          {sigEdges.map((e) => {
-            const g = edgeGeometry(e);
-            const isActive = active === e.key;
-            return (
-              <g key={e.key} className={`sigEdge sigEdge-${e.state}${isActive ? " isActive" : ""}`}>
-                <path d={g.d} markerEnd={`url(#sig-arrow-${e.state})`} />
-                <text x={g.vx} y={g.vy - 10} textAnchor="middle" className="sigPredicate">
-                  {e.predicate}
-                </text>
-                {e.evidence && (
-                  <g className="sigEvidence" transform={`translate(${g.vx} ${g.vy + 16})`}>
-                    <rect x="-16" y="-10" width="32" height="20" rx="4" />
-                    <text y="4" textAnchor="middle">
-                      {e.evidence}
-                    </text>
-                  </g>
-                )}
-                {e.state === "unknown" && (
-                  <g className="sigUnknownTag" transform={`translate(${g.vx} ${g.vy + 16})`}>
-                    <rect x="-40" y="-11" width="80" height="22" rx="4" fill="url(#sig-hatch)" />
-                    <rect x="-40" y="-11" width="80" height="22" rx="4" className="sigUnknownBorder" />
-                    <text y="4" textAnchor="middle">
-                      UNKNOWN
-                    </text>
-                  </g>
-                )}
-                {e.condition && (
-                  <g className="sigCondition" transform={`translate(${g.vx} ${g.vy + (e.state === "unknown" ? 44 : 44)})`}>
-                    <path d="M0 -8 L8 0 L0 8 L-8 0 Z" />
-                    <text x={e.conditionLeft ? -13 : 13} y="4" textAnchor={e.conditionLeft ? "end" : "start"}>
-                      {e.condition}
-                    </text>
-                  </g>
-                )}
-                {e.breakpoint && (
-                  <g className="sigBreakpoint" transform={`translate(${g.vx + 28} ${g.vy})`}>
-                    <line x1="0" y1="-16" x2="0" y2="16" />
-                    <text x="0" y="38" textAnchor="middle">
-                      {e.breakpointLabel ?? e.breakpoint}
-                    </text>
-                  </g>
-                )}
-              </g>
-            );
-          })}
-
-          {sigNodes.map((n) => (
-            <g
-              key={n.key}
-              className={`sigNode sigTone-${n.tone}${n.key === "consequence" ? " sigNodeConsequence" : ""}${active === n.key ? " isActive" : ""}`}
-              transform={`translate(${n.x} ${n.y})`}
-            >
-              {n.key === "consequence" ? <path d="M0 -18 L18 14 L-18 14 Z" /> : <circle r={R} />}
-              <text y={R + 24} textAnchor="middle" className="sigLabel">
-                {n.label}
-              </text>
-              <text y={R + 41} textAnchor="middle" className="sigKind">
-                {n.kind}
-              </text>
-            </g>
-          ))}
-        </svg>
-
-        <div className="sigLegend" aria-label="Legend">
-          <p className="legendTitle">Legend</p>
-          <ul>
+        <div className="sigLegend">
+          <p className="legendTitle" id="sig-legend-title">
+            Legend
+          </p>
+          <ul aria-labelledby="sig-legend-title">
             <li>
-              <span className="lgLine lgObserved" aria-hidden="true" /> Observed, approved assertion
+              <span className="lgLine lgObserved" aria-hidden="true" /> Supported: approved, with evidence linked
             </li>
             <li>
-              <span className="lgLine lgCandidate" aria-hidden="true" /> Proposed or inferred (candidate)
+              <span className="lgLine lgCandidate" aria-hidden="true" /> Inferred: proposed, awaiting evidence
             </li>
             <li>
-              <span className="lgLine lgUnknown" aria-hidden="true" /> UNKNOWN: no sufficient evidence
+              <span className="lgLine lgUnknown" aria-hidden="true" /> UNKNOWN: evidence absent or insufficient
             </li>
             <li>
-              <span className="lgDiamond" aria-hidden="true" /> Condition that must hold
+              <span className="lgDiamond" aria-hidden="true" /> Conditional: what must be true
             </li>
             <li>
               <span className="lgBar" aria-hidden="true" /> Control breakpoint
+            </li>
+            <li>
+              <span className="lgDispute" aria-hidden="true">
+                ✕
+              </span>{" "}
+              Unsupported claim: the evidence disputes it
             </li>
             <li>
               <span className="lgEvidence" aria-hidden="true">
@@ -230,38 +322,41 @@ export function SignatureGraph() {
 
       <div className="sigInspector">
         <p className="sigInspectorHint" id="sig-hint">
-          Select any element to inspect it. The path reads from top to bottom.
+          Select any element, in the drawing or in this list, to inspect it. The list follows the path from the employee to
+          the potential consequence.
         </p>
         <div className="sigInspectorBody">
-        <ol className="sigPath" aria-describedby="sig-hint">
-          {sigOrder.map((k) => {
-            const node = nodeByKey[k];
-            const edge = edgeByKey[k];
-            const isActive = active === k;
-            const title = node ? node.label : `${edge.predicate}`;
-            const sub = node ? node.kind : `${nodeByKey[edge.from].label} → ${nodeByKey[edge.to].label}`;
-            return (
-              <li key={k} className={`sigStep ${node ? "sigStepNode" : `sigStepEdge sigStepEdge-${edge.state}`} ${isActive ? "isActive" : ""}`}>
-                <button type="button" aria-pressed={isActive} onClick={() => setActive(k)} className="sigStepBtn">
-                  <span className="sigStepTitle">{node ? title : <code>{title}</code>}</span>
-                  <span className="sigStepSub">
-                    {sub}
-                    {edge?.state === "unknown" && <span className="unknownPill">UNKNOWN</span>}
-                    {edge?.state === "candidate" && <span className="candidatePill">candidate</span>}
-                  </span>
-                </button>
-                <div className="sigStepDetail">
-                  <Detail k={k} />
-                </div>
-              </li>
-            );
-          })}
-        </ol>
-        {enhanced && (
-          <div className="sigPanel" aria-live="polite">
-            <Detail k={active} />
-          </div>
-        )}
+          <ol className="sigPath" aria-describedby="sig-hint">
+            {sigOrder.map((k) => {
+              const node = nodeByKey[k];
+              const edge = edgeByKey[k];
+              const isActive = active === k;
+              const title = node ? node.label : `${edge.predicate}`;
+              const sub = node ? node.kind : `${nodeByKey[edge.from].label} → ${nodeByKey[edge.to].label}`;
+              return (
+                <li key={k} className={`sigStep ${node ? "sigStepNode" : `sigStepEdge sigStepEdge-${edge.state}`} ${isActive ? "isActive" : ""}`}>
+                  <button type="button" aria-pressed={isActive} onClick={() => setActive(k)} className="sigStepBtn">
+                    <span className="sigStepTitle">{node ? title : <code>{title}</code>}</span>
+                    <span className="sigStepSub">
+                      {sub}
+                      {edge?.state === "unknown" && <span className="unknownPill">UNKNOWN</span>}
+                      {edge?.state === "candidate" && <span className="candidatePill">inferred</span>}
+                      {edge?.controlClaim && <span className="disputePill">claim disputed</span>}
+                      {edge?.condition && <span className="conditionPill">conditional</span>}
+                    </span>
+                  </button>
+                  <div className="sigStepDetail">
+                    <Detail k={k} />
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+          {enhanced && (
+            <div className="sigPanel" aria-live="polite">
+              <Detail k={active} />
+            </div>
+          )}
         </div>
       </div>
     </div>

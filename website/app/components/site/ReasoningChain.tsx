@@ -1,6 +1,6 @@
 import { canonicalReasoningChain, links, theoryMap } from "../../content";
 import { chainStages } from "../../site-content";
-import { Detail, Ext, SectionHead, SourceNote } from "./Primitives";
+import { Ext, SectionHead, SourceNote } from "./Primitives";
 
 /**
  * The canonical reasoning chain (Artifact #2 §0.10), nine stages in canonical
@@ -22,12 +22,14 @@ export function ReasoningChain() {
       <div className="container">
         <SectionHead
           id="flow-title"
-          kicker="04 · Reasoning chain"
+          kicker="5.1 · Reasoning chain"
+          level={3}
           title="From what exists to what can be defended."
           lede={
             <p>
-              The reasoning chain is the conceptual spine of the methodology: nine stages, each answering one question.
-              It is not the fieldwork plan. The thirteen-phase assessment lifecycle further down is a separate construct.
+              The reasoning chain defines how assurance conclusions are formed: nine stages, each answering one
+              question. It is not the fieldwork plan. The thirteen-phase assessment lifecycle in 5.5 governs how
+              fieldwork is conducted; the two are related but not interchangeable.
             </p>
           }
         />
@@ -54,12 +56,10 @@ export function ReasoningChain() {
                 <span className="chainNum" aria-hidden="true">
                   {i + 1}
                 </span>
-                <h3 className="chainStage">{href ? <a href={href}>{c.stage}</a> : c.stage}</h3>
+                <h4 className="chainStage">{href ? <a href={href}>{c.stage}</a> : c.stage}</h4>
                 <p className="chainQuestion">{c.question}</p>
                 <p className="chainConcept">{c.concept}</p>
-                <Detail as="p" className="chainNote">
-                  {c.note}
-                </Detail>
+                <p className="chainNote">{c.note}</p>
               </li>
             );
           })}
@@ -97,9 +97,9 @@ export function ReasoningChain() {
 
         <article id="decision" className="decisionNote" aria-labelledby="decision-title">
           <p className="kicker kickerSmall">Stage 9 · Decision</p>
-          <h3 id="decision-title" className="decisionTitle">
+          <h4 id="decision-title" className="decisionTitle">
             Accountable decision.
-          </h3>
+          </h4>
           <p className="decisionText">
             A finding is an evidence-linked assessment conclusion. A decision is accountable disposition. Keeping them
             separate prevents management acceptance or remediation preference from changing the assessed condition.

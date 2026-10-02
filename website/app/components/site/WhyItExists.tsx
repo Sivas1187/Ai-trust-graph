@@ -1,5 +1,6 @@
-import { links, problemThesis, topologyInvariant } from "../../content";
-import { SectionHead, SourceNote, Ext } from "./Primitives";
+import { links, problemThesis } from "../../content";
+import { whyNarrative } from "../../site-content";
+import { Ext, SourceNote } from "./Primitives";
 
 /**
  * Why AI Trust Graph exists. EDITORIAL narrative; the thesis and the topology
@@ -105,28 +106,23 @@ function ConnectedView() {
 
 export function WhyItExists() {
   const manifesto = links.doc("01-manifesto.md");
+  const ccm = links.doc("02-core-conceptual-model.md");
   return (
-    <section id="why" className="section sectionPaper" aria-labelledby="why-title">
-      <span id="problem" className="legacyAnchor" aria-hidden="true" />
+    <section id="why" className="section sectionPaper whySection" aria-labelledby="why-title">
       <div className="container">
-        <SectionHead
-          id="why-title"
-          kicker="01 · Why it exists"
-          title="AI systems are no longer isolated models."
-          lede={
-            <>
-              <p>
-                Models connect to agents. Agents invoke tools. Tools act through identities. Identities cross trust
-                boundaries, and data and decisions move between platforms and providers.
-              </p>
-              <p>
-                Component reviews remain valuable. On their own, they can miss how trust, authority and consequence
-                travel across the connected environment. AI Trust Graph gives that connected view a structure, while
-                keeping evidence limits and uncertainty in plain sight.
-              </p>
-            </>
-          }
-        />
+        <div className="whyLead">
+          <div className="whyLeadHead">
+            <p className="kicker">01 · Why AI Trust Graph exists</p>
+            <h2 id="why-title" className="whyOpening">
+              {whyNarrative.opening}
+            </h2>
+          </div>
+          <div className="whyLeadBody">
+            {whyNarrative.paragraphs.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
+        </div>
 
         <figure className="compare">
           <div className="compareGrid">
@@ -147,27 +143,18 @@ export function WhyItExists() {
           <figcaption className="figureCaption">Conceptual comparison for explanation only. It is not empirical evidence.</figcaption>
         </figure>
 
-        <div className="whyQuotes">
-          <blockquote className="pullQuote">
+        <div className="proposition">
+          <p className="propositionText">{whyNarrative.proposition}</p>
+          <blockquote className="propositionQuote" cite={manifesto}>
             <p>{problemThesis}</p>
-            <footer className="pullQuoteSource">
-              Manifesto, the core risk thesis
-              <SourceNote>
-                <Ext href={manifesto}>Artifact #1 · Manifesto</Ext> §2.2, first sentence (verbatim).
-              </SourceNote>
-            </footer>
-          </blockquote>
-          <blockquote className="pullQuote pullQuoteInvariant">
-            <p>{topologyInvariant[0]}</p>
-            <p className="pullQuoteSecond">{topologyInvariant[1]}</p>
-            <footer className="pullQuoteSource">
-              Manifesto invariant
-              <SourceNote>
-                <Ext href={manifesto}>Artifact #1 · Manifesto</Ext> §4 INVARIANT (verbatim).
-              </SourceNote>
-            </footer>
+            <footer className="pullQuoteSource">Manifesto, the core risk thesis</footer>
           </blockquote>
         </div>
+        <SourceNote>
+          Thesis: <Ext href={manifesto}>Artifact #1 · Manifesto</Ext> §2.2, first sentence (verbatim). The narrative and
+          the proposition are website explanation, written from the Manifesto core proposition and the separation of
+          reachability, granted authority and invocation in <Ext href={ccm}>Artifact #2</Ext> §3.6.
+        </SourceNote>
       </div>
     </section>
   );

@@ -97,39 +97,47 @@ export function ArtifactLibrary() {
             <ul className="libList">
               {items.map((r) => (
                 <li key={r.n} className="libItem">
-                  <p className="libNum" aria-hidden="true">
-                    #{r.n}
-                  </p>
-                  <h4 className="libTitle">
-                    <a href={links.doc(r.file)} rel="noopener noreferrer">
-                      <span className="visuallyHidden">Artifact {r.n}: </span>
-                      {r.title}
-                      <span className="visuallyHidden"> (opens GitHub)</span>
-                    </a>
-                  </h4>
-                  <p className="libRole">{r.role}</p>
-                  <dl className="libMeta">
-                    <div>
-                      <dt>Version</dt>
-                      <dd>{r.version}</dd>
-                    </div>
-                    <div>
-                      <dt>Status</dt>
-                      <dd>
-                        <span className={`libStatus libStatus-${r.status}`}>
-                          {r.status === "rc" ? "Release candidate" : "Non-normative companion"}
-                        </span>
-                      </dd>
-                    </div>
-                    <div>
-                      <dt>Depends on</dt>
-                      <dd>{r.dependsOn.length ? r.dependsOn.map((d) => `#${d}`).join(", ") : "None stated"}</dd>
-                    </div>
-                    <div>
-                      <dt>Format</dt>
-                      <dd>Markdown on GitHub</dd>
-                    </div>
-                  </dl>
+                  <div className="libRow">
+                    <p className="libNum" aria-hidden="true">
+                      #{r.n}
+                    </p>
+                    <h4 className="libTitle">
+                      <a href={links.doc(r.file)} rel="noopener noreferrer">
+                        <span className="visuallyHidden">Artifact {r.n}: </span>
+                        {r.title}
+                        <span className="visuallyHidden"> (opens GitHub)</span>
+                      </a>
+                    </h4>
+                    <p className="libBadges">
+                      <span className="libVersion">v{r.version}</span>
+                      <span className={`libStatus libStatus-${r.status}`}>
+                        {r.status === "rc" ? "Release candidate" : "Non-normative companion"}
+                      </span>
+                    </p>
+                  </div>
+                  <details className="libMore">
+                    <summary>
+                      Details<span className="visuallyHidden"> for Artifact {r.n}</span>
+                    </summary>
+                    <dl className="libMeta">
+                      <div>
+                        <dt>Purpose</dt>
+                        <dd>{r.role}</dd>
+                      </div>
+                      <div>
+                        <dt>Depends on</dt>
+                        <dd>{r.dependsOn.length ? r.dependsOn.map((d) => `#${d}`).join(", ") : "None stated"}</dd>
+                      </div>
+                      <div>
+                        <dt>Format</dt>
+                        <dd>Markdown on GitHub, pinned to bundle {release.bundle}</dd>
+                      </div>
+                      <div>
+                        <dt>Updated</dt>
+                        <dd>Bundle snapshot {release.snapshot}</dd>
+                      </div>
+                    </dl>
+                  </details>
                 </li>
               ))}
             </ul>

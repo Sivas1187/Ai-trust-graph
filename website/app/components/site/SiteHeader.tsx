@@ -3,20 +3,19 @@ import { BrandMark } from "../BrandMark";
 import { PrimaryNav, type NavItem } from "../PrimaryNav";
 
 /**
- * Site navigation. One level, website sections only (never a methodology
- * construct). The brand link is "Home". On sub-pages the fragment links point
- * back to the homepage sections.
+ * Site navigation: the visitor journey (why, big idea, methodology,
+ * artifacts, publications, about), one level only. The brand link returns
+ * home; GitHub is a separate, always-visible action. On sub-pages the
+ * fragment links point back to the homepage sections.
  */
-export function homeNav(prefix = "", home = "#top"): NavItem[] {
+export function homeNav(prefix = ""): NavItem[] {
   return [
-    { href: home, label: "Home" },
     { href: `${prefix}#why`, label: "Why it exists" },
+    { href: `${prefix}#big-idea`, label: "The big idea" },
     { href: `${prefix}#methodology`, label: "Methodology" },
-    { href: `${prefix}#example`, label: "Worked example" },
     { href: `${prefix}#artifacts`, label: "Artifacts" },
     { href: `${prefix}#publications`, label: "Publications" },
-    { href: `${prefix}#author`, label: "About the author" },
-    { href: links.repo, label: "GitHub", srSuffix: "(canonical source)", external: true },
+    { href: `${prefix}#author`, label: "About" },
   ];
 }
 
@@ -28,7 +27,13 @@ export function SiteHeader({ home = "#top", prefix = "" }: { home?: string; pref
           <BrandMark />
           <span>AI Trust Graph</span>
         </a>
-        <PrimaryNav items={homeNav(prefix, home)} />
+        <div className="headerEnd">
+          <PrimaryNav items={homeNav(prefix)} />
+          <a className="headerGithub" href={links.repo} rel="noopener noreferrer">
+            GitHub<span className="visuallyHidden"> (canonical source, opens GitHub)</span>
+            <span aria-hidden="true"> ↗</span>
+          </a>
+        </div>
       </div>
     </header>
   );

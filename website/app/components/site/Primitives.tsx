@@ -15,19 +15,23 @@ export function SectionHead({
   title,
   lede,
   tone = "light",
+  level = 2,
 }: {
   id: string;
   kicker: string;
   title: ReactNode;
   lede?: ReactNode;
   tone?: "light" | "dark";
+  /** 2 for main narrative sections, 3 for methodology subsections. */
+  level?: 2 | 3;
 }) {
+  const H = level === 3 ? "h3" : "h2";
   return (
-    <header className={`sectionHead sectionHead--${tone}`}>
+    <header className={`sectionHead sectionHead--${tone}${level === 3 ? " sectionHead--sub" : ""}`}>
       <p className="kicker">{kicker}</p>
-      <h2 id={id} className="sectionTitle">
+      <H id={id} className={level === 3 ? "sectionTitle sectionTitleSub" : "sectionTitle"}>
         {title}
-      </h2>
+      </H>
       {lede && <div className="sectionLede">{lede}</div>}
     </header>
   );

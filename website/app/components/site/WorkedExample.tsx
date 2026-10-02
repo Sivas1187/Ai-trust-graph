@@ -11,6 +11,7 @@ import {
   exDecision,
   exEdges,
   exEvidence,
+  exNotDefensible,
   exStateLabel,
   exUnknowns,
   type ExState,
@@ -24,7 +25,9 @@ import {
 const views = [
   { id: "system", label: "System" },
   { id: "graph", label: "Graph" },
+  { id: "authority", label: "Authority" },
   { id: "evidence", label: "Evidence" },
+  { id: "control", label: "Control" },
   { id: "decision", label: "Decision" },
 ] as const;
 type ViewId = (typeof views)[number]["id"];
@@ -96,9 +99,9 @@ export function WorkedExample() {
       )}
 
       <div {...panel("system")}>
-        <h3 id="ex-h-system" className="exPanelTitle">
+        <h4 id="ex-h-system" className="exPanelTitle">
           System view
-        </h3>
+        </h4>
         <ul className="exComponents">
           {exComponents.map((c) => (
             <li key={c.id} className={`exComp exComp-${c.id}`}>
@@ -108,7 +111,7 @@ export function WorkedExample() {
             </li>
           ))}
         </ul>
-        <h4 className="exSub">Stated assumptions</h4>
+        <h5 className="exSub">Stated assumptions</h5>
         <ul className="exPlain">
           {exAssumptions.map((a) => (
             <li key={a}>{a}</li>
@@ -117,9 +120,9 @@ export function WorkedExample() {
       </div>
 
       <div {...panel("graph")}>
-        <h3 id="ex-h-graph" className="exPanelTitle">
+        <h4 id="ex-h-graph" className="exPanelTitle">
           Graph view
-        </h3>
+        </h4>
         <ol className="exEdges">
           {exEdges.map((e, i) => (
             <li key={i} className={`exEdge state-${e.state}${e.boundary ? " exEdgeBoundary" : ""}`}>
@@ -137,7 +140,13 @@ export function WorkedExample() {
             </li>
           ))}
         </ol>
-        <h4 className="exSub">Authority assertions, each assessed separately</h4>
+      </div>
+
+      <div {...panel("authority")}>
+        <h4 id="ex-h-authority" className="exPanelTitle">
+          Authority view
+        </h4>
+        <p className="exLead">Six separate assertions, each with its own state and evidence. Proving one does not prove another.</p>
         <ul className="exAuthority">
           {exAuthority.map((a) => (
             <li key={a.claim}>
@@ -150,12 +159,12 @@ export function WorkedExample() {
       </div>
 
       <div {...panel("evidence")}>
-        <h3 id="ex-h-evidence" className="exPanelTitle">
+        <h4 id="ex-h-evidence" className="exPanelTitle">
           Evidence view
-        </h3>
+        </h4>
         <div className="exEvidenceGrid">
           <div>
-            <h4 className="exSub">Evidence available</h4>
+            <h5 className="exSub">Evidence available</h5>
             <ul className="exEvidence">
               {exEvidence.available.map((ev) => (
                 <li key={ev.item}>
@@ -169,7 +178,7 @@ export function WorkedExample() {
             </ul>
           </div>
           <div>
-            <h4 className="exSub">Evidence missing</h4>
+            <h5 className="exSub">Evidence missing</h5>
             <ul className="exMissing">
               {exEvidence.missing.map((m) => (
                 <li key={m}>
@@ -182,7 +191,13 @@ export function WorkedExample() {
             </ul>
           </div>
         </div>
-        <h4 className="exSub">Controls on the path</h4>
+      </div>
+
+      <div {...panel("control")}>
+        <h4 id="ex-h-control" className="exPanelTitle">
+          Control view
+        </h4>
+        <p className="exLead">A control matters where it sits on the path. Its presence does not demonstrate its effectiveness.</p>
         <ul className="exAuthority">
           {exControls.map((c) => (
             <li key={c.control}>
@@ -195,18 +210,29 @@ export function WorkedExample() {
       </div>
 
       <div {...panel("decision")}>
-        <h3 id="ex-h-decision" className="exPanelTitle">
+        <h4 id="ex-h-decision" className="exPanelTitle">
           Decision view
-        </h3>
-        <h4 className="exSub">Potential consequence</h4>
+        </h4>
+        <h5 className="exSub">Potential consequence</h5>
         <p>{exConsequence}</p>
-        <h4 className="exSub">Bounded conclusion</h4>
+        <h5 className="exSub">What can be defended (bounded conclusion)</h5>
         <ul className="exConclusion">
           {exConclusion.map((c) => (
             <li key={c}>{c}</li>
           ))}
         </ul>
-        <h4 className="exSub">Remaining UNKNOWNs</h4>
+        <h5 className="exSub">What cannot yet be defended</h5>
+        <ul className="exNot">
+          {exNotDefensible.map((c) => (
+            <li key={c}>
+              <span className="exNotMark" aria-hidden="true">
+                ✕
+              </span>
+              {c}
+            </li>
+          ))}
+        </ul>
+        <h5 className="exSub">Remaining UNKNOWNs</h5>
         <ul className="exMissing">
           {exUnknowns.map((u) => (
             <li key={u}>

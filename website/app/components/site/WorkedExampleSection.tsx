@@ -8,13 +8,15 @@ export function WorkedExampleSection() {
       <div className="container">
         <SectionHead
           id="example-title"
-          kicker="09 · Worked example"
-          title="A procurement agent, read end to end."
+          kicker="5.6 · Worked example"
+          level={3}
+          title="The procurement request, read end to end."
           lede={
             <p>
-              An AI agent helps analysts raise purchase orders. It uses a hosted model, supplier data and a purchase-order
-              tool that acts through a service identity in the ERP, across a trust boundary. The four views show what
-              the methodology records at each step, and what it declines to conclude.
+              The scenario from the start of the page, assessed. An employee asks an AI procurement agent to identify a
+              supplier and prepare a purchase request. The agent uses a model, retrieves supplier information, invokes a
+              procurement tool, acts through a service identity and reaches an enterprise business system across a trust
+              boundary. Six views show what the methodology records at each step, and what it declines to conclude.
             </p>
           }
         />

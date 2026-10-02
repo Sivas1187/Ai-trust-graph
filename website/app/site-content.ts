@@ -13,80 +13,101 @@
  * Release facts, artifact registry and canonical lists stay in content.ts.
  */
 
+import { siteConfig } from "./site.config";
+
 export type DomainKey = "d1" | "d2" | "d3" | "d4" | "d5" | "d6";
 
 /**
- * Author. EDITORIAL positioning supplied by the methodology author in the
- * redesign brief. Only links that are verified are listed: the GitHub account
- * that owns the canonical repository. LinkedIn, ORCID and Zenodo profiles are
- * left empty until the author supplies verified URLs; the About section then
- * shows them automatically.
+ * Author. Name, role and links come from site.config.ts (verified links only;
+ * empty values are not rendered). `summary` is EDITORIAL, written from the
+ * areas of experience the author supplied in the narrative brief.
  */
 export const author = {
-  name: "Siva Sethumadhavan",
-  role: "Independent researcher and author of AI Trust Graph",
+  ...siteConfig.author,
   summary: [
-    "AI Trust Graph is written and maintained by Siva Sethumadhavan as an independent research project.",
-    "The work draws on experience across cybersecurity, architecture, risk, governance and AI assurance. It is published openly so that practitioners and reviewers can examine, question and improve it.",
+    "Siva Sethumadhavan created and maintains AI Trust Graph as independent research.",
+    "The methodology draws on practitioner experience across cybersecurity, security architecture, AI governance, risk and assurance. It is published openly so that its reasoning can be examined, challenged and improved.",
   ],
-  links: {
-    github: "https://github.com/Sivas1187",
-    linkedin: "",
-    orcid: "",
-    zenodo: "",
-  },
   /**
-   * Independence statement. EDITORIAL. METHODOLOGY_MANIFEST §6 lists the
-   * employer / IP / confidentiality review as a pending gate, so this text
-   * names no employer and claims no clearance. Replace with the approved
-   * legal wording once that gate closes.
+   * Independence statement. EDITORIAL: the concept wording supplied in the
+   * narrative brief. No legally approved statement exists in the repository,
+   * and METHODOLOGY_MANIFEST §6 lists the employer / IP / confidentiality
+   * review as pending, so this names no employer and claims no clearance.
+   * Replace with the approved wording once that gate closes.
    */
   independence:
-    "AI Trust Graph is an independent research initiative. The methodology and the views on this site are the author's own. They do not represent, and do not imply endorsement by, any employer, client or other organisation.",
+    "AI Trust Graph is an independent research initiative. The methodology and views expressed are the author’s own and do not imply endorsement by any employer or client.",
 };
 
 /**
- * What the methodology helps a practitioner do. EDITORIAL labels; each line
- * paraphrases one step of Artifact #1 Manifesto §7 "Assessment lifecycle"
- * (named in `source`).
+ * Section 1: why the methodology exists. EDITORIAL narrative built from
+ * Artifact #1 Manifesto (core proposition, §2.2 thesis) and Artifact #2
+ * (§3.6 separation of reachability, authority and invocation). It does not
+ * criticise any framework and does not claim existing approaches fail.
  */
-export const outcomes = [
-  {
-    key: "discover",
-    title: "Discover",
-    text: "Build a defensible view of the AI estate: assets, owners, providers, identities, data sources and dependencies, with unknowns registered rather than ignored.",
-    source: "Manifesto §7, Discover the estate",
-  },
-  {
-    key: "model",
-    title: "Model",
-    text: "Represent entities, typed relationships, conditions and trust boundaries, keeping observed facts apart from proposed or inferred relationships.",
-    source: "Manifesto §7, Construct the graph",
-  },
-  {
-    key: "assess",
-    title: "Assess",
-    text: "Examine access, action scope, autonomy, approval, inherited privilege and the paths that lead to sensitive data or privileged action.",
-    source: "Manifesto §7, Classify trust and authority; Analyze paths",
-  },
-  {
-    key: "validate",
-    title: "Validate",
-    text: "Test whether controls block, constrain, detect or contain a material path, and keep the test conditions and limitations with the result.",
-    source: "Manifesto §7, Validate controls",
-  },
-  {
-    key: "decide",
-    title: "Decide",
-    text: "Issue evidence-backed findings and bounded decisions that state scope, evidence quality and what remains UNKNOWN.",
-    source: "Manifesto §7, Decide and prioritize; release gate",
-  },
-  {
-    key: "reassess",
-    title: "Reassess",
-    text: "Track evidence freshness, architecture change, trust drift and exceptions, and reassess when a trigger fires.",
-    source: "Manifesto §7, Monitor change",
-  },
+export const whyNarrative = {
+  opening: "AI systems are no longer isolated models.",
+  paragraphs: [
+    "AI assurance often starts from components: a model card, a policy, a control list, a model-level risk register. Those perspectives remain necessary.",
+    "In practice, AI systems operate through relationships. An agent invokes a tool. The tool acts through an identity. The identity crosses a trust boundary into a business system, and data, recommendations, approvals and actions move along the way.",
+    "When each component is reviewed on its own, the connected path between them can remain insufficiently understood. AI Trust Graph provides a structured way to examine that path, and to keep every conclusion bounded by the evidence available for it.",
+  ],
+  proposition:
+    "AI Trust Graph treats the connected AI environment as the unit of reasoning, while preserving the distinction between what is connected, what is possible, what is authorised and what the evidence can support.",
+};
+
+/**
+ * Section 2: the problem, told through one synthetic scenario that the
+ * signature visual and the worked example continue. EDITORIAL and SYNTHETIC.
+ */
+export const problemScenario = {
+  intro:
+    "An employee asks an AI procurement agent to identify a supplier and prepare a purchase request.",
+  steps: [
+    { key: "human", who: "Employee", what: "asks the agent to prepare a purchase request" },
+    { key: "agent", who: "Procurement agent", what: "plans the task and uses a hosted model" },
+    { key: "data", who: "Supplier data", what: "is retrieved to compare suppliers" },
+    { key: "tool", who: "Procurement tool", what: "is invoked to create the request" },
+    { key: "identity", who: "Service identity", what: "is the identity the tool acts through" },
+    { key: "boundary", who: "Trust boundary", what: "separates the agent environment from finance systems" },
+    { key: "system", who: "Enterprise business system", what: "holds purchase requests and spend commitments" },
+  ],
+  unanswered: [
+    "whether the agent is able to invoke the tool, and under which conditions",
+    "which identity the tool uses, and what authority that identity holds in the business system",
+    "which controls sit on the path, and whether they operate as designed",
+    "what evidence supports each of those assertions, and for what scope and period",
+    "what consequence could follow if every condition held",
+  ],
+  close:
+    "A component diagram shows that these parts exist and are linked. It is not designed to record what each link allows, under which conditions, with which evidence, or what remains unknown. That is the gap AI Trust Graph addresses.",
+};
+
+/**
+ * The five conceptual distinctions shown in section 2. EDITORIAL labels for
+ * Artifact #2 §3.6 (reachability, granted authority and invocation are
+ * different), Artifact #1 §4 (a topological connection is not automatically an
+ * exploitable path) and SC-INV-01 (UNKNOWN is not safe).
+ */
+export const distinctions = [
+  { left: "Connected", right: "Authorised", note: "A link between two components does not grant authority." },
+  { left: "Reachable", right: "Invocable", note: "Being able to reach a system is not being permitted to call it." },
+  { left: "Invocable", right: "Consequential", note: "A permitted call does not establish what effect it has." },
+  { left: "Possible", right: "Proven", note: "A plausible path is a hypothesis until evidence supports it." },
+  { left: "Unknown", right: "Safe", note: "Missing evidence is not a favourable result, and not automatically an adverse one." },
+] as const;
+
+/**
+ * Section 3: the big idea. Five concepts only. EDITORIAL wording; the
+ * authority line follows Artifact #2 §5.2 ("Authority classes describe the
+ * kind of consequence an entity can cause").
+ */
+export const bigIdeaConcepts = [
+  { key: "entities", name: "Entities", text: "show what exists: people, agents, models, tools, identities, data, providers and business systems." },
+  { key: "relationships", name: "Relationships", text: "show how entities are associated, as typed and directed links." },
+  { key: "conditions", name: "Conditions", text: "show what must be true for a relationship to matter." },
+  { key: "authority", name: "Authority", text: "describes the kinds of consequence an entity may be able to cause." },
+  { key: "evidence", name: "Evidence", text: "determines which conclusions can be defended, and how far." },
 ] as const;
 
 /**

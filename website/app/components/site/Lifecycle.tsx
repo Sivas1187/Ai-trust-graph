@@ -16,14 +16,15 @@ export function Lifecycle() {
       <div className="container">
         <SectionHead
           id="lifecycle-title"
-          kicker="08 · Assessment lifecycle"
+          kicker="5.5 · Assessment lifecycle"
+          level={3}
           title="How an assessment is run."
           lede={
             <>
               <p>
-                {lifecycleIntro} This is the fieldwork lifecycle: what an assessment team does, in what order, with which
-                gates. It is a different construct from the nine-stage reasoning chain above, which describes how a
-                conclusion is reasoned.
+                {lifecycleIntro} The reasoning chain defines how assurance conclusions are formed. The assessment lifecycle
+                governs how fieldwork is conducted. These two structures are related but not
+                interchangeable.
               </p>
               <p className="canonQuote">{phaseIterationRule}</p>
             </>

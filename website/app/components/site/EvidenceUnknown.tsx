@@ -26,7 +26,8 @@ export function EvidenceUnknown() {
       <div className="container">
         <SectionHead
           id="unknown-title"
-          kicker="06 · Evidence and UNKNOWN"
+          kicker="5.3 · Evidence and UNKNOWN"
+          level={3}
           title="UNKNOWN stays UNKNOWN."
           lede={
             <p>
@@ -36,6 +37,22 @@ export function EvidenceUnknown() {
             </p>
           }
         />
+
+        <ul className="evidenceDiscipline" aria-label="Evidence discipline">
+          <li>
+            <strong>Traceable.</strong> Every material assertion links to the evidence that supports it.
+          </li>
+          <li>
+            <strong>Conflicts stay visible.</strong> Contradicting evidence is recorded until it is reviewed, not averaged
+            away.
+          </li>
+          <li>
+            <strong>Bounded.</strong> Evidence holds for a stated scope and period, not beyond them.
+          </li>
+          <li>
+            <strong>Assumptions are labelled.</strong> Facts, inferences, assumptions and decisions are kept apart.
+          </li>
+        </ul>
 
         <div className="unknownLayout">
           <div className="unknownPanel">
@@ -62,7 +79,7 @@ export function EvidenceUnknown() {
           </div>
 
           <div id="evidence" className="evidencePanel">
-            <h3 className="subTitle">How evidence relates to an assertion</h3>
+            <h4 className="subTitle">How evidence relates to an assertion</h4>
             <ul className="relations" aria-label="Evidence relations, Artifact #6 §0.9, and the UNKNOWN state">
               {evidenceRelations.map((r) => (
                 <li key={r.key} className={`relation state-${r.key}`}>
@@ -85,7 +102,7 @@ export function EvidenceUnknown() {
         </div>
 
         <div className="grades">
-          <h3 className="subTitle">Evidence grades E0 to E5</h3>
+          <h4 className="subTitle">Evidence grades E0 to E5</h4>
           <p className="gradesNote">
             A grade says what kind of evidence it is. It does not say how confident anyone should be, and higher grades
             still hold only for the scope, period and conditions observed.
@@ -121,7 +138,7 @@ export function EvidenceUnknown() {
         </div>
 
         <div className="unknownStates">
-          <h3 className="subTitle">UNKNOWN is not Not Tested.</h3>
+          <h4 className="subTitle">UNKNOWN is not Not Tested.</h4>
           <p>They are distinct non-numeric result states with different meanings.</p>
           <div className="tableWrap" role="region" aria-label="UNKNOWN and Not Tested table" tabIndex={0}>
             <table className="dataTable">

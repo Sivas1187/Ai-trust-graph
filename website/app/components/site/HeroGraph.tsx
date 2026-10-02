@@ -1,16 +1,14 @@
 /**
- * Hero composition: one connected AI environment drawn as a graph.
- *
- * Eight object types (human, agent, model, tool, identity, data, provider,
- * business system), one trust boundary, and one authority assertion that is
- * unresolved and labelled UNKNOWN. Edges are typed and directed, but none of
- * them is presented as a proven or exploitable path; the caption says so.
- * Desktop and mobile use separately composed coordinates so labels stay
- * legible. The visible caption and the SVG title/desc carry the meaning.
+ * Hero motif: a quiet, decorative drawing of a connected AI environment
+ * (people, agents, models, tools, identities, data, providers and a business
+ * system across a trust boundary). It carries no relationship semantics and
+ * is hidden from assistive technology; the signature visual in section 4 is
+ * the meaningful, labelled graph. Hidden on small screens to keep the hero
+ * compact.
  */
 
 type N = { id: string; label: string[]; type: string; x: number; y: number; tone: string };
-type E = { from: string; to: string; label: string; unknown?: boolean; lx?: number; ly?: number };
+type E = { from: string; to: string; label: string; unknown?: boolean };
 type Layout = { w: number; h: number; nodes: N[]; boundary: { x1: number; y1: number; x2: number; y2: number; lx: number; ly: number; anchor: "start" | "end" | "middle" } };
 
 const edges: E[] = [
@@ -20,7 +18,7 @@ const edges: E[] = [
   { from: "agent", to: "data", label: "retrieves" },
   { from: "tool", to: "identity", label: "acts as" },
   { from: "model", to: "provider", label: "hosted by" },
-  { from: "identity", to: "business", label: "authority?", unknown: true },
+  { from: "identity", to: "business", label: "" },
 ];
 
 const desktop: Layout = {
@@ -39,22 +37,6 @@ const desktop: Layout = {
   boundary: { x1: 535, y1: 40, x2: 535, y2: 470, lx: 545, ly: 470, anchor: "start" },
 };
 
-const mobile: Layout = {
-  w: 360,
-  h: 560,
-  nodes: [
-    { id: "human", label: ["Human"], type: "actor", x: 60, y: 46, tone: "d5" },
-    { id: "agent", label: ["Agent"], type: "agent", x: 60, y: 176, tone: "d1" },
-    { id: "model", label: ["Model"], type: "model", x: 210, y: 96, tone: "d3" },
-    { id: "tool", label: ["Tool"], type: "tool", x: 210, y: 210, tone: "d2" },
-    { id: "data", label: ["Data"], type: "data", x: 60, y: 316, tone: "d6" },
-    { id: "identity", label: ["Identity"], type: "identity", x: 210, y: 330, tone: "d4" },
-    { id: "provider", label: ["Provider"], type: "provider", x: 310, y: 470, tone: "d3" },
-    { id: "business", label: ["Business", "system"], type: "system", x: 150, y: 480, tone: "d5" },
-  ],
-  boundary: { x1: 12, y1: 408, x2: 348, y2: 408, lx: 14, ly: 400, anchor: "start" },
-};
-
 function Graph({ layout, idSuffix, className }: { layout: Layout; idSuffix: string; className: string }) {
   const at = (id: string) => layout.nodes.find((n) => n.id === id)!;
   const r = 11;
@@ -62,15 +44,9 @@ function Graph({ layout, idSuffix, className }: { layout: Layout; idSuffix: stri
     <svg
       className={`heroGraph ${className}`}
       viewBox={`0 0 ${layout.w} ${layout.h}`}
-      role="img"
-      aria-labelledby={`hg-title-${idSuffix} hg-desc-${idSuffix}`}
+      aria-hidden="true"
+      focusable="false"
     >
-      <title id={`hg-title-${idSuffix}`}>An AI environment drawn as a graph</title>
-      <desc id={`hg-desc-${idSuffix}`}>
-        A human asks an agent. The agent prompts a model, invokes a tool and retrieves data. The tool acts as an identity.
-        The model is hosted by a provider across a trust boundary. Whether the identity has authority in the business
-        system on the other side of the boundary is unresolved and marked UNKNOWN.
-      </desc>
       <defs>
         <marker id={`hg-arrow-${idSuffix}`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M0 0 L10 5 L0 10 z" className="hgArrow" />
@@ -98,25 +74,10 @@ function Graph({ layout, idSuffix, className }: { layout: Layout; idSuffix: stri
           const y2 = b.y - uy * (r + 6);
           const mx = (x1 + x2) / 2;
           const my = (y1 + y2) / 2;
-          // On the wide layout the UNKNOWN edge crosses the vertical boundary at its midpoint:
-          // its label goes right of the line and its tag left of it, so neither sits on the boundary.
-          const wide = idSuffix === "d" && e.unknown;
-          const label = wide ? { x: mx + 14, y: my - 10, anchor: "start" as const } : { x: mx, y: my - 7, anchor: "middle" as const };
-          const tag = wide ? { x: mx - 48, y: my + 18 } : { x: mx, y: my + 16 };
           return (
             <g key={`${e.from}-${e.to}`} className={e.unknown ? "hgEdge hgEdgeUnknown" : "hgEdge"}>
               <line x1={x1} y1={y1} x2={x2} y2={y2} markerEnd={`url(#${e.unknown ? "hg-arrow-u" : "hg-arrow"}-${idSuffix})`} />
-              <text x={label.x} y={label.y} textAnchor={label.anchor} className="hgEdgeLabel">
-                {e.label}
-              </text>
-              {e.unknown && (
-                <g className="hgUnknownTag" transform={`translate(${tag.x} ${tag.y})`}>
-                  <rect x={-38} y={-11} width={76} height={22} rx={4} />
-                  <text y={4} textAnchor="middle">
-                    UNKNOWN
-                  </text>
-                </g>
-              )}
+
             </g>
           );
         })}
@@ -139,12 +100,8 @@ function Graph({ layout, idSuffix, className }: { layout: Layout; idSuffix: stri
 
 export function HeroGraph() {
   return (
-    <figure className="heroFigure">
+    <div className="heroFigure" aria-hidden="true">
       <Graph layout={desktop} idSuffix="d" className="heroGraphDesktop" />
-      <Graph layout={mobile} idSuffix="m" className="heroGraphMobile" />
-      <figcaption className="heroCaption">
-        Illustrative. A relationship drawn here is not, by itself, evidence that a path exists or can be exploited.
-      </figcaption>
-    </figure>
+    </div>
   );
 }
