@@ -37,7 +37,9 @@ export const links = {
   discussions: `${REPO_URL}/discussions`,
   contributing: blob("CONTRIBUTING.md"),
   reviewFindings: blob("REVIEW_FINDINGS.md"),
-  manifest: pinned("METHODOLOGY_MANIFEST.md"),
+  // The manifest is pinned at the commit that records the current gate status
+  // (§6.1), which may be newer than the bundle commit; artifact content is unchanged.
+  manifest: `${REPO_URL}/blob/${siteConfig.repository.manifestRef}/METHODOLOGY_MANIFEST.md`,
   roadmap: blob("ROADMAP.md"),
   license: pinned("LICENSE"),
   trademarks: blob("TRADEMARKS.md"),
@@ -479,16 +481,27 @@ export const authorityClasses = [
 export const breakpointEffects = ["Stop", "Constrain", "Detect", "Contain"];
 
 /**
- * Source: METHODOLOGY_MANIFEST.md §6 (validation status): the five external
- * release gates, verbatim except for the initial capital and list punctuation.
- * The manifest controls gate status; see `roadmapNote` for the ROADMAP difference.
+ * Source: METHODOLOGY_MANIFEST.md §6 (validation status): the external release
+ * gates still pending, verbatim except for the initial capital and list
+ * punctuation. check-claims compares this list with the manifest. The manifest
+ * controls gate status; see `roadmapNote` for the ROADMAP difference.
  */
 export const pendingGates = [
   "Independent methodology / architecture review",
   "Independent AI-security review",
   "Inter-assessor reproducibility study using the protocol in Artifact #10 Appendix B.4",
-  "Employer / IP / confidentiality review",
   "Legal approval of licence / trademark position",
+];
+
+/** Source: METHODOLOGY_MANIFEST.md §6.1 gate records (status, date and basis, verbatim). */
+export const closedGates = [
+  {
+    gate: "Employer / IP / confidentiality review",
+    status: "Closed by author declaration",
+    recorded: "2026-10-02",
+    basis:
+      "This is a self-declaration by the author. It is not an external legal review or opinion.",
+  },
 ];
 
 /**

@@ -43,6 +43,11 @@ export const siteConfig = {
      * commit; replace with the release tag once one exists).
      */
     bundleRef: "ec9b4571d96afdf1c423713349871459e1cf9b9b",
+    /**
+     * Commit at which METHODOLOGY_MANIFEST.md is linked: the commit that last
+     * changed the manifest's gate records. Update it whenever §6 changes.
+     */
+    manifestRef: "093b0a09c5fc364d15378702fe1a8b066d3e9753",
   },
   licence: {
     name: "CC BY 4.0",

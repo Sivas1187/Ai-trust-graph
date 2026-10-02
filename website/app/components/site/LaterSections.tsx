@@ -1,4 +1,5 @@
 import {
+  closedGates,
   changeReviewNote,
   limitation,
   links,
@@ -334,6 +335,15 @@ export function StatusReview() {
                 <li key={g}>
                   <span aria-hidden="true">○ </span>
                   {g}
+                </li>
+              ))}
+            </ul>
+            <h4 className="gatesSub">Closed through governance</h4>
+            <ul className="gates gatesClosed">
+              {closedGates.map((g) => (
+                <li key={g.gate}>
+                  <span aria-hidden="true">✓ </span>
+                  <strong>{g.gate}</strong>: {g.status} ({g.recorded}). {g.basis}
                 </li>
               ))}
             </ul>
