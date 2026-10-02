@@ -158,6 +158,8 @@ The author also chose to reserve the **"AI Trust Graph" name and any future logo
 
 **This does not close the gap.** Per this repository's own standing rule, choosing a license and drafting the trademark notice is not the same as clearing the employer/IP/confidentiality review that Manifesto Appendix B and this repository's own `ROADMAP.md` (Phase 2) require before the license choice is legally final. Both files are added and recorded here as candidates the author has approved for publication, not as a substitute for that review. **SECURITY.md remains outstanding** — see the follow-up item below.
 
+**Update — SECURITY.md added (2026-10-02):** The methodology author decided the disclosure process, and [`SECURITY.md`](SECURITY.md) records it: private reporting through GitHub's *Report a vulnerability* form for the repository, the website and the optional graph API Worker; methodology gaps stay public through the Methodology finding issue form; best-effort acknowledgement by a single maintainer (normally within 7 days); no bug bounty. Both files R-08 asked for are now present, so R-08 is resolved. The licence's legal approval remains a separate pending gate (METHODOLOGY_MANIFEST §6).
+
 ---
 
 ## R-09 — Evidence Model: generic internal-toolkit reference (Minor)
@@ -372,7 +374,7 @@ The author also chose to reserve the **"AI Trust Graph" name and any future logo
 
 ## Gaps
 
-Summarizing R-08 for quick reference: this repository was intentionally missing a **LICENSE** and a **SECURITY.md**, both called for by the Manifesto's own Appendix B. **LICENSE** (CC BY 4.0) and its companion **TRADEMARKS.md** have since been added, on the methodology author's explicit decision — see the R-08 update above. **SECURITY.md** remains missing and is still flagged rather than added, because drafting it responsibly requires the author to decide what a real disclosure process looks like, not just fill in a template.
+Summarizing R-08 for quick reference: this repository was intentionally missing a **LICENSE** and a **SECURITY.md**, both called for by the Manifesto's own Appendix B. **LICENSE** (CC BY 4.0) and its companion **TRADEMARKS.md** have since been added, on the methodology author's explicit decision — see the R-08 update above. **SECURITY.md** was then added on 2026-10-02, on the methodology author's decision about what the disclosure process is (see the R-08 update above), so R-08 is resolved.
 
 ## Summary table
 
@@ -385,7 +387,7 @@ Summarizing R-08 for quick reference: this repository was intentionally missing 
 | R-05 | Artifact precedence/dependency chain stated multiple ways | Should-fix | Resolved — canonical METHODOLOGY_MANIFEST.md; Domain Guides classified as future Extensions |
 | R-06 | Core Conceptual Model at v1.1 inside v1.0 candidate bundle | Blocking | Resolved — bundle 1.0-rc.1 manifest pins exact versions and Git blob SHAs |
 | R-07 | Every artifact shows "Pending" for all independent reviews | Blocking (by design) | Must remain accurate, not be softened |
-| R-08 | No LICENSE or SECURITY.md, though the Manifesto's own criteria require them | Blocking | LICENSE (CC BY 4.0) + TRADEMARKS.md added; SECURITY.md still open |
+| R-08 | No LICENSE or SECURITY.md, though the Manifesto's own criteria require them | Blocking | Resolved — LICENSE (CC BY 4.0) + TRADEMARKS.md added; SECURITY.md added 2026-10-02 |
 | R-09 | Evidence Model cites a generic "AI Security Assessment Toolkit" | Minor | Open — confirm during IP review |
 | R-10 | Governance Model cites real external standards (SAC, ISO/IEC 17021-1/17024/17065) | Should-fix | Open — confirm during legal review |
 | R-11 | Ontology Specification added as Artifact #12; exposed R-02/R-05/R-06 | Should-fix / Informational | Artifact added; R-02/R-05/R-06 resolved |

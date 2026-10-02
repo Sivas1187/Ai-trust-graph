@@ -72,7 +72,7 @@ If you're not sure whether something crosses this line, ask in your issue before
 
 ## Reporting a security issue
 
-There is currently no `SECURITY.md` in this repository — see [REVIEW_FINDINGS.md, R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking). Until one exists, do not open a public issue for anything you believe is a genuine vulnerability disclosure concern (as opposed to a methodology gap) — this applies to security issues in any future tooling built alongside the methodology, not to the methodology's subject matter itself, which is inherently about discussing AI security weaknesses in the abstract.
+Follow [SECURITY.md](SECURITY.md): report a vulnerability in the repository, the website or the graph API privately through GitHub's **Report a vulnerability** form, not in a public issue. A gap or weakness in the methodology itself is not a vulnerability; report it publicly with the Methodology finding issue form, since the methodology's subject matter is inherently about discussing AI security weaknesses in the abstract.
 
 ## Code of conduct
 

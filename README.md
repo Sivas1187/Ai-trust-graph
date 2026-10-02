@@ -1,20 +1,25 @@
 # AI Trust Graph
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23104503.svg)](https://doi.org/10.5281/zenodo.23104503)
+
 **An open methodology for assessing AI systems using graph-based trust, authority, evidence, controls, paths, governance, and security validation.**
 
 AI Trust Graph models an AI system's real exposure as a directed, labelled multigraph of identities, tools, data, and trust relationships — then assesses it through six domains, seventy-two canonical controls, an evidence-graded assurance model, and a non-compensating maturity scale. The methodology produces bounded, evidence-linked findings and a Path Exposure Index for triage. It does not produce a single trust score, and it does not certify anyone.
 
 > **What this is not.** AI Trust Graph is a methodology, not a product. It is not a certification program, not an accreditation body, not a legal opinion, and not a guarantee of safety or compliance. Version 1.0 defines certification *readiness*; it does not launch an operating certification scheme. See [Artifact #11 — Governance & Certification Model](docs/11-governance-and-certification-model.md).
 
+## Start here
+
+1. **Ten minutes:** the [website](https://aitrustgraph.org) explains the idea with a worked example, and the [interactive graph](https://aitrustgraph.org/graph/) lets you inspect a synthetic system relationship by relationship.
+2. **Half an hour:** the Abstract and Executive brief at the start of the [whitepaper](https://doi.org/10.5281/zenodo.23104503) summarise the whole methodology.
+3. **The canonical source:** read [Artifact #1 (Manifesto)](docs/01-manifesto.md), [#2 (Core Conceptual Model)](docs/02-core-conceptual-model.md) and [#12 (Ontology)](docs/12-ontology-specification.md), then #3 to #11 as needed (see [The twelve artifacts](#the-twelve-artifacts)).
+4. **Give feedback:** open a [Methodology finding](https://github.com/Sivas1187/Ai-trust-graph/issues/new?template=finding-report.yml) or [General feedback](https://github.com/Sivas1187/Ai-trust-graph/issues/new?template=general-feedback.yml) issue, or start a [Discussion](https://github.com/Sivas1187/Ai-trust-graph/discussions). Report security vulnerabilities privately, as described in [SECURITY.md](SECURITY.md).
+
 ## Status
 
 This repository is a **public-release candidate**. The methodology author's internal review is complete, and **independent architecture review, AI-security review, inter-assessor reproducibility validation, and licence/trademark approval are still pending.** The employer/IP/confidentiality gate is closed by author declaration (independent research, author-owned IP, no employer or client confidential information); that is a self-declaration, not an external legal review, and is recorded in [METHODOLOGY_MANIFEST.md §6.1](METHODOLOGY_MANIFEST.md#61-gate-records). The closing approval records inside the artifacts reflect the 1.0-rc.4 snapshot and still list that gate as pending; the manifest governs current gate status. An author-performed sensitivity analysis of the Path Exposure Index (Artifact #4 §6.5) is recorded in [METHODOLOGY_MANIFEST.md §6.2](METHODOLOGY_MANIFEST.md#62-release-acceptance-records); it is not an independent review, and it covers the PEI only. Nothing here should be treated as independently validated, finalized, endorsed, or ready for reliance until those gates close. The exact release-candidate artifact set, authority model, versions and Git blob pins are defined in [METHODOLOGY_MANIFEST.md](METHODOLOGY_MANIFEST.md). See [ROADMAP.md](ROADMAP.md) for what remains and [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md) for the pre-publication review record.
 
-One governance item the methodology's own publication-acceptance criteria calls for is **not yet present in this repository** and is flagged rather than silently added:
-
-- **SECURITY.md** — no vulnerability-disclosure process exists yet for the methodology repository itself (distinct from the AI-security *subject matter* the methodology assesses).
-
-A **LICENSE** (CC BY 4.0, see below) and **TRADEMARKS.md** have since been added — see [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md#gaps) for the full gap history and for why the remaining item is a gap rather than an omission.
+The repository files the methodology's own publication-acceptance criteria call for are now present: a **LICENSE** (CC BY 4.0, see below), **TRADEMARKS.md**, and **[SECURITY.md](SECURITY.md)**, which sets a private disclosure route for vulnerabilities in the repository and website (distinct from the AI-security *subject matter* the methodology assesses). See [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md#gaps) for the gap history.
 
 ## Whitepaper
 
@@ -91,6 +96,7 @@ ai-trust-graph/
 ├── CHANGELOG.md                — version history for this repository
 ├── CONTRIBUTING.md            — how to propose changes, and the review bar they must clear
 ├── CODE_OF_CONDUCT.md          — community conduct standard
+├── SECURITY.md                — how to report a vulnerability in the repository or website
 ├── REVIEW_FINDINGS.md          — independent ruthless-reviewer pass: inconsistencies, gaps, recommendations
 ├── whitepaper/                — whitepaper v1.0 (non-normative): source, published PDF, figures, build tooling
 ├── analysis/pei-sensitivity/  — author-performed PEI sensitivity analysis and reproducible script
