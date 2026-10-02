@@ -169,7 +169,7 @@ const semanticColourClass =
 const semanticColourRole = /risk-?(high|low|medium)|traffic|rag-?status|(maturity|grade|domain|phase|state|status|gate|evidence|level|tier|severity|score)-?colou?r/i;
 const coverProposition =
   "An open methodology for reasoning about connected AI systems through graph structure, controls and evidence.";
-const primaryNav = ["Method", "Domains", "Assurance", "Source", "GitHub"];
+const primaryNav = ["Method", "Domains", "Graph", "Assurance", "Source", "GitHub"];
 // Fragment targets of the in-page navigation items, in order (final visual-reset mapping:
 // Assurance opens the UNKNOWN → Evidence → Lifecycle sequence at #unknown).
 const primaryNavTargets = ["#flow", "#domains", "#unknown", "#methodology"];

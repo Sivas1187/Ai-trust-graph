@@ -31,14 +31,14 @@ As reported by the owner after the PR #8 launch (merge commit
 | HSTS | **Deliberately disabled** pending production stability verification. |
 | HSTS preload | **Must not be enabled.** |
 
-Environment variables: none required. `NEXT_TELEMETRY_DISABLED=1` is optional.
+Environment variables: none required by the static website. `NEXT_TELEMETRY_DISABLED=1` is optional.\n\nThe optional interactive `/graph/` route ships a bundled synthetic fallback and may query a same-origin `/graph-api/snapshot` endpoint. Neo4j credentials belong only to the separate `neo4j-worker/` Cloudflare Worker; they must never be exposed to the static site or browser.
 Build-time network access is needed for `npm ci` (npm registry) and `next/font` (Google
 Fonts API, build time only; fonts are then served from this site's own origin).
 
 ## What the site is
 
 - A fully static export (`out/`) produced by `next build` with `output: "export"`.
-- No backend, API routes, server actions, middleware or database.
+- The core site remains a static export with no Next.js API routes, server actions or middleware. The optional `/graph/` implementation view can use the separately deployed same-origin `neo4j-worker/`; without it, the bundled synthetic graph is shown.
 - No forms, authentication, cookies, web storage, analytics or third-party runtime
   requests.
 - No secrets are required to build or serve it.
