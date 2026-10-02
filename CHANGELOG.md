@@ -8,6 +8,9 @@ The format loosely follows [Keep a Changelog](https://keepachangelog.com/); date
 
 ## [Unreleased]
 
+### Changed
+- `METHODOLOGY_MANIFEST.md` §6: the employer / IP / confidentiality gate is closed by author declaration (2026-10-02) and recorded in the new §6.1 gate records. The record is a self-declaration by the methodology author, not an external legal review. The other four gates remain pending. `README.md` and `ROADMAP.md` updated to match. Artifact content and pins are unchanged.
+
 ### Added
 - [METHODOLOGY_MANIFEST.md](METHODOLOGY_MANIFEST.md): canonical repository-wide authority/dependency map, reading order, bundle identifier `1.0-rc.1`, and exact version/Git-blob pins for all twelve core artifacts plus the Phase 2 companion. Resolves R-05/R-06.
 - **Phase 2 formally opened.** `docs/13-reference-graph-schema-and-query-library.md`: a non-normative companion consolidating the ontology/control graph vocabulary and providing illustrative **GQL-style** query patterns informed by ISO/IEC 39075. The examples are not claimed as parser-validated ISO GQL. It carries no conformance weight and creates no dependency on ExposureGraph. See R-13/R-21.
