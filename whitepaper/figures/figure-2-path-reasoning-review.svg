@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="620" viewBox="0 0 1600 620">
+<style>text{font-family:Arial,sans-serif;fill:#111}.box{fill:#fff;stroke:#111;stroke-width:2}.edge{stroke:#111;stroke-width:2;fill:none}.dash{stroke:#111;stroke-width:2;stroke-dasharray:8 6;fill:none}.label{font-size:24px}.small{font-size:18px}.node{font-size:24px;text-anchor:middle}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#111"/></marker></defs>
+<rect x="40" y="210" rx="12" ry="12" width="240" height="120" class="box"/><text x="160" y="262" class="node"><tspan x="160">User</tspan><tspan x="160" dy="30">identity</tspan></text>
+<rect x="350" y="210" rx="12" ry="12" width="240" height="120" class="box"/><text x="470" y="262" class="node"><tspan x="470">AI</tspan><tspan x="470" dy="30">interface</tspan></text>
+<rect x="660" y="210" rx="12" ry="12" width="240" height="120" class="box"/><text x="780" y="262" class="node"><tspan x="780">Retriever /</tspan><tspan x="780" dy="30">agent</tspan></text>
+<rect x="970" y="210" rx="12" ry="12" width="240" height="120" class="box"/><text x="1090" y="262" class="node"><tspan x="1090">Privileged</tspan><tspan x="1090" dy="30">service</tspan></text>
+<rect x="1280" y="210" rx="12" ry="12" width="240" height="120" class="box"/><text x="1400" y="262" class="node"><tspan x="1400">Sensitive</tspan><tspan x="1400" dy="30">target</tspan></text>
+<line x1="280" y1="270" x2="350" y2="270" class="edge" marker-end="url(#arrow)"/><text x="315" y="190" text-anchor="middle" class="small">authenticated</text>
+<line x1="590" y1="270" x2="660" y2="270" class="edge" marker-end="url(#arrow)"/><text x="625" y="190" text-anchor="middle" class="small">retrieval allowed</text>
+<line x1="900" y1="270" x2="970" y2="270" class="edge" marker-end="url(#arrow)"/><text x="935" y="170" text-anchor="middle" class="small"><tspan x="935">delegated / inherited</tspan><tspan x="935" dy="23">authority</tspan></text>
+<line x1="1210" y1="270" x2="1280" y2="270" class="edge" marker-end="url(#arrow)"/><text x="1245" y="190" text-anchor="middle" class="small">target condition</text>
+<rect x="955" y="410" rx="12" ry="12" width="270" height="105" class="box"/><text x="1090" y="452" class="node"><tspan x="1090">Control breakpoint</tspan><tspan x="1090" dy="30" class="small">stop / constrain / detect / contain</tspan></text>
+<line x1="1090" y1="410" x2="1090" y2="330" class="dash" marker-end="url(#arrow)"/>
+</svg>
