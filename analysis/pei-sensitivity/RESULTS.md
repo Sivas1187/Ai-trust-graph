@@ -62,7 +62,7 @@ Smallest change in PEI points that would move each vector into another band:
 | 5 | 238 | 11.9% |
 | 6 or more | 684 | 34.2% |
 
-For comparison, the smallest one-point component move changes PEI by 2 (Amplification) and the largest by 4 (Consequence).
+For comparison, the smallest one-point component move changes PEI by 2 (Amplification) and the largest by 4 (Consequence). Skipping a band needs a change of at least 16 points (the narrowest band is 13 points wide), and a one-point change in every component at once changes PEI by at most 15, so no such change can move a path by more than one band. That bound is arithmetic, not empirical.
 
 Worst case for one-point assessor variance (the Artifact #10 B.4 tolerance): every component may differ by up to one point in either direction at the same time (up to 3^5 = 243 variants per vector).
 
@@ -74,28 +74,28 @@ Worst case for one-point assessor variance (the Artifact #10 B.4 tolerance): eve
 
 Band thresholds are held at the canonical 20 / 35 / 50 so that each row shows the effect of the weight change alone. 'Cross-band reversal': two paths in different baseline bands whose PEI order inverts. 'Major reversal': the same for paths two or more baseline bands apart. Kendall tau-b compares the full ordering of all vectors with the baseline ordering (1.000 = identical).
 
-Baseline: 1,189,528 cross-band pairs, of which 200,764 are two or more bands apart.
+Baseline: 1,189,528 cross-band pairs, of which 200,764 are two or more bands apart. Two paths two or more bands apart differ by at least 16 PEI points, so a weight alternative can reverse such a pair only if it can shift a pair's PEI difference by more than 16 points. The 'largest relative shift' column gives that bound for each alternative: where it is below the gap, a major reversal is arithmetically impossible, so a zero in the 'Major reversals' column is a property of the formula, not an empirical finding.
 
-| Weight alternative | Band changes | Largest band jump | Cross-band reversals | Major reversals | Kendall tau-b |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Consequence 4->3 | 400 (20.0%) | 1 | 3,936 (0.3%) | 0 | 0.937 |
-| Consequence 4->5 | 398 (19.9%) | 1 | 2,718 (0.2%) | 0 | 0.950 |
-| Reachability 3->2 | 335 (16.8%) | 1 | 2,392 (0.2%) | 0 | 0.947 |
-| Reachability 3->4 | 334 (16.7%) | 1 | 2,313 (0.2%) | 0 | 0.952 |
-| Authority 3->2 | 268 (13.4%) | 1 | 4,489 (0.4%) | 0 | 0.929 |
-| Authority 3->4 | 267 (13.3%) | 1 | 3,795 (0.3%) | 0 | 0.939 |
-| Amplification 2->1 | 200 (10.0%) | 1 | 2,718 (0.2%) | 0 | 0.946 |
-| Amplification 2->3 | 199 (9.9%) | 1 | 2,264 (0.2%) | 0 | 0.950 |
-| Control Resistance 3->2 | 268 (13.4%) | 1 | 4,489 (0.4%) | 0 | 0.929 |
-| Control Resistance 3->4 | 267 (13.3%) | 1 | 3,795 (0.3%) | 0 | 0.939 |
-| All equal (3,3,3,3,3) | 240 (12.0%) | 1 | 4,180 (0.4%) | 0 | 0.913 |
-| Drop Consequence (weight 0) | 1436 (71.8%) | 2 | 136,270 (11.5%) | 0 | 0.593 |
-| Drop Reachability (weight 0) | 996 (49.8%) | 1 | 39,306 (3.3%) | 0 | 0.785 |
-| Drop Authority (weight 0) | 800 (40.0%) | 1 | 67,639 (5.7%) | 0 | 0.715 |
-| Drop Amplification (weight 0) | 400 (20.0%) | 1 | 15,476 (1.3%) | 0 | 0.868 |
-| Drop Control Resistance (weight 0) | 800 (40.0%) | 1 | 67,639 (5.7%) | 0 | 0.715 |
+| Weight alternative | Band changes | Largest band jump | Pairs whose order inverts (all pairs) | Cross-band reversals | Major reversals | Largest relative shift (points) | Kendall tau-b |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Consequence 4->3 | 400 (20.0%) | 1 | 35,840 (1.8%) | 3,936 (0.3%) | 0 | 4 | 0.937 |
+| Consequence 4->5 | 398 (19.9%) | 1 | 28,710 (1.4%) | 2,718 (0.2%) | 0 | 4 | 0.950 |
+| Reachability 3->2 | 335 (16.8%) | 1 | 28,258 (1.4%) | 2,392 (0.2%) | 0 | 3 | 0.947 |
+| Reachability 3->4 | 334 (16.7%) | 1 | 25,153 (1.3%) | 2,313 (0.2%) | 0 | 3 | 0.952 |
+| Authority 3->2 | 268 (13.4%) | 1 | 44,029 (2.2%) | 4,489 (0.4%) | 0 | 4 | 0.929 |
+| Authority 3->4 | 267 (13.3%) | 1 | 36,673 (1.8%) | 3,795 (0.3%) | 0 | 4 | 0.939 |
+| Amplification 2->1 | 200 (10.0%) | 1 | 30,270 (1.5%) | 2,718 (0.2%) | 0 | 3 | 0.946 |
+| Amplification 2->3 | 199 (9.9%) | 1 | 26,232 (1.3%) | 2,264 (0.2%) | 0 | 3 | 0.950 |
+| Control Resistance 3->2 | 268 (13.4%) | 1 | 44,029 (2.2%) | 4,489 (0.4%) | 0 | 4 | 0.929 |
+| Control Resistance 3->4 | 267 (13.3%) | 1 | 36,673 (1.8%) | 3,795 (0.3%) | 0 | 4 | 0.939 |
+| All equal (3,3,3,3,3) | 240 (12.0%) | 1 | 33,060 (1.7%) | 4,180 (0.4%) | 0 | 7 | 0.913 |
+| Drop Consequence (weight 0) | 1436 (71.8%) | 2 | 364,274 (18.2%) | 136,270 (11.5%) | 0 | 16 | 0.593 |
+| Drop Reachability (weight 0) | 996 (49.8%) | 1 | 184,764 (9.2%) | 39,306 (3.3%) | 0 | 9 | 0.785 |
+| Drop Authority (weight 0) | 800 (40.0%) | 1 | 250,629 (12.5%) | 67,639 (5.7%) | 0 | 12 | 0.715 |
+| Drop Amplification (weight 0) | 400 (20.0%) | 1 | 104,788 (5.2%) | 15,476 (1.3%) | 0 | 6 | 0.868 |
+| Drop Control Resistance (weight 0) | 800 (40.0%) | 1 | 250,629 (12.5%) | 67,639 (5.7%) | 0 | 12 | 0.715 |
 
-'Drop' rows are diagnostic only: they show how much each component carries, not a reasonable alternative.
+'Drop' rows are diagnostic only: they show how much each component carries, not a reasonable alternative. Band thresholds stay at 20 / 35 / 50 although the PEI range shifts under some alternatives (for example 6-60 with equal weights), so 'Band changes' mixes the effect of reweighting with that range shift.
 
 Share of PEI variance carried by each weighted component over the uniform input space (components are independent in the enumeration, so shares add to 100%):
 
@@ -136,10 +136,10 @@ Threshold moves change band membership but never the PEI order, so they cause no
 
 Structural checks on the published rules, plus the width of the provisional range when one component becomes UNKNOWN (Artifact #4 §§4.4, 4.8; Artifact #10 P-CAL-09).
 
-- Confidence is not a PEI input: the formula has five components and no confidence term (§4.9); low confidence keeps the band provisional (§4.8). A downgrade in confidence therefore cannot change Consequence or any other component value.
+- Confidence is not a PEI input: the formula has five components and no confidence term (§4.9); low confidence keeps the band provisional (§4.8). A confidence downgrade therefore cannot change Consequence. Some component descriptors are themselves defined by evidence (for example Control Resistance 0, 'Validated block', and Reachability 3, 'Short validated route'), so weaker evidence can legitimately change those ratings; that is a rescoring of the evidenced scenario, not a change in consequence.
 - An UNKNOWN component removes the point PEI; a bounded provisional range MAY be shown (§§4.4, 4.8).
 
-| Component set to UNKNOWN | Provisional range width (points) | Vectors whose range spans more than one band | Share |
+| Component set to UNKNOWN | Provisional range width (points) | Combinations of the other four components whose range spans more than one band | Share |
 | --- | ---: | ---: | ---: |
 | Consequence | 16 | 400 of 400 | 100.0% |
 | Reachability | 9 | 300 of 500 | 60.0% |
@@ -152,6 +152,6 @@ Structural checks on the published rules, plus the width of the provisional rang
 | §6.5 test | Status for PEI |
 | --- | --- |
 | Coverage expansion | Applies to aggregates (coverage, attainment), not to the path formula. Not tested here. |
-| Gate activation | Critical overrides set a minimum band and take precedence over the arithmetic (§§4.10-4.11). Rule-level: no PEI value can lower an override floor. No numeric test needed. |
+| Gate activation | §6.5 asks whether cap logic prevents average masking, which concerns aggregates and maturity. The nearest path-formula analogue (an interpretation, not a §6.5 definition) is that critical overrides set a minimum band and take precedence over the arithmetic (§§4.10-4.11), so no PEI value can lower an override floor. Not tested numerically here. |
 | Reviewer variation | Requires independent assessors (Artifact #10 B.4). Section 2 gives only the arithmetic bound for one-point variance; the inter-assessor study remains a pending external gate. |
 

@@ -78,7 +78,7 @@ Leaders should expect, and insist on, five reading rules:
 - **Strong evidence is not good news.** Evidence grades E0 to E5 describe how well a claim is supported, not whether the result is favourable. Strong evidence can confirm that a control is not working; weak evidence cannot justify a strong assurance conclusion.
 - **Maturity is not an average.** Maturity M1 to M5 is cumulative, evidence-gated and non-compensating: advanced capability in one area does not compensate for a missing foundation.
 - **There is no overall trust score.** The methodology deliberately publishes none.
-- **PEI is for triage, not prediction.** The Path Exposure Index ranks determinate paths for attention. It does not prove exploitability, probability or loss. An author-performed sensitivity analysis found its ordering robust to reasonable weight changes but its bands sensitive at their edges, so the band should always be read with the underlying component profile.
+- **PEI is for triage, not prediction.** The Path Exposure Index ranks determinate paths for attention. It does not prove exploitability, probability or loss. An author-performed sensitivity analysis found that small changes to its weights reorder only a small share of paths, but that its bands are sensitive at their edges, so the band should always be read with the underlying component profile.
 
 ## 6. Where it fits
 

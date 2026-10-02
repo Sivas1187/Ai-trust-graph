@@ -156,6 +156,29 @@ def scenario(weights=WEIGHTS, cuts=CUTS):
     return scores, bands, changed, jump, cross, major
 
 
+def inverted_pairs(new_scores):
+    """All vector pairs whose strict baseline order is strictly inverted."""
+    inv = 0
+    n = len(new_scores)
+    for i in range(n):
+        bi, ni = BASE[i], new_scores[i]
+        for j in range(i + 1, n):
+            db = bi - BASE[j]
+            dn = ni - new_scores[j]
+            if (db > 0 and dn < 0) or (db < 0 and dn > 0):
+                inv += 1
+    return inv
+
+
+def max_relative_shift(weights):
+    """Largest change in the PEI difference of any pair under new weights.
+
+    The difference between two vectors changes by sum_c (w'_c - w_c)(x_c - y_c),
+    so its maximum is sum_c |w'_c - w_c| * (scale span of c).
+    """
+    return sum(abs(weights[c] - WEIGHTS[c]) * (max(SCALES[c]) - min(SCALES[c])) for c in COMPONENTS)
+
+
 # ---------------------------------------------------------------- tests
 
 out = []
@@ -251,7 +274,10 @@ for k in range(1, 7):
     label = f"{k}" if k < 6 else "6 or more"
     w(f"| {label} | {dist_to_cut[k]} | {pct(dist_to_cut[k], N)} |")
 w("")
-w("For comparison, the smallest one-point component move changes PEI by 2 (Amplification) and the largest by 4 (Consequence).")
+w("For comparison, the smallest one-point component move changes PEI by 2 (Amplification) and the largest by 4 (Consequence). "
+  "Skipping a band needs a change of at least 16 points (the narrowest band is 13 points wide), and a one-point change "
+  "in every component at once changes PEI by at most 15, so no such change can move a path by more than one band. "
+  "That bound is arithmetic, not empirical.")
 w("")
 
 # Worst-case reviewer variance: every component off by up to one point.
@@ -291,10 +317,16 @@ total_major_pairs = 0
 for bh in range(4):
     for bl in range(bh - 1):
         total_major_pairs += dist[bh] * dist[bl]
-w(f"Baseline: {total_cross_pairs:,} cross-band pairs, of which {total_major_pairs:,} are two or more bands apart.")
+min_gap_two_bands = min(abs(BASE[i] - BASE[j]) for i in range(N) for j in range(N) if abs(BASE_BAND[i] - BASE_BAND[j]) >= 2)
+total_pairs = N * (N - 1) // 2
+w(f"Baseline: {total_cross_pairs:,} cross-band pairs, of which {total_major_pairs:,} are two or more bands apart. "
+  f"Two paths two or more bands apart differ by at least {min_gap_two_bands} PEI points, so a weight alternative can "
+  f"reverse such a pair only if it can shift a pair's PEI difference by more than {min_gap_two_bands} points. The "
+  "'largest relative shift' column gives that bound for each alternative: where it is below the gap, a major reversal "
+  "is arithmetically impossible, so a zero in the 'Major reversals' column is a property of the formula, not an empirical finding.")
 w("")
-w("| Weight alternative | Band changes | Largest band jump | Cross-band reversals | Major reversals | Kendall tau-b |")
-w("| --- | ---: | ---: | ---: | ---: | ---: |")
+w("| Weight alternative | Band changes | Largest band jump | Pairs whose order inverts (all pairs) | Cross-band reversals | Major reversals | Largest relative shift (points) | Kendall tau-b |")
+w("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |")
 alts = []
 for c in COMPONENTS:
     for d in (-1, 1):
@@ -310,11 +342,15 @@ summary_weights = []
 for label, nw in alts:
     scores, bands, changed, jump, cross, major = scenario(nw)
     tau = kendall_tau_b(BASE, scores)
+    inv = inverted_pairs(scores)
+    shift = max_relative_shift(nw)
     summary_weights.append((label, changed, jump, cross, major, tau))
-    w(f"| {label} | {changed} ({pct(changed, N)}) | {jump} | {cross:,} ({pct(cross, total_cross_pairs)}) | "
-      f"{major:,} | {tau:.3f} |")
+    w(f"| {label} | {changed} ({pct(changed, N)}) | {jump} | {inv:,} ({pct(inv, total_pairs)}) | "
+      f"{cross:,} ({pct(cross, total_cross_pairs)}) | {major:,} | {shift} | {tau:.3f} |")
 w("")
-w("'Drop' rows are diagnostic only: they show how much each component carries, not a reasonable alternative.")
+w("'Drop' rows are diagnostic only: they show how much each component carries, not a reasonable alternative. "
+  "Band thresholds stay at 20 / 35 / 50 although the PEI range shifts under some alternatives (for example 6-60 with "
+  "equal weights), so 'Band changes' mixes the effect of reweighting with that range shift.")
 w("")
 
 # Variance share.
@@ -367,11 +403,13 @@ w("Structural checks on the published rules, plus the width of the provisional r
   "component becomes UNKNOWN (Artifact #4 §§4.4, 4.8; Artifact #10 P-CAL-09).")
 w("")
 w("- Confidence is not a PEI input: the formula has five components and no confidence term (§4.9); "
-  "low confidence keeps the band provisional (§4.8). A downgrade in confidence therefore cannot change "
-  "Consequence or any other component value.")
+  "low confidence keeps the band provisional (§4.8). A confidence downgrade therefore cannot change Consequence. "
+  "Some component descriptors are themselves defined by evidence (for example Control Resistance 0, 'Validated block', "
+  "and Reachability 3, 'Short validated route'), so weaker evidence can legitimately change those ratings; that is a "
+  "rescoring of the evidenced scenario, not a change in consequence.")
 w("- An UNKNOWN component removes the point PEI; a bounded provisional range MAY be shown (§§4.4, 4.8).")
 w("")
-w("| Component set to UNKNOWN | Provisional range width (points) | Vectors whose range spans more than one band | Share |")
+w("| Component set to UNKNOWN | Provisional range width (points) | Combinations of the other four components whose range spans more than one band | Share |")
 w("| --- | ---: | ---: | ---: |")
 for ci, c in enumerate(COMPONENTS):
     width = WEIGHTS[c] * (max(SCALES[c]) - min(SCALES[c]))
@@ -399,8 +437,9 @@ w("")
 w("| §6.5 test | Status for PEI |")
 w("| --- | --- |")
 w("| Coverage expansion | Applies to aggregates (coverage, attainment), not to the path formula. Not tested here. |")
-w("| Gate activation | Critical overrides set a minimum band and take precedence over the arithmetic (§§4.10-4.11). "
-  "Rule-level: no PEI value can lower an override floor. No numeric test needed. |")
+w("| Gate activation | §6.5 asks whether cap logic prevents average masking, which concerns aggregates and maturity. The nearest "
+  "path-formula analogue (an interpretation, not a §6.5 definition) is that critical overrides set a minimum band and take "
+  "precedence over the arithmetic (§§4.10-4.11), so no PEI value can lower an override floor. Not tested numerically here. |")
 w("| Reviewer variation | Requires independent assessors (Artifact #10 B.4). Section 2 gives only the arithmetic "
   "bound for one-point variance; the inter-assessor study remains a pending external gate. |")
 w("")
