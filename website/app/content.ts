@@ -38,7 +38,7 @@ export const links = {
   contributing: blob("CONTRIBUTING.md"),
   reviewFindings: blob("REVIEW_FINDINGS.md"),
   // The manifest is pinned at the commit that records the current gate status
-  // (§6.1), which may be newer than the bundle commit; artifact content is unchanged.
+  // (§6.1, §6.2), which may be newer than the bundle commit; artifact content is unchanged.
   manifest: `${REPO_URL}/blob/${siteConfig.repository.manifestRef}/METHODOLOGY_MANIFEST.md`,
   roadmap: blob("ROADMAP.md"),
   license: pinned("LICENSE"),
