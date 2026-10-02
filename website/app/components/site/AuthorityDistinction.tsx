@@ -1,4 +1,5 @@
 import { authorityClasses, breakpointEffects, distinctAssertions, links, pathRoles, pathValidationStates } from "../../content";
+import { breakpointEffectDetail, breakpointQuestions } from "../../site-content";
 import { Detail, Ext, SectionHead, SourceNote } from "./Primitives";
 
 /**
@@ -82,12 +83,48 @@ export function AuthorityDistinction() {
               constrain, detect or contain a path.
             </p>
             <ul className="effectList" aria-label="Breakpoint effects">
-              {breakpointEffects.map((e) => (
-                <li key={e} className={`effect effect-${e.toLowerCase()}`}>
-                  {e}
-                </li>
-              ))}
+              {breakpointEffects.map((e) => {
+                const d = breakpointEffectDetail[e as keyof typeof breakpointEffectDetail];
+                return (
+                  <li key={e} className={`effect effect-${e.toLowerCase()}`}>
+                    <details className="effectDetails">
+                      <summary>
+                        <span className="effectName">{e}</span>
+                        <span className="effectGloss">{d.gloss}</span>
+                      </summary>
+                      <div className="effectBody">
+                        {d.canonical && (
+                          <p className="effectCanon">
+                            <span className="miniLabel">{d.canonical.source}</span>
+                            {d.canonical.text}
+                          </p>
+                        )}
+                        <p className="effectExample">
+                          <span className="miniLabel">Synthetic example</span>
+                          {d.example}
+                        </p>
+                      </div>
+                    </details>
+                  </li>
+                );
+              })}
             </ul>
+            <p className="effectNote">
+              The artifacts define the four effects together, not one by one. The one-line explanations are website
+              explanation. For every effect the Artifact #12 caveat applies:{" "}
+              <q>Effectiveness must be validated before claiming the path is controlled.</q>
+            </p>
+            <div className="bpQuestions">
+              <p className="miniLabel">Where to look for breakpoints</p>
+              <dl>
+                {breakpointQuestions.map((q) => (
+                  <div key={q.question}>
+                    <dt>{q.question}</dt>
+                    <dd>{q.purpose}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
             <Detail className="pathStates">
               <p className="miniLabel">Path states</p>
               <ul className="chipList chipListQuiet" aria-label="Path validation states, Artifact #2 §6.3">
@@ -111,7 +148,7 @@ export function AuthorityDistinction() {
 
         <SourceNote>
           <Ext href={ccm}>Artifact #2 · Core Conceptual Model</Ext> §3.6 separation rule, §5.2 authority classes, §1.8 and
-          §6.6 breakpoint definition, §6.3 path states and roles (quoted text verbatim). The six assertions and their
+          §6.6 breakpoint definition and breakpoint questions, §5.13 containment, §6.3 path states and roles (quoted text verbatim); the BREAKS_PATH caveat from Artifact #12. The six assertions and their
           one-line descriptions are a website illustration of the §3.6 rule, not a canonical list.
         </SourceNote>
       </div>
