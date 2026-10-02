@@ -22,7 +22,8 @@ WITH
     label: n.label,
     summary: n.summary,
     x: n.displayX,
-    y: n.displayY
+    y: n.displayY,
+    labelAt: n.displayLabelAt
   }) AS nodes,
   collect(DISTINCT CASE WHEN r IS NULL THEN null ELSE {
     id: r.id,

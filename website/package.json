@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build && node scripts/finalize-headers.mjs",
     "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && npm run build && node scripts/check-links.mjs && node scripts/check-claims.mjs && node scripts/check-headers.mjs"
+    "check": "npm run typecheck && npm run build && node scripts/check-links.mjs && node scripts/check-claims.mjs && node scripts/check-graph.mjs && node scripts/check-headers.mjs"
   },
   "dependencies": {
     "next": "16.3.7",
