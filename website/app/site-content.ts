@@ -235,3 +235,46 @@ export const artifactGroups: { key: ArtifactGroup; label: string; note: string }
   { key: "execution", label: "Execution", note: "How an assessment is run and reported." },
   { key: "supporting", label: "Supporting", note: "Worked cases, governance and an implementation companion." },
 ];
+
+/**
+ * Control breakpoint effects (5.2). The canonical artifacts define the four
+ * effects only together: Artifact #2 §1.8 / §6.6 and Artifact #12 §9.5 ("stop,
+ * constrain, detect or contain a path"). They do not define each one
+ * separately, so:
+ * - `gloss` is EDITORIAL plain-language explanation (not a definition);
+ * - `canonical` is filled only where an artifact has its own text: Contain,
+ *   Artifact #2 §5.13 (verbatim sentence and question);
+ * - `example` is SYNTHETIC, from the procurement scenario used on the page.
+ */
+export const breakpointEffectDetail: Record<
+  "Stop" | "Constrain" | "Detect" | "Contain",
+  { gloss: string; canonical?: { text: string; source: string }; example: string }
+> = {
+  Stop: {
+    gloss: "Progression past the breakpoint is blocked.",
+    example: "A human approval step that refuses a purchase request before the procurement tool submits it.",
+  },
+  Constrain: {
+    gloss: "Progression continues only within narrower scope or conditions.",
+    example: "A spend limit on the service identity, so requests above a value cannot be committed.",
+  },
+  Detect: {
+    gloss: "Progression is observed and raises a signal for response.",
+    example: "An alert when the agent creates purchase requests outside its usual suppliers or volumes.",
+  },
+  Contain: {
+    gloss: "Downstream effect is isolated or limited.",
+    canonical: {
+      text: "Containment limits ongoing effect. Can active or queued effects be isolated or stopped?",
+      source: "Artifact #2 §5.13",
+    },
+    example: "Holding queued purchase requests and suspending the service identity while an event is investigated.",
+  },
+};
+
+/** Breakpoint questions, Artifact #2 §6.6 table (verbatim). */
+export const breakpointQuestions = [
+  { question: "Where does authority increase?", purpose: "Target the transition that creates new capability." },
+  { question: "Where is context lost?", purpose: "Restore identity, policy or data semantics." },
+  { question: "Where do paths converge?", purpose: "Apply a high-leverage shared control." },
+] as const;

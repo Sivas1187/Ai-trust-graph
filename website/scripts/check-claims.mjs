@@ -402,7 +402,22 @@ const authority = section(index, "authority");
 inOrder("distinct assertions", all(authority, /<p class="assertionName">([\s\S]*?)<\/p>/g), assertions);
 if (/<ol class="assertions"/.test(authority)) fail("index.html: the six assertions are an ordered list (they are not a sequence)");
 inOrder("authority classes", all(authority.match(/<ul class="chipList" aria-label="Authority classes[\s\S]*?<\/ul>/)?.[0] ?? "", /<li class="chip">([\s\S]*?)<\/li>/g), authorityClasses);
-inOrder("breakpoint effects", all(authority, /<li class="effect [^"]*">([\s\S]*?)<\/li>/g), breakpointEffects);
+inOrder("breakpoint effects", all(authority, /<span class="effectName">([\s\S]*?)<\/span>/g), breakpointEffects);
+// Each effect is a native disclosure; explanations are labelled as website explanation, Contain carries
+// its own canonical text (#2 §5.13), and the shared BREAKS_PATH caveat and §6.6 questions are present.
+if ((authority.match(/<details class="effectDetails">/g) ?? []).length !== 4) fail("index.html: the four breakpoint effects are not expandable disclosures");
+{
+  const t = visible(authority);
+  for (const p of [
+    "The artifacts define the four effects together, not one by one.",
+    "Containment limits ongoing effect. Can active or queued effects be isolated or stopped?",
+    "Effectiveness must be validated before claiming the path is controlled.",
+    "Where does authority increase?", "Target the transition that creates new capability.",
+    "Where is context lost?", "Restore identity, policy or data semantics.",
+    "Where do paths converge?", "Apply a high-leverage shared control.",
+  ]) has("#authority breakpoints", t, p);
+  if ((t.match(/Synthetic example/g) ?? []).length !== 4) fail("index.html: every breakpoint example must be labelled synthetic");
+}
 inOrder("path states", all(authority.match(/aria-label="Path validation states[\s\S]*?<\/ul>/)?.[0] ?? "", /<li class="chip">([\s\S]*?)<\/li>/g), pathStates);
 
 // Evidence and UNKNOWN.

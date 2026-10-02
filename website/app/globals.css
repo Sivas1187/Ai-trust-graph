@@ -2058,30 +2058,87 @@ main:focus {
 .effectList {
   margin-top: var(--sp-4);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-}
-@media (min-width: 600px) {
-  .effectList {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  gap: 6px;
 }
 .effect {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
   border-radius: var(--r-md);
   background: var(--navy-800);
   border: 1px solid var(--line-dark);
-  font-weight: 600;
+  border-left: 4px solid var(--d4-bright);
 }
-.effect::before {
-  content: "";
-  width: 4px;
-  height: 18px;
-  border-radius: 2px;
-  background: var(--d4-bright);
+.effectDetails summary {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 2px 12px;
+  align-items: center;
+  min-height: 48px;
+  padding: 10px 14px;
+  cursor: pointer;
+  list-style: none;
+}
+.effectDetails summary::-webkit-details-marker {
+  display: none;
+}
+.effectDetails summary::before {
+  content: "+";
+  grid-row: span 2;
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  line-height: 1;
+}
+.effectDetails[open] > summary::before {
+  content: "−";
+}
+.effectName {
+  font-weight: 700;
+  color: var(--white);
+}
+.effectGloss {
+  grid-column: 2;
+  font-size: var(--fs-small);
+  color: var(--on-dark-2);
+}
+.effectBody {
+  display: grid;
+  gap: var(--sp-3);
+  padding: 0 14px 14px 48px;
+  font-size: var(--fs-small);
+}
+.effectBody .miniLabel {
+  margin-bottom: 2px;
+}
+.effectCanon {
+  padding-left: var(--sp-3);
+  border-left: 2px solid var(--d1-bright);
+  color: var(--on-dark);
+}
+.effectExample {
+  color: var(--on-dark-2);
+}
+.effectNote {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-small);
+  color: var(--on-dark-2);
+}
+.bpQuestions {
+  margin-top: var(--sp-5);
+}
+.bpQuestions dl {
+  display: grid;
+  gap: var(--sp-2);
+  font-size: var(--fs-small);
+}
+.bpQuestions dt {
+  font-weight: 650;
+  color: var(--white);
+}
+.bpQuestions dd {
+  color: var(--on-dark-2);
 }
 .pathStates {
   margin-top: var(--sp-5);
