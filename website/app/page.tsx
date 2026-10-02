@@ -15,7 +15,7 @@ import { UnknownAssurance } from "./components/UnknownAssurance";
 import { links } from "./content";
 
 /**
- * Visual-reset navigation (final): Method · Domains · Assurance · Source · GitHub.
+ * Primary navigation: Method · Domains · Graph · Assurance · Source · GitHub.
  *   Method    → #flow        the reasoning act (Act III);
  *   Domains   → #domains     the six-domain lens;
  *   Assurance → #unknown     the first section of the UNKNOWN → Evidence →
@@ -29,6 +29,7 @@ import { links } from "./content";
 const navItems: NavItem[] = [
   { href: "#flow", label: "Method" },
   { href: "#domains", label: "Domains" },
+  { href: "/graph/", label: "Graph" },
   { href: "#unknown", label: "Assurance" },
   { href: "#methodology", label: "Source" },
   { href: links.repo, label: "GitHub", srSuffix: "(canonical source)", external: true },

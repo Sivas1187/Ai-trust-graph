@@ -1,0 +1,7 @@
+name = "ai-trust-graph-graph-api"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[vars]
+NEO4J_DATABASE = "neo4j"
