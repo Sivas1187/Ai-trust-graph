@@ -99,7 +99,9 @@ export function Publications() {
           </h3>
           {publication.subtitle && <p className="pubSubtitle">{publication.subtitle}</p>}
           <p className="pubAuthor">{publication.author}</p>
-          <p>{published ? publication.abstract : publication.scope}</p>
+          {(published ? publication.abstract : publication.scope).split("\n\n").map((para) => (
+            <p key={para.slice(0, 32)}>{para}</p>
+          ))}
           {published && c ? (
             <>
               <p className="pubActions">

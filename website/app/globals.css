@@ -3225,9 +3225,14 @@ main:focus {
   display: grid;
   gap: var(--sp-4);
 }
+.citeList > div,
+.citeList dd {
+  min-width: 0;
+}
 .citeList pre {
   margin-top: 6px;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
   padding: var(--sp-3);
   border-radius: var(--r-md);
   background: var(--navy-950);
@@ -3613,6 +3618,10 @@ main:focus {
   .pubFacts div {
     grid-template-columns: 14em 1fr;
   }
+}
+.pubFacts dd {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .pubFacts dt {
   color: var(--on-dark-2);
