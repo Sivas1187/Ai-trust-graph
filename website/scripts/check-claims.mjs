@@ -217,7 +217,7 @@ const required = {
     "What cannot yet be defended",
     "Remaining UNKNOWNs",
   ],
-  publications: ["AI Trust Graph Methodology v1.0", "Siva Sethumadhavan"],
+  publications: ["AI Trust Graph: A Graph-Driven, Evidence-Based Methodology for AI Assurance v1.0", "Siva Sethumadhavan"],
   author: [
     "Siva Sethumadhavan",
     "Independent researcher and author of AI Trust Graph",
@@ -260,6 +260,8 @@ const allowed = [
   /not a certification program, an accreditation body, a legal opinion, or a guarantee of AI security, safety or compliance/gi,
   /\bnot independently validated\b/gi,
   /no single overall trust score/gi,
+  // The whitepaper's own abstract (Publications section, published state).
+  /does not produce a universal trust score/gi,
   /not yet published or peer reviewed/gi,
   /Possible\s*≠?\s*(is not\s*)?Proven/gi,
 ];
@@ -481,7 +483,7 @@ for (const fact of [rel.bundle, rel.status, rel.snapshot]) has("#status release 
 
 // "product" only in negated form.
 for (const m of indexText.matchAll(/[^.]*\bproducts?\b[^.]*\./gi)) {
-  if (!/\bnot (a|separate) products?\b|not a product/i.test(m[0])) fail(`index.html: "product" used outside a negation: "${m[0].trim()}"`);
+  if (!/\bnot (a|separate) products?\b|not a product|\bproduct-independent\b/i.test(m[0])) fail(`index.html: "product" used outside a negation: "${m[0].trim()}"`);
 }
 
 if (errors.length) {

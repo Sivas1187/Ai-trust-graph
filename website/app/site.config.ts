@@ -88,28 +88,31 @@ export const siteConfig = {
    * and scholarly metadata while the status is "in-preparation".
    */
   publication: {
-    status: "in-preparation" as "in-preparation" | "published",
-    title: "AI Trust Graph Methodology",
-    subtitle: "",
+    status: "published" as "in-preparation" | "published",
+    /** Title, subtitle and version exactly as on the Zenodo record and the PDF cover. */
+    title: "AI Trust Graph: A Graph-Driven, Evidence-Based Methodology for AI Assurance",
+    subtitle: "Reasoning about trust, authority, paths, controls, evidence, and accountable decisions across connected AI systems",
     version: "1.0",
     author: "Siva Sethumadhavan",
     scope:
       "The whitepaper will consolidate the methodology into one citable document: why it exists, the reasoning model, the authority and evidence discipline, the six assurance domains, the assessment lifecycle and the stated limitations. Until it is published, the versioned artifacts on GitHub are the reference.",
-    abstract: "",
-    publishedDate: "",
-    doi: "",
-    zenodoUrl: "",
-    pdfUrl: "",
-    fileSize: "",
+    /** The paper's own Abstract (whitepaper/AI-Trust-Graph-Whitepaper-v1.0.md); paragraphs separated by a blank line. */
+    abstract:
+      "AI systems increasingly operate as connected systems of identities, models, agents, tools, data, providers, workflows and human decision points. In such environments, consequential exposure can emerge from composition rather than from one component in isolation. AI Trust Graph (ATG) is an open, vendor-neutral and product-independent methodology for representing and assessing those connected relationships as a directed, labelled multigraph.\n\nATG follows a single canonical reasoning chain: Objects → Relationships → Conditions → Paths → Authority and Influence → Consequence → Controls → Evidence → Decision. It organizes assessment across six domains and seventy-two canonical controls, while keeping evidence strength, control effectiveness, maturity, path exposure and uncertainty distinct. UNKNOWN is preserved when evidence is absent, insufficient or materially conflicting; it is not converted into zero, pass, fail, effectiveness, Not Applicable or Not Tested.\n\nThe methodology does not produce a universal trust score. Its Path Exposure Index (PEI) may be used for triage only, and a final point PEI is published only for determinate eligible active paths; it does not prove exploitability, probability or loss. Maturity is cumulative, evidence-gated and non-compensating rather than averaged.\n\nThis whitepaper is a non-normative narrative synthesis of methodology bundle 1.0-rc.4. It explains the graph model, trust, authority and influence, path states and roles, control breakpoints, evidence discipline, assessment lifecycle, scoring boundaries, reporting, governance and current limitations. Historical reference cases are identified as such; current scoring mechanics are illustrated only with calibration vectors explicitly evaluated under rc.4.",
+    publishedDate: "2026-10-02",
+    doi: "10.5281/zenodo.23104503",
+    zenodoUrl: "https://zenodo.org/records/23104503",
+    /** File name as uploaded; MD5 6e8c075c3489cbf50169f8fe8fcce66c matches the reviewed PDF on main. */
+    pdfUrl: "https://zenodo.org/records/23104503/files/AI-Trust-Graph-Whitepaper-v1.0.pdf?download=1",
+    fileSize: "679 KB",
     /**
      * Author's licence decision for the whitepaper (2026-10-02): CC BY 4.0, the
-     * same licence as the methodology text. This is the author's choice, not the
-     * legal approval of the licence / trademark position, which stays a pending
-     * gate in METHODOLOGY_MANIFEST §6. Shown as the licence on publication while
-     * the whitepaper is in preparation.
+     * same licence as the methodology text and the licence of the Zenodo record.
+     * This is the author's choice, not the legal approval of the licence /
+     * trademark position, which stays a pending gate in METHODOLOGY_MANIFEST §6.
      */
     licence: "CC BY 4.0",
-    pdfSha256: "",
+    pdfSha256: "896feab2419c8412ca5a83835b02f185df56c88eef64879ccb9221183cf26156",
     citationOverrides: { apa: "", ieee: "", bibtex: "" },
     versions: [] as { version: string; date: string; doi: string; note?: string }[],
   },
