@@ -81,7 +81,7 @@ note naming the artifact and section and saying which text is verbatim.
 | 5.6 Worked example `#example` | Vocabulary from #12, #6, #4 §0.5, #2 §6.3 and §7.4 | Entire scenario (synthetic, labelled) |
 | 6 Artifacts `#artifacts` | METHODOLOGY_MANIFEST §2, §4; README; artifact headers | Grouping, filters, source register |
 | 7 Publications `#publications` | `app/site.config.ts` publication record | Scope note while in preparation |
-| 8 About the author `#author` | Artifact approval tables, LICENSE | Role, summary, independence statement (pending approved wording) |
+| 8 About the author `#author` | Artifact approval tables, LICENSE | Role, summary, independence statement (author-approved) |
 | Review and status `#status`, `#review` | METHODOLOGY_MANIFEST header and §6; README; CONTRIBUTING | Review invitation |
 | Footer | METHODOLOGY_MANIFEST header; LICENSE; TRADEMARKS | Independence statement |
 

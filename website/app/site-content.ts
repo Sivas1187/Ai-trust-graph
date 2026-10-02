@@ -29,11 +29,9 @@ export const author = {
     "The methodology draws on practitioner experience across cybersecurity, security architecture, AI governance, risk and assurance. It is published openly so that its reasoning can be examined, challenged and improved.",
   ],
   /**
-   * Independence statement. EDITORIAL: the concept wording supplied in the
-   * narrative brief. No legally approved statement exists in the repository,
-   * and METHODOLOGY_MANIFEST §6 lists the employer / IP / confidentiality
-   * review as pending, so this names no employer and claims no clearance.
-   * Replace with the approved wording once that gate closes.
+   * Independence statement. Approved by the methodology author (2026-10-02)
+   * as the author's own statement about the author's own research. It is not
+   * a legal opinion, names no employer and claims no external clearance.
    */
   independence:
     "AI Trust Graph is an independent research initiative. The methodology and views expressed are the author’s own and do not imply endorsement by any employer or client.",

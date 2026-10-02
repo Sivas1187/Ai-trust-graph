@@ -153,10 +153,10 @@ where a reader following an old "problem" link expects to land.
     logos. Only the verified GitHub profile is linked; LinkedIn, ORCID and
     Zenodo appear automatically once verified URLs are added to
     `app/site-content.ts`.
-18. **Independence statement is editorial, not legal.** METHODOLOGY_MANIFEST
-    §6 lists the employer / IP / confidentiality review as pending, so the
-    statement names no employer and claims no clearance. Replace it with
-    approved wording when that gate closes.
+18. **Independence statement is the author's own statement.** The
+    methodology author approved the wording (2026-10-02) as a statement about
+    their own independent research. It is not a legal opinion, names no
+    employer and claims no external clearance.
 
 ## 4. Tokens
 
@@ -188,5 +188,5 @@ queries): 600px, 768px, 900px, 1024px, 960px (navigation), 1280px.
   lists legal approval as pending. The site follows the manifest and states
   the difference.
 - The brief's evidence-state vocabulary is not canonical (decision 5).
-- No verified LinkedIn, ORCID or Zenodo URL and no approved independence
-  wording exist yet (decisions 17 and 18).
+- No verified LinkedIn, ORCID or Zenodo URL exists yet (decision 17). The
+  Zenodo profile follows the whitepaper upload.

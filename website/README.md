@@ -76,8 +76,9 @@ result against the manifest and the claims rules.
   rendered. `check-claims` rejects author-section links other than the
   verified GitHub profile until the guard's allow-list is updated with the
   new verified URL.
-- **Independence statement.** Replace `author.independence` with the approved
-  legal wording once the employer / IP / confidentiality gate closes.
+- **Independence statement.** `author.independence` in `app/site-content.ts`
+  is the author-approved statement. Change it only on the author's
+  instruction.
 - **Canonical text.** Correct CANONICAL entries only to match the pinned
   artifact. EDITORIAL text follows the writing rules: British English, no em
   dashes, no marketing vocabulary (enforced by `check-claims`).
