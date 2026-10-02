@@ -583,7 +583,7 @@ Artifact #10 asks: **Which conclusion changes if the weakest evidence item is re
 
 ### 11.3 Calibration lens: unresolved reachability
 
-P-CAL-09 provides the canonical rc.4 treatment for a path whose reachability component is UNKNOWN. With C=4, R=UNKNOWN, A=3, Am=2 and CR=2, **no final point PEI is permitted**. If decision-useful, an explicit provisional range of 38-47 may be shown. UNKNOWN is not encoded as zero [ATG-10 B.1].
+P-CAL-09 provides the canonical rc.4 treatment for a path whose reachability component is UNKNOWN. With C=4, R=UNKNOWN, A=3, Am=2 and CR=2, **no final point PEI is permitted**. If decision-useful, an explicit provisional range of 38-47 (Reachability 1-4, all other components determinate) may be shown. UNKNOWN is not encoded as zero [ATG-10 B.1].
 
 Applied as a teaching lens to the knowledge-copilot architecture, a missing representative authorization test could therefore constrain the reachability claim rather than being converted into an apparently precise PEI.
 
@@ -595,13 +595,13 @@ For a retrieval system, this means validating one authorization path does not es
 
 ### 11.5 Calibration lens: evidence sufficiency can support adverse conclusions
 
-S-CAL-05 demonstrates an evidence gap. E3 design documentation is sufficient for a design claim but E3-only implementation evidence cannot finalize implementation; the control conclusion remains UNKNOWN and the finding is an Evidence Gap [ATG-10 B.5].
+S-CAL-05 demonstrates an evidence gap. An approved E3 policy is sufficient for the design claim, but an E3 procedure document cannot finalize implementation; the control conclusion remains UNKNOWN and the finding is an Evidence Gap [ATG-10 B.5].
 
 S-CAL-07c demonstrates the converse. An E5 representative bypass test is relied upon for an adverse operating-effectiveness claim. The supported operating-effectiveness score is 1, the overall supported result is 1, and the finding is a Control Deficiency with Medium confidence. High-grade evidence therefore **confirms the adverse state** rather than inflating the effectiveness score.
 
 ### 11.6 Calibration lens: maturity cannot average away weak foundations
 
-M-CAL-02 provides the current non-compensation example. Several Authority Governance capabilities are at M4/M5, while approval/oversight and decision-governance capabilities remain at M2. The domain result is M2. Advanced automation and telemetry do not compensate for weak lower-level foundations [ATG-10 B.3].
+M-CAL-02 provides the current non-compensation example. Several Authority Governance capabilities are at M4/M5, while approval/oversight and decision-governance capabilities remain at M2. The domain result is M2. Advanced automation and telemetry do not compensate for weak lower-level foundations, and any applicable open critical gate may cap or invalidate the conclusion further [ATG-10 B.3].
 
 ### 11.7 Bounded decision logic
 
@@ -677,7 +677,7 @@ Automated extraction, classification and summarization can reduce the cost of bu
 
 ### 14.2 Graph drift and continuous assurance
 
-The Core Conceptual Model defines graph drift as "a material difference between that state and a later state", where the state is a versioned representation of an observed or approved graph [ATG-2 §1.9], and change, drift, incidents, remediation and expiry trigger a new or updated assessment run [ATG-7]. A continuous-assurance claim already requires repeated E5-quality evidence across relevant material changes [ATG-6]. Research is needed on drift detection that distinguishes material from immaterial change, on reassessment triggers that are neither too sparse nor too noisy, and on how continuous monitoring evidence can meet the canonical sufficiency rules without lowering them.
+The Core Conceptual Model defines graph drift as "a material difference between that state and a later state", where a trust graph is a versioned representation of an observed or approved state [ATG-2 §1.9], and change, drift, incidents, remediation and expiry trigger a new or updated assessment run [ATG-7]. A continuous-assurance claim already requires repeated E5-quality evidence across relevant material changes [ATG-6]. Research is needed on drift detection that distinguishes material from immaterial change, on reassessment triggers that are neither too sparse nor too noisy, and on how continuous monitoring evidence can meet the canonical sufficiency rules without lowering them.
 
 ### 14.3 Runtime-composed and multi-agent paths
 
@@ -697,7 +697,7 @@ Beyond the pending inter-assessor study (Artifact #10 Appendix B.4), field calib
 
 ### 14.7 Machine-readable schemas and extensions
 
-L4 Tool-compatible conformance remains unavailable until approved normative machine-readable schemas and conformance test vectors exist [ATG-M]. Developing those artifacts, and sector- or technology-specific extensions that preserve canonical terminology, identifiers, evidence grades, maturity semantics, scoring rules and ontology invariants [ATG-M §3], are further directions that would each require their own expert review.
+L4 Tool-compatible conformance remains unavailable until a future governed release publishes approved normative machine-readable schemas and approved conformance test vectors [ATG-M §5]. Developing those artifacts, and sector- or technology-specific extensions that preserve canonical terminology, identifiers, evidence grades, maturity semantics, scoring rules and ontology invariants [ATG-M §3], are further directions that would each require their own expert review.
 
 # 15. Governance and methodology evolution
 
@@ -715,7 +715,7 @@ Canonical concepts, control IDs, evidence grades, maturity semantics and scoring
 
 The methodology can be executed with documents, spreadsheets, graph stores or compatible platforms. Tool output remains proposed until evidence, scope, method and review support acceptance. A commercial implementation may automate execution but cannot become a hidden source of canonical meaning.
 
-Artifacts #8 and #10 provide assessor guidance and reference calibration respectively and cannot override the normative artifacts within their declared authority. Artifact #13, the Reference Graph Schema and Illustrative Query Library, is a Phase 2 non-normative companion. It carries no conformance weight at this baseline and cannot redefine the twelve core artifacts. L4 Tool-compatible conformance is explicitly unavailable until approved normative machine-readable schemas and conformance test vectors exist [ATG-M].
+Artifacts #8 and #10 provide assessor guidance and reference calibration respectively and cannot override the normative artifacts within their declared authority. Artifact #13, the Reference Graph Schema and Illustrative Query Library, is a Phase 2 non-normative companion. It carries no conformance weight at this baseline and cannot redefine the twelve core artifacts. L4 Tool-compatible conformance is explicitly unavailable until a future governed release publishes approved normative machine-readable schemas and approved conformance test vectors [ATG-M §5].
 
 ### 15.4 Publication boundary
 
@@ -738,7 +738,7 @@ Better assurance does not require pretending that every uncertainty can be score
 | Publication status / authority | METHODOLOGY_MANIFEST.md; #1; #11 | Non-normative paper; canonical artifacts prevail; frozen validation status |
 | Assurance problem | #1; #2 | System-level reasoning; composition and path emphasis; complement existing standards |
 | Graph reasoning | #2; #12 | Canonical nine-step chain; directed labelled multigraph; conditional relationships; topology is not exploitability |
-| Trust | #2; #12 | Conditional reliance; purpose/basis/scope/owner/revocation/evidence; non-transitive by default |
+| Trust | #2; #12 | Conditional reliance; purpose/basis/scope/owner/revocation/evidence; non-transitive by default (#12) |
 | Declarations | #1 §3 | Ten Manifesto declarations quoted, not paraphrased |
 | Research question and thesis | #2 §2.1; #12 §2.6 | Emergent-risk thesis; distinctions that must remain explicit |
 | Authority | #2; #12 | Effective/permitted capacity; identity/capability/target/scope/conditions/approval/revocation |
@@ -768,7 +768,7 @@ Definitions are quoted verbatim from the artifact named in each row. Where the C
 | AI asset | Any model, application, agent, prompt, retriever, vector store, model endpoint, tool, MCP service, data source, identity, pipeline, runtime or provider dependency that influences AI behavior or impact. | #1 App. A |
 | Trust | Conditional reliance by one entity on another entity, assertion, output, dependency or control for a defined purpose. | #2 §4.8; #12 |
 | Authority | The effective or permitted capacity of an actor, identity, application, agent, tool or workflow to access, influence or change a target. | #2 §5.1; #12 |
-| Influence | The ability to affect behavior or output without necessarily possessing formal access or execution authority. | #1 App. A |
+| Influence | The ability to affect behavior or output without necessarily possessing formal access or execution authority. | #1 App. A; cf. #12 INFLUENCES |
 | Actionability | Actionability describes how directly an output can produce a state change and how much human intervention remains meaningful. | #2 §5.3 |
 | Authority amplification | Occurs when a path gives an entity greater effective power, reach, speed, scale or consequence than a local grant suggests. | #2 §5.4 |
 | Delegation | Transfers bounded authority from a grantor to a delegate while preserving accountability and conditions. | #2 §5.12 |
@@ -795,20 +795,20 @@ PathState values and authority classes are quoted in the tables of §3.4 and §3
 
 The governed artifacts pinned by the manifest cited on the cover, with their authority scope as stated in the Methodology Manifest and the sections of this paper that draw on them.
 
-| # | Artifact | Version | Authority scope (Manifest §1) | Used in this paper |
+| # | Artifact | Version | Authority scope (Manifest §1) | Principal uses in this paper |
 |---|---|---|---|---|
-| 1 | Manifesto | 1.0 | Public purpose and non-negotiable commitments | §§1, 1.6, 7.5, 14.2; App. B |
-| 2 | Core Conceptual Model | 3.0.0 | Canonical conceptual semantics | Research question; §§2-6; App. B |
+| 1 | Manifesto | 1.0 | Public purpose and non-negotiable commitments | §§1, 1.6, 7.5; App. B |
+| 2 | Core Conceptual Model | 3.0.0 | Canonical conceptual semantics | Research question; §§2-6, 14.2; App. B |
 | 3 | Maturity Model | 1.0 | Normative maturity rules | §10.2 |
 | 4 | Scoring Framework | 3.0.0 | Normative scoring rules | Publication status; §§3.3, 7.2, 7.4, 8.2, 10, 13.3, 13.8, 14.5 |
 | 5 | Master Control Library | 2.0.0 | Normative control requirements | §§4.3, 5 |
-| 6 | Evidence Model | 2.0.0 | Normative evidence semantics | §§7, 8, 14; App. B |
+| 6 | Evidence Model | 2.0.0 | Normative evidence semantics | §§6.2, 7, 8, 13.4, 14; App. B |
 | 7 | Assessment Methodology | 1.1.0 | Normative assessment execution | §§1.5, 5.4, 9, 14.2 |
 | 8 | Assessor Handbook | 1.0 | Operational assessor guidance | §15.3 |
 | 9 | Reporting Standard | 1.1.0 | Normative reporting | §12 |
-| 10 | Reference Assessment Repository | 2.0.0 | Illustrative and calibration material | Publication status; §§4.5, 8.2, 10.4, 11, 13.8, 14.6 |
-| 11 | Governance & Certification Model | 1.0 | Governance and change control | §§13.6, 15 |
-| 12 | Ontology Specification | 3.0.0 | Formal ontology representation | Research question; §§3, 4; App. B |
+| 10 | Reference Assessment Repository | 2.0.0 | Illustrative and calibration material | Publication status; §§4.5, 8.2, 10.2, 10.4, 11, 13.2, 13.8, 14.6 |
+| 11 | Governance & Certification Model | 1.0 | Governance and change control | Publication status; §§13.6, 15 |
+| 12 | Ontology Specification | 3.0.0 | Formal ontology representation | Research question; §§3, 4, 6.1, 8.1; App. B |
 | 13 | Reference Graph Schema and Illustrative Query Library | 0.4.0 | Phase 2 non-normative implementation reference | §15.3 |
 
 # References
@@ -829,7 +829,7 @@ The governed artifacts pinned by the manifest cited on the cover, with their aut
 [14] Hardy, N. (1988). The Confused Deputy (or why capabilities might have been invented). ACM SIGOPS Operating Systems Review, 22(4), 36-38. DOI: 10.1145/54289.871709.
 [15] Greshake, K., Abdelnabi, S., Mishra, S., Endres, C., Holz, T., & Fritz, M. (2023). Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection. arXiv:2302.12173.
 [16] CycloneDX. Machine Learning Bill of Materials (ML-BOM). https://cyclonedx.org/capabilities/mlbom/
-[17] SPDX. SPDX Specification 3.0.1 - AI Profile. https://spdx.github.io/spdx-spec/latest/model/AI/AI/
+[17] SPDX. SPDX Specification 3.0.1 - AI Profile. https://spdx.github.io/spdx-spec/v3.0.1/model/AI/AI/
 [18] ISO/IEC/IEEE 15026-2:2022. Systems and software engineering - Systems and software assurance - Part 2: Assurance case. International Organization for Standardization.
 [19] Spring, J. M., Hatleback, E., Householder, A., Manion, A., & Shick, D. (2021). Time to Change the CVSS? IEEE Security & Privacy, 19(2), 74-78. DOI: 10.1109/MSEC.2020.3044475.
 [ATG-M] AI Trust Graph Methodology Manifest, bundle 1.0-rc.4, content snapshot 2026-09-26, manifest blob 79e0e15b8b2260487e2e220bb24f4d9f0ccf275a.
