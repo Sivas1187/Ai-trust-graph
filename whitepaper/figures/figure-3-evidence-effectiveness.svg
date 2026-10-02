@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
 <style>text{font-family:Arial,sans-serif;fill:#111}.axis{stroke:#111;stroke-width:2}.grid{stroke:#bbb;stroke-width:1;opacity:.5}.tick{font-size:22px}.label{font-size:24px}.title{font-size:30px;font-weight:600}.note{font-size:22px}.pt{stroke:#111;stroke-width:1}</style>
-<text x="700" y="55" text-anchor="middle" class="title">Evidence support and control effectiveness are independent dimensions</text>
+<text x="700" y="55" text-anchor="middle" class="title">Evidence support and control effectiveness are distinct dimensions</text>
 <line x1="110" y1="780" x2="1320" y2="780" class="axis"/><line x1="110" y1="780" x2="110" y2="100" class="axis"/>
 <g class="grid">
 <line x1="110" y1="780" x2="1320" y2="780"/><line x1="110" y1="644" x2="1320" y2="644"/><line x1="110" y1="508" x2="1320" y2="508"/><line x1="110" y1="372" x2="1320" y2="372"/><line x1="110" y1="236" x2="1320" y2="236"/><line x1="110" y1="100" x2="1320" y2="100"/>

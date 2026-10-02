@@ -37,7 +37,7 @@ AI systems increasingly operate as connected systems of identities, models, agen
 
 ATG follows a single canonical reasoning chain: **Objects -> Relationships -> Conditions -> Paths -> Authority and Influence -> Consequence -> Controls -> Evidence -> Decision**. It organizes assessment across six domains and seventy-two canonical controls, while keeping evidence strength, control effectiveness, maturity, path exposure and uncertainty distinct. `UNKNOWN` is preserved when evidence is absent, insufficient or materially conflicting; it is not converted into zero, pass, fail, effectiveness, Not Applicable or Not Tested.
 
-The methodology does not produce a universal trust score. Its Path Exposure Index (PEI) may be used for triage only on determinate eligible active paths; it does not prove exploitability, probability or loss. Maturity is cumulative, evidence-gated and non-compensating rather than averaged.
+The methodology does not produce a universal trust score. Its Path Exposure Index (PEI) may be used for triage only, and a final point PEI is published only for determinate eligible active paths; it does not prove exploitability, probability or loss. Maturity is cumulative, evidence-gated and non-compensating rather than averaged.
 
 This whitepaper is a non-normative narrative synthesis of methodology bundle 1.0-rc.4. It explains the graph model, trust, authority and influence, path states and roles, control breakpoints, evidence discipline, assessment lifecycle, scoring boundaries, reporting, governance and current limitations. Historical reference cases are identified as such; current scoring mechanics are illustrated only with calibration vectors explicitly evaluated under rc.4.
 
@@ -56,7 +56,7 @@ AI-enabled services are now compositions of identities, agents, tools, retrieval
 - an approved integration gives an agent a path to a third-party tool that can change an enterprise record;
 - text inside a retrieved document steers an agent that holds authority, even though the text itself holds none.
 
-None of these is visible from a component inventory or a control checklist alone. This paper's thesis is that AI risk does not emerge exclusively from models. It emerges through relationships among humans, identities, agents, tools, models, data, providers, infrastructure and business systems.
+None of these is reliably visible from a component inventory or a control checklist alone. This paper's thesis is that AI risk does not emerge exclusively from models. It emerges through relationships among humans, identities, agents, tools, models, data, providers, infrastructure and business systems.
 
 ### E.2 What AI Trust Graph does
 
@@ -98,7 +98,7 @@ For any material AI use case, ATG is designed to answer:
 An ATG assessment follows a thirteen-phase lifecycle from Initiate to Reassess, with a named gate at every phase. Its outputs are designed for decision-makers, not only for engineers:
 
 - **A six-domain profile.** The domains are coordinated lenses over one graph: Discovery and AIBOM; Trust and Privilege Paths; Authority Governance; AI Security Validation; AI Governance and Assurance; Operational Resilience. Seventy-two canonical controls sit across them. The profile shows uneven capability rather than averaging it into one number.
-- **A path portfolio.** Each material path carries a validation state, from Candidate through Validated, Exploitable, Controlled or Invalidated, and a role: primary, alternate or residual. A controlled primary route does not hide an uncontrolled alternate.
+- **A path portfolio.** Each material path carries a validation state (Candidate, Topological, Plausible, Validated, Exploitable, Controlled or Invalidated) and a role (Primary, Alternate or Residual). A controlled primary route does not hide an uncontrolled alternate.
 - **Findings separated from decisions.** Evidence gaps, control deficiencies and path exposures are recorded as findings; acceptance, exceptions and treatment are recorded as accountable decisions that cannot rewrite the finding (§12.2).
 - **A report that discloses its limits.** Reporting must show critical gates, coverage and residual uncertainty rather than reduce the result to a traffic light.
 - **Traceability.** A decision can be traced back through the finding, the path or control state, the graph context and the evidence to the original scope and claim.
@@ -111,7 +111,7 @@ Leaders should expect, and insist on, five reading rules:
 - **Strong evidence is not necessarily good news.** Evidence grades E0 to E5 describe how well a claim is supported, not whether the result is favourable. Strong evidence can confirm that a control is not working; weak evidence cannot justify a strong assurance conclusion.
 - **Maturity is not an average.** Maturity M1 to M5 is cumulative, evidence-gated and non-compensating: a higher-level feature does not compensate for a missing lower-level foundation (§10.2).
 - **There is no overall trust score.** The methodology deliberately publishes none.
-- **PEI is for triage, not prediction.** The Path Exposure Index ranks determinate paths for attention. It does not prove exploitability, probability or loss. An author-performed sensitivity analysis found that small changes to its weights reorder only a small share (1.3-2.2%) of path pairs, but that its bands are sensitive at their edges, so the band should always be read with the underlying component profile.
+- **PEI is for triage, not prediction.** The Path Exposure Index ranks determinate paths for attention. It does not prove exploitability, probability or loss. An author-performed sensitivity analysis found that, under the author-defined weight alternatives, only 1.3-2.2% of all pairs of score vectors change order, but that its bands are sensitive at their edges, so the band should always be read with the underlying component profile.
 
 ### E.7 Where it fits
 
@@ -147,7 +147,7 @@ These questions follow directly from the methodology and can be asked of any con
 
 **This paper's thesis.** AI risk does not emerge exclusively from models. It emerges through relationships among humans, identities, agents, tools, models, data, providers, infrastructure and business systems. The thesis restates, for this paper's readers, two canonical statements. The Core Conceptual Model's central thesis is that "system assurance improves when relationships and conditions are represented with the same discipline as assets and controls" [ATG-2 §0.3], and its emergent-risk thesis states the underlying claim directly: "System risk is not equal to a simple sum of component risks. A component can satisfy its local controls and still participate in an unsafe end-to-end behavior because relationships create new reach, authority or influence" [ATG-2 §2.1].
 
-The methodology therefore examines the connected environment as a graph while keeping explicit the distinctions the Ontology requires to remain separate [ATG-12 §2.6]:
+The methodology therefore examines the connected environment as a graph while keeping explicit, among others, four of the distinctions the Ontology requires to remain separate [ATG-12 §2.6]:
 
 | Distinction | Why it remains explicit |
 |---|---|
@@ -184,7 +184,7 @@ AI Trust Graph addresses a narrower methodological question: how to represent an
 
 Graph-based security analysis is not new. Attack-graph research has long represented multistep compromise paths and used graph analysis to reason about defensive interventions [9][10]. Identity attack-path analysis, including BloodHound-style graph reasoning, demonstrates the value of making privilege and control paths explicit [11]. Relationship-based authorization systems such as Zanzibar show a different but relevant lineage: large-scale authorization decisions can be expressed through relationships between subjects and objects [12]. Earlier trust-management work similarly formalized trusted actions, credentials and delegated policy decisions [13], while the confused-deputy problem remains a foundational warning about exercising authority on another principal's behalf [14].
 
-Assurance-case practice is another close intellectual relative. ISO/IEC/IEEE 15026-2:2022 specifies assurance-case structure terminology for claims, arguments and evidence, reinforcing the broader lineage of evidence-linked assurance reasoning [18]. Work critiquing weighted vulnerability indices is also relevant to PEI's explicit limitations: Spring et al. argue that CVSS severity scoring should not be treated as a risk score and question the formal and empirical justification of its scoring algorithm [19]. These precedents strengthen, rather than weaken, ATG's insistence that arithmetic remain bounded by declared semantics, evidence and decision purpose.
+Assurance-case practice is another close intellectual relative. ISO/IEC/IEEE 15026-2:2022 specifies minimum requirements for the structure and contents of an assurance case, built from claims, arguments and evidence, reinforcing the broader lineage of evidence-linked assurance reasoning [18]. Work critiquing weighted vulnerability indices is also relevant to PEI's explicit limitations: Spring et al. argue that CVSS severity scoring should not be treated as a risk score and question the formal and empirical justification of its scoring algorithm [19]. These precedents strengthen, rather than weaken, ATG's insistence that arithmetic remain bounded by declared semantics, evidence and decision purpose.
 
 AI-specific work adds further adjacent concepts. Indirect prompt injection demonstrates that data can become an influence channel capable of steering an LLM-integrated application and affecting downstream tool use [15]. CycloneDX ML-BOM and the SPDX 3 AI Profile provide structured approaches to AI/ML component transparency [16][17]. The World Economic Forum's 2026 Agent Capability and Authorization Profile (ACAP) is a particularly close contemporary precedent for deployment-level authorization: it focuses on defining, enforcing and auditing what an agent is permitted to do [8]. OWASP's Agent Control Standard likewise emphasizes inspectability, traceability, middleware control hooks and runtime policy enforcement [7].
 
@@ -223,7 +223,7 @@ The Manifesto states ten declarations that the rest of the methodology operation
 
 The canonical representation is a directed, labelled multigraph [ATG-2]. Direction matters because authority, invocation, data movement and dependency are not generally symmetric. Labels matter because a connection called "can invoke" has a different assurance meaning from one called "trusts", "reads from", "delegates to" or "controlled by". Multiple edges between the same objects matter because two components may simultaneously have data, identity, trust and control relationships.
 
-This representation allows the methodology to preserve context that is easily lost in an inventory or undifferentiated architecture diagram. A relationship is not merely a line. It is an assertion with scope, conditions, evidence and confidence. A path is not merely reachability in the mathematical sense. It is an ordered explanatory structure whose material steps and preconditions must be supported or explicitly marked unresolved.
+This representation allows the methodology to preserve context that is easily lost in an inventory or undifferentiated architecture diagram. A relationship is not merely a line. It is an assertion with scope, conditions, evidence and confidence. A path is not merely reachability in the mathematical sense. It is an ordered explanatory structure whose material steps and preconditions must be supported or explicitly marked UNKNOWN.
 
 ### 2.2 The canonical reasoning chain
 
@@ -231,7 +231,7 @@ The Core Conceptual Model defines one reasoning chain as the intellectual spine 
 
 **Objects -> Relationships -> Conditions -> Paths -> Authority and Influence -> Consequence -> Controls -> Evidence -> Decision**
 
-Objects establish what exists within the system boundary. Relationships establish how those objects interact. Conditions capture the permissions, protocol, state, data, approval, timing and other prerequisites that must hold. Paths combine relationships under those conditions. Authority and influence explain who or what can cause, steer or shape an outcome; for example, content can influence without possessing authority [ATG-2 §§0.10, 1.6]. Consequence explains why the path matters. Controls identify where progression can be stopped, constrained, detected or contained. Evidence determines what the assessment can defend. Decision records the accountable disposition without changing the underlying assessed condition.
+Objects establish what exists within the system boundary. Relationships establish how those objects interact. Conditions capture the permissions, protocol, state, data, approval, timing and other prerequisites that must hold. Paths combine relationships under those conditions. Authority and influence explain who or what can cause, steer or shape an outcome; for example, content can influence without possessing authority [ATG-2 §§0.10, 1.6, 4.5]. Consequence explains why the path matters. Controls identify where progression can be stopped, constrained, detected or contained. Evidence determines what the assessment can defend. Decision records the accountable disposition without changing the underlying assessed condition.
 
 This chain is distinct from both the six-domain assessment model and the thirteen-phase lifecycle. It is not a maturity ladder, workflow sequence or scoring pipeline; it is the conceptual reasoning order used to explain an assurance claim.
 
@@ -241,7 +241,7 @@ This chain is distinct from both the six-domain assessment model and the thirtee
 
 A graph supports movement between local detail and systemic effect. A read-only retriever may appear low risk locally, yet its output can influence an agent that can invoke a consequential tool [ATG-2]. A weak approval control may sit on many paths to high-impact actions. Conversely, a visually alarming connection may not support a material claim when necessary permissions, protocols, state or other conditions are absent.
 
-The corresponding anti-error rule is strict: a topological connection does not prove authorization, invocation or exploitability. Required conditions must be evidenced or explicitly preserved as unresolved. PathState records the strength of support for the path rather than allowing graph density to masquerade as certainty.
+The corresponding anti-error rule is strict: a topological connection does not prove authorization, invocation or exploitability. Required conditions must be evidenced or explicitly preserved as UNKNOWN. PathState records the strength of support for the path rather than allowing graph density to masquerade as certainty.
 
 The inverse error is equally important: a missing represented edge or path is not evidence that no real relationship or path exists. Discovery can be incomplete, external-provider relationships can be opaque, runtime composition can change, and graph snapshots can lag the system. ATG therefore treats discovery coverage, provenance and unresolved population as part of assurance rather than assuming that an apparently clean graph proves absence of exposure.
 
@@ -255,7 +255,7 @@ This matters in AI ecosystems because a workflow can move quickly across organiz
 
 ### 3.1 Core objects and conditional relationships
 
-The whitepaper uses a compact vocabulary while leaving the full ontology to Artifact #12. Nodes represent typed assets and assessment objects such as identities, agents, applications, tools, data resources, providers, controls, evidence objects, findings and decisions. Relationships are directional assertions. A material relationship carries endpoints, type, direction, scope, conditions, evidence, confidence, validity and review status. An edge without adequate conditions and evidence remains a candidate description rather than an approved fact [ATG-2][ATG-12].
+The whitepaper uses a compact vocabulary while leaving the full ontology to Artifact #12. Nodes represent typed assets and assessment objects such as identities, agents, applications, tools, data resources, providers, controls, evidence objects, findings and decisions. Relationships are directional assertions. A material relationship carries endpoints, type, direction, scope, conditions, evidence, confidence, validity and review status. An edge without material conditions and evidence remains a candidate description rather than an approved fact [ATG-2][ATG-12].
 
 The model therefore avoids treating an architecture line as equivalent to an assurance claim. `CAN_INVOKE`, `TRUSTS`, data movement, delegation, dependency and control coverage have different semantics even when they connect the same two objects.
 
@@ -301,7 +301,7 @@ These conceptual levels are distinct from the Authority component of the Path Ex
 
 ### 3.4 Reachability, PathState and PathRole
 
-Reachability may be Direct, Indirect, Chained, Inherited, Delegated or **Unknown** [ATG-12]. The reachability form `Unknown` is distinct from the assessment result state `UNKNOWN`.
+Reachability may be Direct, Indirect, Chained, Inherited, Delegated or **Unknown** [ATG-12]. The reachability form `Unknown` names a route type, while `UNKNOWN` is an assessment result state; an Unknown route leaves the Reachability component UNKNOWN for PEI purposes, so no final point PEI is published [ATG-2 §6.1; ATG-4 §4.4].
 
 A path records a start condition, ordered traversal, conditions, boundary crossings, target, controls, evidence and confidence, and any residual path. ATG separates two orthogonal dimensions that MUST NOT be collapsed [ATG-2 §6.3]:
 
@@ -335,7 +335,7 @@ Indirect prompt injection is a concrete example. Adversarial text embedded in re
 
 Canonically, **authority amplification occurs when a path gives an entity greater effective power, reach, speed, scale or consequence than a local grant suggests** [ATG-2 §5.4]. Amplification is a system property and is not necessarily a single-component misconfiguration.
 
-Artifact #2 identifies seven amplification lenses: **Identity amplification, Tool amplification, Data amplification, Workflow amplification, Temporal amplification, Trust amplification, and Blast-radius amplification**. These conceptual lenses should not be confused with the PEI `boundary-amplification` component, which is a specific scoring input defined by Artifact #4.
+Artifact #2 identifies seven amplification types: **Identity amplification, Tool amplification, Data amplification, Workflow amplification, Temporal amplification, Trust amplification, and Blast-radius amplification**. These conceptual types should not be confused with the PEI `boundary-amplification` component, which is a specific scoring input defined by Artifact #4.
 
 ### 4.3 Delegation, inheritance and approval
 
@@ -461,7 +461,7 @@ The canonical minimums are claim-specific: design requires E3 or stronger; imple
 
 ### 7.4 Evidence-supported score caps
 
-For a control **component claim**, the evidence cap is the approved evidence-support ceiling. It limits the highest component score the evidence can support; it is not an entitlement and it does not convert evidence quality into effectiveness [ATG-4 §1.8]. The rule applies equally to favourable and adverse observations.
+For a control **component claim**, the evidence cap is the approved evidence-support ceiling. It limits the highest component score the evidence can support; it is not an entitlement and it does not convert evidence quality into effectiveness [ATG-4 §1.8]. The supported score is the lower of the observed score and the approved ceiling, and this applies equally to favourable and adverse observations [ATG-4 §1.5].
 
 Current rc.4 calibration makes the distinction concrete. In S-CAL-05, E3 policy/procedure evidence supports design but cannot finalize implementation; the overall remains unset and the conclusion is UNKNOWN with an Evidence Gap. In S-CAL-07c, an E5 runtime bypass test is materially relied upon for an adverse operating-effectiveness claim; the supported operating-effectiveness score is 1, the overall is 1, and the result is a Control Deficiency with Medium confidence [ATG-10 B.5]. Strong evidence can therefore confirm that a control performs poorly without being transformed into a high effectiveness score.
 
@@ -479,11 +479,11 @@ The canonical assessment-state definition is precise: **UNKNOWN means evidence i
 
 UNKNOWN is also distinct from **Inconclusive**. UNKNOWN applies when the material state remains unresolved because evidence is absent, insufficient or materially conflicting. Inconclusive applies when authorized testing, review or resolution activity occurred but the evidence still cannot support a determinate conclusion [ATG-6 §0.5]. These states must not be collapsed for dashboard convenience.
 
-The reachability form **Unknown** uses title case and answers a different question: a potentially material route lacks sufficient evidence. It must not be confused with the all-caps assessment result state `UNKNOWN`.
+The reachability form **Unknown** means that "a potentially material route lacks sufficient evidence" [ATG-2 §6.1]. This paper writes the route form in title case and the assessment result state as `UNKNOWN`, following the Ontology's tables; the distinction is typographic, and an Unknown route still leaves the Reachability component UNKNOWN for PEI purposes [ATG-4 §4.4].
 
 ### 8.2 Why UNKNOWN matters for paths
 
-Path analysis must not manufacture a number from unresolved material conditions. If an UNKNOWN condition affects **any numeric PEI component**, a final point PEI is not published. The assessor retains the affected component as UNKNOWN and may show an explicit bounded provisional range only when decision-useful [ATG-4 §§4.2, 4.8]. If a required reachability condition is disproved, the PathState becomes Invalidated and there is no active PEI.
+Path analysis must not manufacture a number from unresolved material conditions. If an UNKNOWN condition affects **any numeric PEI component**, a final point PEI is not published. The assessor retains the affected component as UNKNOWN and may show an explicit bounded provisional range only when decision-useful [ATG-4 §§4.2, 4.8]; for UNKNOWN reachability, only if every other component is determinate and the range assumptions are explicit [ATG-4 §4.4]. If a required reachability condition is disproved, the PathState becomes Invalidated and there is no active PEI.
 
 Artifact #10 provides an rc.4 calibration vector for exactly this case. P-CAL-09 has Consequence 4, Reachability UNKNOWN, Authority 3, Amplification 2 and Control Resistance 2. The expected result is **no final point PEI**; if useful, the provisional range for R=1..4 is 38-47. P-CAL-10 then shows the opposite resolution: when the required reachability condition is disproved, the path becomes Invalidated and retains no active PEI [ATG-10 B.1].
 
@@ -529,11 +529,11 @@ ATG intentionally does not publish a single overall AI Trust Graph score in v1.0
 
 M1-M5 maturity is cumulative, evidence-gated and non-compensating. **A higher-level feature does not compensate for a missing lower-level foundation** [ATG-3 §1.6]. At domain level, the result is the highest common level sustained by all applicable mandatory capabilities after gate review; arithmetic averages do not replace that rule [ATG-3 §8.2].
 
-The rc.4 calibration pair M-CAL-02 illustrates the point. D3.1 and D3.2 can be at M5 while D3.3 and D3.6 remain at M2; the domain result is M2 because advanced automation cannot compensate for the common M2 floor [ATG-10 B.3]. The preferred executive result is a six-domain vector. An overall label, if a sponsor explicitly requires one, is the minimum applicable domain level and must be accompanied by the full profile, confidence and critical gates [ATG-3 §8.3].
+M-CAL-02, the false-positive half of the rc.4 B.3 calibration pair, illustrates the point. D3.1 and D3.2 can be at M5 while D3.3 and D3.6 remain at M2; the domain result is M2 because advanced automation cannot compensate for the common M2 floor [ATG-10 B.3]. The preferred executive result is a six-domain vector. An overall label, if a sponsor explicitly requires one, is the minimum applicable domain level and must be accompanied by the full profile, confidence and critical gates [ATG-3 §8.3].
 
 ### 10.3 Control scoring remains evidence-bounded
 
-Control scoring separates design, implementation and operating effectiveness and remains subject to evidence sufficiency, critical gates and compatibility rules. Numerical treatment must never convert missing support into a favourable default. An observed component state may remain visible even when the supported score is lower or absent.
+Control scoring separates design, implementation and operating effectiveness and remains subject to evidence sufficiency, critical gates and compatibility rules. Numerical treatment must never convert missing support into a favourable default. The observed component score remains visible when the supported score is lower; where no supported score exists, observations may be retained and remain visible [ATG-4 §§1.5, 1.8].
 
 ### 10.4 Path Exposure Index
 
@@ -543,9 +543,9 @@ For triage only, PEI **may be calculated** from Consequence, Reachability, Autho
 
 The range is **7 to 62 for determinate eligible active paths** [ATG-4 §4.9]. The primary output is an ordinal exposure band; the component profile remains the **authoritative explanation**. PEI does **not prove exploitability, probability or loss** and is not an overall trust, certification or compliance score.
 
-Eligibility requires a defined start condition, target, traversals, material conditions and evidence state. A Plausible path receives an exposure band only when **all numeric PEI components are determinate**. If an UNKNOWN affects a numeric component, no final point PEI is published; a provisional component profile or bounded range may be retained. An Invalidated path has no active PEI [ATG-4 §§4.2, 4.8].
+Eligibility requires a defined start condition, target, traversals, material conditions and evidence state. A Plausible path receives an exposure band only when **all numeric PEI components are determinate**. If an UNKNOWN affects a numeric component, no final point PEI is published; a provisional component profile or bounded range is retained and the UNKNOWN is surfaced explicitly. An Invalidated path has no active PEI [ATG-4 §§4.2, 4.8].
 
-Critical overrides take precedence over the arithmetic and may raise the minimum triage band where canonical override conditions apply [ATG-4 §4.10]. The arithmetic therefore never outranks the path state, critical gate or component explanation.
+Critical overrides take precedence over the arithmetic and may raise the triage band to a stated minimum band where canonical override conditions apply [ATG-4 §§4.10-4.11]. The arithmetic therefore never outranks the path state, critical gate or component explanation.
 
 Before public use of weighted or path formulas, Artifact #4 requires reviewers to "test how reasonable changes in component ratings, weights and thresholds affect bands and priorities" [ATG-4 §6.5]. An author-performed sensitivity analysis of PEI was completed on 2 October 2026 over every determinate eligible active vector on the canonical scales (2,000 vectors) and over the calibration vectors of Artifact #10 Appendix B.1-B.2 [ATG-S]. Its results, which describe the arithmetic of the published formula and change no canonical rule, are:
 
@@ -553,11 +553,11 @@ Before public use of weighted or path formulas, Artifact #4 requires reviewers t
 |---|---|
 | Formula recomputation (author check, not the A.7 independent recalculation) | The determinate range is exactly 7-62; every determinate Appendix B.1-B.2 calibration vector recomputes to its expected PEI and band, and P-CAL-09 to its 38-47 provisional range. P-CAL-10 has no active PEI and is a rule-level case. |
 | One-point component change | Band membership is sensitive at band edges: 20.3% of single one-point moves change the band, 51.9% of vectors have at least one such move, and every vector can change band if all five components differ by one point at once. No such change can move a path by more than one band; that is an arithmetic bound (at most 15 points against at least 16 needed), not an empirical result. |
-| Weight alternatives | Under each weight changed by one and under equal weights, 1.3-2.2% of all path pairs change order, at most 0.4% of cross-band pairs reverse, and the ranking correlation with the published weights (Kendall tau-b) stays between 0.913 and 0.952. Paths two or more bands apart cannot reverse under these alternatives, again by arithmetic bound. No single weight dominates: Consequence carries the largest share of PEI variance, 38.0%. |
+| Weight alternatives | Under each weight changed by one and under equal weights, 9.9-20.0% of vectors change band, 1.3-2.2% of all vector pairs change order, at most 0.4% of cross-band pairs reverse, and the ranking correlation with the published weights (Kendall tau-b) stays between 0.913 and 0.952. Paths two or more bands apart cannot reverse under these alternatives, again by arithmetic bound. No single weight dominates: Consequence carries the largest share of PEI variance, 38.0%. |
 | Threshold alternatives | Moving one band edge by one or two points re-bands 1.3-8.1% of vectors; moving all edges together re-bands 7.0-13.0%. Thresholds never change the PEI order. |
 | Evidence downgrade | Confidence is not a PEI input, so a confidence downgrade cannot change Consequence; components whose descriptors are defined by evidence, such as Control Resistance 0 (Validated block), can legitimately be rescored when evidence weakens. One UNKNOWN component leaves the band indeterminate for 40% to 100% of the combinations of the other components, consistent with the rule that no final point PEI is published under UNKNOWN. |
 
-The analysis therefore found ordering changes under the tested weight alternatives to be small, but showed that a band is not a stable classification on its own at band edges. What counts as a reasonable change and a major reversal is not defined in §6.5, so these results depend on the author's stated operational choices [ATG-S]. That is consistent with the canonical rules that the component profile remains the authoritative explanation and that bands require calibration. The analysis has clear limits: it was performed by the methodology author rather than an independent reviewer, it covers the path formula only, its input space is uniform rather than drawn from observed paths, and it cannot substitute for field calibration or the inter-assessor study. This paper therefore presents PEI as canonical methodology content for triage, not as a validated predictive instrument.
+The analysis therefore found ordering changes under the tested weight alternatives to be small, but showed that a band is not a stable classification on its own at band edges. What counts as a reasonable change and a major reversal is not defined in §6.5, so these results depend on the author's stated operational choices [ATG-S]. That is consistent with the canonical rules that the component profile remains the authoritative explanation and that bands require calibration. The analysis has clear limits: it was performed by the methodology author rather than an independent reviewer, it covers the path formula only, its input space is uniform rather than drawn from observed paths, and it cannot substitute for field calibration or the inter-assessor study. Whether the analysis satisfies §6.5 and the A.7 calibration criterion is for governance to decide; no such decision is recorded in the pinned manifest. This paper therefore presents PEI as canonical methodology content for triage, not as a validated predictive instrument.
 
 ### 10.5 Decision discipline
 
