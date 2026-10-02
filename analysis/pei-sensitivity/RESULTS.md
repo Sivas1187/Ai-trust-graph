@@ -62,7 +62,7 @@ Smallest change in PEI points that would move each vector into another band:
 | 5 | 238 | 11.9% |
 | 6 or more | 684 | 34.2% |
 
-For comparison, the smallest one-point component move changes PEI by 2 (Amplification) and the largest by 4 (Consequence). Skipping a band needs a change of at least 16 points (the narrowest band is 13 points wide), and a one-point change in every component at once changes PEI by at most 15, so no such change can move a path by more than one band. That bound is arithmetic, not empirical.
+For comparison, the smallest one-point component move changes PEI by 2 (Amplification) and the largest by 4 (Consequence). Skipping a band means crossing a whole interior band, which is 15 points wide, so it needs a change of at least 16 points; a one-point change in every component at once changes PEI by at most 15, so no such change can move a path by more than one band. That bound is arithmetic, not empirical.
 
 Worst case for one-point assessor variance (the Artifact #10 B.4 tolerance): every component may differ by up to one point in either direction at the same time (up to 3^5 = 243 variants per vector).
 

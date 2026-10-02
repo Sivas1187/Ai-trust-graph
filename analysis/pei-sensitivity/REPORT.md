@@ -14,7 +14,7 @@ This report changes no canonical rule. The formula, weights, scales, bands, over
 | Formula | PEI = 4C + 3R + 3A + 2Am + 3CR | #4 §4.9 |
 | Input space | All 2,000 determinate eligible active vectors: C 1–5, R 1–4, A 0–4, Am 0–3, CR 0–4 | #4 §§4.3–4.7 (R has no numeric zero, §4.4) |
 | Bands | Low 7–19, Moderate 20–34, High 35–49, Critical 50–62 | #4 §4.10 |
-| Calibration check | P-CAL-01 to P-CAL-12 recomputed | #10 Appendix B.1–B.2 |
+| Calibration check | Every determinate P-CAL vector in B.1–B.2 and the P-CAL-09 provisional range recomputed; P-CAL-10 (no active PEI) is rule-level | #10 Appendix B.1–B.2 |
 | "Reasonable change" in a rating | One scale point, the agreement band used in the inter-assessor gate | Author choice, informed by #10 Appendix B.4 (§6.5 does not define it) |
 | "Reasonable change" in a weight | ±1 on one weight; all weights equal | Author choice (§6.5 names "weight alternatives" but does not define them) |
 | "Reasonable change" in a threshold | ±1 and ±2 points on one band edge, and on all edges together | Author choice (§6.5 does not define it) |
@@ -25,9 +25,9 @@ The enumeration is uniform over the scales. It characterises the arithmetic of t
 
 ## 2. Findings
 
-**F1 — Formula integrity.** The determinate range is exactly 7–62 and every calibration vector in Appendix B.1–B.2 recomputes to its expected PEI and band, including the P-CAL-09 provisional range of 38–47.
+**F1 — Formula recomputation.** The determinate range is exactly 7–62, every determinate calibration vector in Appendix B.1–B.2 recomputes to its expected PEI and band, and P-CAL-09 recomputes to its provisional range of 38–47. P-CAL-10 has no active PEI and is a rule-level case. This is an author recomputation, not the independent recalculation required by the #4 A.7 *Formula integrity* criterion.
 
-**F2 — One-point component change (§6.5: "Does the band change disproportionately?").** No one-point change moves a path by more than one band, even when all five components differ by one point at once. This is an arithmetic bound rather than an empirical result: such changes shift PEI by at most 15 points, and skipping a band needs at least 16. The empirical finding is that the band is sensitive at its edges: 20.3% of all single one-point moves change the band (13.3% for Amplification up to 27.5% for Consequence), 51.9% of vectors have at least one single move that changes their band, and every vector can change band when all five components vary by one point together.
+**F2 — One-point component change (§6.5: "Does the band change disproportionately?").** No one-point change moves a path by more than one band, even when all five components differ by one point at once. This is an arithmetic bound rather than an empirical result: such changes shift PEI by at most 15 points, and skipping a band means crossing a whole interior band (15 points wide), which needs at least 16. The empirical finding is that the band is sensitive at its edges: 20.3% of all single one-point moves change the band (13.3% for Amplification up to 27.5% for Consequence), 51.9% of vectors have at least one single move that changes their band, and every vector can change band when all five components vary by one point together.
 
 **F3 — Weight alternatives (§6.5: "Do priorities depend primarily on one chosen weight?").** Across the eleven alternatives tested (each weight ±1, and all weights equal), 1.3–2.2% of all vector pairs change order, cross-band reversals affect at most 0.4% of cross-band pairs, Kendall tau-b against the baseline ordering stays between 0.913 and 0.952, and 9.9–20.0% of vectors change band. Reversals between paths two or more bands apart do not occur, but that too is arithmetic: such paths differ by at least 16 PEI points, while these alternatives can shift a pair's difference by at most 3, 4 or 7 points. No single weight dominates: Consequence carries the largest share of PEI variance (38.0%), consistent with its published rationale "Decision materiality is primary" (§4.9); Authority and Control Resistance carry 21.4% each, Reachability 13.4% and Amplification 5.9%.
 

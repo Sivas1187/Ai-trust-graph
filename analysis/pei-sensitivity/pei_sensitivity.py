@@ -275,7 +275,7 @@ for k in range(1, 7):
     w(f"| {label} | {dist_to_cut[k]} | {pct(dist_to_cut[k], N)} |")
 w("")
 w("For comparison, the smallest one-point component move changes PEI by 2 (Amplification) and the largest by 4 (Consequence). "
-  "Skipping a band needs a change of at least 16 points (the narrowest band is 13 points wide), and a one-point change "
+  "Skipping a band means crossing a whole interior band, which is 15 points wide, so it needs a change of at least 16 points; a one-point change "
   "in every component at once changes PEI by at most 15, so no such change can move a path by more than one band. "
   "That bound is arithmetic, not empirical.")
 w("")

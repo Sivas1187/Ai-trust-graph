@@ -23,9 +23,9 @@ This whitepaper is a non-normative narrative introduction to the AI Trust Graph 
 
 This paper is frozen to AI Trust Graph methodology bundle 1.0-rc.4. The methodology manifest blob is `79e0e15b8b2260487e2e220bb24f4d9f0ccf275a`. That manifest pins the same thirteen artifact files as the 26 September 2026 content snapshot; it differs from the snapshot manifest only in its validation-status section, where the employer, IP and confidentiality gate moved from the pending list to the §6.1 gate record. The pin is a reproducibility reference, not a validation claim. "Version 1.0" is the version of this whitepaper; the methodology itself remains a public-release candidate.
 
-At this baseline, the methodology author's internal review is complete. The employer, IP and confidentiality release gate is closed by the author's declaration recorded on 2 October 2026 (METHODOLOGY_MANIFEST.md §6.1): AI Trust Graph is the author's independent research, the author owns its intellectual property, and it includes no employer's or client's confidential information. That record is a self-declaration, not an external legal review. The following external release gates remain pending until completed and recorded through governance: independent methodology or architecture review; independent AI-security review; an inter-assessor reproducibility study using the protocol in Artifact #10 Appendix B.4; and legal approval of the licence and trademark position.
+At this baseline, the methodology author's internal review is complete. The employer, IP and confidentiality release gate is closed by the author's declaration recorded on 2 October 2026 (METHODOLOGY_MANIFEST.md §6.1): AI Trust Graph is the author's independent research, the author owns its intellectual property, and it includes no employer's or client's confidential information. That record is a self-declaration, not an external legal review. The closing approval records inside the pinned artifacts still list this gate as pending; manifest §6.1 governs current gate status until the artifacts are next revised. The following external release gates remain pending until completed and recorded through governance: independent methodology or architecture review; independent AI-security review; an inter-assessor reproducibility study using the protocol in Artifact #10 Appendix B.4; and legal approval of the licence and trademark position.
 
-Artifact #4 §6.5 requires sensitivity analysis before public use of weighted or path formulas. An author-performed sensitivity analysis of the Path Exposure Index, the only such formula this paper presents, was completed on 2 October 2026; its method, results and limitations are published with a reproducible script [ATG-S] and summarized in §10.4. It is not an independent review, field calibration or an inter-assessor study.
+Artifact #4 §6.5 requires sensitivity analysis before public use of weighted or path formulas. An author-performed sensitivity analysis of the Path Exposure Index, the only such formula this paper presents, was completed on 2 October 2026; its method, results and limitations are published with a reproducible script [ATG-S] and summarized in §10.4. It is not an independent review, field calibration or an inter-assessor study. Whether it satisfies §6.5 and the Artifact #4 A.7 calibration criterion is for governance to decide; at the manifest pinned by this paper, no such decision is recorded.
 
 Nothing in this paper should be interpreted as a claim that AI Trust Graph has been independently validated, academically peer reviewed, standardized, accredited or certified. It is not presented as empirically proven, universally reproducible, or proven effective in production. It does not guarantee AI safety, security, compliance or the absence of failure.
 
@@ -62,11 +62,11 @@ This whitepaper is a non-normative narrative synthesis of methodology bundle 1.0
 
 **Status and limitations.** This paper is a non-normative introduction; the versioned methodology artifacts remain authoritative. The methodology is a public-release candidate. Independent methodology and AI-security reviews, an inter-assessor reproducibility study and legal approval of the licence and trademark position are pending. The worked material in this paper is synthetic calibration, not field evidence. The author-performed sensitivity analysis found that small weight changes alter the PEI ordering of only a small share of path pairs, but that band membership is sensitive at band edges, which is consistent with the rule that the component profile, not the band alone, remains the authoritative explanation. AI Trust Graph is not a product, certification, regulatory standard or guarantee of security, safety or compliance.
 
-# Research question and central thesis
+# Research question and thesis
 
 **Research question.** How can connected AI systems be assessed using graph-based reasoning while ensuring that assurance conclusions remain bounded by available evidence?
 
-**Central thesis.** AI risk does not emerge exclusively from models. It emerges through relationships among humans, identities, agents, tools, models, data, providers, infrastructure and business systems. The Core Conceptual Model states the underlying claim directly: "System risk is not equal to a simple sum of component risks. A component can satisfy its local controls and still participate in an unsafe end-to-end behavior because relationships create new reach, authority or influence" [ATG-2 §2.1].
+**This paper's thesis.** AI risk does not emerge exclusively from models. It emerges through relationships among humans, identities, agents, tools, models, data, providers, infrastructure and business systems. The thesis restates, for this paper's readers, two canonical statements. The Core Conceptual Model's central thesis is that "system assurance improves when relationships and conditions are represented with the same discipline as assets and controls" [ATG-2 §0.3], and its emergent-risk thesis states the underlying claim directly: "System risk is not equal to a simple sum of component risks. A component can satisfy its local controls and still participate in an unsafe end-to-end behavior because relationships create new reach, authority or influence" [ATG-2 §2.1].
 
 The methodology therefore examines the connected environment as a graph while keeping explicit the distinctions the Ontology requires to remain separate [ATG-12 §2.6]:
 
@@ -226,15 +226,15 @@ Reachability may be Direct, Indirect, Chained, Inherited, Delegated or **Unknown
 
 A path records a start condition, ordered traversal, conditions, boundary crossings, target, controls, evidence and confidence, and any residual path. ATG separates two orthogonal dimensions that MUST NOT be collapsed [ATG-2 §6.3]:
 
-| PathState | Meaning in the current analysis |
+| PathState | Permitted conclusion |
 |---|---|
-| Candidate | Hypothesized sequence requiring review |
-| Topological | Traversal exists in the represented graph |
-| Plausible | Required conditions are supported or explicitly UNKNOWN |
-| Validated | Authorized testing or direct evidence confirms scoped progression |
-| Exploitable | Evidence demonstrates a security exploit path within stated conditions |
-| Controlled | Validated controls prevent, constrain, detect or contain the path as claimed |
-| Invalidated | Evidence disproves a required step or condition |
+| Candidate | A hypothesized sequence requires review. |
+| Topological | A traversal exists in the represented graph. |
+| Plausible | Required conditions are supported or explicitly UNKNOWN. |
+| Validated | Authorized testing or direct evidence confirms the scoped progression. |
+| Exploitable | Evidence demonstrates a security exploit path within stated conditions. |
+| Controlled | Validated controls prevent, constrain, detect or contain the path as claimed. |
+| Invalidated | Evidence disproves a required step or condition. |
 
 PathRole is separately **Primary**, **Alternate** or **Residual**. A residual or alternate path retains its own PathState. This separation prevents a controlled primary route from hiding another material route and prevents intervention status from being confused with evidentiary strength.
 
@@ -264,7 +264,7 @@ Artifact #2 identifies seven amplification lenses: **Identity amplification, Too
 
 > **ACCOUNTABILITY RULE** Delegation may transfer execution authority, but it does not erase accountable ownership of the grant or decision [ATG-2 §5.12].
 
-Delegation is one of several ways authority reaches a target indirectly. The Core Conceptual Model distinguishes an *inherited* route, "created by role, group, workload or dependency", from a *delegated* route, "created by an explicit or implicit authority transfer" [ATG-2 §6.1]. Both are recorded separately where they depend on different conditions, and neither is assumed to pass trust or authority through an intermediary without explicit constraints. The control library makes this assessable: ATG-TRU-004 (Delegation and privilege inheritance analysis) and ATG-AUT-004 (Delegation and impersonation controls), whose objective is to "make delegation explicit, bounded and attributable, and prevent confused-deputy or silent privilege escalation" [ATG-5]. The confused-deputy problem [14] is the classic form of this risk; the retrieval example in §1.2 can be read as an instance of it.
+Delegation is one of several ways authority reaches a target indirectly. The Core Conceptual Model distinguishes an *inherited* route, "created by role, group, workload or dependency", from a *delegated* route, "created by an explicit or implicit authority transfer" [ATG-2 §6.1]. Both are recorded separately where they depend on different conditions, and neither is assumed to pass trust or authority through an intermediary without explicit constraints. The control library makes this assessable through ATG-TRU-004 (Delegation and privilege inheritance analysis) and ATG-AUT-004 (Delegation and impersonation controls); the objective of ATG-AUT-004 is to "make delegation explicit, bounded and attributable, and prevent confused-deputy or silent privilege escalation" [ATG-5]. The confused-deputy problem [14] is the classic form of this risk; the retrieval example in §1.2 can be read as an instance of it.
 
 Approval is a control only when it is meaningful. "Approval is meaningful only when the reviewer has sufficient information, decision freedom, competence, time and an enforceable ability to stop the action", and "an AI recommendation is not an approval" [ATG-2 §5.12]. Revocation, containment and recovery are related but distinct outcomes; high-impact authority should have "a tested revocation path, independent containment option, evidence of effect, and recovery or compensation procedure proportionate to consequence" [ATG-2 §5.13].
 
@@ -470,9 +470,9 @@ Critical overrides take precedence over the arithmetic and may raise the minimum
 
 Before public use of weighted or path formulas, Artifact #4 requires reviewers to "test how reasonable changes in component ratings, weights and thresholds affect bands and priorities" [ATG-4 §6.5]. An author-performed sensitivity analysis of PEI was completed on 2 October 2026 over every determinate eligible active vector on the canonical scales (2,000 vectors) and over the calibration vectors of Artifact #10 Appendix B.1-B.2 [ATG-S]. Its results, which describe the arithmetic of the published formula and change no canonical rule, are:
 
-| §6.5 test | Result |
+| Test | Result |
 |---|---|
-| Formula integrity | The determinate range is exactly 7-62, and every Appendix B.1-B.2 calibration vector recomputes to its expected PEI and band. |
+| Formula recomputation (author check, not the A.7 independent recalculation) | The determinate range is exactly 7-62; every determinate Appendix B.1-B.2 calibration vector recomputes to its expected PEI and band, and P-CAL-09 to its 38-47 provisional range. P-CAL-10 has no active PEI and is a rule-level case. |
 | One-point component change | Band membership is sensitive at band edges: 20.3% of single one-point moves change the band, 51.9% of vectors have at least one such move, and every vector can change band if all five components differ by one point at once. No such change can move a path by more than one band; that is an arithmetic bound (at most 15 points against at least 16 needed), not an empirical result. |
 | Weight alternatives | Under each weight changed by one and under equal weights, 1.3-2.2% of all path pairs change order, at most 0.4% of cross-band pairs reverse, and the ranking correlation with the published weights (Kendall tau-b) stays between 0.913 and 0.952. Paths two or more bands apart cannot reverse under these alternatives, again by arithmetic bound. No single weight dominates: Consequence carries the largest share of PEI variance, 38.0%. |
 | Threshold alternatives | Moving one band edge by one or two points re-bands 1.3-8.1% of vectors; moving all edges together re-bands 7.0-13.0%. Thresholds never change the PEI order. |
@@ -578,7 +578,7 @@ AI Trust Graph assessments do not guarantee future system behaviour, complete ri
 
 ### 13.7 Frozen validation and release status for this paper
 
-As of the manifest pinned by this paper, the **manifest §6 external release gates** still pending are: independent methodology or architecture review; independent AI-security review; inter-assessor reproducibility study; and legal approval of the licence/trademark position. The employer/IP/confidentiality gate is closed by the author's declaration recorded in manifest §6.1, which is a self-declaration and not an external legal review. These are not the only open readiness items across the artifact stack; specialist artifacts also contain their own validation and acceptance requirements, including independent scoring-method review. If the status changes later, this paper should remain unchanged and a new version should update the record.
+As of the manifest pinned by this paper, the **manifest §6 external release gates** still pending are: independent methodology or architecture review; independent AI-security review; inter-assessor reproducibility study; and legal approval of the licence/trademark position. The employer/IP/confidentiality gate is closed by the author's declaration recorded in manifest §6.1, which is a self-declaration and not an external legal review; the pinned artifacts' own approval records still list it as pending, and §6.1 governs. These are not the only open readiness items across the artifact stack; specialist artifacts also contain their own validation and acceptance requirements, including independent scoring-method review. If the status changes later, this paper should remain unchanged and a new version should update the record.
 
 The methodology author's internal review, including the sensitivity analysis in §10.4, should be understood as author-led methodology review, not independent validation.
 
@@ -586,7 +586,7 @@ The methodology author's internal review, including the sensitivity analysis in 
 
 The next credibility step is empirical rather than rhetorical. Without changing canonical semantics, independent evaluation should test whether separate assessors reach materially consistent conclusions from the same evidence; whether path and breakpoint reasoning remains stable under realistic architectural change; whether discovery coverage and path selection remain defensible in large estates; whether PEI weights and bands remain useful under independent review of the sensitivity analysis and under field calibration; and whether resulting reports improve decision traceability without encouraging false precision [ATG-4][ATG-10].
 
-This agenda is non-normative except where an item is already required by the canonical artifacts. In particular, sensitivity analysis before public use of weighted or path formulas is a canonical Scoring Framework requirement, not merely a research preference; its author-performed form is complete for PEI, and independent review of it remains part of the pending scoring-method review.
+This agenda is non-normative except where an item is already required by the canonical artifacts. In particular, sensitivity analysis before public use of weighted or path formulas is a canonical Scoring Framework requirement, not merely a research preference; an author-performed analysis has been completed for PEI; whether it satisfies §6.5 is for governance to decide, and independent review remains part of the pending scoring-method review [ATG-4 A.8].
 
 # 14. Future research directions
 
@@ -598,7 +598,7 @@ Automated extraction, classification and summarization can reduce the cost of bu
 
 ### 14.2 Graph drift and continuous assurance
 
-The Manifesto defines graph drift as "a material difference between the approved or previously observed graph and the current state" [ATG-1 Appendix A], and change, drift, incidents, remediation and expiry trigger a new or updated assessment run [ATG-7]. A continuous-assurance claim already requires repeated E5-quality evidence across relevant material changes [ATG-6]. Research is needed on drift detection that distinguishes material from immaterial change, on reassessment triggers that are neither too sparse nor too noisy, and on how continuous monitoring evidence can meet the canonical sufficiency rules without lowering them.
+The Core Conceptual Model defines graph drift as "a material difference between that state and a later state", where the state is a versioned representation of an observed or approved graph [ATG-2 §1.9], and change, drift, incidents, remediation and expiry trigger a new or updated assessment run [ATG-7]. A continuous-assurance claim already requires repeated E5-quality evidence across relevant material changes [ATG-6]. Research is needed on drift detection that distinguishes material from immaterial change, on reassessment triggers that are neither too sparse nor too noisy, and on how continuous monitoring evidence can meet the canonical sufficiency rules without lowering them.
 
 ### 14.3 Runtime-composed and multi-agent paths
 
@@ -682,7 +682,7 @@ Better assurance does not require pretending that every uncertainty can be score
 
 # Appendix B. Glossary of canonical terms
 
-Definitions are quoted from the governing artifact named in each row. Where the Manifesto's working vocabulary and a specialist artifact differ, the artifact that governs that concept under the Manifest's authority model is quoted. This glossary adds no definition of its own.
+Definitions are quoted verbatim from the artifact named in each row. Where the Core Conceptual Model, Ontology or a specialist artifact defines a term, that governing artifact is quoted; terms defined only in the Manifesto's canonical vocabulary (Appendix A) are quoted from it. This glossary adds no definition of its own.
 
 | Term | Canonical definition | Source |
 |---|---|---|
@@ -690,18 +690,18 @@ Definitions are quoted from the governing artifact named in each row. Where the 
 | Trust | Conditional reliance by one entity on another entity, assertion, output, dependency or control for a defined purpose. | #2 §4.8; #12 |
 | Authority | The effective or permitted capacity of an actor, identity, application, agent, tool or workflow to access, influence or change a target. | #2 §5.1; #12 |
 | Influence | The ability to affect behavior or output without necessarily possessing formal access or execution authority. | #1 App. A |
-| Actionability | The degree to which an entity can cause a state change or consequential outcome. | #1 App. A |
+| Actionability | Actionability describes how directly an output can produce a state change and how much human intervention remains meaningful. | #2 §5.3 |
 | Authority amplification | Occurs when a path gives an entity greater effective power, reach, speed, scale or consequence than a local grant suggests. | #2 §5.4 |
 | Delegation | Transfers bounded authority from a grantor to a delegate while preserving accountability and conditions. | #2 §5.12 |
 | Boundary | A first-class object representing a change in trust assumption, ownership, policy, enforcement, residency, privilege or consequence. | #2 §3.2 |
-| Reachability | The existence of a technically and contextually plausible route between a start condition and a target. | #1 App. A; #2 §6.1 |
+| Reachability | Reachability is the existence of a technically and contextually plausible route from a start condition to a target. | #2 §6.1 |
 | Exposure path | An ordered sequence of evidenced or explicitly uncertain relationships by which compromise, misuse or failure can reach a material target. | #1 App. A |
 | Material path | A path whose plausible outcome can exceed a defined impact, risk appetite or regulatory threshold. | #1 App. A |
-| Residual path | The remaining route and conditions after a proposed or implemented control intervention. | #1 App. A |
+| Residual path | A residual path remains after an existing or proposed intervention. | #2 §6.7 |
 | Control breakpoint | A node, relationship or boundary where an effective control can materially stop, constrain, detect or contain a path. | #2 §6.6; #12 |
-| Graph drift | A material difference between the approved or previously observed graph and the current state. | #1 App. A |
+| Graph drift | A trust graph is a versioned representation of an observed or approved state. Graph drift is a material difference between that state and a later state. | #2 §1.9 |
 | Evidence | A governed relationship between a source and a precisely stated assertion within defined scope, time, conditions and limitations. | #6 §0.3 |
-| Evidence currency | The degree to which evidence remains timely and representative of the assessed state. | #1 App. A |
+| Currentness | Currentness asks whether the evidence represents the relevant assessment period and remains valid after material change. | #6 §2.4 |
 | UNKNOWN | Evidence is absent, insufficient or materially conflicting. | #6 §0.5; #12 |
 | Not Assessed | No assessment activity was performed for the item. | #6 §0.5 |
 | Not Tested | Testing required for a stronger conclusion was not performed. | #6 §0.5 |
@@ -710,7 +710,7 @@ Definitions are quoted from the governing artifact named in each row. Where the 
 | Provisional | Conclusion awaits required review or evidence closure. | #6 §0.5 |
 | Final within scope | Review and evidence gates are complete for declared scope. | #6 §0.5 |
 
-PathState values, PathRole values, authority classes and actionability levels are defined in the tables of §3.3 and §3.4.
+PathState values and authority classes are quoted in the tables of §3.4 and §3.3; actionability levels A0-A4 are quoted in §3.3; PathRole values are summarized in §3.4 from Artifact #2 §6.3.
 
 # Appendix C. Artifact reference map
 
@@ -718,18 +718,18 @@ The governed artifacts pinned by the manifest cited on the cover, with their aut
 
 | # | Artifact | Version | Authority scope (Manifest §1) | Used in this paper |
 |---|---|---|---|---|
-| 1 | Manifesto | 1.0 | Public purpose and non-negotiable commitments | §§1, 1.6; App. B |
-| 2 | Core Conceptual Model | 3.0.0 | Canonical conceptual semantics | §§2-6; App. B |
+| 1 | Manifesto | 1.0 | Public purpose and non-negotiable commitments | §§1, 1.6, 7.5, 14.2; App. B |
+| 2 | Core Conceptual Model | 3.0.0 | Canonical conceptual semantics | Research question; §§2-6; App. B |
 | 3 | Maturity Model | 1.0 | Normative maturity rules | §10.2 |
-| 4 | Scoring Framework | 3.0.0 | Normative scoring rules | §§7.4, 8.2, 10, 13.3 |
+| 4 | Scoring Framework | 3.0.0 | Normative scoring rules | Publication status; §§3.3, 7.2, 7.4, 8.2, 10, 13.3, 13.8, 14.5 |
 | 5 | Master Control Library | 2.0.0 | Normative control requirements | §§4.3, 5 |
-| 6 | Evidence Model | 2.0.0 | Normative evidence semantics | §§7, 8; App. B |
-| 7 | Assessment Methodology | 1.1.0 | Normative assessment execution | §§1.5, 9 |
+| 6 | Evidence Model | 2.0.0 | Normative evidence semantics | §§7, 8, 14; App. B |
+| 7 | Assessment Methodology | 1.1.0 | Normative assessment execution | §§1.5, 5.4, 9, 14.2 |
 | 8 | Assessor Handbook | 1.0 | Operational assessor guidance | §15.3 |
 | 9 | Reporting Standard | 1.1.0 | Normative reporting | §12 |
-| 10 | Reference Assessment Repository | 2.0.0 | Illustrative and calibration material | §§4.5, 8.2, 10.4, 11 |
+| 10 | Reference Assessment Repository | 2.0.0 | Illustrative and calibration material | Publication status; §§4.5, 8.2, 10.4, 11, 13.8, 14.6 |
 | 11 | Governance & Certification Model | 1.0 | Governance and change control | §§13.6, 15 |
-| 12 | Ontology Specification | 3.0.0 | Formal ontology representation | §§3, 4; App. B |
+| 12 | Ontology Specification | 3.0.0 | Formal ontology representation | Research question; §§3, 4; App. B |
 | 13 | Reference Graph Schema and Illustrative Query Library | 0.4.0 | Phase 2 non-normative implementation reference | §15.3 |
 
 # References
