@@ -1,0 +1,281 @@
+/* ───────────── Interactive graph implementation view ─────────────
+   /graph/ is an optional implementation demonstration. It does not replace
+   canonical methodology artifacts or bind the methodology to Neo4j. Colour
+   is structural/UI emphasis only; UNKNOWN is also written in text and drawn
+   with a dashed relationship. */
+.graphPage {
+  min-height: 70vh;
+  background: var(--paper);
+}
+.graphExplorer {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 112px var(--vr-right) 140px var(--vr-margin);
+}
+.graphExplorerHead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px 72px;
+  align-items: end;
+}
+.graphKicker,
+.graphSource,
+.graphInspectorType {
+  font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.graphExplorer h1 {
+  max-width: 12ch;
+  margin-top: 10px;
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.026em;
+}
+.graphLede {
+  max-width: 58ch;
+  margin-top: 24px;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.graphSource {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.graphSourceDot {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--cyan);
+  border-radius: 50%;
+}
+.graphViewSwitch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin-top: 64px;
+  padding-top: 18px;
+  border-top: 1px solid var(--hairline);
+}
+.graphViewButton {
+  min-height: 44px;
+  padding: 8px 0 6px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+.graphViewButton:hover {
+  color: var(--ink);
+}
+.graphViewButtonActive {
+  border-bottom-color: var(--cyan);
+  color: var(--ink);
+}
+.graphViewDescription {
+  margin-top: 12px;
+  max-width: 66ch;
+  font-size: 15.5px;
+  color: var(--muted);
+}
+.graphWorkspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 0;
+  margin-top: 38px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.graphCanvas {
+  min-width: 0;
+  background: var(--graphite);
+}
+.graphCanvas svg {
+  display: block;
+  width: 100%;
+  min-height: 520px;
+}
+.graphEdge {
+  stroke: var(--cyan-on-dark);
+  stroke-width: 1.35;
+  stroke-opacity: 0.72;
+  vector-effect: non-scaling-stroke;
+}
+.graphEdgeUnknown {
+  stroke-dasharray: 6 6;
+}
+.graphArrowHead {
+  fill: var(--cyan-on-dark);
+  fill-opacity: 0.8;
+}
+.graphEdgeLabel {
+  fill: var(--on-dark-muted);
+  font-family: var(--font-mono, ui-monospace), ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.02em;
+}
+.graphNode {
+  cursor: pointer;
+  outline: none;
+}
+.graphNode circle {
+  fill: var(--graphite);
+  stroke: var(--on-dark-muted);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+.graphNode:hover circle,
+.graphNode:focus-visible circle,
+.graphNodeSelected circle {
+  stroke: var(--cyan-on-dark);
+  stroke-width: 2;
+}
+.graphNodeType {
+  fill: var(--on-dark);
+  font-family: var(--font-mono, ui-monospace), ui-monospace, monospace;
+  font-size: 7.5px;
+}
+.graphNodeLabel {
+  fill: var(--on-dark);
+  font-family: var(--font-body, system-ui), sans-serif;
+  font-size: 10.5px;
+}
+.graphInspector {
+  padding: 36px 30px;
+  border-left: 1px solid var(--line);
+  background: var(--paper);
+}
+.graphInspector h2 {
+  margin-top: 8px;
+  font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  font-size: 31px;
+  font-weight: 400;
+  line-height: 1.08;
+}
+.graphInspector > p:not(.graphInspectorType) {
+  margin-top: 16px;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.graphInspector dl {
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.graphInspector dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.graphInspector dt {
+  color: var(--muted);
+}
+.graphInspector dd {
+  font-family: var(--font-mono, ui-monospace), ui-monospace, monospace;
+}
+.graphMobile {
+  display: none;
+}
+.graphMethodNote {
+  max-width: 72ch;
+  margin-top: 24px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+@media (max-width: 900px) {
+  .graphExplorer {
+    padding: 80px 24px 100px;
+  }
+  .graphExplorerHead {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+  .graphExplorer h1 {
+    max-width: 9ch;
+    font-size: clamp(48px, 13vw, 76px);
+  }
+  .graphSource {
+    white-space: normal;
+  }
+  .graphWorkspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .graphCanvasDesktop {
+    display: none;
+  }
+  .graphMobile {
+    display: block;
+    background: var(--graphite);
+    color: var(--on-dark);
+    padding: 8px 20px;
+  }
+  .graphTrailRow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 5px;
+    width: 100%;
+    min-height: 44px;
+    padding: 16px 0 18px;
+    border: 0;
+    border-bottom: 1px solid var(--line-dark);
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .graphTrailNode {
+    font-family: var(--font-serif), "Iowan Old Style", Georgia, serif;
+    font-size: 21px;
+    line-height: 1.15;
+  }
+  .graphTrailRel {
+    font-family: var(--font-mono, ui-monospace), ui-monospace, monospace;
+    font-size: 11.5px;
+    color: var(--cyan-on-dark);
+  }
+  .graphTrailRel::before {
+    content: "↓ ";
+  }
+  .graphTrailRelUnknown {
+    text-decoration: underline dashed;
+    text-underline-offset: 4px;
+  }
+  .graphInspector {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+    padding: 30px 0 0;
+    margin-top: 30px;
+  }
+}
+@media (max-width: 520px) {
+  .graphExplorer {
+    padding-top: 64px;
+  }
+  .graphLede {
+    font-size: 17px;
+  }
+  .graphViewSwitch {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 22px;
+    margin-top: 48px;
+  }
+  .graphViewButton {
+    text-align: left;
+  }
+  .graphMobile {
+    margin-inline: -24px;
+    padding-inline: 24px;
+  }
+}
