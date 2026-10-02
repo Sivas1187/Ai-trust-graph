@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you refer to AI Trust Graph, please cite the whitepaper as below. The methodology artifacts in this repository remain canonical."
+title: "AI Trust Graph"
+abstract: "An open, vendor-neutral methodology for assessing connected AI systems as a directed, labelled multigraph of trust, authority, paths, controls and evidence. Public-release candidate; not independently validated."
+authors:
+  - family-names: Sethumadhavan
+    given-names: Siva
+version: "1.0-rc.4"
+license: CC-BY-4.0
+repository-code: "https://github.com/Sivas1187/Ai-trust-graph"
+url: "https://aitrustgraph.org"
+keywords:
+  - AI assurance
+  - AI security
+  - trust graph
+  - authority
+  - evidence
+  - assessment methodology
+preferred-citation:
+  type: report
+  title: "AI Trust Graph: A Graph-Driven, Evidence-Based Methodology for AI Assurance"
+  authors:
+    - family-names: Sethumadhavan
+      given-names: Siva
+  version: "1.0"
+  year: 2026
+  month: 10
+  publisher:
+    name: Zenodo
+  doi: 10.5281/zenodo.23104503
+  url: "https://doi.org/10.5281/zenodo.23104503"
+  license: CC-BY-4.0
