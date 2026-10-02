@@ -25,7 +25,8 @@ export function AuthorityDistinction() {
         <SectionHead
           id="authority-title"
           tone="dark"
-          kicker="05 · Authority"
+          kicker="5.2 · Authority and influence"
+          level={3}
           title="Access is not authority."
           lede={
             <>
@@ -60,7 +61,7 @@ export function AuthorityDistinction() {
 
         <div className="authorityGrid">
           <div className="authorityClasses">
-            <h3 className="subTitle">Authority classes</h3>
+            <h4 className="subTitle">Authority classes</h4>
             <ul className="chipList" aria-label="Authority classes, Artifact #2 §5.2">
               {authorityClasses.map((c) => (
                 <li key={c} className="chip">
@@ -75,7 +76,7 @@ export function AuthorityDistinction() {
           </div>
 
           <div id="breakpoints" className="breakpoints">
-            <h3 className="subTitle">Control breakpoints</h3>
+            <h4 className="subTitle">Control breakpoints</h4>
             <p className="canonQuote canonQuoteSmall">
               A control breakpoint is a node, relationship or boundary where an effective control can materially stop,
               constrain, detect or contain a path.

@@ -20,25 +20,28 @@ export function SiteFooter({ prefix = "" }: { prefix?: string }) {
         <div className="footerId">
           <p className="footerBrand">AI Trust Graph</p>
           <p className="footerMeta">
-            Bundle {release.bundle} · {release.status} · Snapshot {release.snapshot}
+            Version {release.bundle} · {release.status} · Snapshot {release.snapshot}
           </p>
           <p className="footerMeta">{reviewStatus[1]}</p>
           <p className="footerMeta">Independent research by {methodologyAuthor}</p>
         </div>
         <nav className="footerNav" aria-label="Footer">
           <ul>
-            <li>{ext(links.repo, "GitHub repository (canonical source)")}</li>
+            <li>
+              <a href={`${prefix}#methodology`}>Methodology</a>
+            </li>
+            <li>
+              <a href={`${prefix}#artifacts`}>Artifacts</a>
+            </li>
             <li>
               <a href={`${prefix}#publications`}>{isPublished() ? "Publications and citation" : "Publications (whitepaper in preparation)"}</a>
             </li>
-            <li>
-              <a href={`${prefix}#publications`}>How to cite</a>
-            </li>
+            <li>{ext(links.repo, "GitHub repository (canonical source)")}</li>
             <li>{ext(links.changelog, "Changelog")}</li>
             <li>{ext(links.license, "Licence (CC BY 4.0)")}</li>
             <li>{ext(links.trademarks, "Trademarks notice")}</li>
             <li>
-              <a href="/privacy/">Privacy notice</a>
+              <a href="/privacy/">Privacy notice (no analytics)</a>
             </li>
             <li>
               <a href="/accessibility/">Accessibility statement</a>

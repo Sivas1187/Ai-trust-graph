@@ -1,12 +1,16 @@
-import { links, notValidatedShort, release } from "../../content";
-import { isPublished, publication } from "../../publication";
+import { links, notValidatedShort, release, reviewStatus } from "../../content";
+import { author } from "../../site-content";
 import { HeroGraph } from "./HeroGraph";
 
-/** Hero copy. EDITORIAL; the descriptive line is the owner-approved positioning from the redesign brief. */
-export const heroLine =
-  "A graph-based, evidence-driven methodology for assessing trust, authority and exposure across connected AI systems.";
+/**
+ * Hero (section 1, opening). EDITORIAL copy from the narrative brief. It
+ * starts with the reason for the research; release metadata is compact
+ * secondary text, and the graph motif is decorative (the signature visual
+ * in section 4 carries the semantics).
+ */
+export const heroDescriptor = "A graph-based, evidence-driven methodology for connected AI systems.";
 export const heroSupport =
-  "AI systems now act through agents, tools, identities, data and providers. AI Trust Graph examines those connections as one graph, asks what each relationship actually allows, and ties every conclusion to evidence. Where the evidence runs out, the answer stays UNKNOWN.";
+  "Modern AI systems are not just models. They connect people, agents, identities, tools, data, providers and business systems. AI Trust Graph was created to examine those relationships while keeping authority, evidence and uncertainty explicit.";
 
 function Sep() {
   return (
@@ -18,47 +22,41 @@ function Sep() {
 }
 
 export function Hero() {
-  const published = isPublished();
   return (
     <section id="top" className="hero" aria-labelledby="hero-title">
       <div className="heroInner container">
         <div className="heroCopy">
-          <p className="heroAuthor">
-            Independent research by <a href="#author">{publication.author}</a>
-          </p>
           <h1 id="hero-title" className="heroTitle">
             AI Trust Graph
           </h1>
-          <p className="heroLine">{heroLine}</p>
+          <p className="heroLine">{heroDescriptor}</p>
           <p className="heroSupport">{heroSupport}</p>
+          <p className="heroAuthor">
+            Independent research by <a href="#author">{author.name}</a>
+          </p>
           <div className="heroActions">
-            <a className="btn btnPrimary" href="#methodology">
+            <a className="btn btnPrimary" href="#why">
+              Understand why it exists
+            </a>
+            <a className="btn btnSecondary" href="#methodology">
               Explore the methodology
             </a>
-            <a className="btn btnSecondary" href={links.repo} rel="noopener noreferrer">
+            <a className="btn btnTertiary" href={links.repo} rel="noopener noreferrer">
               View on GitHub<span className="visuallyHidden"> (canonical source)</span>
               <span aria-hidden="true"> ↗</span>
             </a>
-            {published ? (
-              <a className="btn btnTertiary" href={publication.pdfUrl} rel="noopener noreferrer">
-                Download the whitepaper (PDF)
-              </a>
-            ) : (
-              <a className="btn btnTertiary btnPending" href="#publications">
-                Whitepaper <span className="pendingTag">in preparation</span>
-              </a>
-            )}
           </div>
           <p className="heroStatus">
+            <span>Version {release.bundle}</span>
+            <Sep />
             <span>{release.status}</span>
             <Sep />
-            <span>Bundle {release.bundle}</span>
-            <Sep />
-            <span>
-              <time dateTime={release.snapshot}>{release.snapshotLabel}</time>
-            </span>
+            <span>{reviewStatus[1]}</span>
             <Sep />
             <span>{notValidatedShort}</span>
+            <span className="visuallyHidden">
+              , snapshot <time dateTime={release.snapshot}>{release.snapshotLabel}</time>
+            </span>
           </p>
         </div>
         <HeroGraph />

@@ -1,57 +1,17 @@
 /**
- * Whitepaper publication record.
- *
- * The site renders "Whitepaper in preparation" until `status` is "published"
- * AND every required field below is filled with a verified value. Do not put
- * placeholder DOIs, dates or URLs here: check-claims rejects a published
- * record with missing fields and rejects DOI-shaped text anywhere on the page
- * while the status is "in-preparation".
- *
- * To publish (after the Zenodo record and DOI exist):
- *   1. set status to "published";
- *   2. fill doi (e.g. "10.5281/zenodo.<record>"), zenodoUrl, pdfUrl,
- *      publishedDate (YYYY-MM-DD), licence and abstract from the Zenodo record;
- *   3. optionally fill pdfSha256 and add earlier versions to `versions`;
- *   4. run `npm run check`.
- * Citation formats (APA, IEEE, BibTeX) are generated from these fields.
+ * Whitepaper publication helpers. The record itself is `publication` in
+ * site.config.ts; see the steps there. Citations (APA, IEEE, BibTeX) are
+ * generated from verified fields unless an override is supplied.
  */
 
-export type PublicationStatus = "in-preparation" | "published";
+import { siteConfig } from "./site.config";
 
-export type PublicationVersion = { version: string; date: string; doi: string; note?: string };
+export type Publication = typeof siteConfig.publication;
+export type PublicationStatus = Publication["status"];
+export type PublicationVersion = Publication["versions"][number];
 
-export type Publication = {
-  status: PublicationStatus;
-  title: string;
-  version: string;
-  author: string;
-  /** EDITORIAL scope note shown while the paper is in preparation. */
-  scope: string;
-  abstract: string;
-  publishedDate: string;
-  doi: string;
-  zenodoUrl: string;
-  pdfUrl: string;
-  licence: string;
-  pdfSha256?: string;
-  versions: PublicationVersion[];
-};
-
-export const publication: Publication = {
-  status: "in-preparation",
-  title: "AI Trust Graph Methodology",
-  version: "1.0",
-  author: "Siva Sethumadhavan",
-  scope:
-    "The whitepaper will present the methodology as a citable publication: the reasoning model, the six domains, the evidence and UNKNOWN discipline, the assessment lifecycle and its stated limitations. Until it is published, the GitHub artifacts are the reference.",
-  abstract: "",
-  publishedDate: "",
-  doi: "",
-  zenodoUrl: "",
-  pdfUrl: "",
-  licence: "",
-  versions: [],
-};
+/** The whitepaper record (edited in site.config.ts). */
+export const publication: Publication = siteConfig.publication;
 
 /** True only when the record is published and every required field is present. */
 export function isPublished(p: Publication = publication): boolean {
@@ -80,7 +40,8 @@ export function citations(p: Publication = publication) {
   const year = p.publishedDate.slice(0, 4);
   const doiUrl = `https://doi.org/${p.doi}`;
   const key = `${family.toLowerCase().replace(/[^a-z]/g, "")}${year}aitrustgraph`;
-  return {
+  const o = p.citationOverrides;
+  const generated = {
     apa: `${family}, ${initials} (${year}). ${p.title} (Version ${p.version}). Zenodo. ${doiUrl}`,
     ieee: `${initials} ${family}, "${p.title}," version ${p.version}, Zenodo, ${year}. doi: ${p.doi}.`,
     bibtex: [
@@ -95,4 +56,5 @@ export function citations(p: Publication = publication) {
       `}`,
     ].join("\n"),
   };
+  return { apa: o.apa || generated.apa, ieee: o.ieee || generated.ieee, bibtex: o.bibtex || generated.bibtex };
 }

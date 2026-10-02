@@ -67,25 +67,26 @@ note naming the artifact and section and saying which text is verbatim.
 
 | Section | Canonical source | Website explanation (editorial) |
 | --- | --- | --- |
-| Hero `#top` | METHODOLOGY_MANIFEST header (status, bundle, snapshot); README status | Line and supporting paragraph; hero graph (illustrative, captioned) |
-| Why it exists `#why` | #1 §2.2 thesis, §4 invariant (verbatim) | Narrative; conceptual comparison figure (labelled conceptual) |
-| Methodology `#methodology` | #1 §7 lifecycle steps (each outcome cites its step) | Outcome labels Discover, Model, Assess, Validate, Decide, Reassess |
-| The graph `#graph` | #12 predicates and caveats (verbatim); #2 §3.2, §6, §6.6; #6 §0.5, §1 | Synthetic path, node notes, illustrative grades |
-| Reasoning chain `#flow` | #2 §0.10 chain and theory map (verbatim); #2 §7.4, §3.8, §1.10 decision note (verbatim) | Stage notes; statement that the chain is not the lifecycle |
-| Authority `#authority` | #2 §3.6 separation rule, §5.2 classes and sentence, §1.8 / §6.6 breakpoint definition, §6.3 states and roles (verbatim) | Six-assertion illustration and one-line hints; "Not a ladder" note |
-| Evidence and UNKNOWN `#unknown` | #6 §0.3, §0.5, §0.9, §1.1 to §1.6, §1.8; #4 §0.5 and SC-INV-01 (verbatim) | Lede; relation symbols; grade-vs-confidence heading |
-| Domains `#domains` | README names; #2 §8.1 lede, purposes, outputs; §8.2 integration; #3 capabilities; #5 prefixes | Practical question per domain |
-| Lifecycle `#lifecycle` | #7 §0.11 phases, outcomes, iteration rule; §0.12 gates; §1.1 to §1.10 types (verbatim) | Separation statement; Reassess trigger examples drawn from §1 types |
-| Worked example `#example` | Vocabulary from #12, #6, #4 §0.5, #2 §6.3 and §7.4 | Entire scenario (synthetic, labelled) |
-| Frameworks `#frameworks` | #1 principle 10 and §11 "Claims we will not make" | Complementary positioning wording |
-| Artifacts `#artifacts` | METHODOLOGY_MANIFEST §2 and §4; README; artifact header tables | Grouping; filter labels |
-| Publications `#publications` | `app/publication.ts` | Scope note while in preparation |
-| About the author `#author` | Artifact approval tables and LICENSE (author name) | Role line, summary, independence statement (pending approved wording) |
-| Status and review `#status`, `#review` | METHODOLOGY_MANIFEST header and §6; README; CONTRIBUTING; `.github/ISSUE_TEMPLATE` | Review invitation wording |
+| 1 Hero `#top` | METHODOLOGY_MANIFEST header (version, status, snapshot); README status | Descriptor, supporting message and actions (narrative brief); decorative motif |
+| 1 Why it exists `#why` | #1 §2.2 thesis (verbatim) | Opening statement, narrative, proposition; conceptual comparison (labelled) |
+| 2 The problem `#problem` | #2 §3.6; #1 §4; SC-INV-01 | Synthetic procurement scenario; what components do not establish; five distinctions |
+| 3 The big idea `#big-idea` | #2 (objects, relationships, conditions, paths, §5.2 authority, evidence); #1 principle 10 and §11 | Five-concept explanation; "What changes?"; framework positioning (`#frameworks`) |
+| 4 Signature visual `#graph` | #12 predicates and caveats (verbatim); #2 §3.2, §6, §6.6; #6 §0.5, §0.9, §1; #1 §4 (verbatim) | Scenario, node notes, illustrative grades, qualifier sentence |
+| 5 Methodology `#methodology` | | Subsection index, reading depth |
+| 5.1 Reasoning chain `#flow` | #2 §0.10 chain and theory map; §7.4, §3.8, §1.10 decision note (verbatim) | Stage notes; chain vs lifecycle statement |
+| 5.2 Authority `#authority` | #2 §3.6, §5.2, §1.8 / §6.6, §6.3 (verbatim) | Six-assertion illustration; "Not a ladder" note |
+| 5.3 Evidence and UNKNOWN `#unknown` | #6 §0.3, §0.5, §0.9, §1.1 to §1.6, §1.8; #4 §0.5, SC-INV-01 (verbatim) | Discipline points; relation symbols |
+| 5.4 Domains `#domains` | README names; #2 §8.1 lede, purposes, outputs; #3; #5 prefixes | Practical question per domain |
+| 5.5 Lifecycle `#lifecycle` | #7 §0.11, §0.12, §1.1 to §1.10 (verbatim) | Chain vs lifecycle statement; Reassess trigger note |
+| 5.6 Worked example `#example` | Vocabulary from #12, #6, #4 §0.5, #2 §6.3 and §7.4 | Entire scenario (synthetic, labelled) |
+| 6 Artifacts `#artifacts` | METHODOLOGY_MANIFEST §2, §4; README; artifact headers | Grouping, filters, source register |
+| 7 Publications `#publications` | `app/site.config.ts` publication record | Scope note while in preparation |
+| 8 About the author `#author` | Artifact approval tables, LICENSE | Role, summary, independence statement (author-approved) |
+| Review and status `#status`, `#review` | METHODOLOGY_MANIFEST header and §6; README; CONTRIBUTING | Review invitation |
 | Footer | METHODOLOGY_MANIFEST header; LICENSE; TRADEMARKS | Independence statement |
 
-Navigation: Home, Why it exists, Methodology, Worked example, Artifacts,
-Publications, About the author, GitHub (canonical source). These are website
+Navigation: Why it exists, The big idea, Methodology, Artifacts,
+Publications, About, plus a separate GitHub action. These are website
 labels, not methodology constructs. `scripts/check-claims.mjs` enforces the
 order, the canonical content and order in every section, release facts against
 the manifest, and the integrity statements; `scripts/check-links.mjs` checks

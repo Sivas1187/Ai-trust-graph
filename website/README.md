@@ -38,9 +38,10 @@ It never deploys and uses no secrets.
 
 | Path | Role |
 | --- | --- |
+| `app/site.config.ts` | **Central configuration**: methodology version, status and review state, site URL and update date, repository and bundle ref, licence, author and verified links, social metadata, and the whitepaper record. Edit release and publication facts here. |
 | `app/content.ts` | Canonical data: release facts, artifact registry, reasoning chain, theory map, lifecycle, grades, result states, domains, gates, pinned links (`BUNDLE_REF`). Each entry names its source artifact and section. |
-| `app/site-content.ts` | Redesign content: author, outcomes, chain stage notes, domain detail, evidence relations, framework positioning, artifact grouping and dependencies. Each entry is marked CANONICAL or EDITORIAL. |
-| `app/publication.ts` | Whitepaper record and citation generator (APA, IEEE, BibTeX). Drives the hero action, Publications section, footer and JSON-LD. |
+| `app/site-content.ts` | Narrative and methodology content: why-it-exists narrative, problem scenario, distinctions, big-idea concepts, author summary and independence statement, chain stage notes, domain detail, evidence relations, framework positioning, artifact grouping and dependencies. Each entry is marked CANONICAL or EDITORIAL. |
+| `app/publication.ts` | Publication helpers: `isPublished()` and the citation generator (APA, IEEE, BibTeX, with optional overrides). The record itself lives in `site.config.ts`. |
 | `app/page.tsx` | Homepage section order. |
 | `app/components/site/` | Homepage sections and shared primitives (`Primitives.tsx`: section head, source note, external link, detail). Client components: `SignatureGraph`, `WorkedExample`, `ArtifactLibrary`, `DepthControl`, `CopyButton`. |
 | `app/components/PrimaryNav.tsx`, `BrandMark.tsx`, `GraphExplorer.tsx` | Navigation menu (client), brand mark, `/graph/` explorer (client). |
@@ -57,26 +58,27 @@ It never deploys and uses no secrets.
 All values below are edited in one place; `npm run check` then verifies the
 result against the manifest and the claims rules.
 
-- **New release or status change.** Update `release` (bundle, status, snapshot,
-  snapshot label), `BUNDLE_REF`, `reviewStatus`, `pendingGates` and
-  `artifacts` versions in `app/content.ts`. `check-claims` reads the bundle,
+- **New release or status change.** Update `methodology` (version, status,
+  snapshot, review status) and `repository.bundleRef` in `app/site.config.ts`,
+  then `pendingGates` and `artifacts` versions in `app/content.ts`. `check-claims` reads the bundle,
   status and snapshot from `../METHODOLOGY_MANIFEST.md` and fails if the hero
   or status section disagrees.
 - **Publishing the whitepaper.** Only after the Zenodo record and DOI exist:
-  in `app/publication.ts` set `status: "published"` and fill `doi`,
+  in `publication` in `app/site.config.ts` set `status: "published"` and fill `doi`,
   `zenodoUrl`, `pdfUrl`, `publishedDate` (YYYY-MM-DD), `licence` and
-  `abstract`; add earlier versions to `versions`. The hero then offers the
-  PDF, the Publications section shows the record, Copy DOI and APA / IEEE /
-  BibTeX citations, and a ScholarlyArticle is added to the JSON-LD. While
+  `abstract`; add earlier versions to `versions`. The Publications section
+  then offers the PDF, the Zenodo record, Copy DOI, APA / IEEE / BibTeX
+  citations and version history, and a ScholarlyArticle is added to the JSON-LD. While
   `status` is "in-preparation", `check-claims` rejects any DOI, PDF link,
   download wording or scholarly metadata.
 - **Author links.** Add verified URLs to `author.links` in
-  `app/site-content.ts` (LinkedIn, ORCID, Zenodo). Empty values are not
+  `app/site.config.ts` (LinkedIn, ORCID, Zenodo). Empty values are not
   rendered. `check-claims` rejects author-section links other than the
   verified GitHub profile until the guard's allow-list is updated with the
   new verified URL.
-- **Independence statement.** Replace `author.independence` with the approved
-  legal wording once the employer / IP / confidentiality gate closes.
+- **Independence statement.** `author.independence` in `app/site-content.ts`
+  is the author-approved statement. Change it only on the author's
+  instruction.
 - **Canonical text.** Correct CANONICAL entries only to match the pinned
   artifact. EDITORIAL text follows the writing rules: British English, no em
   dashes, no marketing vocabulary (enforced by `check-claims`).
