@@ -60,7 +60,7 @@ export const siteConfig = {
     links: {
       github: "https://github.com/Sivas1187",
       linkedin: "",
-      orcid: "",
+      orcid: "https://orcid.org/0009-0009-9383-6037",
       zenodo: "",
     },
   },

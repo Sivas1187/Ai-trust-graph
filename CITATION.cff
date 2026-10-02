@@ -5,6 +5,7 @@ abstract: "An open, vendor-neutral methodology for assessing connected AI system
 authors:
   - family-names: Sethumadhavan
     given-names: Siva
+    orcid: "https://orcid.org/0009-0009-9383-6037"
 version: "1.0-rc.4"
 license: CC-BY-4.0
 repository-code: "https://github.com/Sivas1187/Ai-trust-graph"
@@ -22,6 +23,7 @@ preferred-citation:
   authors:
     - family-names: Sethumadhavan
       given-names: Siva
+      orcid: "https://orcid.org/0009-0009-9383-6037"
   version: "1.0"
   year: 2026
   month: 10
