@@ -3281,6 +3281,15 @@ main:focus {
   background: var(--white);
   font-size: var(--fs-small);
 }
+.gatesSub {
+  margin: var(--sp-5) 0 var(--sp-3);
+  font-size: 1em;
+}
+.gatesClosed li {
+  border-style: solid;
+  border-color: var(--st-support);
+  background: var(--st-support-tint);
+}
 .gatesCard .smallNote {
   margin-top: var(--sp-4);
 }

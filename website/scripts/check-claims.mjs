@@ -127,11 +127,11 @@ const authorityClasses = ["Observe", "Read", "Retrieve", "Infer", "Recommend", "
 const breakpointEffects = ["Stop", "Constrain", "Detect", "Contain"];
 const pathStates = ["Candidate", "Topological", "Plausible", "Validated", "Exploitable", "Controlled", "Invalidated"];
 const nonNumericStates = ["Not Assessed", "UNKNOWN", "Inconclusive", "Not Tested", "Not Applicable"];
-const pendingGates = [
-  "Independent methodology / architecture review", "Independent AI-security review",
-  "Inter-assessor reproducibility study using the protocol in Artifact #10 Appendix B.4",
-  "Employer / IP / confidentiality review", "Legal approval of licence / trademark position",
-];
+// Pending gates, read from METHODOLOGY_MANIFEST §6 (bullet list before §6.1), with the
+// initial capital restored. The site must show exactly these, in order.
+const manifestS6 = manifest.split(/^## 6\. Validation status/m)[1]?.split(/^### 6\.1|^## 7/m)[0] ?? "";
+const pendingGates = [...manifestS6.matchAll(/^- (.+?);?\.?$/gm)].map((m) => m[1].charAt(0).toUpperCase() + m[1].slice(1));
+if (pendingGates.length === 0) errors.push("METHODOLOGY_MANIFEST.md: could not read the §6 pending gates");
 const artifactNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
 
 // Sentences that must appear verbatim (canonical quotations and integrity statements).
@@ -447,6 +447,18 @@ if (/Published<\/span>\s*<\/dd>|libStatus-published/.test(artifactsHtml)) fail("
 const authorHtml = section(index, "author");
 if (/<img\b/.test(authorHtml)) fail("index.html: the author section contains an image");
 for (const m of authorHtml.matchAll(/href="([^"]+)"/g)) if (!/^https:\/\/github\.com\/Sivas1187\b/.test(m[1])) fail(`index.html: unverified author link ${m[1]}`);
+
+// Gates: the pending list matches the manifest, and every closed gate is stated as bounded.
+{
+  const st = section(index, "status");
+  inOrder("pending gates", all(st.match(/<ul class="gates">[\s\S]*?<\/ul>/)?.[0] ?? "", /<li>([\s\S]*?)<\/li>/g).map((t) => t.replace(/^○\s*/, "")), pendingGates);
+  const closed = all(st.match(/<ul class="gates gatesClosed">[\s\S]*?<\/ul>/)?.[0] ?? "", /<li>([\s\S]*?)<\/li>/g);
+  for (const c of closed) {
+    if (!/not an external legal review/i.test(c)) fail(`index.html: closed gate "${c.slice(0, 60)}" does not state that it is not an external legal review`);
+    const name = c.replace(/^✓\s*/, "").split(":")[0];
+    if (!manifest.includes(`| ${name} | Closed`)) fail(`index.html: closed gate "${name}" has no §6.1 record in the manifest`);
+  }
+}
 
 // Release facts: hero and status must match the manifest.
 const status = visible(section(index, "status"));

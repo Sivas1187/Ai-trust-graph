@@ -95,7 +95,16 @@ The following remain external release gates until actually completed:
 - independent methodology / architecture review;
 - independent AI-security review;
 - inter-assessor reproducibility study using the protocol in Artifact #10 Appendix B.4;
-- employer / IP / confidentiality review;
 - legal approval of licence / trademark position.
 
 No repository wording may imply those gates are complete until evidence of completion is published or recorded through governance.
+
+### 6.1 Gate records
+
+Gates closed through governance, with the evidence recorded for each. A record states exactly what was established and by whom; it does not extend to anything it does not state.
+
+| Gate | Status | Recorded | Basis |
+| --- | --- | --- | --- |
+| Employer / IP / confidentiality review | Closed by author declaration | 2026-10-02 | Declaration by the methodology author, Siva Sethumadhavan: AI Trust Graph is the author's independent research, not undertaken for or on behalf of any employer or client; the author owns its intellectual property; and it does not include any employer's or client's confidential information. This is a self-declaration by the author. It is not an external legal review or opinion. |
+
+The closing approval records inside the pinned artifacts reflect the 1.0-rc.4 content snapshot and still list this gate as pending; this section governs current gate status until the artifacts are next revised.

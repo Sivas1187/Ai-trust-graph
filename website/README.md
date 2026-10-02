@@ -60,7 +60,13 @@ result against the manifest and the claims rules.
 
 - **New release or status change.** Update `methodology` (version, status,
   snapshot, review status) and `repository.bundleRef` in `app/site.config.ts`,
-  then `pendingGates` and `artifacts` versions in `app/content.ts`. `check-claims` reads the bundle,
+  then `pendingGates` and `artifacts` versions in `app/content.ts`.
+- **Gate status change.** Edit METHODOLOGY_MANIFEST §6 (pending list) and
+  §6.1 (gate records) first, commit, then set `repository.manifestRef` in
+  `app/site.config.ts` to that commit and update `pendingGates` and
+  `closedGates` in `app/content.ts`. `check-claims` reads the pending list from
+  the manifest and fails if the site differs, and requires every closed gate
+  to have a §6.1 record and to say it is not an external legal review. `check-claims` reads the bundle,
   status and snapshot from `../METHODOLOGY_MANIFEST.md` and fails if the hero
   or status section disagrees.
 - **Publishing the whitepaper.** Only after the Zenodo record and DOI exist:
