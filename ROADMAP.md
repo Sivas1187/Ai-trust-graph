@@ -22,6 +22,7 @@ All twelve methodology artifacts have been converted from their source drafts in
 - [x] Publish the release-candidate manifest with exact artifact versions and Git blob identifiers.
 - [x] Resolve R-14: UNKNOWN is non-numeric for PEI; disproved reachability invalidates the path; determinate active PEI range is 7-62.
 - [x] Add PEI threshold/adversarial vectors, residual/alternate-path cases and an M5 calibration pair (R-15/R-22).
+- [x] Run a sensitivity analysis of the Path Exposure Index (Artifact #4 §6.5): author-performed, recorded 2026-10-02 in [METHODOLOGY_MANIFEST.md §6.2](METHODOLOGY_MANIFEST.md#62-release-acceptance-records), with method and script in [`analysis/pei-sensitivity/`](analysis/pei-sensitivity/). Not an independent review; other weighted formulas in Artifact #4 and reviewer variation are not covered, and the review of the analysis that Artifact #4 A.7 asks for is still to come.
 - [x] Add the six-stage-to-thirteen-phase lifecycle crosswalk (R-18).
 - [x] Gate L4 Tool-compatible until approved normative schemas and test vectors exist (R-19).
 
