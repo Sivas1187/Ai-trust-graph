@@ -71,8 +71,11 @@ result against the manifest and the claims rules.
   or status section disagrees.
 - **Publishing the whitepaper.** Only after the Zenodo record and DOI exist:
   in `publication` in `app/site.config.ts` set `status: "published"` and fill `doi`,
-  `zenodoUrl`, `pdfUrl`, `publishedDate` (YYYY-MM-DD), `licence` and
-  `abstract`; add earlier versions to `versions`. The Publications section
+  `zenodoUrl`, `pdfUrl`, `publishedDate` (YYYY-MM-DD) and `abstract`; confirm
+  the Zenodo record's licence matches `licence` (CC BY 4.0, the author's
+  decision of 2026-10-02); add earlier versions to `versions`. While the
+  whitepaper is in preparation, `licence` is shown as the licence on
+  publication. The Publications section
   then offers the PDF, the Zenodo record, Copy DOI, APA / IEEE / BibTeX
   citations and version history, and a ScholarlyArticle is added to the JSON-LD. While
   `status` is "in-preparation", `check-claims` rejects any DOI, PDF link,

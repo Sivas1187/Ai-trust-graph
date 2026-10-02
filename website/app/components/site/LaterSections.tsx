@@ -11,6 +11,7 @@ import {
   reviewStatus,
 } from "../../content";
 import { citations, isPublished, publication } from "../../publication";
+import { siteConfig } from "../../site.config";
 import { author } from "../../site-content";
 import { ArtifactLibrary } from "./ArtifactLibrary";
 import { CopyButton } from "./CopyButton";
@@ -174,6 +175,18 @@ export function Publications() {
                   <dt>Relationship to the artifacts</dt>
                   <dd>Consolidates the versioned artifacts; it will not replace them as the technical source</dd>
                 </div>
+                {publication.licence && (
+                  <div>
+                    <dt>Licence on publication</dt>
+                    <dd>
+                      <a href={siteConfig.licence.url} rel="license noopener noreferrer">
+                        {publication.licence}
+                      </a>
+                      , the same licence as the methodology
+                      text. The name is reserved separately; see <Ext href={links.trademarks}>TRADEMARKS</Ext>.
+                    </dd>
+                  </div>
+                )}
                 <div>
                   <dt>Methodology source now</dt>
                   <dd>
