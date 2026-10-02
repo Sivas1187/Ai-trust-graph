@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<style>text{font-family:Arial,sans-serif;fill:#111}.axis{stroke:#111;stroke-width:2}.grid{stroke:#bbb;stroke-width:1;opacity:.5}.tick{font-size:22px}.label{font-size:24px}.title{font-size:30px;font-weight:600}.note{font-size:22px}.pt{stroke:#111;stroke-width:1}</style>
+<text x="700" y="55" text-anchor="middle" class="title">Evidence support and control effectiveness are independent dimensions</text>
+<line x1="110" y1="780" x2="1320" y2="780" class="axis"/><line x1="110" y1="780" x2="110" y2="100" class="axis"/>
+<g class="grid">
+<line x1="110" y1="780" x2="1320" y2="780"/><line x1="110" y1="644" x2="1320" y2="644"/><line x1="110" y1="508" x2="1320" y2="508"/><line x1="110" y1="372" x2="1320" y2="372"/><line x1="110" y1="236" x2="1320" y2="236"/><line x1="110" y1="100" x2="1320" y2="100"/>
+<line x1="110" y1="780" x2="110" y2="100"/><line x1="352" y1="780" x2="352" y2="100"/><line x1="594" y1="780" x2="594" y2="100"/><line x1="836" y1="780" x2="836" y2="100"/><line x1="1078" y1="780" x2="1078" y2="100"/><line x1="1320" y1="780" x2="1320" y2="100"/>
+</g>
+<g class="tick"><text x="75" y="788">E0</text><text x="75" y="652">E1</text><text x="75" y="516">E2</text><text x="75" y="380">E3</text><text x="75" y="244">E4</text><text x="75" y="108">E5</text>
+<text x="105" y="815">0</text><text x="347" y="815">1</text><text x="589" y="815">2</text><text x="831" y="815">3</text><text x="1073" y="815">4</text><text x="1315" y="815">5</text></g>
+<text x="715" y="860" text-anchor="middle" class="label">Observed or claimed effectiveness (conceptual)</text>
+<text x="32" y="440" transform="rotate(-90 32 440)" text-anchor="middle" class="label">Evidence support E0-E5 (conceptual axis)</text>
+<circle cx="352" cy="100" r="11" fill="#1f77b4" class="pt"/><text x="245" y="160" class="note"><tspan x="245">Strong evidence</tspan><tspan x="245" dy="27">can confirm an</tspan><tspan x="245" dy="27">adverse state</tspan></text>
+<circle cx="1078" cy="100" r="11" fill="#ff7f0e" class="pt"/><text x="1100" y="160" class="note"><tspan x="1100">Strong evidence</tspan><tspan x="1100" dy="27">may support an</tspan><tspan x="1100" dy="27">effective state</tspan></text>
+<circle cx="352" cy="508" r="11" fill="#d62728" class="pt"/><text x="245" y="455" class="note"><tspan x="245">Weak support may</tspan><tspan x="245" dy="27">suggest an adverse</tspan><tspan x="245" dy="27">hypothesis</tspan></text>
+<circle cx="1078" cy="508" r="11" fill="#2ca02c" class="pt"/><text x="1100" y="455" class="note"><tspan x="1100">Weak support cannot</tspan><tspan x="1100" dy="27">justify a strong</tspan><tspan x="1100" dy="27">conclusion</tspan></text>
+</svg>
