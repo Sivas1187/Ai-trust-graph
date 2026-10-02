@@ -16,6 +16,14 @@ One governance item the methodology's own publication-acceptance criteria calls 
 
 A **LICENSE** (CC BY 4.0, see below) and **TRADEMARKS.md** have since been added — see [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md#gaps) for the full gap history and for why the remaining item is a gap rather than an omission.
 
+## Whitepaper
+
+Sethumadhavan, S. (2026). *AI Trust Graph: A Graph-Driven, Evidence-Based Methodology for AI Assurance* (Version 1.0). Zenodo. [https://doi.org/10.5281/zenodo.23104503](https://doi.org/10.5281/zenodo.23104503)
+
+The whitepaper is a non-normative narrative introduction to the methodology, frozen to bundle 1.0-rc.4. The artifacts under `docs/` remain canonical: where the paper and an artifact differ, the artifact governs. The paper is published by the author on Zenodo under CC BY 4.0; it has not been peer reviewed, and its publication does not change the status above. "Version 1.0" is the version of the paper; the methodology remains a public-release candidate.
+
+The source Markdown, the published PDF and the build and text-parity tooling are in [`whitepaper/`](whitepaper/). The Path Exposure Index sensitivity analysis the paper summarizes, with its reproducible script, is in [`analysis/pei-sensitivity/`](analysis/pei-sensitivity/). To cite the paper, use the reference above or GitHub's "Cite this repository" button, which reads [`CITATION.cff`](CITATION.cff).
+
 ## The methodology at a glance
 
 AI Trust Graph organizes assessment into **six domains**, each with twelve canonical controls (prefix `ATG-<DOMAIN>-NNN`):
@@ -76,6 +84,7 @@ See `REVIEW_FINDINGS.md`, finding R-13, for the full record of why this was open
 ai-trust-graph/
 ├── README.md                 — you are here
 ├── METHODOLOGY_MANIFEST.md    — canonical authority/dependency map, versions and exact artifact pins
+├── CITATION.cff               — citation metadata; points to the whitepaper DOI
 ├── LICENSE                    — CC BY 4.0 (methodology text)
 ├── TRADEMARKS.md               — "AI Trust Graph" name/marks, reserved separately from the content license
 ├── ROADMAP.md                 — what's done, what's pending, what's next
@@ -83,6 +92,8 @@ ai-trust-graph/
 ├── CONTRIBUTING.md            — how to propose changes, and the review bar they must clear
 ├── CODE_OF_CONDUCT.md          — community conduct standard
 ├── REVIEW_FINDINGS.md          — independent ruthless-reviewer pass: inconsistencies, gaps, recommendations
+├── whitepaper/                — whitepaper v1.0 (non-normative): source, published PDF, figures, build tooling
+├── analysis/pei-sensitivity/  — author-performed PEI sensitivity analysis and reproducible script
 └── docs/
     ├── 01-manifesto.md
     ├── 02-core-conceptual-model.md
