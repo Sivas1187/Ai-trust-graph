@@ -47,7 +47,7 @@ export const siteConfig = {
      * Commit at which METHODOLOGY_MANIFEST.md is linked: the commit that last
      * changed the manifest's gate records. Update it whenever §6 changes.
      */
-    manifestRef: "093b0a09c5fc364d15378702fe1a8b066d3e9753",
+    manifestRef: "d0879902881b5f5ebf65df19a4ad76474859c4df",
   },
   licence: {
     name: "CC BY 4.0",

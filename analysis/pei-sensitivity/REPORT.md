@@ -62,6 +62,8 @@ Band membership is **not** stable at band edges under one-point rating variation
 
 Suggested wording for METHODOLOGY_MANIFEST.md (for example a new §6.2 *Release-acceptance records*), to be added only by the methodology owner:
 
+> **Recorded.** On 2026-10-02 the methodology owner recorded this analysis in METHODOLOGY_MANIFEST.md §6.2. The recorded wording governs; it extends the row below to name the §6.5 tests covered and not covered, and to state that it does not record the review that the A.7 *Calibration* criterion asks for.
+
 | Requirement | Status | Recorded | Basis |
 | --- | --- | --- | --- |
 | Sensitivity analysis of the path formula (Scoring Framework §6.5; A.7 *Calibration*) | Performed by the methodology author | 2026-10-02 | Desk analysis of PEI over all 2,000 determinate vectors and the Appendix B.1–B.2 calibration vectors; script and results in `analysis/pei-sensitivity/`. Under the author-defined alternatives, ordering changes are small (tau-b ≥ 0.913) and two-band reversals cannot occur; band membership is sensitive at band edges, which the component-profile and triage-only rules already address. Not an independent review; does not cover other weighted formulas such as F-04, reviewer variation or field calibration. |
