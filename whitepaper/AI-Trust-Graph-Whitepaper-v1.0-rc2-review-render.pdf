@@ -245,7 +245,7 @@ endobj
 << /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
 endobj
 6 0 obj
-<< /Length 4046 >>
+<< /Length 4037 >>
 stream
 BT
 /F1 9 Tf
@@ -349,6 +349,37 @@ T*
 T*
 () Tj
 T*
+(Assurance-case practice is another close intellectual relative. ISO/IEC/IEEE 15026-2:2022) Tj
+T*
+(specifies assurance-case structure terminology for claims, arguments and evidence,) Tj
+T*
+(reinforcing the broader lineage of evidence-linked assurance reasoning [18]. Work critiquing) Tj
+T*
+(weighted vulnerability indices is also relevant to PEI's explicit limitations: Spring et al.) Tj
+T*
+(argue that CVSS severity scoring should not be treated as a risk score and question the) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 4056 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(formal and empirical justification of its scoring algorithm [19]. These precedents) Tj
+T*
+(strengthen, rather than weaken, ATG's insistence that arithmetic remain bounded by declared) Tj
+T*
+(semantics, evidence and decision purpose.) Tj
+T*
+() Tj
+T*
 (AI-specific work adds further adjacent concepts. Indirect prompt injection demonstrates that) Tj
 T*
 (data can become an influence channel capable of steering an LLM-integrated application and) Tj
@@ -359,19 +390,6 @@ T*
 T*
 (2026 Agent Capability and Authorization Profile \(ACAP\) is a particularly close contemporary) Tj
 T*
-ET
-endstream
-endobj
-7 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 6 0 R >>
-endobj
-8 0 obj
-<< /Length 4037 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 (precedent for deployment-level authorization: it focuses on defining, enforcing and auditing) Tj
 T*
 (what an agent is permitted to do [8]. OWASP's Agent Control Standard likewise emphasizes) Tj
@@ -462,6 +480,19 @@ T*
 T*
 (Labels matter because a connection called "can invoke" has a different assurance meaning) Tj
 T*
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 3733 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (from one called "trusts", "reads from", "delegates to" or "controlled by". Multiple edges) Tj
 T*
 (between the same objects matter because two components may simultaneously have data,) Tj
@@ -480,19 +511,6 @@ T*
 T*
 (material steps and preconditions must be supported or explicitly marked unresolved.) Tj
 T*
-ET
-endstream
-endobj
-9 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 8 0 R >>
-endobj
-10 0 obj
-<< /Length 3636 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 () Tj
 T*
 (2.2 The canonical reasoning chain) Tj
@@ -519,15 +537,15 @@ T*
 T*
 (conditions. Authority and influence explain who or what can cause, steer or shape an) Tj
 T*
-(outcome; this explicitly includes cases where content has influence without possessing) Tj
+(outcome; for example, content can influence without possessing authority [ATG-2) Tj
 T*
-(authority. Consequence explains why the path matters. Controls identify where progression) Tj
+(Section0.10-1.1]. Consequence explains why the path matters. Controls identify where) Tj
 T*
-(can be stopped, constrained, detected or contained. Evidence determines what the assessment) Tj
+(progression can be stopped, constrained, detected or contained. Evidence determines what the) Tj
 T*
-(can defend. Decision records the accountable disposition without changing the underlying) Tj
+(assessment can defend. Decision records the accountable disposition without changing the) Tj
 T*
-(assessed condition.) Tj
+(underlying assessed condition.) Tj
 T*
 () Tj
 T*
@@ -583,15 +601,28 @@ T*
 T*
 () Tj
 T*
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 3609 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (2.4 Boundaries are first-class) Tj
 T*
 () Tj
 T*
-(The Core Conceptual Model treats a boundary as a governed separation where ownership,) Tj
+(The Core Conceptual Model defines a boundary as a first-class object representing a change) Tj
 T*
-(control, trust, policy, legal obligation, enforcement or consequence assumptions materially) Tj
+(in trust assumption, ownership, policy, enforcement, residency, privilege or consequence) Tj
 T*
-(change [ATG-2 Section3.2]. Boundaries are therefore analytical objects rather than drawing) Tj
+([ATG-2 Section3.2]. Boundaries are therefore analytical objects rather than drawing) Tj
 T*
 (conventions. Provider transitions, account and privilege boundaries, human-approval points,) Tj
 T*
@@ -601,19 +632,6 @@ T*
 T*
 (This matters in AI ecosystems because a workflow can move quickly across organizational and) Tj
 T*
-ET
-endstream
-endobj
-11 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 10 0 R >>
-endobj
-12 0 obj
-<< /Length 3481 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 (technical domains: a user input can influence a hosted model, that model can steer an agent,) Tj
 T*
 (the agent can invoke a third-party tool, and the resulting action can affect an enterprise) Tj
@@ -704,6 +722,19 @@ T*
 T*
 (Reachability may be Direct, Indirect, Chained, Inherited, Delegated or Unknown [ATG-12]. The) Tj
 T*
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 3407 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (reachability form Unknown is distinct from the assessment result state UNKNOWN.) Tj
 T*
 () Tj
@@ -722,19 +753,6 @@ T*
 T*
 ( Candidate | Hypothesized sequence requiring review) Tj
 T*
-ET
-endstream
-endobj
-13 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 12 0 R >>
-endobj
-14 0 obj
-<< /Length 3542 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 ( Topological | Traversal exists in the represented graph) Tj
 T*
 ( Plausible | Required conditions are supported or explicitly UNKNOWN) Tj
@@ -759,9 +777,9 @@ T*
 T*
 () Tj
 T*
-(!Figure 2. Path reasoning preserves conditions, authority and influence, breakpoints,) Tj
+(!Figure 2. Illustrative path reasoning with explicit conditions, authority and candidate) Tj
 T*
-(uncertainty and alternate routes. \(figures/figure-2-path-reasoning.png\)) Tj
+(control breakpoints. \(figures/figure-2-path-reasoning.png\)) Tj
 T*
 () Tj
 T*
@@ -809,7 +827,7 @@ T*
 T*
 (when its influence is composed with the authority of the agent, tool or workload identity.) Tj
 T*
-(Restoring this distinction is essential to AI-native path reasoning.) Tj
+(This distinction is essential to AI-native path reasoning.) Tj
 T*
 () Tj
 T*
@@ -825,6 +843,19 @@ T*
 T*
 (misconfiguration.) Tj
 T*
+ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Length 3383 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 () Tj
 T*
 (Artifact #2 identifies seven amplification lenses: Identity amplification, Tool) Tj
@@ -843,19 +874,6 @@ T*
 T*
 (distinction, actor-subject chain and accountability, including protection against) Tj
 T*
-ET
-endstream
-endobj
-15 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 14 0 R >>
-endobj
-16 0 obj
-<< /Length 3263 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 (confused-deputy behaviour. An AI agent acting through another principal's identity or) Tj
 T*
 (authority can therefore create a materially different path from an agent that merely) Tj
@@ -946,6 +964,19 @@ T*
 T*
 (whether a topological route is actually supported by the permissions, state and evidence) Tj
 T*
+ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 16 0 R >>
+endobj
+18 0 obj
+<< /Length 3260 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (required to make it material.) Tj
 T*
 () Tj
@@ -964,19 +995,6 @@ T*
 T*
 () Tj
 T*
-ET
-endstream
-endobj
-17 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 16 0 R >>
-endobj
-18 0 obj
-<< /Length 3406 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 (5.4 D4 - AI Security Validation) Tj
 T*
 () Tj
@@ -1067,6 +1085,19 @@ T*
 T*
 () Tj
 T*
+ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 18 0 R >>
+endobj
+20 0 obj
+<< /Length 3466 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (6.2 Design intent is not operating effectiveness) Tj
 T*
 () Tj
@@ -1077,7 +1108,7 @@ T*
 T*
 (workflow enforces the approval every time. A configuration export may demonstrate) Tj
 T*
-(implementation, but an operating-effectiveness claim requires stronger evidence of actual or) Tj
+(implementation, but an operating-effectiveness claim requires stronger evidence from current) Tj
 T*
 (representative operation under the relevant conditions [ATG-6].) Tj
 T*
@@ -1085,19 +1116,6 @@ T*
 T*
 (This distinction is essential for breakpoint reasoning because a path is only constrained to) Tj
 T*
-ET
-endstream
-endobj
-19 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 18 0 R >>
-endobj
-20 0 obj
-<< /Length 3367 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 (the extent that the breakpoint actually operates. A control drawn on an architecture diagram) Tj
 T*
 (is not automatically a path cut.) Tj
@@ -1176,13 +1194,32 @@ T*
 T*
 () Tj
 T*
-(At the other end of the scale, E5 represents direct technical and representative evidence) Tj
+(At the other end of the scale, E5 represents direct current technical evidence plus) Tj
 T*
-(within stated scope. Even E5 does not equal truth or a favourable result. A high grade can) Tj
+(representative test or operating record within stated scope. Even E5 does not equal truth or) Tj
 T*
-(confirm an adverse state, while a low grade can weakly suggest a favourable state [ATG-6) Tj
+(a favourable result. A high grade can confirm an adverse state, while a low grade can weakly) Tj
 T*
-(Section1.8].) Tj
+(suggest a favourable state [ATG-6 Section1.8].) Tj
+T*
+() Tj
+T*
+(!Figure 3. Evidence support and control effectiveness are distinct dimensions.) Tj
+T*
+ET
+endstream
+endobj
+21 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 20 0 R >>
+endobj
+22 0 obj
+<< /Length 3588 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
+(\(figures/figure-5-evidence-effectiveness.png\)) Tj
 T*
 () Tj
 T*
@@ -1192,13 +1229,13 @@ T*
 T*
 (Evidence sufficient for one component claim does not support another. Sufficiency is decided) Tj
 T*
-(separately for design, implementation, operating effectiveness and, where an M5/adaptive) Tj
+(separately for design, implementation, operating effectiveness and, where a level-5) Tj
 T*
-(claim is made, level-5 and adaptive operation [ATG-6 Section4.1]. A finalized numeric) Tj
+(\(component score of 5\) or adaptive claim is made, level-5 and adaptive operation [ATG-6) Tj
 T*
-(component score requires an approved Evidence Sufficiency Decision and an approved reviewer) Tj
+(Section4.1]. A finalized numeric component score requires an approved Evidence Sufficiency) Tj
 T*
-(decision.) Tj
+(Decision and an approved reviewer decision.) Tj
 T*
 () Tj
 T*
@@ -1206,19 +1243,6 @@ T*
 T*
 (for any score 0-5, requires E4-or-stronger technical evidence from the deployed or) Tj
 T*
-ET
-endstream
-endobj
-21 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 20 0 R >>
-endobj
-22 0 obj
-<< /Length 3541 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 (configured environment; operating effectiveness requires E5-quality evidence; and a score of) Tj
 T*
 (5 or adaptive/continuous-assurance claim requires repeated E5-quality evidence across) Tj
@@ -1273,13 +1297,13 @@ T*
 T*
 () Tj
 T*
-(This discipline is also the boundary for AI-assisted analysis. Automated extraction,) Tj
+(This discipline is also the boundary for AI-assisted analysis. AI-generated extraction,) Tj
 T*
 (classification or summarization may propose assertions, but model output cannot silently) Tj
 T*
-(become approved fact. Material facts and high-impact decisions require accountable human) Tj
+(become approved fact. Material facts, risk acceptance and high-impact decisions require) Tj
 T*
-(review.) Tj
+(accountable human approval [ATG-1].) Tj
 T*
 () Tj
 T*
@@ -1303,6 +1327,19 @@ T*
 T*
 (UNKNOWN is also distinct from Inconclusive. UNKNOWN applies when the material state remains) Tj
 T*
+ET
+endstream
+endobj
+23 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 22 0 R >>
+endobj
+24 0 obj
+<< /Length 3360 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (unresolved because evidence is absent, insufficient or materially conflicting. Inconclusive) Tj
 T*
 (applies when authorized testing, review or resolution activity occurred but the evidence) Tj
@@ -1327,19 +1364,6 @@ T*
 T*
 (Path analysis must not manufacture a number from unresolved material conditions. If an) Tj
 T*
-ET
-endstream
-endobj
-23 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 22 0 R >>
-endobj
-24 0 obj
-<< /Length 3702 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 (UNKNOWN condition affects any numeric PEI component, a final point PEI is not published. The) Tj
 T*
 (assessor retains the affected component as UNKNOWN and may show an explicit bounded) Tj
@@ -1396,57 +1420,33 @@ T*
 T*
 () Tj
 T*
-( Phase | Canonical output emphasis) Tj
+( Phase | Primary outcome [ATG-7]) Tj
 T*
 (---|---) Tj
 T*
-( 1. Initiate | Authorized engagement, decision question, methodology/version pin and stop) Tj
+( 1. Initiate | Approved charter and decision purpose.) Tj
 T*
-(conditions) Tj
+( 2. Scope | Versioned boundary and population.) Tj
 T*
-( 2. Scope | Declared system-of-interest, boundaries, exclusions and assessment profile) Tj
+( 3. Discover | Measured estate and blind spots.) Tj
 T*
-( 3. Discover | Evidence-backed inventory, source coverage, ownership and known blind spots) Tj
+( 4. Model | Reviewed graph snapshot.) Tj
 T*
-( 4. Model | Approved versioned graph snapshot; unsupported edges rejected; UNKNOWN) Tj
+( 5. Evidence | Graded and traceable evidence set.) Tj
 T*
-(conditions preserved) Tj
+( 6. Controls | Applicability and control results.) Tj
 T*
-( 5. Evidence | Assertion-linked evidence register, grades, conflicts and sufficiency) Tj
+( 7. Paths | Validated material path portfolio.) Tj
 T*
-(planning) Tj
+( 8. Maturity | Six-domain capability profile.) Tj
 T*
-( 6. Controls | Applicability and component-level control assessment under evidence gates) Tj
+( 9. Scoring | Transparent scorecards and coverage.) Tj
 T*
-( 7. Paths | Material paths with conditions, evidence, PathState and PathRole) Tj
+( 10. Findings | Evidence-linked gaps and remediation objectives.) Tj
 T*
-( 8. Maturity | Capability and domain determinations under cumulative and critical-gate rules) Tj
+( 11. Decisions | Approved gates, exceptions and dispositions.) Tj
 T*
-( 9. Scoring | Evidence-bounded control outputs and eligible path triage without false) Tj
-T*
-(precision) Tj
-T*
-( 10. Findings | Findings classified using the canonical finding taxonomy and linked evidence) Tj
-T*
-( 11. Decisions | Accountable disposition kept separate from the assessed condition) Tj
-T*
-( 12. Report | Versioned report package with coverage, uncertainty, gates and limitations) Tj
-T*
-( 13. Reassess | Triggered reassessment after material change, expiry, evidence change or) Tj
-T*
-(decision need) Tj
-T*
-() Tj
-T*
-(The lifecycle is gate-driven. The thirteen phase gates are: Initiation Gate, Scope Gate,) Tj
-T*
-(Discovery Gate, Graph Gate, Evidence Gate, Control Gate, Path Gate, Maturity Gate, Scoring) Tj
-T*
-(Gate, Finding Gate, Decision Gate, Report Gate, and Reassessment Gate [ATG-7]. The gate) Tj
-T*
-(names are shown here to preserve the canonical control structure; operational entry/exit) Tj
-T*
-(criteria remain in Artifact #7.) Tj
+( 12. Report | Quality-reviewed decision package.) Tj
 T*
 ET
 endstream
@@ -1455,15 +1455,29 @@ endobj
 << /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 24 0 R >>
 endobj
 26 0 obj
-<< /Length 3165 >>
+<< /Length 3345 >>
 stream
 BT
 /F1 9 Tf
 48 748 Td
 11 TL
+( 13. Reassess | Trigger-based new or updated run.) Tj
+T*
 () Tj
 T*
-(!Figure 3. Thirteen-phase assessment lifecycle and gates.) Tj
+(The lifecycle is gate-driven. The thirteen canonical phase gates are: Initiation gate, Scope) Tj
+T*
+(baseline gate, Discovery gate, Graph approval gate, Evidence sufficiency gate, Control) Tj
+T*
+(determination gate, Path conclusion gate, Maturity approval gate, Scoring quality gate,) Tj
+T*
+(Finding release gate, Decision gate, Report release gate, and Closure and continuity gate) Tj
+T*
+([ATG-7 SectionSection2.4-14.4]. Operational entry and exit criteria remain in Artifact #7.) Tj
+T*
+() Tj
+T*
+(!Figure 4. Thirteen-phase assessment lifecycle and gates.) Tj
 T*
 (\(figures/figure-3-lifecycle-gates.png\)) Tj
 T*
@@ -1555,6 +1569,19 @@ T*
 T*
 (PEI = 4 x Consequence + 3 x Reachability + 3 x Authority + 2 x Amplification + 3 x Control) Tj
 T*
+ET
+endstream
+endobj
+27 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 26 0 R >>
+endobj
+28 0 obj
+<< /Length 3553 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (Resistance) Tj
 T*
 () Tj
@@ -1569,19 +1596,6 @@ T*
 T*
 () Tj
 T*
-ET
-endstream
-endobj
-27 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 26 0 R >>
-endobj
-28 0 obj
-<< /Length 3713 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 (Eligibility requires a defined start condition, target, traversals, material conditions and) Tj
 T*
 (evidence state. A Plausible path receives an exposure band only when all numeric PEI) Tj
@@ -1642,9 +1656,9 @@ T*
 T*
 (MUST NOT be presented as results under bundle 1.0-rc.4 or later [ATG-10 Section0.16].) Tj
 T*
-(Accordingly, RC2 does not carry forward RA-01's legacy control scores, maturity vector or) Tj
+(Accordingly, this paper does not carry forward RA-01's legacy control scores, maturity) Tj
 T*
-(point PEI as current rc.4 results.) Tj
+(vector or point PEI as current rc.4 results.) Tj
 T*
 () Tj
 T*
@@ -1676,6 +1690,19 @@ T*
 T*
 () Tj
 T*
+ET
+endstream
+endobj
+29 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 28 0 R >>
+endobj
+30 0 obj
+<< /Length 3436 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (11.2 Re-execution under rc.4 starts from conditions, not legacy scores) Tj
 T*
 () Tj
@@ -1690,26 +1717,13 @@ T*
 T*
 (the current evidence rather than inheriting historical confidence.) Tj
 T*
-ET
-endstream
-endobj
-29 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 28 0 R >>
-endobj
-30 0 obj
-<< /Length 3413 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 () Tj
 T*
-(A useful reviewer question is therefore: what conclusion changes if the weakest material) Tj
+(Artifact #10 asks: Which conclusion changes if the weakest evidence item is removed,) Tj
 T*
-(evidence item is removed, narrowed or contradicted? The answer depends on which claim that) Tj
+(narrowed or contradicted? [ATG-10 Section1.10]. The answer depends on which claim that item) Tj
 T*
-(item supports.) Tj
+(supports.) Tj
 T*
 () Tj
 T*
@@ -1797,6 +1811,19 @@ T*
 T*
 (11.7 Bounded decision logic) Tj
 T*
+ET
+endstream
+endobj
+31 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 30 0 R >>
+endobj
+32 0 obj
+<< /Length 3373 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 () Tj
 T*
 (The worked example deliberately stops short of inventing a new rc.4 decision for RA-01. A) Tj
@@ -1811,20 +1838,7 @@ T*
 T*
 () Tj
 T*
-ET
-endstream
-endobj
-31 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 30 0 R >>
-endobj
-32 0 obj
-<< /Length 3292 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
-(!Figure 4. RC4 worked-example reasoning: historical scenario context with current) Tj
+(!Figure 5. rc.4 worked-example reasoning: historical scenario context with current) Tj
 T*
 (calibration lenses. \(figures/figure-4-rc4-worked-example.png\)) Tj
 T*
@@ -1918,6 +1932,19 @@ T*
 T*
 (Artifact #10 contains synthetic reference cases designed for calibration, adversarial checks) Tj
 T*
+ET
+endstream
+endobj
+33 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 32 0 R >>
+endobj
+34 0 obj
+<< /Length 3676 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (and reasoning consistency. They must not be represented as observed facts about real vendors) Tj
 T*
 (or organizations. A synthetic worked example can demonstrate how rules interact; it cannot) Tj
@@ -1932,19 +1959,6 @@ T*
 T*
 (The Scoring Framework states that ordinal judgments do not become objective probabilities) Tj
 T*
-ET
-endstream
-endobj
-33 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 32 0 R >>
-endobj
-34 0 obj
-<< /Length 3781 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 (merely because arithmetic is applied. PEI weights and thresholds require calibration, and) Tj
 T*
 (Artifact #4 requires sensitivity analysis before public use of weighted or path formulas. At) Tj
@@ -1997,7 +2011,7 @@ T*
 T*
 (current canonical methodology does not define a special mapping from probabilistic control) Tj
 T*
-(performance to Validated block, Control Resistance or E5. RC2 therefore identifies) Tj
+(performance to Validated block, Control Resistance or E5. This paper therefore identifies) Tj
 T*
 (stochastic-control treatment as an open methodology question rather than inventing a scoring) Tj
 T*
@@ -2039,6 +2053,19 @@ T*
 T*
 (independent methodology or architecture review; independent AI-security review;) Tj
 T*
+ET
+endstream
+endobj
+35 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 34 0 R >>
+endobj
+36 0 obj
+<< /Length 3515 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (inter-assessor reproducibility study; employer/IP/confidentiality review; and legal approval) Tj
 T*
 (of the licence/trademark position. These are not the only open readiness items across the) Tj
@@ -2053,19 +2080,6 @@ T*
 T*
 (The methodology author's internal review should be understood as author-led/internal) Tj
 T*
-ET
-endstream
-endobj
-35 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 34 0 R >>
-endobj
-36 0 obj
-<< /Length 3486 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 (methodology review, not independent validation.) Tj
 T*
 () Tj
@@ -2160,6 +2174,19 @@ T*
 T*
 (Artifacts #8 and #10 provide assessor guidance and reference calibration respectively and) Tj
 T*
+ET
+endstream
+endobj
+37 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 36 0 R >>
+endobj
+38 0 obj
+<< /Length 3676 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (cannot override the normative artifacts within their declared authority. Artifact #13, the) Tj
 T*
 (Reference Graph Schema and Illustrative Query Library, is a Phase 2 non-normative companion.) Tj
@@ -2174,19 +2201,6 @@ T*
 T*
 (14.4 Publication boundary) Tj
 T*
-ET
-endstream
-endobj
-37 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 36 0 R >>
-endobj
-38 0 obj
-<< /Length 3637 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 () Tj
 T*
 (This whitepaper is intentionally a front door. It synthesizes the reasoning model but does) Tj
@@ -2281,6 +2295,19 @@ T*
 T*
 ( Authority | #2; #12 | Effective/permitted capacity;) Tj
 T*
+ET
+endstream
+endobj
+39 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 38 0 R >>
+endobj
+40 0 obj
+<< /Length 4229 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (identity/capability/target/scope/conditions/approval/revocation) Tj
 T*
 ( Paths | #2; #4; #6; #12 | Conditions; PathState and PathRole; UNKNOWN numeric components) Tj
@@ -2295,19 +2322,6 @@ T*
 T*
 (effectiveness) Tj
 T*
-ET
-endstream
-endobj
-39 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 38 0 R >>
-endobj
-40 0 obj
-<< /Length 4320 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 ( Evidence | #6; #4 | E0-E5; grade is support not truth; sufficiency is claim-specific;) Tj
 T*
 (evidence cap is a ceiling not an entitlement) Tj
@@ -2322,9 +2336,9 @@ T*
 T*
 ( Maturity | #3 | M1-M5 cumulative, evidence-gated and non-compensating; no averaging) Tj
 T*
-( PEI | #4 | Exact formula and 7-62 eligible determinate range; triage only, not probability) Tj
+( PEI | #4 | Exact formula and 7-62 eligible determinate range; triage only; does not prove) Tj
 T*
-(or expected loss) Tj
+(exploitability, probability or expected loss) Tj
 T*
 ( Worked example | #10 | RA-01 architecture only as historical context; rc.4 mechanics use) Tj
 T*
@@ -2402,6 +2416,19 @@ T*
 T*
 ([13] Blaze, M., Feigenbaum, J., & Lacy, J. \(1996\). Decentralized Trust Management. IEEE) Tj
 T*
+ET
+endstream
+endobj
+41 0 obj
+<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 40 0 R >>
+endobj
+42 0 obj
+<< /Length 2385 >>
+stream
+BT
+/F1 9 Tf
+48 748 Td
+11 TL
 (Symposium on Security and Privacy, 164-173. DOI: 10.1109/SECPRI.1996.502679.) Tj
 T*
 ([14] Hardy, N. \(1988\). The Confused Deputy \(or why capabilities might have been invented\).) Tj
@@ -2416,24 +2443,19 @@ T*
 T*
 ([16] CycloneDX. Machine Learning Bill of Materials \(ML-BOM\).) Tj
 T*
-ET
-endstream
-endobj
-41 0 obj
-<< /Type /Page /Parent 44 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 40 0 R >>
-endobj
-42 0 obj
-<< /Length 1397 >>
-stream
-BT
-/F1 9 Tf
-48 748 Td
-11 TL
 (https://cyclonedx.org/capabilities/mlbom/) Tj
 T*
 ([17] SPDX. SPDX Specification 3.0.1 - AI Profile.) Tj
 T*
 (https://spdx.github.io/spdx-spec/latest/model/AI/AI/) Tj
+T*
+([18] ISO/IEC/IEEE 15026-2:2022. Systems and software engineering - Systems and software) Tj
+T*
+(assurance - Part 2: Assurance case. International Organization for Standardization.) Tj
+T*
+([19] Spring, J. M., Hatleback, E., Householder, A., Manion, A., & Shick, D. \(2021\). Time to) Tj
+T*
+(Change the CVSS? IEEE Security & Privacy, 19\(2\), 74-78. DOI: 10.1109/MSEC.2020.3044475.) Tj
 T*
 ([ATG-M] AI Trust Graph Methodology Manifest, bundle 1.0-rc.4, snapshot 2026-09-26, manifest) Tj
 T*
@@ -2453,7 +2475,7 @@ T*
 T*
 ([ATG-7] AI Trust Graph Artifact #7 - Assessment Methodology, v1.1.0.) Tj
 T*
-([ATG-8] AI Trust Graph Artifact #8 - Assessor Handbook.) Tj
+([ATG-8] AI Trust Graph Artifact #8 - Assessor Handbook, v1.0.) Tj
 T*
 ([ATG-9] AI Trust Graph Artifact #9 - Reporting Standard, v1.1.0.) Tj
 T*
@@ -2488,47 +2510,47 @@ xref
 0000003914 00000 n 
 0000007822 00000 n 
 0000007949 00000 n 
-0000012046 00000 n 
-0000012173 00000 n 
-0000016261 00000 n 
-0000016388 00000 n 
-0000020076 00000 n 
-0000020205 00000 n 
-0000023738 00000 n 
-0000023867 00000 n 
-0000027461 00000 n 
-0000027590 00000 n 
-0000030905 00000 n 
-0000031034 00000 n 
-0000034492 00000 n 
-0000034621 00000 n 
-0000038040 00000 n 
-0000038169 00000 n 
-0000041762 00000 n 
-0000041891 00000 n 
-0000045645 00000 n 
-0000045774 00000 n 
-0000048991 00000 n 
-0000049120 00000 n 
-0000052885 00000 n 
-0000053014 00000 n 
-0000056479 00000 n 
-0000056608 00000 n 
-0000059952 00000 n 
-0000060081 00000 n 
-0000063914 00000 n 
-0000064043 00000 n 
-0000067581 00000 n 
-0000067710 00000 n 
-0000071399 00000 n 
-0000071528 00000 n 
-0000075900 00000 n 
-0000076029 00000 n 
-0000077478 00000 n 
-0000077607 00000 n 
-0000077803 00000 n 
+0000012037 00000 n 
+0000012164 00000 n 
+0000016271 00000 n 
+0000016398 00000 n 
+0000020183 00000 n 
+0000020312 00000 n 
+0000023973 00000 n 
+0000024102 00000 n 
+0000027561 00000 n 
+0000027690 00000 n 
+0000031125 00000 n 
+0000031254 00000 n 
+0000034566 00000 n 
+0000034695 00000 n 
+0000038213 00000 n 
+0000038342 00000 n 
+0000041982 00000 n 
+0000042111 00000 n 
+0000045523 00000 n 
+0000045652 00000 n 
+0000049049 00000 n 
+0000049178 00000 n 
+0000052783 00000 n 
+0000052912 00000 n 
+0000056400 00000 n 
+0000056529 00000 n 
+0000059954 00000 n 
+0000060083 00000 n 
+0000063811 00000 n 
+0000063940 00000 n 
+0000067507 00000 n 
+0000067636 00000 n 
+0000071364 00000 n 
+0000071493 00000 n 
+0000075774 00000 n 
+0000075903 00000 n 
+0000078340 00000 n 
+0000078469 00000 n 
+0000078665 00000 n 
 trailer
 << /Size 46 /Root 45 0 R >>
 startxref
-77854
+78716
 %%EOF
