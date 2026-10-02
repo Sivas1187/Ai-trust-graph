@@ -19,7 +19,7 @@ npm run dev     # http://localhost:3000
 | `npm run dev` | Local development server. |
 | `npm run build` | Production static export to `out/`, then `scripts/finalize-headers.mjs` writes the build's inline-script CSP hashes into `out/_headers`. Cloudflare Pages runs this same command. |
 | `npm run typecheck` | `tsc --noEmit`. |
-| `npm run check` | Typecheck, build, then `scripts/check-links.mjs` (in-page anchors, internal links, and every GitHub link resolves to a file in this repository), `scripts/check-claims.mjs` (prohibited-claims scan of rendered text and metadata) and `scripts/check-headers.mjs` (production `out/_headers` policy, no HSTS, every inline script allowed by a CSP hash, required export assets present). |
+| `npm run check` | Typecheck, build, then `scripts/check-links.mjs` (in-page anchors, internal links, and every GitHub link resolves to a file in this repository), `scripts/check-claims.mjs` (forbidden claims, banned vocabulary, em dashes, emails, trackers, DOI before publication, and canonical content and order in every section) and `scripts/check-headers.mjs` (production `out/_headers` policy, no HSTS, every inline script allowed by a CSP hash, required export assets present). |
 | `node scripts/serve-out.mjs [port]` | Local preview of `out/` **with** the `out/_headers` response headers applied, to test the CSP in a browser before deploying. Development aid only. |
 
 Next.js is configured with `output: "export"`, producing a static `out/` directory
@@ -38,13 +38,50 @@ It never deploys and uses no secrets.
 
 | Path | Role |
 | --- | --- |
-| `app/content.ts` | All methodology-derived copy, each entry annotated with its canonical source artifact and section. Edit here first; never edit canonical artifacts to match the site. |
-| `app/page.tsx` | Homepage narrative. |
-| `app/components/` | Synthetic hero graph and control-breakpoint illustration (server components) and the primary navigation (`PrimaryNav.tsx`, the only client component: mobile menu). |
-| `app/globals.css` | Visual system (tokens, layout, reduced-motion handling). |
-| `app/layout.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/icon.svg`, `app/apple-icon.png`, `public/og.png` | Metadata, canonical URL (`https://aitrustgraph.org`), Open Graph/Twitter, robots and sitemap. |
+| `app/content.ts` | Canonical data: release facts, artifact registry, reasoning chain, theory map, lifecycle, grades, result states, domains, gates, pinned links (`BUNDLE_REF`). Each entry names its source artifact and section. |
+| `app/site-content.ts` | Redesign content: author, outcomes, chain stage notes, domain detail, evidence relations, framework positioning, artifact grouping and dependencies. Each entry is marked CANONICAL or EDITORIAL. |
+| `app/publication.ts` | Whitepaper record and citation generator (APA, IEEE, BibTeX). Drives the hero action, Publications section, footer and JSON-LD. |
+| `app/page.tsx` | Homepage section order. |
+| `app/components/site/` | Homepage sections and shared primitives (`Primitives.tsx`: section head, source note, external link, detail). Client components: `SignatureGraph`, `WorkedExample`, `ArtifactLibrary`, `DepthControl`, `CopyButton`. |
+| `app/components/PrimaryNav.tsx`, `BrandMark.tsx`, `GraphExplorer.tsx` | Navigation menu (client), brand mark, `/graph/` explorer (client). |
+| `app/globals.css` | Design tokens and all homepage styles (see the header comment). `app/graph/graph.css` styles `/graph/`. |
+| `app/layout.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/icon.svg`, `app/apple-icon.png`, `public/og.png` | Metadata, canonical URL (`https://aitrustgraph.org`), Open Graph / Twitter, JSON-LD (WebSite, Person, CreativeWork), robots and sitemap. |
+| `app/privacy/`, `app/accessibility/`, `app/not-found.tsx` | Privacy notice, accessibility statement, 404. |
 | `public/_headers` | **Active** Cloudflare Pages response headers (CSP, nosniff, Referrer-Policy, Permissions-Policy, framing). No HSTS. |
-| `DEPLOYMENT.md` | Production configuration, header policy, www → apex redirect runbook, verification and rollback. |
+| `DESIGN_BRIEF.md` | Design decisions, tokens, accessibility approach, recorded conflicts. |
+| `WEBSITE_CONTENT_MAP.md` | Section-to-source traceability and permitted / forbidden claims. |
+| `DEPLOYMENT.md` | Production configuration, header policy, redirect runbook, verification and rollback. |
+
+## Maintenance
+
+All values below are edited in one place; `npm run check` then verifies the
+result against the manifest and the claims rules.
+
+- **New release or status change.** Update `release` (bundle, status, snapshot,
+  snapshot label), `BUNDLE_REF`, `reviewStatus`, `pendingGates` and
+  `artifacts` versions in `app/content.ts`. `check-claims` reads the bundle,
+  status and snapshot from `../METHODOLOGY_MANIFEST.md` and fails if the hero
+  or status section disagrees.
+- **Publishing the whitepaper.** Only after the Zenodo record and DOI exist:
+  in `app/publication.ts` set `status: "published"` and fill `doi`,
+  `zenodoUrl`, `pdfUrl`, `publishedDate` (YYYY-MM-DD), `licence` and
+  `abstract`; add earlier versions to `versions`. The hero then offers the
+  PDF, the Publications section shows the record, Copy DOI and APA / IEEE /
+  BibTeX citations, and a ScholarlyArticle is added to the JSON-LD. While
+  `status` is "in-preparation", `check-claims` rejects any DOI, PDF link,
+  download wording or scholarly metadata.
+- **Author links.** Add verified URLs to `author.links` in
+  `app/site-content.ts` (LinkedIn, ORCID, Zenodo). Empty values are not
+  rendered. `check-claims` rejects author-section links other than the
+  verified GitHub profile until the guard's allow-list is updated with the
+  new verified URL.
+- **Independence statement.** Replace `author.independence` with the approved
+  legal wording once the employer / IP / confidentiality gate closes.
+- **Canonical text.** Correct CANONICAL entries only to match the pinned
+  artifact. EDITORIAL text follows the writing rules: British English, no em
+  dashes, no marketing vocabulary (enforced by `check-claims`).
+- **Adding a section.** Use `SectionHead` and end with a `SourceNote`; add
+  its required sentences and ordered lists to `scripts/check-claims.mjs`.
 
 ## Deployment
 
