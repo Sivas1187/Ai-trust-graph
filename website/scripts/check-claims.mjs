@@ -26,7 +26,7 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const outDir = resolve(here, "..", "out");
 const manifest = readFileSync(resolve(here, "..", "..", "METHODOLOGY_MANIFEST.md"), "utf8");
-const publicationSrc = readFileSync(resolve(here, "..", "app", "publication.ts"), "utf8");
+const publicationSrc = readFileSync(resolve(here, "..", "app", "site.config.ts"), "utf8");
 
 const errors = [];
 const fail = (m) => errors.push(m);
@@ -107,7 +107,10 @@ const assessmentTypes = [
 ];
 const domainNames = ["Discovery and AIBOM", "Trust and Privilege Paths", "Authority Governance", "AI Security Validation", "AI Governance and Assurance", "Operational Resilience"];
 const domainPrefixes = ["ATG-DIS", "ATG-TRU", "ATG-AUT", "ATG-VAL", "ATG-GOV", "ATG-RES"];
-const outcomes = ["Discover", "Model", "Assess", "Validate", "Decide", "Reassess"];
+// The mandatory narrative order (sections 1 to 8, then review), by section id.
+const narrativeOrder = ["top", "why", "problem", "big-idea", "graph", "methodology", "flow", "authority", "unknown", "domains", "lifecycle", "example", "artifacts", "publications", "author", "status"];
+const distinctionPairs = ["Connected ≠ Authorised", "Reachable ≠ Invocable", "Invocable ≠ Consequential", "Possible ≠ Proven", "Unknown ≠ Safe"];
+const bigIdeaConcepts = ["Entities", "Relationships", "Conditions", "Authority", "Evidence"];
 const grades = [
   ["E0", "No evidence"], ["E1", "Inference or uncorroborated signal"], ["E2", "Attestation"],
   ["E3", "Approved documentary evidence"], ["E4", "Corroborated technical evidence"], ["E5", "Direct technical and representative evidence"],
@@ -135,12 +138,37 @@ const artifactNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"
 const required = {
   why: [
     "AI systems are no longer isolated models.",
+    "Those perspectives remain necessary.",
+    "AI Trust Graph treats the connected AI environment as the unit of reasoning, while preserving the distinction between what is connected, what is possible, what is authorised and what the evidence can support.",
     "The methodology treats enterprise AI risk as a property of interconnected authority, influence and dependency.",
-    "A topological connection is not automatically an exploitable path.",
-    "Required permissions, protocols, state and preconditions must be evidenced or explicitly marked Unknown.",
     "Conceptual comparison for explanation only. It is not empirical evidence.",
   ],
-  graph: ["Synthetic illustration.", "Authorization does not prove invocation or successful effect.", "Authentication does not imply authorization."],
+  problem: [
+    "An employee asks an AI procurement agent to identify a supplier and prepare a purchase request.",
+    "Synthetic scenario.",
+    "These are conceptual distinctions, not a universal linear sequence.",
+    "Missing evidence is not a favourable result, and not automatically an adverse one.",
+  ],
+  "big-idea": [
+    "Assess the connected system, not only the model.",
+    "What changes?",
+    "“Is this component controlled?”",
+    "“How do trust, authority and evidence connect across the wider system?”",
+    "Control-based assessment remains part of the method",
+    "does not establish legal or regulatory compliance",
+    "does not replace legal analysis, certification, penetration testing, model evaluation or mandated sector requirements",
+  ],
+  graph: [
+    "Graph structure supports systematic reasoning. A connection drawn in the graph does not, on its own, prove reachability under current conditions, authority, invocation or exploitability.",
+    "Synthetic illustration.",
+    "A topological connection is not automatically an exploitable path.",
+    "Required permissions, protocols, state and preconditions must be evidenced or explicitly marked Unknown.",
+    "Authorization does not prove invocation or successful effect.",
+    "Authentication does not imply authorization.",
+    "Hosting does not imply ownership or trust.",
+    "UNKNOWN",
+    "Unsupported claim: the evidence disputes it",
+  ],
   flow: [
     "From what exists to what can be defended.",
     "It is not the fieldwork plan.",
@@ -178,7 +206,7 @@ const required = {
   ],
   lifecycle: [
     "The lifecycle contains thirteen controlled phases.",
-    "It is a different construct from the nine-stage reasoning chain above",
+    "The reasoning chain defines how assurance conclusions are formed. The assessment lifecycle governs how fieldwork is conducted. These two structures are related but not interchangeable.",
     "Phases may iterate, but required gates cannot be skipped merely because information was available earlier.",
   ],
   example: [
@@ -186,13 +214,15 @@ const required = {
     "It is not shown to be exploitable.",
     "The path is not shown to be exploitable, and it is not shown to be controlled.",
     "The decision does not change the finding.",
+    "What cannot yet be defended",
+    "Remaining UNKNOWNs",
   ],
-  frameworks: [
-    "does not establish legal or regulatory compliance",
-    "does not replace legal analysis, certification, penetration testing, model evaluation or mandated sector requirements",
+  publications: ["AI Trust Graph Methodology v1.0", "Siva Sethumadhavan"],
+  author: [
+    "Siva Sethumadhavan",
+    "Independent researcher and author of AI Trust Graph",
+    "AI Trust Graph is an independent research initiative. The methodology and views expressed are the author’s own and do not imply endorsement by any employer or client.",
   ],
-  publications: ["AI Trust Graph Methodology v1.0"],
-  author: ["Siva Sethumadhavan", "Independent researcher and author of AI Trust Graph"],
   status: [
     "AI Trust Graph is not independently validated.",
     "This manifest pins content; it does not convert pending external gates into completed review.",
@@ -230,11 +260,13 @@ const allowed = [
   /not a certification program, an accreditation body, a legal opinion, or a guarantee of AI security, safety or compliance/gi,
   /\bnot independently validated\b/gi,
   /no single overall trust score/gi,
+  /not yet published or peer reviewed/gi,
+  /Possible\s*≠?\s*(is not\s*)?Proven/gi,
 ];
 const commercialNav = /^(Products?|Pricing|Demo|Book a demo|Consultation|Solutions?|Customers?|Contact sales)$/i;
 
 const files = htmlFiles(outDir);
-const publicationPublished = /status:\s*"published"/.test(publicationSrc);
+const publicationPublished = /publication:\s*\{\s*status:\s*"published"/.test(publicationSrc);
 
 for (const file of files) {
   const name = file.slice(outDir.length + 1);
@@ -300,30 +332,39 @@ else {
 }
 
 // Deep links from the previous site and the new structure.
-for (const id of ["top", "main", "page-index", "why", "problem", "methodology", "graph", "flow", "decision", "authority", "breakpoints", "unknown", "evidence", "domains", "lifecycle", "example", "frameworks", "artifacts", "publications", "author", "status", "review"]) {
+for (const id of ["top", "main", "page-index", "why", "problem", "big-idea", "methodology", "graph", "flow", "decision", "authority", "breakpoints", "unknown", "evidence", "domains", "lifecycle", "example", "frameworks", "artifacts", "publications", "author", "status", "review"]) {
   if (!new RegExp(`\\sid="${id}"`).test(index)) fail(`index.html: anchor #${id} missing`);
 }
 
 // Primary navigation (brief): Home, Why it exists, Methodology, Worked example, Artifacts, Publications, About the author, GitHub.
 const nav = index.match(/<nav aria-label="Primary"[\s\S]*?<\/nav>/)?.[0] ?? "";
-inOrder("primary navigation items", all(nav, /<a [^>]*>([\s\S]*?)<\/a>/g).map((l) => l.replace(/\s*↗$/, "").replace(/ \(canonical source\)$/, "")), [
-  "Home", "Why it exists", "Methodology", "Worked example", "Artifacts", "Publications", "About the author", "GitHub",
+inOrder("primary navigation items", all(nav, /<a [^>]*>([\s\S]*?)<\/a>/g), [
+  "Why it exists", "The big idea", "Methodology", "Artifacts", "Publications", "About",
 ]);
+if (!/<a class="headerGithub" href="https:\/\/github\.com\/Sivas1187\/Ai-trust-graph"/.test(index)) fail("index.html: the separate GitHub header action is missing");
+
+// Mandatory narrative order.
+{
+  const at = narrativeOrder.map((id) => [id, index.search(new RegExp(`<section id="${id}"`))]);
+  for (const [id, i] of at) if (i < 0) fail(`index.html: narrative section #${id} not found`);
+  const got = at.filter(([, i]) => i >= 0).sort((a, b) => a[1] - b[1]).map(([id]) => id);
+  inOrder("narrative sections", got, narrativeOrder);
+}
 
 // Hero.
 const hero = section(index, "top");
 const heroText = visible(hero);
 if (visible(hero.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? "") !== "AI Trust Graph") fail("index.html: hero h1 is not \"AI Trust Graph\"");
-has("hero", heroText, "A graph-based, evidence-driven methodology for assessing trust, authority and exposure across connected AI systems.");
+has("hero", heroText, "A graph-based, evidence-driven methodology for connected AI systems.");
+has("hero", heroText, "AI Trust Graph was created to examine those relationships while keeping authority, evidence and uncertainty explicit.");
 has("hero", heroText, "Independent research by Siva Sethumadhavan");
-has("hero", heroText, "Explore the methodology");
-has("hero", heroText, "View on GitHub");
-if (!publicationPublished) has("hero", heroText, "Whitepaper in preparation");
-for (const fact of [rel.status, `Bundle ${rel.bundle}`, "Not independently validated"]) has("hero status", heroText, fact);
+inOrder("hero actions", all(hero.match(/<div class="heroActions">[\s\S]*?<\/div>/)?.[0] ?? "", /<a [^>]*>([\s\S]*?)<\/a>/g).map((l) => l.replace(/\s*↗$/, "").replace(/ \(canonical source\)$/, "")), [
+  "Understand why it exists", "Explore the methodology", "View on GitHub",
+]);
+for (const fact of [rel.status, `Version ${rel.bundle}`, "Independent review pending", "Not independently validated"]) has("hero status", heroText, fact);
 if (rel.snapshot && !hero.includes(`dateTime="${rel.snapshot}"`)) fail(`index.html: hero snapshot date is not the manifest snapshot ${rel.snapshot}`);
-has("hero graph", heroText, "UNKNOWN");
-has("hero graph", heroText, "trust boundary");
-if ((hero.match(/<svg[^>]+role="img"/g) ?? []).length < 1) fail("index.html: hero graph has no text alternative");
+// The hero motif is decorative; the meaningful graph is the signature visual.
+for (const svg of hero.match(/<svg[\s\S]*?<\/svg>/g) ?? []) if (!/aria-hidden="true"/.test(svg.slice(0, svg.indexOf(">")))) fail("index.html: hero graphic is not marked decorative");
 
 // Section-level canonical content.
 for (const [id, phrases] of Object.entries(required)) {
@@ -339,11 +380,20 @@ for (const [id, phrases] of Object.entries(required)) {
 has("#publications", visible(section(index, "publications")), publicationPublished ? "Published " : "Whitepaper in preparation");
 
 // Outcomes.
-inOrder("outcomes", all(section(index, "methodology"), /<h3 class="outcomeTitle">([\s\S]*?)<\/h3>/g), outcomes);
+// Problem and big idea.
+inOrder("conceptual distinctions", all(section(index, "problem"), /<p class="distinctionPair">([\s\S]*?)<\/p>/g).map((t) => t.replace(/\s*≠\s*is not\s*/, " ≠ ")), distinctionPairs);
+inOrder("big-idea concepts", all(section(index, "big-idea"), /<strong class="conceptName">([\s\S]*?)<\/strong>/g), bigIdeaConcepts);
+if (!/<div id="frameworks"/.test(section(index, "big-idea"))) fail("index.html: framework positioning (#frameworks) is not in the big idea");
+// Signature visual: two labelled drawings (desktop and mobile) and the structured list alternative.
+{
+  const g = section(index, "graph");
+  if ((g.match(/<svg[^>]+role="img"[^>]+aria-labelledby/g) ?? []).length !== 2) fail("index.html: signature visual must have a labelled desktop and mobile drawing");
+  if (!/<ol class="sigPath"/.test(g)) fail("index.html: signature visual lost its structured text alternative");
+}
 
 // Reasoning chain: canonical order, questions, and the verbatim chain line.
 const flow = section(index, "flow");
-inOrder("reasoning-chain stages", all(flow, /<h3 class="chainStage">([\s\S]*?)<\/h3>/g), chain);
+inOrder("reasoning-chain stages", all(flow, /<h4 class="chainStage">([\s\S]*?)<\/h4>/g), chain);
 inOrder("reasoning-chain questions", all(flow, /<p class="chainQuestion">([\s\S]*?)<\/p>/g), chainQuestions);
 has("#flow chain line", visible(flow.match(/<p class="chainLine"[\s\S]*?<\/p>/)?.[0] ?? ""), chain.join(" → "));
 
@@ -366,7 +416,7 @@ inOrder("UNKNOWN is never converted into", all(unknown, /<span class="neqTo">([\
 
 // Domains.
 const domainsHtml = section(index, "domains");
-inOrder("domain names", all(domainsHtml, /<h3 class="domainName">([\s\S]*?)<\/h3>/g), domainNames);
+inOrder("domain names", all(domainsHtml, /<h4 class="domainName">([\s\S]*?)<\/h4>/g), domainNames);
 inOrder("domain ids", all(domainsHtml, /<p class="domainId">([\s\S]*?)<\/p>/g), ["D1", "D2", "D3", "D4", "D5", "D6"]);
 for (const p of domainPrefixes) if (!domainsHtml.includes(p)) fail(`index.html: domain control prefix ${p} missing`);
 
@@ -379,14 +429,14 @@ inOrder("assessment types", all(lifecycle.match(/Ten assessment types[\s\S]*?<\/
 
 // Worked example: no-JS markup shows every view with a heading.
 const example = section(index, "example");
-inOrder("worked example views", all(example, /<h3 id="ex-h-\w+" class="exPanelTitle">([\s\S]*?)<\/h3>/g), ["System view", "Graph view", "Evidence view", "Decision view"]);
+inOrder("worked example views", all(example, /<h4 id="ex-h-\w+" class="exPanelTitle">([\s\S]*?)<\/h4>/g), ["System view", "Graph view", "Authority view", "Evidence view", "Control view", "Decision view"]);
 if (/<div[^>]*class="exPanel"[^>]*hidden/.test(example)) fail("index.html: a worked-example view is hidden in the static HTML");
 
 // Artifacts.
 const artifactsHtml = section(index, "artifacts");
 const nums = all(artifactsHtml, /<p class="libNum"[^>]*>([\s\S]*?)<\/p>/g).map((n) => n.replace("#", "")).sort((a, b) => a - b);
 inOrder("artifact numbers", nums, artifactNumbers);
-const pinned = [...artifactsHtml.matchAll(/href="([^"]*\/docs\/[^"]+)"/g)].map((m) => m[1]);
+const pinned = [...(artifactsHtml.match(/<div class="library"[\s\S]*?<details class="sourceRegister"/)?.[0] ?? "").matchAll(/href="([^"]*\/docs\/[^"]+)"/g)].map((m) => m[1]);
 if (pinned.length !== 13) fail(`index.html: expected 13 artifact links, found ${pinned.length}`);
 for (const [, href] of index.matchAll(/href="([^"]*\/docs\/[^"]+)"/g)) {
   if (!/\/blob\/[0-9a-f]{40}\/docs\//.test(href)) fail(`index.html: artifact link is not commit-pinned: ${href}`);
