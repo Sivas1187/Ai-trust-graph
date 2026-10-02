@@ -484,7 +484,9 @@ export const breakpointEffects = ["Stop", "Constrain", "Detect", "Contain"];
  * Source: METHODOLOGY_MANIFEST.md §6 (validation status): the external release
  * gates still pending, verbatim except for the initial capital and list
  * punctuation. check-claims compares this list with the manifest. The manifest
- * controls gate status; see `roadmapNote` for the ROADMAP difference.
+ * controls gate status. (ROADMAP.md records the licence choice as made while the
+ * manifest lists legal approval as pending; that difference is tracked in the
+ * repository, not shown on the site.)
  */
 export const pendingGates = [
   "Independent methodology / architecture review",
@@ -506,11 +508,3 @@ export const closedGates = [
   },
 ];
 
-/**
- * ROADMAP.md Phase 2 ticks the "Licence and trademark decision" (CC BY 4.0 chosen)
- * while noting it is not yet legally final; METHODOLOGY_MANIFEST §6 still lists
- * legal approval of the licence / trademark position as a pending gate. The site
- * follows the manifest and states the difference rather than reconciling it.
- */
-export const roadmapNote =
-  "Gate status follows METHODOLOGY_MANIFEST §6. ROADMAP.md records the licence choice (CC BY 4.0) as made; the manifest still lists legal approval of the licence / trademark position as pending.";

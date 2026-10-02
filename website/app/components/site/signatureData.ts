@@ -196,7 +196,7 @@ export const sigOrder = [
 ] as const;
 
 export const stateLabel: Record<SigState, string> = {
-  observed: "Observed (approved assertion)",
-  candidate: "Proposed or inferred (candidate)",
-  unknown: "UNKNOWN",
+  observed: "Supported: approved, with evidence linked",
+  candidate: "Inferred: proposed, awaiting evidence",
+  unknown: "UNKNOWN: evidence absent or insufficient",
 };

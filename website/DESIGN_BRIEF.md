@@ -185,8 +185,8 @@ queries): 600px, 768px, 900px, 1024px, 960px (navigation), 1280px.
   Methodology v1.0, Evidence Model v1.0 and MCL v1.0). The library lists
   dependencies by artifact number only.
 - ROADMAP.md records the licence choice as made; METHODOLOGY_MANIFEST §6
-  lists legal approval as pending. The site follows the manifest and states
-  the difference.
+  lists legal approval as pending. The site follows the manifest; the
+  difference is tracked in the repository and no longer shown on the site.
 - The brief's evidence-state vocabulary is not canonical (decision 5).
 - No verified LinkedIn, ORCID or Zenodo URL exists yet (decision 17). The
   Zenodo profile follows the whitepaper upload.

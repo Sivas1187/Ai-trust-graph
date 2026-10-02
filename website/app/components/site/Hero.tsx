@@ -1,4 +1,4 @@
-import { links, notValidatedShort, release, reviewStatus } from "../../content";
+import { links, release, reviewStatus } from "../../content";
 import { author } from "../../site-content";
 import { HeroGraph } from "./HeroGraph";
 
@@ -52,8 +52,6 @@ export function Hero() {
             <span>{release.status}</span>
             <Sep />
             <span>{reviewStatus[1]}</span>
-            <Sep />
-            <span>{notValidatedShort}</span>
             <span className="visuallyHidden">
               , snapshot <time dateTime={release.snapshot}>{release.snapshotLabel}</time>
             </span>

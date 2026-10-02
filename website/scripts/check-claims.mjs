@@ -361,7 +361,7 @@ has("hero", heroText, "Independent research by Siva Sethumadhavan");
 inOrder("hero actions", all(hero.match(/<div class="heroActions">[\s\S]*?<\/div>/)?.[0] ?? "", /<a [^>]*>([\s\S]*?)<\/a>/g).map((l) => l.replace(/\s*↗$/, "").replace(/ \(canonical source\)$/, "")), [
   "Understand why it exists", "Explore the methodology", "View on GitHub",
 ]);
-for (const fact of [rel.status, `Version ${rel.bundle}`, "Independent review pending", "Not independently validated"]) has("hero status", heroText, fact);
+for (const fact of [rel.status, `Version ${rel.bundle}`, "Independent review pending"]) has("hero status", heroText, fact);
 if (rel.snapshot && !hero.includes(`dateTime="${rel.snapshot}"`)) fail(`index.html: hero snapshot date is not the manifest snapshot ${rel.snapshot}`);
 // The hero motif is decorative; the meaningful graph is the signature visual.
 for (const svg of hero.match(/<svg[\s\S]*?<\/svg>/g) ?? []) if (!/aria-hidden="true"/.test(svg.slice(0, svg.indexOf(">")))) fail("index.html: hero graphic is not marked decorative");
