@@ -7,8 +7,10 @@
  * methodology, when they disagree. See ../WEBSITE_GOVERNANCE.md.
  */
 
-export const SITE_URL = "https://aitrustgraph.org";
-export const REPO_URL = "https://github.com/Sivas1187/Ai-trust-graph";
+import { siteConfig } from "./site.config";
+
+export const SITE_URL = siteConfig.site.url;
+export const REPO_URL = siteConfig.repository.url;
 
 /**
  * Owner ruling 5: normative artifact links must be immutable for the bundle
@@ -17,7 +19,7 @@ export const REPO_URL = "https://github.com/Sivas1187/Ai-trust-graph";
  * blobs match every Git blob SHA in METHODOLOGY_MANIFEST.md §4. Replace with
  * the release tag once the owner creates one.
  */
-export const BUNDLE_REF = "ec9b4571d96afdf1c423713349871459e1cf9b9b";
+export const BUNDLE_REF = siteConfig.repository.bundleRef;
 
 /** Immutable link into the 1.0-rc.4 bundle (normative artifacts, manifest). */
 const pinned = (path: string) => `${REPO_URL}/blob/${BUNDLE_REF}/${path}`;
@@ -46,11 +48,11 @@ export const links = {
 
 /** Source: METHODOLOGY_MANIFEST.md header. */
 export const release = {
-  bundle: "1.0-rc.4",
-  status: "Public-release candidate",
-  snapshot: "2026-09-26",
-  /** `snapshot` written out for the Cover colophon; check-claims verifies both against the manifest. */
-  snapshotLabel: "26 September 2026",
+  bundle: siteConfig.methodology.version,
+  status: siteConfig.methodology.status,
+  snapshot: siteConfig.methodology.snapshot,
+  /** `snapshot` written out; check-claims verifies both against the manifest. */
+  snapshotLabel: siteConfig.methodology.snapshotLabel,
 };
 
 /**
@@ -63,8 +65,8 @@ export const release = {
  * - Limitation: the site's standing disclaimer (WEBSITE_GOVERNANCE.md; Artifact #11
  *   constitutional boundary).
  */
-export const methodologyAuthor = "Siva Sethumadhavan";
-export const reviewStatus = ["Author’s internal review complete", "Independent review pending"] as const;
+export const methodologyAuthor = siteConfig.author.name;
+export const reviewStatus = siteConfig.methodology.reviewStatus;
 export const notValidated = "AI Trust Graph is not independently validated.";
 /** Short form of `notValidated` for the Cover colophon. */
 export const notValidatedShort = "Not independently validated";

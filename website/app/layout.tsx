@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { REPO_URL, SITE_URL, release } from "./content";
 import { isPublished, publication } from "./publication";
 import { author } from "./site-content";
+import { siteConfig } from "./site.config";
 import "./globals.css";
 
 // next/font downloads these at build time and serves them from this site:
@@ -40,9 +41,8 @@ const sourceSerifItalic = localFont({
   adjustFontFallback: "Times New Roman",
 });
 
-const title = "AI Trust Graph | Graph-Based AI Assurance Methodology";
-const description =
-  "A graph-based, evidence-driven methodology for assessing trust, authority and exposure across connected AI systems. Independent research by Siva Sethumadhavan; public-release candidate, not independently validated.";
+const title = siteConfig.social.title;
+const description = siteConfig.social.description;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -61,10 +61,10 @@ export const metadata: Metadata = {
     locale: "en_GB",
     images: [
       {
-        url: "/og.png",
+        url: siteConfig.social.image,
         width: 1200,
         height: 630,
-        alt: `AI Trust Graph: a graph-based, evidence-driven methodology for connected AI systems. ${release.status}, bundle ${release.bundle}.`,
+        alt: siteConfig.social.imageAlt,
       },
     ],
   },
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/og.png"],
+    images: [{ url: siteConfig.social.image, alt: siteConfig.social.imageAlt }],
   },
   robots: { index: true, follow: true },
   formatDetection: { telephone: false, email: false, address: false },
@@ -88,7 +88,14 @@ export const viewport: Viewport = {
  * A ScholarlyArticle with its DOI is added only once the whitepaper record is
  * published (publication.ts); no identifier is emitted before then.
  */
-const person = { "@type": "Person", "@id": `${SITE_URL}/#author`, name: author.name, url: `${SITE_URL}/#author`, sameAs: [author.links.github, author.links.linkedin, author.links.orcid].filter(Boolean) };
+const person = {
+  "@type": "Person",
+  "@id": `${SITE_URL}/#author`,
+  name: author.name,
+  jobTitle: author.role,
+  url: `${SITE_URL}/#author`,
+  sameAs: [author.links.github, author.links.linkedin, author.links.orcid, author.links.zenodo].filter(Boolean),
+};
 const graph: Record<string, unknown>[] = [
   { "@type": "WebSite", "@id": `${SITE_URL}/#website`, url: `${SITE_URL}/`, name: "AI Trust Graph", inLanguage: "en-GB", author: { "@id": `${SITE_URL}/#author` } },
   person,
@@ -100,7 +107,8 @@ const graph: Record<string, unknown>[] = [
     version: release.bundle,
     creativeWorkStatus: release.status,
     author: { "@id": `${SITE_URL}/#author` },
-    license: "https://creativecommons.org/licenses/by/4.0/",
+    license: siteConfig.licence.url,
+    dateModified: siteConfig.site.updated,
     url: REPO_URL,
     inLanguage: "en",
   },
