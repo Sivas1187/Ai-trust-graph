@@ -284,13 +284,13 @@ export function SignatureGraph() {
           </p>
           <ul aria-labelledby="sig-legend-title">
             <li>
-              <span className="lgLine lgObserved" aria-hidden="true" /> Supported: approved, with evidence linked
+              <span className="lgLine lgObserved" aria-hidden="true" /> {stateLabel.observed}
             </li>
             <li>
-              <span className="lgLine lgCandidate" aria-hidden="true" /> Inferred: proposed, awaiting evidence
+              <span className="lgLine lgCandidate" aria-hidden="true" /> {stateLabel.candidate}
             </li>
             <li>
-              <span className="lgLine lgUnknown" aria-hidden="true" /> UNKNOWN: evidence absent or insufficient
+              <span className="lgLine lgUnknown" aria-hidden="true" /> {stateLabel.unknown}
             </li>
             <li>
               <span className="lgDiamond" aria-hidden="true" /> Conditional: what must be true

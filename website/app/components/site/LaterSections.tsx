@@ -9,7 +9,6 @@ import {
   pendingGates,
   release,
   reviewStatus,
-  roadmapNote,
 } from "../../content";
 import { citations, isPublished, publication } from "../../publication";
 import { author } from "../../site-content";
@@ -348,7 +347,6 @@ export function StatusReview() {
               ))}
             </ul>
             <p className="canonQuote canonQuoteSmall">{manifestGatePrinciple}</p>
-            <p className="smallNote">{roadmapNote}</p>
           </div>
         </div>
         <SourceNote>
