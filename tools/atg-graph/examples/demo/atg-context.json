@@ -1,0 +1,14 @@
+{
+  "_comment": "Synthetic demonstration. Every name, account number and value here is invented.",
+  "agents": [
+    {"id": "dev-agent", "name": "Developer coding agent", "mcp_configs": ["mcp.json"], "agent_tools": "agent-tools.json"},
+    {"id": "ops-agent", "name": "Operations assistant", "mcp_configs": ["ops-mcp.json"]}
+  ],
+  "mcp_tools_dir": "tools",
+  "aws_authorization_details": "aws-authorization-details.json",
+  "server_identities": {"aws-ops": "arn:aws:iam::111122223333:role/AgentOpsRole"},
+  "approvals": ["github/merge_pull_request"],
+  "untrusted_sources": [],
+  "trusted_sources": [],
+  "sensitive_reads": []
+}

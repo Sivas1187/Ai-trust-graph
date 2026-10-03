@@ -1,0 +1,27 @@
+{
+  "UserDetailList": [
+    {"UserName": "ci-bot", "Arn": "arn:aws:iam::111122223333:user/ci-bot", "UserPolicyList": [], "GroupList": [],
+     "AttachedManagedPolicies": [{"PolicyName": "CiDeploy", "PolicyArn": "arn:aws:iam::111122223333:policy/CiDeploy"}]}
+  ],
+  "GroupDetailList": [],
+  "RoleDetailList": [
+    {"RoleName": "AgentOpsRole", "Arn": "arn:aws:iam::111122223333:role/AgentOpsRole",
+     "AssumeRolePolicyDocument": {"Version": "2012-10-17", "Statement": [
+       {"Effect": "Allow", "Principal": {"AWS": "arn:aws:iam::111122223333:user/ci-bot"}, "Action": "sts:AssumeRole"}]},
+     "RolePolicyList": [{"PolicyName": "agent-ops", "PolicyDocument": {"Version": "2012-10-17", "Statement": [
+       {"Effect": "Allow", "Action": ["ec2:Describe*", "ec2:TerminateInstances"], "Resource": "*"},
+       {"Effect": "Allow", "Action": ["s3:GetObject", "s3:DeleteObject"], "Resource": "arn:aws:s3:::prod-data/*"},
+       {"Effect": "Allow", "Action": "ssm:SendCommand", "Resource": "*", "Condition": {"StringEquals": {"aws:ResourceTag/env": "dev"}}},
+       {"Effect": "Deny", "Action": "ec2:TerminateInstances", "Resource": "*", "Condition": {"StringEquals": {"aws:ResourceTag/protected": "true"}}}
+     ]}}],
+     "AttachedManagedPolicies": []},
+    {"RoleName": "DeployRole", "Arn": "arn:aws:iam::111122223333:role/DeployRole",
+     "AssumeRolePolicyDocument": {"Version": "2012-10-17", "Statement": [
+       {"Effect": "Allow", "Principal": {"AWS": "arn:aws:iam::111122223333:role/AgentOpsRole"}, "Action": "sts:AssumeRole"}]},
+     "RolePolicyList": [{"PolicyName": "deploy", "PolicyDocument": {"Version": "2012-10-17", "Statement": [
+       {"Effect": "Allow", "Action": "s3:*", "Resource": "arn:aws:s3:::prod-data/*"}
+     ]}}],
+     "AttachedManagedPolicies": []}
+  ],
+  "Policies": []
+}
