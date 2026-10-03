@@ -8,6 +8,9 @@ The format loosely follows [Keep a Changelog](https://keepachangelog.com/); date
 
 ## [Unreleased]
 
+### Added
+- `.github/workflows/release.yml`: a manually triggered release workflow. Before creating a tag and GitHub release on `main`, it checks that the tag matches the manifest's bundle identifier and that all 13 artifacts pinned in `METHODOLOGY_MANIFEST.md` §4 have exactly their pinned Git blob SHA. Notes for `v1.0-rc.4` are in `.github/release-notes/`.
+
 ### Changed
 - `METHODOLOGY_MANIFEST.md` §6.2 (new, *Release-acceptance records*): records the author-performed sensitivity analysis of the Path Exposure Index required by Artifact #4 §6.5 (2026-10-02), with what it covers and what it does not. It is not an independent review and closes no external gate; the four §6 gates remain pending. `README.md`, `ROADMAP.md`, `analysis/pei-sensitivity/REPORT.md` and the whitepaper CMQ log updated to match, and the website's pinned manifest link moves to this record. Artifact content and pins are unchanged.
 - `METHODOLOGY_MANIFEST.md` §6: the employer / IP / confidentiality gate is closed by author declaration (2026-10-02) and recorded in the new §6.1 gate records. The record is a self-declaration by the methodology author, not an external legal review. The other four gates remain pending. `README.md` and `ROADMAP.md` updated to match. Artifact content and pins are unchanged.
