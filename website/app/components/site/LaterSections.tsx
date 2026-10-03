@@ -295,7 +295,12 @@ export function StatusReview() {
         <div id="review" className="reviewActionsWrap">
           <ul className="reviewActions">
             <li>
-              <Ext className="btn btnPrimary" href={links.findingIssue}>
+              <Ext className="btn btnPrimary" href={links.reviewing}>
+                Start a review
+              </Ext>
+            </li>
+            <li>
+              <Ext className="btn btnSecondary" href={links.findingIssue}>
                 Report a finding
               </Ext>
             </li>
