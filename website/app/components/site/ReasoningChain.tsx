@@ -15,6 +15,17 @@ const stageLink: Record<string, string> = {
   Decision: "#decision",
 };
 
+/**
+ * The §0.10 theory map has eight rows for nine stages: its last row covers
+ * both Evidence and Decision. Say so on the two cards, so the repeated
+ * question does not read as a copy error.
+ */
+function shared(i: number): string | null {
+  const q = chainStages[i].question;
+  const same = chainStages.flatMap((c, j) => (c.question === q ? [j + 1] : []));
+  return same.length > 1 ? same.join(" and ") : null;
+}
+
 export function ReasoningChain() {
   const ccm = links.doc("02-core-conceptual-model.md");
   return (
@@ -58,6 +69,7 @@ export function ReasoningChain() {
                 </span>
                 <h4 className="chainStage">{href ? <a href={href}>{c.stage}</a> : c.stage}</h4>
                 <p className="chainQuestion">{c.question}</p>
+                {shared(i) && <p className="chainShared">One question for stages {shared(i)}.</p>}
                 <p className="chainConcept">{c.concept}</p>
                 <p className="chainNote">{c.note}</p>
               </li>

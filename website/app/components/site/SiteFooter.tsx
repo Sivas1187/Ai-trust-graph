@@ -11,7 +11,7 @@ export function SiteFooter({ prefix = "" }: { prefix?: string }) {
   const ext = (href: string, label: string) => (
     <a href={href} rel="noopener noreferrer">
       {label}
-      <span className="visuallyHidden"> (opens GitHub)</span>
+      <span aria-hidden="true"> ↗</span>
     </a>
   );
   return (
@@ -20,7 +20,8 @@ export function SiteFooter({ prefix = "" }: { prefix?: string }) {
         <div className="footerId">
           <p className="footerBrand">AI Trust Graph</p>
           <p className="footerMeta">
-            Version {release.bundle} · {release.status} · Snapshot {release.snapshot}
+            Version {release.bundle} · {release.status} · Snapshot{" "}
+            <time dateTime={release.snapshot}>{release.snapshotLabel}</time>
           </p>
           <p className="footerMeta">{reviewStatus[1]}</p>
           <p className="footerMeta">Independent research by {methodologyAuthor}</p>
@@ -51,7 +52,7 @@ export function SiteFooter({ prefix = "" }: { prefix?: string }) {
         <div className="footerText">
           <p>
             AI Trust Graph is a methodology, not a product, and not a certification. This website is explanatory; the
-            GitHub artifacts are canonical and take precedence on any conflict.
+            GitHub artifacts are canonical and take precedence on any conflict. Links marked ↗ open GitHub.
           </p>
           <p>{author.independence}</p>
           <p>

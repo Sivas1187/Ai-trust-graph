@@ -11,6 +11,8 @@
  * illustration and makes no claim about a real system.
  */
 
+import { exStateLabel, exStateSymbol } from "./exampleData";
+
 export type SigState = "observed" | "candidate" | "unknown";
 
 /** x, y: desktop drawing (1040 × 600). mx, my: vertical mobile drawing (360 × 1160). */
@@ -152,6 +154,7 @@ export const sigEdges: SigEdge[] = [
     to: "system",
     predicate: "AUTHORIZED_TO",
     state: "unknown",
+    evidence: "E0",
     caveat: "Authorization does not prove invocation or successful effect.",
     condition: "within spend limit?",
     conditionLeft: true,
@@ -167,6 +170,7 @@ export const sigEdges: SigEdge[] = [
     to: "consequence",
     predicate: "TRIGGERS_ACTION",
     state: "candidate",
+    evidence: "E1",
     caveat: "Must distinguish trigger from authority, successful effect and consequence.",
     note: "If every condition held, a purchase request would commit spend. This is a hypothesis, not a finding.",
     side: "right",
@@ -195,8 +199,14 @@ export const sigOrder = [
   "consequence",
 ] as const;
 
+/** The same labels and marks as the worked example (section 5.6): one scenario, one vocabulary. */
 export const stateLabel: Record<SigState, string> = {
-  observed: "Supported: approved, with evidence linked",
-  candidate: "Inferred: proposed, awaiting evidence",
-  unknown: "UNKNOWN: evidence absent or insufficient",
+  observed: exStateLabel.supported,
+  candidate: exStateLabel.candidate,
+  unknown: exStateLabel.unknown,
+};
+export const stateSymbol: Record<SigState, string> = {
+  observed: exStateSymbol.supported,
+  candidate: exStateSymbol.candidate,
+  unknown: exStateSymbol.unknown,
 };

@@ -6,7 +6,9 @@ import type { ReactNode } from "react";
  * - SectionHead: kicker (section number and short label), heading and lede.
  * - SourceNote: an expandable, compact source marker. Native <details>, so it
  *   works without JavaScript; the reading-depth control can open all of them.
- * - Ext: an external link that says it leaves the site.
+ * - Ext: a link to the canonical files on GitHub, marked with a decorative ↗.
+ *   The page says once (methodology lede and footer) that ↗ links open
+ *   GitHub, instead of announcing it on every link.
  */
 
 export function SectionHead({
@@ -55,7 +57,10 @@ export function Ext({ href, children, className }: { href: string; children: Rea
   return (
     <a href={href} className={className} rel="noopener noreferrer">
       {children}
-      <span className="visuallyHidden"> (opens GitHub)</span>
+      <span className="extMark" aria-hidden="true">
+        {" "}
+        ↗
+      </span>
     </a>
   );
 }

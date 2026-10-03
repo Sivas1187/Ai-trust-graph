@@ -75,6 +75,10 @@ export function ArtifactLibrary() {
           ))}
         </div>
       )}
+      <p className="libNote">
+        Every artifact is a Markdown file on GitHub, pinned to bundle {release.bundle} (snapshot{" "}
+        <time dateTime={release.snapshot}>{release.snapshotLabel}</time>).
+      </p>
       <p className="libCount" aria-live="polite">
         {shown.length === 0
           ? "No artifacts are published as a final release yet."
@@ -105,7 +109,6 @@ export function ArtifactLibrary() {
                       <a href={links.doc(r.file)} rel="noopener noreferrer">
                         <span className="visuallyHidden">Artifact {r.n}: </span>
                         {r.title}
-                        <span className="visuallyHidden"> (opens GitHub)</span>
                       </a>
                     </h4>
                     <p className="libBadges">
@@ -127,14 +130,6 @@ export function ArtifactLibrary() {
                       <div>
                         <dt>Depends on</dt>
                         <dd>{r.dependsOn.length ? r.dependsOn.map((d) => `#${d}`).join(", ") : "None stated"}</dd>
-                      </div>
-                      <div>
-                        <dt>Format</dt>
-                        <dd>Markdown on GitHub, pinned to bundle {release.bundle}</dd>
-                      </div>
-                      <div>
-                        <dt>Updated</dt>
-                        <dd>Bundle snapshot {release.snapshot}</dd>
                       </div>
                     </dl>
                   </details>

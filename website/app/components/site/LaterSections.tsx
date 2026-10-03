@@ -3,6 +3,7 @@ import {
   changeReviewNote,
   limitation,
   links,
+  longDate,
   manifestGatePrinciple,
   methodologyAuthor,
   notValidated,
@@ -87,12 +88,18 @@ export function Publications() {
           id="publications-title"
           tone="dark"
           kicker="07 · Publications"
-          title="Where the citable research will be published."
+          title={published ? "Where the citable research is published." : "Where the citable research will be published."}
         />
         <article className="pubCard" aria-labelledby="pub-title">
           <p className="pubStatus">
             <span className={published ? "pubDot pubDotLive" : "pubDot"} aria-hidden="true" />
-            {published ? `Published ${publication.publishedDate}` : "Whitepaper in preparation"}
+            {published ? (
+              <>
+                Published <time dateTime={publication.publishedDate}>{longDate(publication.publishedDate)}</time>
+              </>
+            ) : (
+              "Whitepaper in preparation"
+            )}
           </p>
           <h3 id="pub-title" className="pubTitle">
             {publication.title} v{publication.version}
@@ -245,7 +252,7 @@ export function AboutAuthor() {
           <ul className="authorLinks">
             <li>
               <a href={author.links.github} rel="noopener noreferrer">
-                GitHub profile<span className="visuallyHidden"> (opens GitHub)</span>
+                GitHub profile<span aria-hidden="true"> ↗</span>
               </a>
             </li>
             {extra.map(([label, href]) => (
@@ -324,7 +331,9 @@ export function StatusReview() {
               </div>
               <div>
                 <dt>Snapshot</dt>
-                <dd>{release.snapshot}</dd>
+                <dd>
+                  <time dateTime={release.snapshot}>{release.snapshotLabel}</time>
+                </dd>
               </div>
               <div>
                 <dt>Author</dt>

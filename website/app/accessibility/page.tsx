@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "../page-metadata";
 import { links } from "../content";
 import { SimplePage } from "../components/site/SimplePage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Accessibility statement",
-  description: "Accessibility aims, measures and known limitations of the AI Trust Graph website.",
-  alternates: { canonical: "/accessibility/" },
-};
+  description:
+    "Accessibility aims, measures and known limitations of the AI Trust Graph website.",
+  path: "/accessibility/",
+});
 
 export default function Accessibility() {
   return (
@@ -26,6 +28,7 @@ export default function Accessibility() {
       <h2 className="simpleSub">Known limitations</h2>
       <ul>
         <li>The interactive graph page draws a dense diagram; its relationship list is the recommended route for screen reader users.</li>
+        <li>On narrow screens the interactive graph drawing scrolls sideways; its relationship list needs no scrolling.</li>
         <li>Artifacts on GitHub are Markdown documents whose accessibility depends on GitHub&apos;s rendering.</li>
       </ul>
       <p>
@@ -34,6 +37,10 @@ export default function Accessibility() {
           GitHub repository
         </a>
         .
+      </p>
+      <p>
+        This statement was last reviewed on <time dateTime="2026-10-03">3 October 2026</time>, with an automated
+        axe-core check of every page at mobile and desktop widths.
       </p>
     </SimplePage>
   );
