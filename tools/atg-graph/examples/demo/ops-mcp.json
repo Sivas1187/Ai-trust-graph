@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "tickets": {
+      "type": "http",
+      "url": "http://tickets.internal.example:8080/mcp",
+      "headers": {"Authorization": "Bearer demo-not-a-real-token-123"}
+    },
+    "github-readonly": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github@2025.4.8"],
+      "env": {"GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"}
+    }
+  }
+}

@@ -1,0 +1,56 @@
+name: atg-graph CI
+
+# Test the reference graph tool (tools/atg-graph/). The tests also check the
+# tool's vocabulary against docs/ and the whitepaper, so changes there run it too.
+# Verification only: no secrets, no deployment.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "tools/atg-graph/**"
+      - "docs/**"
+      - "whitepaper/AI-Trust-Graph-Whitepaper-v1.0.md"
+      - ".github/workflows/atg-graph-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "tools/atg-graph/**"
+      - "docs/**"
+      - "whitepaper/AI-Trust-Graph-Whitepaper-v1.0.md"
+      - ".github/workflows/atg-graph-ci.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atg-graph-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test atg-graph (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python: ["3.10", "3.13"]
+    defaults:
+      run:
+        working-directory: tools/atg-graph
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Unit tests (standard library only)
+        run: python -m unittest discover -s tests -t . -v
+
+      - name: Scan the synthetic demo
+        run: python -m atg_graph scan examples/demo/atg-context.json --out "$RUNNER_TEMP/atg-graph-demo"

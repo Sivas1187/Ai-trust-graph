@@ -1,0 +1,3 @@
+{"tools": [
+  {"name": "fetch", "description": "Fetch a URL and return its content.", "annotations": {"readOnlyHint": true, "openWorldHint": true}}
+]}

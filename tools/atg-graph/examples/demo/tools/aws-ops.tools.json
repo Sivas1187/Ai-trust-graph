@@ -1,0 +1,5 @@
+{"tools": [
+  {"name": "describe_instances", "description": "Describe EC2 instances.", "annotations": {"readOnlyHint": true}},
+  {"name": "terminate_instances", "description": "Terminate EC2 instances.", "annotations": {"readOnlyHint": false, "destructiveHint": true}},
+  {"name": "run_ssm_command", "description": "Run a command on instances through SSM.", "annotations": {"readOnlyHint": false}}
+]}
