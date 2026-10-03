@@ -77,7 +77,9 @@ export function ArtifactLibrary() {
       )}
       <p className="libNote">
         Every artifact is a Markdown file on GitHub, pinned to bundle {release.bundle} (snapshot{" "}
-        <time dateTime={release.snapshot}>{release.snapshotLabel}</time>).
+        <time dateTime={release.snapshot}>{release.snapshotLabel}</time>). The bundle number names the release as a
+        whole. Each artifact keeps its own version, such as v1.0 or v3.0.0, which changes only when that artifact
+        changes; the methodology manifest pins which version of each artifact belongs to the bundle.
       </p>
       <p className="libCount" aria-live="polite">
         {shown.length === 0

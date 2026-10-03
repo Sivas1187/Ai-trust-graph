@@ -429,6 +429,20 @@ inOrder("evidence grade names", all(unknown, /<span class="gradeName">([\s\S]*?)
 inOrder("evidence relations", all(unknown, /<span class="relLabel">([\s\S]*?)<\/span>/g), relations.map((r) => r[0]));
 inOrder("evidence relation meanings", all(unknown, /<span class="relText">([\s\S]*?)<\/span>/g), relations.map((r) => r[1]));
 inOrder("non-numeric result states", all(unknown.match(/aria-label="Distinct non-numeric result states[\s\S]*?<\/ul>/)?.[0] ?? "", /<li class="chip">([\s\S]*?)<\/li>/g), nonNumericStates);
+
+// Glossaries: every term and definition shown must be a row of the cited
+// artifact table, word for word (Artifact #2 §6.3; Artifact #7 §0.5).
+{
+  const doc = (f) => readFileSync(resolve(here, "..", "..", "docs", f), "utf8");
+  const tables = { authority: doc("02-core-conceptual-model.md"), unknown: doc("07-assessment-methodology.md") };
+  for (const [id, src] of Object.entries(tables)) {
+    const g = section(index, id).match(/<details class="glossary">[\s\S]*?<\/details>/)?.[0];
+    if (!g) { fail(`index.html: #${id} glossary missing`); continue; }
+    const rows = [...g.matchAll(/<dt>([\s\S]*?)<\/dt><dd>([\s\S]*?)<\/dd>/g)].map((m) => [visible(m[1]), visible(m[2])]);
+    if (rows.length === 0) fail(`index.html: #${id} glossary has no terms`);
+    for (const [t, d] of rows) if (!src.includes(`| ${t} | ${d} |`)) fail(`index.html: #${id} glossary "${t}" is not verbatim from its artifact table`);
+  }
+}
 inOrder("UNKNOWN is never converted into", all(unknown, /<span class="neqTo">([\s\S]*?)<\/span>/g), ["Safe", "Failed", "Zero risk", "N/A"]);
 
 // Domains.

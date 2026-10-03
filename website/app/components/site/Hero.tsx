@@ -9,6 +9,11 @@ import { HeroGraph } from "./HeroGraph";
  * in section 4 carries the semantics).
  */
 export const heroDescriptor = "A graph-based, evidence-driven methodology for connected AI systems.";
+/** The two distinctions a first-time reader most needs (section 02 sets out all five). */
+export const heroClaim = "Connected is not authorised. Unknown is not safe to assume.";
+/** Who the methodology is written for. */
+export const heroAudience =
+  "Written for security architects, AI risk and assurance leads, auditors and researchers who need to defend a conclusion about a connected AI system.";
 export const heroSupport =
   "Modern AI systems are not just models. They connect people, agents, identities, tools, data, providers and business systems. AI Trust Graph was created to examine those relationships while keeping authority, evidence and uncertainty explicit.";
 
@@ -29,8 +34,10 @@ export function Hero() {
           <h1 id="hero-title" className="heroTitle">
             AI Trust Graph
           </h1>
+          <p className="heroClaim">{heroClaim}</p>
           <p className="heroLine">{heroDescriptor}</p>
           <p className="heroSupport">{heroSupport}</p>
+          <p className="heroAudience">{heroAudience}</p>
           <p className="heroAuthor">
             Independent research by <a href="#author">{author.name}</a>
           </p>
@@ -38,7 +45,7 @@ export function Hero() {
             <a className="btn btnPrimary" href="#why">
               Understand why it exists
             </a>
-            <a className="btn btnSecondary" href="#methodology">
+            <a className="btn btnTertiary" href="#methodology">
               Explore the methodology
             </a>
             <a className="btn btnTertiary" href={links.repo} rel="noopener noreferrer">

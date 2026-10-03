@@ -105,6 +105,12 @@ export function Publications() {
             {publication.title} v{publication.version}
           </h3>
           {publication.subtitle && <p className="pubSubtitle">{publication.subtitle}</p>}
+          {published && (
+            <p className="pubVersionNote">
+              v{publication.version} is the version of this paper. It is a non-normative synthesis of methodology bundle{" "}
+              {release.bundle}; the methodology itself remains a {release.status.toLowerCase()}.
+            </p>
+          )}
           <p className="pubAuthor">{publication.author}</p>
           {(published ? publication.abstract : publication.scope).split("\n\n").map((para) => (
             <p key={para.slice(0, 32)}>{para}</p>

@@ -65,6 +65,27 @@ export function Ext({ href, children, className }: { href: string; children: Rea
   );
 }
 
+/**
+ * A short glossary under a list of state names: native <details>, closed by
+ * default, so the definitions are one click away without lengthening the page.
+ */
+export function Glossary({ label, terms, source }: { label: string; terms: [string, string][]; source: ReactNode }) {
+  return (
+    <details className="glossary">
+      <summary>{label}</summary>
+      <dl className="glossaryList">
+        {terms.map(([term, def]) => (
+          <div key={term}>
+            <dt>{term}</dt>
+            <dd>{def}</dd>
+          </div>
+        ))}
+      </dl>
+      <p className="glossarySource">{source}</p>
+    </details>
+  );
+}
+
 /** Content that the "Overview" reading depth hides. */
 export function Detail({ children, as: Tag = "div", className }: { children: ReactNode; as?: "div" | "p" | "section"; className?: string }) {
   return <Tag className={className ? `depthDetail ${className}` : "depthDetail"}>{children}</Tag>;
