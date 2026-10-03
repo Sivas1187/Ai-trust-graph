@@ -7,18 +7,22 @@ header, page numbers, the contents list and figure captions repeated from
 alt text. Reports every inserted or deleted word run. Exit code 1 on any
 difference beyond the known layout labels.
 
-Usage: python3 check_parity.py   (requires pdftotext)
+Usage: python3 check_parity.py   (requires pdftotext; another edition: WP_VERSION=1.1)
 """
 
 import difflib
+import os
 import re
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-MD = ROOT / "AI-Trust-Graph-Whitepaper-v1.0.md"
-PDF = ROOT / "AI-Trust-Graph-Whitepaper-v1.0.pdf"
+VERSION = os.environ.get("WP_VERSION", "1.0")  # edition to check; default is the published 1.0
+if not re.fullmatch(r"\d+\.\d+", VERSION):
+    sys.exit(f"WP_VERSION must look like 1.1, got {VERSION}")
+MD = ROOT / f"AI-Trust-Graph-Whitepaper-v{VERSION}.md"
+PDF = ROOT / f"AI-Trust-Graph-Whitepaper-v{VERSION}.pdf"
 
 
 def words(text):
@@ -45,8 +49,9 @@ for i in range(1, pages + 1):
         assert re.search(r"^Contents$", t, flags=re.M), "page 3 is not the contents page"
         continue
     # running header and page number
-    t = re.sub(r"AI Trust Graph · Whitepaper version 1\.0", " ", t)
+    t = re.sub(r"AI Trust Graph · Whitepaper version \d+\.\d+(?: \(draft\))?", " ", t)
     t = re.sub(r"DOI 10\.5281/zenodo\.\d+", " ", t)
+    t = re.sub(r"^DOI to be assigned$", " ", t, flags=re.M)  # header of a draft edition
     # Footer page number: the body is numbered from 1 on PDF page 2. Remove the
     # last line equal to this page's own number (pdftotext may not place it last).
     lines = t.rstrip().split("\n")
