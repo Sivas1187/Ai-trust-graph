@@ -6,7 +6,7 @@ Thank you for your interest in improving AI Trust Graph. This is a **constitutio
 
 ## Ways to give feedback
 
-You don't need to open a pull request to help. In order of ceremony:
+You don't need to open a pull request to help. If you want to review the methodology, [REVIEWING.md](REVIEWING.md) lists options from 30 minutes to a few sessions. In order of ceremony:
 
 - **A specific inconsistency, gap, or error** — open an issue with the "Methodology finding" template. It mirrors the format already used for findings R-01 through R-11 in [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md), so a good report can be folded straight into that record.
 - **A general reaction, question, or first impression** — open an issue with the "General feedback" template, or start a [Discussion](https://github.com/Sivas1187/Ai-trust-graph/discussions) if one is enabled on this repository. You don't need a precise defect to use this.

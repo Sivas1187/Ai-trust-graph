@@ -36,6 +36,7 @@ export const links = {
   // Discussions is enabled on the repository (GitHub API has_discussions: true, checked 2026-09-30).
   discussions: `${REPO_URL}/discussions`,
   contributing: blob("CONTRIBUTING.md"),
+  reviewing: blob("REVIEWING.md"),
   reviewFindings: blob("REVIEW_FINDINGS.md"),
   // The manifest is pinned at the commit that records the current gate status
   // (§6.1, §6.2), which may be newer than the bundle commit; artifact content is unchanged.

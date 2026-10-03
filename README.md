@@ -99,6 +99,9 @@ ai-trust-graph/
 ├── CODE_OF_CONDUCT.md          — community conduct standard
 ├── SECURITY.md                — how to report a vulnerability in the repository or website
 ├── REVIEW_FINDINGS.md          — independent ruthless-reviewer pass: inconsistencies, gaps, recommendations
+├── REVIEWING.md               — how to review: 30-minute to multi-session options, ground rules, credit
+├── REVIEWERS.md               — opt-in credit for reviewers (a listing is not an endorsement)
+├── studies/inter-assessor/    — kit for running the Artifact #10 B.4 inter-assessor study (not yet run)
 ├── guides/                    — non-normative practical guides: two-hour Lite review, framework crosswalks, incident retrospectives
 ├── whitepaper/                — whitepaper v1.0 (non-normative): source, published PDF, figures, build tooling
 ├── analysis/pei-sensitivity/  — author-performed PEI sensitivity analysis and reproducible script
@@ -122,7 +125,9 @@ ai-trust-graph/
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). The short version: this is a constitutional methodology, not a wiki — proposals that touch canonical terminology, control definitions, maturity levels, evidence grades, or scoring logic go through the change-control process defined in [Artifact #11, §2](docs/11-governance-and-certification-model.md), not a quick pull request.
 
-You don't need a pull request to help, though. First impressions, questions, and specific findings are welcome via this repository's Issues (a structured "Methodology finding" template and a lower-ceremony "General feedback" option) or Discussions, if enabled. A particularly valuable external contribution is an **independent blinded assessor-calibration run** using Artifact #10 Appendix B.4; until that protocol is actually executed, the repository does not claim empirically demonstrated inter-assessor reliability.
+**To review the methodology, start with [REVIEWING.md](REVIEWING.md)**: it lists review options from 30 minutes to a few sessions, each linked to an open task.
+
+You don't need a pull request to help, though. First impressions, questions, and specific findings are welcome via this repository's Issues (a structured "Methodology finding" template and a lower-ceremony "General feedback" option) or Discussions, if enabled. A particularly valuable external contribution is an **independent blinded assessor-calibration run** using Artifact #10 Appendix B.4 (the [study kit](studies/inter-assessor/README.md) packages it); until that protocol is actually executed, the repository does not claim empirically demonstrated inter-assessor reliability.
 
 ## License
 

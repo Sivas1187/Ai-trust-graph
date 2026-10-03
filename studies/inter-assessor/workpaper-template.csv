@@ -1,0 +1,6 @@
+assessor_id,case_id,case_version,item_id,output,value,determinate,evidence_refs,rule_applied,rationale,ambiguity_note,minutes
+A1,IAS-01-1,1.0,CTRL-ATG-AUT-005,applicability,Applicable,yes,EV-02,Artifact #4 (Applicability),Example row: replace with your own,,
+A1,IAS-01-1,1.0,EV-03,evidence_grade,E4,yes,EV-03,Artifact #6,Example row: replace with your own,,
+A1,IAS-01-1,1.0,CTRL-ATG-AUT-005,control_score_overall,UNKNOWN,no,EV-03;EV-04,Artifact #4,Example row: conflicting evidence unresolved,,
+A1,IAS-01-1,1.0,PATH-1,path_state,Plausible,yes,EV-01;EV-05,Artifact #12 §9.3,Example row: replace with your own,,
+A1,IAS-01-1,1.0,PATH-1,pei_band,UNKNOWN,no,,Artifact #4 §4.9,Example row: authority component undetermined,,
