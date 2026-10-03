@@ -1,4 +1,0 @@
-{"tools": [
-  {"name": "list_issues", "description": "List issues in a repository.", "annotations": {"readOnlyHint": true}},
-  {"name": "get_file_contents", "description": "Get the contents of a file in a repository.", "annotations": {"readOnlyHint": true}}
-]}
