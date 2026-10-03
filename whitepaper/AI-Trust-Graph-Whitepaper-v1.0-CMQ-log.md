@@ -28,3 +28,27 @@
 ## Release discipline
 
 The whitepaper may be published as version 1.0 once: (1) the owner decides whether to record the sensitivity analysis in the manifest before publication (CMQ-8); if so, the paper is re-pinned to that manifest first; (2) the targeted review of the v1.0 changes passes; and (3) the designed PDF's text matches the final Markdown. The methodology itself remains a public-release candidate with the manifest §6 gates pending, as the paper states.
+
+## Version 1.1 (draft, not published)
+
+`AI-Trust-Graph-Whitepaper-v1.1.md` is a draft of the next version, prepared with AI assistance for the author's review. As CMQ-8 anticipated, it re-pins to manifest blob `61d48494c1c2b847650af5d26c0549d5fc0af32e`, which carries §6.2. It changes only the paper's status record:
+
+- the PEI analysis status (Publication status, §§10.4, 13.7-13.8, Appendix A);
+- new §13.9 (the frozen, not yet run, inter-assessor study IAS-01);
+- new §15.5 (non-normative repository companions);
+- E.7 and E.8, the references and the Appendix C usage column.
+
+The methodology baseline and the canonical artifacts are unchanged. Version 1.0 stays published unchanged.
+
+**No new CMQ items.** Two rule questions found while drafting the study cases are pre-registered in the sealed IAS-01 answer key. They will be added here only after the study's reveal, so that assessors are not primed.
+
+**Publish version 1.1 only after:**
+
+1. the author reviews the draft;
+2. a new-version DOI is reserved in Zenodo ("New version" on the v1.0 record), and the Markdown is updated:
+   - **DOI** line: the reserved DOI, as a link;
+   - **How to cite**: the reserved DOI;
+   - **Whitepaper version**: "1.1", with "(draft)" removed;
+3. `WP_VERSION=1.1 npm run build` and `WP_VERSION=1.1 python3 check_parity.py` both pass, and the PDF is committed;
+4. the PDF is uploaded to the reserved Zenodo version and published.
+

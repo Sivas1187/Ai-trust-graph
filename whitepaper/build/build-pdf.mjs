@@ -3,7 +3,7 @@
 // adds layout (cover, contents, page numbers, figure captions) but no text of
 // its own beyond the cover labels, running header and the contents heading.
 //
-// Usage: npm install && npm run build
+// Usage: npm install && npm run build   (another edition: WP_VERSION=1.1 npm run build)
 // Requires a Chromium binary; set CHROMIUM_PATH if it is not at the default.
 
 import fs from "node:fs";
@@ -15,8 +15,11 @@ import { chromium } from "playwright-core";
 
 const here = path.dirname(url.fileURLToPath(import.meta.url));
 const root = path.resolve(here, "..");
-const SRC = path.join(root, "AI-Trust-Graph-Whitepaper-v1.0.md");
-const OUT = path.join(root, "AI-Trust-Graph-Whitepaper-v1.0.pdf");
+// WP_VERSION selects the edition (default 1.0, the published version).
+const VERSION = process.env.WP_VERSION || "1.0";
+if (!/^\d+\.\d+$/.test(VERSION)) throw new Error(`WP_VERSION must look like 1.1, got ${VERSION}`);
+const SRC = path.join(root, `AI-Trust-Graph-Whitepaper-v${VERSION}.md`);
+const OUT = path.join(root, `AI-Trust-Graph-Whitepaper-v${VERSION}.pdf`);
 const CHROMIUM = process.env.CHROMIUM_PATH || "/opt/pw-browsers/chromium";
 const TMP = path.join(here, ".tmp");
 fs.mkdirSync(TMP, { recursive: true });
@@ -42,6 +45,9 @@ const fm = {
 };
 for (const [k, v] of Object.entries(fm)) if (!v) throw new Error(`front matter field missing: ${k}`);
 const inline = (s) => marked.parseInline(s);
+// The running header shows this edition's own DOI. A draft whose DOI line does not
+// start with a link (DOI not yet assigned) says so instead of borrowing another DOI.
+const headerDoi = /^\[/.test(fm.doiMd) ? `DOI ${fm.doiMd.match(/\[([^\]]+)\]/)[1]}` : "DOI to be assigned";
 
 // ------------------------------------------------------------ body html
 let html = marked.parse(body, { gfm: true });
@@ -161,7 +167,7 @@ const shell = (inner) => `<!doctype html><html lang="en"><head><meta charset="ut
 const page = (pages) => shell(`${metaHtml}${tocHtml(pages)}${html}`);
 
 const headerTemplate = `<div style="font-family:'Liberation Sans',sans-serif;font-size:7.5pt;color:#5a6474;width:100%;padding:0 20mm;display:flex;justify-content:space-between;">
-<span>AI Trust Graph · ${fm.version}</span><span>DOI ${fm.doiMd.match(/\[([^\]]+)\]/)[1]}</span></div>`;
+<span>AI Trust Graph · ${fm.version}</span><span>${headerDoi}</span></div>`;
 const footerTemplate = `<div style="font-family:'Liberation Sans',sans-serif;font-size:8pt;color:#5a6474;width:100%;text-align:center;"><span class="pageNumber"></span></div>`;
 
 async function render(doc, out, withHeaderFooter) {
