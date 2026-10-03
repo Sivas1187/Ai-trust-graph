@@ -2,7 +2,7 @@
 
 # Inter-assessor study kit
 
-> **Status: not yet run.** No assessors have taken part and no results exist. Until a study is run and its results published, the repository makes **no claim** of demonstrated inter-assessor reliability ([Artifact #10](../../docs/10-reference-assessment-repository.md) Appendix B.4).
+> **Status: not yet run.** Study IAS-01 is frozen and recruiting assessors (see [Studies](#studies)); no assessor has taken part and no results exist. Until a study is run and its results published, the repository makes **no claim** of demonstrated inter-assessor reliability ([Artifact #10](../../docs/10-reference-assessment-repository.md) Appendix B.4).
 
 This kit packages the protocol in Artifact #10 Appendix B.4 so that a study can actually be run. **Appendix B.4 governs.** This kit adds no rule to the methodology; where the two differ, follow B.4 and report the difference as a finding.
 
@@ -62,6 +62,12 @@ Artifact #10 already contains worked cases and calibration vectors, but their an
 
 - **May claim:** "Under bundle X, N independent assessors working on K synthetic cases reached the agreement shown, against the B.4 provisional gates."
 - **May not claim:** psychometric validity, predictive validity, universal assessor reliability, or certification. B.4 marks its thresholds as "governance release gates", not those claims.
+
+## Studies
+
+| Study | Cases | Status |
+|---|---|---|
+| [IAS-01](cases/IAS-01-study-record.md) | [IAS-01-1](cases/IAS-01-1-assessor-pack.md) and [IAS-01-2](cases/IAS-01-2-assessor-pack.md), version 1.0 | Frozen 2026-10-03; answer key sealed; **recruiting assessors** on [issue #52](https://github.com/Sivas1187/Ai-trust-graph/issues/52) |
 
 ## Files
 
