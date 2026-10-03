@@ -12,8 +12,9 @@ AI Trust Graph models an AI system's real exposure as a directed, labelled multi
 
 1. **Ten minutes:** the [website](https://aitrustgraph.org) explains the idea with a worked example, and the [interactive graph](https://aitrustgraph.org/graph/) lets you inspect a synthetic system relationship by relationship.
 2. **Half an hour:** the Abstract and Executive brief at the start of the [whitepaper](https://doi.org/10.5281/zenodo.23104503) summarise the whole methodology.
-3. **The canonical source:** read [Artifact #1 (Manifesto)](docs/01-manifesto.md), [#2 (Core Conceptual Model)](docs/02-core-conceptual-model.md) and [#12 (Ontology)](docs/12-ontology-specification.md), then #3 to #11 as needed (see [The twelve artifacts](#the-twelve-artifacts)).
-4. **Give feedback:** open a [Methodology finding](https://github.com/Sivas1187/Ai-trust-graph/issues/new?template=finding-report.yml) or [General feedback](https://github.com/Sivas1187/Ai-trust-graph/issues/new?template=general-feedback.yml) issue, or start a [Discussion](https://github.com/Sivas1187/Ai-trust-graph/discussions). Report security vulnerabilities privately, as described in [SECURITY.md](SECURITY.md).
+3. **Try it on one system in two hours:** the [Lite review guide](guides/lite-review.md) walks one AI use case through the path questions, a path template and an UNKNOWN register. To see where the methodology sits next to frameworks you already use, read the [OWASP Agentic Top 10 and NIST AI RMF crosswalks](guides/crosswalks.md). Both guides are non-normative.
+4. **The canonical source:** read [Artifact #1 (Manifesto)](docs/01-manifesto.md), [#2 (Core Conceptual Model)](docs/02-core-conceptual-model.md) and [#12 (Ontology)](docs/12-ontology-specification.md), then #3 to #11 as needed (see [The twelve artifacts](#the-twelve-artifacts)).
+5. **Give feedback:** open a [Methodology finding](https://github.com/Sivas1187/Ai-trust-graph/issues/new?template=finding-report.yml) or [General feedback](https://github.com/Sivas1187/Ai-trust-graph/issues/new?template=general-feedback.yml) issue, or start a [Discussion](https://github.com/Sivas1187/Ai-trust-graph/discussions). Report security vulnerabilities privately, as described in [SECURITY.md](SECURITY.md).
 
 ## Status
 
@@ -98,6 +99,7 @@ ai-trust-graph/
 ├── CODE_OF_CONDUCT.md          — community conduct standard
 ├── SECURITY.md                — how to report a vulnerability in the repository or website
 ├── REVIEW_FINDINGS.md          — independent ruthless-reviewer pass: inconsistencies, gaps, recommendations
+├── guides/                    — non-normative practical guides: two-hour Lite review, framework crosswalks
 ├── whitepaper/                — whitepaper v1.0 (non-normative): source, published PDF, figures, build tooling
 ├── analysis/pei-sensitivity/  — author-performed PEI sensitivity analysis and reproducible script
 └── docs/
