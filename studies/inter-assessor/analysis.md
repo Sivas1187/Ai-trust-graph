@@ -15,7 +15,7 @@ The [workpaper template](workpaper-template.csv) has one row per output. Everyon
 | `control_score_D`, `control_score_I`, `control_score_OE`, `control_score_overall` | 0 to 5 | Artifact #4 |
 | `path_state` | Candidate, Topological, Plausible, Validated, Exploitable, Controlled, Invalidated | Artifact #12 §9.3 |
 | `path_role` | Primary, Alternate, Residual | Artifact #12 §9.3 |
-| `pei_C`, `pei_R`, `pei_A`, `pei_Am`, `pei_CR` | The component scales in Artifact #4 §4.9 | Artifact #4 §4.9 |
+| `pei_C`, `pei_R`, `pei_A`, `pei_Am`, `pei_CR` | C 1 to 5; R 1 to 4; A 0 to 4; Am 0 to 3; CR 0 to 4 | Artifact #4 §4.3 to §4.7 |
 | `pei_value` | Computed as `4C + 3R + 3A + 2Am + 3CR` | Artifact #4 §4.9 |
 | `pei_band` | Low, Moderate, High, Critical | Artifact #4 §4.9 |
 | `capability_maturity`, `domain_maturity` | M1 to M5 | Artifact #3 |
