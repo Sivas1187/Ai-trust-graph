@@ -1,6 +1,6 @@
-import { evidenceGrades, links, nonNumericResultStates, unknownVsNotTested } from "../../content";
+import { evidenceGrades, links, nonNumericResultStates, resultStateDefinitions, unknownVsNotTested } from "../../content";
 import { evidenceRelations } from "../../site-content";
-import { Detail, Ext, SectionHead, SourceNote } from "./Primitives";
+import { Detail, Ext, Glossary, SectionHead, SourceNote } from "./Primitives";
 
 /**
  * Evidence and UNKNOWN. Every state carries a text label and a distinct
@@ -21,6 +21,8 @@ const notConvertedInto = ["Safe", "Failed", "Zero risk", "N/A"];
 export function EvidenceUnknown() {
   const scoring = links.doc("04-scoring-framework.md");
   const evidence = links.doc("06-evidence-model.md");
+  const am = links.doc("07-assessment-methodology.md");
+  const maturity = links.doc("03-maturity-model.md");
   return (
     <section id="unknown" className="section sectionPaper" aria-labelledby="unknown-title">
       <div className="container">
@@ -177,10 +179,63 @@ export function EvidenceUnknown() {
               </li>
             ))}
           </ul>
+          <Glossary
+            label="What each result state means, including Provisional"
+            terms={resultStateDefinitions}
+            source={
+              <>
+                <Ext href={am}>Artifact #7</Ext> §0.5, verbatim. Provisional and Final within scope are review states;
+                the other five are the non-numeric states above.
+              </>
+            }
+          />
           <p>
             They must never be silently collapsed into one another, into a score, or into a pass/fail. AI Trust Graph
             deliberately produces <strong>no single overall trust score</strong>.
           </p>
+          <div className="scoringNote">
+            <h4 id="scoring-note-title" className="scoringNoteTitle">
+              How scoring works, in brief
+            </h4>
+            <dl className="scoringList">
+              <div>
+                <dt>No overall score</dt>
+                <dd>
+                  <q>
+                    This framework intentionally does not publish a single overall AI Trust Graph score.
+                  </q>{" "}
+                  Results stay as separate scorecards per domain, with critical gates reported on their own.
+                </dd>
+              </div>
+              <div>
+                <dt>Control scores</dt>
+                <dd>
+                  Each control is scored from 0 (confirmed absent) to 5 (adaptive, continuously assured). The evidence caps
+                  the score: a strong claim needs strong evidence. Domain figures such as Domain Control Attainment (DCA)
+                  and the Verified-Control Rate (VCR) summarise those scores and leave out provisional ones.
+                </dd>
+              </div>
+              <div>
+                <dt>Path Exposure Index (PEI)</dt>
+                <dd>
+                  For triage only, to decide which paths to look at first.{" "}
+                  <q>It does not prove exploitability, probability or loss.</q> A final PEI is given only for determinate
+                  paths; an UNKNOWN component is never scored as zero.
+                </dd>
+              </div>
+              <div>
+                <dt>Maturity (M1 to M5)</dt>
+                <dd>
+                  Cumulative and evidence-gated, never averaged.{" "}
+                  <q>A higher-level feature does not compensate for a missing lower-level foundation.</q>
+                </dd>
+              </div>
+            </dl>
+            <p className="scoringSource">
+              <Ext href={scoring}>Artifact #4</Ext> §5.8, §1.1, §1.8, §3.4, §3.5, §4.1 and §4.9;{" "}
+              <Ext href={maturity}>Artifact #3</Ext> §1.6. Quoted sentences are verbatim; the rest is website explanation.
+            </p>
+          </div>
         </div>
 
         <SourceNote>

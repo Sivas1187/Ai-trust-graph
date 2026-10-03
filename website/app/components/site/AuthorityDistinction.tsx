@@ -1,6 +1,15 @@
-import { authorityClasses, breakpointEffects, distinctAssertions, links, pathRoles, pathValidationStates } from "../../content";
+import {
+  authorityClasses,
+  breakpointEffects,
+  distinctAssertions,
+  links,
+  pathRoleDefinitions,
+  pathRoles,
+  pathStateDefinitions,
+  pathValidationStates,
+} from "../../content";
 import { breakpointEffectDetail, breakpointQuestions } from "../../site-content";
-import { Detail, Ext, SectionHead, SourceNote } from "./Primitives";
+import { Detail, Ext, Glossary, SectionHead, SourceNote } from "./Primitives";
 
 /**
  * "Access is not authority." Six distinct assertions, drawn as separate
@@ -138,6 +147,16 @@ export function AuthorityDistinction() {
                   </li>
                 ))}
               </ul>
+              <Glossary
+                label="What each path state and role means"
+                terms={[...pathStateDefinitions, ...pathRoleDefinitions]}
+                source={
+                  <>
+                    <Ext href={ccm}>Artifact #2</Ext> §6.3, verbatim. State and role are separate dimensions: a residual path
+                    still has its own state.
+                  </>
+                }
+              />
             </Detail>
           </div>
         </div>

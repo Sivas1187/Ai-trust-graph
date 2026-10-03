@@ -699,6 +699,22 @@ main:focus {
   letter-spacing: -0.025em;
   font-variation-settings: "opsz" 60;
 }
+.heroClaim {
+  margin-top: var(--sp-5);
+  max-width: 24ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--d5-bright);
+}
+.heroAudience {
+  margin-top: var(--sp-4);
+  max-width: 58ch;
+  font-size: var(--fs-small);
+  color: var(--on-dark-2);
+}
 .heroLine {
   margin-top: var(--sp-5);
   max-width: 34ch;
@@ -3830,4 +3846,108 @@ html[data-depth="overview"] .depthSource {
     background: #fff !important;
     color: #000 !important;
   }
+}
+
+/* Glossary under state lists (section 5.2 and 5.3) */
+.glossary {
+  margin-top: var(--sp-4);
+  max-width: var(--measure);
+  font-size: var(--fs-small);
+}
+.glossary summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  list-style: none;
+}
+.glossary summary::-webkit-details-marker {
+  display: none;
+}
+.glossary summary::before {
+  content: "+";
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  font-weight: 500;
+  line-height: 1;
+}
+.glossary[open] > summary::before {
+  content: "−";
+}
+.glossaryList {
+  margin-top: var(--sp-2);
+  display: grid;
+  gap: var(--sp-2);
+}
+.glossaryList > div {
+  display: grid;
+  gap: 2px var(--sp-4);
+}
+@media (min-width: 600px) {
+  .glossaryList > div {
+    grid-template-columns: 11em minmax(0, 1fr);
+  }
+}
+.glossaryList dt {
+  font-weight: 600;
+}
+.glossarySource {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-micro);
+  opacity: 0.85;
+}
+.sectionInk .glossarySource {
+  color: var(--on-dark-2);
+  opacity: 1;
+}
+
+/* Scoring note (section 5.3) */
+.scoringNote {
+  margin-top: var(--sp-6);
+  max-width: 880px;
+  padding: var(--sp-5) var(--sp-6);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-200);
+  background: var(--white);
+}
+.scoringNoteTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4, 1.25rem);
+  font-weight: 600;
+}
+.scoringList {
+  margin-top: var(--sp-4);
+  display: grid;
+  gap: var(--sp-4);
+}
+.scoringList > div {
+  display: grid;
+  gap: 4px var(--sp-5);
+}
+@media (min-width: 768px) {
+  .scoringList > div {
+    grid-template-columns: 13em minmax(0, 1fr);
+  }
+}
+.scoringList dt {
+  font-weight: 700;
+}
+.scoringSource {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-micro);
+  color: var(--ink-500);
+}
+
+.pubVersionNote {
+  margin-top: var(--sp-3);
+  max-width: var(--measure);
+  font-size: var(--fs-small);
+  color: var(--on-dark-2);
 }

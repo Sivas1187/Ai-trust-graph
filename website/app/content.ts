@@ -463,6 +463,38 @@ export const pathValidationStates = [
 ];
 export const pathRoles = ["Primary", "Alternate", "Residual"];
 
+/** Source: Artifact #2 Core Conceptual Model §6.3, both tables verbatim (glossary under the path-state chips). */
+export const pathStateDefinitions: [string, string][] = [
+  ["Candidate", "A hypothesized sequence requires review."],
+  ["Topological", "A traversal exists in the represented graph."],
+  ["Plausible", "Required conditions are supported or explicitly UNKNOWN."],
+  ["Validated", "Authorized testing or direct evidence confirms the scoped progression."],
+  ["Exploitable", "Evidence demonstrates a security exploit path within stated conditions."],
+  ["Controlled", "Validated controls prevent, constrain, detect or contain the path as claimed."],
+  ["Invalidated", "Evidence disproves a required step or condition."],
+];
+export const pathRoleDefinitions: [string, string][] = [
+  ["Primary", "The principal path selected for the current analysis or decision."],
+  ["Alternate", "A different route that reaches the same or equivalent target."],
+  ["Residual", "A route remaining after an existing or proposed intervention."],
+];
+
+/**
+ * Source: Artifact #7 Assessment Methodology §0.5 normative result states,
+ * table verbatim (glossary under the result-state chips). It adds the two
+ * review states, Provisional and Final within scope, to the five
+ * non-numeric states above.
+ */
+export const resultStateDefinitions: [string, string][] = [
+  ["UNKNOWN", "Material evidence is absent, insufficient or conflicting."],
+  ["Not Assessed", "No assessment activity completed for the item."],
+  ["Not Applicable", "Approved rationale establishes non-applicability."],
+  ["Not Tested", "Required effectiveness test was not performed."],
+  ["Inconclusive", "Activity occurred but cannot support a determinate result."],
+  ["Provisional", "Result awaits evidence closure or quality review."],
+  ["Final within scope", "All required gates and approvals are complete for declared scope."],
+];
+
 /**
  * Authority annotation (Act III, a).
  * `distinctAssertions`: the site's illustration of distinct claims, each needing
