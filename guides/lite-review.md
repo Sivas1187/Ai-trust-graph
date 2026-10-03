@@ -8,9 +8,11 @@
 
 ## When to use it
 
-- Before a new agent, assistant or AI integration goes live, or when one gains a new tool, permission, data source or provider.
+- Early, while planning a new agent, assistant or AI integration, or when one gains a new tool, permission, data source or provider, to see what a proper review must cover.
 - When you need a fast, structured answer to "what is the worst this AI system could cause, and what stops it?"
 - As a first pass to choose which systems deserve a full assessment ([Artifact #7](../docs/07-assessment-methodology.md)).
+
+A Lite review does **not** replace a Pre-deployment readiness assessment or a Material-change assessment (Artifact #7 §1.8 and §1.3), and it cannot support a release decision on its own.
 
 **People:** the system owner and someone who understands its identities and permissions. **Inputs:** an architecture sketch, the list of tools and integrations, the identities they run as, and any approval steps.
 
@@ -56,7 +58,7 @@ Ask these once for the system:
 - **Connected is not authorised, authorised is not invoked, invoked is not consequence.** Record each as its own fact ([Artifact #12 §2.6](../docs/12-ontology-specification.md)).
 - **A missing arrow is not proof of safety.** Not finding a path is not evidence that no path exists.
 - **UNKNOWN stays UNKNOWN.** It means the evidence is absent, insufficient or materially conflicting. It is never zero, safe, passed, failed, Not Applicable or Not Tested.
-- **A control counts only where it breaks a path,** at a node, relationship or boundary where it can stop, constrain, detect or contain progression ([Artifact #2 §6.6](../docs/02-core-conceptual-model.md)), and only with evidence that it operates.
+- **A control is a breakpoint only where it can break the path:** at a node, relationship or boundary where an effective control can materially stop, constrain, detect or contain it ([Artifact #2 §6.6](../docs/02-core-conceptual-model.md)). Record it as breaking the path only with evidence that it operates.
 - **Findings and decisions are separate.** Accepting a risk does not change what was found.
 
 ## Path template
@@ -91,7 +93,7 @@ The refund system in the [interactive graph](https://aitrustgraph.org/graph/):
 - **Authority exercised:** Transact.
 - **Breakpoints:** `Issue refund -APPROVED_BY-> Refund approval` (above the limit) and `-LIMITED_BY-> Refund limit`; `-CONTROLLED_BY-> Payment control`. Each needs evidence that it operates; a limit's existence does not prove enforcement.
 - **UNKNOWN:** U-1, the delegation's scope, duration and revocation are not evidenced.
-- **Path state:** at most Plausible until U-1 is resolved and the approval and limit are evidenced.
+- **Path state:** at most Plausible until U-1 is resolved and the refund limit's enforcement is evidenced.
 - **Next step:** obtain the delegation configuration and a test of the limit, then decide whether a full assessment is needed.
 
 ## What you can conclude

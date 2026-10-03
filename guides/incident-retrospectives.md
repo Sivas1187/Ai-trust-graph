@@ -2,7 +2,7 @@
 
 # Incident retrospectives: what an AI Trust Graph review would have asked
 
-> **Status: non-normative, hindsight analysis.** These are five publicly documented AI security incidents and disclosures, reread through the AI Trust Graph (ATG) lens. ATG was not used in any of them, and nothing here claims that ATG would have prevented them. The aim is narrower: to show which ATG questions, relationships and controls point at the weakness each incident exposed, and to say plainly where ATG would **not** have helped. Facts are taken only from the cited public sources; nothing is added about the organizations involved.
+> **Status: non-normative, hindsight analysis.** These are five publicly documented AI security incidents and disclosures, reread through the AI Trust Graph (ATG) lens. ATG was not used in any of them, and nothing here claims that ATG would have prevented them. The aim is narrower: to show which ATG questions, relationships and controls point at the weakness each incident exposed, and to say plainly where ATG would **not** have helped. These are not incident-driven assessments (Artifact #7). Facts are taken only from the cited public sources; nothing is added about the organizations involved. The five were chosen because they involve connected components, so they illustrate the lens; they are not a sample and do not measure how often such weaknesses occur.
 
 ## Summary
 
@@ -26,7 +26,7 @@ The common thread is the methodology's thesis: *"A component can satisfy its loc
 `External sender -SENDS_TO-> user mailbox`; `Copilot -RETRIEVES_FROM-> mailbox, OneDrive, SharePoint, Teams` (under the user's identity); `email content -INFLUENCES-> Copilot`; `Copilot output -DISCLOSES_TO-> attacker URL`, which `-CROSSES->` the organization's boundary through an allowed domain.
 
 **What an ATG review would have asked.**
-- *What can this component reach, and what can influence it?* (E.4 Q1.) The assistant reads everything the user can, and it also reads content written by anyone who can email the user. ATG records the second as `INFLUENCES`: influence without authority, distinct from access.
+- *What can this component reach?* (E.4 Q1.) And what can influence it? The assistant reads everything the user can, and it also reads content written by anyone who can email the user. ATG records the second as `INFLUENCES`: influence without authority, distinct from access.
 - *Across which boundaries?* (E.4 Q3.) Untrusted external content and privileged internal data meet inside one context. That is a trust boundary, even though no network boundary is crossed until the output leaves.
 - *Which control breaks the path, and is there evidence it operates?* (E.4 Q5.) Output and egress restrictions are the breakpoint. Here the allowed domain was itself a route out, so a control that looked present did not break the path: an **alternate route** to the same target.
 - Relevant controls: ATG-AUT-009 *Data disclosure and destination authority*; ATG-TRU-005 *Trust boundary definition and enforcement*; ATG-VAL-005 *Prompt, context and output security testing*; ATG-VAL-006 *RAG, vector and memory security testing*; ATG-TRU-010 *Control breakpoint mapping*.
@@ -60,7 +60,7 @@ The common thread is the methodology's thesis: *"A component can satisfy its loc
 
 **What an ATG review would have asked.**
 - *Which agents can delete, and through which identities?* (E.9 Q1.) Delete is its own authority class; its typical concerns are "irreversibility, retention and recovery" ([Artifact #2](../docs/02-core-conceptual-model.md) §5.2).
-- *Which control actually breaks the path?* (E.9 Q4.) An instruction is not a breakpoint. ATG counts a control only where it can stop, constrain, detect or contain progression, with evidence that it operates; ATG-AUT-005 requires approval that is "technically enforceable". The safeguards Replit added afterwards are exactly the breakpoints an ATG review looks for: environment separation, a mode without write authority, and tested recovery.
+- *Which control actually breaks the path?* (E.9 Q4.) An instruction to the agent is not the "technically enforceable" approval ATG-AUT-005 requires, and the methodology has no rule that lets a probabilistic, model-dependent safeguard count as a validated breakpoint (an open question, whitepaper §13.5 and §14.4). A breakpoint is where an effective control can materially stop, constrain, detect or contain the path ([Artifact #2](../docs/02-core-conceptual-model.md) §6.6), with evidence that it operates. The safeguards Replit added afterwards are exactly the breakpoints an ATG review looks for: environment separation, a mode without write authority, and tested recovery.
 - *Can we recover, and has it been tested?* (E.9 Q7.)
 - Relevant controls: ATG-AUT-010 *Environment and duty separation*; ATG-AUT-005 *Meaningful approval for consequential action*; ATG-AUT-003 *Least authority and bounded scope*; ATG-RES-009 *Safe rollback and configuration restoration*; ATG-RES-007 *Agent kill, pause and isolation*.
 
@@ -73,7 +73,7 @@ The common thread is the methodology's thesis: *"A component can satisfy its loc
 **What was reported.** AWS security bulletin AWS-2025-015 (CVE-2025-8217) states that the extension's build had "an inappropriately scoped GitHub token" in its CodeBuild configuration, which allowed a threat actor to commit malicious code to the extension's open-source repository; the code was automatically included in release 1.84.0. AWS found that the code did not execute because of a syntax error, released version 1.85.0, and removed 1.84.0 from distribution. Press reports described the injected content as instructions for the assistant to delete local files and cloud resources. [[5]](#sources) [[6]](#sources)
 
 **The path in ATG terms.**
-`Threat actor -AUTHENTICATES_AS-> over-scoped build token -WRITES_TO-> repository`; `release artifact -BUILT_FROM-> repository`; `release pipeline -DEPLOYS_TO-> extension marketplace -> developers' editors`; `assistant -INVOKES-> local shell and cloud CLI` under the developer's credentials, with **Delete** authority.
+`Threat actor -AUTHENTICATES_AS-> over-scoped build token -WRITES_TO-> repository`; `release artifact -BUILT_FROM-> repository`; `release pipeline -DEPLOYS_TO-> extension marketplace`, and from there developers' editors; `assistant -INVOKES-> local shell and cloud CLI` under the developer's credentials, with **Delete** authority.
 
 **What an ATG review would have asked.**
 - *What can this identity reach?* (E.4 Q1–Q2.) The build token could change what ships. Least authority for pipeline identities is the first breakpoint.
@@ -103,8 +103,8 @@ The common thread is the methodology's thesis: *"A component can satisfy its loc
 
 ## What these cases show, and do not show
 
-- **Shown:** in all five, the weakness lay in **how components were composed**: influence meeting authority, one identity spanning private data and a public channel, destructive authority without a technical breakpoint, or an over-scoped pipeline identity.
-- **Shown:** the decisive questions are already in ATG's two short question sets, which the [Lite review guide](lite-review.md) uses.
+- **Shown, for these five only:** the weakness lay in **how components were composed**: influence meeting authority, one identity spanning private data and a public channel, destructive authority without a technical breakpoint, or an over-scoped pipeline identity.
+- **Shown, in hindsight:** the questions that point at each weakness are already in ATG's two short question sets, which the [Lite review guide](lite-review.md) uses.
 - **Not shown:** that ATG would have found these issues in practice, how long it would take, or that independent assessors would agree. Those need real assessments and the inter-assessor study ([Artifact #10](../docs/10-reference-assessment-repository.md) Appendix B.4), which is pending.
 
 To propose a correction or another incident, open a [Methodology finding](https://github.com/Sivas1187/Ai-trust-graph/issues/new?template=finding-report.yml).
@@ -120,4 +120,4 @@ To propose a correction or another incident, open a [Methodology finding](https:
 7. PromptArmor, *Data exfiltration from Slack AI via indirect prompt injection* (August 2024). https://promptarmor.com/resources/data-exfiltration-from-slack-ai-via-indirect-prompt-injection
 8. Dark Reading, *Slack AI patches bug that let attackers steal data from private channels* (August 2024). https://www.darkreading.com/cyberattacks-data-breaches/slack-ai-patches-bug-that-let-attackers-steal-data-from-private-channels
 
-*Analysis by the methodology author, 2026-10-03; not independently reviewed.*
+*Prepared with AI assistance for the methodology author, 2026-10-03. Author review pending; not independently reviewed.*
