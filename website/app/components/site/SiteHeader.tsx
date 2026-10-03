@@ -30,7 +30,7 @@ export function SiteHeader({ home = "#top", prefix = "" }: { home?: string; pref
         <div className="headerEnd">
           <PrimaryNav items={homeNav(prefix)} />
           <a className="headerGithub" href={links.repo} rel="noopener noreferrer">
-            GitHub<span className="visuallyHidden"> (canonical source, opens GitHub)</span>
+            GitHub<span className="visuallyHidden"> (canonical source)</span>
             <span aria-hidden="true"> ↗</span>
           </a>
         </div>

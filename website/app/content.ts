@@ -48,6 +48,14 @@ export const links = {
   doc: (file: string) => pinned(`docs/${file}`),
 };
 
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+/** "2026-10-02" to "2 October 2026": the one date format the site shows (ISO stays in dateTime attributes). */
+export function longDate(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${d} ${MONTHS[m - 1]} ${y}`;
+}
+
 /** Source: METHODOLOGY_MANIFEST.md header. */
 export const release = {
   bundle: siteConfig.methodology.version,

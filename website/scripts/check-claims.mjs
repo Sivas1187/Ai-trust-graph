@@ -482,7 +482,8 @@ for (const m of authorHtml.matchAll(/href="([^"]+)"/g)) if (!verifiedAuthorLinks
 
 // Release facts: hero and status must match the manifest.
 const status = visible(section(index, "status"));
-for (const fact of [rel.bundle, rel.status, rel.snapshot]) has("#status release facts", status, fact);
+for (const fact of [rel.bundle, rel.status]) has("#status release facts", status, fact);
+if (rel.snapshot && !section(index, "status").includes(`dateTime="${rel.snapshot}"`)) fail(`index.html: #status snapshot date is not the manifest snapshot ${rel.snapshot}`);
 
 // "product" only in negated form.
 for (const m of indexText.matchAll(/[^.]*\bproducts?\b[^.]*\./gi)) {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { sigEdges, sigNodes, sigOrder, stateLabel, type SigEdge, type SigNode } from "./signatureData";
+import { sigEdges, sigNodes, sigOrder, stateLabel, stateSymbol, type SigEdge, type SigNode } from "./signatureData";
 
 /**
  * Signature figure: the procurement path drawn with the methodology's own
@@ -68,14 +68,14 @@ function Detail({ k }: { k: string }) {
           <dt>State</dt>
           <dd className={`stateText state-${e.state}`}>
             <span className="stateGlyph" aria-hidden="true">
-              {e.state === "observed" ? "━" : e.state === "candidate" ? "┅" : "?"}
+              {stateSymbol[e.state]}
             </span>{" "}
             {stateLabel[e.state]}
           </dd>
         </div>
         <div>
           <dt>Evidence</dt>
-          <dd>{e.evidence ? `${e.evidence} linked (illustrative)` : "None linked"}</dd>
+          <dd>{e.evidence === "E0" ? "E0: none linked" : e.evidence ? `${e.evidence} linked (illustrative)` : "None linked"}</dd>
         </div>
         {e.condition && (
           <div>
@@ -188,7 +188,7 @@ function Drawing({ m, active, onPick }: { m: Mode; active: string; onPick: (k: s
             <text x={lab.x} y={lab.y} textAnchor={lab.anchor} className="sigPredicate">
               {e.predicate}
             </text>
-            {e.evidence && (
+            {e.evidence && e.state !== "unknown" && (
               <g className="sigEvidence" transform={`translate(${tagX} ${tagY})`}>
                 <rect x={tagRectX(evW)} y="-10" width={evW} height="20" rx="4" />
                 <text x={tagRectX(evW) + evW / 2} y="4" textAnchor="middle">

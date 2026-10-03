@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "../page-metadata";
 import { links } from "../content";
 import { SimplePage } from "../components/site/SimplePage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy notice",
-  description: "How the AI Trust Graph website handles visitor data: no analytics, no cookies, no trackers.",
-  alternates: { canonical: "/privacy/" },
-};
+  description:
+    "How the AI Trust Graph website handles visitor data: no analytics, no cookies, no trackers.",
+  path: "/privacy/",
+});
 
 export default function Privacy() {
   return (

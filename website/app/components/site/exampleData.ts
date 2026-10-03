@@ -15,10 +15,14 @@ export const exStateLabel: Record<ExState, string> = {
   nottested: "Not Tested",
 };
 
+/** Shared with the signature graph (section 04), so both drawings of the scenario use the same marks. */
+export const exStateSymbol: Record<ExState, string> = { supported: "✓", candidate: "◇", unknown: "?", nottested: "–" };
+
 export const exComponents = [
   { id: "analyst", kind: "Human", name: "Employee", note: "Asks the agent to identify a supplier and prepare a purchase request." },
   { id: "agent", kind: "Agent", name: "AI procurement agent", note: "Plans the task, retrieves supplier data and calls tools." },
-  { id: "model", kind: "Model", name: "Hosted model", note: "Generates the recommendation. Operated by an external provider." },
+  { id: "model", kind: "Model", name: "Hosted model", note: "Generates the recommendation." },
+  { id: "provider", kind: "Provider", name: "Model provider", note: "Operates the platform the model runs on. A separate organisation." },
   { id: "data", kind: "Data", name: "Supplier data store", note: "Supplier records, prices and risk ratings." },
   { id: "tool", kind: "Tool", name: "Procurement tool", note: "Creates purchase requests through the business system interface." },
   { id: "identity", kind: "Identity", name: "Service identity svc-procure", note: "The identity the tool uses towards the business system." },
@@ -42,6 +46,7 @@ export const exEdges: {
 }[] = [
   { from: "Employee", predicate: "INSTRUCTS", to: "Procurement agent", state: "supported", grade: "E3" },
   { from: "Procurement agent", predicate: "INVOKES", to: "Hosted model", state: "supported", grade: "E4" },
+  { from: "Hosted model", predicate: "HOSTED_ON", to: "Model provider", state: "supported", grade: "E3" },
   {
     from: "Procurement agent",
     predicate: "RETRIEVES_FROM",
@@ -76,11 +81,11 @@ export const exAuthority: { claim: string; state: ExState; basis: string }[] = [
 
 export const exEvidence = {
   available: [
-    { item: "Approved architecture document", grade: "E3", relation: "SUPPORTS", target: "Employee instructs agent; agent calls tool" },
+    { item: "Approved architecture document", grade: "E3", relation: "SUPPORTS", target: "Employee instructs agent; agent calls tool; model hosted by the provider" },
     { item: "Model and tool gateway logs with configuration", grade: "E4", relation: "SUPPORTS", target: "Agent invokes model and tool" },
     { item: "Network flow logs and firewall rules", grade: "E4", relation: "CORROBORATES", target: "svc-procure connects to the business system" },
-    { item: "Service owner interview", grade: "E2", relation: "SUPPORTS", target: "A human approval step exists" },
-    { item: "Approval workflow configuration", grade: "E3", relation: "QUALIFIES", target: "Approval applies only above a value threshold" },
+    { item: "Service owner attestation", grade: "E2", relation: "SUPPORTS", target: "Every purchase request needs human approval (the claimed scope)" },
+    { item: "Approval workflow configuration", grade: "E3", relation: "DISPUTES", target: "The claimed scope: approval applies only above a value threshold" },
   ],
   missing: [
     "Business system role and entitlement export for svc-procure.",

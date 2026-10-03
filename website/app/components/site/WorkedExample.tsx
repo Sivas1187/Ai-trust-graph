@@ -13,6 +13,7 @@ import {
   exEvidence,
   exNotDefensible,
   exStateLabel,
+  exStateSymbol,
   exUnknowns,
   type ExState,
 } from "./exampleData";
@@ -32,12 +33,11 @@ const views = [
 ] as const;
 type ViewId = (typeof views)[number]["id"];
 
-const stateSymbol: Record<ExState, string> = { supported: "✓", candidate: "◇", unknown: "?", nottested: "–" };
 
 function State({ s }: { s: ExState }) {
   return (
     <span className={`stateBadge state-${s}`}>
-      <span aria-hidden="true">{stateSymbol[s]} </span>
+      <span aria-hidden="true">{exStateSymbol[s]} </span>
       {exStateLabel[s]}
     </span>
   );

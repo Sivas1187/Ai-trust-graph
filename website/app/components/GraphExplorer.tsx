@@ -224,7 +224,11 @@ export function GraphExplorer() {
           <h1 id="graph-explorer-title">Explore the connected system.</h1>
           <p className="graphLede">
             Inspect the same synthetic system through system, authority, control and evidence views. A connection is
-            never treated as proof of authorization, successful invocation or exploitability.
+            never treated as proof of authorisation, successful invocation or exploitability.
+          </p>
+          <p className="graphScenarioNote">
+            This page uses a different synthetic scenario from the home page: a refund agent rather than the procurement
+            agent. Both are invented for illustration.
           </p>
         </div>
         <p className="graphSource" aria-live="polite">

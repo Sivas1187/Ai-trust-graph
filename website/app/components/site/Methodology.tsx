@@ -70,7 +70,9 @@ export function MethodologyIntro() {
           lede={
             <p>
               Six parts, from the conceptual reasoning chain to a worked example. Each opens with its central point; the
-              detail and the source references sit underneath for practitioners who need them.
+              detail and the source references sit underneath for practitioners who need them. Links marked ↗ open the
+              cited artifact on GitHub. Quotations keep the artifacts&apos; original spelling, so some terms, such as
+              authorization, are spelt the American way.
             </p>
           }
         />

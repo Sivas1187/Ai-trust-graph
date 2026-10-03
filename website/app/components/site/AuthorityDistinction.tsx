@@ -48,10 +48,6 @@ export function AuthorityDistinction() {
             <li key={a} className="assertion">
               <p className="assertionName">{a}</p>
               <p className="assertionHint">{assertionHint[a]}</p>
-              <p className="assertionEvidence">
-                <span className="evSlot" aria-hidden="true" />
-                Own evidence required
-              </p>
             </li>
           ))}
         </ul>
