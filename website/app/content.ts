@@ -14,14 +14,14 @@ export const REPO_URL = siteConfig.repository.url;
 
 /**
  * Owner ruling 5: normative artifact links must be immutable for the bundle
- * the site names. No Git tag or release exists for 1.0-rc.4 (checked
- * 2026-09-29), so artifact links pin the bundle source commit, whose docs/
- * blobs match every Git blob SHA in METHODOLOGY_MANIFEST.md §4. Replace with
- * the release tag once the owner creates one.
+ * the site names. Artifact links pin the commit that carries bundle 1.0-rc.5,
+ * whose docs/ blobs match every Git blob SHA in METHODOLOGY_MANIFEST.md §4.
+ * check-links accepts only full commit SHAs, so the release tag (v1.0-rc.5)
+ * is not used directly.
  */
 export const BUNDLE_REF = siteConfig.repository.bundleRef;
 
-/** Immutable link into the 1.0-rc.4 bundle (normative artifacts, manifest). */
+/** Immutable link into the 1.0-rc.5 bundle (normative artifacts, manifest). */
 const pinned = (path: string) => `${REPO_URL}/blob/${BUNDLE_REF}/${path}`;
 /** Mutable repository navigation (contribution, review and project files). */
 const blob = (path: string) => `${REPO_URL}/blob/main/${path}`;
@@ -144,12 +144,12 @@ export const artifacts = [
   { n: 3, title: "Maturity Model", version: "1.0", file: "03-maturity-model.md", role: "The M1–M5 scale, 36 capabilities, critical gates" },
   { n: 4, title: "Scoring Framework", version: "3.0.0", file: "04-scoring-framework.md", role: "Control scoring, DCA/VCR/WCA, the PEI formula" },
   { n: 5, title: "Master Control Library", version: "2.0.0", file: "05-master-control-library.md", role: "All 72 canonical controls" },
-  { n: 6, title: "Evidence Model", version: "2.0.0", file: "06-evidence-model.md", role: "E0–E5 grading, quality dimensions, evidence lifecycle" },
-  { n: 7, title: "Assessment Methodology", version: "1.1.0", file: "07-assessment-methodology.md", role: "The 13-phase assessment lifecycle and specialized methods" },
-  { n: 8, title: "Assessor Handbook", version: "1.0", file: "08-assessor-handbook.md", role: "Assessor competency levels (A1–A5), field guidance per control" },
-  { n: 9, title: "Reporting Standard", version: "1.1.0", file: "09-reporting-standard.md", role: "The mandatory report package and claim-integrity rules" },
+  { n: 6, title: "Evidence Model", version: "2.0.1", file: "06-evidence-model.md", role: "E0–E5 grading, quality dimensions, evidence lifecycle" },
+  { n: 7, title: "Assessment Methodology", version: "1.1.1", file: "07-assessment-methodology.md", role: "The 13-phase assessment lifecycle and specialized methods" },
+  { n: 8, title: "Assessor Handbook", version: "1.0.1", file: "08-assessor-handbook.md", role: "Assessor competency levels (A1–A5), field guidance per control" },
+  { n: 9, title: "Reporting Standard", version: "1.1.1", file: "09-reporting-standard.md", role: "The mandatory report package and claim-integrity rules" },
   { n: 10, title: "Reference Assessment Repository", version: "2.0.0", file: "10-reference-assessment-repository.md", role: "Synthetic worked calibration cases and adversarial vectors" },
-  { n: 11, title: "Governance & Certification Model", version: "1.0", file: "11-governance-and-certification-model.md", role: "Stewardship, change control, certification readiness" },
+  { n: 11, title: "Governance & Certification Model", version: "1.0.1", file: "11-governance-and-certification-model.md", role: "Stewardship, change control, certification readiness" },
 ] as const;
 
 /** Source: METHODOLOGY_MANIFEST.md §4 (Phase 2 non-normative companion). */

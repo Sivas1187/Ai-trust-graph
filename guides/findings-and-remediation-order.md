@@ -6,7 +6,7 @@
 
 ## 1. Where the definitions live
 
-[Artifact #9](../docs/09-reporting-standard.md) §5.1 lists the seven finding types, but defines them elsewhere:
+[Artifact #9](../docs/09-reporting-standard.md) §5.1 lists the seven finding types and, from bundle 1.0-rc.5, points to their definitions, which are spread across:
 
 - **[Artifact #10](../docs/10-reference-assessment-repository.md) Appendix A.3, *Finding taxonomy calibration*:** a "use when / do not use when" table for all seven types.
 - **[Artifact #7](../docs/07-assessment-methodology.md) §§16.1-16.5:** definitions of observation, evidence gap, control deficiency and path exposure, a caution on nonconformity, and root-cause analysis.

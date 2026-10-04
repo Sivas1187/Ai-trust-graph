@@ -7,7 +7,7 @@
 | Mapping record | |
 |---|---|
 | Sources | OWASP GenAI Security Project, *OWASP Top 10 for Agentic Applications for 2026* (released 9 December 2025); NIST AI 100-1, *AI Risk Management Framework (AI RMF 1.0)* (January 2023) |
-| Target | AI Trust Graph bundle 1.0-rc.4, [Artifact #5](../docs/05-master-control-library.md) control IDs and titles |
+| Target | AI Trust Graph bundle 1.0-rc.4, [Artifact #5](../docs/05-master-control-library.md) control IDs and titles (Artifact #5 is unchanged in 1.0-rc.5) |
 | Scope | OWASP: the ten risk titles. NIST: the 19 Core categories (subcategories not mapped). |
 | Reproduction | OWASP items are referenced by identifier and title only; their descriptions are not reproduced. NIST category labels below are short summaries, not quotations; read the categories in NIST AI 100-1. |
 | Source check | 2026-10-03. The OWASP and NIST sites could not be reached from the preparation environment, so the ten OWASP titles were checked against the OWASP GenAI Security Project's own repository (`OWASP/www-project-top-10-for-large-language-model-applications`, the agentic exploits and incidents tracker) and the release date against the project's 9 December 2025 announcement; the 19 NIST categories and their order were checked against secondary copies of NIST AI 100-1. A check against the original OWASP document and the NIST PDF is still pending. |

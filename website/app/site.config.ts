@@ -22,32 +22,32 @@ export const siteConfig = {
   methodology: {
     title: "AI Trust Graph",
     /** Bundle identifier, METHODOLOGY_MANIFEST header. */
-    version: "1.0-rc.4",
+    version: "1.0-rc.5",
     /** Status, METHODOLOGY_MANIFEST header. */
     status: "Public-release candidate",
     /** Snapshot date, METHODOLOGY_MANIFEST header (ISO and written out). */
-    snapshot: "2026-09-26",
-    snapshotLabel: "26 September 2026",
+    snapshot: "2026-10-04",
+    snapshotLabel: "4 October 2026",
     /** README status paragraph. The second entry is the external review state. */
     reviewStatus: ["Author’s internal review complete", "Independent review pending"] as const,
   },
   site: {
     url: "https://aitrustgraph.org",
     /** Date of the last substantive website content change (ISO). */
-    updated: "2026-10-02",
+    updated: "2026-10-04",
   },
   repository: {
     url: "https://github.com/Sivas1187/Ai-trust-graph",
     /**
-     * Immutable ref for normative artifact links (the 1.0-rc.4 bundle source
-     * commit; replace with the release tag once one exists).
+     * Immutable ref for normative artifact links: the commit that carries the
+     * 1.0-rc.5 bundle (the GitHub release tag v1.0-rc.5 points at its merge).
      */
-    bundleRef: "ec9b4571d96afdf1c423713349871459e1cf9b9b",
+    bundleRef: "5db4e7d883d6469788dbabcb71c169f86feffe19",
     /**
      * Commit at which METHODOLOGY_MANIFEST.md is linked: the commit that last
      * changed the manifest's gate records. Update it whenever §6 changes.
      */
-    manifestRef: "d0879902881b5f5ebf65df19a4ad76474859c4df",
+    manifestRef: "5db4e7d883d6469788dbabcb71c169f86feffe19",
   },
   licence: {
     name: "CC BY 4.0",
@@ -70,7 +70,7 @@ export const siteConfig = {
       "AI Trust Graph is an independent, graph-based methodology for assessing trust, authority, exposure, controls and evidence across connected AI systems. Public-release candidate by Siva Sethumadhavan; not independently validated.",
     image: "/og.png",
     imageAlt:
-      "AI Trust Graph: a graph-based, evidence-driven methodology for connected AI systems. Public-release candidate, bundle 1.0-rc.4.",
+      "AI Trust Graph: a graph-based, evidence-driven methodology for connected AI systems. Public-release candidate, bundle 1.0-rc.5.",
   },
   /**
    * Whitepaper record. While `status` is "in-preparation" the site shows
