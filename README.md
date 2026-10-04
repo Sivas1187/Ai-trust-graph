@@ -12,7 +12,7 @@ AI Trust Graph models an AI system's real exposure as a directed, labelled multi
 
 1. **Ten minutes:** the [website](https://aitrustgraph.org) explains the idea with a worked example, and the [interactive graph](https://aitrustgraph.org/graph/) lets you inspect a synthetic system relationship by relationship.
 2. **Half an hour:** the Abstract and Executive brief at the start of the [whitepaper](https://doi.org/10.5281/zenodo.23104503) summarise the whole methodology.
-3. **Try it on one system in two hours:** the [Lite review guide](guides/lite-review.md) walks one AI use case through the path questions, a path template and an UNKNOWN register; it is a first look, not an assessment. To see where the methodology sits next to frameworks you already use, read the [OWASP Agentic Top 10 and NIST AI RMF crosswalks](guides/crosswalks.md). For a hindsight reading of five public AI incidents through the methodology's questions, see the [incident retrospectives](guides/incident-retrospectives.md). All three guides are non-normative.
+3. **Try it on one system in two hours:** the [Lite review guide](guides/lite-review.md) walks one AI use case through the path questions, a path template and an UNKNOWN register; it is a first look, not an assessment. To see where the methodology sits next to frameworks you already use, read the [OWASP Agentic Top 10 and NIST AI RMF crosswalks](guides/crosswalks.md). For a hindsight reading of five public AI incidents through the methodology's questions, see the [incident retrospectives](guides/incident-retrospectives.md). When you are ready to plan a full assessment, [planning an assessment](guides/planning-an-assessment.md) covers sizing and roles, and [findings and remediation order](guides/findings-and-remediation-order.md) brings together the finding definitions and closure rules. All five guides are non-normative.
 4. **The canonical source:** read [Artifact #1 (Manifesto)](docs/01-manifesto.md), [#2 (Core Conceptual Model)](docs/02-core-conceptual-model.md) and [#12 (Ontology)](docs/12-ontology-specification.md), then #3 to #11 as needed (see [The twelve artifacts](#the-twelve-artifacts)).
 5. **Give feedback:** open a [Methodology finding](https://github.com/Sivas1187/Ai-trust-graph/issues/new?template=finding-report.yml) or [General feedback](https://github.com/Sivas1187/Ai-trust-graph/issues/new?template=general-feedback.yml) issue, or start a [Discussion](https://github.com/Sivas1187/Ai-trust-graph/discussions). Report security vulnerabilities privately, as described in [SECURITY.md](SECURITY.md).
 
@@ -102,7 +102,7 @@ ai-trust-graph/
 ├── REVIEWING.md               — how to review: 30-minute to multi-session options, ground rules, credit
 ├── REVIEWERS.md               — opt-in credit for reviewers (a listing is not an endorsement)
 ├── studies/inter-assessor/    — kit for running the Artifact #10 B.4 inter-assessor study (not yet run)
-├── guides/                    — non-normative practical guides: two-hour Lite review, framework crosswalks, incident retrospectives
+├── guides/                    — non-normative practical guides: Lite review, crosswalks, incident retrospectives, assessment planning, findings and remediation order
 ├── whitepaper/                — whitepaper v1.0 (non-normative): source, published PDF, figures, build tooling
 ├── analysis/pei-sensitivity/  — author-performed PEI sensitivity analysis and reproducible script
 └── docs/
