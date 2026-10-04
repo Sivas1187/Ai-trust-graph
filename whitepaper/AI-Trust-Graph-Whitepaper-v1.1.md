@@ -8,8 +8,8 @@
 **October 2026**
 
 **DOI:** to be assigned on publication, as a new version of [10.5281/zenodo.23104503](https://doi.org/10.5281/zenodo.23104503)
-**Methodology baseline:** AI Trust Graph methodology bundle 1.0-rc.4 (public-release candidate), content snapshot 26 September 2026
-**Manifest blob:** `61d48494c1c2b847650af5d26c0549d5fc0af32e`
+**Methodology baseline:** AI Trust Graph methodology bundle 1.0-rc.5 (public-release candidate), an editorial patch of the 26 September 2026 content snapshot (bundle 1.0-rc.4)
+**Manifest blob:** `337cc4574b1f53cc79e75d541b14e555cbf524b6`
 
 **How to cite:** Sethumadhavan, S. (2026). *AI Trust Graph: A Graph-Driven, Evidence-Based Methodology for AI Assurance* (Version 1.1). Zenodo. DOI to be assigned on publication.
 
@@ -21,7 +21,7 @@
 
 This whitepaper is a non-normative narrative introduction to the AI Trust Graph methodology. The governed AI Trust Graph methodology artifacts maintained in the public repository remain the canonical source for definitions, controls, evidence grades, maturity rules, scoring rules, assessment procedures, reporting requirements, ontology, governance and conformance requirements. If explanatory language in this paper appears inconsistent with the canonical methodology, the governed canonical artifacts prevail.
 
-This paper is frozen to AI Trust Graph methodology bundle 1.0-rc.4. The methodology manifest blob is `61d48494c1c2b847650af5d26c0549d5fc0af32e`. That manifest pins the same thirteen artifact files as the 26 September 2026 content snapshot; it differs from the snapshot manifest only in its validation-status section, which records the employer, IP and confidentiality gate in §6.1 and the author-performed sensitivity analysis of the Path Exposure Index in §6.2. The pin is a reproducibility reference, not a validation claim. "Version 1.1" is the version of this whitepaper. It supersedes version 1.0 (https://doi.org/10.5281/zenodo.23104503), which remains published unchanged; the differences are listed under "Changes from version 1.0". The canonical artifacts are the same for both versions of this paper, and the methodology itself remains a public-release candidate.
+This paper is frozen to AI Trust Graph methodology bundle 1.0-rc.5. The methodology manifest blob is `337cc4574b1f53cc79e75d541b14e555cbf524b6`. Bundle 1.0-rc.5 is an editorial patch of the 26 September 2026 content snapshot (bundle 1.0-rc.4) under Artifact #11 §2.3. In five artifacts, table rows that were repeated word for word in every section of a series are listed once, and one cross-reference was added; no rule, value or definition changed. The manifest also records the employer, IP and confidentiality gate in §6.1 and the author-performed sensitivity analysis of the Path Exposure Index in §6.2. The pin is a reproducibility reference, not a validation claim. "Version 1.1" is the version of this whitepaper. It supersedes version 1.0 (https://doi.org/10.5281/zenodo.23104503), which remains published unchanged and pinned to 1.0-rc.4; the differences are listed under "Changes from version 1.0". The methodology itself remains a public-release candidate.
 
 At this baseline, the methodology author's internal review is complete. The employer, IP and confidentiality release gate is closed by the author's declaration recorded on 2 October 2026 (METHODOLOGY_MANIFEST.md §6.1): AI Trust Graph is the author's independent research, the author owns its intellectual property, and it includes no employer's or client's confidential information. That record is a self-declaration, not an external legal review. The closing approval records inside the pinned artifacts still list this gate as pending; manifest §6.1 governs current gate status until the artifacts are next revised. The following external release gates remain pending until completed and recorded through governance: independent methodology or architecture review; independent AI-security review; an inter-assessor reproducibility study using the protocol in Artifact #10 Appendix B.4; and legal approval of the licence and trademark position.
 
@@ -33,12 +33,12 @@ AI Trust Graph is a methodology, not a product. It is vendor-neutral and tool-in
 
 # Changes from version 1.0
 
-Version 1.1 changes the paper's status record, not the methodology. The baseline is still bundle 1.0-rc.4, with the same thirteen pinned artifacts, and the reasoning model, rules, worked example and glossary are unchanged.
+Version 1.1 changes the paper's status record, not the methodology's rules. It pins bundle 1.0-rc.5, an editorial patch of 1.0-rc.4 that changes no rule, value or definition. The reasoning model, rules, worked example and glossary are unchanged.
 
-- **Re-pinned manifest.** The paper now pins the manifest that records the author-performed PEI sensitivity analysis in §6.2. The statements about that analysis's status are updated in Publication status, §10.4, §13.7 and §13.8 and in Appendix A. Version 1.0 said that no governance decision was recorded at its pinned manifest, which remains true of that manifest.
-- **Validation work since version 1.0 (§13.9, new).** The inter-assessor study of Artifact #10 Appendix B.4 has been designed and frozen, with a sealed answer key. No assessor has taken part and no result exists.
-- **Repository companions (§15.5, new).** Non-normative material published after version 1.0 is described with its status: practical guides, including indicative OWASP and NIST crosswalks; a review guide; and a verified release process. E.7 and E.8 refer to it.
-- **References and Appendix C.** [ATG-M] is updated, and [ATG-G], [ATG-R], [ATG-IAS] and [ATG-REL] are added; the Appendix C usage column is updated to match.
+- **Re-pinned manifest (bundle 1.0-rc.5).** The paper now pins the 1.0-rc.5 manifest. 1.0-rc.5 is an editorial patch of 1.0-rc.4, and its manifest also records the author-performed PEI sensitivity analysis in §6.2. Five artifact versions are patch-bumped in Appendix C and the references. The statements about that analysis's status are updated in Publication status, §10.4, §13.7 and §13.8 and in Appendix A. Version 1.0 said that no governance decision was recorded at its pinned manifest, which remains true of that manifest.
+- **Validation work since version 1.0 (§13.9, new).** The inter-assessor study of Artifact #10 Appendix B.4 has been designed and frozen, with a sealed answer key, and the key received one recorded amendment before any assessor started. No assessor has taken part and no result exists.
+- **Repository companions (§15.5, new).** Non-normative material published after version 1.0 is described with its status: practical guides, including indicative OWASP and NIST crosswalks, assessment planning, and findings with a remediation reading order; a review guide; and a verified release process. E.7 and E.8 refer to it.
+- **References and Appendix C.** [ATG-M] is updated, and [ATG-G], [ATG-R], [ATG-IAS] and [ATG-REL] are added; the Appendix C usage column and the five patch-bumped artifact versions are updated to match.
 
 # Abstract
 
@@ -48,7 +48,7 @@ ATG follows a single canonical reasoning chain: **Objects -> Relationships -> Co
 
 The methodology does not produce a universal trust score. Its Path Exposure Index (PEI) may be used for triage only, and a final point PEI is published only for determinate eligible active paths; it does not prove exploitability, probability or loss. Maturity is cumulative, evidence-gated and non-compensating rather than averaged.
 
-This whitepaper is a non-normative narrative synthesis of methodology bundle 1.0-rc.4. It explains the graph model, trust, authority and influence, path states and roles, control breakpoints, evidence discipline, assessment lifecycle, scoring boundaries, reporting, governance and current limitations. Historical reference cases are identified as such; current scoring mechanics are illustrated only with calibration vectors explicitly evaluated under rc.4.
+This whitepaper is a non-normative narrative synthesis of methodology bundle 1.0-rc.5, an editorial patch of 1.0-rc.4 that changes no rule. It explains the graph model, trust, authority and influence, path states and roles, control breakpoints, evidence discipline, assessment lifecycle, scoring boundaries, reporting, governance and current limitations. Historical reference cases are identified as such; current scoring mechanics are illustrated only with calibration vectors explicitly evaluated under rc.4.
 
 # Executive brief
 
@@ -686,7 +686,7 @@ First, the inter-assessor protocol of Artifact #10 Appendix B.4 has been package
 - an answer key held privately by the study lead, committed to in advance by SHA-256 hashes published before any assessor starts;
 - the analysis choices that B.4 leaves open, fixed in advance.
 
-The study lead is the methodology author and the case author, and the cases and key were drafted with AI assistance. B.4 requires assessors who are independent of case authorship, and none of them may have authored the cases. At the time of writing no assessor has taken part and no result exists. The study kit states that results are published whether or not the B.4 provisional gates are met.
+The study lead is the methodology author and the case author, and the cases and key were drafted with AI assistance. B.4 requires assessors who are independent of case authorship, and none of them may have authored the cases. On 4 October 2026, before any assessor started, a private clarity check of the cases with a language model led to one recorded amendment of the key: accepted alternatives and a pre-registered rule question were added, and no key value changed. That check is not an assessment; the study record publishes the amendment's date, counts and new hashes. At the time of writing no assessor has taken part and no result exists. The study kit states that results are published whether or not the B.4 provisional gates are met.
 
 Second, a public review guide invites independent findings, with an opt-in credit record that states a listing is not an endorsement [ATG-R]. Until independent reviews and the study are completed and recorded through governance, the gates in §13.7 remain pending.
 
@@ -751,11 +751,13 @@ The following were added to the methodology repository after version 1.0 of this
 - **Practical guides [ATG-G]:**
   - a two-hour Lite review of one AI use case, built from the questions in E.4 and E.9;
   - indicative crosswalks from the OWASP Top 10 for Agentic Applications (2026) and the 19 NIST AI RMF 1.0 categories to ATG controls, under Artifact #5 §0.11;
-  - hindsight retrospectives of five publicly documented AI incidents, which state where ATG would not have helped and claim no detection or prevention.
+  - hindsight retrospectives of five publicly documented AI incidents, which state where ATG would not have helped and claim no detection or prevention;
+  - an assessment planning guide that sizes an assessment from drivers the methodology already defines, and gives no effort figures because no field data exists;
+  - a findings guide that brings together the canonical finding-type definitions (Artifact #10 Appendix A.3, Artifact #7 §16) with a remediation reading order built only from canonical signals.
 
   The guides were prepared with AI assistance. The crosswalks and the retrospectives state that the author's review of them is pending. Their sources were checked on 3 October 2026 against independent reports and the OWASP project's own repository; a check against the publishers' own pages is pending.
 - **Review and validation material:** a review guide and an opt-in reviewer credit record [ATG-R], and the inter-assessor study kit with study IAS-01 [ATG-IAS] (§13.9).
-- **A verified release process [ATG-REL].** The GitHub release `v1.0-rc.4` was created on 3 October 2026 by a workflow that publishes only if the tag matches the manifest's bundle identifier and all thirteen pinned artifacts match their manifest pins.
+- **A verified release process [ATG-REL].** The GitHub releases `v1.0-rc.4` (3 October 2026) and `v1.0-rc.5` (4 October 2026) were created by a workflow that publishes only if the tag matches the manifest's bundle identifier and all thirteen pinned artifacts match their manifest pins.
 
 # Conclusion
 
@@ -839,12 +841,12 @@ The governed artifacts pinned by the manifest cited on the cover, with their aut
 | 3 | Maturity Model | 1.0 | Normative maturity rules | §10.2 |
 | 4 | Scoring Framework | 3.0.0 | Normative scoring rules | Publication status; §§3.3, 7.2, 7.4, 8.2, 10, 13.3, 13.8, 14.5 |
 | 5 | Master Control Library | 2.0.0 | Normative control requirements | §§4.3, 5, 15.5 |
-| 6 | Evidence Model | 2.0.0 | Normative evidence semantics | §§6.2, 7, 8, 13.4, 14; App. B |
-| 7 | Assessment Methodology | 1.1.0 | Normative assessment execution | §§1.5, 5.4, 9, 14.2 |
-| 8 | Assessor Handbook | 1.0 | Operational assessor guidance | §15.3 |
-| 9 | Reporting Standard | 1.1.0 | Normative reporting | §12 |
+| 6 | Evidence Model | 2.0.1 | Normative evidence semantics | §§6.2, 7, 8, 13.4, 14; App. B |
+| 7 | Assessment Methodology | 1.1.1 | Normative assessment execution | §§1.5, 5.4, 9, 14.2 |
+| 8 | Assessor Handbook | 1.0.1 | Operational assessor guidance | §15.3 |
+| 9 | Reporting Standard | 1.1.1 | Normative reporting | §12 |
 | 10 | Reference Assessment Repository | 2.0.0 | Illustrative and calibration material | Publication status; §§4.5, 8.2, 10.2, 10.4, 11, 13.2, 13.8, 13.9, 14.6 |
-| 11 | Governance & Certification Model | 1.0 | Governance and change control | Publication status; §§13.6, 15 |
+| 11 | Governance & Certification Model | 1.0.1 | Governance and change control | Publication status; §§13.6, 15 |
 | 12 | Ontology Specification | 3.0.0 | Formal ontology representation | Research question; §§3, 4, 6.1, 8.1; App. B |
 | 13 | Reference Graph Schema and Illustrative Query Library | 0.4.0 | Phase 2 non-normative implementation reference | §15.3 |
 
@@ -869,22 +871,22 @@ The governed artifacts pinned by the manifest cited on the cover, with their aut
 [17] SPDX. SPDX Specification 3.0.1 - AI Profile. https://spdx.github.io/spdx-spec/v3.0.1/model/AI/AI/
 [18] ISO/IEC/IEEE 15026-2:2022. Systems and software engineering - Systems and software assurance - Part 2: Assurance case. International Organization for Standardization.
 [19] Spring, J. M., Hatleback, E., Householder, A., Manion, A., & Shick, D. (2021). Time to Change the CVSS? IEEE Security & Privacy, 19(2), 74-78. DOI: 10.1109/MSEC.2020.3044475.
-[ATG-M] AI Trust Graph Methodology Manifest, bundle 1.0-rc.4, content snapshot 2026-09-26, manifest blob 61d48494c1c2b847650af5d26c0549d5fc0af32e (validation status recorded to 2026-10-02, §§6.1-6.2).
+[ATG-M] AI Trust Graph Methodology Manifest, bundle 1.0-rc.5 (editorial patch of the 2026-09-26 content snapshot, bundle 1.0-rc.4), manifest blob 337cc4574b1f53cc79e75d541b14e555cbf524b6 (validation status recorded to 2026-10-02, §§6.1-6.2).
 [ATG-1] AI Trust Graph Artifact #1 - Manifesto, v1.0.
 [ATG-2] AI Trust Graph Artifact #2 - Core Conceptual Model, v3.0.0.
 [ATG-3] AI Trust Graph Artifact #3 - Maturity Model, v1.0.
 [ATG-4] AI Trust Graph Artifact #4 - Scoring Framework, v3.0.0.
 [ATG-5] AI Trust Graph Artifact #5 - Master Control Library, v2.0.0.
-[ATG-6] AI Trust Graph Artifact #6 - Evidence Model, v2.0.0.
-[ATG-7] AI Trust Graph Artifact #7 - Assessment Methodology, v1.1.0.
-[ATG-8] AI Trust Graph Artifact #8 - Assessor Handbook, v1.0.
-[ATG-9] AI Trust Graph Artifact #9 - Reporting Standard, v1.1.0.
+[ATG-6] AI Trust Graph Artifact #6 - Evidence Model, v2.0.1.
+[ATG-7] AI Trust Graph Artifact #7 - Assessment Methodology, v1.1.1.
+[ATG-8] AI Trust Graph Artifact #8 - Assessor Handbook, v1.0.1.
+[ATG-9] AI Trust Graph Artifact #9 - Reporting Standard, v1.1.1.
 [ATG-10] AI Trust Graph Artifact #10 - Reference Assessment Repository, v2.0.0.
-[ATG-11] AI Trust Graph Artifact #11 - Governance & Certification Model, v1.0.
+[ATG-11] AI Trust Graph Artifact #11 - Governance & Certification Model, v1.0.1.
 [ATG-12] AI Trust Graph Artifact #12 - Ontology Specification, v3.0.0.
 [ATG-13] AI Trust Graph Artifact #13 - Reference Graph Schema and Illustrative Query Library, v0.4.0, Phase 2 non-normative companion.
 [ATG-S] Sethumadhavan, S. (2026). PEI sensitivity analysis, methodology bundle 1.0-rc.4. Non-normative analysis report with reproducible script, `analysis/pei-sensitivity/` in the AI Trust Graph repository, 2 October 2026.
-[ATG-G] AI Trust Graph practical guides (non-normative): `guides/lite-review.md`, `guides/crosswalks.md` and `guides/incident-retrospectives.md`, AI Trust Graph repository, October 2026.
+[ATG-G] AI Trust Graph practical guides (non-normative): `guides/lite-review.md`, `guides/crosswalks.md`, `guides/incident-retrospectives.md`, `guides/planning-an-assessment.md` and `guides/findings-and-remediation-order.md`, AI Trust Graph repository, October 2026.
 [ATG-R] Reviewing AI Trust Graph (`REVIEWING.md`) and the reviewer credit record (`REVIEWERS.md`), AI Trust Graph repository, October 2026.
 [ATG-IAS] Inter-assessor study kit and study record IAS-01, `studies/inter-assessor/`, AI Trust Graph repository, study frozen 3 October 2026.
-[ATG-REL] AI Trust Graph GitHub release `v1.0-rc.4` (3 October 2026) and its release workflow, `.github/workflows/release.yml`, AI Trust Graph repository.
+[ATG-REL] AI Trust Graph GitHub releases `v1.0-rc.4` (3 October 2026) and `v1.0-rc.5` (4 October 2026) and their release workflow, `.github/workflows/release.yml`, AI Trust Graph repository.
