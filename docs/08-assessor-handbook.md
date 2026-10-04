@@ -2,7 +2,9 @@
 
 # AI Trust Graph — Assessor Handbook
 
-*Version 1.0 | Practical execution, control interpretation, path validation, findings, calibration and quality review*
+*Version 1.0.1 | Practical execution, control interpretation, path validation, findings, calibration and quality review*
+
+> **CORRECTION NOTE (1.0.1, 2026-10-04, patch)** Editorial consolidation under Artifact #11 §2.3. Table rows that were repeated word for word in every section of a series are now listed once, under a "Shared rows" note naming exactly the sections they apply to; each affected section points to it. No rule, value or other wording changed.
 
 > **PURPOSE** Operationalize the AI Trust Graph Assessment Methodology so qualified assessors can produce consistent, evidence-backed and reviewable results without redefining the canonical artifacts.
 
@@ -134,6 +136,8 @@ Supports evidence indexing, interviews, inventories and workpapers under supervi
 
 Cannot independently approve applicability, critical findings, maturity or path state.
 
+*Shared rows: the rows below apply to each of §1.1–§1.5, read in that section's own context.*
+
 | **Competency** | **Expected demonstration** |
 | --- | --- |
 | Methodology | Applies approved artifact versions without redefining them. |
@@ -151,14 +155,7 @@ Executes defined control and evidence procedures for bounded scope.
 
 Requires review for critical controls, material paths and exceptions.
 
-| **Competency** | **Expected demonstration** |
-| --- | --- |
-| Methodology | Applies approved artifact versions without redefining them. |
-| Evidence | Grades sources and bounds conclusions. |
-| Graph | Distinguishes objects, edges, conditions and paths. |
-| Controls | Separates design, implementation and operation. |
-| Judgment | Records rationale, uncertainty and escalation. |
-| Quality | Produces reproducible workpapers and addresses review. |
+*Shared rows for this section are listed once under §1.1.*
 
 COMPETENCY MODEL
 
@@ -168,14 +165,7 @@ Leads domain fieldwork, resolves routine evidence conflict and drafts integrated
 
 May recommend but not independently approve final assessment release.
 
-| **Competency** | **Expected demonstration** |
-| --- | --- |
-| Methodology | Applies approved artifact versions without redefining them. |
-| Evidence | Grades sources and bounds conclusions. |
-| Graph | Distinguishes objects, edges, conditions and paths. |
-| Controls | Separates design, implementation and operation. |
-| Judgment | Records rationale, uncertainty and escalation. |
-| Quality | Produces reproducible workpapers and addresses review. |
+*Shared rows for this section are listed once under §1.1.*
 
 COMPETENCY MODEL
 
@@ -185,14 +175,7 @@ Owns scope integration, methodology adherence, conclusions, quality response and
 
 Must obtain independent review for high-impact or conflicted engagements.
 
-| **Competency** | **Expected demonstration** |
-| --- | --- |
-| Methodology | Applies approved artifact versions without redefining them. |
-| Evidence | Grades sources and bounds conclusions. |
-| Graph | Distinguishes objects, edges, conditions and paths. |
-| Controls | Separates design, implementation and operation. |
-| Judgment | Records rationale, uncertainty and escalation. |
-| Quality | Produces reproducible workpapers and addresses review. |
+*Shared rows for this section are listed once under §1.1.*
 
 COMPETENCY MODEL
 
@@ -202,14 +185,7 @@ Challenges methodology, critical gates, path claims, scoring, maturity, independ
 
 Does not replace authorized business, legal or risk decision owners.
 
-| **Competency** | **Expected demonstration** |
-| --- | --- |
-| Methodology | Applies approved artifact versions without redefining them. |
-| Evidence | Grades sources and bounds conclusions. |
-| Graph | Distinguishes objects, edges, conditions and paths. |
-| Controls | Separates design, implementation and operation. |
-| Judgment | Records rationale, uncertainty and escalation. |
-| Quality | Produces reproducible workpapers and addresses review. |
+*Shared rows for this section are listed once under §1.1.*
 
 COMPETENCY MODEL
 
@@ -255,6 +231,7 @@ Assessors maintain current competence through calibration, supervised fieldwork,
 | Material quality failure | Root-cause review and targeted requalification. |
 | Extended inactivity | Refresher and observed case. |
 | Repeated variance | Calibration before independent assignment. |
+
 FIELDWORK PLAYBOOK
 
 # 2.1  Pre-engagement readiness
@@ -264,6 +241,11 @@ Confirm charter, roles, conflicts, access, handling, applicable versions, do-not
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision pre-engagement readiness supports. |
+
+*Shared rows: the rows below apply to each of §2.1–§2.12, read in that section's own context.*
+
+| **Fieldwork question** | **Assessor action** |
+| --- | --- |
 | Preparation | Identify inputs, owner, scope and authorization. |
 | Execution | Record actual work performed, not planned work. |
 | Evidence | Link sources and limitations. |
@@ -279,11 +261,8 @@ Explain purpose, scope, evidence rules, UNKNOWN treatment, requests, communicati
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision opening meeting supports. |
-| Preparation | Identify inputs, owner, scope and authorization. |
-| Execution | Record actual work performed, not planned work. |
-| Evidence | Link sources and limitations. |
-| Quality | Obtain challenge proportionate to consequence. |
-| Exit | Mark complete, conditioned, blocked or Inconclusive. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 FIELDWORK PLAYBOOK
 
@@ -294,11 +273,8 @@ Request evidence by assertion and control need; avoid generic data dumps and ide
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision request-list design supports. |
-| Preparation | Identify inputs, owner, scope and authorization. |
-| Execution | Record actual work performed, not planned work. |
-| Evidence | Link sources and limitations. |
-| Quality | Obtain challenge proportionate to consequence. |
-| Exit | Mark complete, conditioned, blocked or Inconclusive. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 FIELDWORK PLAYBOOK
 
@@ -309,11 +285,8 @@ Use role-specific questions, known hypotheses and contradiction prompts; disting
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision interview planning supports. |
-| Preparation | Identify inputs, owner, scope and authorization. |
-| Execution | Record actual work performed, not planned work. |
-| Evidence | Link sources and limitations. |
-| Quality | Obtain challenge proportionate to consequence. |
-| Exit | Mark complete, conditioned, blocked or Inconclusive. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 FIELDWORK PLAYBOOK
 
@@ -324,11 +297,8 @@ Ask open questions, then test specifics, examples, failed cases, changes, except
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision interview execution supports. |
-| Preparation | Identify inputs, owner, scope and authorization. |
-| Execution | Record actual work performed, not planned work. |
-| Evidence | Link sources and limitations. |
-| Quality | Obtain challenge proportionate to consequence. |
-| Exit | Mark complete, conditioned, blocked or Inconclusive. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 FIELDWORK PLAYBOOK
 
@@ -339,11 +309,8 @@ Trace a representative action across user, identity, prompt, retrieval, model, a
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision technical walkthrough supports. |
-| Preparation | Identify inputs, owner, scope and authorization. |
-| Execution | Record actual work performed, not planned work. |
-| Evidence | Link sources and limitations. |
-| Quality | Obtain challenge proportionate to consequence. |
-| Exit | Mark complete, conditioned, blocked or Inconclusive. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 FIELDWORK PLAYBOOK
 
@@ -354,11 +321,8 @@ Declare population, selection method, size, period, rationale and limitation; do
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision sampling supports. |
-| Preparation | Identify inputs, owner, scope and authorization. |
-| Execution | Record actual work performed, not planned work. |
-| Evidence | Link sources and limitations. |
-| Quality | Obtain challenge proportionate to consequence. |
-| Exit | Mark complete, conditioned, blocked or Inconclusive. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 FIELDWORK PLAYBOOK
 
@@ -369,11 +333,8 @@ Reconcile new facts with graph, evidence, controls, paths, UNKNOWNs and request 
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision daily synthesis supports. |
-| Preparation | Identify inputs, owner, scope and authorization. |
-| Execution | Record actual work performed, not planned work. |
-| Evidence | Link sources and limitations. |
-| Quality | Obtain challenge proportionate to consequence. |
-| Exit | Mark complete, conditioned, blocked or Inconclusive. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 FIELDWORK PLAYBOOK
 
@@ -384,11 +345,8 @@ Share factual condition and evidence with accountable owner; do not negotiate aw
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision issue validation supports. |
-| Preparation | Identify inputs, owner, scope and authorization. |
-| Execution | Record actual work performed, not planned work. |
-| Evidence | Link sources and limitations. |
-| Quality | Obtain challenge proportionate to consequence. |
-| Exit | Mark complete, conditioned, blocked or Inconclusive. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 FIELDWORK PLAYBOOK
 
@@ -399,11 +357,8 @@ Escalate unsafe conditions, unauthorized access, evidence tampering, severe path
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision escalation supports. |
-| Preparation | Identify inputs, owner, scope and authorization. |
-| Execution | Record actual work performed, not planned work. |
-| Evidence | Link sources and limitations. |
-| Quality | Obtain challenge proportionate to consequence. |
-| Exit | Mark complete, conditioned, blocked or Inconclusive. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 FIELDWORK PLAYBOOK
 
@@ -414,11 +369,8 @@ Present scope, coverage, unresolved facts, critical gates, provisional conclusio
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision closeout meeting supports. |
-| Preparation | Identify inputs, owner, scope and authorization. |
-| Execution | Record actual work performed, not planned work. |
-| Evidence | Link sources and limitations. |
-| Quality | Obtain challenge proportionate to consequence. |
-| Exit | Mark complete, conditioned, blocked or Inconclusive. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 FIELDWORK PLAYBOOK
 
@@ -429,11 +381,8 @@ Ensure every result has criteria, procedure, evidence, conclusion, confidence, r
 | **Fieldwork question** | **Assessor action** |
 | --- | --- |
 | Purpose | State what decision workpaper closure supports. |
-| Preparation | Identify inputs, owner, scope and authorization. |
-| Execution | Record actual work performed, not planned work. |
-| Evidence | Link sources and limitations. |
-| Quality | Obtain challenge proportionate to consequence. |
-| Exit | Mark complete, conditioned, blocked or Inconclusive. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 DOMAIN PLAYBOOKS
 
@@ -445,8 +394,13 @@ Establish a measurable estate, ownership, composition, source coverage and blind
 | --- | --- |
 | Scope | Declare the applicable discovery and aibom population and exclusions. |
 | Graph | Identify canonical objects, relationships, boundaries and paths for discovery and aibom. |
-| Evidence | Prefer current authoritative and technical sources. |
 | Controls | Apply ATG-DIS-001 through ATG-DIS-012. |
+
+*Shared rows: the rows below apply to each of §3.1.1, §3.2.1, §3.3.1, §3.4.1, §3.5.1, §3.6.1, read in that section's own context.*
+
+| **Assessor focus** | **Required examination** |
+| --- | --- |
+| Evidence | Prefer current authoritative and technical sources. |
 | Output | Record coverage, UNKNOWNs, gates, findings and domain conclusion. |
 
 DOMAIN PLAYBOOKS
@@ -485,9 +439,9 @@ Explain typed directional relationships, boundaries, reliance, effective identit
 | --- | --- |
 | Scope | Declare the applicable trust and privilege paths population and exclusions. |
 | Graph | Identify canonical objects, relationships, boundaries and paths for trust and privilege paths. |
-| Evidence | Prefer current authoritative and technical sources. |
 | Controls | Apply ATG-TRU-001 through ATG-TRU-012. |
-| Output | Record coverage, UNKNOWNs, gates, findings and domain conclusion. |
+
+*Shared rows for this section are listed once under §3.1.1.*
 
 DOMAIN PLAYBOOKS
 
@@ -525,9 +479,9 @@ Determine who or what can act, on which target, under what conditions, with what
 | --- | --- |
 | Scope | Declare the applicable authority governance population and exclusions. |
 | Graph | Identify canonical objects, relationships, boundaries and paths for authority governance. |
-| Evidence | Prefer current authoritative and technical sources. |
 | Controls | Apply ATG-AUT-001 through ATG-AUT-012. |
-| Output | Record coverage, UNKNOWNs, gates, findings and domain conclusion. |
+
+*Shared rows for this section are listed once under §3.1.1.*
 
 DOMAIN PLAYBOOKS
 
@@ -565,9 +519,9 @@ Validate system-specific threats and control breakpoints across model, prompt, R
 | --- | --- |
 | Scope | Declare the applicable ai security validation population and exclusions. |
 | Graph | Identify canonical objects, relationships, boundaries and paths for ai security validation. |
-| Evidence | Prefer current authoritative and technical sources. |
 | Controls | Apply ATG-VAL-001 through ATG-VAL-012. |
-| Output | Record coverage, UNKNOWNs, gates, findings and domain conclusion. |
+
+*Shared rows for this section are listed once under §3.1.1.*
 
 DOMAIN PLAYBOOKS
 
@@ -605,9 +559,9 @@ Assess policy, intake, impact, obligations, decisions, exceptions, providers, co
 | --- | --- |
 | Scope | Declare the applicable ai governance and assurance population and exclusions. |
 | Graph | Identify canonical objects, relationships, boundaries and paths for ai governance and assurance. |
-| Evidence | Prefer current authoritative and technical sources. |
 | Controls | Apply ATG-GOV-001 through ATG-GOV-012. |
-| Output | Record coverage, UNKNOWNs, gates, findings and domain conclusion. |
+
+*Shared rows for this section are listed once under §3.1.1.*
 
 DOMAIN PLAYBOOKS
 
@@ -645,9 +599,9 @@ Assess telemetry, attribution, detection, triage, containment, revocation, rollb
 | --- | --- |
 | Scope | Declare the applicable operational resilience population and exclusions. |
 | Graph | Identify canonical objects, relationships, boundaries and paths for operational resilience. |
-| Evidence | Prefer current authoritative and technical sources. |
 | Controls | Apply ATG-RES-001 through ATG-RES-012. |
-| Output | Record coverage, UNKNOWNs, gates, findings and domain conclusion. |
+
+*Shared rows for this section are listed once under §3.1.1.*
 
 DOMAIN PLAYBOOKS
 
@@ -674,6 +628,7 @@ Challenge patterns that create an inflated conclusion or conceal uncertainty.
 | Generic cyber alert only | Identify affected assertion, evidence gap, scope impact and corrective fieldwork. |
 | UI stop mistaken for containment | Identify affected assertion, evidence gap, scope impact and corrective fieldwork. |
 | Technical recovery without transaction reconciliation | Identify affected assertion, evidence gap, scope impact and corrective fieldwork. |
+
 72-CONTROL FIELD GUIDE
 
 # ATG-DIS-001  Discovery scope and authorized boundaries
@@ -688,9 +643,14 @@ This field guide helps the assessor evaluate discovery scope and authorized boun
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to discovery scope and authorized boundaries scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for discovery scope and authorized boundaries. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat discovery scope and authorized boundaries. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for discovery scope and authorized boundaries are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for discovery scope and authorized boundaries from the workpaper? |
+
+*Shared rows: the rows below apply to each of ATG-DIS-001–ATG-RES-012, read in that section's own context.*
+
+| **Assessor lens** | **Field guidance** |
+| --- | --- |
+| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 
 72-CONTROL FIELD GUIDE
 
@@ -706,9 +666,10 @@ This field guide helps the assessor evaluate discovery source catalogue without 
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to discovery source catalogue scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for discovery source catalogue. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat discovery source catalogue. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for discovery source catalogue are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for discovery source catalogue from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -724,9 +685,10 @@ This field guide helps the assessor evaluate sanctioned AI service discovery wit
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to sanctioned AI service discovery scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for sanctioned AI service discovery. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat sanctioned AI service discovery. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for sanctioned AI service discovery are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for sanctioned AI service discovery from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -742,9 +704,10 @@ This field guide helps the assessor evaluate shadow AI detection and triage with
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to shadow AI detection and triage scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for shadow AI detection and triage. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat shadow AI detection and triage. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for shadow AI detection and triage are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for shadow AI detection and triage from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -760,9 +723,10 @@ This field guide helps the assessor evaluate canonical AI estate inventory witho
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to canonical AI estate inventory scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for canonical AI estate inventory. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat canonical AI estate inventory. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for canonical AI estate inventory are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for canonical AI estate inventory from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -778,9 +742,10 @@ This field guide helps the assessor evaluate asset identity and correlation with
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to asset identity and correlation scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for asset identity and correlation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat asset identity and correlation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for asset identity and correlation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for asset identity and correlation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -796,9 +761,10 @@ This field guide helps the assessor evaluate business and technical ownership wi
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to business and technical ownership scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for business and technical ownership. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat business and technical ownership. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for business and technical ownership are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for business and technical ownership from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -814,9 +780,10 @@ This field guide helps the assessor evaluate aI Bill of Materials without changi
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to aI Bill of Materials scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for aI Bill of Materials. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat aI Bill of Materials. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for aI Bill of Materials are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for aI Bill of Materials from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -832,9 +799,10 @@ This field guide helps the assessor evaluate dependency and provenance lineage w
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to dependency and provenance lineage scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for dependency and provenance lineage. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat dependency and provenance lineage. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for dependency and provenance lineage are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for dependency and provenance lineage from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -850,9 +818,10 @@ This field guide helps the assessor evaluate aIBOM and inventory change detectio
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to aIBOM and inventory change detection scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for aIBOM and inventory change detection. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat aIBOM and inventory change detection. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for aIBOM and inventory change detection are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for aIBOM and inventory change detection from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -868,9 +837,10 @@ This field guide helps the assessor evaluate orphan, dormant and exposed asset l
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to orphan, dormant and exposed asset lifecycle scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for orphan, dormant and exposed asset lifecycle. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat orphan, dormant and exposed asset lifecycle. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for orphan, dormant and exposed asset lifecycle are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for orphan, dormant and exposed asset lifecycle from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -886,9 +856,10 @@ This field guide helps the assessor evaluate discovery coverage assurance withou
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to discovery coverage assurance scope. |
 | Validation move | Use an authorized representative procedure to reconcile implementation, operating condition and graph context for discovery coverage assurance. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat discovery coverage assurance. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for discovery coverage assurance are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for discovery coverage assurance from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -904,9 +875,10 @@ This field guide helps the assessor evaluate canonical trust relationship semant
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to canonical trust relationship semantics scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for canonical trust relationship semantics. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat canonical trust relationship semantics. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for canonical trust relationship semantics are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for canonical trust relationship semantics from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -922,9 +894,10 @@ This field guide helps the assessor evaluate trust basis, scope and lifecycle wi
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to trust basis, scope and lifecycle scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for trust basis, scope and lifecycle. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat trust basis, scope and lifecycle. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for trust basis, scope and lifecycle are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for trust basis, scope and lifecycle from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -940,9 +913,10 @@ This field guide helps the assessor evaluate human and workload identity path ma
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to human and workload identity path mapping scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for human and workload identity path mapping. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat human and workload identity path mapping. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for human and workload identity path mapping are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for human and workload identity path mapping from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -958,9 +932,10 @@ This field guide helps the assessor evaluate delegation and privilege inheritanc
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to delegation and privilege inheritance analysis scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for delegation and privilege inheritance analysis. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat delegation and privilege inheritance analysis. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for delegation and privilege inheritance analysis are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for delegation and privilege inheritance analysis from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -976,9 +951,10 @@ This field guide helps the assessor evaluate trust boundary definition and enfor
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to trust boundary definition and enforcement scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for trust boundary definition and enforcement. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat trust boundary definition and enforcement. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for trust boundary definition and enforcement are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for trust boundary definition and enforcement from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -994,9 +970,10 @@ This field guide helps the assessor evaluate provider trust and shared responsib
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to provider trust and shared responsibility scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for provider trust and shared responsibility. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat provider trust and shared responsibility. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for provider trust and shared responsibility are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for provider trust and shared responsibility from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1012,9 +989,10 @@ This field guide helps the assessor evaluate critical dependency and concentrati
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to critical dependency and concentration analysis scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for critical dependency and concentration analysis. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat critical dependency and concentration analysis. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for critical dependency and concentration analysis are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for critical dependency and concentration analysis from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1030,9 +1008,10 @@ This field guide helps the assessor evaluate material path construction without 
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to material path construction scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for material path construction. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat material path construction. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for material path construction are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for material path construction from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1048,9 +1027,10 @@ This field guide helps the assessor evaluate path condition and reachability val
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to path condition and reachability validation scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for path condition and reachability validation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat path condition and reachability validation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for path condition and reachability validation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for path condition and reachability validation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1066,9 +1046,10 @@ This field guide helps the assessor evaluate control breakpoint mapping without 
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to control breakpoint mapping scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for control breakpoint mapping. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat control breakpoint mapping. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for control breakpoint mapping are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for control breakpoint mapping from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1084,9 +1065,10 @@ This field guide helps the assessor evaluate trust and privilege drift monitorin
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to trust and privilege drift monitoring scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for trust and privilege drift monitoring. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat trust and privilege drift monitoring. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for trust and privilege drift monitoring are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for trust and privilege drift monitoring from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1102,9 +1084,10 @@ This field guide helps the assessor evaluate trust graph quality and review gove
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to trust graph quality and review governance scope. |
 | Validation move | Use an authorized representative procedure to trace implementation, operating condition and graph context for trust graph quality and review governance. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat trust graph quality and review governance. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for trust graph quality and review governance are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for trust graph quality and review governance from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1120,9 +1103,10 @@ This field guide helps the assessor evaluate authority inventory and action taxo
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to authority inventory and action taxonomy scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for authority inventory and action taxonomy. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat authority inventory and action taxonomy. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for authority inventory and action taxonomy are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for authority inventory and action taxonomy from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1138,9 +1122,10 @@ This field guide helps the assessor evaluate unique machine identity and attribu
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to unique machine identity and attribution scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for unique machine identity and attribution. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat unique machine identity and attribution. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for unique machine identity and attribution are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for unique machine identity and attribution from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1156,9 +1141,10 @@ This field guide helps the assessor evaluate least authority and bounded scope w
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to least authority and bounded scope scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for least authority and bounded scope. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat least authority and bounded scope. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for least authority and bounded scope are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for least authority and bounded scope from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1174,9 +1160,10 @@ This field guide helps the assessor evaluate delegation and impersonation contro
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to delegation and impersonation controls scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for delegation and impersonation controls. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat delegation and impersonation controls. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for delegation and impersonation controls are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for delegation and impersonation controls from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1192,9 +1179,10 @@ This field guide helps the assessor evaluate meaningful approval for consequenti
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to meaningful approval for consequential action scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for meaningful approval for consequential action. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat meaningful approval for consequential action. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for meaningful approval for consequential action are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for meaningful approval for consequential action from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1210,9 +1198,10 @@ This field guide helps the assessor evaluate tool, plugin and MCP allowlisting w
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to tool, plugin and MCP allowlisting scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for tool, plugin and MCP allowlisting. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat tool, plugin and MCP allowlisting. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for tool, plugin and MCP allowlisting are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for tool, plugin and MCP allowlisting from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1228,9 +1217,10 @@ This field guide helps the assessor evaluate authority amplification assessment 
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to authority amplification assessment scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for authority amplification assessment. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat authority amplification assessment. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for authority amplification assessment are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for authority amplification assessment from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1246,9 +1236,10 @@ This field guide helps the assessor evaluate resource, iteration and transaction
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to resource, iteration and transaction limits scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for resource, iteration and transaction limits. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat resource, iteration and transaction limits. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for resource, iteration and transaction limits are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for resource, iteration and transaction limits from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1264,9 +1255,10 @@ This field guide helps the assessor evaluate data disclosure and destination aut
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to data disclosure and destination authority scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for data disclosure and destination authority. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat data disclosure and destination authority. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for data disclosure and destination authority are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for data disclosure and destination authority from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1282,9 +1274,10 @@ This field guide helps the assessor evaluate environment and duty separation wit
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to environment and duty separation scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for environment and duty separation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat environment and duty separation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for environment and duty separation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for environment and duty separation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1300,9 +1293,10 @@ This field guide helps the assessor evaluate authority revocation and end-to-end
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to authority revocation and end-to-end containment scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for authority revocation and end-to-end containment. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat authority revocation and end-to-end containment. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for authority revocation and end-to-end containment are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for authority revocation and end-to-end containment from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1318,9 +1312,10 @@ This field guide helps the assessor evaluate authority review, exception and rec
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to authority review, exception and recertification scope. |
 | Validation move | Use an authorized representative procedure to enumerate implementation, operating condition and graph context for authority review, exception and recertification. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat authority review, exception and recertification. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for authority review, exception and recertification are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for authority review, exception and recertification from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1336,9 +1331,10 @@ This field guide helps the assessor evaluate risk-based AI security validation s
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to risk-based AI security validation strategy scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for risk-based AI security validation strategy. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat risk-based AI security validation strategy. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for risk-based AI security validation strategy are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for risk-based AI security validation strategy from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1354,9 +1350,10 @@ This field guide helps the assessor evaluate graph-based threat modelling withou
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to graph-based threat modelling scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for graph-based threat modelling. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat graph-based threat modelling. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for graph-based threat modelling are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for graph-based threat modelling from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1372,9 +1369,10 @@ This field guide helps the assessor evaluate validation rules of engagement with
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to validation rules of engagement scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for validation rules of engagement. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat validation rules of engagement. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for validation rules of engagement are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for validation rules of engagement from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1390,9 +1388,10 @@ This field guide helps the assessor evaluate model security and robustness valid
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to model security and robustness validation scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for model security and robustness validation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat model security and robustness validation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for model security and robustness validation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for model security and robustness validation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1408,9 +1407,10 @@ This field guide helps the assessor evaluate prompt, context and output security
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to prompt, context and output security testing scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for prompt, context and output security testing. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat prompt, context and output security testing. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for prompt, context and output security testing are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for prompt, context and output security testing from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1426,9 +1426,10 @@ This field guide helps the assessor evaluate rAG, vector and memory security tes
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to rAG, vector and memory security testing scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for rAG, vector and memory security testing. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat rAG, vector and memory security testing. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for rAG, vector and memory security testing are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for rAG, vector and memory security testing from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1444,9 +1445,10 @@ This field guide helps the assessor evaluate agent and multi-agent security test
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to agent and multi-agent security testing scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for agent and multi-agent security testing. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat agent and multi-agent security testing. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for agent and multi-agent security testing are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for agent and multi-agent security testing from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1462,9 +1464,10 @@ This field guide helps the assessor evaluate mCP, plugin and tool security testi
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to mCP, plugin and tool security testing scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for mCP, plugin and tool security testing. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat mCP, plugin and tool security testing. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for mCP, plugin and tool security testing are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for mCP, plugin and tool security testing from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1480,9 +1483,10 @@ This field guide helps the assessor evaluate aI supply-chain and pipeline valida
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to aI supply-chain and pipeline validation scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for aI supply-chain and pipeline validation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat aI supply-chain and pipeline validation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for aI supply-chain and pipeline validation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for aI supply-chain and pipeline validation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1498,9 +1502,10 @@ This field guide helps the assessor evaluate aI infrastructure and runtime valid
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to aI infrastructure and runtime validation scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for aI infrastructure and runtime validation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat aI infrastructure and runtime validation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for aI infrastructure and runtime validation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for aI infrastructure and runtime validation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1516,9 +1521,10 @@ This field guide helps the assessor evaluate control-breakpoint effectiveness va
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to control-breakpoint effectiveness validation scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for control-breakpoint effectiveness validation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat control-breakpoint effectiveness validation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for control-breakpoint effectiveness validation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for control-breakpoint effectiveness validation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1534,9 +1540,10 @@ This field guide helps the assessor evaluate finding traceability and closure va
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to finding traceability and closure validation scope. |
 | Validation move | Use an authorized representative procedure to test implementation, operating condition and graph context for finding traceability and closure validation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat finding traceability and closure validation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for finding traceability and closure validation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for finding traceability and closure validation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1552,9 +1559,10 @@ This field guide helps the assessor evaluate enterprise AI policy and acceptable
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to enterprise AI policy and acceptable use scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for enterprise AI policy and acceptable use. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat enterprise AI policy and acceptable use. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for enterprise AI policy and acceptable use are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for enterprise AI policy and acceptable use from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1570,9 +1578,10 @@ This field guide helps the assessor evaluate aI risk appetite and decision thres
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to aI risk appetite and decision thresholds scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for aI risk appetite and decision thresholds. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat aI risk appetite and decision thresholds. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for aI risk appetite and decision thresholds are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for aI risk appetite and decision thresholds from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1588,9 +1597,10 @@ This field guide helps the assessor evaluate aI governance operating model and a
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to aI governance operating model and accountability scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for aI governance operating model and accountability. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat aI governance operating model and accountability. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for aI governance operating model and accountability are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for aI governance operating model and accountability from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1606,9 +1616,10 @@ This field guide helps the assessor evaluate aI use-case intake and registration
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to aI use-case intake and registration scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for aI use-case intake and registration. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat aI use-case intake and registration. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for aI use-case intake and registration are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for aI use-case intake and registration from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1624,9 +1635,10 @@ This field guide helps the assessor evaluate impact, affected-stakeholder and mi
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to impact, affected-stakeholder and misuse assessment scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for impact, affected-stakeholder and misuse assessment. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat impact, affected-stakeholder and misuse assessment. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for impact, affected-stakeholder and misuse assessment are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for impact, affected-stakeholder and misuse assessment from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1642,9 +1654,10 @@ This field guide helps the assessor evaluate prohibited and high-risk use screen
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to prohibited and high-risk use screening scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for prohibited and high-risk use screening. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat prohibited and high-risk use screening. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for prohibited and high-risk use screening are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for prohibited and high-risk use screening from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1660,9 +1673,10 @@ This field guide helps the assessor evaluate regulatory role, jurisdiction and o
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to regulatory role, jurisdiction and obligation mapping scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for regulatory role, jurisdiction and obligation mapping. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat regulatory role, jurisdiction and obligation mapping. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for regulatory role, jurisdiction and obligation mapping are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for regulatory role, jurisdiction and obligation mapping from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1678,9 +1692,10 @@ This field guide helps the assessor evaluate lifecycle approval and material-cha
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to lifecycle approval and material-change governance scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for lifecycle approval and material-change governance. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat lifecycle approval and material-change governance. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for lifecycle approval and material-change governance are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for lifecycle approval and material-change governance from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1696,9 +1711,10 @@ This field guide helps the assessor evaluate exception and risk-acceptance gover
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to exception and risk-acceptance governance scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for exception and risk-acceptance governance. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat exception and risk-acceptance governance. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for exception and risk-acceptance governance are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for exception and risk-acceptance governance from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1714,9 +1730,10 @@ This field guide helps the assessor evaluate aI provider due diligence and contr
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to aI provider due diligence and contracting scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for aI provider due diligence and contracting. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat aI provider due diligence and contracting. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for aI provider due diligence and contracting are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for aI provider due diligence and contracting from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1732,9 +1749,10 @@ This field guide helps the assessor evaluate role-based AI literacy and competen
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to role-based AI literacy and competence scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for role-based AI literacy and competence. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat role-based AI literacy and competence. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for role-based AI literacy and competence are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for role-based AI literacy and competence from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1750,9 +1768,10 @@ This field guide helps the assessor evaluate independent assurance and continuou
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to independent assurance and continuous review scope. |
 | Validation move | Use an authorized representative procedure to verify implementation, operating condition and graph context for independent assurance and continuous review. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat independent assurance and continuous review. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for independent assurance and continuous review are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for independent assurance and continuous review from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1768,9 +1787,10 @@ This field guide helps the assessor evaluate aI activity telemetry coverage with
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to aI activity telemetry coverage scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for aI activity telemetry coverage. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat aI activity telemetry coverage. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for aI activity telemetry coverage are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for aI activity telemetry coverage from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1786,9 +1806,10 @@ This field guide helps the assessor evaluate action attribution and non-repudiat
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to action attribution and non-repudiation scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for action attribution and non-repudiation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat action attribution and non-repudiation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for action attribution and non-repudiation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for action attribution and non-repudiation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1804,9 +1825,10 @@ This field guide helps the assessor evaluate aI-specific detection and alerting 
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to aI-specific detection and alerting scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for aI-specific detection and alerting. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat aI-specific detection and alerting. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for aI-specific detection and alerting are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for aI-specific detection and alerting from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1822,9 +1844,10 @@ This field guide helps the assessor evaluate aI incident taxonomy and severity w
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to aI incident taxonomy and severity scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for aI incident taxonomy and severity. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat aI incident taxonomy and severity. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for aI incident taxonomy and severity are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for aI incident taxonomy and severity from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1840,9 +1863,10 @@ This field guide helps the assessor evaluate incident triage and decision coordi
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to incident triage and decision coordination scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for incident triage and decision coordination. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat incident triage and decision coordination. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for incident triage and decision coordination are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for incident triage and decision coordination from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1858,9 +1882,10 @@ This field guide helps the assessor evaluate graph-aware containment planning wi
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to graph-aware containment planning scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for graph-aware containment planning. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat graph-aware containment planning. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for graph-aware containment planning are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for graph-aware containment planning from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1876,9 +1901,10 @@ This field guide helps the assessor evaluate agent kill, pause and isolation wit
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to agent kill, pause and isolation scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for agent kill, pause and isolation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat agent kill, pause and isolation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for agent kill, pause and isolation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for agent kill, pause and isolation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1894,9 +1920,10 @@ This field guide helps the assessor evaluate credential, token and delegation re
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to credential, token and delegation revocation scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for credential, token and delegation revocation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat credential, token and delegation revocation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for credential, token and delegation revocation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for credential, token and delegation revocation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1912,9 +1939,10 @@ This field guide helps the assessor evaluate safe rollback and configuration res
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to safe rollback and configuration restoration scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for safe rollback and configuration restoration. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat safe rollback and configuration restoration. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for safe rollback and configuration restoration are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for safe rollback and configuration restoration from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1930,9 +1958,10 @@ This field guide helps the assessor evaluate business recovery and compensation 
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to business recovery and compensation scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for business recovery and compensation. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat business recovery and compensation. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for business recovery and compensation are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for business recovery and compensation from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1948,9 +1977,10 @@ This field guide helps the assessor evaluate incident evidence preservation and 
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to incident evidence preservation and reconstruction scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for incident evidence preservation and reconstruction. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat incident evidence preservation and reconstruction. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for incident evidence preservation and reconstruction are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for incident evidence preservation and reconstruction from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
 
 72-CONTROL FIELD GUIDE
 
@@ -1966,14 +1996,18 @@ This field guide helps the assessor evaluate resilience exercises, learning and 
 | Weak evidence | Policy-only, attestation-only, copied screenshot or generic provider material not bound to resilience exercises, learning and improvement scope. |
 | Validation move | Use an authorized representative procedure to reconstruct implementation, operating condition and graph context for resilience exercises, learning and improvement. |
 | Negative test | Identify one plausible bypass, missing condition, stale state or alternate path that could defeat resilience exercises, learning and improvement. |
-| Scoring caution | Separate design, implementation and operating effectiveness; apply evidence cap and critical gates. |
 | Finding cue | Draft only when criteria, evidenced condition, affected objects or paths and consequence for resilience exercises, learning and improvement are clear. |
 | Reviewer challenge | Could another qualified assessor reproduce the conclusion for resilience exercises, learning and improvement from the workpaper? |
+
+*Shared rows for this section are listed once under ATG-DIS-001.*
+
 EVIDENCE INTERPRETATION
 
 # 5.1  Policy and procedure
 
 Use to support approved intent and responsibilities; reconcile to deployed state and operating records.
+
+*Shared rows: the rows below apply to each of §5.1–§5.10, read in that section's own context.*
 
 | **Reviewer question** | **Pass condition** |
 | --- | --- |
@@ -1990,14 +2024,7 @@ EVIDENCE INTERPRETATION
 
 Use for context and claimed practice; record role and scope; normally E2 until corroborated.
 
-| **Reviewer question** | **Pass condition** |
-| --- | --- |
-| Assertion | The source is linked to one precise proposition. |
-| Grade | E0-E5 reflects source strength, not desired conclusion. |
-| Quality | Relevance, provenance, integrity, currentness, scope and representativeness are reviewed. |
-| Conflict | Disputing and qualifying evidence remains visible. |
-| Confidence | Conclusion confidence is distinct from evidence grade. |
-| Limit | Unsupported generalization is explicitly prohibited. |
+*Shared rows for this section are listed once under §5.1.*
 
 EVIDENCE INTERPRETATION
 
@@ -2005,14 +2032,7 @@ EVIDENCE INTERPRETATION
 
 Accept only with source, date, environment, scope, uncropped context and integrity explanation.
 
-| **Reviewer question** | **Pass condition** |
-| --- | --- |
-| Assertion | The source is linked to one precise proposition. |
-| Grade | E0-E5 reflects source strength, not desired conclusion. |
-| Quality | Relevance, provenance, integrity, currentness, scope and representativeness are reviewed. |
-| Conflict | Disputing and qualifying evidence remains visible. |
-| Confidence | Conclusion confidence is distinct from evidence grade. |
-| Limit | Unsupported generalization is explicitly prohibited. |
+*Shared rows for this section are listed once under §5.1.*
 
 EVIDENCE INTERPRETATION
 
@@ -2020,14 +2040,7 @@ EVIDENCE INTERPRETATION
 
 Confirm system of record, tenant, filter, timestamp, inherited settings, completeness and independent corroboration.
 
-| **Reviewer question** | **Pass condition** |
-| --- | --- |
-| Assertion | The source is linked to one precise proposition. |
-| Grade | E0-E5 reflects source strength, not desired conclusion. |
-| Quality | Relevance, provenance, integrity, currentness, scope and representativeness are reviewed. |
-| Conflict | Disputing and qualifying evidence remains visible. |
-| Confidence | Conclusion confidence is distinct from evidence grade. |
-| Limit | Unsupported generalization is explicitly prohibited. |
+*Shared rows for this section are listed once under §5.1.*
 
 EVIDENCE INTERPRETATION
 
@@ -2035,14 +2048,7 @@ EVIDENCE INTERPRETATION
 
 Check event coverage, identity correlation, time synchronization, retention, integrity and representative period.
 
-| **Reviewer question** | **Pass condition** |
-| --- | --- |
-| Assertion | The source is linked to one precise proposition. |
-| Grade | E0-E5 reflects source strength, not desired conclusion. |
-| Quality | Relevance, provenance, integrity, currentness, scope and representativeness are reviewed. |
-| Conflict | Disputing and qualifying evidence remains visible. |
-| Confidence | Conclusion confidence is distinct from evidence grade. |
-| Limit | Unsupported generalization is explicitly prohibited. |
+*Shared rows for this section are listed once under §5.1.*
 
 EVIDENCE INTERPRETATION
 
@@ -2050,14 +2056,7 @@ EVIDENCE INTERPRETATION
 
 Confirm authorization, procedure, version, environment, identity, expected result, actual result and restoration.
 
-| **Reviewer question** | **Pass condition** |
-| --- | --- |
-| Assertion | The source is linked to one precise proposition. |
-| Grade | E0-E5 reflects source strength, not desired conclusion. |
-| Quality | Relevance, provenance, integrity, currentness, scope and representativeness are reviewed. |
-| Conflict | Disputing and qualifying evidence remains visible. |
-| Confidence | Conclusion confidence is distinct from evidence grade. |
-| Limit | Unsupported generalization is explicitly prohibited. |
+*Shared rows for this section are listed once under §5.1.*
 
 EVIDENCE INTERPRETATION
 
@@ -2065,14 +2064,7 @@ EVIDENCE INTERPRETATION
 
 Bind service, period, responsibility and customer configuration; do not generalize beyond stated scope.
 
-| **Reviewer question** | **Pass condition** |
-| --- | --- |
-| Assertion | The source is linked to one precise proposition. |
-| Grade | E0-E5 reflects source strength, not desired conclusion. |
-| Quality | Relevance, provenance, integrity, currentness, scope and representativeness are reviewed. |
-| Conflict | Disputing and qualifying evidence remains visible. |
-| Confidence | Conclusion confidence is distinct from evidence grade. |
-| Limit | Unsupported generalization is explicitly prohibited. |
+*Shared rows for this section are listed once under §5.1.*
 
 EVIDENCE INTERPRETATION
 
@@ -2080,14 +2072,7 @@ EVIDENCE INTERPRETATION
 
 Preserve both sources, state exact proposition, compare quality, corroborate and record resolution or Inconclusive.
 
-| **Reviewer question** | **Pass condition** |
-| --- | --- |
-| Assertion | The source is linked to one precise proposition. |
-| Grade | E0-E5 reflects source strength, not desired conclusion. |
-| Quality | Relevance, provenance, integrity, currentness, scope and representativeness are reviewed. |
-| Conflict | Disputing and qualifying evidence remains visible. |
-| Confidence | Conclusion confidence is distinct from evidence grade. |
-| Limit | Unsupported generalization is explicitly prohibited. |
+*Shared rows for this section are listed once under §5.1.*
 
 EVIDENCE INTERPRETATION
 
@@ -2095,14 +2080,7 @@ EVIDENCE INTERPRETATION
 
 Consider change rate, criticality and trigger events; avoid universal expiry unsupported by context.
 
-| **Reviewer question** | **Pass condition** |
-| --- | --- |
-| Assertion | The source is linked to one precise proposition. |
-| Grade | E0-E5 reflects source strength, not desired conclusion. |
-| Quality | Relevance, provenance, integrity, currentness, scope and representativeness are reviewed. |
-| Conflict | Disputing and qualifying evidence remains visible. |
-| Confidence | Conclusion confidence is distinct from evidence grade. |
-| Limit | Unsupported generalization is explicitly prohibited. |
+*Shared rows for this section are listed once under §5.1.*
 
 EVIDENCE INTERPRETATION
 
@@ -2110,20 +2088,15 @@ EVIDENCE INTERPRETATION
 
 Assess independence and coverage; multiple items from one source do not automatically create corroboration.
 
-| **Reviewer question** | **Pass condition** |
-| --- | --- |
-| Assertion | The source is linked to one precise proposition. |
-| Grade | E0-E5 reflects source strength, not desired conclusion. |
-| Quality | Relevance, provenance, integrity, currentness, scope and representativeness are reviewed. |
-| Conflict | Disputing and qualifying evidence remains visible. |
-| Confidence | Conclusion confidence is distinct from evidence grade. |
-| Limit | Unsupported generalization is explicitly prohibited. |
+*Shared rows for this section are listed once under §5.1.*
 
 PATH ASSESSMENT
 
 # 6.1  Trust path
 
 Trace reliance, assumptions, boundaries and evidence from source condition to target.
+
+*Shared rows: the rows below apply to each of §6.1–§6.8, read in that section's own context.*
 
 | **Path element** | **Assessor method** |
 | --- | --- |
@@ -2142,16 +2115,7 @@ PATH ASSESSMENT
 
 Trace authentication, group, role, delegation, token and effective permission.
 
-| **Path element** | **Assessor method** |
-| --- | --- |
-| Start condition | Define actor, access, state and initial capability. |
-| Traversal | Verify every typed directional relationship. |
-| Conditions | Record permission, protocol, data, approval, workflow, time and environment. |
-| Authority | Identify effective action and amplification. |
-| Target and consequence | State bounded material outcome. |
-| Breakpoint | Map and test claimed control effect. |
-| Residual | Check alternate and post-control routes. |
-| State | Assign Candidate, Topological, Plausible, Validated, Exploitable, Controlled or Invalidated with confidence. |
+*Shared rows for this section are listed once under §6.1.*
 
 PATH ASSESSMENT
 
@@ -2159,16 +2123,7 @@ PATH ASSESSMENT
 
 Compare effective actionability before and after identity, tool, data, workflow or fan-out transition.
 
-| **Path element** | **Assessor method** |
-| --- | --- |
-| Start condition | Define actor, access, state and initial capability. |
-| Traversal | Verify every typed directional relationship. |
-| Conditions | Record permission, protocol, data, approval, workflow, time and environment. |
-| Authority | Identify effective action and amplification. |
-| Target and consequence | State bounded material outcome. |
-| Breakpoint | Map and test claimed control effect. |
-| Residual | Check alternate and post-control routes. |
-| State | Assign Candidate, Topological, Plausible, Validated, Exploitable, Controlled or Invalidated with confidence. |
+*Shared rows for this section are listed once under §6.1.*
 
 PATH ASSESSMENT
 
@@ -2176,16 +2131,7 @@ PATH ASSESSMENT
 
 Trace goal, planner, agent, message, tool discovery, invocation, approval, action and outcome.
 
-| **Path element** | **Assessor method** |
-| --- | --- |
-| Start condition | Define actor, access, state and initial capability. |
-| Traversal | Verify every typed directional relationship. |
-| Conditions | Record permission, protocol, data, approval, workflow, time and environment. |
-| Authority | Identify effective action and amplification. |
-| Target and consequence | State bounded material outcome. |
-| Breakpoint | Map and test claimed control effect. |
-| Residual | Check alternate and post-control routes. |
-| State | Assign Candidate, Topological, Plausible, Validated, Exploitable, Controlled or Invalidated with confidence. |
+*Shared rows for this section are listed once under §6.1.*
 
 PATH ASSESSMENT
 
@@ -2193,16 +2139,7 @@ PATH ASSESSMENT
 
 Trace source, ingestion, chunk, vector, retrieval, prompt influence, model output and downstream action.
 
-| **Path element** | **Assessor method** |
-| --- | --- |
-| Start condition | Define actor, access, state and initial capability. |
-| Traversal | Verify every typed directional relationship. |
-| Conditions | Record permission, protocol, data, approval, workflow, time and environment. |
-| Authority | Identify effective action and amplification. |
-| Target and consequence | State bounded material outcome. |
-| Breakpoint | Map and test claimed control effect. |
-| Residual | Check alternate and post-control routes. |
-| State | Assign Candidate, Topological, Plausible, Validated, Exploitable, Controlled or Invalidated with confidence. |
+*Shared rows for this section are listed once under §6.1.*
 
 PATH ASSESSMENT
 
@@ -2210,16 +2147,7 @@ PATH ASSESSMENT
 
 Trace customer-provider boundary, data movement, identity, shared responsibility, service dependency and exit.
 
-| **Path element** | **Assessor method** |
-| --- | --- |
-| Start condition | Define actor, access, state and initial capability. |
-| Traversal | Verify every typed directional relationship. |
-| Conditions | Record permission, protocol, data, approval, workflow, time and environment. |
-| Authority | Identify effective action and amplification. |
-| Target and consequence | State bounded material outcome. |
-| Breakpoint | Map and test claimed control effect. |
-| Residual | Check alternate and post-control routes. |
-| State | Assign Candidate, Topological, Plausible, Validated, Exploitable, Controlled or Invalidated with confidence. |
+*Shared rows for this section are listed once under §6.1.*
 
 PATH ASSESSMENT
 
@@ -2227,16 +2155,7 @@ PATH ASSESSMENT
 
 Trace detection, authority, kill, revocation, queue, downstream token, verification and residual route.
 
-| **Path element** | **Assessor method** |
-| --- | --- |
-| Start condition | Define actor, access, state and initial capability. |
-| Traversal | Verify every typed directional relationship. |
-| Conditions | Record permission, protocol, data, approval, workflow, time and environment. |
-| Authority | Identify effective action and amplification. |
-| Target and consequence | State bounded material outcome. |
-| Breakpoint | Map and test claimed control effect. |
-| Residual | Check alternate and post-control routes. |
-| State | Assign Candidate, Topological, Plausible, Validated, Exploitable, Controlled or Invalidated with confidence. |
+*Shared rows for this section are listed once under §6.1.*
 
 PATH ASSESSMENT
 
@@ -2244,16 +2163,8 @@ PATH ASSESSMENT
 
 Trace rollback, data state, business transaction, compensation, evidence and return-to-service decision.
 
-| **Path element** | **Assessor method** |
-| --- | --- |
-| Start condition | Define actor, access, state and initial capability. |
-| Traversal | Verify every typed directional relationship. |
-| Conditions | Record permission, protocol, data, approval, workflow, time and environment. |
-| Authority | Identify effective action and amplification. |
-| Target and consequence | State bounded material outcome. |
-| Breakpoint | Map and test claimed control effect. |
-| Residual | Check alternate and post-control routes. |
-| State | Assign Candidate, Topological, Plausible, Validated, Exploitable, Controlled or Invalidated with confidence. |
+*Shared rows for this section are listed once under §6.1.*
+
 MATURITY CALIBRATION
 
 # 7.1  M1 Initial
@@ -2263,6 +2174,11 @@ Ad hoc, person-dependent, fragmented and materially UNKNOWN.
 | **Calibration lens** | **Assessor test** |
 | --- | --- |
 | Prerequisites | Verify all applicable lower-level requirements before M1 Initial. |
+
+*Shared rows: the rows below apply to each of §7.1–§7.5, read in that section's own context.*
+
+| **Calibration lens** | **Assessor test** |
+| --- | --- |
 | Evidence | Apply the Maturity Model evidence floor; aspiration and pilot do not qualify. |
 | Coverage | Confirm the result applies to the declared population. |
 | Critical gates | Apply caps before level assignment. |
@@ -2278,11 +2194,8 @@ Recurring priority-scope practice with named owners and basic records.
 | **Calibration lens** | **Assessor test** |
 | --- | --- |
 | Prerequisites | Verify all applicable lower-level requirements before M2 Repeatable. |
-| Evidence | Apply the Maturity Model evidence floor; aspiration and pilot do not qualify. |
-| Coverage | Confirm the result applies to the declared population. |
-| Critical gates | Apply caps before level assignment. |
-| Variation | Report capability distribution instead of averaging. |
-| Emerging practice | Record higher-level strength without upgrading the whole capability. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 MATURITY CALIBRATION
 
@@ -2293,11 +2206,8 @@ Approved standard applied consistently across defined scope with representative 
 | **Calibration lens** | **Assessor test** |
 | --- | --- |
 | Prerequisites | Verify all applicable lower-level requirements before M3 Defined. |
-| Evidence | Apply the Maturity Model evidence floor; aspiration and pilot do not qualify. |
-| Coverage | Confirm the result applies to the declared population. |
-| Critical gates | Apply caps before level assignment. |
-| Variation | Report capability distribution instead of averaging. |
-| Emerging practice | Record higher-level strength without upgrading the whole capability. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 MATURITY CALIBRATION
 
@@ -2308,11 +2218,8 @@ Measured operation, tested critical controls, denominators, trends and active pa
 | **Calibration lens** | **Assessor test** |
 | --- | --- |
 | Prerequisites | Verify all applicable lower-level requirements before M4 Managed. |
-| Evidence | Apply the Maturity Model evidence floor; aspiration and pilot do not qualify. |
-| Coverage | Confirm the result applies to the declared population. |
-| Critical gates | Apply caps before level assignment. |
-| Variation | Report capability distribution instead of averaging. |
-| Emerging practice | Record higher-level strength without upgrading the whole capability. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 MATURITY CALIBRATION
 
@@ -2323,11 +2230,8 @@ Repeated change-aware operation, governed adaptation, outcome learning and revie
 | **Calibration lens** | **Assessor test** |
 | --- | --- |
 | Prerequisites | Verify all applicable lower-level requirements before M5 Adaptive. |
-| Evidence | Apply the Maturity Model evidence floor; aspiration and pilot do not qualify. |
-| Coverage | Confirm the result applies to the declared population. |
-| Critical gates | Apply caps before level assignment. |
-| Variation | Report capability distribution instead of averaging. |
-| Emerging practice | Record higher-level strength without upgrading the whole capability. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 MATURITY CALIBRATION
 
@@ -2364,6 +2268,8 @@ FINDING WRITING
 
 State an evidenced condition without implying deficiency unless criteria establish one.
 
+*Shared rows: the rows below apply to each of §8.1–§8.8, read in that section's own context.*
+
 | **Finding component** | **Writing rule** |
 | --- | --- |
 | Criteria | Quote or paraphrase the applicable canonical requirement accurately. |
@@ -2379,14 +2285,7 @@ FINDING WRITING
 
 State the material assertion that cannot be supported and how that limits conclusions.
 
-| **Finding component** | **Writing rule** |
-| --- | --- |
-| Criteria | Quote or paraphrase the applicable canonical requirement accurately. |
-| Condition | State observed scope, period and evidence. |
-| Cause | Separate immediate and systemic contributors. |
-| Consequence | Explain affected objects, paths and decision relevance. |
-| Uncertainty | State confidence, UNKNOWNs and limitations. |
-| Action | Name outcome, owner, evidence deliverable and retest. |
+*Shared rows for this section are listed once under §8.1.*
 
 FINDING WRITING
 
@@ -2394,14 +2293,7 @@ FINDING WRITING
 
 State applicable objective, failed design/implementation/operation and affected scope.
 
-| **Finding component** | **Writing rule** |
-| --- | --- |
-| Criteria | Quote or paraphrase the applicable canonical requirement accurately. |
-| Condition | State observed scope, period and evidence. |
-| Cause | Separate immediate and systemic contributors. |
-| Consequence | Explain affected objects, paths and decision relevance. |
-| Uncertainty | State confidence, UNKNOWNs and limitations. |
-| Action | Name outcome, owner, evidence deliverable and retest. |
+*Shared rows for this section are listed once under §8.1.*
 
 FINDING WRITING
 
@@ -2409,14 +2301,7 @@ FINDING WRITING
 
 State start, conditions, traversals, authority, target, controls, evidence and confidence.
 
-| **Finding component** | **Writing rule** |
-| --- | --- |
-| Criteria | Quote or paraphrase the applicable canonical requirement accurately. |
-| Condition | State observed scope, period and evidence. |
-| Cause | Separate immediate and systemic contributors. |
-| Consequence | Explain affected objects, paths and decision relevance. |
-| Uncertainty | State confidence, UNKNOWNs and limitations. |
-| Action | Name outcome, owner, evidence deliverable and retest. |
+*Shared rows for this section are listed once under §8.1.*
 
 FINDING WRITING
 
@@ -2424,14 +2309,7 @@ FINDING WRITING
 
 Use only against a defined applicable criterion; obtain legal validation for compliance claims.
 
-| **Finding component** | **Writing rule** |
-| --- | --- |
-| Criteria | Quote or paraphrase the applicable canonical requirement accurately. |
-| Condition | State observed scope, period and evidence. |
-| Cause | Separate immediate and systemic contributors. |
-| Consequence | Explain affected objects, paths and decision relevance. |
-| Uncertainty | State confidence, UNKNOWNs and limitations. |
-| Action | Name outcome, owner, evidence deliverable and retest. |
+*Shared rows for this section are listed once under §8.1.*
 
 FINDING WRITING
 
@@ -2439,14 +2317,7 @@ FINDING WRITING
 
 Describe uncertain potential consequence in context without presenting an exposure index as probability.
 
-| **Finding component** | **Writing rule** |
-| --- | --- |
-| Criteria | Quote or paraphrase the applicable canonical requirement accurately. |
-| Condition | State observed scope, period and evidence. |
-| Cause | Separate immediate and systemic contributors. |
-| Consequence | Explain affected objects, paths and decision relevance. |
-| Uncertainty | State confidence, UNKNOWNs and limitations. |
-| Action | Name outcome, owner, evidence deliverable and retest. |
+*Shared rows for this section are listed once under §8.1.*
 
 FINDING WRITING
 
@@ -2454,14 +2325,7 @@ FINDING WRITING
 
 Define target outcome and path/control effect, not an unreviewed vendor prescription.
 
-| **Finding component** | **Writing rule** |
-| --- | --- |
-| Criteria | Quote or paraphrase the applicable canonical requirement accurately. |
-| Condition | State observed scope, period and evidence. |
-| Cause | Separate immediate and systemic contributors. |
-| Consequence | Explain affected objects, paths and decision relevance. |
-| Uncertainty | State confidence, UNKNOWNs and limitations. |
-| Action | Name outcome, owner, evidence deliverable and retest. |
+*Shared rows for this section are listed once under §8.1.*
 
 FINDING WRITING
 
@@ -2469,14 +2333,7 @@ FINDING WRITING
 
 Reference implementation evidence, retest, residual path, reviewer and date; acceptance alone does not close.
 
-| **Finding component** | **Writing rule** |
-| --- | --- |
-| Criteria | Quote or paraphrase the applicable canonical requirement accurately. |
-| Condition | State observed scope, period and evidence. |
-| Cause | Separate immediate and systemic contributors. |
-| Consequence | Explain affected objects, paths and decision relevance. |
-| Uncertainty | State confidence, UNKNOWNs and limitations. |
-| Action | Name outcome, owner, evidence deliverable and retest. |
+*Shared rows for this section are listed once under §8.1.*
 
 CALIBRATION CASES
 
@@ -2487,6 +2344,11 @@ Approved policy exists; no technical evidence or representative test.
 | **Calibration item** | **Expected treatment** |
 | --- | --- |
 | Correct result | Design may be supported by E3; operating effectiveness is Not Tested; no score above implementation-supported cap. |
+
+*Shared rows: the rows below apply to each of §9.1–§9.8, read in that section's own context.*
+
+| **Calibration item** | **Expected treatment** |
+| --- | --- |
 | Common error | Select the most flattering source or collapse distinct states. |
 | Required workpaper | Assertion, sources, scope, grade, confidence, result and reviewer rationale. |
 | Variance review | Compare assessor decisions and isolate criterion or evidence-interpretation difference. |
@@ -2500,9 +2362,8 @@ All four assessed controls score 5; six applicable controls are UNKNOWN.
 | **Calibration item** | **Expected treatment** |
 | --- | --- |
 | Correct result | Attainment may be high for determinate controls, but coverage is 40%; broad assurance is not supported. |
-| Common error | Select the most flattering source or collapse distinct states. |
-| Required workpaper | Assertion, sources, scope, grade, confidence, result and reviewer rationale. |
-| Variance review | Compare assessor decisions and isolate criterion or evidence-interpretation difference. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 CALIBRATION CASES
 
@@ -2513,9 +2374,8 @@ Graph shows an agent-tool-target chain; permission and approval conditions are a
 | **Calibration item** | **Expected treatment** |
 | --- | --- |
 | Correct result | Path remains Candidate or Topological; do not claim Plausible, Validated or Exploitable. |
-| Common error | Select the most flattering source or collapse distinct states. |
-| Required workpaper | Assertion, sources, scope, grade, confidence, result and reviewer rationale. |
-| Variance review | Compare assessor decisions and isolate criterion or evidence-interpretation difference. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 CALIBRATION CASES
 
@@ -2526,9 +2386,8 @@ Human clicks approve before final action parameters can change.
 | **Calibration item** | **Expected treatment** |
 | --- | --- |
 | Correct result | Approval design is inadequate for consequential action; validate mutation and replay conditions. |
-| Common error | Select the most flattering source or collapse distinct states. |
-| Required workpaper | Assertion, sources, scope, grade, confidence, result and reviewer rationale. |
-| Variance review | Compare assessor decisions and isolate criterion or evidence-interpretation difference. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 CALIBRATION CASES
 
@@ -2539,9 +2398,8 @@ Collectors completed successfully for configured sources.
 | **Calibration item** | **Expected treatment** |
 | --- | --- |
 | Correct result | Report source coverage and blind spots; completion does not prove full estate discovery. |
-| Common error | Select the most flattering source or collapse distinct states. |
-| Required workpaper | Assertion, sources, scope, grade, confidence, result and reviewer rationale. |
-| Variance review | Compare assessor decisions and isolate criterion or evidence-interpretation difference. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 CALIBRATION CASES
 
@@ -2552,9 +2410,8 @@ Management accepts exposure while remediation is deferred.
 | **Calibration item** | **Expected treatment** |
 | --- | --- |
 | Correct result | Technical control/path result remains unchanged; decision log records acceptance, authority, expiry and conditions. |
-| Common error | Select the most flattering source or collapse distinct states. |
-| Required workpaper | Assertion, sources, scope, grade, confidence, result and reviewer rationale. |
-| Variance review | Compare assessor decisions and isolate criterion or evidence-interpretation difference. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 CALIBRATION CASES
 
@@ -2565,9 +2422,8 @@ One team demonstrates automated change-triggered reassessment.
 | **Calibration item** | **Expected treatment** |
 | --- | --- |
 | Correct result | Record emerging M5 practice; do not assign enterprise M5 without cumulative and representative evidence. |
-| Common error | Select the most flattering source or collapse distinct states. |
-| Required workpaper | Assertion, sources, scope, grade, confidence, result and reviewer rationale. |
-| Variance review | Compare assessor decisions and isolate criterion or evidence-interpretation difference. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 CALIBRATION CASES
 
@@ -2578,14 +2434,16 @@ Provider report indicates control operation; tenant configuration shows the feat
 | **Calibration item** | **Expected treatment** |
 | --- | --- |
 | Correct result | Preserve conflict, scope each source, investigate responsibility and avoid averaging evidence. |
-| Common error | Select the most flattering source or collapse distinct states. |
-| Required workpaper | Assertion, sources, scope, grade, confidence, result and reviewer rationale. |
-| Variance review | Compare assessor decisions and isolate criterion or evidence-interpretation difference. |
+
+*Shared rows for this section are listed once under §9.1.*
+
 QUALITY ASSURANCE
 
 # 10.1  Quality-review sequence
 
 Review scope, evidence, graph, controls, paths, maturity, scoring, findings, decisions and report claims in dependency order.
+
+*Shared rows: the rows below apply to each of §10.1–§10.8, read in that section's own context.*
 
 | **QA record** | **Required entry** |
 | --- | --- |
@@ -2602,14 +2460,7 @@ QUALITY ASSURANCE
 
 Confirm denominator, exclusions, period, changes and claim boundaries.
 
-| **QA record** | **Required entry** |
-| --- | --- |
-| Reviewer | Competence, independence and role. |
-| Item | Exact workpaper, result or claim reviewed. |
-| Procedure | Recalculation, reperformance, trace or challenge completed. |
-| Issue | Gap, severity and affected downstream output. |
-| Resolution | Change, rationale, owner and evidence. |
-| Status | Open, resolved, accepted limitation or release blocker. |
+*Shared rows for this section are listed once under §10.1.*
 
 QUALITY ASSURANCE
 
@@ -2617,14 +2468,7 @@ QUALITY ASSURANCE
 
 Reperform samples, grade sources, inspect conflicts and test conclusion support.
 
-| **QA record** | **Required entry** |
-| --- | --- |
-| Reviewer | Competence, independence and role. |
-| Item | Exact workpaper, result or claim reviewed. |
-| Procedure | Recalculation, reperformance, trace or challenge completed. |
-| Issue | Gap, severity and affected downstream output. |
-| Resolution | Change, rationale, owner and evidence. |
-| Status | Open, resolved, accepted limitation or release blocker. |
+*Shared rows for this section are listed once under §10.1.*
 
 QUALITY ASSURANCE
 
@@ -2632,14 +2476,7 @@ QUALITY ASSURANCE
 
 Verify direction, type, conditions, authority, path state, breakpoints and residual routes.
 
-| **QA record** | **Required entry** |
-| --- | --- |
-| Reviewer | Competence, independence and role. |
-| Item | Exact workpaper, result or claim reviewed. |
-| Procedure | Recalculation, reperformance, trace or challenge completed. |
-| Issue | Gap, severity and affected downstream output. |
-| Resolution | Change, rationale, owner and evidence. |
-| Status | Open, resolved, accepted limitation or release blocker. |
+*Shared rows for this section are listed once under §10.1.*
 
 QUALITY ASSURANCE
 
@@ -2647,14 +2484,7 @@ QUALITY ASSURANCE
 
 Check applicability, component results, evidence cap, gates, denominator and overrides.
 
-| **QA record** | **Required entry** |
-| --- | --- |
-| Reviewer | Competence, independence and role. |
-| Item | Exact workpaper, result or claim reviewed. |
-| Procedure | Recalculation, reperformance, trace or challenge completed. |
-| Issue | Gap, severity and affected downstream output. |
-| Resolution | Change, rationale, owner and evidence. |
-| Status | Open, resolved, accepted limitation or release blocker. |
+*Shared rows for this section are listed once under §10.1.*
 
 QUALITY ASSURANCE
 
@@ -2662,14 +2492,7 @@ QUALITY ASSURANCE
 
 Check cumulative criteria, evidence floor, capability variation and critical caps.
 
-| **QA record** | **Required entry** |
-| --- | --- |
-| Reviewer | Competence, independence and role. |
-| Item | Exact workpaper, result or claim reviewed. |
-| Procedure | Recalculation, reperformance, trace or challenge completed. |
-| Issue | Gap, severity and affected downstream output. |
-| Resolution | Change, rationale, owner and evidence. |
-| Status | Open, resolved, accepted limitation or release blocker. |
+*Shared rows for this section are listed once under §10.1.*
 
 QUALITY ASSURANCE
 
@@ -2677,14 +2500,7 @@ QUALITY ASSURANCE
 
 Check definitions, duplicates, factual accuracy, cause, consequence, actionability and prohibited claims.
 
-| **QA record** | **Required entry** |
-| --- | --- |
-| Reviewer | Competence, independence and role. |
-| Item | Exact workpaper, result or claim reviewed. |
-| Procedure | Recalculation, reperformance, trace or challenge completed. |
-| Issue | Gap, severity and affected downstream output. |
-| Resolution | Change, rationale, owner and evidence. |
-| Status | Open, resolved, accepted limitation or release blocker. |
+*Shared rows for this section are listed once under §10.1.*
 
 QUALITY ASSURANCE
 
@@ -2692,14 +2508,7 @@ QUALITY ASSURANCE
 
 Resolve, condition, return, reject or recommend release with an auditable review record.
 
-| **QA record** | **Required entry** |
-| --- | --- |
-| Reviewer | Competence, independence and role. |
-| Item | Exact workpaper, result or claim reviewed. |
-| Procedure | Recalculation, reperformance, trace or challenge completed. |
-| Issue | Gap, severity and affected downstream output. |
-| Resolution | Change, rationale, owner and evidence. |
-| Status | Open, resolved, accepted limitation or release blocker. |
+*Shared rows for this section are listed once under §10.1.*
 
 APPENDIX
 
@@ -2857,4 +2666,4 @@ This appendix provides a controlled reusable reference for final doctrine and ap
 | Licence and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Assessor Handbook | Version 1.0 | Public-release candidate
+AI Trust Graph Assessor Handbook | Version 1.0.1 | Public-release candidate

@@ -2,7 +2,9 @@
 
 # AI Trust Graph — Reporting Standard
 
-*Version 1.1.0 | Comparable, evidence-linked and decision-ready reporting without unsupported precision*
+*Version 1.1.1 | Comparable, evidence-linked and decision-ready reporting without unsupported precision*
+
+> **CORRECTION NOTE (1.1.1, 2026-10-04, patch)** Editorial consolidation under Artifact #11 §2.3. Table rows that were repeated word for word in every section of a series are now listed once, under a "Shared rows" note naming exactly the sections they apply to; each affected section points to it. No rule, value or other wording changed. One cross-reference to the finding-type definitions was added in §5.1.
 
 > **PURPOSE** Define the mandatory report package, claim rules, presentation conventions, traceability, visual standards and release controls for every AI Trust Graph assessment.
 
@@ -150,6 +152,11 @@ Display title, assessment unit, report state, classification, date, version and 
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why cover and classification is included and which decision it supports. |
+
+*Shared rows: the rows below apply to each of §1.1–§1.16, read in that section's own context.*
+
+| **Required field** | **Reporting requirement** |
+| --- | --- |
 | Source | Reference approved assessment records, not recollection. |
 | Scope | Bind statements to population, environment and period. |
 | Uncertainty | Show confidence, UNKNOWNs and material limitations. |
@@ -165,11 +172,8 @@ List report ID, run ID, scope ID, artifact versions, authors, reviewers, approve
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why document control is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -180,11 +184,8 @@ State the decision-relevant conclusion, six-domain profile, critical gates, conf
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why executive conclusion is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -195,11 +196,8 @@ Explain the question, intended use, audience and prohibited uses.
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why assessment purpose is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -210,11 +208,8 @@ Describe unit, population, environments, geography, period, evidence window, int
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why scope and boundaries is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -225,11 +220,8 @@ Identify assessment type, applicable methodology versions, procedures, sampling 
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why method and limitations is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -240,11 +232,8 @@ Report asset, ownership and composition coverage, blind spots, stale records, sh
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why estate and aibom view is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -255,11 +244,8 @@ Summarize material relationships, identity routes, providers, trust bases, bound
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why trust and boundary view is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -270,11 +256,8 @@ Show acting identities, consequential actions, delegation, approvals, amplificat
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why authority view is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -285,11 +268,8 @@ Present applicability, design, implementation, operating state, evidence, confid
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why control assessment view is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -300,11 +280,8 @@ Present eligible path population, states, evidence, confidence, bands, breakpoin
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why path portfolio view is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -315,11 +292,8 @@ Report six-domain vector, capability variation, gates, evidence confidence, curr
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why maturity profile is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -330,11 +304,8 @@ Present control attainment, verified-control rate, evidence coverage, UNKNOWN, N
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why scorecards and coverage is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -345,11 +316,8 @@ Separate technical results from management dispositions, exceptions, conditions 
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why findings and decisions is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -360,11 +328,8 @@ Sequence prerequisite and critical-gate closure with owners, target outcomes, ev
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why roadmap is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 CANONICAL REPORT STRUCTURE
 
@@ -375,11 +340,9 @@ State excluded claims, unresolved uncertainty, review status, approvals and next
 | **Required field** | **Reporting requirement** |
 | --- | --- |
 | Purpose | Explain why limitations and sign-off is included and which decision it supports. |
-| Source | Reference approved assessment records, not recollection. |
-| Scope | Bind statements to population, environment and period. |
-| Uncertainty | Show confidence, UNKNOWNs and material limitations. |
-| Traceability | Provide IDs or annex references. |
-| Review | Record factual, quality and decision approval as applicable. |
+
+*Shared rows for this section are listed once under §1.1.*
+
 EXECUTIVE REPORTING
 
 # 2.1  Board summary
@@ -389,6 +352,11 @@ Lead with material exposure, accountable decisions, critical gates, trend and re
 | **Executive element** | **Standard** |
 | --- | --- |
 | Headline | Use neutral decision language for board summary. |
+
+*Shared rows: the rows below apply to each of §2.1–§2.10, read in that section's own context.*
+
+| **Executive element** | **Standard** |
+| --- | --- |
 | Metric | Show numerator, denominator and period. |
 | Gate | Display material cap or blocker. |
 | Confidence | State High, Medium, Low or Not rated where applicable. |
@@ -404,11 +372,8 @@ Show six-domain maturity, top critical paths, critical-control status, coverage,
 | **Executive element** | **Standard** |
 | --- | --- |
 | Headline | Use neutral decision language for executive one-page view. |
-| Metric | Show numerator, denominator and period. |
-| Gate | Display material cap or blocker. |
-| Confidence | State High, Medium, Low or Not rated where applicable. |
-| Action | Name owner, authority, evidence and due decision. |
-| Caveat | Place limitation beside the claim, not only in an appendix. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 EXECUTIVE REPORTING
 
@@ -419,11 +384,8 @@ State exact decision, authority, alternatives, evidence, uncertainty, conditions
 | **Executive element** | **Standard** |
 | --- | --- |
 | Headline | Use neutral decision language for decision request. |
-| Metric | Show numerator, denominator and period. |
-| Gate | Display material cap or blocker. |
-| Confidence | State High, Medium, Low or Not rated where applicable. |
-| Action | Name owner, authority, evidence and due decision. |
-| Caveat | Place limitation beside the claim, not only in an appendix. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 EXECUTIVE REPORTING
 
@@ -434,11 +396,8 @@ Present every open universal or domain gate before aggregate scores and explain 
 | **Executive element** | **Standard** |
 | --- | --- |
 | Headline | Use neutral decision language for critical-gate disclosure. |
-| Metric | Show numerator, denominator and period. |
-| Gate | Display material cap or blocker. |
-| Confidence | State High, Medium, Low or Not rated where applicable. |
-| Action | Name owner, authority, evidence and due decision. |
-| Caveat | Place limitation beside the claim, not only in an appendix. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 EXECUTIVE REPORTING
 
@@ -449,11 +408,8 @@ Pair every attainment or verified-rate result with denominator, determinate cove
 | **Executive element** | **Standard** |
 | --- | --- |
 | Headline | Use neutral decision language for coverage disclosure. |
-| Metric | Show numerator, denominator and period. |
-| Gate | Display material cap or blocker. |
-| Confidence | State High, Medium, Low or Not rated where applicable. |
-| Action | Name owner, authority, evidence and due decision. |
-| Caveat | Place limitation beside the claim, not only in an appendix. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 EXECUTIVE REPORTING
 
@@ -464,11 +420,8 @@ Explain scope, library, formula or evidence changes that affect comparability be
 | **Executive element** | **Standard** |
 | --- | --- |
 | Headline | Use neutral decision language for trend disclosure. |
-| Metric | Show numerator, denominator and period. |
-| Gate | Display material cap or blocker. |
-| Confidence | State High, Medium, Low or Not rated where applicable. |
-| Action | Name owner, authority, evidence and due decision. |
-| Caveat | Place limitation beside the claim, not only in an appendix. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 EXECUTIVE REPORTING
 
@@ -479,11 +432,8 @@ Explain why the target is proportionate; do not assume every domain must reach M
 | **Executive element** | **Standard** |
 | --- | --- |
 | Headline | Use neutral decision language for target-state narrative. |
-| Metric | Show numerator, denominator and period. |
-| Gate | Display material cap or blocker. |
-| Confidence | State High, Medium, Low or Not rated where applicable. |
-| Action | Name owner, authority, evidence and due decision. |
-| Caveat | Place limitation beside the claim, not only in an appendix. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 EXECUTIVE REPORTING
 
@@ -494,11 +444,8 @@ Differentiate approved, funded, underway, implemented and validated remediation 
 | **Executive element** | **Standard** |
 | --- | --- |
 | Headline | Use neutral decision language for roadmap confidence. |
-| Metric | Show numerator, denominator and period. |
-| Gate | Display material cap or blocker. |
-| Confidence | State High, Medium, Low or Not rated where applicable. |
-| Action | Name owner, authority, evidence and due decision. |
-| Caveat | Place limitation beside the claim, not only in an appendix. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 EXECUTIVE REPORTING
 
@@ -509,11 +456,8 @@ Summarize material facts that remain UNKNOWN and decisions that cannot yet be su
 | **Executive element** | **Standard** |
 | --- | --- |
 | Headline | Use neutral decision language for residual uncertainty. |
-| Metric | Show numerator, denominator and period. |
-| Gate | Display material cap or blocker. |
-| Confidence | State High, Medium, Low or Not rated where applicable. |
-| Action | Name owner, authority, evidence and due decision. |
-| Caveat | Place limitation beside the claim, not only in an appendix. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 EXECUTIVE REPORTING
 
@@ -524,11 +468,8 @@ Do not use one trustworthiness number, traffic-light-only reporting, hidden excl
 | **Executive element** | **Standard** |
 | --- | --- |
 | Headline | Use neutral decision language for executive prohibited shortcuts. |
-| Metric | Show numerator, denominator and period. |
-| Gate | Display material cap or blocker. |
-| Confidence | State High, Medium, Low or Not rated where applicable. |
-| Action | Name owner, authority, evidence and due decision. |
-| Caveat | Place limitation beside the claim, not only in an appendix. |
+
+*Shared rows for this section are listed once under §2.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -539,6 +480,11 @@ Report assessed, determinate and excluded populations using named authoritative 
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for scope coverage. |
+
+*Shared rows: the rows below apply to each of §3.1–§3.18, read in that section's own context.*
+
+| **Presentation field** | **Required content** |
+| --- | --- |
 | Definition | State what the measure does and does not mean. |
 | Denominator | Show applicable population where numeric. |
 | Evidence | Reference supporting records and period. |
@@ -555,12 +501,8 @@ Report source coverage, asset attribution, ownership, AIBOM reconciliation, blin
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for discovery coverage. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -571,12 +513,8 @@ Show component state, supported 0-5 score, evidence grade, confidence, test stat
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for control assurance. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -587,12 +525,8 @@ Show the published formula, the finalized numeric control population used as the
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for domain control attainment. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -603,12 +537,8 @@ Show applicable denominator and controls with finalized final supported overall 
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for verified-control rate. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -619,12 +549,8 @@ Show count, rate, affected critical controls and potential decision impact witho
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for unknown and inconclusive. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -635,12 +561,8 @@ Show applicable controls qualifying under Scoring Framework §2.5 and clearly st
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for technical-evidence coverage. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -651,12 +573,8 @@ Separate applicable, verified, failed, UNKNOWN, Not Tested and gate-affected cri
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for critical-control view. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -667,12 +585,8 @@ Present D1 through D6 as M1-M5 or non-level state with confidence and gates.
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for maturity vector. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -683,12 +597,8 @@ Show each capability level and emerging practice without averaging to determine 
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for capability distribution. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -699,12 +609,8 @@ Label Candidate, Topological, Plausible, Validated, Exploitable, Controlled or I
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for path state. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -715,12 +621,8 @@ Show component values, formula version, band, override, evidence and confidence;
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for path exposure index. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -731,12 +633,8 @@ State triggering condition, minimum band, reviewer and decision response.
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for critical path override. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -747,12 +645,8 @@ Show current and validated post-control condition; proposed remediation does not
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for residual path. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -763,12 +657,8 @@ Report E0-E5 as support strength, not control quality or severity.
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for evidence grade. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -779,12 +669,8 @@ Report High, Medium, Low or Not rated with rationale specific to the conclusion.
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for confidence. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -795,12 +681,8 @@ Show scope, rationale, approver, residual exposure, compensating control, expiry
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for exception status. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
 
 CANONICAL RESULT PRESENTATION
 
@@ -811,12 +693,9 @@ Use Open, In treatment, Implemented pending validation, Closed validated, Accept
 | **Presentation field** | **Required content** |
 | --- | --- |
 | Label | Use the canonical name for finding status. |
-| Definition | State what the measure does and does not mean. |
-| Denominator | Show applicable population where numeric. |
-| Evidence | Reference supporting records and period. |
-| Confidence | State limitations and review state. |
-| Gate | Show any cap, invalidation or override. |
-| Comparison | Use only like-for-like scope and version. |
+
+*Shared rows for this section are listed once under §3.1.*
+
 DOMAIN REPORTING
 
 # 4.1  Discovery and AIBOM: Estate scope and sources
@@ -826,8 +705,13 @@ This view reports estate scope and sources for the Discovery and AIBOM domain us
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable discovery and aibom population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-DIS controls and critical states. |
+
+*Shared rows: the rows below apply to each of §4.1–§4.18, read in that section's own context.*
+
+| **Domain field** | **Required report content** |
+| --- | --- |
+| Maturity | Current level, confidence, capability variation and target. |
 | Evidence | Show grade mix, technical coverage, conflicts and stale items. |
 | Paths | Identify material paths and validated breakpoints where relevant. |
 | Findings | List priorities, owners, decisions and validation status. |
@@ -842,12 +726,9 @@ This view reports inventory, ownership and AIBOM for the Discovery and AIBOM dom
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable discovery and aibom population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-DIS controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -858,12 +739,9 @@ This view reports blind spots, shadow AI and assurance for the Discovery and AIB
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable discovery and aibom population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-DIS controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -874,12 +752,9 @@ This view reports trust relationships and boundaries for the Trust and Privilege
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable trust and privilege paths population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-TRU controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -890,12 +765,9 @@ This view reports identity and privilege paths for the Trust and Privilege Paths
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable trust and privilege paths population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-TRU controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -906,12 +778,9 @@ This view reports breakpoints, drift and graph quality for the Trust and Privile
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable trust and privilege paths population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-TRU controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -922,12 +791,9 @@ This view reports authority inventory and delegation for the Authority Governanc
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable authority governance population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-AUT controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -938,12 +804,9 @@ This view reports approval, amplification and limits for the Authority Governanc
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable authority governance population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-AUT controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -954,12 +817,9 @@ This view reports revocation, exceptions and recertification for the Authority G
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable authority governance population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-AUT controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -970,12 +830,9 @@ This view reports validation strategy and coverage for the AI Security Validatio
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable ai security validation population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-VAL controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -986,12 +843,9 @@ This view reports threat hypotheses and control tests for the AI Security Valida
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable ai security validation population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-VAL controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -1002,12 +856,9 @@ This view reports findings, retest and independence for the AI Security Validati
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable ai security validation population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-VAL controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -1018,12 +869,9 @@ This view reports policy, appetite and operating model for the AI Governance and
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable ai governance and assurance population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-GOV controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -1034,12 +882,9 @@ This view reports use-case, impact and obligations for the AI Governance and Ass
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable ai governance and assurance population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-GOV controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -1050,12 +895,9 @@ This view reports exceptions, provider assurance and literacy for the AI Governa
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable ai governance and assurance population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-GOV controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -1066,12 +908,9 @@ This view reports telemetry, attribution and detection for the Operational Resil
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable operational resilience population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-RES controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -1082,12 +921,9 @@ This view reports containment, kill and revocation for the Operational Resilienc
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable operational resilience population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-RES controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 DOMAIN REPORTING
 
@@ -1098,21 +934,24 @@ This view reports recovery, forensics and exercises for the Operational Resilien
 | **Domain field** | **Required report content** |
 | --- | --- |
 | Scope | Declare the applicable operational resilience population. |
-| Maturity | Current level, confidence, capability variation and target. |
 | Controls | Summarize applicable ATG-RES controls and critical states. |
-| Evidence | Show grade mix, technical coverage, conflicts and stale items. |
-| Paths | Identify material paths and validated breakpoints where relevant. |
-| Findings | List priorities, owners, decisions and validation status. |
-| Limitations | State blind spots and non-generalizable results. |
+
+*Shared rows for this section are listed once under §4.1.*
+
 FINDING REPORTING
 
 # 5.1  Finding taxonomy
 
-Use Observation, Evidence Gap, Control Deficiency, Path Exposure, Governance Exception, Nonconformity or Risk Statement consistently.
+Use Observation, Evidence Gap, Control Deficiency, Path Exposure, Governance Exception, Nonconformity or Risk Statement consistently. Their definitions are in Artifact #10 Appendix A.3 and Artifact #7 §§16.1-16.4.
 
 | **Finding field** | **Standard** |
 | --- | --- |
 | Statement | Write finding taxonomy in neutral, testable language. |
+
+*Shared rows: the rows below apply to each of §5.1–§5.10, read in that section's own context.*
+
+| **Finding field** | **Standard** |
+| --- | --- |
 | Traceability | Link control, evidence, graph objects and paths. |
 | Scope | Specify affected population and period. |
 | Uncertainty | State confidence and UNKNOWNs. |
@@ -1128,11 +967,8 @@ Use specific condition and affected context, avoiding sensational or vague langu
 | **Finding field** | **Standard** |
 | --- | --- |
 | Statement | Write finding title in neutral, testable language. |
-| Traceability | Link control, evidence, graph objects and paths. |
-| Scope | Specify affected population and period. |
-| Uncertainty | State confidence and UNKNOWNs. |
-| Decision | Separate technical conclusion from acceptance or deferral. |
-| Status | Use canonical state and retain history. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 FINDING REPORTING
 
@@ -1143,11 +979,8 @@ Reference the exact applicable control, method requirement, policy or legally va
 | **Finding field** | **Standard** |
 | --- | --- |
 | Statement | Write criteria in neutral, testable language. |
-| Traceability | Link control, evidence, graph objects and paths. |
-| Scope | Specify affected population and period. |
-| Uncertainty | State confidence and UNKNOWNs. |
-| Decision | Separate technical conclusion from acceptance or deferral. |
-| Status | Use canonical state and retain history. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 FINDING REPORTING
 
@@ -1158,11 +991,8 @@ State evidenced facts, scope, period and result state.
 | **Finding field** | **Standard** |
 | --- | --- |
 | Statement | Write condition in neutral, testable language. |
-| Traceability | Link control, evidence, graph objects and paths. |
-| Scope | Specify affected population and period. |
-| Uncertainty | State confidence and UNKNOWNs. |
-| Decision | Separate technical conclusion from acceptance or deferral. |
-| Status | Use canonical state and retain history. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 FINDING REPORTING
 
@@ -1173,11 +1003,8 @@ Separate immediate cause, systemic cause and contributing relationship.
 | **Finding field** | **Standard** |
 | --- | --- |
 | Statement | Write cause in neutral, testable language. |
-| Traceability | Link control, evidence, graph objects and paths. |
-| Scope | Specify affected population and period. |
-| Uncertainty | State confidence and UNKNOWNs. |
-| Decision | Separate technical conclusion from acceptance or deferral. |
-| Status | Use canonical state and retain history. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 FINDING REPORTING
 
@@ -1188,11 +1015,8 @@ Explain plausible material outcome without presenting possibility as occurrence.
 | **Finding field** | **Standard** |
 | --- | --- |
 | Statement | Write consequence in neutral, testable language. |
-| Traceability | Link control, evidence, graph objects and paths. |
-| Scope | Specify affected population and period. |
-| Uncertainty | State confidence and UNKNOWNs. |
-| Decision | Separate technical conclusion from acceptance or deferral. |
-| Status | Use canonical state and retain history. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 FINDING REPORTING
 
@@ -1203,11 +1027,8 @@ List relevant evidence, grade, conflicts, confidence and limitations.
 | **Finding field** | **Standard** |
 | --- | --- |
 | Statement | Write evidence and confidence in neutral, testable language. |
-| Traceability | Link control, evidence, graph objects and paths. |
-| Scope | Specify affected population and period. |
-| Uncertainty | State confidence and UNKNOWNs. |
-| Decision | Separate technical conclusion from acceptance or deferral. |
-| Status | Use canonical state and retain history. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 FINDING REPORTING
 
@@ -1218,11 +1039,8 @@ Describe target outcome and affected control or path, not one vendor product by 
 | **Finding field** | **Standard** |
 | --- | --- |
 | Statement | Write remediation objective in neutral, testable language. |
-| Traceability | Link control, evidence, graph objects and paths. |
-| Scope | Specify affected population and period. |
-| Uncertainty | State confidence and UNKNOWNs. |
-| Decision | Separate technical conclusion from acceptance or deferral. |
-| Status | Use canonical state and retain history. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 FINDING REPORTING
 
@@ -1233,11 +1051,8 @@ Show owner, action, decision, conditions, milestones, expiry and validation requ
 | **Finding field** | **Standard** |
 | --- | --- |
 | Statement | Write disposition in neutral, testable language. |
-| Traceability | Link control, evidence, graph objects and paths. |
-| Scope | Specify affected population and period. |
-| Uncertainty | State confidence and UNKNOWNs. |
-| Decision | Separate technical conclusion from acceptance or deferral. |
-| Status | Use canonical state and retain history. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 FINDING REPORTING
 
@@ -1248,11 +1063,8 @@ Close only after implementation evidence, appropriate retest and residual-path r
 | **Finding field** | **Standard** |
 | --- | --- |
 | Statement | Write closure in neutral, testable language. |
-| Traceability | Link control, evidence, graph objects and paths. |
-| Scope | Specify affected population and period. |
-| Uncertainty | State confidence and UNKNOWNs. |
-| Decision | Separate technical conclusion from acceptance or deferral. |
-| Status | Use canonical state and retain history. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 VISUAL REPORTING
 
@@ -1263,6 +1075,11 @@ Use consistent colors, labels, symbols, scales and legends across all outputs.
 | **Visual check** | **Requirement** |
 | --- | --- |
 | Title | Explain the decision purpose of visual grammar. |
+
+*Shared rows: the rows below apply to each of §6.1–§6.10, read in that section's own context.*
+
+| **Visual check** | **Requirement** |
+| --- | --- |
 | Scale | Label units, categories and direction. |
 | Denominator | Include population and period. |
 | Legend | Define colors, symbols and states. |
@@ -1279,12 +1096,8 @@ Never rely on color alone; combine label, pattern, value and explanation.
 | **Visual check** | **Requirement** |
 | --- | --- |
 | Title | Explain the decision purpose of color use. |
-| Scale | Label units, categories and direction. |
-| Denominator | Include population and period. |
-| Legend | Define colors, symbols and states. |
-| Uncertainty | Show UNKNOWN, confidence and limitations. |
-| Accessibility | Provide non-visual equivalent. |
-| Security | Review disclosure and redaction. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 VISUAL REPORTING
 
@@ -1295,12 +1108,8 @@ Display domain and capability levels with gates and confidence; do not average c
 | **Visual check** | **Requirement** |
 | --- | --- |
 | Title | Explain the decision purpose of maturity heatmap. |
-| Scale | Label units, categories and direction. |
-| Denominator | Include population and period. |
-| Legend | Define colors, symbols and states. |
-| Uncertainty | Show UNKNOWN, confidence and limitations. |
-| Accessibility | Provide non-visual equivalent. |
-| Security | Review disclosure and redaction. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 VISUAL REPORTING
 
@@ -1311,12 +1120,8 @@ Show criticality, result state, score, evidence, confidence and finding link.
 | **Visual check** | **Requirement** |
 | --- | --- |
 | Title | Explain the decision purpose of control matrix. |
-| Scale | Label units, categories and direction. |
-| Denominator | Include population and period. |
-| Legend | Define colors, symbols and states. |
-| Uncertainty | Show UNKNOWN, confidence and limitations. |
-| Accessibility | Provide non-visual equivalent. |
-| Security | Review disclosure and redaction. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 VISUAL REPORTING
 
@@ -1327,12 +1132,8 @@ Show direction, typed edges, conditions, boundaries, controls, evidence and resi
 | **Visual check** | **Requirement** |
 | --- | --- |
 | Title | Explain the decision purpose of path diagram. |
-| Scale | Label units, categories and direction. |
-| Denominator | Include population and period. |
-| Legend | Define colors, symbols and states. |
-| Uncertainty | Show UNKNOWN, confidence and limitations. |
-| Accessibility | Provide non-visual equivalent. |
-| Security | Review disclosure and redaction. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 VISUAL REPORTING
 
@@ -1343,12 +1144,8 @@ Display numerator, denominator, UNKNOWN, Not Tested and excluded population.
 | **Visual check** | **Requirement** |
 | --- | --- |
 | Title | Explain the decision purpose of coverage chart. |
-| Scale | Label units, categories and direction. |
-| Denominator | Include population and period. |
-| Legend | Define colors, symbols and states. |
-| Uncertainty | Show UNKNOWN, confidence and limitations. |
-| Accessibility | Provide non-visual equivalent. |
-| Security | Review disclosure and redaction. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 VISUAL REPORTING
 
@@ -1359,12 +1156,8 @@ Annotate scope, evidence, library or formula changes that break comparability.
 | **Visual check** | **Requirement** |
 | --- | --- |
 | Title | Explain the decision purpose of trend chart. |
-| Scale | Label units, categories and direction. |
-| Denominator | Include population and period. |
-| Legend | Define colors, symbols and states. |
-| Uncertainty | Show UNKNOWN, confidence and limitations. |
-| Accessibility | Provide non-visual equivalent. |
-| Security | Review disclosure and redaction. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 VISUAL REPORTING
 
@@ -1375,12 +1168,8 @@ Distinguish prerequisite, gate closure, implementation, validation and sustained
 | **Visual check** | **Requirement** |
 | --- | --- |
 | Title | Explain the decision purpose of roadmap view. |
-| Scale | Label units, categories and direction. |
-| Denominator | Include population and period. |
-| Legend | Define colors, symbols and states. |
-| Uncertainty | Show UNKNOWN, confidence and limitations. |
-| Accessibility | Provide non-visual equivalent. |
-| Security | Review disclosure and redaction. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 VISUAL REPORTING
 
@@ -1391,12 +1180,8 @@ Remove or abstract secrets, personal data, exploit details and confidential topo
 | **Visual check** | **Requirement** |
 | --- | --- |
 | Title | Explain the decision purpose of graph redaction. |
-| Scale | Label units, categories and direction. |
-| Denominator | Include population and period. |
-| Legend | Define colors, symbols and states. |
-| Uncertainty | Show UNKNOWN, confidence and limitations. |
-| Accessibility | Provide non-visual equivalent. |
-| Security | Review disclosure and redaction. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 VISUAL REPORTING
 
@@ -1407,12 +1192,9 @@ Provide text summaries and data tables for charts, diagrams and heatmaps.
 | **Visual check** | **Requirement** |
 | --- | --- |
 | Title | Explain the decision purpose of accessible alternatives. |
-| Scale | Label units, categories and direction. |
-| Denominator | Include population and period. |
-| Legend | Define colors, symbols and states. |
-| Uncertainty | Show UNKNOWN, confidence and limitations. |
-| Accessibility | Provide non-visual equivalent. |
-| Security | Review disclosure and redaction. |
+
+*Shared rows for this section are listed once under §6.1.*
+
 EVIDENCE AND DISTRIBUTION
 
 # 7.1  Evidence citation
@@ -1422,6 +1204,11 @@ Use stable evidence IDs and assertion links; avoid embedding unnecessary sensiti
 | **Control question** | **Required action** |
 | --- | --- |
 | Need | Determine what evidence citation information the audience requires. |
+
+*Shared rows: the rows below apply to each of §7.1–§7.10, read in that section's own context.*
+
+| **Control question** | **Required action** |
+| --- | --- |
 | Minimization | Exclude data not needed for the decision. |
 | Protection | Apply classification, access and encryption. |
 | Traceability | Retain authorized evidence link and report version. |
@@ -1437,11 +1224,8 @@ Include authorized register extract with grade, source type, date, scope, review
 | **Control question** | **Required action** |
 | --- | --- |
 | Need | Determine what evidence annex information the audience requires. |
-| Minimization | Exclude data not needed for the decision. |
-| Protection | Apply classification, access and encryption. |
-| Traceability | Retain authorized evidence link and report version. |
-| Limitation | Disclose effect of redaction or unavailable source. |
-| Review | Obtain privacy, legal or security review where applicable. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 EVIDENCE AND DISTRIBUTION
 
@@ -1452,11 +1236,8 @@ Use controlled references, redaction and access segmentation while stating how w
 | **Control question** | **Required action** |
 | --- | --- |
 | Need | Determine what sensitive evidence information the audience requires. |
-| Minimization | Exclude data not needed for the decision. |
-| Protection | Apply classification, access and encryption. |
-| Traceability | Retain authorized evidence link and report version. |
-| Limitation | Disclose effect of redaction or unavailable source. |
-| Review | Obtain privacy, legal or security review where applicable. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 EVIDENCE AND DISTRIBUTION
 
@@ -1467,11 +1248,8 @@ Minimize names and identifiers; use roles or pseudonyms unless identity is neces
 | **Control question** | **Required action** |
 | --- | --- |
 | Need | Determine what personal data information the audience requires. |
-| Minimization | Exclude data not needed for the decision. |
-| Protection | Apply classification, access and encryption. |
-| Traceability | Retain authorized evidence link and report version. |
-| Limitation | Disclose effect of redaction or unavailable source. |
-| Review | Obtain privacy, legal or security review where applicable. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 EVIDENCE AND DISTRIBUTION
 
@@ -1482,11 +1260,8 @@ Do not reproduce credentials, tokens, exploit payloads or unnecessary technical 
 | **Control question** | **Required action** |
 | --- | --- |
 | Need | Determine what secrets and vulnerabilities information the audience requires. |
-| Minimization | Exclude data not needed for the decision. |
-| Protection | Apply classification, access and encryption. |
-| Traceability | Retain authorized evidence link and report version. |
-| Limitation | Disclose effect of redaction or unavailable source. |
-| Review | Obtain privacy, legal or security review where applicable. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 EVIDENCE AND DISTRIBUTION
 
@@ -1497,11 +1272,8 @@ Respect contractual, copyright, provider and client restrictions on reports and 
 | **Control question** | **Required action** |
 | --- | --- |
 | Need | Determine what third-party restrictions information the audience requires. |
-| Minimization | Exclude data not needed for the decision. |
-| Protection | Apply classification, access and encryption. |
-| Traceability | Retain authorized evidence link and report version. |
-| Limitation | Disclose effect of redaction or unavailable source. |
-| Review | Obtain privacy, legal or security review where applicable. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 EVIDENCE AND DISTRIBUTION
 
@@ -1512,11 +1284,8 @@ Do not label material privileged without authorized advice; preserve evidence wh
 | **Control question** | **Required action** |
 | --- | --- |
 | Need | Determine what legal privilege and hold information the audience requires. |
-| Minimization | Exclude data not needed for the decision. |
-| Protection | Apply classification, access and encryption. |
-| Traceability | Retain authorized evidence link and report version. |
-| Limitation | Disclose effect of redaction or unavailable source. |
-| Review | Obtain privacy, legal or security review where applicable. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 EVIDENCE AND DISTRIBUTION
 
@@ -1527,11 +1296,8 @@ Map audience to report package, classification, permitted use, storage and onwar
 | **Control question** | **Required action** |
 | --- | --- |
 | Need | Determine what distribution matrix information the audience requires. |
-| Minimization | Exclude data not needed for the decision. |
-| Protection | Apply classification, access and encryption. |
-| Traceability | Retain authorized evidence link and report version. |
-| Limitation | Disclose effect of redaction or unavailable source. |
-| Review | Obtain privacy, legal or security review where applicable. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 EVIDENCE AND DISTRIBUTION
 
@@ -1542,11 +1308,8 @@ State report owner, retention basis, expiry, hold and approved disposal process.
 | **Control question** | **Required action** |
 | --- | --- |
 | Need | Determine what retention and disposal information the audience requires. |
-| Minimization | Exclude data not needed for the decision. |
-| Protection | Apply classification, access and encryption. |
-| Traceability | Retain authorized evidence link and report version. |
-| Limitation | Disclose effect of redaction or unavailable source. |
-| Review | Obtain privacy, legal or security review where applicable. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 EVIDENCE AND DISTRIBUTION
 
@@ -1557,11 +1320,8 @@ Escalate unauthorized disclosure, factual error, integrity issue or misclassific
 | **Control question** | **Required action** |
 | --- | --- |
 | Need | Determine what breach and correction information the audience requires. |
-| Minimization | Exclude data not needed for the decision. |
-| Protection | Apply classification, access and encryption. |
-| Traceability | Retain authorized evidence link and report version. |
-| Limitation | Disclose effect of redaction or unavailable source. |
-| Review | Obtain privacy, legal or security review where applicable. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 QUALITY AND RELEASE
 
@@ -1571,8 +1331,13 @@ Owners validate factual statements and source accuracy without negotiating metho
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for factual validation. |
+
+*Shared rows: the rows below apply to each of §8.1–§8.12, read in that section's own context.*
+
+| **QA record** | **Required entry** |
+| --- | --- |
+| Reviewer | Role, competence and independence. |
 | Procedure | Trace, reperformance, recalculation or challenge. |
 | Issue | Gap and affected downstream claim. |
 | Resolution | Change, rationale, evidence and owner. |
@@ -1586,12 +1351,9 @@ Reviewer samples evidence links, grades, conflicts, currentness and conclusion s
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for evidence qa. |
-| Procedure | Trace, reperformance, recalculation or challenge. |
-| Issue | Gap and affected downstream claim. |
-| Resolution | Change, rationale, evidence and owner. |
-| Status | Open, resolved, accepted limitation or blocker. |
+
+*Shared rows for this section are listed once under §8.1.*
 
 QUALITY AND RELEASE
 
@@ -1601,12 +1363,9 @@ Reviewer checks node identity, edge direction, conditions, path state and redact
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for graph qa. |
-| Procedure | Trace, reperformance, recalculation or challenge. |
-| Issue | Gap and affected downstream claim. |
-| Resolution | Change, rationale, evidence and owner. |
-| Status | Open, resolved, accepted limitation or blocker. |
+
+*Shared rows for this section are listed once under §8.1.*
 
 QUALITY AND RELEASE
 
@@ -1616,12 +1375,9 @@ Reviewer checks applicability, component results, evidence caps, gates and findi
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for control qa. |
-| Procedure | Trace, reperformance, recalculation or challenge. |
-| Issue | Gap and affected downstream claim. |
-| Resolution | Change, rationale, evidence and owner. |
-| Status | Open, resolved, accepted limitation or blocker. |
+
+*Shared rows for this section are listed once under §8.1.*
 
 QUALITY AND RELEASE
 
@@ -1631,12 +1387,9 @@ Reviewer checks cumulative criteria, evidence floors, capability variation and t
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for maturity qa. |
-| Procedure | Trace, reperformance, recalculation or challenge. |
-| Issue | Gap and affected downstream claim. |
-| Resolution | Change, rationale, evidence and owner. |
-| Status | Open, resolved, accepted limitation or blocker. |
+
+*Shared rows for this section are listed once under §8.1.*
 
 QUALITY AND RELEASE
 
@@ -1646,12 +1399,9 @@ Recalculate formulas, denominators, bands, overrides and version references.
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for scoring qa. |
-| Procedure | Trace, reperformance, recalculation or challenge. |
-| Issue | Gap and affected downstream claim. |
-| Resolution | Change, rationale, evidence and owner. |
-| Status | Open, resolved, accepted limitation or blocker. |
+
+*Shared rows for this section are listed once under §8.1.*
 
 QUALITY AND RELEASE
 
@@ -1661,12 +1411,9 @@ Check taxonomy, duplicates, criteria, condition, cause, consequence, evidence, a
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for finding qa. |
-| Procedure | Trace, reperformance, recalculation or challenge. |
-| Issue | Gap and affected downstream claim. |
-| Resolution | Change, rationale, evidence and owner. |
-| Status | Open, resolved, accepted limitation or blocker. |
+
+*Shared rows for this section are listed once under §8.1.*
 
 QUALITY AND RELEASE
 
@@ -1676,12 +1423,9 @@ Challenge unsupported adjectives, hidden caveats, traffic-light simplification a
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for executive-claim qa. |
-| Procedure | Trace, reperformance, recalculation or challenge. |
-| Issue | Gap and affected downstream claim. |
-| Resolution | Change, rationale, evidence and owner. |
-| Status | Open, resolved, accepted limitation or blocker. |
+
+*Shared rows for this section are listed once under §8.1.*
 
 QUALITY AND RELEASE
 
@@ -1691,12 +1435,9 @@ Review classification, personal data, secrets, third-party content, redaction an
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for confidentiality qa. |
-| Procedure | Trace, reperformance, recalculation or challenge. |
-| Issue | Gap and affected downstream claim. |
-| Resolution | Change, rationale, evidence and owner. |
-| Status | Open, resolved, accepted limitation or blocker. |
+
+*Shared rows for this section are listed once under §8.1.*
 
 QUALITY AND RELEASE
 
@@ -1706,12 +1447,9 @@ Check heading structure, table headers, contrast, reading order, alt text and te
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for accessibility qa. |
-| Procedure | Trace, reperformance, recalculation or challenge. |
-| Issue | Gap and affected downstream claim. |
-| Resolution | Change, rationale, evidence and owner. |
-| Status | Open, resolved, accepted limitation or blocker. |
+
+*Shared rows for this section are listed once under §8.1.*
 
 QUALITY AND RELEASE
 
@@ -1721,12 +1459,9 @@ Record lead assessor, quality reviewer, decision authority, distribution owner a
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for approval and release. |
-| Procedure | Trace, reperformance, recalculation or challenge. |
-| Issue | Gap and affected downstream claim. |
-| Resolution | Change, rationale, evidence and owner. |
-| Status | Open, resolved, accepted limitation or blocker. |
+
+*Shared rows for this section are listed once under §8.1.*
 
 QUALITY AND RELEASE
 
@@ -1736,12 +1471,10 @@ Issue versioned correction or replacement, identify changed conclusions and prev
 
 | **QA record** | **Required entry** |
 | --- | --- |
-| Reviewer | Role, competence and independence. |
 | Object | Exact report element reviewed for correction and supersession. |
-| Procedure | Trace, reperformance, recalculation or challenge. |
-| Issue | Gap and affected downstream claim. |
-| Resolution | Change, rationale, evidence and owner. |
-| Status | Open, resolved, accepted limitation or blocker. |
+
+*Shared rows for this section are listed once under §8.1.*
+
 REPORTING ANTI-PATTERNS
 
 # 9.1  One-number trust score
@@ -1751,6 +1484,11 @@ Reject opaque enterprise trustworthiness scores; use six-domain scorecards and v
 | **Reviewer challenge** | **Required response** |
 | --- | --- |
 | What could be misunderstood? | Identify reader risk created by one-number trust score. |
+
+*Shared rows: the rows below apply to each of §9.1–§9.8, read in that section's own context.*
+
+| **Reviewer challenge** | **Required response** |
+| --- | --- |
 | Which fact is hidden? | Restore scope, denominator, evidence, confidence or gate. |
 | Which label is wrong? | Apply canonical term and definition. |
 | What action follows? | State accountable decision and evidence needed. |
@@ -1765,10 +1503,8 @@ Require definitions, evidence, denominator, confidence and action beyond color.
 | **Reviewer challenge** | **Required response** |
 | --- | --- |
 | What could be misunderstood? | Identify reader risk created by traffic-light only. |
-| Which fact is hidden? | Restore scope, denominator, evidence, confidence or gate. |
-| Which label is wrong? | Apply canonical term and definition. |
-| What action follows? | State accountable decision and evidence needed. |
-| Can the claim stand alone? | Ensure nearby caveat prevents overgeneralization. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 REPORTING ANTI-PATTERNS
 
@@ -1779,10 +1515,8 @@ Do not show 90 percent attainment without assessed and applicable populations.
 | **Reviewer challenge** | **Required response** |
 | --- | --- |
 | What could be misunderstood? | Identify reader risk created by hidden denominator. |
-| Which fact is hidden? | Restore scope, denominator, evidence, confidence or gate. |
-| Which label is wrong? | Apply canonical term and definition. |
-| What action follows? | State accountable decision and evidence needed. |
-| Can the claim stand alone? | Ensure nearby caveat prevents overgeneralization. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 REPORTING ANTI-PATTERNS
 
@@ -1793,10 +1527,8 @@ Do not present a potential consequence as validated exploitability or occurrence
 | **Reviewer challenge** | **Required response** |
 | --- | --- |
 | What could be misunderstood? | Identify reader risk created by severity without evidence. |
-| Which fact is hidden? | Restore scope, denominator, evidence, confidence or gate. |
-| Which label is wrong? | Apply canonical term and definition. |
-| What action follows? | State accountable decision and evidence needed. |
-| Can the claim stand alone? | Ensure nearby caveat prevents overgeneralization. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 REPORTING ANTI-PATTERNS
 
@@ -1807,10 +1539,8 @@ Do not translate an indicative crosswalk into compliance status.
 | **Reviewer challenge** | **Required response** |
 | --- | --- |
 | What could be misunderstood? | Identify reader risk created by compliance overclaim. |
-| Which fact is hidden? | Restore scope, denominator, evidence, confidence or gate. |
-| Which label is wrong? | Apply canonical term and definition. |
-| What action follows? | State accountable decision and evidence needed. |
-| Can the claim stand alone? | Ensure nearby caveat prevents overgeneralization. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 REPORTING ANTI-PATTERNS
 
@@ -1821,10 +1551,8 @@ Maintain open technical state when management accepts or defers treatment.
 | **Reviewer challenge** | **Required response** |
 | --- | --- |
 | What could be misunderstood? | Identify reader risk created by accepted equals resolved. |
-| Which fact is hidden? | Restore scope, denominator, evidence, confidence or gate. |
-| Which label is wrong? | Apply canonical term and definition. |
-| What action follows? | State accountable decision and evidence needed. |
-| Can the claim stand alone? | Ensure nearby caveat prevents overgeneralization. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 REPORTING ANTI-PATTERNS
 
@@ -1835,10 +1563,8 @@ Distinguish planned future state from validated residual state.
 | **Reviewer challenge** | **Required response** |
 | --- | --- |
 | What could be misunderstood? | Identify reader risk created by future control lowers current exposure. |
-| Which fact is hidden? | Restore scope, denominator, evidence, confidence or gate. |
-| Which label is wrong? | Apply canonical term and definition. |
-| What action follows? | State accountable decision and evidence needed. |
-| Can the claim stand alone? | Ensure nearby caveat prevents overgeneralization. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 REPORTING ANTI-PATTERNS
 
@@ -1849,10 +1575,8 @@ Place material limitations beside the affected headline and metric.
 | **Reviewer challenge** | **Required response** |
 | --- | --- |
 | What could be misunderstood? | Identify reader risk created by executive caveat burial. |
-| Which fact is hidden? | Restore scope, denominator, evidence, confidence or gate. |
-| Which label is wrong? | Apply canonical term and definition. |
-| What action follows? | State accountable decision and evidence needed. |
-| Can the claim stand alone? | Ensure nearby caveat prevents overgeneralization. |
+
+*Shared rows for this section are listed once under §9.1.*
 
 APPENDIX
 
@@ -2044,4 +1768,4 @@ This appendix defines the canonical final doctrine and approval record for consi
 | Licence and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Reporting Standard | Version 1.1.0 | Public-release candidate
+AI Trust Graph Reporting Standard | Version 1.1.1 | Public-release candidate

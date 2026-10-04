@@ -1,8 +1,8 @@
 # AI Trust Graph — Methodology Manifest
 
-**Bundle identifier:** 1.0-rc.4  
+**Bundle identifier:** 1.0-rc.5  
 **Status:** Public-release candidate  
-**Snapshot date:** 2026-09-26  
+**Snapshot date:** 2026-10-04  
 **Purpose:** Single canonical authority/dependency map and exact artifact-content registry for this repository snapshot.
 
 > **MANIFEST RULE** This file is the repository-wide source of truth for artifact authority, dependency, reading order, version pins and exact Git blob identifiers. Individual artifacts may describe their own scope, but they MUST NOT publish a competing repository-wide precedence chain.
@@ -59,6 +59,8 @@ Any future sector-, jurisdiction- or technology-specific guide is an **Extension
 
 The Git blob SHA pins the exact UTF-8 file content for this release-candidate snapshot. It is a Git object identifier, not a claim that the artifact has completed external validation.
 
+**1.0-rc.5 (2026-10-04)** is an editorial patch of 1.0-rc.4 under Artifact #11 §2.3. In Artifacts #6, #7, #8, #9 and #11, table rows that were repeated word for word in every section of a series are listed once, with the sections they apply to; each artifact carries a correction note. Artifact #9 §5.1 also gains a cross-reference to the finding-type definitions. No rule, value or other wording changed, and the other eight artifacts are byte-identical to 1.0-rc.4. A script checked, for every section, that the rows that apply are unchanged and that all prose is identical. Cross-artifact "Depends on" version references are patch-compatible and were not changed. Work pinned to 1.0-rc.4, including the inter-assessor study IAS-01 and whitepaper v1.0, remains valid against the `v1.0-rc.4` tag.
+
 | # | Artifact | Version | Status | Path | Git blob SHA |
 | ---: | --- | --- | --- | --- | --- |
 | 1 | Manifesto | 1.0 | Public-release candidate | `docs/01-manifesto.md` | `38081d537cbd7fdfd7300cca58244639cd415da6` |
@@ -66,12 +68,12 @@ The Git blob SHA pins the exact UTF-8 file content for this release-candidate sn
 | 3 | Maturity Model | 1.0 | Public-release candidate | `docs/03-maturity-model.md` | `f2a9359cc98522ca622eef232eac75f0a5b87e87` |
 | 4 | Scoring Framework | 3.0.0 | Public-release candidate | `docs/04-scoring-framework.md` | `8c92ebb824b8de2c956c7522c24e1b8e76dd10d2` |
 | 5 | Master Control Library | 2.0.0 | Public-release candidate | `docs/05-master-control-library.md` | `d1584f82a0c8a50338346818ac02653e884ec0fb` |
-| 6 | Evidence Model | 2.0.0 | Public-release candidate | `docs/06-evidence-model.md` | `e5cfe1d3b6b5963cf511b91aaec55494e3fa90e7` |
-| 7 | Assessment Methodology | 1.1.0 | Public-release candidate | `docs/07-assessment-methodology.md` | `a91ea3c9dbbf9a4b07984fbd8d2855a02b8cf0d0` |
-| 8 | Assessor Handbook | 1.0 | Public-release candidate | `docs/08-assessor-handbook.md` | `3fbede164f6ac3f89c4a02619b0a0f40866938e6` |
-| 9 | Reporting Standard | 1.1.0 | Public-release candidate | `docs/09-reporting-standard.md` | `321b851309d7970c819cacd66fcbb3fd7744acf1` |
+| 6 | Evidence Model | 2.0.1 | Public-release candidate | `docs/06-evidence-model.md` | `5815129b518715bd94e2556ddc9a7a3222a18aff` |
+| 7 | Assessment Methodology | 1.1.1 | Public-release candidate | `docs/07-assessment-methodology.md` | `117482ae6876bce3cfc6b80fc81cbae884165dd8` |
+| 8 | Assessor Handbook | 1.0.1 | Public-release candidate | `docs/08-assessor-handbook.md` | `a06b99de572cf8f416613052cd46105eaff4a215` |
+| 9 | Reporting Standard | 1.1.1 | Public-release candidate | `docs/09-reporting-standard.md` | `f3d3fe15f7640118a70b372f0935215931313748` |
 | 10 | Reference Assessment Repository | 2.0.0 | Public-release candidate | `docs/10-reference-assessment-repository.md` | `54a71fa9af694b291ece152d61b1217d61f41483` |
-| 11 | Governance & Certification Model | 1.0 | Public-release candidate | `docs/11-governance-and-certification-model.md` | `35d9184a56098c3036a5edc1857a6fba29dc1fa5` |
+| 11 | Governance & Certification Model | 1.0.1 | Public-release candidate | `docs/11-governance-and-certification-model.md` | `2eb6e1ec642d34faf437bf95beee635ae9283c5b` |
 | 12 | Ontology Specification | 3.0.0 | Public-release candidate | `docs/12-ontology-specification.md` | `713742afab9255eef1f08dc8e07f3dbdbc8c05cb` |
 
 ### Phase 2 non-normative companion
@@ -107,7 +109,7 @@ Gates closed through governance, with the evidence recorded for each. A record s
 | --- | --- | --- | --- |
 | Employer / IP / confidentiality review | Closed by author declaration | 2026-10-02 | Declaration by the methodology author, Siva Sethumadhavan: AI Trust Graph is the author's independent research, not undertaken for or on behalf of any employer or client; the author owns its intellectual property; and it does not include any employer's or client's confidential information. This is a self-declaration by the author. It is not an external legal review or opinion. |
 
-The closing approval records inside the pinned artifacts reflect the 1.0-rc.4 content snapshot and still list this gate as pending; this section governs current gate status until the artifacts are next revised.
+The closing approval records inside the pinned artifacts reflect the 1.0-rc.4 content snapshot (unchanged by the 1.0-rc.5 editorial patch) and still list this gate as pending; this section governs current gate status until the artifacts are next revised.
 
 ### 6.2 Release-acceptance records
 

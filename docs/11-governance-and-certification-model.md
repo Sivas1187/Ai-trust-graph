@@ -2,7 +2,9 @@
 
 # AI Trust Graph — Governance & Certification Model
 
-*Version 1.0 | Stewardship, change control, competence, conformance, certification readiness, appeals and ecosystem integrity*
+*Version 1.0.1 | Stewardship, change control, competence, conformance, certification readiness, appeals and ecosystem integrity*
+
+> **CORRECTION NOTE (1.0.1, 2026-10-04, patch)** Editorial consolidation under Artifact #11 §2.3. Table rows that were repeated word for word in every section of a series are now listed once, under a "Shared rows" note naming exactly the sections they apply to; each affected section points to it. No rule, value or other wording changed.
 
 > **CONSTITUTIONAL BOUNDARY** This model governs a public methodology and defines certification readiness. It does not launch an accredited certification scheme, confer legal compliance, guarantee AI safety, or authorize use of an accreditation mark.
 
@@ -19,6 +21,8 @@
 
 This model is the governance constitution for AI Trust Graph methodology assets, decisions, roles, compatible implementations and any future certification scheme.
 
+*Shared rows: the rows below apply to each of §0.1–§0.4, §0.6–§0.15, read in that section's own context.*
+
 | **Field** | **Requirement** |
 | --- | --- |
 | Rule | Apply the section-specific constitutional requirement stated above. |
@@ -30,34 +34,19 @@ This model is the governance constitution for AI Trust Graph methodology assets,
 
 Legitimacy depends on transparent rules, traceable decisions, impartial review, competence, controlled versions and remedies for error or abuse.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.3  Certification posture
 
 Version 1.0 defines readiness requirements and scheme architecture. It does not itself authorize accredited certification or a certification mark.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.4  Normative language
 
 Must and shall identify mandatory requirements; should identifies recommended practice; may identifies permission; cannot and prohibited identify hard boundaries.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.5  Constitutional invariants
 
@@ -80,100 +69,55 @@ The invariants below override commercial pressure, schedule, popularity, tool co
 
 Every governed object has owner, version, status, effective date, dependencies, review state, licence, supersession link and authoritative location.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.7  Artifact authority and dependency
 
 When artifacts conflict, affected use stops, evidence is preserved and the conflict is resolved under semantic-governance procedure. The canonical repository-wide authority/dependency map and exact release pins are maintained in [METHODOLOGY_MANIFEST.md](../METHODOLOGY_MANIFEST.md); other artifacts MUST reference that manifest rather than publish competing precedence chains.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.8  Transparency and confidentiality
 
 Governance records are transparent by default, while personal data, assessment evidence, security details and legitimate confidential information remain protected.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.9  Impartiality and conflict
 
 Certification, review and appeals decisions are protected from financial, design, delivery, employment and relationship conflicts.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.10  No false assurance
 
 No mark, badge, certificate, score, maturity level or conformance statement may imply guaranteed safety, trustworthiness, compliance or absence of failure.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.11  Public and private boundary
 
 Public canonical meaning remains independent of ExposureGraph or any other commercial platform. Private implementation may automate but cannot silently redefine the method.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.12  Decision-record doctrine
 
 Every material governance decision identifies question, authority, inputs, conflicts, rationale, dissent, effective date, affected versions and appeal route.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.13  Historical integrity
 
 Published versions, completed assessments, certificates and decisions remain immutable historical records and are superseded rather than overwritten.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.14  Proportionality
 
 Governance and certification depth scale with claim, consequence, scope, autonomy, authority and intended reliance.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 0.15  External validation gate
 
@@ -181,12 +125,7 @@ Public certification claims require independent validation of the scheme, legal 
 
 > **PUBLICATION SAFEGUARD** Complete employer, IP, confidentiality, privacy, legal, licence, trademark, independent scheme review and accreditation-path assessment before any public certification launch.
 
-| **Field** | **Requirement** |
-| --- | --- |
-| Rule | Apply the section-specific constitutional requirement stated above. |
-| Accountability | Method owner and independent governance reviewer |
-| Evidence | Versioned registry, decision log and review record |
-| Failure response | Pause affected claim, preserve state and escalate |
+*Shared rows for this section are listed once under §0.1.*
 
 # 1.1  Governance operating model
 
@@ -209,6 +148,8 @@ The structure separates stewardship, technical authority, certification decision
 
 The steward protects purpose, convenes governance, maintains the authoritative registry and cannot bypass mandatory review.
 
+*Shared rows: the rows below apply to each of §1.2–§1.11, §1.13–§1.15, read in that section's own context.*
+
 | **Governance field** | **Required control** |
 | --- | --- |
 | Mandate | Apply the role-specific mandate stated above. |
@@ -223,127 +164,55 @@ The steward protects purpose, convenes governance, maintains the authoritative r
 
 The council approves constitutional policy, major versions, scheme establishment, committee charters, licence posture and dissolution.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 1.4  Technical Architecture Board
 
 The board reviews semantics, ontology, control identifiers, evidence rules, scoring formulas, compatibility and migration.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 1.5  AI Security Review Board
 
 The board reviews security completeness, misuse potential, test safety, authority, adverse paths, resilience and material threat changes.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 1.6  Certification Scheme Committee
 
 The committee designs and maintains any approved person, process, service or tool certification scheme.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 1.7  Impartiality Committee
 
 The committee identifies, evaluates, records and monitors structural and case-specific threats to impartiality.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 1.8  Appeals and Complaints Panel
 
 The panel provides independent, timely and reasoned review of complaints, appeals and sanctions.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 1.9  Secretariat and records office
 
 The secretariat maintains controlled records, meeting notices, ballots, registers, publication history and certificate status.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 1.10  Maintainers and contributors
 
 Maintainers implement approved changes; contributors can propose but cannot self-approve their own changes.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 1.11  Role appointment
 
 Appointments use published criteria, term, conflict disclosure, competence record, removal grounds and succession plan.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 1.12  Quorum and voting
 
@@ -362,47 +231,25 @@ Each body declares quorum, voting threshold, abstention, recusal, tie, urgent-de
 
 Delegations are written, bounded, time-limited, revocable and visible in the authority register.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 1.14  Emergency governance
 
 Urgent security or integrity action may temporarily suspend a release, certificate, mark or extension but requires prompt independent ratification.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 1.15  Governance effectiveness review
 
 Annual or change-triggered review evaluates decision timeliness, conflicts, appeals, defects, community participation and corrective actions without inventing a maturity score.
 
-| **Governance field** | **Required control** |
-| --- | --- |
-| Mandate | Apply the role-specific mandate stated above. |
-| Authority | Explicit decisions the role may approve |
-| Prohibition | Actions the role cannot take |
-| Competence | Documented capabilities and continuing development |
-| Conflict | Disclosure, assessment, recusal and mitigation |
-| Records | Agenda, inputs, minutes, decision and dissent |
-| Review | Term, performance and removal process |
+*Shared rows for this section are listed once under §1.2.*
 
 # 2.1  Authoritative artifact registry
 
 The registry identifies the current approved version, checksum, dependencies, status, licence, approvers and superseded versions.
+
+*Shared rows: the rows below apply to each of §2.1, §2.4–§2.15, read in that section's own context.*
 
 | **Change-control field** | **Requirement** |
 | --- | --- |
@@ -442,173 +289,79 @@ Major changes break compatibility; minor changes add backward-compatible capabil
 
 Every proposal includes problem, evidence, affected users, alternatives, dependencies, migration, risks, security implications and requested release class.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.5  Change triage
 
 Triage classifies defect, clarification, enhancement, security advisory, breaking change, extension or editorial correction.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.6  Impact analysis
 
 Impact covers definitions, controls, evidence, maturity, scoring, assessments, reports, reference cases, tools, certificates and training.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.7  Public consultation
 
 Material changes publish rationale, draft, comparison, consultation window and disposition of material comments.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.8  Technical review
 
 Review verifies semantic consistency, control integrity, formula correctness, evidence doctrine, path logic, safety and compatibility.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.9  Approval and release
 
 Approved releases carry signed metadata, changelog, migration guidance, known limitations and effective date.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.10  Security advisory process
 
 Sensitive vulnerabilities are handled through restricted disclosure until publication is safe and coordinated.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.11  Deprecation
 
 Deprecated elements remain identifiable, have replacement guidance, transition period and final retirement decision.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.12  Withdrawal
 
 An artifact may be withdrawn for integrity, safety, legal, ownership or material-defect reasons with reason and replacement status.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.13  Migration and compatibility
 
 Assessments, tools and certifications declare compatible artifact versions and cannot silently mix incompatible baselines.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.14  Corrections and errata
 
 Corrections preserve original publication and identify affected claims, downstream objects and required reissue or reassessment.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.15  Release cadence
 
 Cadence is risk- and need-based; security and integrity corrections are not delayed for an arbitrary schedule.
 
-| **Change-control field** | **Requirement** |
-| --- | --- |
-| Proposal | Apply the change-control requirement stated above. |
-| Evidence | Problem statement and supporting cases |
-| Impact | Artifacts, users, tools and certificates |
-| Security | Misuse, safety and confidential-disclosure assessment |
-| Review | Named independent reviewers and conflicts |
-| Decision | Approve, revise, reject, defer or withdraw |
-| Traceability | Issue, commit, release, migration and supersession |
+*Shared rows for this section are listed once under §2.1.*
 
 # 3.1  Competence architecture
 
 Competence is role- and activity-specific and demonstrated through knowledge, skills, experience, judgment, ethics and observed performance.
+
+*Shared rows: the rows below apply to each of §3.1, §3.3–§3.15, read in that section's own context.*
 
 | **Competence element** | **Requirement** |
 | --- | --- |
@@ -637,200 +390,85 @@ The five handbook levels become governed authorization bands rather than honorar
 
 Reviewers require competence in evidence, graph semantics, controls, paths, maturity, scoring, reporting and impartial challenge.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.4  Technical validator authorization
 
 Validators are approved only for defined procedures, technologies, environments and safety conditions.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.5  Competence assessment
 
 Assessment combines knowledge checks, synthetic case work, observed performance, workpaper review and ethical judgment.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.6  Calibration
 
 Calibration measures material variance across identical cases and requires reconciliation, coaching or restricted authority.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.7  Initial authorization
 
 Authorization identifies level, scope, effective date, restrictions, supervisor, renewal date and public status where applicable.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.8  Continuing competence
 
 Authorized persons maintain practice, learning, calibration, conduct and current artifact knowledge.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.9  Renewal
 
 Renewal relies on evidence of continuing competence rather than fee payment or attendance alone.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.10  Suspension
 
 Authorization may be suspended for competence, conduct, conflict, calibration, record or investigation reasons.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.11  Revocation
 
 Revocation follows due process for serious or repeated breach, fraud, unsafe practice, false claims or failure to correct.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.12  Reinstatement
 
 Reinstatement requires cause resolution, competence evidence, supervised performance and approval independent of the original subject.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.13  Public directory
 
 A directory may show status, scope, level, dates and restrictions while minimizing personal data.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.14  Training separation
 
 Training providers cannot guarantee certification outcome; trainers must not control examination or certification decisions without mitigation.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 3.15  Personnel-certification readiness
 
 Any formal certification of persons requires a separately validated scheme, secure assessment, impartial decisions, surveillance and an applicable accreditation pathway.
 
-| **Competence element** | **Requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Knowledge | Approved artifact versions and applicable domain knowledge |
-| Skill | Evidence, graph, control, path, writing and review |
-| Experience | Relevant and verifiable practice |
-| Demonstration | Case assessment and observed performance |
-| Ethics | Confidentiality, impartiality and escalation |
-| Maintenance | Learning, calibration and renewal |
-| Sanction | Restriction, suspension or revocation with due process |
+*Shared rows for this section are listed once under §3.1.*
 
 # 4.1  Conformance thesis
 
 Conformance is a bounded statement that specified requirements are met for a named object, version, scope and period.
+
+*Shared rows: the rows below apply to each of §4.1, §4.2, §4.4–§4.15, read in that section's own context.*
 
 | **Conformance field** | **Requirement** |
 | --- | --- |
@@ -846,15 +484,7 @@ Conformance is a bounded statement that specified requirements are met for a nam
 
 Artifacts, assessment processes, reports, structured data, tools and organizational implementations use distinct conformance profiles.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.3  Conformance levels
 
@@ -875,43 +505,19 @@ Levels indicate claim depth and cannot be presented as maturity, security, compl
 
 An implementation preserves canonical terms, IDs, result states and version references.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.5  Assessment-compatible
 
 An assessment follows lifecycle, evidence, control, path, maturity, scoring and quality requirements.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.6  Reporting-compatible
 
 A report follows Artifact #9 and preserves scope, coverage, UNKNOWN, gates, evidence and decisions.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.7  Tool-compatible
 
@@ -919,131 +525,61 @@ A tool passes approved normative schemas, calculations, state preservation, trac
 
 For the current public-release candidate, **L4 is unavailable and MUST NOT be claimed** because the normative schema and conformance test-vector suite have not yet been approved and published. This section defines the future acceptance requirements; it does not make a tool eligible today.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.8  Full-method conformance
 
 Full-method conformance requires compatible assessment, reporting, records and governance for declared scope.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.9  Conformance evidence
 
 Evidence includes declarations, test outputs, review records, samples, version manifest and unresolved deviations.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.10  Self-declaration
 
 Self-declaration must say who made the claim, exact profile, versions, evidence, limitations and absence of independent certification.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.11  Independent attestation
 
 Attestation identifies attesting body, competence, independence, procedures, evidence and limitations without implying accreditation.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.12  Conformance exceptions
 
 Exceptions are limited, approved, visible, expiring and cannot waive constitutional invariants.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.13  Conformance surveillance
 
 Continued conformance requires monitoring of artifact, implementation and claim changes.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.14  Loss of conformance
 
 Material incompatible change, failed required test, expired evidence or false claim triggers correction, suspension or withdrawal.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.15  Conformance register
 
 A public register may publish object, owner, profile, versions, status, dates, assessor and restrictions.
 
-| **Conformance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Profile | Named requirements and version |
-| Scope | Boundary, environment, period and exclusions |
-| Evidence | Traceable test and review records |
-| Decision | Authorized, independent where claimed |
-| Limitations | Unmet, not tested, UNKNOWN and exceptions |
-| Status | Candidate, conformant, suspended, expired or withdrawn |
+*Shared rows for this section are listed once under §4.1.*
 
 # 5.1  Certification principle
 
 Certification is a controlled third-party decision against a published scheme, not a marketing badge or synonym for assessment.
+
+*Shared rows: the rows below apply to each of §5.1, §5.4–§5.20, read in that section's own context.*
 
 | **Scheme field** | **Mandatory requirement** |
 | --- | --- |
@@ -1086,257 +622,97 @@ The ecosystem cannot certify guaranteed AI safety, universal trustworthiness, le
 
 Each scheme defines object, requirements, evaluation, competence, decision, surveillance, marks, complaints, appeals, suspension and withdrawal.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.5  Application and contract
 
 Application captures legal entity, object, scope, versions, intended claim, conflicts, terms, evidence access and mark obligations.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.6  Application review
 
 Review confirms eligibility, competence, resources, independence, scope clarity and absence of prohibited claims.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.7  Evaluation
 
 Evaluation uses approved methods, evidence, sampling, tests and records separated from certification decision.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.8  Certification review
 
 A competent reviewer independent of evaluation confirms completeness, findings, closures, gates and recommendation.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.9  Certification decision
 
 The authorized decision maker grants, conditions, refuses, suspends, restores, narrows, expands or withdraws certification.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.10  Certificate content
 
 The certificate states holder, object, scope, normative baseline, issue and expiry, identifier, status source, restrictions and certification body.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.11  Certification term
 
 Term is scheme-defined and cannot outlive material evidence, version compatibility or surveillance requirements.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.12  Surveillance
 
 Surveillance verifies continuing conformity, change notification, complaints, incidents, marks and corrective actions.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.13  Recertification
 
 Recertification is a new decision using current requirements and evidence, not automatic renewal.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.14  Scope change
 
 Extension or reduction requires impact review, evaluation and reissue; holders cannot self-expand certificate scope.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.15  Suspension and withdrawal
 
 Status action follows defined triggers, notice, response, decision, register update, mark cessation and appeal rights.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.16  Transfer
 
 Transfer between certification bodies is prohibited unless an approved scheme and recognition arrangement defines it.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.17  Multi-site and portfolio claims
 
 Sampling and central-control requirements must be scheme-defined; one sampled unit cannot imply unsampled portfolio conformity.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.18  Certificate verification
 
 A public status service distinguishes valid, suspended, expired, withdrawn and superseded certificates.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.19  Accreditation boundary
 
 No document or mark may state accredited certification unless a competent accreditation body has granted the applicable scope.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.20  Certification launch gate
 
@@ -1344,23 +720,15 @@ Operational launch requires approved scheme documents, impartial governance, com
 
 > **HARD BOUNDARY** Certification readiness is not certification. No certificate or mark may be issued under this v1.0 document alone.
 
-| **Scheme field** | **Mandatory requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Object | Precisely identified certifiable object |
-| Normative baseline | Versioned requirements and effective date |
-| Evaluation | Methods, samples, evidence and competence |
-| Review | Independent completeness challenge |
-| Decision | Authorized person not responsible for evaluation |
-| Surveillance | Continuing conformity and change triggers |
-| Status | Grant, condition, refuse, suspend, restore, expire, withdraw |
-| Public claim | Controlled wording and verification source |
+*Shared rows for this section are listed once under §5.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
 # 6.1  Certification-body quality system
 
 Any scheme operator maintains controlled policies, objectives, records, internal audit, management review, corrective action and continual improvement.
+
+*Shared rows: the rows below apply to each of §6.1–§6.15, read in that section's own context.*
 
 | **Control area** | **Requirement** |
 | --- | --- |
@@ -1378,15 +746,7 @@ Any scheme operator maintains controlled policies, objectives, records, internal
 
 The certification body is a defined legal entity or part of one with accountable authority and enforceable agreements.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1394,15 +754,7 @@ The certification body is a defined legal entity or part of one with accountable
 
 Financial, ownership, governance, employment, consulting, training, evaluation and relationship threats are continuously assessed.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1410,15 +762,7 @@ Financial, ownership, governance, employment, consulting, training, evaluation a
 
 Design, consulting, training, assessment, review, decision, appeal and sales are separated proportionately to risk.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1426,15 +770,7 @@ Design, consulting, training, assessment, review, decision, appeal and sales are
 
 Targets, compensation and commercial arrangements cannot reward certification outcomes.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1442,15 +778,7 @@ Targets, compensation and commercial arrangements cannot reward certification ou
 
 Competence, authorization, performance, conflicts, confidentiality and sanctions are controlled.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1458,15 +786,7 @@ Competence, authorization, performance, conflicts, confidentiality and sanctions
 
 Outsourced evaluation remains under certification-body accountability and cannot include certification decision.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1474,15 +794,7 @@ Outsourced evaluation remains under certification-body accountability and cannot
 
 Applications, contracts, evaluations, evidence, decisions, status, complaints, appeals and marks remain protected and retrievable.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1490,15 +802,7 @@ Applications, contracts, evaluations, evidence, decisions, status, complaints, a
 
 Access, encryption, segregation, logging, retention, incident response and secure disposal protect certification information.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1506,15 +810,7 @@ Access, encryption, segregation, logging, retention, incident response and secur
 
 Independent internal audit checks scheme, impartiality, competence, decisions, registers, status and corrective actions.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1522,15 +818,7 @@ Independent internal audit checks scheme, impartiality, competence, decisions, r
 
 Leadership reviews performance, risks, conflicts, complaints, appeals, competence, resources, changes and effectiveness.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1538,15 +826,7 @@ Leadership reviews performance, risks, conflicts, complaints, appeals, competenc
 
 Nonconformities require containment, cause, correction, systemic action, effectiveness review and affected-certificate analysis.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1554,15 +834,7 @@ Nonconformities require containment, cause, correction, systemic action, effecti
 
 Identity fraud, evidence fabrication, mark misuse, bribery and collusion trigger investigation and proportionate sanctions.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1570,15 +842,7 @@ Identity fraud, evidence fabrication, mark misuse, bribery and collusion trigger
 
 The operator protects records, status services, appeals and critical decisions through disruption or closure.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 **CERTIFICATION OPERATIONS AND IMPARTIALITY**
 
@@ -1586,21 +850,15 @@ The operator protects records, status services, appeals and critical decisions t
 
 Closure includes notice, records custody, certificate status, mark cessation, appeals, privacy and transition obligations.
 
-| **Control area** | **Requirement** |
-| --- | --- |
-| Policy | Apply the certification-operation requirement stated above. |
-| Risk | Threats and affected scheme objects |
-| Control | Preventive and detective safeguards |
-| Owner | Independent accountable role |
-| Evidence | Records, logs and reviews |
-| Escalation | Suspension, investigation or corrective action |
-| Assurance | Internal audit and management review |
+*Shared rows for this section are listed once under §6.1.*
 
 # 7.1  Tool-conformance purpose
 
 Tool conformance verifies preservation of canonical semantics and outputs; it does not certify the security of the tool or assessed AI system.
 
 > **NON-NORMATIVE REFERENCE MATERIAL** The repository's Phase 2 companion (`docs/13-reference-graph-schema-and-query-library.md`, cross-referenced from Ontology Specification Appendix G) illustrates one possible property-graph implementation of the ontology and control library. It carries no conformance weight of its own. L4 is currently unavailable; when a future release publishes approved normative schemas and test vectors, a tool seeking L4 conformance will be tested against those governed artifacts and the requirements in this section, not against the illustrative companion document.
+
+*Shared rows: the rows below apply to each of §7.1–§7.12, read in that section's own context.*
 
 | **Test family** | **Acceptance requirement** |
 | --- | --- |
@@ -1616,159 +874,73 @@ Tool conformance verifies preservation of canonical semantics and outputs; it do
 
 The profile declares supported artifacts, schemas, calculations, result states, exports, versions and exclusions.
 
-| **Test family** | **Acceptance requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Semantics | Canonical labels and states preserved |
-| Calculations | Published formulas and ranges pass |
-| Traceability | Source-to-result lineage retained |
-| Negative tests | Prohibited shortcuts rejected |
-| Versioning | Compatibility manifest accurate |
-| Output | Documented, reproducible conformance report |
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.3  Canonical-state tests
 
 The tool must preserve UNKNOWN, Not Assessed, Not Applicable, Not Tested, Inconclusive, Provisional and Final within scope.
 
-| **Test family** | **Acceptance requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Semantics | Canonical labels and states preserved |
-| Calculations | Published formulas and ranges pass |
-| Traceability | Source-to-result lineage retained |
-| Negative tests | Prohibited shortcuts rejected |
-| Versioning | Compatibility manifest accurate |
-| Output | Documented, reproducible conformance report |
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.4  Calculation tests
 
 Control, coverage and PEI calculations use published formulas, component ranges, gates, rounding and version identifiers.
 
-| **Test family** | **Acceptance requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Semantics | Canonical labels and states preserved |
-| Calculations | Published formulas and ranges pass |
-| Traceability | Source-to-result lineage retained |
-| Negative tests | Prohibited shortcuts rejected |
-| Versioning | Compatibility manifest accurate |
-| Output | Documented, reproducible conformance report |
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.5  Graph semantic tests
 
 Nodes, edges, direction, conditions, boundaries, paths, evidence and confidence remain typed and traceable.
 
-| **Test family** | **Acceptance requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Semantics | Canonical labels and states preserved |
-| Calculations | Published formulas and ranges pass |
-| Traceability | Source-to-result lineage retained |
-| Negative tests | Prohibited shortcuts rejected |
-| Versioning | Compatibility manifest accurate |
-| Output | Documented, reproducible conformance report |
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.6  Negative tests
 
 The suite verifies that topology is not labelled exploitable, UNKNOWN is not scored, maturity is not averaged and acceptance does not close findings.
 
-| **Test family** | **Acceptance requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Semantics | Canonical labels and states preserved |
-| Calculations | Published formulas and ranges pass |
-| Traceability | Source-to-result lineage retained |
-| Negative tests | Prohibited shortcuts rejected |
-| Versioning | Compatibility manifest accurate |
-| Output | Documented, reproducible conformance report |
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.7  Import and export
 
 Round-trip tests preserve IDs, versions, scope, evidence links, decisions, history and non-numeric states.
 
-| **Test family** | **Acceptance requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Semantics | Canonical labels and states preserved |
-| Calculations | Published formulas and ranges pass |
-| Traceability | Source-to-result lineage retained |
-| Negative tests | Prohibited shortcuts rejected |
-| Versioning | Compatibility manifest accurate |
-| Output | Documented, reproducible conformance report |
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.8  Security claims
 
 A method-conformant tool cannot claim secure development or operational security without separate evidence and scheme.
 
-| **Test family** | **Acceptance requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Semantics | Canonical labels and states preserved |
-| Calculations | Published formulas and ranges pass |
-| Traceability | Source-to-result lineage retained |
-| Negative tests | Prohibited shortcuts rejected |
-| Versioning | Compatibility manifest accurate |
-| Output | Documented, reproducible conformance report |
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.9  Test vectors
 
 Published synthetic vectors include valid, invalid, boundary, conflict, stale, unknown and supersession cases.
 
-| **Test family** | **Acceptance requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Semantics | Canonical labels and states preserved |
-| Calculations | Published formulas and ranges pass |
-| Traceability | Source-to-result lineage retained |
-| Negative tests | Prohibited shortcuts rejected |
-| Versioning | Compatibility manifest accurate |
-| Output | Documented, reproducible conformance report |
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.10  Conformance report
 
 The report states tool version, profile, suite version, environment, results, deviations, reviewer and validity.
 
-| **Test family** | **Acceptance requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Semantics | Canonical labels and states preserved |
-| Calculations | Published formulas and ranges pass |
-| Traceability | Source-to-result lineage retained |
-| Negative tests | Prohibited shortcuts rejected |
-| Versioning | Compatibility manifest accurate |
-| Output | Documented, reproducible conformance report |
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.11  Change surveillance
 
 Material tool, schema, calculation or artifact changes trigger retesting.
 
-| **Test family** | **Acceptance requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Semantics | Canonical labels and states preserved |
-| Calculations | Published formulas and ranges pass |
-| Traceability | Source-to-result lineage retained |
-| Negative tests | Prohibited shortcuts rejected |
-| Versioning | Compatibility manifest accurate |
-| Output | Documented, reproducible conformance report |
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.12  Tool mark
 
 Any tool-conformance mark is distinct from accreditation, product security certification and AI-system certification.
 
-| **Test family** | **Acceptance requirement** |
-| --- | --- |
-| Scope | Apply the role and activity scope stated above. |
-| Semantics | Canonical labels and states preserved |
-| Calculations | Published formulas and ranges pass |
-| Traceability | Source-to-result lineage retained |
-| Negative tests | Prohibited shortcuts rejected |
-| Versioning | Compatibility manifest accurate |
-| Output | Documented, reproducible conformance report |
+*Shared rows for this section are listed once under §7.1.*
 
 # 8.1  Community constitution
 
 Participation is open under published conduct, contribution, review, licence and decision rules.
+
+*Shared rows: the rows below apply to each of §8.1–§8.15, read in that section's own context.*
 
 | **Extension field** | **Requirement** |
 | --- | --- |
@@ -1784,201 +956,91 @@ Participation is open under published conduct, contribution, review, licence and
 
 Users, contributors, reviewers, maintainers and governors have explicit rights and limits.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.3  Code of conduct
 
 Respectful, evidence-led participation protects people, confidentiality, safety and legitimate disagreement.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.4  Contribution intake
 
 Issues and proposals use templates for problem, evidence, impact, licence, conflicts and requested change.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.5  Extension namespace
 
 Extensions use distinct identifiers and cannot masquerade as canonical controls or artifacts.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.6  Extension proposal
 
 A proposal defines scope, need, users, obligations, controls, evidence, tests, cases, compatibility and owner.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.7  Extension review
 
 Review includes subject matter, architecture, AI security, evidence, assessment, legal and affected-community perspectives.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.8  Extension approval
 
 Approval states status, namespace, parent versions, conditions, maintainer, review cycle and sunset.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.9  Sector extensions
 
 Healthcare, finance, public sector, industrial, defence or other sectors require applicable expert and legal input.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.10  Technology extensions
 
 New agent, protocol, model, data or infrastructure extensions preserve canonical semantics and avoid vendor lock-in.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.11  Localization
 
 Translations preserve normative meaning, identify authoritative language and record disputes.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.12  Forks and derivatives
 
 Licence-compliant derivatives must not imply endorsement, official status or certification authority.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.13  Research and experimental status
 
 Experimental proposals are clearly labelled and cannot modify canonical assessments until approved.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.14  Community elections and appointments
 
 If introduced, selection rules publish eligibility, conflicts, term, voting and removal.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.15  Extension retirement
 
 Retirement preserves history, affected assessments, migration and replacement guidance.
 
-| **Extension field** | **Requirement** |
-| --- | --- |
-| Purpose | Apply the scheme purpose and boundary stated above. |
-| Namespace | Unique non-canonical identifier |
-| Compatibility | Parent versions and semantic impact |
-| Evidence | Need, cases and specialist input |
-| Review | Technical, security, method and community |
-| Approval | Authority, conditions and effective date |
-| Maintenance | Owner, cycle, changes and retirement |
+*Shared rows for this section are listed once under §8.1.*
 
 # 9.1  Complaint scope
 
 Complaints may concern conduct, process, confidentiality, mark use, scheme operation, assessor behavior or certificate holder.
+
+*Shared rows: the rows below apply to each of §9.1–§9.15, read in that section's own context.*
 
 | **Process field** | **Requirement** |
 | --- | --- |
@@ -1994,201 +1056,91 @@ Complaints may concern conduct, process, confidentiality, mark use, scheme opera
 
 Appeals challenge a defined decision such as refusal, condition, scope, suspension, revocation or conformance result.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.3  Intake and acknowledgement
 
 The record identifies complainant, subject, decision, evidence, requested remedy, conflicts and protection needs.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.4  Admissibility
 
 Admissibility checks authority, standing, timeliness, duplicate process, evidence and requested outcome.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.5  Independent review
 
 Reviewers were not responsible for the original decision and disclose new conflicts.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.6  Investigation
 
 Investigation is fair, evidence-led, proportionate, confidential and preserves both favorable and adverse evidence.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.7  Decision and remedy
 
 Reasoned outcomes may affirm, vary, remit, correct, suspend, restore, withdraw or require systemic action.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.8  No retaliation
 
 Good-faith complaints, appeals and integrity reports are protected from retaliation.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.9  Sanction framework
 
 Sanctions are defined, proportionate, consistent and linked to conduct, competence, claim or status misuse.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.10  Interim action
 
 Urgent temporary restriction may protect safety, evidence, people or scheme integrity pending final decision.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.11  External escalation
 
 Legal, regulatory, accreditation, law-enforcement or professional-body referral occurs only through authorized and applicable channels.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.12  Systemic learning
 
 Trend review examines root causes and required changes without exposing protected identities unnecessarily.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.13  Appeal record
 
 The record preserves submissions, evidence, recusals, analysis, decision, notice and further route.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.14  Publication
 
 Public outcomes are proportionate and protect privacy, security and due process.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 9.15  Finality and reopening
 
 A final decision may reopen for fraud, material new evidence, procedural defect or higher-authority direction.
 
-| **Process field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Independence | No original decision maker controls outcome |
-| Evidence | Complete, fair and protected record |
-| Notice | Allegation, process, rights and status |
-| Decision | Reasoned, authorized and proportionate |
-| Remedy | Case-specific and systemic action |
-| Record | Status, dates, conflicts and further route |
+*Shared rows for this section are listed once under §9.1.*
 
 # 10.1  Intellectual-property register
 
 Ownership, authorship, licence, third-party content, trademark, domain and repository rights are recorded.
+
+*Shared rows: the rows below apply to each of §10.1–§10.15, read in that section's own context.*
 
 | **Governance field** | **Requirement** |
 | --- | --- |
@@ -2204,197 +1156,85 @@ Ownership, authorship, licence, third-party content, trademark, domain and repos
 
 The chosen licence is approved by the rights holder and distinguishes methodology text, code, schemas, marks and examples.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.3  Contributor licence
 
 Contributors confirm authority to contribute and grant required rights without importing confidential or restricted content.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.4  Trademark policy
 
 The policy controls official name, logos, compatibility wording, certification marks, nominative use and prohibited implication.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.5  Certification marks
 
 Marks have approved artwork, meaning, scope, licence, surveillance, misuse response and cessation rules.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.6  Accreditation marks
 
 Accreditation marks are used only under valid authorization and exact applicable scope.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.7  Public statements
 
 Claims distinguish reference, compatibility, conformance, certification and accreditation.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.8  Third-party material
 
 Standards text, provider documentation, client evidence and external content are used only with lawful rights and attribution.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.9  Confidentiality
 
 Assessment and certification information is used only for authorized purposes and disclosed only under defined grounds.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.10  Privacy
 
 Personal data is minimized, lawful, accurate, protected, retained and corrected under applicable requirements.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.11  Record retention
 
 Retention schedules reflect decision, appeal, certificate, legal, privacy, security and historical needs.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.12  Security classification
 
 Public, internal, confidential and restricted information have handling, access and publication controls.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.13  Mark misuse
 
 Misuse triggers evidence preservation, notice, correction, suspension, withdrawal, public clarification or legal action as appropriate.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.14  Repository integrity
 
 Authoritative releases use controlled access, signed metadata, checksums, backups and recovery.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 10.15  Dissolution and succession
 
 Ownership, records, certificates, marks, domains and public notices transfer or close through an approved continuity plan.
 
-| **Governance field** | **Requirement** |
-| --- | --- |
-| Object | Apply the conformance object requirement stated above. |
-| Owner | Named legal or governance authority |
-| Permission | Licence, contract or approved use |
-| Restriction | Prohibited use and misleading claim |
-| Protection | Access, integrity, retention and security |
-| Enforcement | Correction, suspension, withdrawal or legal remedy |
-| Evidence | Register, agreement, notice and decision |
+*Shared rows for this section are listed once under §10.1.*
 
 # 11.1  Artifact release states
 
@@ -2429,6 +1269,8 @@ Applicant, Under Evaluation, Certified, Conditioned, Suspended, Expired, Withdra
 
 Effective date, transition start, transition end and withdrawal date are explicit and cannot be inferred from publication date.
 
+*Shared rows: the rows below apply to each of §11.3–§11.12, read in that section's own context.*
+
 | **Lifecycle field** | **Requirement** |
 | --- | --- |
 | Trigger | Apply the complaint, appeal or sanction trigger stated above. |
@@ -2443,127 +1285,55 @@ Effective date, transition start, transition end and withdrawal date are explici
 
 Transition identifies affected holders, assessments, tools, training, certificates and evidence.
 
-| **Lifecycle field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Affected objects | Artifacts, assessments, tools, people, certificates or marks |
-| Decision authority | Named body and threshold |
-| Notice | Reason, date, impact and action |
-| Transition | Migration, retest or cessation |
-| History | Prior state retained and linked |
-| Assurance | Completion review and unresolved issues |
+*Shared rows for this section are listed once under §11.3.*
 
 # 11.5  Grandfathering
 
 Grandfathering cannot waive competence, critical safety, impartiality or false-claim controls.
 
-| **Lifecycle field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Affected objects | Artifacts, assessments, tools, people, certificates or marks |
-| Decision authority | Named body and threshold |
-| Notice | Reason, date, impact and action |
-| Transition | Migration, retest or cessation |
-| History | Prior state retained and linked |
-| Assurance | Completion review and unresolved issues |
+*Shared rows for this section are listed once under §11.3.*
 
 # 11.6  Sunset criteria
 
 Obsolescence, replacement, low use, safety, legal, ownership or integrity may trigger sunset review.
 
-| **Lifecycle field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Affected objects | Artifacts, assessments, tools, people, certificates or marks |
-| Decision authority | Named body and threshold |
-| Notice | Reason, date, impact and action |
-| Transition | Migration, retest or cessation |
-| History | Prior state retained and linked |
-| Assurance | Completion review and unresolved issues |
+*Shared rows for this section are listed once under §11.3.*
 
 # 11.7  Certificate sunset
 
 Scheme closure or major-version retirement addresses valid certificates, surveillance, marks, appeals and public status.
 
-| **Lifecycle field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Affected objects | Artifacts, assessments, tools, people, certificates or marks |
-| Decision authority | Named body and threshold |
-| Notice | Reason, date, impact and action |
-| Transition | Migration, retest or cessation |
-| History | Prior state retained and linked |
-| Assurance | Completion review and unresolved issues |
+*Shared rows for this section are listed once under §11.3.*
 
 # 11.8  Extension sunset
 
 Retired extensions retain historical IDs and migration guidance.
 
-| **Lifecycle field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Affected objects | Artifacts, assessments, tools, people, certificates or marks |
-| Decision authority | Named body and threshold |
-| Notice | Reason, date, impact and action |
-| Transition | Migration, retest or cessation |
-| History | Prior state retained and linked |
-| Assurance | Completion review and unresolved issues |
+*Shared rows for this section are listed once under §11.3.*
 
 # 11.9  Data sunset
 
 Disposal follows retention, hold, privacy, security and historical-record rules.
 
-| **Lifecycle field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Affected objects | Artifacts, assessments, tools, people, certificates or marks |
-| Decision authority | Named body and threshold |
-| Notice | Reason, date, impact and action |
-| Transition | Migration, retest or cessation |
-| History | Prior state retained and linked |
-| Assurance | Completion review and unresolved issues |
+*Shared rows for this section are listed once under §11.3.*
 
 # 11.10  Emergency withdrawal
 
 Material integrity, safety, legal or ownership defect may require immediate withdrawal and public notice.
 
-| **Lifecycle field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Affected objects | Artifacts, assessments, tools, people, certificates or marks |
-| Decision authority | Named body and threshold |
-| Notice | Reason, date, impact and action |
-| Transition | Migration, retest or cessation |
-| History | Prior state retained and linked |
-| Assurance | Completion review and unresolved issues |
+*Shared rows for this section are listed once under §11.3.*
 
 # 11.11  Reissue
 
 Reissue preserves prior identifier or creates linked identifier according to correction significance.
 
-| **Lifecycle field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Affected objects | Artifacts, assessments, tools, people, certificates or marks |
-| Decision authority | Named body and threshold |
-| Notice | Reason, date, impact and action |
-| Transition | Migration, retest or cessation |
-| History | Prior state retained and linked |
-| Assurance | Completion review and unresolved issues |
+*Shared rows for this section are listed once under §11.3.*
 
 # 11.12  Ecosystem completion
 
 Artifact #11 completes the mandatory public methodology stack while keeping optional ontology, data model and conformance suites separately governable.
 
-| **Lifecycle field** | **Requirement** |
-| --- | --- |
-| Trigger | Apply the complaint, appeal or sanction trigger stated above. |
-| Affected objects | Artifacts, assessments, tools, people, certificates or marks |
-| Decision authority | Named body and threshold |
-| Notice | Reason, date, impact and action |
-| Transition | Migration, retest or cessation |
-| History | Prior state retained and linked |
-| Assurance | Completion review and unresolved issues |
+*Shared rows for this section are listed once under §11.3.*
 
 # A.1  Governance RACI matrix
 
