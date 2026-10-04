@@ -110,7 +110,7 @@ Cloudflare Pages:
 
 ## Methodology links are version-pinned
 
-The site names bundle `1.0-rc.4`, so links to normative artifacts (`docs/*`, `METHODOLOGY_MANIFEST.md`, `LICENSE`) are pinned to an immutable ref (`BUNDLE_REF` in `app/content.ts`). No Git tag or release exists for `1.0-rc.4` yet, so the ref is the bundle source commit `ec9b4571d96afdf1c423713349871459e1cf9b9b`, whose `docs/` blobs match every pin in the manifest. Replace it with the release tag once the owner creates one. Repository navigation (Issues, CONTRIBUTING, REVIEW_FINDINGS, ROADMAP, TRADEMARKS) stays on `main`. `scripts/check-links.mjs` fails if a normative artifact is linked at `main`.
+The site names bundle `1.0-rc.5`, so links to normative artifacts (`docs/*`, `METHODOLOGY_MANIFEST.md`, `LICENSE`) are pinned to an immutable ref (`BUNDLE_REF` in `app/content.ts`): the commit `5db4e7d883d6469788dbabcb71c169f86feffe19` that carries the bundle, whose `docs/` blobs match every pin in the manifest. `check-links.mjs` accepts only full commit SHAs, so the release tags (`v1.0-rc.4`, `v1.0-rc.5`) are not used directly. When the bundle changes, update `bundleRef` and `manifestRef` in `app/site.config.ts`. Repository navigation (Issues, CONTRIBUTING, REVIEW_FINDINGS, ROADMAP, TRADEMARKS) stays on `main`. `scripts/check-links.mjs` fails if a normative artifact is linked at `main`.
 
 ## Brand mark is provisional
 

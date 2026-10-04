@@ -2,7 +2,9 @@
 
 # AI Trust Graph — Evidence Model
 
-*Version 2.0.0 | Provenance, quality, sufficiency, confidence, lineage, conflict and graph traceability*
+*Version 2.0.1 | Provenance, quality, sufficiency, confidence, lineage, conflict and graph traceability*
+
+> **CORRECTION NOTE (2.0.1, 2026-10-04, patch)** Editorial consolidation under Artifact #11 §2.3. Table rows that were repeated word for word in every section of a series are now listed once, under a "Shared rows" note naming exactly the sections they apply to; each affected section points to it. No rule, value or other wording changed.
 
 > **PURPOSE** Define what counts as evidence, what each evidence grade can support, how evidence is governed through its lifecycle, and how every material AI Trust Graph assertion remains defensible and reviewable.
 
@@ -151,6 +153,8 @@ No source is available or the supplied item cannot be linked to the assertion.
 
 The only defensible conclusion is UNKNOWN or Not Tested. E0 is not evidence that the control is absent.
 
+*Shared rows: the rows below apply to each of §1.1–§1.6, read in that section's own context.*
+
 | **Dimension** | **Required interpretation** |
 | --- | --- |
 | Source | Identify origin and authoritative context. |
@@ -166,14 +170,7 @@ A hypothesis is derived from incomplete, indirect, automated or unverified infor
 
 E1 can prioritize investigation and create candidate graph assertions, but cannot establish implementation or operating effectiveness.
 
-| **Dimension** | **Required interpretation** |
-| --- | --- |
-| Source | Identify origin and authoritative context. |
-| Assertion | State precisely what the grade supports. |
-| Scope | Name assets, environment, population and period. |
-| Limit | Do not generalize beyond the observed conditions. |
-| Review | Record assessor and reviewer decision. |
-| Upgrade path | Identify corroboration or testing needed for stronger support. |
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.3  E2 Attestation
 
@@ -181,14 +178,7 @@ An accountable person states that a condition or practice exists.
 
 E2 supports claimed practice and context. It is vulnerable to memory, interpretation, incentives and incomplete visibility and therefore needs corroboration for material technical claims.
 
-| **Dimension** | **Required interpretation** |
-| --- | --- |
-| Source | Identify origin and authoritative context. |
-| Assertion | State precisely what the grade supports. |
-| Scope | Name assets, environment, population and period. |
-| Limit | Do not generalize beyond the observed conditions. |
-| Review | Record assessor and reviewer decision. |
-| Upgrade path | Identify corroboration or testing needed for stronger support. |
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.4  E3 Approved documentary evidence
 
@@ -196,14 +186,7 @@ A governed document records approved design, policy, architecture, procedure, co
 
 E3 can support design intent and governance state. It does not alone prove actual configuration, runtime behavior or sustained operation.
 
-| **Dimension** | **Required interpretation** |
-| --- | --- |
-| Source | Identify origin and authoritative context. |
-| Assertion | State precisely what the grade supports. |
-| Scope | Name assets, environment, population and period. |
-| Limit | Do not generalize beyond the observed conditions. |
-| Review | Record assessor and reviewer decision. |
-| Upgrade path | Identify corroboration or testing needed for stronger support. |
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.5  E4 Corroborated technical evidence
 
@@ -211,14 +194,7 @@ Technical evidence from authoritative sources is supported by an independent sou
 
 E4 can support implementation or operation within observed scope when current, relevant and representative.
 
-| **Dimension** | **Required interpretation** |
-| --- | --- |
-| Source | Identify origin and authoritative context. |
-| Assertion | State precisely what the grade supports. |
-| Scope | Name assets, environment, population and period. |
-| Limit | Do not generalize beyond the observed conditions. |
-| Review | Record assessor and reviewer decision. |
-| Upgrade path | Identify corroboration or testing needed for stronger support. |
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.6  E5 Direct technical and representative evidence
 
@@ -226,14 +202,7 @@ Current direct technical evidence is combined with a representative test or oper
 
 E5 may support verified effectiveness or adaptive operation, but only for the tested scope, period and conditions.
 
-| **Dimension** | **Required interpretation** |
-| --- | --- |
-| Source | Identify origin and authoritative context. |
-| Assertion | State precisely what the grade supports. |
-| Scope | Name assets, environment, population and period. |
-| Limit | Do not generalize beyond the observed conditions. |
-| Review | Record assessor and reviewer decision. |
-| Upgrade path | Identify corroboration or testing needed for stronger support. |
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.7  Grade assignment decision tree
 
@@ -295,6 +264,11 @@ Reviewer identifies the supported proposition and any unsupported inference.
 | Pass condition | What must be true for relevance to support the assertion? |
 | Failure signal | What weakness in relevance could materially alter the conclusion? |
 | Mitigation | What additional source, collection or limitation addresses the relevance gap? |
+
+*Shared rows: the rows below apply to each of §2.1–§2.10, read in that section's own context.*
+
+| **Review field** | **Question** |
+| --- | --- |
 | Decision effect | Does the gap reduce scope, confidence, grade or make the result Inconclusive? |
 
 # 2.2  Provenance
@@ -308,7 +282,8 @@ Reviewer can trace the item to its authoritative source and distinguish original
 | Pass condition | What must be true for provenance to support the assertion? |
 | Failure signal | What weakness in provenance could materially alter the conclusion? |
 | Mitigation | What additional source, collection or limitation addresses the provenance gap? |
-| Decision effect | Does the gap reduce scope, confidence, grade or make the result Inconclusive? |
+
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.3  Integrity and authenticity
 
@@ -321,7 +296,8 @@ Hashes, signatures, immutable references, access controls, custody or reproducib
 | Pass condition | What must be true for integrity and authenticity to support the assertion? |
 | Failure signal | What weakness in integrity and authenticity could materially alter the conclusion? |
 | Mitigation | What additional source, collection or limitation addresses the integrity and authenticity gap? |
-| Decision effect | Does the gap reduce scope, confidence, grade or make the result Inconclusive? |
+
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.4  Currentness and temporal fit
 
@@ -334,7 +310,8 @@ Age is evaluated using change rate, criticality, source type and event triggers 
 | Pass condition | What must be true for currentness and temporal fit to support the assertion? |
 | Failure signal | What weakness in currentness and temporal fit could materially alter the conclusion? |
 | Mitigation | What additional source, collection or limitation addresses the currentness and temporal fit gap? |
-| Decision effect | Does the gap reduce scope, confidence, grade or make the result Inconclusive? |
+
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.5  Scope and specificity
 
@@ -347,7 +324,8 @@ Broad conclusions require evidence whose coverage matches the claim or a clearly
 | Pass condition | What must be true for scope and specificity to support the assertion? |
 | Failure signal | What weakness in scope and specificity could materially alter the conclusion? |
 | Mitigation | What additional source, collection or limitation addresses the scope and specificity gap? |
-| Decision effect | Does the gap reduce scope, confidence, grade or make the result Inconclusive? |
+
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.6  Corroboration and independence
 
@@ -360,7 +338,8 @@ Two views generated from one underlying record may improve convenience but not i
 | Pass condition | What must be true for corroboration and independence to support the assertion? |
 | Failure signal | What weakness in corroboration and independence could materially alter the conclusion? |
 | Mitigation | What additional source, collection or limitation addresses the corroboration and independence gap? |
-| Decision effect | Does the gap reduce scope, confidence, grade or make the result Inconclusive? |
+
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.7  Representativeness
 
@@ -373,7 +352,8 @@ Sample size alone is insufficient without population, selection method, period a
 | Pass condition | What must be true for representativeness to support the assertion? |
 | Failure signal | What weakness in representativeness could materially alter the conclusion? |
 | Mitigation | What additional source, collection or limitation addresses the representativeness gap? |
-| Decision effect | Does the gap reduce scope, confidence, grade or make the result Inconclusive? |
+
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.8  Completeness and context
 
@@ -386,7 +366,8 @@ A cropped screenshot or filtered export may omit facts that reverse the interpre
 | Pass condition | What must be true for completeness and context to support the assertion? |
 | Failure signal | What weakness in completeness and context could materially alter the conclusion? |
 | Mitigation | What additional source, collection or limitation addresses the completeness and context gap? |
-| Decision effect | Does the gap reduce scope, confidence, grade or make the result Inconclusive? |
+
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.9  Consistency and reproducibility
 
@@ -399,7 +380,8 @@ A repeatable query or test records inputs, environment, versions and relevant pa
 | Pass condition | What must be true for consistency and reproducibility to support the assertion? |
 | Failure signal | What weakness in consistency and reproducibility could materially alter the conclusion? |
 | Mitigation | What additional source, collection or limitation addresses the consistency and reproducibility gap? |
-| Decision effect | Does the gap reduce scope, confidence, grade or make the result Inconclusive? |
+
+*Shared rows for this section are listed once under §2.1.*
 
 # 2.10  Sensitivity and handling fitness
 
@@ -412,7 +394,8 @@ Classification, minimization, redaction, access, encryption, retention and legal
 | Pass condition | What must be true for sensitivity and handling fitness to support the assertion? |
 | Failure signal | What weakness in sensitivity and handling fitness could materially alter the conclusion? |
 | Mitigation | What additional source, collection or limitation addresses the sensitivity and handling fitness gap? |
-| Decision effect | Does the gap reduce scope, confidence, grade or make the result Inconclusive? |
+
+*Shared rows for this section are listed once under §2.1.*
 
 # 3.1  Evidence planning
 
@@ -529,8 +512,13 @@ Evidence is sufficient only for a specific conclusion. Sufficiency considers gra
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Claim-specific evidence basis. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for sufficiency principle. |
+
+*Shared rows: the rows below apply to each of §4.1–§4.12, read in that section's own context.*
+
+| **Decision element** | **Rule** |
+| --- | --- |
+| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 
 Sufficiency is decided separately for design, implementation, operating effectiveness and, where a level-5 or adaptive claim is made, level-5 and adaptive operation; evidence sufficient for one component does not support another. A finalized numeric component score requires an approved Evidence Sufficiency Decision (§4.13). Minimum evidence for a finalized numeric component:
 
@@ -550,8 +538,9 @@ Design adequacy normally requires approved intent, scope, owner, mechanism, depe
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Current E3 plus scope and approval. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for design sufficiency. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.3  Implementation sufficiency
 
@@ -562,8 +551,9 @@ The deployed or configured environment includes the technical or authoritative o
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Representative E4-or-stronger technical evidence from the deployed or configured environment. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for implementation sufficiency. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.4  Operating-effectiveness sufficiency
 
@@ -572,8 +562,9 @@ Effectiveness requires current evidence that the control operated as intended un
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | E5-quality test or operating record for the claim and declared scope. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for operating-effectiveness sufficiency. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.5  Level-5 and adaptive sufficiency
 
@@ -582,8 +573,9 @@ Any finalized component score of 5 (design, implementation or operating effectiv
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Repeated E5-quality evidence across relevant material changes. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for level-5 and adaptive sufficiency. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.6  Graph-node sufficiency
 
@@ -592,8 +584,9 @@ A node assertion requires typed identity, scope, lifecycle state and evidence th
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Evidence-backed identity and scope. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for graph-node sufficiency. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.7  Graph-edge sufficiency
 
@@ -602,8 +595,9 @@ An edge requires compatible endpoints, direction, type, scope, conditions, valid
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Evidence-backed relationship and conditions. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for graph-edge sufficiency. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.8  Path sufficiency
 
@@ -612,8 +606,9 @@ A material path requires evidence for each consequential relationship and condit
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Evidence for every material step or explicit UNKNOWN. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for path sufficiency. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.9  Finding sufficiency
 
@@ -622,8 +617,9 @@ A finding requires criteria, condition, cause, affected objects or paths, conseq
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Traceable evidence and reproducible procedure. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for finding sufficiency. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.10  Decision sufficiency
 
@@ -632,8 +628,9 @@ An approval, exception or risk acceptance requires authorized owner, decision co
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Authorized decision record with evidence and expiry. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for decision sufficiency. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.11  Confidence determination
 
@@ -642,8 +639,9 @@ Confidence is High, Medium, Low or Not rated based on support for the specific c
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Quality, coverage, corroboration and conflict review. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for confidence determination. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.12  Critical evidence gates
 
@@ -654,8 +652,9 @@ All applicable gates are resolved before a control result is finalized. No gate 
 | **Decision element** | **Rule** |
 | --- | --- |
 | Minimum support | Required evidence must be present before strong claim. |
-| Failure treatment | Narrow the claim, lower confidence, preserve UNKNOWN, mark Inconclusive or activate a gate as appropriate. |
 | Reviewer record | Document why the evidence is sufficient or insufficient for critical evidence gates. |
+
+*Shared rows for this section are listed once under §4.1.*
 
 # 4.13  Evidence sufficiency decision
 
@@ -689,6 +688,11 @@ Conflicts include source disagreement, temporal mismatch, scope mismatch, versio
 | **Resolution step** | **Required action** |
 | --- | --- |
 | State the conflict | Identify the exact assertion implicated by conflict taxonomy. |
+
+*Shared rows: the rows below apply to each of §5.1–§5.9, read in that section's own context.*
+
+| **Resolution step** | **Required action** |
+| --- | --- |
 | Preserve sources | Retain supporting, disputing and qualifying evidence. |
 | Assess quality | Compare relevance, provenance, integrity, time and scope. |
 | Corroborate | Obtain an independent source or representative test where material. |
@@ -702,11 +706,8 @@ No universal source wins. Directness, authority, currentness, integrity, scope a
 | **Resolution step** | **Required action** |
 | --- | --- |
 | State the conflict | Identify the exact assertion implicated by source precedence. |
-| Preserve sources | Retain supporting, disputing and qualifying evidence. |
-| Assess quality | Compare relevance, provenance, integrity, time and scope. |
-| Corroborate | Obtain an independent source or representative test where material. |
-| Decide | Approve, modify, reject, narrow or leave Inconclusive. |
-| Trace | Record rationale, reviewer, supersession and downstream impact. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.3  Policy versus configuration
 
@@ -715,11 +716,8 @@ Policy establishes intended state; configuration establishes observed implementa
 | **Resolution step** | **Required action** |
 | --- | --- |
 | State the conflict | Identify the exact assertion implicated by policy versus configuration. |
-| Preserve sources | Retain supporting, disputing and qualifying evidence. |
-| Assess quality | Compare relevance, provenance, integrity, time and scope. |
-| Corroborate | Obtain an independent source or representative test where material. |
-| Decide | Approve, modify, reject, narrow or leave Inconclusive. |
-| Trace | Record rationale, reviewer, supersession and downstream impact. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.4  Configuration versus runtime
 
@@ -728,11 +726,8 @@ Configuration may permit or prevent behavior, while runtime evidence shows obser
 | **Resolution step** | **Required action** |
 | --- | --- |
 | State the conflict | Identify the exact assertion implicated by configuration versus runtime. |
-| Preserve sources | Retain supporting, disputing and qualifying evidence. |
-| Assess quality | Compare relevance, provenance, integrity, time and scope. |
-| Corroborate | Obtain an independent source or representative test where material. |
-| Decide | Approve, modify, reject, narrow or leave Inconclusive. |
-| Trace | Record rationale, reviewer, supersession and downstream impact. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.5  Attestation versus technical evidence
 
@@ -741,11 +736,8 @@ Attestation supplies context and explanation. When material technical evidence d
 | **Resolution step** | **Required action** |
 | --- | --- |
 | State the conflict | Identify the exact assertion implicated by attestation versus technical evidence. |
-| Preserve sources | Retain supporting, disputing and qualifying evidence. |
-| Assess quality | Compare relevance, provenance, integrity, time and scope. |
-| Corroborate | Obtain an independent source or representative test where material. |
-| Decide | Approve, modify, reject, narrow or leave Inconclusive. |
-| Trace | Record rationale, reviewer, supersession and downstream impact. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.6  Temporal conflict
 
@@ -754,11 +746,8 @@ Evidence from different periods may each be correct. Determine whether the syste
 | **Resolution step** | **Required action** |
 | --- | --- |
 | State the conflict | Identify the exact assertion implicated by temporal conflict. |
-| Preserve sources | Retain supporting, disputing and qualifying evidence. |
-| Assess quality | Compare relevance, provenance, integrity, time and scope. |
-| Corroborate | Obtain an independent source or representative test where material. |
-| Decide | Approve, modify, reject, narrow or leave Inconclusive. |
-| Trace | Record rationale, reviewer, supersession and downstream impact. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.7  Scope conflict
 
@@ -767,11 +756,8 @@ Evidence from development, one tenant or one population cannot support productio
 | **Resolution step** | **Required action** |
 | --- | --- |
 | State the conflict | Identify the exact assertion implicated by scope conflict. |
-| Preserve sources | Retain supporting, disputing and qualifying evidence. |
-| Assess quality | Compare relevance, provenance, integrity, time and scope. |
-| Corroborate | Obtain an independent source or representative test where material. |
-| Decide | Approve, modify, reject, narrow or leave Inconclusive. |
-| Trace | Record rationale, reviewer, supersession and downstream impact. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.8  Reviewer disagreement
 
@@ -780,11 +766,8 @@ Material review disagreement is recorded with criterion, evidence interpretation
 | **Resolution step** | **Required action** |
 | --- | --- |
 | State the conflict | Identify the exact assertion implicated by reviewer disagreement. |
-| Preserve sources | Retain supporting, disputing and qualifying evidence. |
-| Assess quality | Compare relevance, provenance, integrity, time and scope. |
-| Corroborate | Obtain an independent source or representative test where material. |
-| Decide | Approve, modify, reject, narrow or leave Inconclusive. |
-| Trace | Record rationale, reviewer, supersession and downstream impact. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 # 5.9  Conflict resolution workflow
 
@@ -793,11 +776,8 @@ Identify exact propositions, compare quality dimensions, seek independent corrob
 | **Resolution step** | **Required action** |
 | --- | --- |
 | State the conflict | Identify the exact assertion implicated by conflict resolution workflow. |
-| Preserve sources | Retain supporting, disputing and qualifying evidence. |
-| Assess quality | Compare relevance, provenance, integrity, time and scope. |
-| Corroborate | Obtain an independent source or representative test where material. |
-| Decide | Approve, modify, reject, narrow or leave Inconclusive. |
-| Trace | Record rationale, reviewer, supersession and downstream impact. |
+
+*Shared rows for this section are listed once under §5.1.*
 
 # 6.1  Interview and attestation evidence
 
@@ -806,6 +786,11 @@ Useful for context, ownership, rationale and claimed practice. Record participan
 | **Quality focus** | **Required check** |
 | --- | --- |
 | Authenticity | Confirm the origin and authority of interview and attestation evidence. |
+
+*Shared rows: the rows below apply to each of §6.1–§6.10, read in that section's own context.*
+
+| **Quality focus** | **Required check** |
+| --- | --- |
 | Scope | Identify service, asset, environment, population and period. |
 | Limitation | State what this evidence type cannot prove by itself. |
 | Corroboration | Name the complementary source or procedure needed for material claims. |
@@ -818,10 +803,8 @@ Supports approved intent, responsibilities and required process when current, in
 | **Quality focus** | **Required check** |
 | --- | --- |
 | Authenticity | Confirm the origin and authority of policy, standard and procedure evidence. |
-| Scope | Identify service, asset, environment, population and period. |
-| Limitation | State what this evidence type cannot prove by itself. |
-| Corroboration | Name the complementary source or procedure needed for material claims. |
-| Handling | Apply classification, minimization, access and retention requirements. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 # 6.3  Architecture and design evidence
 
@@ -830,10 +813,8 @@ Supports intended components, flows, boundaries and controls but must be reconci
 | **Quality focus** | **Required check** |
 | --- | --- |
 | Authenticity | Confirm the origin and authority of architecture and design evidence. |
-| Scope | Identify service, asset, environment, population and period. |
-| Limitation | State what this evidence type cannot prove by itself. |
-| Corroboration | Name the complementary source or procedure needed for material claims. |
-| Handling | Apply classification, minimization, access and retention requirements. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 # 6.4  Configuration and administrative evidence
 
@@ -842,10 +823,8 @@ Supports implementation claims when collected from authoritative systems with sc
 | **Quality focus** | **Required check** |
 | --- | --- |
 | Authenticity | Confirm the origin and authority of configuration and administrative evidence. |
-| Scope | Identify service, asset, environment, population and period. |
-| Limitation | State what this evidence type cannot prove by itself. |
-| Corroboration | Name the complementary source or procedure needed for material claims. |
-| Handling | Apply classification, minimization, access and retention requirements. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 # 6.5  Runtime and telemetry evidence
 
@@ -854,10 +833,8 @@ Supports observed behavior, frequency, identity, sequence and outcome when logs 
 | **Quality focus** | **Required check** |
 | --- | --- |
 | Authenticity | Confirm the origin and authority of runtime and telemetry evidence. |
-| Scope | Identify service, asset, environment, population and period. |
-| Limitation | State what this evidence type cannot prove by itself. |
-| Corroboration | Name the complementary source or procedure needed for material claims. |
-| Handling | Apply classification, minimization, access and retention requirements. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 # 6.6  Test and experiment evidence
 
@@ -866,10 +843,8 @@ Supports behavior under specified conditions when authorized, reproducible, safe
 | **Quality focus** | **Required check** |
 | --- | --- |
 | Authenticity | Confirm the origin and authority of test and experiment evidence. |
-| Scope | Identify service, asset, environment, population and period. |
-| Limitation | State what this evidence type cannot prove by itself. |
-| Corroboration | Name the complementary source or procedure needed for material claims. |
-| Handling | Apply classification, minimization, access and retention requirements. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 # 6.7  Code, pipeline and artifact evidence
 
@@ -878,10 +853,8 @@ Supports provenance, design and deployment when repository, commit, build, signa
 | **Quality focus** | **Required check** |
 | --- | --- |
 | Authenticity | Confirm the origin and authority of code, pipeline and artifact evidence. |
-| Scope | Identify service, asset, environment, population and period. |
-| Limitation | State what this evidence type cannot prove by itself. |
-| Corroboration | Name the complementary source or procedure needed for material claims. |
-| Handling | Apply classification, minimization, access and retention requirements. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 # 6.8  Provider and third-party evidence
 
@@ -890,10 +863,8 @@ Supports supplier assertions only for the named service, period, configuration a
 | **Quality focus** | **Required check** |
 | --- | --- |
 | Authenticity | Confirm the origin and authority of provider and third-party evidence. |
-| Scope | Identify service, asset, environment, population and period. |
-| Limitation | State what this evidence type cannot prove by itself. |
-| Corroboration | Name the complementary source or procedure needed for material claims. |
-| Handling | Apply classification, minimization, access and retention requirements. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 # 6.9  Contractual and legal evidence
 
@@ -902,10 +873,8 @@ Supports obligations, rights, roles and decisions when executed, current, applic
 | **Quality focus** | **Required check** |
 | --- | --- |
 | Authenticity | Confirm the origin and authority of contractual and legal evidence. |
-| Scope | Identify service, asset, environment, population and period. |
-| Limitation | State what this evidence type cannot prove by itself. |
-| Corroboration | Name the complementary source or procedure needed for material claims. |
-| Handling | Apply classification, minimization, access and retention requirements. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 # 6.10  Incident and exercise evidence
 
@@ -914,10 +883,8 @@ Supports failure, detection, containment, recovery and learning conclusions when
 | **Quality focus** | **Required check** |
 | --- | --- |
 | Authenticity | Confirm the origin and authority of incident and exercise evidence. |
-| Scope | Identify service, asset, environment, population and period. |
-| Limitation | State what this evidence type cannot prove by itself. |
-| Corroboration | Name the complementary source or procedure needed for material claims. |
-| Handling | Apply classification, minimization, access and retention requirements. |
+
+*Shared rows for this section are listed once under §6.1.*
 
 # 7.1  Evidence for nodes
 
@@ -926,6 +893,11 @@ Node evidence proves existence, identity, type, scope and lifecycle state withou
 | **Required link** | **Evidence discipline** |
 | --- | --- |
 | Source | Identify the source supporting evidence for nodes. |
+
+*Shared rows: the rows below apply to each of §7.1–§7.8, read in that section's own context.*
+
+| **Required link** | **Evidence discipline** |
+| --- | --- |
 | Assertion | State exactly what is supported or disputed. |
 | Conditions | Record environment, identity, version, time and relevant state. |
 | Review | Separate machine proposal from approved assessment truth. |
@@ -938,10 +910,8 @@ Relationship evidence supports direction, endpoints, type, conditions, scope, va
 | **Required link** | **Evidence discipline** |
 | --- | --- |
 | Source | Identify the source supporting evidence for relationships. |
-| Assertion | State exactly what is supported or disputed. |
-| Conditions | Record environment, identity, version, time and relevant state. |
-| Review | Separate machine proposal from approved assessment truth. |
-| Change | Version updates and preserve prior analysis runs. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.3  Evidence for boundaries
 
@@ -950,10 +920,8 @@ Boundary evidence identifies the change in ownership, identity, trust, data, run
 | **Required link** | **Evidence discipline** |
 | --- | --- |
 | Source | Identify the source supporting evidence for boundaries. |
-| Assertion | State exactly what is supported or disputed. |
-| Conditions | Record environment, identity, version, time and relevant state. |
-| Review | Separate machine proposal from approved assessment truth. |
-| Change | Version updates and preserve prior analysis runs. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.4  Evidence for paths
 
@@ -962,10 +930,8 @@ Path evidence is composed step by step and records unsupported transitions, vali
 | **Required link** | **Evidence discipline** |
 | --- | --- |
 | Source | Identify the source supporting evidence for paths. |
-| Assertion | State exactly what is supported or disputed. |
-| Conditions | Record environment, identity, version, time and relevant state. |
-| Review | Separate machine proposal from approved assessment truth. |
-| Change | Version updates and preserve prior analysis runs. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.5  Evidence for controls
 
@@ -974,10 +940,8 @@ Control evidence separates design, implementation, operation and validation and 
 | **Required link** | **Evidence discipline** |
 | --- | --- |
 | Source | Identify the source supporting evidence for controls. |
-| Assertion | State exactly what is supported or disputed. |
-| Conditions | Record environment, identity, version, time and relevant state. |
-| Review | Separate machine proposal from approved assessment truth. |
-| Change | Version updates and preserve prior analysis runs. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.6  Evidence for findings and decisions
 
@@ -986,10 +950,8 @@ Findings and decisions link to the evidence considered, confidence, limitations,
 | **Required link** | **Evidence discipline** |
 | --- | --- |
 | Source | Identify the source supporting evidence for findings and decisions. |
-| Assertion | State exactly what is supported or disputed. |
-| Conditions | Record environment, identity, version, time and relevant state. |
-| Review | Separate machine proposal from approved assessment truth. |
-| Change | Version updates and preserve prior analysis runs. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.7  Automated evidence collection
 
@@ -998,10 +960,8 @@ Automation may improve consistency and freshness but must record connector scope
 | **Required link** | **Evidence discipline** |
 | --- | --- |
 | Source | Identify the source supporting automated evidence collection. |
-| Assertion | State exactly what is supported or disputed. |
-| Conditions | Record environment, identity, version, time and relevant state. |
-| Review | Separate machine proposal from approved assessment truth. |
-| Change | Version updates and preserve prior analysis runs. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 # 7.8  AI-assisted evidence analysis
 
@@ -1010,10 +970,8 @@ AI may extract, classify, summarize, compare or propose assertions. The system r
 | **Required link** | **Evidence discipline** |
 | --- | --- |
 | Source | Identify the source supporting ai-assisted evidence analysis. |
-| Assertion | State exactly what is supported or disputed. |
-| Conditions | Record environment, identity, version, time and relevant state. |
-| Review | Separate machine proposal from approved assessment truth. |
-| Change | Version updates and preserve prior analysis runs. |
+
+*Shared rows for this section are listed once under §7.1.*
 
 # 8.1  Evidence register
 
@@ -1022,6 +980,11 @@ Maintain a controlled register of evidence identity, source, grade, owner, scope
 | **Operational question** | **Required output** |
 | --- | --- |
 | Owner | Who is accountable for evidence register? |
+
+*Shared rows: the rows below apply to each of §8.1–§8.8, read in that section's own context.*
+
+| **Operational question** | **Required output** |
+| --- | --- |
 | Measure | What numerator, denominator, period and limitation are reported? |
 | Trigger | Which change, expiry, conflict or incident requires action? |
 | Evidence | What proves the operation itself is effective? |
@@ -1034,10 +997,8 @@ Report assessment coverage, determinate coverage, technical-evidence coverage (S
 | **Operational question** | **Required output** |
 | --- | --- |
 | Owner | Who is accountable for evidence coverage metrics? |
-| Measure | What numerator, denominator, period and limitation are reported? |
-| Trigger | Which change, expiry, conflict or incident requires action? |
-| Evidence | What proves the operation itself is effective? |
-| Review | Who independently checks the result and closure? |
+
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.3  Evidence freshness metrics
 
@@ -1046,10 +1007,8 @@ Track items past review threshold, invalidated by material change, awaiting rene
 | **Operational question** | **Required output** |
 | --- | --- |
 | Owner | Who is accountable for evidence freshness metrics? |
-| Measure | What numerator, denominator, period and limitation are reported? |
-| Trigger | Which change, expiry, conflict or incident requires action? |
-| Evidence | What proves the operation itself is effective? |
-| Review | Who independently checks the result and closure? |
+
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.4  Evidence quality assurance
 
@@ -1058,10 +1017,8 @@ Sample evidence links and reproduce collection, grade, scope, conclusion and ret
 | **Operational question** | **Required output** |
 | --- | --- |
 | Owner | Who is accountable for evidence quality assurance? |
-| Measure | What numerator, denominator, period and limitation are reported? |
-| Trigger | Which change, expiry, conflict or incident requires action? |
-| Evidence | What proves the operation itself is effective? |
-| Review | Who independently checks the result and closure? |
+
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.5  Evidence access governance
 
@@ -1070,10 +1027,8 @@ Use least privilege, role separation, access logging, periodic review and rapid 
 | **Operational question** | **Required output** |
 | --- | --- |
 | Owner | Who is accountable for evidence access governance? |
-| Measure | What numerator, denominator, period and limitation are reported? |
-| Trigger | Which change, expiry, conflict or incident requires action? |
-| Evidence | What proves the operation itself is effective? |
-| Review | Who independently checks the result and closure? |
+
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.6  Evidence incident response
 
@@ -1082,10 +1037,8 @@ Respond to loss, unauthorized access, tampering, misclassification, over-retenti
 | **Operational question** | **Required output** |
 | --- | --- |
 | Owner | Who is accountable for evidence incident response? |
-| Measure | What numerator, denominator, period and limitation are reported? |
-| Trigger | Which change, expiry, conflict or incident requires action? |
-| Evidence | What proves the operation itself is effective? |
-| Review | Who independently checks the result and closure? |
+
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.7  Evidence portability and exit
 
@@ -1094,10 +1047,8 @@ Export evidence metadata, links, grades, review history and lineage without depe
 | **Operational question** | **Required output** |
 | --- | --- |
 | Owner | Who is accountable for evidence portability and exit? |
-| Measure | What numerator, denominator, period and limitation are reported? |
-| Trigger | Which change, expiry, conflict or incident requires action? |
-| Evidence | What proves the operation itself is effective? |
-| Review | Who independently checks the result and closure? |
+
+*Shared rows for this section are listed once under §8.1.*
 
 # 8.8  Evidence maturity linkage
 
@@ -1106,10 +1057,8 @@ Evidence practices support all six maturity domains; higher maturity requires me
 | **Operational question** | **Required output** |
 | --- | --- |
 | Owner | Who is accountable for evidence maturity linkage? |
-| Measure | What numerator, denominator, period and limitation are reported? |
-| Trigger | Which change, expiry, conflict or incident requires action? |
-| Evidence | What proves the operation itself is effective? |
-| Review | Who independently checks the result and closure? |
+
+*Shared rows for this section are listed once under §8.1.*
 
 # A.1  Canonical evidence register schema
 
@@ -1241,4 +1190,4 @@ The AI Trust Graph Evidence Model makes every material conclusion traceable to s
 | Licence and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Evidence Model | Version 2.0.0 | Public-release candidate
+AI Trust Graph Evidence Model | Version 2.0.1 | Public-release candidate

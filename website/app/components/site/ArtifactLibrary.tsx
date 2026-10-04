@@ -6,7 +6,7 @@ import { artifactGroups, artifactMeta, type ArtifactGroup } from "../../site-con
 
 /**
  * Artifact library with filters. Status comes from the manifest: the twelve
- * normative artifacts are in the 1.0-rc.4 public-release candidate; #13 is a
+ * normative artifacts are in the 1.0-rc.5 public-release candidate; #13 is a
  * non-normative companion. No artifact is "published" in the final sense yet,
  * so that filter shows an explanation instead of an empty grid. Without
  * JavaScript the filters are not rendered and every artifact is listed.

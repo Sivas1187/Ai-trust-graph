@@ -2,7 +2,9 @@
 
 # AI Trust Graph — Assessment Methodology
 
-*Version 1.1.0 | Repeatable, evidence-gated and graph-aware assessment from initiation through reassessment*
+*Version 1.1.1 | Repeatable, evidence-gated and graph-aware assessment from initiation through reassessment*
+
+> **CORRECTION NOTE (1.1.1, 2026-10-04, patch)** Editorial consolidation under Artifact #11 §2.3. Table rows that were repeated word for word in every section of a series are now listed once, under a "Shared rows" note naming exactly the sections they apply to; each affected section points to it. No rule, value or other wording changed.
 
 > **PURPOSE** Define the controlled lifecycle, methods, decision gates, records and quality assurance required to conduct a defensible AI Trust Graph assessment.
 
@@ -173,10 +175,15 @@ Establish the first defensible view of scope, graph, controls, evidence, maturit
 | **Method element** | **Requirement** |
 | --- | --- |
 | Trigger | New program, portfolio or system without a current ATG assessment. |
+| Output | Issue a versioned baseline assessment record with limitations and next trigger. |
+
+*Shared rows: the rows below apply to each of §1.1–§1.10, read in that section's own context.*
+
+| **Method element** | **Requirement** |
+| --- | --- |
 | Minimum scope | Declare assessment unit, population, environment and evidence period. |
 | Depth | Set by consequence, authority, change, obligations and uncertainty. |
 | Independence | Increase for high-impact decisions and conflicted first-line ownership. |
-| Output | Issue a versioned baseline assessment record with limitations and next trigger. |
 
 # 1.2  Periodic reassessment
 
@@ -185,10 +192,9 @@ Re-evaluate a stable scope at an approved cadence while preserving comparable pr
 | **Method element** | **Requirement** |
 | --- | --- |
 | Trigger | Scheduled assurance where change rate and consequence permit periodic review. |
-| Minimum scope | Declare assessment unit, population, environment and evidence period. |
-| Depth | Set by consequence, authority, change, obligations and uncertainty. |
-| Independence | Increase for high-impact decisions and conflicted first-line ownership. |
 | Output | Issue a versioned periodic reassessment record with limitations and next trigger. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.3  Material-change assessment
 
@@ -197,10 +203,9 @@ Assess the consequences of model, prompt, data, tool, identity, provider, autono
 | **Method element** | **Requirement** |
 | --- | --- |
 | Trigger | Before release or immediately after unplanned material change. |
-| Minimum scope | Declare assessment unit, population, environment and evidence period. |
-| Depth | Set by consequence, authority, change, obligations and uncertainty. |
-| Independence | Increase for high-impact decisions and conflicted first-line ownership. |
 | Output | Issue a versioned material-change assessment record with limitations and next trigger. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.4  High-impact deep dive
 
@@ -209,10 +214,9 @@ Increase evidence, testing, independence and path analysis for systems with sign
 | **Method element** | **Requirement** |
 | --- | --- |
 | Trigger | Regulated, safety, financial, privileged, irreversible or broad-impact use. |
-| Minimum scope | Declare assessment unit, population, environment and evidence period. |
-| Depth | Set by consequence, authority, change, obligations and uncertainty. |
-| Independence | Increase for high-impact decisions and conflicted first-line ownership. |
 | Output | Issue a versioned high-impact deep dive record with limitations and next trigger. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.5  Incident-driven assessment
 
@@ -221,10 +225,9 @@ Reconstruct changed facts, affected paths, control failures and recovery evidenc
 | **Method element** | **Requirement** |
 | --- | --- |
 | Trigger | Security, privacy, safety, provider, model, data or authority incident. |
-| Minimum scope | Declare assessment unit, population, environment and evidence period. |
-| Depth | Set by consequence, authority, change, obligations and uncertainty. |
-| Independence | Increase for high-impact decisions and conflicted first-line ownership. |
 | Output | Issue a versioned incident-driven assessment record with limitations and next trigger. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.6  Third-party and provider assessment
 
@@ -233,10 +236,9 @@ Examine service-specific responsibility, configuration, evidence access, data ha
 | **Method element** | **Requirement** |
 | --- | --- |
 | Trigger | External model, platform, tool, data, hosting, annotation or orchestration dependency. |
-| Minimum scope | Declare assessment unit, population, environment and evidence period. |
-| Depth | Set by consequence, authority, change, obligations and uncertainty. |
-| Independence | Increase for high-impact decisions and conflicted first-line ownership. |
 | Output | Issue a versioned third-party and provider assessment record with limitations and next trigger. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.7  Portfolio assessment
 
@@ -245,10 +247,9 @@ Profile multiple use cases or systems while preserving materially different popu
 | **Method element** | **Requirement** |
 | --- | --- |
 | Trigger | Investment, governance, assurance planning or shared-platform risk. |
-| Minimum scope | Declare assessment unit, population, environment and evidence period. |
-| Depth | Set by consequence, authority, change, obligations and uncertainty. |
-| Independence | Increase for high-impact decisions and conflicted first-line ownership. |
 | Output | Issue a versioned portfolio assessment record with limitations and next trigger. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.8  Pre-deployment readiness assessment
 
@@ -257,10 +258,9 @@ Determine whether evidence, controls, testing, approvals and containment are suf
 | **Method element** | **Requirement** |
 | --- | --- |
 | Trigger | Pilot, production launch or material autonomy expansion. |
-| Minimum scope | Declare assessment unit, population, environment and evidence period. |
-| Depth | Set by consequence, authority, change, obligations and uncertainty. |
-| Independence | Increase for high-impact decisions and conflicted first-line ownership. |
 | Output | Issue a versioned pre-deployment readiness assessment record with limitations and next trigger. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.9  Continuous or event-driven assessment
 
@@ -269,10 +269,9 @@ Use approved automated signals and triggers to refresh evidence and initiate hum
 | **Method element** | **Requirement** |
 | --- | --- |
 | Trigger | Dynamic estates with measured coverage and governed automation. |
-| Minimum scope | Declare assessment unit, population, environment and evidence period. |
-| Depth | Set by consequence, authority, change, obligations and uncertainty. |
-| Independence | Increase for high-impact decisions and conflicted first-line ownership. |
 | Output | Issue a versioned continuous or event-driven assessment record with limitations and next trigger. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 # 1.10  Regulatory or obligation-focused assessment
 
@@ -281,10 +280,9 @@ Evaluate fact-specific obligations and related controls without representing fra
 | **Method element** | **Requirement** |
 | --- | --- |
 | Trigger | When a named jurisdiction, role, sector or obligation has been legally validated as applicable. |
-| Minimum scope | Declare assessment unit, population, environment and evidence period. |
-| Depth | Set by consequence, authority, change, obligations and uncertainty. |
-| Independence | Increase for high-impact decisions and conflicted first-line ownership. |
 | Output | Issue a versioned regulatory or obligation-focused assessment record with limitations and next trigger. |
+
+*Shared rows for this section are listed once under §1.1.*
 
 # Phase 1 — Initiate
 
@@ -943,6 +941,11 @@ Use a structured hypothesis and evidence agenda. Record role, scope, questions, 
 | **Required record** | **Method requirement** |
 | --- | --- |
 | Objective | State the assertion tested by interview method. |
+
+*Shared rows: the rows below apply to each of §15.1–§15.10, read in that section's own context.*
+
+| **Required record** | **Method requirement** |
+| --- | --- |
 | Authorization | Confirm access, safety and data boundaries. |
 | Procedure | Record repeatable steps and variants. |
 | Evidence | Identify source, grade, scope and integrity. |
@@ -956,11 +959,8 @@ Check approval, version, owner, scope, currentness and implementation linkage; d
 | **Required record** | **Method requirement** |
 | --- | --- |
 | Objective | State the assertion tested by document-review method. |
-| Authorization | Confirm access, safety and data boundaries. |
-| Procedure | Record repeatable steps and variants. |
-| Evidence | Identify source, grade, scope and integrity. |
-| Limitations | State what the method cannot establish. |
-| Review | Obtain required technical or quality review. |
+
+*Shared rows for this section are listed once under §15.1.*
 
 # 15.3  Technical-query method
 
@@ -969,11 +969,8 @@ Use authorized read-only identity and reproducible query where possible; record 
 | **Required record** | **Method requirement** |
 | --- | --- |
 | Objective | State the assertion tested by technical-query method. |
-| Authorization | Confirm access, safety and data boundaries. |
-| Procedure | Record repeatable steps and variants. |
-| Evidence | Identify source, grade, scope and integrity. |
-| Limitations | State what the method cannot establish. |
-| Review | Obtain required technical or quality review. |
+
+*Shared rows for this section are listed once under §15.1.*
 
 # 15.4  Sampling method
 
@@ -982,11 +979,8 @@ Define population, selection, size, period and limitations. Risk-based, random, 
 | **Required record** | **Method requirement** |
 | --- | --- |
 | Objective | State the assertion tested by sampling method. |
-| Authorization | Confirm access, safety and data boundaries. |
-| Procedure | Record repeatable steps and variants. |
-| Evidence | Identify source, grade, scope and integrity. |
-| Limitations | State what the method cannot establish. |
-| Review | Obtain required technical or quality review. |
+
+*Shared rows for this section are listed once under §15.1.*
 
 # 15.5  Walkthrough method
 
@@ -995,11 +989,8 @@ Trace one representative transaction or lifecycle event across identity, data, m
 | **Required record** | **Method requirement** |
 | --- | --- |
 | Objective | State the assertion tested by walkthrough method. |
-| Authorization | Confirm access, safety and data boundaries. |
-| Procedure | Record repeatable steps and variants. |
-| Evidence | Identify source, grade, scope and integrity. |
-| Limitations | State what the method cannot establish. |
-| Review | Obtain required technical or quality review. |
+
+*Shared rows for this section are listed once under §15.1.*
 
 # 15.6  Configuration-review method
 
@@ -1008,11 +999,8 @@ Compare intended baseline, effective configuration, inherited settings, exceptio
 | **Required record** | **Method requirement** |
 | --- | --- |
 | Objective | State the assertion tested by configuration-review method. |
-| Authorization | Confirm access, safety and data boundaries. |
-| Procedure | Record repeatable steps and variants. |
-| Evidence | Identify source, grade, scope and integrity. |
-| Limitations | State what the method cannot establish. |
-| Review | Obtain required technical or quality review. |
+
+*Shared rows for this section are listed once under §15.1.*
 
 # 15.7  Safe active-test method
 
@@ -1021,11 +1009,8 @@ Execute only under approved rules of engagement, with test identity/data, expect
 | **Required record** | **Method requirement** |
 | --- | --- |
 | Objective | State the assertion tested by safe active-test method. |
-| Authorization | Confirm access, safety and data boundaries. |
-| Procedure | Record repeatable steps and variants. |
-| Evidence | Identify source, grade, scope and integrity. |
-| Limitations | State what the method cannot establish. |
-| Review | Obtain required technical or quality review. |
+
+*Shared rows for this section are listed once under §15.1.*
 
 # 15.8  Negative-test method
 
@@ -1034,11 +1019,8 @@ Attempt explicitly denied or out-of-scope behavior using authorized safe scenari
 | **Required record** | **Method requirement** |
 | --- | --- |
 | Objective | State the assertion tested by negative-test method. |
-| Authorization | Confirm access, safety and data boundaries. |
-| Procedure | Record repeatable steps and variants. |
-| Evidence | Identify source, grade, scope and integrity. |
-| Limitations | State what the method cannot establish. |
-| Review | Obtain required technical or quality review. |
+
+*Shared rows for this section are listed once under §15.1.*
 
 # 15.9  Tabletop and simulation method
 
@@ -1047,11 +1029,8 @@ Exercise decisions, communications, containment, recovery and evidence using a r
 | **Required record** | **Method requirement** |
 | --- | --- |
 | Objective | State the assertion tested by tabletop and simulation method. |
-| Authorization | Confirm access, safety and data boundaries. |
-| Procedure | Record repeatable steps and variants. |
-| Evidence | Identify source, grade, scope and integrity. |
-| Limitations | State what the method cannot establish. |
-| Review | Obtain required technical or quality review. |
+
+*Shared rows for this section are listed once under §15.1.*
 
 # 15.10  Provider-evidence method
 
@@ -1060,11 +1039,8 @@ Bind attestations, reports, contracts, configurations and responsibilities to th
 | **Required record** | **Method requirement** |
 | --- | --- |
 | Objective | State the assertion tested by provider-evidence method. |
-| Authorization | Confirm access, safety and data boundaries. |
-| Procedure | Record repeatable steps and variants. |
-| Evidence | Identify source, grade, scope and integrity. |
-| Limitations | State what the method cannot establish. |
-| Review | Obtain required technical or quality review. |
+
+*Shared rows for this section are listed once under §15.1.*
 
 # 16.1  Observation and evidence gap
 
@@ -1073,6 +1049,11 @@ An observation is a factual condition without necessarily implying deficiency. A
 | **QA question** | **Pass condition** |
 | --- | --- |
 | Definition | Observation and evidence gap is not conflated with a different result state. |
+
+*Shared rows: the rows below apply to each of §16.1–§16.10, read in that section's own context.*
+
+| **QA question** | **Pass condition** |
+| --- | --- |
 | Evidence | Material statements are linked to sufficient scoped evidence. |
 | Graph context | Affected objects, relationships or paths are identified where relevant. |
 | Decision effect | Gates, scores, maturity, findings and reporting are updated consistently. |
@@ -1085,10 +1066,8 @@ A control deficiency exists when applicable design, implementation or operation 
 | **QA question** | **Pass condition** |
 | --- | --- |
 | Definition | Control deficiency is not conflated with a different result state. |
-| Evidence | Material statements are linked to sufficient scoped evidence. |
-| Graph context | Affected objects, relationships or paths are identified where relevant. |
-| Decision effect | Gates, scores, maturity, findings and reporting are updated consistently. |
-| Review | Reviewer can reconstruct and challenge the conclusion. |
+
+*Shared rows for this section are listed once under §16.1.*
 
 # 16.3  Path exposure
 
@@ -1097,10 +1076,8 @@ A path exposure describes a plausible or validated sequence to a material target
 | **QA question** | **Pass condition** |
 | --- | --- |
 | Definition | Path exposure is not conflated with a different result state. |
-| Evidence | Material statements are linked to sufficient scoped evidence. |
-| Graph context | Affected objects, relationships or paths are identified where relevant. |
-| Decision effect | Gates, scores, maturity, findings and reporting are updated consistently. |
-| Review | Reviewer can reconstruct and challenge the conclusion. |
+
+*Shared rows for this section are listed once under §16.1.*
 
 # 16.4  Nonconformity and compliance caution
 
@@ -1109,10 +1086,8 @@ Use nonconformity only against a defined applicable criterion. Do not call a fra
 | **QA question** | **Pass condition** |
 | --- | --- |
 | Definition | Nonconformity and compliance caution is not conflated with a different result state. |
-| Evidence | Material statements are linked to sufficient scoped evidence. |
-| Graph context | Affected objects, relationships or paths are identified where relevant. |
-| Decision effect | Gates, scores, maturity, findings and reporting are updated consistently. |
-| Review | Reviewer can reconstruct and challenge the conclusion. |
+
+*Shared rows for this section are listed once under §16.1.*
 
 # 16.5  Root-cause analysis
 
@@ -1121,10 +1096,8 @@ Distinguish immediate condition, systemic cause, contributing relationships, gov
 | **QA question** | **Pass condition** |
 | --- | --- |
 | Definition | Root-cause analysis is not conflated with a different result state. |
-| Evidence | Material statements are linked to sufficient scoped evidence. |
-| Graph context | Affected objects, relationships or paths are identified where relevant. |
-| Decision effect | Gates, scores, maturity, findings and reporting are updated consistently. |
-| Review | Reviewer can reconstruct and challenge the conclusion. |
+
+*Shared rows for this section are listed once under §16.1.*
 
 # 16.6  Remediation design
 
@@ -1133,10 +1106,8 @@ Define the target outcome and affected path or control; avoid vendor prescriptio
 | **QA question** | **Pass condition** |
 | --- | --- |
 | Definition | Remediation design is not conflated with a different result state. |
-| Evidence | Material statements are linked to sufficient scoped evidence. |
-| Graph context | Affected objects, relationships or paths are identified where relevant. |
-| Decision effect | Gates, scores, maturity, findings and reporting are updated consistently. |
-| Review | Reviewer can reconstruct and challenge the conclusion. |
+
+*Shared rows for this section are listed once under §16.1.*
 
 # 16.7  Retest and closure
 
@@ -1145,10 +1116,8 @@ Require implementation evidence, representative retest, residual-path review, ow
 | **QA question** | **Pass condition** |
 | --- | --- |
 | Definition | Retest and closure is not conflated with a different result state. |
-| Evidence | Material statements are linked to sufficient scoped evidence. |
-| Graph context | Affected objects, relationships or paths are identified where relevant. |
-| Decision effect | Gates, scores, maturity, findings and reporting are updated consistently. |
-| Review | Reviewer can reconstruct and challenge the conclusion. |
+
+*Shared rows for this section are listed once under §16.1.*
 
 # 16.8  Peer calibration
 
@@ -1157,10 +1126,8 @@ Assessors independently evaluate synthetic or approved cases, compare criteria a
 | **QA question** | **Pass condition** |
 | --- | --- |
 | Definition | Peer calibration is not conflated with a different result state. |
-| Evidence | Material statements are linked to sufficient scoped evidence. |
-| Graph context | Affected objects, relationships or paths are identified where relevant. |
-| Decision effect | Gates, scores, maturity, findings and reporting are updated consistently. |
-| Review | Reviewer can reconstruct and challenge the conclusion. |
+
+*Shared rows for this section are listed once under §16.1.*
 
 # 16.9  Quality-review protocol
 
@@ -1169,10 +1136,8 @@ Review scope fidelity, evidence sufficiency, method adherence, calculation, gate
 | **QA question** | **Pass condition** |
 | --- | --- |
 | Definition | Quality-review protocol is not conflated with a different result state. |
-| Evidence | Material statements are linked to sufficient scoped evidence. |
-| Graph context | Affected objects, relationships or paths are identified where relevant. |
-| Decision effect | Gates, scores, maturity, findings and reporting are updated consistently. |
-| Review | Reviewer can reconstruct and challenge the conclusion. |
+
+*Shared rows for this section are listed once under §16.1.*
 
 # 16.10  Method exception
 
@@ -1181,10 +1146,8 @@ A deviation from this methodology requires rationale, authority, affected output
 | **QA question** | **Pass condition** |
 | --- | --- |
 | Definition | Method exception is not conflated with a different result state. |
-| Evidence | Material statements are linked to sufficient scoped evidence. |
-| Graph context | Affected objects, relationships or paths are identified where relevant. |
-| Decision effect | Gates, scores, maturity, findings and reporting are updated consistently. |
-| Review | Reviewer can reconstruct and challenge the conclusion. |
+
+*Shared rows for this section are listed once under §16.1.*
 
 # A.1  Assessment charter template
 
@@ -1335,4 +1298,4 @@ The Assessment Methodology converts the preceding artifacts into a controlled, r
 | Licence and trademark approval | Pending. |
 | Public release | Not approved until mandatory gates close. |
 
-AI Trust Graph Assessment Methodology | Version 1.1.0 | Public-release candidate
+AI Trust Graph Assessment Methodology | Version 1.1.1 | Public-release candidate

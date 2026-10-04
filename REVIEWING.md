@@ -2,7 +2,7 @@
 
 # Reviewing AI Trust Graph
 
-AI Trust Graph (ATG) is a public-release candidate (bundle 1.0-rc.4). The author's internal review is complete. **Independent review has not happened yet**, and this page is how to help with it. Pick the amount of time you have; every option ends with a finding or a short note that the author answers in public.
+AI Trust Graph (ATG) is a public-release candidate (bundle 1.0-rc.5). The author's internal review is complete. **Independent review has not happened yet**, and this page is how to help with it. Pick the amount of time you have; every option ends with a finding or a short note that the author answers in public.
 
 Reviewing does not mean you endorse the methodology, and the project will never present your review as an endorsement.
 
