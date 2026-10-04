@@ -37,6 +37,22 @@ After the reveal, anyone can check: `sha256sum answer-key.csv answer-key-notes.m
 |---|---|---|
 | *None yet. Sign up on [issue #52](https://github.com/Sivas1187/Ai-trust-graph/issues/52).* | | |
 
+## Amendment 1 (2026-10-04, before any assessor started)
+
+| Field | Value |
+|---|---|
+| Trigger | A private clarity pilot with a language model, in the study lead's personal ChatGPT workspace. The pilot is not an assessment under Artifact #10 B.4, and its answers are not assessor results. |
+| Change | Eleven accepted-alternative notes in the key were added or extended, and one pre-registered rule question was added; an existing pre-registered question now also covers analogous items. **No key value changed.** The case packs are unchanged. |
+| Status | No assessor had started. The affected items are not named here, so that assessors are not primed; they are listed in the sealed notes and revealed with the key. |
+| Superseded files | `answer-key.csv` and `answer-key-notes.md`, hashes above. They are kept unchanged, so that both versions can be verified and compared after the reveal. |
+
+| File (version 1.1) | SHA-256 | Published |
+|---|---|---|
+| `answer-key-amend1.csv` | `984b5935d852dfe3091ffc2dceda689a3bb51b687c3bbcdff81429566bfbc2b7` | 2026-10-04 |
+| `answer-key-notes-amend1.md` | `00539942245b3823d6dffbefd04c83c955721515001a156077308c5412c6c151` | 2026-10-04 |
+
+Analysis choice 3 now reads: "only the alternatives listed in the sealed key as amended". The comparison uses the amended key.
+
 ## Reveal and results
 
 *(Appended after every workpaper is in: reveal date, hash check, then the results document.)*
