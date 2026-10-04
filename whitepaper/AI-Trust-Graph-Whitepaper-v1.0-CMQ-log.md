@@ -31,7 +31,7 @@ The whitepaper may be published as version 1.0 once: (1) the owner decides wheth
 
 ## Version 1.1 (draft, not published)
 
-`AI-Trust-Graph-Whitepaper-v1.1.md` is a draft of the next version, prepared with AI assistance for the author's review. As CMQ-8 anticipated, it re-pins to manifest blob `61d48494c1c2b847650af5d26c0549d5fc0af32e`, which carries §6.2. It changes only the paper's status record:
+`AI-Trust-Graph-Whitepaper-v1.1.md` is a draft of the next version, prepared with AI assistance for the author's review. As CMQ-8 anticipated, it re-pins to a manifest that carries §6.2: first blob `61d48494c1c2b847650af5d26c0549d5fc0af32e` (bundle 1.0-rc.4), now blob `337cc4574b1f53cc79e75d541b14e555cbf524b6` (bundle 1.0-rc.5, an editorial patch of 1.0-rc.4 that changes no rule). It changes only the paper's status record:
 
 - the PEI analysis status (Publication status, §§10.4, 13.7-13.8, Appendix A);
 - new §13.9 (the frozen, not yet run, inter-assessor study IAS-01);
