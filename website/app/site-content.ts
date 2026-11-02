@@ -25,8 +25,19 @@ export type DomainKey = "d1" | "d2" | "d3" | "d4" | "d5" | "d6";
 export const author = {
   ...siteConfig.author,
   summary: [
-    "Siva Sethumadhavan created and maintains AI Trust Graph as independent research.",
-    "The methodology draws on practitioner experience across cybersecurity, security architecture, AI governance, risk and assurance. It is published openly so that its reasoning can be examined, challenged and improved.",
+    "Siva Sethumadhavan created and maintains AI Trust Graph as independent research. It is published openly so that its reasoning can be examined, challenged and improved.",
+  ],
+  /**
+   * "Why I built ATG this way". The author's own statement, supplied by the
+   * author (2026-11-02) and edited only for grammar and readability. First
+   * person by design; do not extend it with motivations or claims the author
+   * did not write.
+   */
+  rationale: [
+    "In my work across cybersecurity, technology risk, security architecture and assurance, I have repeatedly seen architecture reviews, control assessments, risk assessments and governance reviews performed as separate activities. Each of them can provide useful information. But once AI systems connect models with identities, data sources, tools, agents, infrastructure and external services, it becomes much harder to see how those pieces interact as one system.",
+    "That was the problem I wanted ATG to address. I wanted a way to reason not only about what components exist, but also about the relationships between them, what authority can flow across those relationships, which paths are actually possible under defined conditions, what controls can interrupt those paths, and what evidence supports the resulting assurance conclusion.",
+    "This is why ATG separates connectivity from authority, evidence quality from control effectiveness, and uncertainty from failure. I also made UNKNOWN an explicit state, because insufficient evidence should not silently become either confidence or a negative result.",
+    "I did not build ATG to replace security standards, AI governance frameworks, engineering judgement or existing assurance practices. I built it to provide a traceable way to connect those elements and reason across them when assessing connected AI systems.",
   ],
   /**
    * Independence statement. Approved by the methodology author (2026-10-02)

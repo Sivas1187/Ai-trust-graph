@@ -256,6 +256,10 @@ export function AboutAuthor() {
           {author.summary.map((p) => (
             <p key={p}>{p}</p>
           ))}
+          <h3 className="subTitle">Why I built ATG this way</h3>
+          {author.rationale.map((p) => (
+            <p key={p.slice(0, 40)}>{p}</p>
+          ))}
           <ul className="authorLinks">
             <li>
               <a href={author.links.github} rel="noopener noreferrer">
