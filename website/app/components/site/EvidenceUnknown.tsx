@@ -235,6 +235,8 @@ export function EvidenceUnknown() {
             </p>
           </div>
 
+          <AuthorNote note={authorNotes.pei} />
+
           <div className="rejectedChoices">
             <h4 className="subTitle">Design choices considered and rejected</h4>
             <div className="tableWrap" role="region" aria-label="Design choices considered and rejected" tabIndex={0}>

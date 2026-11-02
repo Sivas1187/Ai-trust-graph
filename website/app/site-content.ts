@@ -250,6 +250,16 @@ export const authorNotes = {
       "For me, the main benefit is that gaps are less likely to disappear between separate reviews or ownership boundaries. A weakness identified through one lens can be followed through the same graph to understand where else it matters, who owns it, what control is expected to address it, and what evidence supports the resulting conclusion.",
     ],
   },
+  pei: {
+    title: "Why PEI is for triage, not risk",
+    paragraphs: [
+      "A numerical score can easily be read as more precise or predictive than the evidence behind it supports.",
+      "In assurance and risk work, I have seen scoring models create a sense of certainty simply because they produce a number. Once a score is presented, people can start comparing values, ranking issues or treating small numerical differences as meaningful, even when the inputs are judgement-based, incomplete or supported by evidence of different quality.",
+      "I wanted PEI to help practitioners decide which active paths deserve attention first. I did not want it to imply that ATG can calculate the probability of an event, expected loss, overall system risk or an overall trust level. The current methodology does not have the empirical calibration needed to make those claims.",
+      "That is why PEI combines a bounded set of path characteristics to support triage, and why the result still has to be read alongside the underlying path, conditions, authority, controls, evidence quality and any UNKNOWN states. A higher PEI tells the assessor that a path deserves closer attention or earlier investigation. It is not a prediction that the path will be exploited or that a specific loss will occur.",
+      "I also wanted to avoid false precision. The number gives a consistent way to order and compare eligible active paths within the assessment. It does not turn professional judgement into an apparently scientific risk probability.",
+    ],
+  },
 } as const;
 
 /**
