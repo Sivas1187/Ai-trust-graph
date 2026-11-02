@@ -159,7 +159,6 @@ const required = {
     "does not replace legal analysis, certification, penetration testing, model evaluation or mandated sector requirements",
   ],
   graph: [
-    "Graph structure supports systematic reasoning. A connection drawn in the graph does not, on its own, prove reachability under current conditions, authority, invocation or exploitability.",
     "Synthetic illustration.",
     "A topological connection is not automatically an exploitable path.",
     "Required permissions, protocols, state and preconditions must be evidenced or explicitly marked Unknown.",

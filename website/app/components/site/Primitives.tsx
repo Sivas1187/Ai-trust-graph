@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
  * - SourceNote: an expandable, compact source marker. Native <details>, so it
  *   works without JavaScript; the reading-depth control can open all of them.
  * - Ext: a link to the canonical files on GitHub, marked with a decorative ↗.
- *   The page says once (methodology lede and footer) that ↗ links open
+ *   The page says once (in the footer) that ↗ links open
  *   GitHub, instead of announcing it on every link.
  */
 

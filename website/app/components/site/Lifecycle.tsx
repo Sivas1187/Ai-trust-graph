@@ -45,7 +45,7 @@ export function Lifecycle() {
             <path d="M20 12a8 8 0 1 1-3-6.2M20 4v5h-5" />
           </svg>
           Reassess starts a new or updated run when a trigger fires: a material change, an incident, an approved cadence
-          or an approved event-driven signal. Phases may iterate; required gates may not be skipped.
+          or an approved event-driven signal.
         </p>
 
         <Detail className="lifecycleMore">

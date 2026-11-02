@@ -93,6 +93,8 @@ export const siteConfig = {
     title: "AI Trust Graph: A Graph-Driven, Evidence-Based Methodology for AI Assurance",
     subtitle: "Reasoning about trust, authority, paths, controls, evidence, and accountable decisions across connected AI systems",
     version: "1.0",
+    /** Methodology bundle the paper synthesises, as stated in its own Abstract. Not the current release. */
+    bundle: "1.0-rc.4",
     author: "Siva Sethumadhavan",
     scope:
       "The whitepaper will consolidate the methodology into one citable document: why it exists, the reasoning model, the authority and evidence discipline, the six assurance domains, the assessment lifecycle and the stated limitations. Until it is published, the versioned artifacts on GitHub are the reference.",

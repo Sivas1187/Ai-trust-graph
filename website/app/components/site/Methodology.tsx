@@ -24,10 +24,6 @@ export function Signature() {
             </p>
           }
         />
-        <p className="graphQualifier">
-          Graph structure supports systematic reasoning. A connection drawn in the graph does not, on its own, prove
-          reachability under current conditions, authority, invocation or exploitability.
-        </p>
         <SignatureGraph />
         <p className="figureCaption figureCaptionDark">
           Synthetic illustration. Evidence grades are examples, and the potential consequence is a hypothesis, not a
@@ -41,8 +37,7 @@ export function Signature() {
           Relationship names and caveats: <Ext href={ontology}>Artifact #12 · Ontology Specification</Ext> predicate
           catalogue (verbatim). Boundaries, paths and consequence: <Ext href={ccm}>Artifact #2</Ext> §3.2, §6, §6.6.
           States, grades and relations: Artifact #6 §0.5, §0.9, §1. Topology invariant:{" "}
-          <Ext href={manifesto}>Artifact #1</Ext> §4 (verbatim). The qualifier above the figure is website explanation of
-          the CONNECTS_TO caveat and the §4 invariant.
+          <Ext href={manifesto}>Artifact #1</Ext> §4 (verbatim).
         </SourceNote>
       </div>
     </section>
@@ -69,10 +64,7 @@ export function MethodologyIntro() {
           title="How the reasoning and the assessment are performed."
           lede={
             <p>
-              Six parts, from the conceptual reasoning chain to a worked example. Each opens with its central point; the
-              detail and the source references sit underneath for practitioners who need them. Links marked ↗ open the
-              cited artifact on GitHub. Quotations keep the artifacts&apos; original spelling, so some terms, such as
-              authorization, are spelt the American way.
+              Six parts, from the reasoning chain to a worked example.
             </p>
           }
         />

@@ -39,8 +39,7 @@ export function ReasoningChain() {
           lede={
             <p>
               The reasoning chain defines how assurance conclusions are formed: nine stages, each answering one
-              question. It is not the fieldwork plan. The thirteen-phase assessment lifecycle in 5.5 governs how
-              fieldwork is conducted; the two are related but not interchangeable.
+              question. It is not the fieldwork plan. That is the assessment lifecycle in 5.5.
             </p>
           }
         />

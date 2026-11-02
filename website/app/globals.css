@@ -3445,14 +3445,6 @@ main:focus {
 }
 
 /* Signature visual */
-.graphQualifier {
-  max-width: var(--measure);
-  margin-bottom: var(--sp-5);
-  padding: var(--sp-3) var(--sp-4);
-  border-left: 3px solid var(--d5-bright);
-  background: rgb(244 197 90 / 0.08);
-  color: var(--on-dark);
-}
 .sigCanvas {
   overflow: visible;
 }

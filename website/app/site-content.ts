@@ -25,8 +25,19 @@ export type DomainKey = "d1" | "d2" | "d3" | "d4" | "d5" | "d6";
 export const author = {
   ...siteConfig.author,
   summary: [
-    "Siva Sethumadhavan created and maintains AI Trust Graph as independent research.",
-    "The methodology draws on practitioner experience across cybersecurity, security architecture, AI governance, risk and assurance. It is published openly so that its reasoning can be examined, challenged and improved.",
+    "Siva Sethumadhavan created and maintains AI Trust Graph as independent research. It is published openly so that its reasoning can be examined, challenged and improved.",
+  ],
+  /**
+   * "Why I built ATG this way". The author's own statement, supplied by the
+   * author (2026-11-02) and edited only for grammar and readability. First
+   * person by design; do not extend it with motivations or claims the author
+   * did not write.
+   */
+  rationale: [
+    "In my work across cybersecurity, technology risk, security architecture and assurance, I have repeatedly seen architecture reviews, control assessments, risk assessments and governance reviews performed as separate activities. Each of them can provide useful information. But once AI systems connect models with identities, data sources, tools, agents, infrastructure and external services, it becomes much harder to see how those pieces interact as one system.",
+    "That was the problem I wanted ATG to address. I wanted a way to reason not only about what components exist, but also about the relationships between them, what authority can flow across those relationships, which paths are actually possible under defined conditions, what controls can interrupt those paths, and what evidence supports the resulting assurance conclusion.",
+    "This is why ATG separates connectivity from authority, evidence quality from control effectiveness, and uncertainty from failure. I also made UNKNOWN an explicit state, because insufficient evidence should not silently become either confidence or a negative result.",
+    "I did not build ATG to replace security standards, AI governance frameworks, engineering judgement or existing assurance practices. I built it to provide a traceable way to connect those elements and reason across them when assessing connected AI systems.",
   ],
   /**
    * Independence statement. Approved by the methodology author (2026-10-02)
@@ -101,7 +112,7 @@ export const distinctions = [
  * kind of consequence an entity can cause").
  */
 export const bigIdeaConcepts = [
-  { key: "entities", name: "Entities", text: "show what exists: people, agents, models, tools, identities, data, providers and business systems." },
+  { key: "entities", name: "Entities", text: "show what exists inside the declared scope." },
   { key: "relationships", name: "Relationships", text: "show how entities are associated, as typed and directed links." },
   { key: "conditions", name: "Conditions", text: "show what must be true for a relationship to matter." },
   { key: "authority", name: "Authority", text: "describes the kinds of consequence an entity may be able to cause." },
@@ -117,7 +128,7 @@ export const bigIdeaConcepts = [
  * than inventing a ninth question. `note` is EDITORIAL.
  */
 export const chainStages = [
-  { stage: "Objects", question: "What exists?", concept: "Objects and system boundary.", note: "Humans, agents, models, tools, identities, data, infrastructure and providers, inside a declared scope." },
+  { stage: "Objects", question: "What exists?", concept: "Objects and system boundary.", note: "Everything inside a declared scope, not only the model: infrastructure and providers included." },
   { stage: "Relationships", question: "How is it connected?", concept: "Typed directional relationships.", note: "Each edge has a type and a direction: invokes, retrieves, authenticates as, depends on." },
   { stage: "Conditions", question: "What must be true?", concept: "Preconditions and state.", note: "A relationship may only matter when a token is valid, a flag is set or an approval exists." },
   { stage: "Paths", question: "What can happen next?", concept: "Reachability and path analysis.", note: "Relationships combine under conditions into paths. A path is a hypothesis until evidence supports it." },
@@ -204,10 +215,49 @@ export const frameworks = {
   existing:
     "Existing standards and frameworks provide governance, management-system, control, lifecycle, risk and threat guidance. AI Trust Graph is designed to sit alongside them.",
   contributes:
-    "It contributes a relationship-centred method for examining connected system structure: trust, authority, paths, controls, evidence and bounded conclusions.",
+    "It adds a way to follow a path across the connected system and to state, at each step, what the evidence supports.",
   boundary:
     "A mapping from AI Trust Graph to a framework does not establish legal or regulatory compliance. The methodology does not replace legal analysis, certification, penetration testing, model evaluation or mandated sector requirements.",
 };
+
+/**
+ * Design choices considered and rejected (5.3). EDITORIAL: each `why` is
+ * written from the cited artifact's own stated reason; `source` names it.
+ * Confirmed by the methodology author as the actual design reasons before
+ * release.
+ */
+export const rejectedAlternatives = [
+  {
+    alternative: "One overall score for the system",
+    why: "The current evidence base does not justify reducing trust, authority, security, governance, resilience, uncertainty and maturity into one number.",
+    source: "Artifact #4 §5.8",
+  },
+  {
+    alternative: "Missing evidence scored as zero",
+    why: "Absence of evidence is not adverse evidence. A zero would look the same as a confirmed failure.",
+    source: "Artifact #4 SC\u2011INV\u201101",
+  },
+  {
+    alternative: "Maturity averaged across capabilities",
+    why: "A strong advanced capability would hide a missing foundation.",
+    source: "Artifact #3 §1.6",
+  },
+  {
+    alternative: "Six independent domain models",
+    why: "The domains would drift into incompatible definitions, evidence grades and scoring assumptions.",
+    source: "Artifact #2 §8.1",
+  },
+  {
+    alternative: "Graph connectivity treated as exposure",
+    why: "A connection says nothing about the conditions, authority or evidence a path depends on.",
+    source: "Artifact #2 INV\u201101",
+  },
+  {
+    alternative: "PEI read as a probability of compromise",
+    why: "The arithmetic does not create probability, and no field calibration yet supports that reading.",
+    source: "Artifact #4 §4.9, §4.10",
+  },
+] as const;
 
 /** Artifact grouping and dependencies for the artifact library (EDITORIAL grouping). */
 export type ArtifactGroup = "foundation" | "assessment" | "execution" | "supporting";
