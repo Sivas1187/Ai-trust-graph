@@ -1,5 +1,5 @@
 import { evidenceGrades, links, nonNumericResultStates, resultStateDefinitions, unknownVsNotTested } from "../../content";
-import { evidenceRelations } from "../../site-content";
+import { evidenceRelations, rejectedAlternatives } from "../../site-content";
 import { Detail, Ext, Glossary, SectionHead, SourceNote } from "./Primitives";
 
 /**
@@ -200,12 +200,7 @@ export function EvidenceUnknown() {
             <dl className="scoringList">
               <div>
                 <dt>No overall score</dt>
-                <dd>
-                  <q>
-                    This framework intentionally does not publish a single overall AI Trust Graph score.
-                  </q>{" "}
-                  Results stay as separate scorecards per domain, with critical gates reported on their own.
-                </dd>
+                <dd>Results stay as separate scorecards per domain, with critical gates reported on their own.</dd>
               </div>
               <div>
                 <dt>Control scores</dt>
@@ -235,6 +230,30 @@ export function EvidenceUnknown() {
               <Ext href={scoring}>Artifact #4</Ext> §5.8, §1.1, §1.8, §3.4, §3.5, §4.1 and §4.9;{" "}
               <Ext href={maturity}>Artifact #3</Ext> §1.6. Quoted sentences are verbatim; the rest is website explanation.
             </p>
+          </div>
+
+          <div className="rejectedChoices">
+            <h4 className="subTitle">Design choices considered and rejected</h4>
+            <div className="tableWrap" role="region" aria-label="Design choices considered and rejected" tabIndex={0}>
+              <table className="dataTable">
+                <thead>
+                  <tr>
+                    <th scope="col">Alternative</th>
+                    <th scope="col">Why AI Trust Graph does not use it</th>
+                    <th scope="col">Source</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rejectedAlternatives.map((r) => (
+                    <tr key={r.alternative}>
+                      <th scope="row">{r.alternative}</th>
+                      <td>{r.why}</td>
+                      <td>{r.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 

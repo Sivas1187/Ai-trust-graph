@@ -81,6 +81,9 @@ export function Problem() {
         </div>
 
         <p className="problemClose">{problemScenario.close}</p>
+        <p className="exampleJump">
+          <a href="#example">See this request assessed end to end in the worked example.</a>
+        </p>
         <SourceNote>
           Website explanation of <Ext href={ccm}>Artifact #2</Ext> §3.6 (capability definition, network reachability,
           granted authority and actual invocation are different concepts), <Ext href={manifesto}>Artifact #1</Ext> §4 (a

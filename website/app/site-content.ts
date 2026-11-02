@@ -101,7 +101,7 @@ export const distinctions = [
  * kind of consequence an entity can cause").
  */
 export const bigIdeaConcepts = [
-  { key: "entities", name: "Entities", text: "show what exists: people, agents, models, tools, identities, data, providers and business systems." },
+  { key: "entities", name: "Entities", text: "show what exists inside the declared scope." },
   { key: "relationships", name: "Relationships", text: "show how entities are associated, as typed and directed links." },
   { key: "conditions", name: "Conditions", text: "show what must be true for a relationship to matter." },
   { key: "authority", name: "Authority", text: "describes the kinds of consequence an entity may be able to cause." },
@@ -117,7 +117,7 @@ export const bigIdeaConcepts = [
  * than inventing a ninth question. `note` is EDITORIAL.
  */
 export const chainStages = [
-  { stage: "Objects", question: "What exists?", concept: "Objects and system boundary.", note: "Humans, agents, models, tools, identities, data, infrastructure and providers, inside a declared scope." },
+  { stage: "Objects", question: "What exists?", concept: "Objects and system boundary.", note: "Everything inside a declared scope, not only the model: infrastructure and providers included." },
   { stage: "Relationships", question: "How is it connected?", concept: "Typed directional relationships.", note: "Each edge has a type and a direction: invokes, retrieves, authenticates as, depends on." },
   { stage: "Conditions", question: "What must be true?", concept: "Preconditions and state.", note: "A relationship may only matter when a token is valid, a flag is set or an approval exists." },
   { stage: "Paths", question: "What can happen next?", concept: "Reachability and path analysis.", note: "Relationships combine under conditions into paths. A path is a hypothesis until evidence supports it." },
@@ -204,10 +204,49 @@ export const frameworks = {
   existing:
     "Existing standards and frameworks provide governance, management-system, control, lifecycle, risk and threat guidance. AI Trust Graph is designed to sit alongside them.",
   contributes:
-    "It contributes a relationship-centred method for examining connected system structure: trust, authority, paths, controls, evidence and bounded conclusions.",
+    "It adds a way to follow a path across the connected system and to state, at each step, what the evidence supports.",
   boundary:
     "A mapping from AI Trust Graph to a framework does not establish legal or regulatory compliance. The methodology does not replace legal analysis, certification, penetration testing, model evaluation or mandated sector requirements.",
 };
+
+/**
+ * Design choices considered and rejected (5.3). EDITORIAL: each `why` is
+ * written from the cited artifact's own stated reason; `source` names it.
+ * Confirmed by the methodology author as the actual design reasons before
+ * release.
+ */
+export const rejectedAlternatives = [
+  {
+    alternative: "One overall score for the system",
+    why: "The current evidence base does not justify reducing trust, authority, security, governance, resilience, uncertainty and maturity into one number.",
+    source: "Artifact #4 §5.8",
+  },
+  {
+    alternative: "Missing evidence scored as zero",
+    why: "Absence of evidence is not adverse evidence. A zero would look the same as a confirmed failure.",
+    source: "Artifact #4 SC\u2011INV\u201101",
+  },
+  {
+    alternative: "Maturity averaged across capabilities",
+    why: "A strong advanced capability would hide a missing foundation.",
+    source: "Artifact #3 §1.6",
+  },
+  {
+    alternative: "Six independent domain models",
+    why: "The domains would drift into incompatible definitions, evidence grades and scoring assumptions.",
+    source: "Artifact #2 §8.1",
+  },
+  {
+    alternative: "Graph connectivity treated as exposure",
+    why: "A connection says nothing about the conditions, authority or evidence a path depends on.",
+    source: "Artifact #2 INV\u201101",
+  },
+  {
+    alternative: "PEI read as a probability of compromise",
+    why: "The arithmetic does not create probability, and no field calibration yet supports that reading.",
+    source: "Artifact #4 §4.9, §4.10",
+  },
+] as const;
 
 /** Artifact grouping and dependencies for the artifact library (EDITORIAL grouping). */
 export type ArtifactGroup = "foundation" | "assessment" | "execution" | "supporting";

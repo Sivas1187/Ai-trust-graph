@@ -52,7 +52,8 @@ export function SiteFooter({ prefix = "" }: { prefix?: string }) {
         <div className="footerText">
           <p>
             AI Trust Graph is a methodology, not a product, and not a certification. This website is explanatory; the
-            GitHub artifacts are canonical and take precedence on any conflict. Links marked ↗ open GitHub.
+            GitHub artifacts are canonical and take precedence on any conflict. Links marked ↗ open GitHub. Quotations
+            keep the artifacts&apos; American spelling.
           </p>
           <p>{author.independence}</p>
           <p>

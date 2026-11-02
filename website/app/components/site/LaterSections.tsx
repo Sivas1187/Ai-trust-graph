@@ -108,7 +108,8 @@ export function Publications() {
           {published && (
             <p className="pubVersionNote">
               v{publication.version} is the version of this paper. It is a non-normative synthesis of methodology bundle{" "}
-              {release.bundle}; the methodology itself remains a {release.status.toLowerCase()}.
+              {publication.bundle}. The methodology is now at bundle {release.bundle} and remains a{" "}
+              {release.status.toLowerCase()}.
             </p>
           )}
           <p className="pubAuthor">{publication.author}</p>

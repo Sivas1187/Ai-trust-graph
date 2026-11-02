@@ -13,11 +13,12 @@ const options: { value: Depth; label: string; hint: string }[] = [
 /**
  * Reading depth: a native radio group that sets data-depth on <html>.
  * Overview hides `.depthDetail` and `.depthSource`; Sources opens every
- * source note. Nothing is stored (no cookies or storage). Without JavaScript
- * the control is hidden and the page shows full detail.
+ * source note. Overview is the default for first-time readers. Nothing is
+ * stored (no cookies or storage). Without JavaScript the control is hidden and
+ * the page shows full detail.
  */
 export function DepthControl() {
-  const [depth, setDepth] = useState<Depth>("detail");
+  const [depth, setDepth] = useState<Depth>("overview");
 
   useEffect(() => {
     const root = document.documentElement;

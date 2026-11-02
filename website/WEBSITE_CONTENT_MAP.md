@@ -71,7 +71,7 @@ note naming the artifact and section and saying which text is verbatim.
 | 1 Why it exists `#why` | #1 §2.2 thesis (verbatim) | Opening statement, narrative, proposition; conceptual comparison (labelled) |
 | 2 The problem `#problem` | #2 §3.6; #1 §4; SC-INV-01 | Synthetic procurement scenario; what components do not establish; five distinctions |
 | 3 The big idea `#big-idea` | #2 (objects, relationships, conditions, paths, §5.2 authority, evidence); #1 principle 10 and §11 | Five-concept explanation; "What changes?"; framework positioning (`#frameworks`) |
-| 4 Signature visual `#graph` | #12 predicates and caveats (verbatim); #2 §3.2, §6, §6.6; #6 §0.5, §0.9, §1; #1 §4 (verbatim) | Scenario, node notes, illustrative grades, qualifier sentence |
+| 4 Signature visual `#graph` | #12 predicates and caveats (verbatim); #2 §3.2, §6, §6.6; #6 §0.5, §0.9, §1; #1 §4 (verbatim) | Scenario, node notes, illustrative grades |
 | 5 Methodology `#methodology` | | Subsection index, reading depth |
 | 5.1 Reasoning chain `#flow` | #2 §0.10 chain and theory map; §7.4, §3.8, §1.10 decision note (verbatim) | Stage notes; chain vs lifecycle statement |
 | 5.2 Authority `#authority` | #2 §3.6, §5.2, §1.8 / §6.6, §6.3 (verbatim) | Six-assertion illustration; "Not a ladder" note |
