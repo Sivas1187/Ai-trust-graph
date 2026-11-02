@@ -1,5 +1,6 @@
 import { domains, domainsLede, links } from "../../content";
-import { domainDetail, type DomainKey } from "../../site-content";
+import { authorNotes, domainDetail, type DomainKey } from "../../site-content";
+import { AuthorNote } from "./AuthorNote";
 import { Ext, SectionHead, SourceNote } from "./Primitives";
 
 /**
@@ -102,6 +103,8 @@ export function Domains() {
             })}
           </ol>
         </div>
+
+        <AuthorNote note={authorNotes.domains} />
 
         <SourceNote>
           Domain names: README. Lede, purposes and outputs: <Ext href={ccm}>Artifact #2</Ext> §8.1 (verbatim). Domain

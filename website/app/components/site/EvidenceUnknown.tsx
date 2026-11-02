@@ -1,5 +1,6 @@
 import { evidenceGrades, links, nonNumericResultStates, resultStateDefinitions, unknownVsNotTested } from "../../content";
-import { evidenceRelations, rejectedAlternatives } from "../../site-content";
+import { authorNotes, evidenceRelations, rejectedAlternatives } from "../../site-content";
+import { AuthorNote } from "./AuthorNote";
 import { Detail, Ext, Glossary, SectionHead, SourceNote } from "./Primitives";
 
 /**
@@ -55,6 +56,8 @@ export function EvidenceUnknown() {
             <strong>Assumptions are labelled.</strong> Facts, inferences, assumptions and decisions are kept apart.
           </li>
         </ul>
+
+        <AuthorNote note={authorNotes.unknown} />
 
         <div className="unknownLayout">
           <div className="unknownPanel">
@@ -231,6 +234,8 @@ export function EvidenceUnknown() {
               <Ext href={maturity}>Artifact #3</Ext> §1.6. Quoted sentences are verbatim; the rest is website explanation.
             </p>
           </div>
+
+          <AuthorNote note={authorNotes.pei} />
 
           <div className="rejectedChoices">
             <h4 className="subTitle">Design choices considered and rejected</h4>

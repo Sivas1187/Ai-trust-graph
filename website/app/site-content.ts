@@ -221,6 +221,48 @@ export const frameworks = {
 };
 
 /**
+ * Author's notes on individual design choices. The author's own statements,
+ * supplied by the author and edited only for clarity and readability. First
+ * person by design; do not extend them with claims the author did not make.
+ */
+export const authorNotes = {
+  /** 5.3, supplied 2026-11-02. */
+  unknown: {
+    title: "Why UNKNOWN stays UNKNOWN",
+    paragraphs: [
+      "My reasoning here comes from my experience in cybersecurity assessments, audits and technology-risk reviews.",
+      "In conventional assurance work, when required evidence is unavailable, incomplete or cannot be produced, that absence can itself become a finding or control gap and may be given an issue rating. That is appropriate when the assessment question is whether the organisation can demonstrate that a required control or obligation is operating as expected.",
+      "For ATG, however, I wanted to preserve a separate epistemic distinction. If the evidence is insufficient to determine whether an assertion is true, false, effective or ineffective, the underlying state should remain UNKNOWN. The absence of evidence may then generate a finding, evidence gap, remediation action or governance decision, but it should not automatically convert the underlying assertion into a pass, fail, zero, ineffective state or “not applicable”.",
+      "For example, if there is insufficient evidence to determine whether a particular authority path can actually be exercised, ATG should record that authority condition as UNKNOWN. The assessment can separately state that the inability to obtain adequate evidence is itself an assurance gap requiring action.",
+      "This separation matters to me because otherwise two different statements become confused: “we have evidence that this is deficient” and “we do not have enough evidence to know”. Both may require management attention, but they are not the same conclusion.",
+      "That is why I wanted UNKNOWN to be a first-class state in ATG. UNKNOWN remains UNKNOWN at the point of reasoning, while the absence or weakness of evidence can still produce a separate finding, issue, limitation or remediation requirement.",
+    ],
+  },
+  /** 5.4, supplied 2026-11-02. */
+  domains: {
+    title: "Why one graph with six lenses",
+    paragraphs: [
+      "My reasoning here comes from seeing how assurance activities are often performed in separate streams.",
+      "In practice, discovery and architecture reviews, security assessments, technology-risk reviews, governance assessments and resilience reviews may be carried out by different teams, at different times, using different terminology, scopes, evidence expectations and assessment criteria. Each review may be valid within its own scope, but the results do not always connect cleanly. One team may identify a dependency, another may assess a control, another may look at authority or access, and another may assess resilience, without one shared representation showing how those conclusions relate to the same system.",
+      "For connected AI systems, I felt that separating these into six independent assessment models would reproduce the same problem. The same identity, data source, tool, agent, control or dependency can be relevant to several assurance questions at once. If each domain creates its own representation, there is a risk of duplicated objects, inconsistent definitions, different evidence assumptions and conclusions that cannot easily be reconciled.",
+      "That is why I designed ATG around one shared graph with six assurance lenses. The graph provides the common system representation, and each domain asks a different set of questions of that same system. Discovery establishes what exists and how it is connected; trust and authority examine the relationships and permissions; validation examines how those claims are tested; governance considers accountability and decisions; and resilience considers how the system behaves under disruption or failure.",
+      "The intention is not to collapse the six domains into one assessment. They remain distinct assurance perspectives. The shared graph makes sure they are reasoning about the same objects, relationships, paths and evidence, so that a conclusion in one domain can be traced to its implications in another.",
+      "For me, the main benefit is that gaps are less likely to disappear between separate reviews or ownership boundaries. A weakness identified through one lens can be followed through the same graph to understand where else it matters, who owns it, what control is expected to address it, and what evidence supports the resulting conclusion.",
+    ],
+  },
+  pei: {
+    title: "Why PEI is for triage, not risk",
+    paragraphs: [
+      "A numerical score can easily be read as more precise or predictive than the evidence behind it supports.",
+      "In assurance and risk work, I have seen scoring models create a sense of certainty simply because they produce a number. Once a score is presented, people can start comparing values, ranking issues or treating small numerical differences as meaningful, even when the inputs are judgement-based, incomplete or supported by evidence of different quality.",
+      "I wanted PEI to help practitioners decide which active paths deserve attention first. I did not want it to imply that ATG can calculate the probability of an event, expected loss, overall system risk or an overall trust level. The current methodology does not have the empirical calibration needed to make those claims.",
+      "That is why PEI combines a bounded set of path characteristics to support triage, and why the result still has to be read alongside the underlying path, conditions, authority, controls, evidence quality and any UNKNOWN states. A higher PEI tells the assessor that a path deserves closer attention or earlier investigation. It is not a prediction that the path will be exploited or that a specific loss will occur.",
+      "I also wanted to avoid false precision. The number gives a consistent way to order and compare eligible active paths within the assessment. It does not turn professional judgement into an apparently scientific risk probability.",
+    ],
+  },
+} as const;
+
+/**
  * Design choices considered and rejected (5.3). EDITORIAL: each `why` is
  * written from the cited artifact's own stated reason; `source` names it.
  * Confirmed by the methodology author as the actual design reasons before
