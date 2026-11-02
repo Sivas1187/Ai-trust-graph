@@ -62,7 +62,7 @@
 
 Canonical text lives in `app/content.ts` (release facts, registry, canonical
 lists), `app/site-content.ts` (each entry marked CANONICAL or EDITORIAL) and
-`app/publication.ts` (whitepaper record). Every section ends with a "§ Source"
+`app/publication.ts` (whitepaper record). Every section ends with a "Source"
 note naming the artifact and section and saying which text is verbatim.
 
 | Section | Canonical source | Website explanation (editorial) |

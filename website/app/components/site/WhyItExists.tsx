@@ -151,9 +151,9 @@ export function WhyItExists() {
           </blockquote>
         </div>
         <SourceNote>
-          Thesis: <Ext href={manifesto}>Artifact #1 · Manifesto</Ext> §2.2, first sentence (verbatim). The narrative and
+          Thesis: <Ext href={manifesto}>Artifact #1 · Manifesto</Ext> section 2.2, first sentence (verbatim). The narrative and
           the proposition are website explanation, written from the Manifesto core proposition and the separation of
-          reachability, granted authority and invocation in <Ext href={ccm}>Artifact #2</Ext> §3.6.
+          reachability, granted authority and invocation in <Ext href={ccm}>Artifact #2</Ext> section 3.6.
         </SourceNote>
       </div>
     </section>

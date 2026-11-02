@@ -153,37 +153,37 @@ export const domainDetail: Record<
     question: "What AI exists here, who owns it, and what does it depend on?",
     outputs: "Asset register, AIBOM, evidence coverage, UNKNOWN backlog.",
     feeds: "Publishes coverage, ownership, AIBOM, evidence and UNKNOWNs to all domains.",
-    maturitySection: "§2.0",
+    maturitySection: "section 2.0",
   },
   d2: {
     question: "Through which relationships and identities can trust and privilege travel?",
     outputs: "Trust graph, privilege paths, boundary map, breakpoint candidates.",
     feeds: "Provides relationships, boundaries and candidate paths to authority and validation.",
-    maturitySection: "§3.0",
+    maturitySection: "section 3.0",
   },
   d3: {
     question: "What may each human and machine actor access, approve, execute or transact?",
     outputs: "Authority matrix, approval boundaries, delegation and revocation.",
     feeds: "Provides grants, action classes, approval, revocation and amplification to governance and resilience.",
-    maturitySection: "§4.0",
+    maturitySection: "section 4.0",
   },
   d4: {
     question: "Do the controls hold when the material paths are tested safely?",
     outputs: "Authorized tests, control state, findings and residual paths.",
     feeds: "Provides current control and path evidence to assurance.",
-    maturitySection: "§5.0",
+    maturitySection: "section 5.0",
   },
   d5: {
     question: "Who is accountable, under which obligations, and with what evidence?",
     outputs: "Decision records, applicability, exceptions and assurance trail.",
     feeds: "Provides purpose, risk appetite, decisions, exceptions and obligations to all domains.",
-    maturitySection: "§6.0",
+    maturitySection: "section 6.0",
   },
   d6: {
     question: "Can failure or compromise be observed, contained and recovered from?",
     outputs: "Playbooks, kill-switch tests, rollback and recovery evidence.",
     feeds: "Provides containment, recovery, incident and rehearsal evidence to validation and governance.",
-    maturitySection: "§7.0",
+    maturitySection: "section 7.0",
   },
 };
 
@@ -272,7 +272,7 @@ export const rejectedAlternatives = [
   {
     alternative: "One overall score for the system",
     why: "The current evidence base does not justify reducing trust, authority, security, governance, resilience, uncertainty and maturity into one number.",
-    source: "Artifact #4 §5.8",
+    source: "Artifact #4 section 5.8",
   },
   {
     alternative: "Missing evidence scored as zero",
@@ -282,12 +282,12 @@ export const rejectedAlternatives = [
   {
     alternative: "Maturity averaged across capabilities",
     why: "A strong advanced capability would hide a missing foundation.",
-    source: "Artifact #3 §1.6",
+    source: "Artifact #3 section 1.6",
   },
   {
     alternative: "Six independent domain models",
     why: "The domains would drift into incompatible definitions, evidence grades and scoring assumptions.",
-    source: "Artifact #2 §8.1",
+    source: "Artifact #2 section 8.1",
   },
   {
     alternative: "Graph connectivity treated as exposure",
@@ -297,7 +297,7 @@ export const rejectedAlternatives = [
   {
     alternative: "PEI read as a probability of compromise",
     why: "The arithmetic does not create probability, and no field calibration yet supports that reading.",
-    source: "Artifact #4 §4.9, §4.10",
+    source: "Artifact #4 sections 4.9 and 4.10",
   },
 ] as const;
 
@@ -358,7 +358,7 @@ export const breakpointEffectDetail: Record<
     gloss: "Downstream effect is isolated or limited.",
     canonical: {
       text: "Containment limits ongoing effect. Can active or queued effects be isolated or stopped?",
-      source: "Artifact #2 §5.13",
+      source: "Artifact #2 section 5.13",
     },
     example: "Holding queued purchase requests and suspending the service identity while an event is investigated.",
   },

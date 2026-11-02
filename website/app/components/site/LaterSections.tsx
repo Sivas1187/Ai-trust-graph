@@ -20,14 +20,14 @@ import { Ext, SectionHead, SourceNote } from "./Primitives";
 
 /** Every canonical source the page cites, with its pinned link (structured source register). */
 const sourceRegister: { label: string; file?: string; href?: string; sections: string }[] = [
-  { label: "METHODOLOGY_MANIFEST", sections: "Header (bundle, status, snapshot); §2 reading order; §4 versions; §6 validation status and gates" },
-  { label: "Artifact #1 · Manifesto", file: "01-manifesto.md", sections: "Core proposition; §2.2 thesis; §4 invariant; principle 10; §11 claims not made" },
-  { label: "Artifact #2 · Core Conceptual Model", file: "02-core-conceptual-model.md", sections: "§0.10 reasoning chain and theory map; §1.8, §1.10; §3.2, §3.6, §3.8; §5.2; §6, §6.3, §6.6; §7.4; §8.1, §8.2" },
-  { label: "Artifact #3 · Maturity Model", file: "03-maturity-model.md", sections: "§2.0 to §7.0 domain statements and capabilities" },
-  { label: "Artifact #4 · Scoring Framework", file: "04-scoring-framework.md", sections: "§0.5 result states and numeric treatment; SC-INV-01" },
+  { label: "METHODOLOGY_MANIFEST", sections: "Header (bundle, status, snapshot); section 2 reading order; section 4 versions; section 6 validation status and gates" },
+  { label: "Artifact #1 · Manifesto", file: "01-manifesto.md", sections: "Core proposition; section 2.2 thesis; section 4 invariant; principle 10; section 11 claims not made" },
+  { label: "Artifact #2 · Core Conceptual Model", file: "02-core-conceptual-model.md", sections: "section 0.10 reasoning chain and theory map; sections 1.8 and 1.10; sections 3.2, 3.6 and 3.8; section 5.2; sections 6, 6.3 and 6.6; section 7.4; sections 8.1 and 8.2" },
+  { label: "Artifact #3 · Maturity Model", file: "03-maturity-model.md", sections: "sections 2.0 to 7.0 domain statements and capabilities" },
+  { label: "Artifact #4 · Scoring Framework", file: "04-scoring-framework.md", sections: "section 0.5 result states and numeric treatment; SC-INV-01" },
   { label: "Artifact #5 · Master Control Library", file: "05-master-control-library.md", sections: "Control ID prefixes per domain" },
-  { label: "Artifact #6 · Evidence Model", file: "06-evidence-model.md", sections: "§0.3; §0.5 states; §0.9 evidence relations; §1.1 to §1.6 grades; §1.8 reading rules" },
-  { label: "Artifact #7 · Assessment Methodology", file: "07-assessment-methodology.md", sections: "§0.11 phases and iteration rule; §0.12 exit gates; §1.1 to §1.10 assessment types" },
+  { label: "Artifact #6 · Evidence Model", file: "06-evidence-model.md", sections: "section 0.3; section 0.5 states; section 0.9 evidence relations; sections 1.1 to 1.6 grades; section 1.8 reading rules" },
+  { label: "Artifact #7 · Assessment Methodology", file: "07-assessment-methodology.md", sections: "section 0.11 phases and iteration rule; section 0.12 exit gates; sections 1.1 to 1.10 assessment types" },
   { label: "Artifact #12 · Ontology Specification", file: "12-ontology-specification.md", sections: "Predicate catalogue and caveats; state enumerations" },
 ];
 
@@ -390,7 +390,7 @@ export function StatusReview() {
           </div>
         </div>
         <SourceNote>
-          <Ext href={links.manifest}>METHODOLOGY_MANIFEST.md</Ext> header and §6; README status paragraph;
+          <Ext href={links.manifest}>METHODOLOGY_MANIFEST.md</Ext> header and section 6; README status paragraph;
           CONTRIBUTING.md.
         </SourceNote>
       </div>

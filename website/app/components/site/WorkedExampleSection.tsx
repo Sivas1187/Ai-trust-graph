@@ -27,9 +27,9 @@ export function WorkedExampleSection() {
         <WorkedExample />
         <SourceNote>
           Website example, not an Artifact #10 reference case. Predicates: <Ext href={links.doc("12-ontology-specification.md")}>Artifact #12</Ext>.
-          Grades and relations: <Ext href={links.doc("06-evidence-model.md")}>Artifact #6</Ext> §0.9, §1. Result states:{" "}
-          <Ext href={links.doc("04-scoring-framework.md")}>Artifact #4</Ext> §0.5. Finding and decision separation:{" "}
-          <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2</Ext> §7.4. For calibrated cases, see{" "}
+          Grades and relations: <Ext href={links.doc("06-evidence-model.md")}>Artifact #6</Ext> sections 0.9 and 1. Result states:{" "}
+          <Ext href={links.doc("04-scoring-framework.md")}>Artifact #4</Ext> section 0.5. Finding and decision separation:{" "}
+          <Ext href={links.doc("02-core-conceptual-model.md")}>Artifact #2</Ext> section 7.4. For calibrated cases, see{" "}
           <Ext href={links.doc("10-reference-assessment-repository.md")}>Artifact #10</Ext>.
         </SourceNote>
       </div>

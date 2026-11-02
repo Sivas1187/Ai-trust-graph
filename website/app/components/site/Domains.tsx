@@ -107,8 +107,8 @@ export function Domains() {
         <AuthorNote note={authorNotes.domains} />
 
         <SourceNote>
-          Domain names: README. Lede, purposes and outputs: <Ext href={ccm}>Artifact #2</Ext> §8.1 (verbatim). Domain
-          statements: <Ext href={maturity}>Artifact #3 · Maturity Model</Ext> §2.0 to §7.0. Control prefixes:{" "}
+          Domain names: README. Lede, purposes and outputs: <Ext href={ccm}>Artifact #2</Ext> section 8.1 (verbatim). Domain
+          statements: <Ext href={maturity}>Artifact #3 · Maturity Model</Ext> sections 2.0 to 7.0. Control prefixes:{" "}
           <Ext href={mcl}>Artifact #5 · Master Control Library</Ext>. The practical question on each domain is website
           explanation written from the Artifact #3 domain statements.
         </SourceNote>

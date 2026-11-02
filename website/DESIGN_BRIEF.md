@@ -137,7 +137,7 @@ where a reader following an old "problem" link expects to land.
 12. **Reading depth control.** Overview hides detail and source notes;
     Detail is the default; Sources opens every source note. Nothing is stored.
     Without JavaScript the control is hidden and the page shows full detail.
-13. **Citations are compact.** A "§ Source" disclosure under each section
+13. **Citations are compact.** A "Source" disclosure under each section
     names the artifact and section and states which text is verbatim and
     which is website explanation.
 14. **Typography.** Source Serif 4 for display headings and canonical
