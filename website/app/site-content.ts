@@ -238,6 +238,18 @@ export const authorNotes = {
       "That is why I wanted UNKNOWN to be a first-class state in ATG. UNKNOWN remains UNKNOWN at the point of reasoning, while the absence or weakness of evidence can still produce a separate finding, issue, limitation or remediation requirement.",
     ],
   },
+  /** 5.4, supplied 2026-11-02. */
+  domains: {
+    title: "Why one graph with six lenses",
+    paragraphs: [
+      "My reasoning here comes from seeing how assurance activities are often performed in separate streams.",
+      "In practice, discovery and architecture reviews, security assessments, technology-risk reviews, governance assessments and resilience reviews may be carried out by different teams, at different times, using different terminology, scopes, evidence expectations and assessment criteria. Each review may be valid within its own scope, but the results do not always connect cleanly. One team may identify a dependency, another may assess a control, another may look at authority or access, and another may assess resilience, without one shared representation showing how those conclusions relate to the same system.",
+      "For connected AI systems, I felt that separating these into six independent assessment models would reproduce the same problem. The same identity, data source, tool, agent, control or dependency can be relevant to several assurance questions at once. If each domain creates its own representation, there is a risk of duplicated objects, inconsistent definitions, different evidence assumptions and conclusions that cannot easily be reconciled.",
+      "That is why I designed ATG around one shared graph with six assurance lenses. The graph provides the common system representation, and each domain asks a different set of questions of that same system. Discovery establishes what exists and how it is connected; trust and authority examine the relationships and permissions; validation examines how those claims are tested; governance considers accountability and decisions; and resilience considers how the system behaves under disruption or failure.",
+      "The intention is not to collapse the six domains into one assessment. They remain distinct assurance perspectives. The shared graph makes sure they are reasoning about the same objects, relationships, paths and evidence, so that a conclusion in one domain can be traced to its implications in another.",
+      "For me, the main benefit is that gaps are less likely to disappear between separate reviews or ownership boundaries. A weakness identified through one lens can be followed through the same graph to understand where else it matters, who owns it, what control is expected to address it, and what evidence supports the resulting conclusion.",
+    ],
+  },
 } as const;
 
 /**

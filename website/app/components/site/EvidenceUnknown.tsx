@@ -1,5 +1,6 @@
 import { evidenceGrades, links, nonNumericResultStates, resultStateDefinitions, unknownVsNotTested } from "../../content";
 import { authorNotes, evidenceRelations, rejectedAlternatives } from "../../site-content";
+import { AuthorNote } from "./AuthorNote";
 import { Detail, Ext, Glossary, SectionHead, SourceNote } from "./Primitives";
 
 /**
@@ -56,13 +57,7 @@ export function EvidenceUnknown() {
           </li>
         </ul>
 
-        <div className="authorNote">
-          <h4 className="subTitle">{authorNotes.unknown.title}</h4>
-          {authorNotes.unknown.paragraphs.map((p) => (
-            <p key={p.slice(0, 40)}>{p}</p>
-          ))}
-          <p className="authorNoteBy">Siva Sethumadhavan, author</p>
-        </div>
+        <AuthorNote note={authorNotes.unknown} />
 
         <div className="unknownLayout">
           <div className="unknownPanel">
