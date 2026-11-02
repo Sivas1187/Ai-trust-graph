@@ -132,6 +132,16 @@ const nonNumericStates = ["Not Assessed", "UNKNOWN", "Inconclusive", "Not Tested
 const manifestS6 = manifest.split(/^## 6\. Validation status/m)[1]?.split(/^### 6\.1|^## 7/m)[0] ?? "";
 const pendingGates = [...manifestS6.matchAll(/^- (.+?);?\.?$/gm)].map((m) => m[1].charAt(0).toUpperCase() + m[1].slice(1));
 if (pendingGates.length === 0) errors.push("METHODOLOGY_MANIFEST.md: could not read the §6 pending gates");
+// The site shows the two independent-review gates as one line (author's choice,
+// 2026-11-02). Both must still be pending in the manifest; if either closes,
+// this check fails so the combined line is revisited.
+const combinedReviewGates = ["Independent methodology / architecture review", "Independent AI-security review"];
+const combinedReviewLabel = "Independent methodology / architecture and AI-security reviews";
+if (!combinedReviewGates.every((g) => pendingGates.includes(g)))
+  errors.push("METHODOLOGY_MANIFEST.md §6 no longer lists both independent-review gates; update the combined gate line in content.ts and check-claims.mjs");
+const displayedGates = pendingGates.flatMap((g) =>
+  g === combinedReviewGates[0] ? [combinedReviewLabel] : combinedReviewGates.includes(g) ? [] : [g],
+);
 const artifactNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
 
 // Sentences that must appear verbatim (canonical quotations and integrity statements).
@@ -227,7 +237,7 @@ const required = {
     "This manifest pins content; it does not convert pending external gates into completed review.",
     "Author’s internal review complete",
     "Independent review pending",
-    ...pendingGates,
+    ...displayedGates,
   ],
 };
 
@@ -484,7 +494,7 @@ for (const m of authorHtml.matchAll(/href="([^"]+)"/g)) if (!verifiedAuthorLinks
 // Gates: the pending list matches the manifest, and every closed gate is stated as bounded.
 {
   const st = section(index, "status");
-  inOrder("pending gates", all(st.match(/<ul class="gates">[\s\S]*?<\/ul>/)?.[0] ?? "", /<li>([\s\S]*?)<\/li>/g).map((t) => t.replace(/^○\s*/, "")), pendingGates);
+  inOrder("pending gates", all(st.match(/<ul class="gates">[\s\S]*?<\/ul>/)?.[0] ?? "", /<li>([\s\S]*?)<\/li>/g).map((t) => t.replace(/^○\s*/, "")), displayedGates);
   const closed = all(st.match(/<ul class="gates gatesClosed">[\s\S]*?<\/ul>/)?.[0] ?? "", /<li>([\s\S]*?)<\/li>/g);
   for (const c of closed) {
     if (!/closed by the author’s declaration/i.test(c)) fail(`index.html: closed gate "${c.slice(0, 60)}" does not say it was closed by the author's declaration`);

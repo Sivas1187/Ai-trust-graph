@@ -527,11 +527,12 @@ export const breakpointEffects = ["Stop", "Constrain", "Detect", "Contain"];
  * punctuation. check-claims compares this list with the manifest. The manifest
  * controls gate status. (ROADMAP.md records the licence choice as made while the
  * manifest lists legal approval as pending; that difference is tracked in the
- * repository, not shown on the site.)
+ * repository, not shown on the site.) The two independent-review gates are
+ * shown as one line by the author's choice (2026-11-02); the manifest keeps
+ * them as two separate gates, and check-claims maps both to this line.
  */
 export const pendingGates = [
-  "Independent methodology / architecture review",
-  "Independent AI-security review",
+  "Independent methodology / architecture and AI-security reviews",
   "Inter-assessor reproducibility study using the protocol in Artifact #10 Appendix B.4",
   "Legal approval of licence / trademark position",
 ];
