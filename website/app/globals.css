@@ -447,15 +447,6 @@ main:focus {
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.srcMark {
-  display: inline-grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 1px solid currentColor;
-  font-size: 12px;
-}
 .srcBody {
   margin-top: var(--sp-2);
   padding: var(--sp-3) var(--sp-4);
@@ -1970,6 +1961,7 @@ main:focus {
 .srcNote summary {
   list-style: none;
 }
+.srcNote summary::before,
 .chainTheory summary::before,
 .lifecycleMore summary::before,
 .domainCaps summary::before,
@@ -1984,6 +1976,7 @@ main:focus {
   font-weight: 500;
   line-height: 1;
 }
+.srcNote[open] > summary::before,
 .chainTheory[open] > summary::before,
 .lifecycleMore details[open] > summary::before,
 .domainCaps details[open] > summary::before,

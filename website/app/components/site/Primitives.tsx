@@ -43,9 +43,6 @@ export function SourceNote({ children, label = "Source" }: { children: ReactNode
   return (
     <details className="srcNote depthSource">
       <summary>
-        <span className="srcMark" aria-hidden="true">
-          §
-        </span>
         {label}
       </summary>
       <div className="srcBody">{children}</div>

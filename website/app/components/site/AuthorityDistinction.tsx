@@ -68,7 +68,7 @@ export function AuthorityDistinction() {
         <div className="authorityGrid">
           <div className="authorityClasses">
             <h4 className="subTitle">Authority classes</h4>
-            <ul className="chipList" aria-label="Authority classes, Artifact #2 §5.2">
+            <ul className="chipList" aria-label="Authority classes, Artifact #2 section 5.2">
               {authorityClasses.map((c) => (
                 <li key={c} className="chip">
                   {c}
@@ -132,7 +132,7 @@ export function AuthorityDistinction() {
             </div>
             <Detail className="pathStates">
               <p className="miniLabel">Path states</p>
-              <ul className="chipList chipListQuiet" aria-label="Path validation states, Artifact #2 §6.3">
+              <ul className="chipList chipListQuiet" aria-label="Path validation states, Artifact #2 section 6.3">
                 {pathValidationStates.map((s) => (
                   <li key={s} className="chip">
                     {s}
@@ -140,7 +140,7 @@ export function AuthorityDistinction() {
                 ))}
               </ul>
               <p className="miniLabel">Path roles</p>
-              <ul className="chipList chipListQuiet" aria-label="Path roles, Artifact #2 §6.3">
+              <ul className="chipList chipListQuiet" aria-label="Path roles, Artifact #2 section 6.3">
                 {pathRoles.map((s) => (
                   <li key={s} className="chip">
                     {s}
@@ -152,7 +152,7 @@ export function AuthorityDistinction() {
                 terms={[...pathStateDefinitions, ...pathRoleDefinitions]}
                 source={
                   <>
-                    <Ext href={ccm}>Artifact #2</Ext> §6.3, verbatim. State and role are separate dimensions: a residual path
+                    <Ext href={ccm}>Artifact #2</Ext> section 6.3, verbatim. State and role are separate dimensions: a residual path
                     still has its own state.
                   </>
                 }
@@ -162,9 +162,9 @@ export function AuthorityDistinction() {
         </div>
 
         <SourceNote>
-          <Ext href={ccm}>Artifact #2 · Core Conceptual Model</Ext> §3.6 separation rule, §5.2 authority classes, §1.8 and
-          §6.6 breakpoint definition and breakpoint questions, §5.13 containment, §6.3 path states and roles (quoted text verbatim); the BREAKS_PATH caveat from Artifact #12. The six assertions and their
-          one-line descriptions are a website illustration of the §3.6 rule, not a canonical list.
+          <Ext href={ccm}>Artifact #2 · Core Conceptual Model</Ext> section 3.6 separation rule, section 5.2 authority classes, sections 1.8 and
+          6.6 breakpoint definition and breakpoint questions, section 5.13 containment, section 6.3 path states and roles (quoted text verbatim); the BREAKS_PATH caveat from Artifact #12. The six assertions and their
+          one-line descriptions are a website illustration of the section 3.6 rule, not a canonical list.
         </SourceNote>
       </div>
     </section>

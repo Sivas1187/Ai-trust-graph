@@ -85,7 +85,7 @@ export function EvidenceUnknown() {
 
           <div id="evidence" className="evidencePanel">
             <h4 className="subTitle">How evidence relates to an assertion</h4>
-            <ul className="relations" aria-label="Evidence relations, Artifact #6 §0.9, and the UNKNOWN state">
+            <ul className="relations" aria-label="Evidence relations, Artifact #6 section 0.9, and the UNKNOWN state">
               {evidenceRelations.map((r) => (
                 <li key={r.key} className={`relation state-${r.key}`}>
                   <span className="relSymbol" aria-hidden="true">
@@ -112,7 +112,7 @@ export function EvidenceUnknown() {
             A grade says what kind of evidence it is. It does not say how confident anyone should be, and higher grades
             still hold only for the scope, period and conditions observed.
           </p>
-          <ol className="gradeScale" aria-label="Evidence grades, Artifact #6 §1.1 to §1.6">
+          <ol className="gradeScale" aria-label="Evidence grades, Artifact #6 sections 1.1 to 1.6">
             {evidenceGrades.map((g) => (
               <li key={g.grade} className={`grade grade-${g.grade.toLowerCase()}`}>
                 <span className="gradeId">{g.grade}</span>
@@ -126,7 +126,7 @@ export function EvidenceUnknown() {
               </li>
             ))}
           </ol>
-          <ul className="gradeRules" aria-label="How to read evidence grades, Artifact #6 §1.8">
+          <ul className="gradeRules" aria-label="How to read evidence grades, Artifact #6 section 1.8">
             <li>
               <strong>Grade is not sufficiency.</strong> Meeting the grade minimum is necessary but not sufficient;
               relevance, scope, currentness, representativeness, conflict status and an approved reviewer decision still
@@ -147,7 +147,7 @@ export function EvidenceUnknown() {
           <p>They are distinct non-numeric result states with different meanings.</p>
           <div className="tableWrap" role="region" aria-label="UNKNOWN and Not Tested table" tabIndex={0}>
             <table className="dataTable">
-              <caption className="visuallyHidden">UNKNOWN and Not Tested, Artifact #6 §0.5 and Artifact #4 §0.5</caption>
+              <caption className="visuallyHidden">UNKNOWN and Not Tested, Artifact #6 section 0.5 and Artifact #4 section 0.5</caption>
               <thead>
                 <tr>
                   <th scope="col">State</th>
@@ -175,7 +175,7 @@ export function EvidenceUnknown() {
           <p className="resultStatesLine">
             <span className="miniLabel">Distinct non-numeric result states</span>
           </p>
-          <ul className="chipList" aria-label="Distinct non-numeric result states, Artifact #4 §0.5">
+          <ul className="chipList" aria-label="Distinct non-numeric result states, Artifact #4 section 0.5">
             {nonNumericResultStates.map((s) => (
               <li key={s} className="chip">
                 {s}
@@ -187,7 +187,7 @@ export function EvidenceUnknown() {
             terms={resultStateDefinitions}
             source={
               <>
-                <Ext href={am}>Artifact #7</Ext> §0.5, verbatim. Provisional and Final within scope are review states;
+                <Ext href={am}>Artifact #7</Ext> section 0.5, verbatim. Provisional and Final within scope are review states;
                 the other five are the non-numeric states above.
               </>
             }
@@ -230,8 +230,8 @@ export function EvidenceUnknown() {
               </div>
             </dl>
             <p className="scoringSource">
-              <Ext href={scoring}>Artifact #4</Ext> §5.8, §1.1, §1.8, §3.4, §3.5, §4.1 and §4.9;{" "}
-              <Ext href={maturity}>Artifact #3</Ext> §1.6. Quoted sentences are verbatim; the rest is website explanation.
+              <Ext href={scoring}>Artifact #4</Ext> sections 5.8, 1.1, 1.8, 3.4, 3.5, 4.1 and 4.9;{" "}
+              <Ext href={maturity}>Artifact #3</Ext> section 1.6. Quoted sentences are verbatim; the rest is website explanation.
             </p>
           </div>
 
@@ -263,9 +263,9 @@ export function EvidenceUnknown() {
         </div>
 
         <SourceNote>
-          <Ext href={evidence}>Artifact #6 · Evidence Model</Ext> §0.5 state meanings, §0.9 evidence relations, §1.1 to
-          §1.6 grades, §1.8 reading rules, and the §0.3 separation sentence (verbatim).{" "}
-          <Ext href={scoring}>Artifact #4 · Scoring Framework</Ext> §0.5 numeric treatment and invariant SC-INV-01
+          <Ext href={evidence}>Artifact #6 · Evidence Model</Ext> section 0.5 state meanings, section 0.9 evidence relations, sections 1.1 to
+          1.6 grades, section 1.8 reading rules, and the section 0.3 separation sentence (verbatim).{" "}
+          <Ext href={scoring}>Artifact #4 · Scoring Framework</Ext> section 0.5 numeric treatment and invariant SC-INV-01
           (verbatim). Symbols are a website reading aid.
         </SourceNote>
       </div>

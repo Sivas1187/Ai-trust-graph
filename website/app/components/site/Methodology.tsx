@@ -35,9 +35,9 @@ export function Signature() {
         </p>
         <SourceNote>
           Relationship names and caveats: <Ext href={ontology}>Artifact #12 · Ontology Specification</Ext> predicate
-          catalogue (verbatim). Boundaries, paths and consequence: <Ext href={ccm}>Artifact #2</Ext> §3.2, §6, §6.6.
-          States, grades and relations: Artifact #6 §0.5, §0.9, §1. Topology invariant:{" "}
-          <Ext href={manifesto}>Artifact #1</Ext> §4 (verbatim).
+          catalogue (verbatim). Boundaries, paths and consequence: <Ext href={ccm}>Artifact #2</Ext> sections 3.2, 6 and 6.6.
+          States, grades and relations: Artifact #6 sections 0.5, 0.9 and 1. Topology invariant:{" "}
+          <Ext href={manifesto}>Artifact #1</Ext> section 4 (verbatim).
         </SourceNote>
       </div>
     </section>

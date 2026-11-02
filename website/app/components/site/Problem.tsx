@@ -85,8 +85,8 @@ export function Problem() {
           <a href="#example">See this request assessed end to end in the worked example.</a>
         </p>
         <SourceNote>
-          Website explanation of <Ext href={ccm}>Artifact #2</Ext> §3.6 (capability definition, network reachability,
-          granted authority and actual invocation are different concepts), <Ext href={manifesto}>Artifact #1</Ext> §4 (a
+          Website explanation of <Ext href={ccm}>Artifact #2</Ext> section 3.6 (capability definition, network reachability,
+          granted authority and actual invocation are different concepts), <Ext href={manifesto}>Artifact #1</Ext> section 4 (a
           topological connection is not automatically an exploitable path) and invariant SC-INV-01 (UNKNOWN is not safe).
         </SourceNote>
       </div>

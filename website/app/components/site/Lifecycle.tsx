@@ -31,7 +31,7 @@ export function Lifecycle() {
           }
         />
 
-        <ol className="phases" aria-label="Thirteen assessment phases, Artifact #7 §0.11">
+        <ol className="phases" aria-label="Thirteen assessment phases, Artifact #7 section 0.11">
           {assessmentPhases.map((p) => (
             <li key={p.n} className={`phase phase-${p.n}${p.n === 13 ? " phaseReassess" : ""}`}>
               <span className="phaseNum">{String(p.n).padStart(2, "0")}</span>
@@ -77,9 +77,9 @@ export function Lifecycle() {
         </Detail>
 
         <SourceNote>
-          <Ext href={am}>Artifact #7 · Assessment Methodology</Ext> §0.11 phases, outcomes and iteration rule; §0.12 exit
-          gates; §1.1 to §1.10 assessment types (verbatim). The trigger examples under Reassess are website explanation
-          drawn from the §1 assessment types.
+          <Ext href={am}>Artifact #7 · Assessment Methodology</Ext> section 0.11 phases, outcomes and iteration rule; section 0.12 exit
+          gates; sections 1.1 to 1.10 assessment types (verbatim). The trigger examples under Reassess are website explanation
+          drawn from the section 1 assessment types.
         </SourceNote>
       </div>
     </section>

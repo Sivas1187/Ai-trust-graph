@@ -85,8 +85,8 @@ export function BigIdea() {
 
         <SourceNote>
           Concepts: <Ext href={ccm}>Artifact #2 · Core Conceptual Model</Ext> (objects, typed relationships,
-          conditions, paths, authority §5.2, evidence). Framework positioning:{" "}
-          <Ext href={manifesto}>Artifact #1 · Manifesto</Ext> principle 10 and §11. Wording here is website explanation.
+          conditions, paths, authority section 5.2, evidence). Framework positioning:{" "}
+          <Ext href={manifesto}>Artifact #1 · Manifesto</Ext> principle 10 and section 11. Wording here is website explanation.
         </SourceNote>
       </div>
     </section>

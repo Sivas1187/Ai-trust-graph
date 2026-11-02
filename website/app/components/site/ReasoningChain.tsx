@@ -58,7 +58,7 @@ export function ReasoningChain() {
           ))}
         </p>
 
-        <ol className="chain" aria-label="Reasoning chain, Artifact #2 §0.10">
+        <ol className="chain" aria-label="Reasoning chain, Artifact #2 section 0.10">
           {chainStages.map((c, i) => {
             const href = stageLink[c.stage];
             return (
@@ -78,15 +78,15 @@ export function ReasoningChain() {
 
         <div className="chainFoot">
           <SourceNote>
-            Stage names and order: <Ext href={ccm}>Artifact #2 · Core Conceptual Model</Ext> §0.10 REASONING CHAIN
-            (verbatim). Questions and concepts: the §0.10 theory map; its last row covers both Evidence and Decision.
+            Stage names and order: <Ext href={ccm}>Artifact #2 · Core Conceptual Model</Ext> section 0.10 REASONING CHAIN
+            (verbatim). Questions and concepts: the section 0.10 theory map; its last row covers both Evidence and Decision.
             Stage notes are website explanation.
           </SourceNote>
           <details className="chainTheory depthDetail">
-            <summary>The §0.10 theory map as published</summary>
+            <summary>The section 0.10 theory map as published</summary>
             <div className="tableWrap" role="region" aria-label="Theory map table" tabIndex={0}>
             <table className="dataTable">
-              <caption className="visuallyHidden">Theory map, Artifact #2 §0.10</caption>
+              <caption className="visuallyHidden">Theory map, Artifact #2 section 0.10</caption>
               <thead>
                 <tr>
                   <th scope="col">Question</th>
@@ -121,7 +121,7 @@ export function ReasoningChain() {
             Inference accelerates review; accountable approval determines accepted state.
           </p>
           <SourceNote>
-            <Ext href={ccm}>Artifact #2 · Core Conceptual Model</Ext> §7.4 · §3.8 · §1.10 (verbatim).
+            <Ext href={ccm}>Artifact #2 · Core Conceptual Model</Ext> sections 7.4, 3.8 and 1.10 (verbatim).
           </SourceNote>
         </article>
       </div>
