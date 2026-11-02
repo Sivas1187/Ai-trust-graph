@@ -19,7 +19,7 @@ npm run dev     # http://localhost:3000
 | `npm run dev` | Local development server. |
 | `npm run build` | Production static export to `out/`, then `scripts/finalize-headers.mjs` writes the build's inline-script CSP hashes into `out/_headers`. Cloudflare Pages runs this same command. |
 | `npm run typecheck` | `tsc --noEmit`. |
-| `npm run check` | Typecheck, build, then `scripts/check-links.mjs` (in-page anchors, internal links, and every GitHub link resolves to a file in this repository), `scripts/check-claims.mjs` (prohibited-claims scan of rendered text and metadata) and `scripts/check-headers.mjs` (production `out/_headers` policy, no HSTS, every inline script allowed by a CSP hash, required export assets present). |
+| `npm run check` | Typecheck, build, then `scripts/check-links.mjs` (in-page anchors, internal links, and every GitHub link resolves to a file in this repository), `scripts/check-claims.mjs` (forbidden claims, banned vocabulary, em dashes, emails, trackers, DOI before publication, and canonical content and order in every section) and `scripts/check-headers.mjs` (production `out/_headers` policy, no HSTS, every inline script allowed by a CSP hash, required export assets present). |
 | `node scripts/serve-out.mjs [port]` | Local preview of `out/` **with** the `out/_headers` response headers applied, to test the CSP in a browser before deploying. Development aid only. |
 
 Next.js is configured with `output: "export"`, producing a static `out/` directory
@@ -38,13 +38,61 @@ It never deploys and uses no secrets.
 
 | Path | Role |
 | --- | --- |
-| `app/content.ts` | All methodology-derived copy, each entry annotated with its canonical source artifact and section. Edit here first; never edit canonical artifacts to match the site. |
-| `app/page.tsx` | Homepage narrative. |
-| `app/components/` | Synthetic hero graph and control-breakpoint illustration (server components) and the primary navigation (`PrimaryNav.tsx`, the only client component: mobile menu). |
-| `app/globals.css` | Visual system (tokens, layout, reduced-motion handling). |
-| `app/layout.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/icon.svg`, `app/apple-icon.png`, `public/og.png` | Metadata, canonical URL (`https://aitrustgraph.org`), Open Graph/Twitter, robots and sitemap. |
+| `app/site.config.ts` | **Central configuration**: methodology version, status and review state, site URL and update date, repository and bundle ref, licence, author and verified links, social metadata, and the whitepaper record. Edit release and publication facts here. |
+| `app/content.ts` | Canonical data: release facts, artifact registry, reasoning chain, theory map, lifecycle, grades, result states, domains, gates, pinned links (`BUNDLE_REF`). Each entry names its source artifact and section. |
+| `app/site-content.ts` | Narrative and methodology content: why-it-exists narrative, problem scenario, distinctions, big-idea concepts, author summary and independence statement, chain stage notes, domain detail, evidence relations, framework positioning, artifact grouping and dependencies. Each entry is marked CANONICAL or EDITORIAL. |
+| `app/publication.ts` | Publication helpers: `isPublished()` and the citation generator (APA, IEEE, BibTeX, with optional overrides). The record itself lives in `site.config.ts`. |
+| `app/page.tsx` | Homepage section order. |
+| `app/components/site/` | Homepage sections and shared primitives (`Primitives.tsx`: section head, source note, external link, detail). Client components: `SignatureGraph`, `WorkedExample`, `ArtifactLibrary`, `DepthControl`, `CopyButton`. |
+| `app/components/PrimaryNav.tsx`, `BrandMark.tsx`, `GraphExplorer.tsx` | Navigation menu (client), brand mark, `/graph/` explorer (client). |
+| `app/globals.css` | Design tokens and all homepage styles (see the header comment). `app/graph/graph.css` styles `/graph/`. |
+| `app/layout.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/icon.svg`, `app/apple-icon.png`, `public/og.png` | Metadata, canonical URL (`https://aitrustgraph.org`), Open Graph / Twitter, JSON-LD (WebSite, Person, CreativeWork), robots and sitemap. |
+| `app/privacy/`, `app/accessibility/`, `app/not-found.tsx` | Privacy notice, accessibility statement, 404. |
 | `public/_headers` | **Active** Cloudflare Pages response headers (CSP, nosniff, Referrer-Policy, Permissions-Policy, framing). No HSTS. |
-| `DEPLOYMENT.md` | Production configuration, header policy, www → apex redirect runbook, verification and rollback. |
+| `DESIGN_BRIEF.md` | Design decisions, tokens, accessibility approach, recorded conflicts. |
+| `WEBSITE_CONTENT_MAP.md` | Section-to-source traceability and permitted / forbidden claims. |
+| `DEPLOYMENT.md` | Production configuration, header policy, redirect runbook, verification and rollback. |
+
+## Maintenance
+
+All values below are edited in one place; `npm run check` then verifies the
+result against the manifest and the claims rules.
+
+- **New release or status change.** Update `methodology` (version, status,
+  snapshot, review status) and `repository.bundleRef` in `app/site.config.ts`,
+  then `pendingGates` and `artifacts` versions in `app/content.ts`.
+- **Gate status change.** Edit METHODOLOGY_MANIFEST §6 (pending list) and
+  §6.1 (gate records) first, commit, then set `repository.manifestRef` in
+  `app/site.config.ts` to that commit and update `pendingGates` and
+  `closedGates` in `app/content.ts`. `check-claims` reads the pending list from
+  the manifest and fails if the site differs, and requires every closed gate
+  to have a §6.1 record and to say it was closed by the author's declaration. `check-claims` reads the bundle,
+  status and snapshot from `../METHODOLOGY_MANIFEST.md` and fails if the hero
+  or status section disagrees.
+- **Publishing the whitepaper.** Only after the Zenodo record and DOI exist:
+  in `publication` in `app/site.config.ts` set `status: "published"` and fill `doi`,
+  `zenodoUrl`, `pdfUrl`, `publishedDate` (YYYY-MM-DD) and `abstract`; confirm
+  the Zenodo record's licence matches `licence` (CC BY 4.0, the author's
+  decision of 2026-10-02); add earlier versions to `versions`. While the
+  whitepaper is in preparation, `licence` is shown as the licence on
+  publication. The Publications section
+  then offers the PDF, the Zenodo record, Copy DOI, APA / IEEE / BibTeX
+  citations and version history, and a ScholarlyArticle is added to the JSON-LD. While
+  `status` is "in-preparation", `check-claims` rejects any DOI, PDF link,
+  download wording or scholarly metadata.
+- **Author links.** Add verified URLs to `author.links` in
+  `app/site.config.ts` (LinkedIn, ORCID, Zenodo). Empty values are not
+  rendered. `check-claims` rejects author-section links other than the
+  verified GitHub profile until the guard's allow-list is updated with the
+  new verified URL.
+- **Independence statement.** `author.independence` in `app/site-content.ts`
+  is the author-approved statement. Change it only on the author's
+  instruction.
+- **Canonical text.** Correct CANONICAL entries only to match the pinned
+  artifact. EDITORIAL text follows the writing rules: British English, no em
+  dashes, no marketing vocabulary (enforced by `check-claims`).
+- **Adding a section.** Use `SectionHead` and end with a `SourceNote`; add
+  its required sentences and ordered lists to `scripts/check-claims.mjs`.
 
 ## Deployment
 
@@ -62,7 +110,7 @@ Cloudflare Pages:
 
 ## Methodology links are version-pinned
 
-The site names bundle `1.0-rc.4`, so links to normative artifacts (`docs/*`, `METHODOLOGY_MANIFEST.md`, `LICENSE`) are pinned to an immutable ref (`BUNDLE_REF` in `app/content.ts`). No Git tag or release exists for `1.0-rc.4` yet, so the ref is the bundle source commit `ec9b4571d96afdf1c423713349871459e1cf9b9b`, whose `docs/` blobs match every pin in the manifest. Replace it with the release tag once the owner creates one. Repository navigation (Issues, CONTRIBUTING, REVIEW_FINDINGS, ROADMAP, TRADEMARKS) stays on `main`. `scripts/check-links.mjs` fails if a normative artifact is linked at `main`.
+The site names bundle `1.0-rc.5`, so links to normative artifacts (`docs/*`, `METHODOLOGY_MANIFEST.md`, `LICENSE`) are pinned to an immutable ref (`BUNDLE_REF` in `app/content.ts`): the commit `5db4e7d883d6469788dbabcb71c169f86feffe19` that carries the bundle, whose `docs/` blobs match every pin in the manifest. `check-links.mjs` accepts only full commit SHAs, so the release tags (`v1.0-rc.4`, `v1.0-rc.5`) are not used directly. When the bundle changes, update `bundleRef` and `manifestRef` in `app/site.config.ts`. Repository navigation (Issues, CONTRIBUTING, REVIEW_FINDINGS, ROADMAP, TRADEMARKS) stays on `main`. `scripts/check-links.mjs` fails if a normative artifact is linked at `main`.
 
 ## Brand mark is provisional
 

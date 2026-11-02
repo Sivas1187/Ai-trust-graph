@@ -7,19 +7,21 @@
  * methodology, when they disagree. See ../WEBSITE_GOVERNANCE.md.
  */
 
-export const SITE_URL = "https://aitrustgraph.org";
-export const REPO_URL = "https://github.com/Sivas1187/Ai-trust-graph";
+import { siteConfig } from "./site.config";
+
+export const SITE_URL = siteConfig.site.url;
+export const REPO_URL = siteConfig.repository.url;
 
 /**
  * Owner ruling 5: normative artifact links must be immutable for the bundle
- * the site names. No Git tag or release exists for 1.0-rc.4 (checked
- * 2026-09-29), so artifact links pin the bundle source commit, whose docs/
- * blobs match every Git blob SHA in METHODOLOGY_MANIFEST.md §4. Replace with
- * the release tag once the owner creates one.
+ * the site names. Artifact links pin the commit that carries bundle 1.0-rc.5,
+ * whose docs/ blobs match every Git blob SHA in METHODOLOGY_MANIFEST.md §4.
+ * check-links accepts only full commit SHAs, so the release tag (v1.0-rc.5)
+ * is not used directly.
  */
-export const BUNDLE_REF = "ec9b4571d96afdf1c423713349871459e1cf9b9b";
+export const BUNDLE_REF = siteConfig.repository.bundleRef;
 
-/** Immutable link into the 1.0-rc.4 bundle (normative artifacts, manifest). */
+/** Immutable link into the 1.0-rc.5 bundle (normative artifacts, manifest). */
 const pinned = (path: string) => `${REPO_URL}/blob/${BUNDLE_REF}/${path}`;
 /** Mutable repository navigation (contribution, review and project files). */
 const blob = (path: string) => `${REPO_URL}/blob/main/${path}`;
@@ -34,22 +36,34 @@ export const links = {
   // Discussions is enabled on the repository (GitHub API has_discussions: true, checked 2026-09-30).
   discussions: `${REPO_URL}/discussions`,
   contributing: blob("CONTRIBUTING.md"),
+  reviewing: blob("REVIEWING.md"),
   reviewFindings: blob("REVIEW_FINDINGS.md"),
-  manifest: pinned("METHODOLOGY_MANIFEST.md"),
+  // The manifest is pinned at the commit that records the current gate status
+  // (§6.1, §6.2), which may be newer than the bundle commit; artifact content is unchanged.
+  manifest: `${REPO_URL}/blob/${siteConfig.repository.manifestRef}/METHODOLOGY_MANIFEST.md`,
   roadmap: blob("ROADMAP.md"),
   license: pinned("LICENSE"),
   trademarks: blob("TRADEMARKS.md"),
   readme: blob("README.md"),
+  changelog: blob("CHANGELOG.md"),
   doc: (file: string) => pinned(`docs/${file}`),
 };
 
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+/** "2026-10-02" to "2 October 2026": the one date format the site shows (ISO stays in dateTime attributes). */
+export function longDate(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${d} ${MONTHS[m - 1]} ${y}`;
+}
+
 /** Source: METHODOLOGY_MANIFEST.md header. */
 export const release = {
-  bundle: "1.0-rc.4",
-  status: "Public-release candidate",
-  snapshot: "2026-09-26",
-  /** `snapshot` written out for the Cover colophon; check-claims verifies both against the manifest. */
-  snapshotLabel: "26 September 2026",
+  bundle: siteConfig.methodology.version,
+  status: siteConfig.methodology.status,
+  snapshot: siteConfig.methodology.snapshot,
+  /** `snapshot` written out; check-claims verifies both against the manifest. */
+  snapshotLabel: siteConfig.methodology.snapshotLabel,
 };
 
 /**
@@ -62,8 +76,8 @@ export const release = {
  * - Limitation: the site's standing disclaimer (WEBSITE_GOVERNANCE.md; Artifact #11
  *   constitutional boundary).
  */
-export const methodologyAuthor = "Siva Sethumadhavan";
-export const reviewStatus = ["Author’s internal review complete", "Independent review pending"] as const;
+export const methodologyAuthor = siteConfig.author.name;
+export const reviewStatus = siteConfig.methodology.reviewStatus;
 export const notValidated = "AI Trust Graph is not independently validated.";
 /** Short form of `notValidated` for the Cover colophon. */
 export const notValidatedShort = "Not independently validated";
@@ -130,12 +144,12 @@ export const artifacts = [
   { n: 3, title: "Maturity Model", version: "1.0", file: "03-maturity-model.md", role: "The M1–M5 scale, 36 capabilities, critical gates" },
   { n: 4, title: "Scoring Framework", version: "3.0.0", file: "04-scoring-framework.md", role: "Control scoring, DCA/VCR/WCA, the PEI formula" },
   { n: 5, title: "Master Control Library", version: "2.0.0", file: "05-master-control-library.md", role: "All 72 canonical controls" },
-  { n: 6, title: "Evidence Model", version: "2.0.0", file: "06-evidence-model.md", role: "E0–E5 grading, quality dimensions, evidence lifecycle" },
-  { n: 7, title: "Assessment Methodology", version: "1.1.0", file: "07-assessment-methodology.md", role: "The 13-phase assessment lifecycle and specialized methods" },
-  { n: 8, title: "Assessor Handbook", version: "1.0", file: "08-assessor-handbook.md", role: "Assessor competency levels (A1–A5), field guidance per control" },
-  { n: 9, title: "Reporting Standard", version: "1.1.0", file: "09-reporting-standard.md", role: "The mandatory report package and claim-integrity rules" },
+  { n: 6, title: "Evidence Model", version: "2.0.1", file: "06-evidence-model.md", role: "E0–E5 grading, quality dimensions, evidence lifecycle" },
+  { n: 7, title: "Assessment Methodology", version: "1.1.1", file: "07-assessment-methodology.md", role: "The 13-phase assessment lifecycle and specialized methods" },
+  { n: 8, title: "Assessor Handbook", version: "1.0.1", file: "08-assessor-handbook.md", role: "Assessor competency levels (A1–A5), field guidance per control" },
+  { n: 9, title: "Reporting Standard", version: "1.1.1", file: "09-reporting-standard.md", role: "The mandatory report package and claim-integrity rules" },
   { n: 10, title: "Reference Assessment Repository", version: "2.0.0", file: "10-reference-assessment-repository.md", role: "Synthetic worked calibration cases and adversarial vectors" },
-  { n: 11, title: "Governance & Certification Model", version: "1.0", file: "11-governance-and-certification-model.md", role: "Stewardship, change control, certification readiness" },
+  { n: 11, title: "Governance & Certification Model", version: "1.0.1", file: "11-governance-and-certification-model.md", role: "Stewardship, change control, certification readiness" },
 ] as const;
 
 /** Source: METHODOLOGY_MANIFEST.md §4 (Phase 2 non-normative companion). */
@@ -450,6 +464,38 @@ export const pathValidationStates = [
 ];
 export const pathRoles = ["Primary", "Alternate", "Residual"];
 
+/** Source: Artifact #2 Core Conceptual Model §6.3, both tables verbatim (glossary under the path-state chips). */
+export const pathStateDefinitions: [string, string][] = [
+  ["Candidate", "A hypothesized sequence requires review."],
+  ["Topological", "A traversal exists in the represented graph."],
+  ["Plausible", "Required conditions are supported or explicitly UNKNOWN."],
+  ["Validated", "Authorized testing or direct evidence confirms the scoped progression."],
+  ["Exploitable", "Evidence demonstrates a security exploit path within stated conditions."],
+  ["Controlled", "Validated controls prevent, constrain, detect or contain the path as claimed."],
+  ["Invalidated", "Evidence disproves a required step or condition."],
+];
+export const pathRoleDefinitions: [string, string][] = [
+  ["Primary", "The principal path selected for the current analysis or decision."],
+  ["Alternate", "A different route that reaches the same or equivalent target."],
+  ["Residual", "A route remaining after an existing or proposed intervention."],
+];
+
+/**
+ * Source: Artifact #7 Assessment Methodology §0.5 normative result states,
+ * table verbatim (glossary under the result-state chips). It adds the two
+ * review states, Provisional and Final within scope, to the five
+ * non-numeric states above.
+ */
+export const resultStateDefinitions: [string, string][] = [
+  ["UNKNOWN", "Material evidence is absent, insufficient or conflicting."],
+  ["Not Assessed", "No assessment activity completed for the item."],
+  ["Not Applicable", "Approved rationale establishes non-applicability."],
+  ["Not Tested", "Required effectiveness test was not performed."],
+  ["Inconclusive", "Activity occurred but cannot support a determinate result."],
+  ["Provisional", "Result awaits evidence closure or quality review."],
+  ["Final within scope", "All required gates and approvals are complete for declared scope."],
+];
+
 /**
  * Authority annotation (Act III, a).
  * `distinctAssertions`: the site's illustration of distinct claims, each needing
@@ -476,23 +522,30 @@ export const authorityClasses = [
 export const breakpointEffects = ["Stop", "Constrain", "Detect", "Contain"];
 
 /**
- * Source: METHODOLOGY_MANIFEST.md §6 (validation status): the five external
- * release gates, verbatim except for the initial capital and list punctuation.
- * The manifest controls gate status; see `roadmapNote` for the ROADMAP difference.
+ * Source: METHODOLOGY_MANIFEST.md §6 (validation status): the external release
+ * gates still pending, verbatim except for the initial capital and list
+ * punctuation. check-claims compares this list with the manifest. The manifest
+ * controls gate status. (ROADMAP.md records the licence choice as made while the
+ * manifest lists legal approval as pending; that difference is tracked in the
+ * repository, not shown on the site.)
  */
 export const pendingGates = [
   "Independent methodology / architecture review",
   "Independent AI-security review",
   "Inter-assessor reproducibility study using the protocol in Artifact #10 Appendix B.4",
-  "Employer / IP / confidentiality review",
   "Legal approval of licence / trademark position",
 ];
 
 /**
- * ROADMAP.md Phase 2 ticks the "Licence and trademark decision" (CC BY 4.0 chosen)
- * while noting it is not yet legally final; METHODOLOGY_MANIFEST §6 still lists
- * legal approval of the licence / trademark position as a pending gate. The site
- * follows the manifest and states the difference rather than reconciling it.
+ * Source: METHODOLOGY_MANIFEST.md §6.1 gate records. A short form of each
+ * record (author-approved wording); the full basis and its limits stay in the
+ * manifest, which the status section links to.
  */
-export const roadmapNote =
-  "Gate status follows METHODOLOGY_MANIFEST §6. ROADMAP.md records the licence choice (CC BY 4.0) as made; the manifest still lists legal approval of the licence / trademark position as pending.";
+export const closedGates = [
+  {
+    gate: "Employer / IP / confidentiality review",
+    summary: "closed by the author’s declaration (independent research, author-owned IP)",
+    recorded: "2026-10-02",
+  },
+];
+

@@ -1,0 +1,327 @@
+{
+  "_comment": "Bundled synthetic example for /graph/. Entity and predicate texts are verbatim from Artifact #12 (Appendix A, Canonical Entity Registry: Definition; Appendix C, Canonical Relationship Registry: Meaning and Constraint). scripts/check-graph.mjs fails the build if any text, type or predicate drifts from docs/12-ontology-specification.md. Names, labels, conditions and positions are invented for illustration.",
+  "pattern": "E.1 Agent delegated action",
+  "views": {
+    "authority": [
+      "AUTHENTICATES_AS",
+      "ASSUMES_ROLE",
+      "ACTS_FOR",
+      "AUTHORIZED_TO",
+      "DELEGATES_TO",
+      "INVOKES",
+      "LIMITED_BY",
+      "REVOKED_BY"
+    ],
+    "controls": [
+      "CONTROLS",
+      "CONTROLLED_BY",
+      "APPROVED_BY",
+      "LIMITED_BY",
+      "BREAKS_PATH",
+      "DENIED_BY",
+      "GUARDED_BY",
+      "TESTED_BY"
+    ],
+    "evidence": [
+      "EVIDENCED_BY",
+      "OBSERVED_BY",
+      "SUPPORTS",
+      "CORROBORATES",
+      "QUALIFIES",
+      "DISPUTES",
+      "INVALIDATED_BY"
+    ]
+  },
+  "entities": {
+    "Actor": {
+      "family": "Actors, accountability and organizational roles",
+      "definition": "A human, organizational or machine-associated entity capable of initiating, approving, influencing or being accountable for activity."
+    },
+    "HumanIdentity": {
+      "family": "Identity, access and authority",
+      "definition": "An identity representing a human actor."
+    },
+    "Agent": {
+      "family": "AI behavior and decision influence",
+      "definition": "A software entity that selects, sequences or executes steps toward an objective using models, tools, memory, rules or other agents."
+    },
+    "Tool": {
+      "family": "Action surface and workflow execution",
+      "definition": "A callable capability through which a model, agent, application or workflow can observe, retrieve, transform or change external state."
+    },
+    "BusinessAction": {
+      "family": "Action surface and workflow execution",
+      "definition": "An action that creates a business, operational, customer, financial, legal or organizational effect."
+    },
+    "Outcome": {
+      "family": "Graph, boundary, path and consequence",
+      "definition": "An observed or intended result of an action, workflow, decision, control or incident; it may or may not be materially adverse."
+    },
+    "Approval": {
+      "family": "Identity, access and authority",
+      "definition": "A bounded authorization decision that permits, conditions, rejects or stops a defined action or change."
+    },
+    "Budget": {
+      "family": "Action surface and workflow execution",
+      "definition": "A bounded resource, value, iteration, time or transaction allowance used to constrain execution."
+    },
+    "Control": {
+      "family": "Assurance, governance and evidence",
+      "definition": "A governed objective and mechanism intended to prevent, constrain, detect, contain, recover from or provide assurance over a material condition or path."
+    },
+    "Source": {
+      "family": "Data, retrieval, memory and knowledge",
+      "definition": "An originating system, record set, repository, human-provided source or external source from which data or evidence is obtained."
+    },
+    "EvidenceItem": {
+      "family": "Assurance, governance and evidence",
+      "definition": "A versioned source object that supports, disputes, qualifies or bounds an assertion within stated scope, time and conditions."
+    }
+  },
+  "predicates": {
+    "AUTHENTICATES_AS": {
+      "meaning": "States that an actor, agent, application or workload establishes a session or request using a particular identity.",
+      "constraint": "Authentication does not imply authorization."
+    },
+    "DELEGATES_TO": {
+      "meaning": "States that a grantor transfers bounded authority to a delegate.",
+      "constraint": "Delegation retains grantor, scope, conditions, duration, approval and revocation semantics."
+    },
+    "CONNECTS_TO": {
+      "meaning": "Represents network or logical connectivity from source to target.",
+      "constraint": "Does not imply authentication, authorization, invocation or exploitability."
+    },
+    "INVOKES": {
+      "meaning": "States that a source calls a tool, API, workflow, model endpoint or capability.",
+      "constraint": "Invocation is distinct from ability to invoke, successful completion and resulting consequence."
+    },
+    "TRIGGERS_ACTION": {
+      "meaning": "States that an entity or event directly causes a defined technical or business action.",
+      "constraint": "Must distinguish trigger from authority, successful effect and consequence."
+    },
+    "AFFECTS": {
+      "meaning": "Links a threat, incident, action, finding or decision to a stakeholder, asset, process or outcome materially affected.",
+      "constraint": "Effect direction and scope must be stated."
+    },
+    "APPROVED_BY": {
+      "meaning": "Links an action, relationship, use case, change or decision to its accountable approval.",
+      "constraint": "Approval must be meaningful, in scope and evidenced."
+    },
+    "LIMITED_BY": {
+      "meaning": "Links authority, action or resource consumption to a constraint such as value, rate, time, scope, iteration or budget limit.",
+      "constraint": "Limit existence does not prove enforcement."
+    },
+    "CONTROLLED_BY": {
+      "meaning": "States that an object, action, data flow or behavior is governed or constrained by a control.",
+      "constraint": "Directional counterpart of control coverage; effectiveness still requires evidence."
+    },
+    "OBSERVED_BY": {
+      "meaning": "States that an object, relationship or event is directly or indirectly observed by an evidence source.",
+      "constraint": "Observation does not imply approval or truth beyond source limitations."
+    },
+    "EVIDENCED_BY": {
+      "meaning": "Links an object, relationship, path, control result or finding to one or more evidence items.",
+      "constraint": "Evidence strength is evaluated separately through grade, quality and confidence."
+    }
+  },
+  "graph": {
+    "generatedAt": "bundled synthetic example",
+    "nodes": [
+      {
+        "id": "analyst",
+        "type": "Actor",
+        "label": "Analyst",
+        "summary": "The human analyst who starts the refund workflow.",
+        "x": 110,
+        "y": 110,
+        "labelAt": "above"
+      },
+      {
+        "id": "analyst-identity",
+        "type": "HumanIdentity",
+        "label": "Analyst identity",
+        "summary": "The identity the analyst signs in with. It is the grantor that delegates bounded authority to the agent.",
+        "x": 400,
+        "y": 110,
+        "labelAt": "above"
+      },
+      {
+        "id": "agent",
+        "type": "Agent",
+        "label": "Refund agent",
+        "summary": "An AI agent that prepares and submits customer refunds on the analyst's behalf.",
+        "x": 690,
+        "y": 110,
+        "labelAt": "above"
+      },
+      {
+        "id": "tool",
+        "type": "Tool",
+        "label": "Refund tool",
+        "summary": "A write-capable tool the agent calls to submit a refund.",
+        "x": 690,
+        "y": 280,
+        "labelAt": "below"
+      },
+      {
+        "id": "action",
+        "type": "BusinessAction",
+        "label": "Issue refund",
+        "summary": "The business action that moves money. Its consequence is what makes this path material.",
+        "x": 400,
+        "y": 280,
+        "labelAt": "above"
+      },
+      {
+        "id": "outcome",
+        "type": "Outcome",
+        "label": "Customer refunded",
+        "summary": "The intended result of the action. Whether it is materially adverse depends on the amount, the recipient and the conditions.",
+        "x": 110,
+        "y": 280,
+        "labelAt": "below"
+      },
+      {
+        "id": "ledger",
+        "type": "Source",
+        "label": "Payment ledger",
+        "summary": "The system of record in which each refund appears. It is a source of evidence, not evidence of approval.",
+        "x": 100,
+        "y": 450,
+        "labelAt": "below"
+      },
+      {
+        "id": "limit",
+        "type": "Budget",
+        "label": "Refund limit",
+        "summary": "A per-refund value allowance that constrains the action.",
+        "x": 300,
+        "y": 450,
+        "labelAt": "below"
+      },
+      {
+        "id": "approval",
+        "type": "Approval",
+        "label": "Refund approval",
+        "summary": "The decision that permits, conditions or stops refunds above the limit.",
+        "x": 500,
+        "y": 450,
+        "labelAt": "right"
+      },
+      {
+        "id": "control",
+        "type": "Control",
+        "label": "Payment control",
+        "summary": "A control intended to prevent or detect improper refunds. Coverage alone does not establish operating effectiveness.",
+        "x": 720,
+        "y": 450,
+        "labelAt": "right"
+      },
+      {
+        "id": "approval-record",
+        "type": "EvidenceItem",
+        "label": "Approval record",
+        "summary": "The record of an approval decision. Its grade, quality and confidence are evaluated separately.",
+        "x": 500,
+        "y": 610,
+        "labelAt": "right"
+      },
+      {
+        "id": "test-record",
+        "type": "EvidenceItem",
+        "label": "Control test record",
+        "summary": "The record of a test of the payment control. Its grade, quality and confidence are evaluated separately.",
+        "x": 720,
+        "y": 610,
+        "labelAt": "right"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "r1",
+        "from": "analyst",
+        "to": "analyst-identity",
+        "type": "AUTHENTICATES_AS",
+        "conditions": "The analyst's session is established with the analyst identity."
+      },
+      {
+        "id": "r2",
+        "from": "analyst-identity",
+        "to": "agent",
+        "type": "DELEGATES_TO",
+        "conditions": "The scope, duration and revocation of this delegation have not been evidenced, so the step stays UNKNOWN.",
+        "state": "UNKNOWN"
+      },
+      {
+        "id": "r3",
+        "from": "agent",
+        "to": "tool",
+        "type": "CONNECTS_TO",
+        "conditions": "The agent can reach the tool endpoint. Reaching it is a separate fact from being allowed to call it."
+      },
+      {
+        "id": "r4",
+        "from": "agent",
+        "to": "tool",
+        "type": "INVOKES",
+        "conditions": "The agent calls the tool. A call is a separate fact from a successful refund."
+      },
+      {
+        "id": "r5",
+        "from": "tool",
+        "to": "action",
+        "type": "TRIGGERS_ACTION",
+        "conditions": "A successful call issues the refund."
+      },
+      {
+        "id": "r6",
+        "from": "action",
+        "to": "outcome",
+        "type": "AFFECTS",
+        "conditions": "The refund pays the customer. Direction and scope: one customer, one refund."
+      },
+      {
+        "id": "r7",
+        "from": "action",
+        "to": "ledger",
+        "type": "OBSERVED_BY",
+        "conditions": "Each refund is recorded in the payment ledger."
+      },
+      {
+        "id": "r8",
+        "from": "action",
+        "to": "limit",
+        "type": "LIMITED_BY",
+        "conditions": "Each refund is capped at a set value. Whether the cap is enforced is a separate question."
+      },
+      {
+        "id": "r9",
+        "from": "action",
+        "to": "approval",
+        "type": "APPROVED_BY",
+        "conditions": "Refunds above the limit need this approval."
+      },
+      {
+        "id": "r10",
+        "from": "action",
+        "to": "control",
+        "type": "CONTROLLED_BY",
+        "conditions": "The refund falls within the payment control's coverage."
+      },
+      {
+        "id": "r11",
+        "from": "approval",
+        "to": "approval-record",
+        "type": "EVIDENCED_BY",
+        "conditions": "The approval decision is linked to its record."
+      },
+      {
+        "id": "r12",
+        "from": "control",
+        "to": "test-record",
+        "type": "EVIDENCED_BY",
+        "conditions": "The control is linked to the record of its latest test."
+      }
+    ]
+  }
+}

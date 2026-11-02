@@ -1,0 +1,13 @@
+{
+  "name": "ai-trust-graph-whitepaper-build",
+  "private": true,
+  "type": "module",
+  "description": "Builds the publication PDF of the AI Trust Graph whitepaper from its authoritative Markdown.",
+  "scripts": {
+    "build": "node build-pdf.mjs"
+  },
+  "dependencies": {
+    "marked": "14.1.4",
+    "playwright-core": "1.56.1"
+  }
+}

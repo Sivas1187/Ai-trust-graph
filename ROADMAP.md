@@ -22,6 +22,7 @@ All twelve methodology artifacts have been converted from their source drafts in
 - [x] Publish the release-candidate manifest with exact artifact versions and Git blob identifiers.
 - [x] Resolve R-14: UNKNOWN is non-numeric for PEI; disproved reachability invalidates the path; determinate active PEI range is 7-62.
 - [x] Add PEI threshold/adversarial vectors, residual/alternate-path cases and an M5 calibration pair (R-15/R-22).
+- [x] Run a sensitivity analysis of the Path Exposure Index (Artifact #4 §6.5): author-performed, recorded 2026-10-02 in [METHODOLOGY_MANIFEST.md §6.2](METHODOLOGY_MANIFEST.md#62-release-acceptance-records), with method and script in [`analysis/pei-sensitivity/`](analysis/pei-sensitivity/). Not an independent review; other weighted formulas in Artifact #4 and reviewer variation are not covered, and the review of the analysis that Artifact #4 A.7 asks for is still to come.
 - [x] Add the six-stage-to-thirteen-phase lifecycle crosswalk (R-18).
 - [x] Gate L4 Tool-compatible until approved normative schemas and test vectors exist (R-19).
 
@@ -29,12 +30,12 @@ All twelve methodology artifacts have been converted from their source drafts in
 
 Per the Manifesto's own Appendix B publication-acceptance criteria and Governance & Certification Model §0.15 ("External validation gate"), the following must close before this can be represented as a genuine public release rather than a release candidate:
 
-- [ ] **Employer / IP / confidentiality review** — confirm ownership and permission to publish every artifact, per every artifact's own approval table.
+- [x] **Employer / IP / confidentiality review** — closed 2026-10-02 by author declaration: independent research, author-owned IP, no employer or client confidential information. A self-declaration, not an external legal review; recorded in [METHODOLOGY_MANIFEST.md §6.1](METHODOLOGY_MANIFEST.md#61-gate-records).
 - [ ] **Independent chief-product-architecture review** — currently "internal author-loop completed" only, on every artifact.
 - [ ] **Independent AI-security architecture review** — same status.
-- [ ] **Independent inter-assessor reproducibility study** — execute Artifact #10 Appendix B.4 with independent assessors and publish agreement/disagreement results. Until complete, no empirical reproducibility claim is permitted (R-16).
-- [x] **Licence and trademark decision** — CC BY 4.0 chosen for the methodology text (`LICENSE`); "AI Trust Graph" name/marks reserved separately (`TRADEMARKS.md`). Still needs the employer/IP/confidentiality review below to be legally final ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
-- [ ] **Security disclosure process** — add `SECURITY.md` for the repository itself ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
+- [ ] **Independent inter-assessor reproducibility study** — execute Artifact #10 Appendix B.4 with independent assessors and publish agreement/disagreement results. Until complete, no empirical reproducibility claim is permitted (R-16). A [study kit](studies/inter-assessor/README.md) packages the protocol, and study IAS-01 is frozen with a sealed answer key (2026-10-03); at least three independent assessors are still needed.
+- [x] **Licence and trademark decision** — CC BY 4.0 chosen for the methodology text (`LICENSE`); "AI Trust Graph" name/marks reserved separately (`TRADEMARKS.md`). Legal approval of this licence / trademark position is still pending (METHODOLOGY_MANIFEST §6) ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
+- [x] **Security disclosure process** — [`SECURITY.md`](SECURITY.md) added 2026-10-02 on the author's decision: private reporting through GitHub for the repository, website and graph API; best-effort response by a single maintainer; no bug bounty ([R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking)).
 - [ ] **Legal review of external standards references** — confirm the ISO/IEC and Singapore Accreditation Council references in the Governance Model's source register (Artifact #11, Appendix A.7) require no further permission or reproduction review ([R-10](REVIEW_FINDINGS.md#r-10--governance-model-cites-real-external-standards-should-fix)).
 
 ## Phase 3 — Governance activation (not started)

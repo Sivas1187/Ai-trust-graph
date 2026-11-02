@@ -6,7 +6,7 @@ Thank you for your interest in improving AI Trust Graph. This is a **constitutio
 
 ## Ways to give feedback
 
-You don't need to open a pull request to help. In order of ceremony:
+You don't need to open a pull request to help. If you want to review the methodology, [REVIEWING.md](REVIEWING.md) lists options from 30 minutes to a few sessions. In order of ceremony:
 
 - **A specific inconsistency, gap, or error** — open an issue with the "Methodology finding" template. It mirrors the format already used for findings R-01 through R-11 in [REVIEW_FINDINGS.md](REVIEW_FINDINGS.md), so a good report can be folded straight into that record.
 - **A general reaction, question, or first impression** — open an issue with the "General feedback" template, or start a [Discussion](https://github.com/Sivas1187/Ai-trust-graph/discussions) if one is enabled on this repository. You don't need a precise defect to use this.
@@ -72,7 +72,7 @@ If you're not sure whether something crosses this line, ask in your issue before
 
 ## Reporting a security issue
 
-There is currently no `SECURITY.md` in this repository — see [REVIEW_FINDINGS.md, R-08](REVIEW_FINDINGS.md#r-08--governance-required-repository-files-not-present-blocking). Until one exists, do not open a public issue for anything you believe is a genuine vulnerability disclosure concern (as opposed to a methodology gap) — this applies to security issues in any future tooling built alongside the methodology, not to the methodology's subject matter itself, which is inherently about discussing AI security weaknesses in the abstract.
+Follow [SECURITY.md](SECURITY.md): report a vulnerability in the repository, the website or the graph API privately through GitHub's **Report a vulnerability** form, not in a public issue. A gap or weakness in the methodology itself is not a vulnerability; report it publicly with the Methodology finding issue form, since the methodology's subject matter is inherently about discussing AI security weaknesses in the abstract.
 
 ## Code of conduct
 
