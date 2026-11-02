@@ -221,6 +221,26 @@ export const frameworks = {
 };
 
 /**
+ * Author's notes on individual design choices. The author's own statements,
+ * supplied by the author and edited only for clarity and readability. First
+ * person by design; do not extend them with claims the author did not make.
+ */
+export const authorNotes = {
+  /** 5.3, supplied 2026-11-02. */
+  unknown: {
+    title: "Why UNKNOWN stays UNKNOWN",
+    paragraphs: [
+      "My reasoning here comes from my experience in cybersecurity assessments, audits and technology-risk reviews.",
+      "In conventional assurance work, when required evidence is unavailable, incomplete or cannot be produced, that absence can itself become a finding or control gap and may be given an issue rating. That is appropriate when the assessment question is whether the organisation can demonstrate that a required control or obligation is operating as expected.",
+      "For ATG, however, I wanted to preserve a separate epistemic distinction. If the evidence is insufficient to determine whether an assertion is true, false, effective or ineffective, the underlying state should remain UNKNOWN. The absence of evidence may then generate a finding, evidence gap, remediation action or governance decision, but it should not automatically convert the underlying assertion into a pass, fail, zero, ineffective state or “not applicable”.",
+      "For example, if there is insufficient evidence to determine whether a particular authority path can actually be exercised, ATG should record that authority condition as UNKNOWN. The assessment can separately state that the inability to obtain adequate evidence is itself an assurance gap requiring action.",
+      "This separation matters to me because otherwise two different statements become confused: “we have evidence that this is deficient” and “we do not have enough evidence to know”. Both may require management attention, but they are not the same conclusion.",
+      "That is why I wanted UNKNOWN to be a first-class state in ATG. UNKNOWN remains UNKNOWN at the point of reasoning, while the absence or weakness of evidence can still produce a separate finding, issue, limitation or remediation requirement.",
+    ],
+  },
+} as const;
+
+/**
  * Design choices considered and rejected (5.3). EDITORIAL: each `why` is
  * written from the cited artifact's own stated reason; `source` names it.
  * Confirmed by the methodology author as the actual design reasons before

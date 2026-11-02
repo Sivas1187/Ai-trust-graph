@@ -1,5 +1,5 @@
 import { evidenceGrades, links, nonNumericResultStates, resultStateDefinitions, unknownVsNotTested } from "../../content";
-import { evidenceRelations, rejectedAlternatives } from "../../site-content";
+import { authorNotes, evidenceRelations, rejectedAlternatives } from "../../site-content";
 import { Detail, Ext, Glossary, SectionHead, SourceNote } from "./Primitives";
 
 /**
@@ -55,6 +55,14 @@ export function EvidenceUnknown() {
             <strong>Assumptions are labelled.</strong> Facts, inferences, assumptions and decisions are kept apart.
           </li>
         </ul>
+
+        <div className="authorNote">
+          <h4 className="subTitle">{authorNotes.unknown.title}</h4>
+          {authorNotes.unknown.paragraphs.map((p) => (
+            <p key={p.slice(0, 40)}>{p}</p>
+          ))}
+          <p className="authorNoteBy">Siva Sethumadhavan, author</p>
+        </div>
 
         <div className="unknownLayout">
           <div className="unknownPanel">

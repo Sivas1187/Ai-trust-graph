@@ -3444,6 +3444,18 @@ main:focus {
   opacity: 0.85;
 }
 
+/* Author's notes on design choices */
+.authorNote {
+  max-width: var(--measure);
+  margin-block: var(--sp-6);
+  padding-left: var(--sp-4);
+  border-left: 3px solid var(--line);
+}
+.authorNoteBy {
+  font-size: 0.9em;
+  opacity: 0.75;
+}
+
 /* Signature visual */
 .sigCanvas {
   overflow: visible;
